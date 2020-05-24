@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Welcome TeuChing!</h1>
+	<script>
+		location.href="/teuching/index/index.do"
+	</script>
 </body>
 </html>
