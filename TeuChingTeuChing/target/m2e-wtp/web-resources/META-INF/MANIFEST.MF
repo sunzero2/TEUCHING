@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: 1
 Build-Jdk: 1.8.0_241
+=======
+Built-By: ihyey
+Build-Jdk: 1.8.0_221
+>>>>>>> d40fc075b7197b0c5859da68acb19f7683224698
 Created-By: Maven Integration for Eclipse
 
