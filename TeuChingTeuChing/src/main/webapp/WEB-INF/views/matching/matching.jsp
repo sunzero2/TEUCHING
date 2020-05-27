@@ -12,19 +12,19 @@
 	href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="resources/css/animate.css">
-<link rel="stylesheet" href="resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="resources/css/magnific-popup.css">
-<link rel="stylesheet" href="resources/css/aos.css">
-<link rel="stylesheet" href="resources/css/ionicons.min.css">
-<link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="resources/css/jquery.timepicker.css">
-<link rel="stylesheet" href="resources/css/flaticon.css">
-<link rel="stylesheet" href="resources/css/icomoon.css">
-<link rel="stylesheet" href="resources/css/style.css">
+	href="../resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="../resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="../resources/css/animate.css">
+<link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="../resources/css/magnific-popup.css">
+<link rel="stylesheet" href="../resources/css/aos.css">
+<link rel="stylesheet" href="../resources/css/ionicons.min.css">
+<link rel="stylesheet" href="../resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="../resources/css/jquery.timepicker.css">
+<link rel="stylesheet" href="../resources/css/flaticon.css">
+<link rel="stylesheet" href="../resources/css/icomoon.css">
+<link rel="stylesheet" href="../resources/css/style.css">
 <style>
 	.postlist {
 		width: 300px;
@@ -78,7 +78,7 @@
 		<div class="row">
 			<div class="col-md-12 d-flex ftco-animate">
 				<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100" style="margin-left: -302px;">
-					<div class="img rounded-circle mb-2" style="background-image: url(resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
+					<div class="img rounded-circle mb-2" style="background-image: url(../resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
 					<div class="text pl-md-4 ml-md-2 pt-4" style="width: 853px;">
 						<div class="meta">
 							<div>
@@ -107,7 +107,7 @@
 			</div>
 			<div class="col-md-12 d-flex ftco-animate">
 				<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100" style="margin-left: -302px;">
-					<div class="img rounded-circle mb-2" style="background-image: url(resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
+					<div class="img rounded-circle mb-2" style="background-image: url(../resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
 					<div class="text pl-md-4 ml-md-2 pt-4" style="width: 853px;">
 						<div class="meta">
 							<div>
@@ -136,7 +136,7 @@
 			</div>
 			<div class="col-md-12 d-flex ftco-animate">
 				<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100" style="margin-left: -302px;">
-					<div class="img rounded-circle mb-2" style="background-image: url(resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
+					<div class="img rounded-circle mb-2" style="background-image: url(../resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
 					<div class="text pl-md-4 ml-md-2 pt-4" style="width: 853px;">
 						<div class="meta">
 							<div>
@@ -165,7 +165,7 @@
 			</div>
 			<div class="col-md-12 d-flex ftco-animate">
 				<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100" style="margin-left: -302px;">
-					<div class="img rounded-circle mb-2" style="background-image: url(resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
+					<div class="img rounded-circle mb-2" style="background-image: url(../resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
 					<div class="text pl-md-4 ml-md-2 pt-4" style="width: 853px;">
 						<div class="meta">
 							<div>
@@ -194,7 +194,7 @@
 			</div>
 			<div class="col-md-12 d-flex ftco-animate">
 				<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100" style="margin-left: -302px;">
-					<div class="img rounded-circle mb-2" style="background-image: url(resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
+					<div class="img rounded-circle mb-2" style="background-image: url(../resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
 					<div class="text pl-md-4 ml-md-2 pt-4" style="width: 853px;">
 						<div class="meta">
 							<div>
@@ -240,20 +240,20 @@
 		</div>
 		<!-- .col-md-8 -->
 	</section>
-	<script src="resources/js/jquery.min.js"></script>
-	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="resources/js/popper.min.js"></script>
-	<script src="resources/js/bootstrap.min.js"></script>
-	<script src="resources/js/jquery.easing.1.3.js"></script>
-	<script src="resources/js/jquery.waypoints.min.js"></script>
-	<script src="resources/js/jquery.stellar.min.js"></script>
-	<script src="resources/js/owl.carousel.min.js"></script>
-	<script src="resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="resources/js/aos.js"></script>
-	<script src="resources/js/jquery.animateNumber.min.js"></script>
-	<script src="resources/js/bootstrap-datepicker.js"></script>
-	<script src="resources/js/jquery.timepicker.min.js"></script>
-	<script src="resources/js/scrollax.min.js"></script>
-	<script src="resources/js/main.js"></script>
+	<script src="../resources/js/jquery.min.js"></script>
+	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="../resources/js/popper.min.js"></script>
+	<script src="../resources/js/bootstrap.min.js"></script>
+	<script src="../resources/js/jquery.easing.1.3.js"></script>
+	<script src="../resources/js/jquery.waypoints.min.js"></script>
+	<script src="../resources/js/jquery.stellar.min.js"></script>
+	<script src="../resources/js/owl.carousel.min.js"></script>
+	<script src="../resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="../resources/js/aos.js"></script>
+	<script src="../resources/js/jquery.animateNumber.min.js"></script>
+	<script src="../resources/js/bootstrap-datepicker.js"></script>
+	<script src="../resources/js/jquery.timepicker.min.js"></script>
+	<script src="../resources/js/scrollax.min.js"></script>
+	<script src="../resources/js/main.js"></script>
 </body>
 </html>

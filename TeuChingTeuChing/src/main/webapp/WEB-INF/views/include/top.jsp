@@ -17,8 +17,7 @@
 				<div class="collapse navbar-collapse" id="ftco-nav">
 					<ul class="navbar-nav m-auto">
 						<li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
-						<li class="nav-item active"><a href="#" class="nav-link">Trainer
-								Search</a></li>
+						<li class="nav-item active"><a href="/teuching/matching/main.do" class="nav-link">matching</a></li>
 						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
 						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
 						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
