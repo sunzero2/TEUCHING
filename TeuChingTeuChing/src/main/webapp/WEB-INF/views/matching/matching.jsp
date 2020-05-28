@@ -29,9 +29,19 @@
 	.postlist {
 		width: 300px;
 	}
+	
+	.keywordBtn {
+		background: #ffb5b5;
+		border: 1px solid #ffb5b5;
+		color: white;
+	}
+	
+	.keywordBtn:hover {
+		color: white;
+	}
 </style>
 </head>
-<body>
+<body onload="reset()">
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
@@ -62,16 +72,42 @@
 		<div class="sidebar-box ftco-animate" style="margin-left: 28%;">
 			<h3 class="heading-2">Tag로 검색하기</h3>
 			<div class="tagcloud">
-				<a href="#" class="tag-cloud-link">dish</a> <a href="#"
-					class="tag-cloud-link">menu</a> <a href="#" class="tag-cloud-link">food</a>
-				<a href="#" class="tag-cloud-link">sweet</a> <a href="#"
-					class="tag-cloud-link">tasty</a> <a href="#" class="tag-cloud-link">delicious</a>
-				<a href="#" class="tag-cloud-link">desserts</a> <a href="#"
-					class="tag-cloud-link">drinks</a>
+				<form>
+					<button type="button" class="btn keywordBtn" id="btn01">
+						<input type="hidden" class="keywordChk" id="chk01">dish
+					</button>
+					<button type="button" class="btn keywordBtn" id="btn02">
+						<input type="hidden" class="keywordChk" id="chk02">dish
+					</button>
+					<button type="button" class="btn keywordBtn" id="btn03">
+						<input type="hidden" class="keywordChk" id="chk03">dish
+					</button>
+					<button type="button" class="btn keywordBtn" id="btn04">
+						<input type="hidden" class="keywordChk" id="chk04">dish
+					</button>
+					<button type="button" class="btn keywordBtn" id="btn05">
+						<input type="hidden" class="keywordChk" id="chk05">dish
+					</button>
+					<button type="button" class="btn keywordBtn" id="btn06">
+						<input type="hidden" class="keywordChk" id="chk06">dish
+					</button>
+					<button type="button" class="btn keywordBtn" id="btn07">
+						<input type="hidden" class="keywordChk" id="chk07">dish
+					</button>
+					<button type="button" class="btn keywordBtn" id="btn08">
+						<input type="hidden" class="keywordChk" id="chk08">dish
+					</button>
+					<button type="button" class="btn keywordBtn" id="btn09">
+						<input type="hidden" class="keywordChk" id="chk09">dish
+					</button>
+					<button type="button" class="btn keywordBtn" id="btn10">
+						<input type="hidden" class="keywordChk" id="chk10">dish
+					</button>
+					<p style="margin-top: 36px; margin-left: 592px; width: 30px;">
+						<button href="#" class="btn btn-outline-primary">Learn more</button>
+					</p>
+				</form>
 			</div>
-			<p style="margin-top: 36px; margin-left: 592px; width: 30px;">
-				<a href="#" class="btn btn-outline-primary">Learn more</a>
-			</p>
 		</div>
 	</section>
 	<section>
@@ -255,5 +291,6 @@
 	<script src="../resources/js/jquery.timepicker.min.js"></script>
 	<script src="../resources/js/scrollax.min.js"></script>
 	<script src="../resources/js/main.js"></script>
+	<script src="../resources/js/matching/matching.js"></script>
 </body>
 </html>
