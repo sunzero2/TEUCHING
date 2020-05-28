@@ -31,9 +31,10 @@
 </style>
 </head>
 <body>
+	<%@ include file="../include/top.jsp" %>
 	<section class="home-slider js-fullheight owl-carousel">
 		<div class="slider-item js-fullheight"
-			style="background-image: url(resources/img/bg_1.jpg);">
+			style="background-image: url(../resources/img/bg_1.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -54,7 +55,7 @@
 		</div>
 
 		<div class="slider-item js-fullheight"
-			style="background-image: url(resources/img/bg_2.jpg);">
+			style="background-image: url(../resources/img/bg_2.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -96,7 +97,7 @@
 	                    </span>
 	                  </div>
                     <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(resources/img/person_1.jpg)">
+                    	<div class="user-img" style="background-image: url(../resources/img/person_1.jpg)">
 		                  </div>
 		                  <div class="ml-4">
 		                  	<p class="name">Namkyu Lee</p>
@@ -117,7 +118,7 @@
 	                  </div>
 
                     <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(resources/img/person_2.jpg)">
+                    	<div class="user-img" style="background-image: url(../resources/img/person_2.jpg)">
 		                  </div>
 		                  <div class="ml-4">
 		                  	<p class="name">Jisoo Kim</p>
@@ -138,7 +139,7 @@
 	                  </div>
 
                     <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(resources/img/person_3.jpg)">
+                    	<div class="user-img" style="background-image: url(../resources/img/person_3.jpg)">
 		                  </div>
 		                  <div class="ml-4">
 		                  	<p class="name">Bora Lee</p>
@@ -154,23 +155,23 @@
       </div>
     </section>
 	
-	<script src="resources/js/jquery.min.js"></script>
-	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="resources/js/popper.min.js"></script>
-	<script src="resources/js/bootstrap.min.js"></script>
-	<script src="resources/js/jquery.easing.1.3.js"></script>
-	<script src="resources/js/jquery.waypoints.min.js"></script>
-	<script src="resources/js/jquery.stellar.min.js"></script>
-	<script src="resources/js/owl.carousel.min.js"></script>
-	<script src="resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="resources/js/aos.js"></script>
-	<script src="resources/js/jquery.animateNumber.min.js"></script>
-	<script src="resources/js/bootstrap-datepicker.js"></script>
-	<script src="resources/js/jquery.timepicker.min.js"></script>
-	<script src="resources/js/scrollax.min.js"></script>
+	<script src="../resources/js/jquery.min.js"></script>
+	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="../resources/js/popper.min.js"></script>
+	<script src="../resources/js/bootstrap.min.js"></script>
+	<script src="../resources/js/jquery.easing.1.3.js"></script>
+	<script src="../resources/js/jquery.waypoints.min.js"></script>
+	<script src="../resources/js/jquery.stellar.min.js"></script>
+	<script src="../resources/js/owl.carousel.min.js"></script>
+	<script src="../resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="../resources/js/aos.js"></script>
+	<script src="../resources/js/jquery.animateNumber.min.js"></script>
+	<script src="../resources/js/bootstrap-datepicker.js"></script>
+	<script src="../resources/js/jquery.timepicker.min.js"></script>
+	<script src="../resources/js/scrollax.min.js"></script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="resources/js/google-map.js"></script>
-	<script src="resources/js/main.js"></script>
+	<script src="../resources/js/google-map.js"></script>
+	<script src="../resources/js/main.js"></script>
 </body>
 </html>
