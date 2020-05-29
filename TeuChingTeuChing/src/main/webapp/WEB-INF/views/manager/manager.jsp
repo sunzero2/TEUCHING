@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -94,25 +94,14 @@
 			</div>
 
 			<div class="col-md-9  admin-content" id="profile">
-				<div class="panel panel-info" style="margin: 1em;">
-					<div class="panel-heading">
-						<h3 class="panel-title">이트레이너 이상한 게시물 올리네요</h3>
+				<c:forEach items="${viewReportList }" var="vr">
+					<div class="panel panel-info" style="margin: 1em;">
+						<div class="panel-heading">
+							<h3 class="panel-title">${ vr.report_date}</h3>
+						</div>
+						<div class="panel-body">${vr.rep_cont }</div>
 					</div>
-					<div class="panel-body">보이십니까</div>
-				</div>
-				<div class="panel panel-info" style="margin: 1em;">
-					<div class="panel-heading">
-						<h3 class="panel-title">만만치않네요 이사람</h3>
-					</div>
-					<div class="panel-body">너무 못가르치고 3대 500도 못치는 듯 덜덜이만 쳐하던데</div>
-				</div>
-				<div class="panel panel-info" style="margin: 1em;">
-					<div class="panel-heading">
-						<h3 class="panel-title">만만치않네요 이사람</h3>
-
-					</div>
-					<div class="panel-body">트레이너가 이상 진짜진짜!!</div>
-				</div>
+				</c:forEach>
 				<div class="row mt-5">
 					<div class="col">
 						<div class="block-27">

@@ -1,13 +1,24 @@
 package com.borajoin.teuching.manager.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.borajoin.teuching.manager.model.service.ManagerService;
 
 @Controller
 public class ManagerController {
 
+	@Autowired
+	ManagerService ms;
+
 	@RequestMapping("/manager.do")
-	public String managerPage() {
-		return "manager/manager";
+	public ModelAndView managerPage() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("viewReportList", ms.selectRevReport());
+		System.out.println(ms.selectRevReport());
+		mv.setViewName("manager/manager");
+		return mv;
 	}
 }

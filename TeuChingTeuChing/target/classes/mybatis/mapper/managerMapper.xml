@@ -2,5 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Manager">
-
+	<select id="selectRevReport" resultType="ReviewReport">
+		select * from tr_rev_report
+	</select>
 </mapper>
+<!-- TR_TRA_REPORT -->
+<!-- TR_REV_REPORT -->

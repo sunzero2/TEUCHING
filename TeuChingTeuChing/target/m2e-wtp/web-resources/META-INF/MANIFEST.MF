@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: borad
+Built-By: 1
 Build-Jdk: 1.8.0_241
-=======
-Built-By: user2
-Build-Jdk: 1.8.0_221
->>>>>>> 0866681646a6bf146eeb4c21ea1b650d4fb4f330
 Created-By: Maven Integration for Eclipse
 

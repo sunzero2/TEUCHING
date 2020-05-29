@@ -74,8 +74,9 @@ public class ReviewReport {
 
 	@Override
 	public String toString() {
-		return "TrainerReport [report_id=" + report_id + ", trainer_id=" + trainer_id + ", member_id=" + member_id
+		return "ReviewReport [report_id=" + report_id + ", trainer_id=" + trainer_id + ", member_id=" + member_id
 				+ ", rep_cont=" + rep_cont + ", report_handle=" + report_handle + ", handel_cont=" + handel_cont
 				+ ", report_date=" + report_date + "]";
 	}
+
 }
