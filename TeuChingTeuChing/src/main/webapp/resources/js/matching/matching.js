@@ -1,9 +1,14 @@
 var check = null;
 var checkCnt = 0;
+var keywordArr = null;
+var searchKeyword = "";
 
 function reset() {
 	checkCnt = 0;
+	keywordArr = new Array();
+	searchKeyword = "";
 }
+
 
 document.querySelectorAll(".keywordBtn").forEach(function(el) {
 	el.addEventListener('click', function(v) {
@@ -33,6 +38,23 @@ document.querySelectorAll(".keywordBtn").forEach(function(el) {
 			checkCnt++;
 		}
 		
-		console.log(checkCnt);
 	})
+})
+
+// 검색어로 검색했을 시 연결되는 곳
+document.getElementById("inputBtn").addEventListener('click', function(el) {
+	var input = document.getElementById("keywordInput");
+	/* ajax 할거야!....... */
+	/*$.ajax()*/
+})
+
+// 키워드 선택 후 검색했을 시 연결되는 곳
+document.getElementById("keywordSearchBtn").addEventListener('click', function(el) {
+	document.querySelectorAll('.keywordChk').forEach(function(v) {
+		if(v.checked == true) {
+			/*searchKeyword += v.value + ", ";*/
+		}
+	})
+	
+	console.log(searchKeyword);
 })

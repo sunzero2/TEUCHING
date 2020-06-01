@@ -54,15 +54,12 @@
 								<div class="icon">
 									<span class="icon-search"></span>
 								</div>
-								<input type="text" class="form-control"
-									placeholder="Type a keyword and hit enter">
+								<input type="text" id="keywordInput" class="form-control"
+									placeholder="검색어를 입력하세요.">
 							</div>
 						</form>
 					</div>
-					<p
-						style="position: absolute; margin-top: 36px; margin-left: 700px;">
-						<a href="#" class="btn btn-outline-primary">Learn more</a>
-					</p>
+					<button style="position: absolute; margin-top: 45px; margin-left: 317px;" id="inputBtn" class="btn btn-outline-primary">Search</button>
 				</div>
 			</div>
 		</div>
@@ -72,7 +69,6 @@
 		<div class="sidebar-box ftco-animate" style="margin-left: 28%;">
 			<h3 class="heading-2">Tag로 검색하기</h3>
 			<div class="tagcloud">
-				<form>
 					<button type="button" class="btn keywordBtn" id="btn01">
 						<input type="hidden" class="keywordChk" id="chk01">dish
 					</button>
@@ -103,14 +99,16 @@
 					<button type="button" class="btn keywordBtn" id="btn10">
 						<input type="hidden" class="keywordChk" id="chk10">dish
 					</button>
-					<p style="margin-top: 36px; margin-left: 592px; width: 30px;">
-						<button href="#" class="btn btn-outline-primary">Learn more</button>
-					</p>
-				</form>
+					<button style="position:absolute; margin-top: 45px; margin-left: 25px;" id="keywordSearchBtn" class="btn btn-outline-primary">Search</button>
 			</div>
 		</div>
 	</section>
 	<section>
+	<table>
+		<tr class="row">
+			
+		</tr>
+	</table>
 		<div class="row">
 			<div class="col-md-12 d-flex ftco-animate">
 				<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100" style="margin-left: -302px;">
