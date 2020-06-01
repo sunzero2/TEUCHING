@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.borajoin.teuching.manager.model.vo.ReviewReport;
+import com.borajoin.teuching.manager.model.vo.TrainerReport;
 
 @Repository
 public class ManagerDao {
@@ -17,6 +18,10 @@ public class ManagerDao {
 
 	public List<ReviewReport> selectRevReport() {
 		return sqlSession.selectList("Manager.selectRevReport");
+	}
+	
+	public List<TrainerReport> selectTraReport(){
+		return sqlSession.selectList("Manager.selectTraReport");
 	}
 
 }

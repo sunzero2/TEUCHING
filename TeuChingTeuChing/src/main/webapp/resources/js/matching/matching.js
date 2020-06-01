@@ -44,8 +44,16 @@ document.querySelectorAll(".keywordBtn").forEach(function(el) {
 // 검색어로 검색했을 시 연결되는 곳
 document.getElementById("inputBtn").addEventListener('click', function(el) {
 	var input = document.getElementById("keywordInput");
-	/* ajax 할거야!....... */
-	/*$.ajax()*/
+	console.log(input.value);
+	$.ajax({
+		url : "/teuching/matching/searchword.do",
+		data : {
+			"input" : input.value
+		},
+		success : function(v) {
+			console.dir(v)
+		}
+	})
 })
 
 // 키워드 선택 후 검색했을 시 연결되는 곳

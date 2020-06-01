@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.borajoin.teuching.manager.model.dao.ManagerDao;
 import com.borajoin.teuching.manager.model.vo.ReviewReport;
+import com.borajoin.teuching.manager.model.vo.TrainerReport;
 
 @Service
 public class ManagerServiceImpl implements ManagerService {
@@ -17,6 +18,11 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public List<ReviewReport> selectRevReport() {
 		return md.selectRevReport();
+	}
+
+	@Override
+	public List<TrainerReport> selectTraReport() {
+		return md.selectTraReport();
 	}
 
 }

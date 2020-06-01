@@ -3,7 +3,7 @@ package com.borajoin.teuching.manager.model.vo;
 import java.sql.Date;
 
 public class TrainerReport {
-	
+
 	private int report_id; // 신고번호
 	private int trainer_id; // 트레이너번호
 	private int member_id; // 회원번호
