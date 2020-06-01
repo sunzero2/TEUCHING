@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Matching">
-	<select id="searchWord">
+	<select id="searchWord" resultType="Post">
 		select * from tr_post where 
 		<if test='option.equals("trainer")'>
 			writer like '%' || #{input} || '%'
@@ -10,5 +10,29 @@
 		<if test='option.equals("post")'>
 			post_title like '%' || #{input} || '%'
 		</if>
+	</select>
+	
+	<select id="keyword" resultType="Post">
+		select * from tr_post
+		<where>
+			<if test='!purpose.equals("null")'>
+				purpose = #{purpose}
+			</if>
+			<if test='!sports.equals("null")'>
+				and sports = #{sports}
+			</if>
+			<if test='!area.equals("null")'>
+				and area = #{area}
+			</if>
+			<if test='!classSize.equals("null")'>
+				and classSize = #{classSize}
+			</if>
+			<if test='!gender.equals("null")'>
+				and gender = #{gender}
+			</if>
+			<if test='!place.equals("null")'>
+				and place = #{place}
+			</if>
+		</where>
 	</select>
 </mapper>

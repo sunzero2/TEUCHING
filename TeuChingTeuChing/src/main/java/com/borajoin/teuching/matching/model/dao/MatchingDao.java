@@ -14,7 +14,11 @@ public class MatchingDao {
 	@Autowired
 	SqlSession sqlSession;
 	
-	public List<Post> searchPosts(Map<String, String> data) {
+	public List<Post> searchword(Map<String, String> data) {
 		return sqlSession.selectList("Matching.searchWord", data);
+	}
+	
+	public List<Post> keyword(Map<String, String> data) {
+		return sqlSession.selectList("Matching.keyword", data);
 	}
 }
