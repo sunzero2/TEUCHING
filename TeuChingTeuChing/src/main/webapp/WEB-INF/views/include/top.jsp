@@ -7,7 +7,7 @@
 	<div class="container">
 		<div class="row m-auto">
 			<div class="col-12 w-100 text-center">
-				<a class="navbar-brand w-100" href="index.html">TeuChing</a>
+				<a class="navbar-brand w-100" href="/teuching/index/index.do">TeuChing</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#ftco-nav" aria-controls="ftco-nav"
 					aria-expanded="false" aria-label="Toggle navigation">

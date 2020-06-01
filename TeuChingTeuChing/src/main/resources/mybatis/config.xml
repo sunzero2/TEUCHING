@@ -3,10 +3,13 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.borajoin.teuching.manager.model.vo.ReviewReport" alias="ReviewReport" />
+		<typeAlias type="com.borajoin.teuching.member.model.vo.Member" alias="Member" />
+		<typeAlias type="com.borajoin.teuching.member.model.vo.Trainer" alias="Trainer" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="/mybatis/mapper/managerMapper.xml" />
 		<mapper resource="/mybatis/mapper/matchingMapper.xml" />
+		<mapper resource="/mybatis/mapper/memberMapper.xml" />
 	</mappers>
 </configuration>
