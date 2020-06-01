@@ -4,11 +4,6 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
- .topWrapper {
-	position: absolute;
-	top: 1vw;
-	right: 1vw;
-}
  
 :root {
   --blue: #007bff;
