@@ -8,5 +8,6 @@
 
 	<mappers>
 		<mapper resource="/mybatis/mapper/managerMapper.xml" />
+		<mapper resource="/mybatis/mapper/matchingMapper.xml" />
 	</mappers>
 </configuration>

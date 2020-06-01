@@ -27,7 +27,7 @@
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
 								<div class="col-8">
-									<h3 class="mb-0">트칭 일반회원 회원가입</h3>
+									<h3 class="mb-0">트칭 트레이너 회원가입</h3>
 								</div>
 								<div class="col-4 text-right">
 									<a href="#!" class="btn btn-sm btn-primary">가입하기</a>
@@ -87,10 +87,10 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group focused">
-												<label class="form-control-label" for="input-first-name">닉네임
+												<label class="form-control-label" for="input-first-name">성함
 													</label> <input type="text" id="input-first-name"
 													class="form-control form-control-alternative"
-													placeholder="사용하실 닉네임">
+													placeholder="Username">
 											</div>
 										</div>
 										<div class="col-lg-6">
@@ -153,35 +153,38 @@
 								</div>
 								<hr class="my-4">
 								<!-- Description -->
-								<h6 class="heading-small text-muted mb-4">Purpose</h6>
+								<h6 class="heading-small text-muted mb-4">About Me</h6>
 								<div class="pl-lg-4">
-									<div class="form-group focused">
-										<label class="form-control-label">트레이너 매칭 키워드 선택</label>
-
-										<br><br>
-										<div class="container">
-											<div class="row text-center">
-												<br> <label for="default" class="btn btn-default">이것
-													<input type="checkbox" id="default" class="badgebox"><span
-													class="badge">&check;</span>
-												</label> <label for="primary" class="btn btn-primary">저것
-													<input type="checkbox" id="primary" class="badgebox"><span
-													class="badge">&check;</span>
-												</label> <label for="info" class="btn btn-info">아무거나 <input
-													type="checkbox" id="info" class="badgebox"><span
-													class="badge">&check;</span></label> <label for="success"
-													class="btn btn-success">색깔별로 <input
-													type="checkbox" id="success" class="badgebox"><span
-													class="badge">&check;</span></label> <label for="warning"
-													class="btn btn-warning">골라서 <input
-													type="checkbox" id="warning" class="badgebox"><span
-													class="badge">&check;</span></label> <label for="danger"
-													class="btn btn-danger">넣자 <input
-													type="checkbox" id="danger" class="badgebox"><span
-													class="badge">&check;</span></label>
+								<div class="row">
+										<div class="col-lg-4">
+											<div class="form-group focused">
+												<label class="form-control-label" for="input-city">사진첨부</label>
+												<input type="file" name="files" id="contract_file" />
 											</div>
 										</div>
 									</div>
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="form-group focused">
+												<label class="form-control-label" for="input-address">개인 커리어</label>
+												<input id="input-address"
+													class="form-control form-control-alternative"
+													placeholder="개인커리어를 어떻게 추가해야할까"
+													type="text">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="form-group focused">
+												<label class="form-control-label" for="input-address">선호?????</label>
+												<input id="input-address"
+													class="form-control form-control-alternative"
+													placeholder="흠...이건 또 어떻게 넣는게 좋을까"
+													type="text">
+											</div>
+										</div>
+									</div>	
 								</div>
 							</form>
 						</div>
