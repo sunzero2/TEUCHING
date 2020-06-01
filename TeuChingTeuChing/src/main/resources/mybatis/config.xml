@@ -3,6 +3,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.borajoin.teuching.manager.model.vo.ReviewReport" alias="ReviewReport" />
+		<typeAlias type="com.borajoin.teuching.manager.model.vo.TrainerReport" alias="TrainerReport" />
 	</typeAliases>
 
 	<mappers>

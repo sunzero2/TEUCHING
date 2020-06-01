@@ -3,8 +3,32 @@
 
 <mapper namespace="Manager">
 	<select id="selectRevReport" resultType="ReviewReport">
-		select * from tr_rev_report
+		select * from(
+			select
+			rownum rnum, n1.* from(
+				select * from
+				tr_rev_report
+				order by report_idx asc
+			)n1)
+		where rnum between #{start} and #{end}
+	</select>
+
+	<select id="selectTraReport" resultType="TrainerReport">
+		select * from(
+			select
+			rownum rnum, n1.* from(
+				select * from
+				tr_tra_report
+				order by report_idx asc
+			)n1)
+		where rnum between #{start} and #{end}
+	</select>
+
+	<select id="revCnt" resultType="int">
+		select count(*) from tr_rev_report
+	</select>
+
+	<select id="traCnt" resultType="int">
+		select count(*) from tr_tra_report
 	</select>
 </mapper>
-<!-- TR_TRA_REPORT -->
-<!-- TR_REV_REPORT -->

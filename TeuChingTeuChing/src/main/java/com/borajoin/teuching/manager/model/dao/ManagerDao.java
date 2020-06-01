@@ -10,18 +10,28 @@ import org.springframework.stereotype.Repository;
 import com.borajoin.teuching.manager.model.vo.ReviewReport;
 import com.borajoin.teuching.manager.model.vo.TrainerReport;
 
+import common.util.Paging;
+
 @Repository
 public class ManagerDao {
 
 	@Autowired
 	SqlSessionTemplate sqlSession;
 
-	public List<ReviewReport> selectRevReport() {
-		return sqlSession.selectList("Manager.selectRevReport");
+	public List<ReviewReport> selectRevReport(Paging pagingRev) {
+		return sqlSession.selectList("Manager.selectRevReport", pagingRev);
 	}
-	
-	public List<TrainerReport> selectTraReport(){
-		return sqlSession.selectList("Manager.selectTraReport");
+
+	public List<TrainerReport> selectTraReport(Paging pagingTra) {
+		return sqlSession.selectList("Manager.selectTraReport", pagingTra);
+	}
+
+	public int revCnt() {
+		return sqlSession.selectOne("Manager.revCnt");
+	}
+
+	public int traCnt() {
+		return sqlSession.selectOne("Manager.traCnt");
 	}
 
 }
