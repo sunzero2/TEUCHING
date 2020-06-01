@@ -5,7 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<style>
+	input::placeholder {
+		color : gray;
+		font-size: small;
+	}
+</style>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -23,7 +28,7 @@
 			<!-- Table -->
 			<div class="row">
 				<div class="col-xl-8 m-auto order-xl-1">
-					<div class="card bg-secondary shadow">
+					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
 								<div class="col-8">
@@ -97,8 +102,8 @@
 											<div class="form-group focused">
 												<label class="form-control-label" for="input-last-name">성별
 												</label> 
-													<select class="form-control form-control-alternative">
-													<option selected="">성별을 선택해주세요</option>
+													<select class="form-control form-control-alternative"
+													style="font-size: small;">
 													<option>남성</option>
 													<option>여성</option>
 												</select>
@@ -156,29 +161,44 @@
 								<h6 class="heading-small text-muted mb-4">Purpose</h6>
 								<div class="pl-lg-4">
 									<div class="form-group focused">
-										<label class="form-control-label">트레이너 매칭 키워드 선택</label>
+										<label class="form-control-label">운동 목적 선택</label>
 
 										<br><br>
 										<div class="container">
 											<div class="row text-center">
-												<br> <label for="default" class="btn btn-default">이것
-													<input type="checkbox" id="default" class="badgebox"><span
-													class="badge">&check;</span>
-												</label> <label for="primary" class="btn btn-primary">저것
-													<input type="checkbox" id="primary" class="badgebox"><span
-													class="badge">&check;</span>
-												</label> <label for="info" class="btn btn-info">아무거나 <input
+												<br> 
+												<label for="info" class="btn btn-info">바디프로필 <input
 													type="checkbox" id="info" class="badgebox"><span
-													class="badge">&check;</span></label> <label for="success"
-													class="btn btn-success">색깔별로 <input
-													type="checkbox" id="success" class="badgebox"><span
-													class="badge">&check;</span></label> <label for="warning"
-													class="btn btn-warning">골라서 <input
-													type="checkbox" id="warning" class="badgebox"><span
-													class="badge">&check;</span></label> <label for="danger"
-													class="btn btn-danger">넣자 <input
-													type="checkbox" id="danger" class="badgebox"><span
 													class="badge">&check;</span></label>
+													<label for="info" class="btn btn-info">바디프로필 <input
+													type="checkbox" id="info" class="badgebox"><span
+													class="badge">&check;</span></label>
+													<label for="info" class="btn btn-info">바디프로필 <input
+													type="checkbox" id="info" class="badgebox"><span
+													class="badge">&check;</span></label>
+													<label for="info" class="btn btn-info">바디프로필 <input
+													type="checkbox" id="info" class="badgebox"><span
+													class="badge">&check;</span></label>
+													<label for="info" class="btn btn-info">바디프로필 <input
+													type="checkbox" id="info" class="badgebox"><span
+													class="badge">&check;</span></label>
+													<label for="info" class="btn btn-info">바디프로필 <input
+													type="checkbox" id="info" class="badgebox"><span
+													class="badge">&check;</span></label>
+													<label for="info" class="btn btn-info">바디프로필 <input
+													type="checkbox" id="info" class="badgebox"><span
+													class="badge">&check;</span></label>
+													<label for="info" class="btn btn-info">바디프로필 <input
+													type="checkbox" id="info" class="badgebox"><span
+													class="badge">&check;</span></label>
+													<label for="info" class="btn btn-info">바디프로필 <input
+													type="checkbox" id="info" class="badgebox"><span
+													class="badge">&check;</span></label>
+													<label for="info" class="btn btn-info">바디프로필 <input
+													type="checkbox" id="info" class="badgebox"><span
+													class="badge">&check;</span></label>
+
+
 											</div>
 										</div>
 									</div>

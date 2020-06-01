@@ -51,15 +51,15 @@
 		<div class="topWrapper" id="topWrapper" style="position: absolute; top: 1vw; right: 1vw;">
 			<c:if test="${logInInfo == null}">
 				<div class="topLogin">
-					<a href="<%=request.getContextPath()%>/member/login.do">로그인/</a> <a
-						href="<%=request.getContextPath()%>/member/join.do">회원가입</a>
+					<a href="<%=request.getContextPath()%>/member/login.do">Login / </a> 
+					<a href="<%=request.getContextPath()%>/member/join.do">Join</a>
 				</div>
 			</c:if>
 			<c:if test="${logInInfo != null}">
 				<div class="topLogOut">
 					<a href="<%=request.getContextPath()%>/mypage/mypage.do">${sessionScope.logInInfo.m_id}님
-						환영합니다. MyPage</a> <a
-						href="<%=request.getContextPath()%>/member/logout.do">logOut</a>
+						환영합니다. MyPage</a> 
+					<a href="<%=request.getContextPath()%>/member/logout.do">logOut</a>
 				</div>
 			</c:if>
 		</div>

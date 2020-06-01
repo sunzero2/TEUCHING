@@ -25,6 +25,31 @@ public class MemberController {
 	@Autowired
 	private MemberService ms;
 	
+	@RequestMapping("/member/join.do")
+	public ModelAndView join() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("account/memberJoin");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/member/mjoin.do")
+	public ModelAndView mjoin() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("account/joinform_M");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/member/tjoin.do")
+	public ModelAndView tjoin() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("account/joinform_T");
+		
+		return mav;
+	}
+	
+	
 	
 	
 	
