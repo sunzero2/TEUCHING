@@ -3,8 +3,16 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.borajoin.teuching.manager.model.vo.ReviewReport" alias="ReviewReport" />
+<<<<<<< HEAD
 		<typeAlias type="com.borajoin.teuching.member.model.vo.Member" alias="Member" />
 		<typeAlias type="com.borajoin.teuching.member.model.vo.Trainer" alias="Trainer" />
+=======
+<<<<<<< HEAD
+		<typeAlias type="com.borajoin.teuching.matching.model.vo.Post" alias="Post" />
+=======
+		<typeAlias type="com.borajoin.teuching.manager.model.vo.TrainerReport" alias="TrainerReport" />
+>>>>>>> 9d688c4564f90a4a76ffd4439857938d294eb07a
+>>>>>>> 898e09e7d20cb7cf69879a615d74d1f378d994cf
 	</typeAliases>
 
 	<mappers>
