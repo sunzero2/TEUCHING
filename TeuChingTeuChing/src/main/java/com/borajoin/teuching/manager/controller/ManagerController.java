@@ -17,8 +17,9 @@ public class ManagerController {
 	public ModelAndView managerPage() {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("viewReportList", ms.selectRevReport());
-		System.out.println(ms.selectRevReport());
+//		mv.addObject("viewReportList", ms.selectTraReport());
 		mv.setViewName("manager/manager");
 		return mv;
 	}
+	
 }
