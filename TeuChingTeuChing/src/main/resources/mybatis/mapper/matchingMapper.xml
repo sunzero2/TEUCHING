@@ -4,5 +4,11 @@
 <mapper namespace="Matching">
 	<select id="searchWord">
 		select * from tr_post where 
+		<if test='option.equals("trainer")'>
+			writer like '%' || #{input} || '%'
+		</if>
+		<if test='option.equals("post")'>
+			post_title like '%' || #{input} || '%'
+		</if>
 	</select>
 </mapper>

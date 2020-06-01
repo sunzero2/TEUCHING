@@ -43,6 +43,7 @@
 </style>
 </head>
 <body onload="reset()">
+<%@ include file="../include/top.jsp" %>
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
@@ -50,7 +51,7 @@
 				<div class="col-lg-4 sidebar ftco-animate" style="margin-left: 14%;">
 					<div class="sidebar-box">
 						<form action="#" class="search-form" style="width: 530px; margin-left: 83px">
-							<select style="border: 1px solid #ffb5b5; border-radius: 20px; color: #7b5e5e;">
+							<select id="searchOption" style="border: 1px solid #ffb5b5; border-radius: 20px; color: #7b5e5e;">
 								<option value="trainer">트레이너</option>
 								<option value="post">게시판</option>
 							</select>
@@ -103,7 +104,7 @@
 					<input type="hidden" class="keywordChk" id="chk09">dish
 				</button>
 				<button type="button" class="btn keywordBtn" id="btn10">
-					<input type="hidden" class="keywordChk" id="chk10">dish
+					<input type="hidden" class="keywordChk" id="chk10" value="dish">dish
 				</button>
 				<button
 					style="position: absolute; margin-top: 4%; margin-left: 2.2%;"
