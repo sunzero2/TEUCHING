@@ -16,8 +16,8 @@ public class MatchingController {
 	
 	@RequestMapping("/matching/searchword.do")
 	@ResponseBody
-	public String searchWord() {
-		
-		return null;
+	public String searchWord(String input) {
+		System.out.println(input);
+		return input;
 	}
 }

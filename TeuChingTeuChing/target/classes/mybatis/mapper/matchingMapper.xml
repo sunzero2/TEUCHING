@@ -3,6 +3,6 @@
 
 <mapper namespace="Matching">
 	<select id="searchWord">
-		select * from 
+		select * from tr_post where 
 	</select>
 </mapper>
