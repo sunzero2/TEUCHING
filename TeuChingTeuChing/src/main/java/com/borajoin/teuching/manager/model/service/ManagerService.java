@@ -1,13 +1,12 @@
 package com.borajoin.teuching.manager.model.service;
 
-import java.util.List;
+import java.util.Map;
 
-import com.borajoin.teuching.manager.model.vo.ReviewReport;
-import com.borajoin.teuching.manager.model.vo.TrainerReport;
 
 public interface ManagerService {
 
-	public List<ReviewReport> selectRevReport();
+	public Map<String, Object> selectRevReport(int revCurrentPage);
 	
-	public List<TrainerReport> selectTraReport();
+	public Map<String, Object> selectTraReport(int traCurrentPage);
+	
 }

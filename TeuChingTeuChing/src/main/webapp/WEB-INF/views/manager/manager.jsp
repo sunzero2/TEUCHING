@@ -80,119 +80,129 @@
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<!------ Include the above in your HEAD tag ---------->
 
-	<div class="container">
+	<div class="container" style="transform: translateX(5%)">
 
 		<div class="row">
 
-			<div class="col-md-3">
-				<ul class="nav nav-pills nav-stacked admin-menu">
-					<li class="active"><a href="" data-target-id="profile"><i
-							class="glyphicon glyphicon-user"></i> 게시글 신고</a></li>
-					<li><a href="" data-target-id="change-password"><i
-							class="glyphicon glyphicon-lock"></i> 트레이너 신고</a></li>
-				</ul>
-			</div>
+			<ul class="nav nav-pills nav-stacked admin-menu"
+				style="transform: translateY(5%)">
+				<li class="active"><a href="" data-target-id="profile"><i
+						class="glyphicon glyphicon-user"></i> 트레이너 신고</a></li>
+			</ul>
+
+
 
 			<div class="col-md-9  admin-content" id="profile">
-				<c:forEach items="${viewReportList }" var="vr">
+				<c:forEach items="${res.resTra.selectTraReport }" var="r">
 					<div class="panel panel-info" style="margin: 1em;">
 						<div class="panel-heading">
-							<h3 class="panel-title">${ vr.report_date}</h3>
+							<h3 class="panel-title">${ r.report_date}</h3>
 						</div>
-						<div class="panel-body">${vr.rep_cont }</div>
+						<div class="panel-body">${r.rep_cont }</div>
 					</div>
 				</c:forEach>
-				<div class="row mt-5">
+				<div class="row mt-5" style="transform: translateX(25%)">
 					<div class="col">
 						<div class="block-27">
 							<ul>
-								<li><a href="#">&lt;</a></li>
-								<li class="active"><span>1</span></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">&gt;</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="col-md-9  admin-content" id="change-password">
-
-
-				<div class="panel panel-info" style="margin: 1em;">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							<label for="new_password" class="control-label panel-title">
-								트레이너가 이상해요</label>
-						</h3>
-					</div>
-					<div class="panel-body">
-						<div class="form-group">
-							<div class="col-sm-10">
-								<label for="new_password" class="control-label panel-title">
-									자꾸 연락하고 어쩌구 저쩌고 보고싶다 막 ㅜ..ㅠ</label>
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-
-				<div class="panel panel-info" style="margin: 1em;">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							<label for="confirm_password" class="control-label panel-title">
-								트레이너가 이상해요</label>
-						</h3>
-					</div>
-					<div class="panel-body">
-						<div class="form-group">
-							<div class="col-sm-10">ㅇㄴㄹㄴㅇㄹㄴㅇ</div>
-						</div>
-					</div>
-				</div>
-				<div class="row mt-5">
-					<div class="col">
-						<div class="block-27">
-							<ul>
-								<li><a href="#">&lt;</a></li>
-								<li class="active"><span>1</span></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">&gt;</a></li>
+								<c:if test="${res.resTra.pagingTra.blockStart le 1 }">
+									<li><a
+										href="${pageContext.request.contextPath }
+								/manager.do?traCurrentPage=${res.resTra.pagingTra.blockStart}">&lt;</a></li>
+								</c:if>
+								<c:if test="${res.resTra.pagingTra.blockStart gt 1 }">
+									<li><a
+										href="${pageContext.request.contextPath }
+								/manager.do?traCurrentPage=${res.resTra.pagingTra.blockStart-1}">&lt;</a></li>
+								</c:if>
+								<c:forEach begin="${res.resTra.pagingTra.blockStart }"
+									end="${res.resTra.pagingTra.blockEnd }" var="pt">
+									<li class="active"><span> <a
+											href="${pageContext.request.contextPath }/manager.do?traCurrentPage=${pt}">${pt }</a>
+									</span></li>
+								</c:forEach>
+								<c:if
+									test="${res.resTra.pagingTra.blockEnd lt res.resTra.pagingTra.lastPage }">
+									<li><a
+										href="${pageContext.request.contextPath }
+								/manager.do?traCurrentPage=${res.resTra.pagingTra.blockEnd+1}">&gt;</a></li>
+								</c:if>
+								<c:if
+									test="${res.resTra.pagingTra.blockEnd ge res.resTra.pagingTra.lastPage }">
+									<li><a
+										href="${pageContext.request.contextPath }
+								/manager.do?traCurrentPage=${res.resTra.pagingTra.blockEnd}">&gt;</a></li>
+								</c:if>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
+	<div class="container" style="transform: translateX(7.5%)">
+
+		<div class="row">
+
+			<ul class="nav nav-pills nav-stacked admin-menu"
+				style="transform: translate(-20%, 5%)">
+				<li class="active"><a href="" data-target-id="profile"><i
+						class="glyphicon glyphicon-user"></i> 리뷰 신고</a></li>
+			</ul>
 
 
-	<script>
-		$(document).ready(function() {
-			var navItems = $('.admin-menu li > a');
-			var navListItems = $('.admin-menu li');
-			var allWells = $('.admin-content');
-			var allWellsExceptFirst = $('.admin-content:not(:first)');
-			allWellsExceptFirst.hide();
-			navItems.click(function(e) {
-				e.preventDefault();
-				navListItems.removeClass('active');
-				$(this).closest('li').addClass('active');
-				allWells.hide();
-				var target = $(this).attr('data-target-id');
-				$('#' + target).show();
-			});
-		});
-	</script>
+
+			<div class="col-md-9  admin-content" id="profile">
+				<c:forEach items="${res.resRev.selectRevReport }" var="r">
+					<div class="panel panel-info" style="margin: 1em;">
+						<div class="panel-heading">
+							<h3 class="panel-title">${ r.report_date}</h3>
+						</div>
+						<div class="panel-body">${r.rep_cont }</div>
+					</div>
+				</c:forEach>
+				<div class="row mt-5" style="transform: translateX(25%)">
+					<div class="col">
+						<div class="block-27">
+							<ul>
+								<c:if test="${res.resRev.pagingRev.blockStart le 1 }">
+									<li><a
+										href="${pageContext.request.contextPath }
+								/manager.do?revCurrentPage=${res.resRev.pagingRev.blockStart}">&lt;</a></li>
+								</c:if>
+								<c:if test="${res.resRev.pagingRev.blockStart gt 1 }">
+									<li><a
+										href="${pageContext.request.contextPath }
+								/manager.do?revCurrentPage=${res.resRev.pagingRev.blockStart-1}">&lt;</a></li>
+								</c:if>
+								<c:forEach begin="${res.resRev.pagingRev.blockStart }"
+									end="${res.resRev.pagingRev.blockEnd }" var="pr">
+									<li class="active"><span> <a
+											href="${pageContext.request.contextPath }/manager.do?revCurrentPage=${pr}">${pr }</a>
+									</span></li>
+								</c:forEach>
+								<c:if
+									test="${res.resRev.pagingRev.blockEnd lt res.resRev.pagingRev.lastPage }">
+									<li><a
+										href="${pageContext.request.contextPath }
+								/manager.do?revCurrentPage=${res.resRev.pagingRev.blockEnd+1}">&gt;</a></li>
+								</c:if>
+								<c:if
+									test="${res.resRev.pagingRev.blockEnd ge res.resRev.pagingRev.lastPage }">
+									<li><a
+										href="${pageContext.request.contextPath }
+								/manager.do?revCurrentPage=${res.resRev.pagingRev.blockEnd}">&gt;</a></li>
+								</c:if>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+
 
 	<script src="resources/js/jquery.min.js"></script>
 	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
@@ -212,6 +222,5 @@
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="resources/js/google-map.js"></script>
 	<script src="resources/js/main.js"></script>
-
 </body>
 </html>
