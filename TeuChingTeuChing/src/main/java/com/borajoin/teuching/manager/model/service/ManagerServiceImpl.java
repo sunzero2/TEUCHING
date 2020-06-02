@@ -25,6 +25,7 @@ public class ManagerServiceImpl implements ManagerService {
 		Paging pagingRev = new Paging(md.revCnt(), revCurrentPage, 3);
 		res.put("pagingRev", pagingRev);
 		res.put("selectRevReport", md.selectRevReport(pagingRev));
+		System.out.println(pagingRev);
 		return res;
 	}
 
@@ -33,8 +34,19 @@ public class ManagerServiceImpl implements ManagerService {
 		Map<String, Object> res = new HashMap<String, Object>();
 		Paging pagingTra = new Paging(md.traCnt(), traCurrentPage, 3);
 		res.put("pagingTra", pagingTra);
+		System.out.println(pagingTra);
 		res.put("selectTraReport", md.selectTraReport(pagingTra));
 		return res;
+	}
+
+	@Override
+	public TrainerReport traManagerDetail(int traid) {
+		return md.traManagerDetail(traid);
+	}
+
+	@Override
+	public ReviewReport revManagerDetail(int revid) {
+		return md.revManagerDetail(revid);
 	}
 
 }

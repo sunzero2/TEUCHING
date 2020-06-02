@@ -31,4 +31,14 @@
 	<select id="traCnt" resultType="int">
 		select count(*) from tr_tra_report
 	</select>
+	
+	<select id="traManagerDetail" parameterType="int" resultType="TrainerReport">
+		select * from tr_tra_report
+		where report_idx = #{traid}
+	</select>
+	
+	<select id="revManagerDetail" parameterType="int" resultType="ReviewReport">
+		select * from tr_rev_report
+		where report_idx = #{revid}
+	</select>
 </mapper>
