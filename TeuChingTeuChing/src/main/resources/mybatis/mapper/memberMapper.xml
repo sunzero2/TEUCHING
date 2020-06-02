@@ -6,24 +6,24 @@
 
 	<!-- 일반멤버 회원가입 -->
 	<insert id="joinMember">
-		insert into TR_MEMBER(MEMBER_IDX, EMAIL, PASSWORD, NICKNAME, GENDER, CELL,
+		insert into TR_MEMBER(MEM_EMAIL, PASSWORD, NICKNAME, GENDER, CELL,
 							ADDRESS, IS_LEAVE_YN, MANAGER_YN)
-		VALUES(S_MEMBER_IDX.NEXTVAL, #{email}, #{password}, #{nickname}, #{gender}
+		VALUES(#{email}, #{password}, #{nickname}, #{gender}
 				, #{cell}, #{address}, 'N', 'N')
 	</insert>
 	
 	<!-- 트레이너 회원가입 -->
 	<insert id="joinTrainer">
 		insert into TR_TRAINER(TRAINER_IDX, EMAIL, PASSWORD, TRAINER_NAME, GENDER, WEIGHT,
-						HEIGHT, CELL, CAREER, ADDRESS, PREFER_ADD1, PREFER_ADD2, PREFER_ADD3, 
+						HEIGHT, CELL, CAREER, ADDRESS, ADDRESS_DETAIL, PREFER_ADD1, PREFER_ADD2, PREFER_ADD3, 
 						PHOTO, TR_LIKE, BLACK_YN, IS_LEAVE_YN)
 		VALUES(S_TRAINER_IDX.NEXTVAL, #{email}, #{password}, #{t_name}, #{gender}, #{weight}, #{height}
-				, #{cell}, #{career}, #{address}, #{prefer1}, #{prefer2}, #{prefer3}, #{photo}, 0, 'N', 'N')
+				, #{cell}, #{career}, #{address}, #{address_detail}, #{prefer1}, #{prefer2}, #{prefer3}, #{photo}, 0, 'N', 'N')
 	</insert>
 	
 	<!-- 일반회원 닉네임 중복 체크 -->
 	<select id="nickChk" resultType="int">
-		select count(*) from tr_member where nickname = #{nickname}
+		select count(*) from tr_member where NICKNAME = #{nickname}
 	</select>
 	
 	

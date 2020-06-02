@@ -1,5 +1,44 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: dale1
 Build-Jdk: 1.8.0_251
+=======
+<<<<<<< HEAD
+Built-By: user2
+Build-Jdk: 1.8.0_221
+=======
+<<<<<<< HEAD
+Built-By: 1
+Build-Jdk: 1.8.0_241
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+Built-By: borad
+Build-Jdk: 1.8.0_241
+=======
+<<<<<<< HEAD
+Built-By: dale1
+Build-Jdk: 1.8.0_251
+=======
+<<<<<<< HEAD
+Built-By: ihyey
+=======
+<<<<<<< HEAD
+Built-By: 1
+Build-Jdk: 1.8.0_241
+=======
+>>>>>>> 79dfb2c2d446f860c96d5f85776b6a359505f7b7
+Built-By: user2
+Build-Jdk: 1.8.0_221
+<<<<<<< HEAD
+=======
+>>>>>>> 7524c7c520b155d17961f6570c44cfbf0a4ca0da
+>>>>>>> 898e09e7d20cb7cf69879a615d74d1f378d994cf
+>>>>>>> 0d91b1bcc059b11f1d54b637704ed1b192bae7cc
+>>>>>>> 79dfb2c2d446f860c96d5f85776b6a359505f7b7
+>>>>>>> de952f3a9d169145751fa9af6a77918f6c2a0713
+>>>>>>> aca1fc0f1e11c0e5280f95db76201d9130efddc8
+>>>>>>> 49e3f2e91eadd1c4fd138c385e225703e0dd3660
 Created-By: Maven Integration for Eclipse
 

@@ -3,10 +3,28 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.borajoin.teuching.manager.model.vo.ReviewReport" alias="ReviewReport" />
+<<<<<<< HEAD
 		<typeAlias type="com.borajoin.teuching.member.model.vo.Member" alias="Member" />
 		<typeAlias type="com.borajoin.teuching.member.model.vo.Trainer" alias="Trainer" />
 		<typeAlias type="com.borajoin.teuching.matching.model.vo.Post" alias="Post" />
 		<typeAlias type="com.borajoin.teuching.manager.model.vo.TrainerReport" alias="TrainerReport" />
+=======
+<<<<<<< HEAD
+
+		<typeAlias type="com.borajoin.teuching.member.model.vo.Member" alias="Member" />
+		<typeAlias type="com.borajoin.teuching.member.model.vo.Trainer" alias="Trainer" />
+
+		<typeAlias type="com.borajoin.teuching.matching.model.vo.Post" alias="Post" />
+
+		<typeAlias type="com.borajoin.teuching.manager.model.vo.TrainerReport" alias="TrainerReport" />
+
+=======
+		<typeAlias type="com.borajoin.teuching.member.model.vo.Member" alias="Member" />
+		<typeAlias type="com.borajoin.teuching.member.model.vo.Trainer" alias="Trainer" />
+		<typeAlias type="com.borajoin.teuching.matching.model.vo.Post" alias="Post" />
+		<typeAlias type="com.borajoin.teuching.manager.model.vo.TrainerReport" alias="TrainerReport" />
+>>>>>>> aca1fc0f1e11c0e5280f95db76201d9130efddc8
+>>>>>>> 49e3f2e91eadd1c4fd138c385e225703e0dd3660
 	</typeAliases>
 
 	<mappers>

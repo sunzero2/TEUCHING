@@ -4,40 +4,42 @@ import java.sql.Date;
 
 public class TrainerReport {
 
-	private int report_id; // 신고번호
-	private int trainer_id; // 트레이너번호
-	private int member_id; // 회원번호
+	private int report_idx; // 신고번호
+	private int tr_email; // 트레이너번호
+	private int mem_email; // 회원번호
 	private String rep_cont; // 신고내용
 	private String report_handle; // 처리결과
 	private String handel_cont; // 처리내용
 	private Date report_date; // 신고일자
+	private String ans_yn; // 답변여부
 
 	public TrainerReport() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public int getReport_id() {
-		return report_id;
+	public int getReport_idx() {
+		return report_idx;
 	}
 
-	public void setReport_id(int report_id) {
-		this.report_id = report_id;
+	public void setReport_idx(int report_idx) {
+		this.report_idx = report_idx;
 	}
 
-	public int getTrainer_id() {
-		return trainer_id;
+	public int getTr_email() {
+		return tr_email;
 	}
 
-	public void setTrainer_id(int trainer_id) {
-		this.trainer_id = trainer_id;
+	public void setTr_email(int tr_email) {
+		this.tr_email = tr_email;
 	}
 
-	public int getMember_id() {
-		return member_id;
+	public int getMem_email() {
+		return mem_email;
 	}
 
-	public void setMember_id(int member_id) {
-		this.member_id = member_id;
+	public void setMem_email(int mem_email) {
+		this.mem_email = mem_email;
 	}
 
 	public String getRep_cont() {
@@ -72,11 +74,19 @@ public class TrainerReport {
 		this.report_date = report_date;
 	}
 
+	public String getAns_yn() {
+		return ans_yn;
+	}
+
+	public void setAns_yn(String ans_yn) {
+		this.ans_yn = ans_yn;
+	}
+
 	@Override
 	public String toString() {
-		return "TrainerReport [report_id=" + report_id + ", trainer_id=" + trainer_id + ", member_id=" + member_id
+		return "TrainerReport [report_idx=" + report_idx + ", tr_email=" + tr_email + ", mem_email=" + mem_email
 				+ ", rep_cont=" + rep_cont + ", report_handle=" + report_handle + ", handel_cont=" + handel_cont
-				+ ", report_date=" + report_date + "]";
+				+ ", report_date=" + report_date + ", ans_yn=" + ans_yn + "]";
 	}
 
 }

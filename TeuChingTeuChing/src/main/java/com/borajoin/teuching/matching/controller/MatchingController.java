@@ -53,7 +53,6 @@ public class MatchingController {
 	@RequestMapping("/matching/keyword.do")
 	@ResponseBody
 	public List<Post> keyword(@RequestParam Map<String, String> data) {
-		System.out.println(data);
 		return matchingService.keyword(data);
 	}
 }

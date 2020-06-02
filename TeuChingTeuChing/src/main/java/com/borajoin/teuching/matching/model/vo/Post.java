@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Post {
 	private int postIdx;
-	private int trainerIdx;
+	private String trEmail;
 	private String postTitle;
 	private String postCont;
 	private String purpose;
@@ -14,18 +14,17 @@ public class Post {
 	private String gender;
 	private String place;
 	private int price;
-	private Date writeDate;
-	private String writer;
+	private String writeDate;
 
 	public Post() {
 		super();
 	}
 
-	public Post(int postIdx, int trainerIdx, String postTitle, String postCont, String purpose, String sports,
-			String area, String classSize, String gender, String place, int price, Date writeDate, String writer) {
+	public Post(int postIdx, String trEmail, String postTitle, String postCont, String purpose, String sports, String area,
+			String classSize, String gender, String place, int price, String writeDate) {
 		super();
 		this.postIdx = postIdx;
-		this.trainerIdx = trainerIdx;
+		this.trEmail = trEmail;
 		this.postTitle = postTitle;
 		this.postCont = postCont;
 		this.purpose = purpose;
@@ -36,7 +35,6 @@ public class Post {
 		this.place = place;
 		this.price = price;
 		this.writeDate = writeDate;
-		this.writer = writer;
 	}
 
 	public int getPostIdx() {
@@ -47,12 +45,12 @@ public class Post {
 		this.postIdx = postIdx;
 	}
 
-	public int getTrainerIdx() {
-		return trainerIdx;
+	public String getTrEmail() {
+		return trEmail;
 	}
 
-	public void setTrainerIdx(int trainerIdx) {
-		this.trainerIdx = trainerIdx;
+	public void setTrEmail(String trEmail) {
+		this.trEmail = trEmail;
 	}
 
 	public String getPostTitle() {
@@ -127,25 +125,17 @@ public class Post {
 		this.price = price;
 	}
 
-	public Date getWriteDate() {
+	public String getWriteDate() {
 		return writeDate;
 	}
 
-	public void setWriteDate(Date writeDate) {
+	public void setWriteDate(String writeDate) {
 		this.writeDate = writeDate;
-	}
-
-	public String getWriter() {
-		return writer;
-	}
-
-	public void setWriter(String writer) {
-		this.writer = writer;
 	}
 
 	@Override
 	public String toString() {
-		return "Post [postIdx=" + postIdx + ", trainerIdx=" + trainerIdx + ", postTitle=" + postTitle + ", postCont="
+		return "Post [postIdx=" + postIdx + ", trEmail=" + trEmail + ", postTitle=" + postTitle + ", postCont="
 				+ postCont + ", purpose=" + purpose + ", sports=" + sports + ", area=" + area + ", classSize="
 				+ classSize + ", gender=" + gender + ", place=" + place + ", price=" + price + ", writeDate="
 				+ writeDate + "]";
