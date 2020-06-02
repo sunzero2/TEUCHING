@@ -83,3 +83,19 @@
 	background: white;
 	color: #ff9090;
 }
+
+#writeBtn {
+	float: right;
+	margin-top: 25px;
+	margin-right: 11px;
+	background: #ff9090;
+	border: 1px solid #ff9090;
+	color: white;
+	font-weight: bold;
+	height: 50px;
+}
+
+#writeBtn:hover {
+	background: white;
+	color: #ff9090;
+}
