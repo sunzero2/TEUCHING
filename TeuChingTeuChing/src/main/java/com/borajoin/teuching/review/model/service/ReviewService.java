@@ -1,5 +1,34 @@
 package com.borajoin.teuching.review.model.service;
 
-public class ReviewService {
+import java.util.Map;
 
+public interface ReviewService {
+
+	
+	public Map<String,Object> selectReviewList(String orderby, int currentPage, int cntPerPage);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
