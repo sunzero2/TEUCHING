@@ -30,7 +30,7 @@
 </head>
 <body>
 <%@ include file="../include/top.jsp" %>
-	<section class="ftco-section">
+	<section class="ftco-section" style="padding-top: 0px;">
 		<div class="container">
 			<div class="searchWordWrapper">
 				<div style="margin-left: 35px;">
@@ -193,12 +193,13 @@
 				</tr>
 			</table>
 			<button id="keywordSearchBtn">Search</button>
+			<button id="writeBtn">Write</button>
 		</div>
 	</section>
 	<section class="container" style="margin-top: 13%;">
 		<table id="postTable" style="margin-left: auto; margin-right: auto;">
 		</table>
-		<div class="row mt-5" style="margin-left: 41%;">
+		<!-- <div class="row mt-5" style="margin-left: 41%;">
 			<div class="col">
 				<div class="block-27">
 					<ul>
@@ -212,8 +213,7 @@
 					</ul>
 				</div>
 			</div>
-		</div>
-		</div>
+		</div> -->
 		<!-- .col-md-8 -->
 	</section>
 	<script src="../resources/js/jquery.min.js"></script>

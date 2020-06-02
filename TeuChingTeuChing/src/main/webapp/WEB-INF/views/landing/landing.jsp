@@ -75,8 +75,7 @@
 			</div>
 		</div>
 	</section>
-	
-	    <section class="ftco-section testimony-section">
+	<section class="ftco-section testimony-section">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-10 heading-section ftco-animate text-center">
@@ -84,8 +83,7 @@
             <h2 class="mb-1">Trainers</h2>
           </div>
         </div>
-        <div class="row ftco-animate">
-          <div class="col-md-12">
+        <div class="ftco-animate">
             <div class="carousel-testimony owl-carousel">
               <div class="item">
                 <div class="testimony-wrap p-4 pb-5">
@@ -149,12 +147,12 @@
                   </div>
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </div>
     </section>
 	
+	<%@ include file="../include/footer.jsp" %>
 	<script src="../resources/js/jquery.min.js"></script>
 	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="../resources/js/popper.min.js"></script>
@@ -169,9 +167,6 @@
 	<script src="../resources/js/bootstrap-datepicker.js"></script>
 	<script src="../resources/js/jquery.timepicker.min.js"></script>
 	<script src="../resources/js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="../resources/js/google-map.js"></script>
 	<script src="../resources/js/main.js"></script>
 </body>
 </html>

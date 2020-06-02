@@ -50,4 +50,8 @@
 			</if>
 		</where>
 	</select>
+	
+	<select id="postDetail" resultMap="postMap">
+		select * from tr_post where post_idx=#{postIdx}
+	</select>
 </mapper>
