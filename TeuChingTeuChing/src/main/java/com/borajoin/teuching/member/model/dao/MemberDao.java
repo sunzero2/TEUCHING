@@ -26,9 +26,9 @@ public class MemberDao {
 	}
 	
 	//닉네임 중복확인
-	public int nickChk(Member nickname) {
-
-		return session.selectOne("Member.nickChk", nickname);
+	public int nickChk(Member vo) {
+		int res = session.selectOne("Member.nickChk", vo);
+		return res;
 	}
 	
 	//로그인

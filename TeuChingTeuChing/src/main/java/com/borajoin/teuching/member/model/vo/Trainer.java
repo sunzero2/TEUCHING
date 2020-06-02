@@ -11,6 +11,7 @@ public class Trainer {
 	private String cell;
 	private String career;
 	private String address;
+	private String address_detail;
 	private String prefer1;
 	private String prefer2;
 	private String prefer3;
@@ -117,6 +118,12 @@ public class Trainer {
 		this.leave_yn = leave_yn;
 	}
 	
+	public String getAddress_detail() {
+		return address_detail;
+	}
+	public void setAddress_detail(String address_detail) {
+		this.address_detail = address_detail;
+	}
 	@Override
 	public String toString() {
 		return "Trainer [eamil=" + eamil + ", password=" + password + ", name=" + name + ", gender=" + gender

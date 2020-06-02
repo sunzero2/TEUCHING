@@ -16,7 +16,7 @@ public interface MemberService {
 	
 	
 	//일반회원 닉네임 체크
-	public int nickChk(Member nickname) throws SQLException;
+	 public int nickChk(Member vo) throws SQLException;
 	
 	
 	
