@@ -1,36 +1,52 @@
+/**
+ * @PackageName: common.util
+ * @FileName : Paging.java
+ * @Date : 2020. 4. 20.
+ * @프로그램 설명 : 
+ * @author 
+ */
 package common.util;
 
+/**
+ * @PackageName: common.util
+ * @FileName : Paging.java
+ * @Date : 2020. 4. 20.
+ * @프로그램 설명 :
+ * @author
+ */
 public class Paging {
+
 	// 현재 페이지
 	private int currentPage;
 	// 전체 게시물 수
 	private int total;
-	// 페이지의 숫자
+	// 페이지당 게시물 수
 	private int cntPerPage;
-	// ---------------------------
-	// 네비게이터 페이지 갯수 구하기용
-	// 블록 안의 페이지 수
+
+	// 블록 안의 페이지넘버 수
 	private int blockCnt = 5;
-	// 블록 시작번호
+	// 블록 시작 번호
 	private int blockStart;
-	// 블록 끝번호
+	// 블록 끝 번호
 	private int blockEnd;
 	// 전체 페이지 수
 	private int lastPage;
 
-	// sql에서 사용할 시작 값 (rownum)
+	// sql에서 사용할 시작 값
 	private int start;
 	// sql에서 사용할 끝 값
 	private int end;
 
 	public Paging() {
-		super();
+
 	}
 
-	public Paging( int total, int currentPage, int cntPerPage) {
-		this.currentPage = currentPage;
+	public Paging(int total, int currentPage, int cntPerPage) {
+
 		this.total = total;
+		this.currentPage = currentPage;
 		this.cntPerPage = cntPerPage;
+		//
 		calAllPage(total, cntPerPage);
 		calBlockEnd(currentPage, blockCnt);
 		calBlockStart(blockEnd, blockCnt);
@@ -40,35 +56,35 @@ public class Paging {
 
 	// 전체 페이지 숫자 구하기
 	public void calAllPage(int total, int cntPerPage) {
+		// total/cntPerPage 한 후 올림처리 한 것과 같다.
 		lastPage = (total - 1) / cntPerPage + 1;
 	}
 
-	// 클릭당 끝 페이지 넘버 구하기
+	// 블럭당 끝 페이지 넘버 구하기
 	public void calBlockEnd(int currentPage, int blockCnt) {
+
 		blockEnd = ((currentPage - 1) / blockCnt + 1) * blockCnt;
 		if (lastPage < blockEnd) {
 			blockEnd = lastPage;
 		}
 	}
 
-	// 클릭당 시작 페이지 넘버 구하기
+	// 블럭당 시작 페이지 넘버 구하기
 	public void calBlockStart(int blockEnd, int blockCnt) {
-		blockStart = blockEnd - blockCnt + 1;
+		blockStart = ((currentPage - 1) / blockCnt) * blockCnt + 1;
 		if (blockStart < 1) {
 			blockStart = 1;
 		}
 	}
 
-	// DB쿼리에서 사용할 끝 값 구하기
+	// DB쿼리에서 사용할 끝값 구하기
 	public void calEnd(int currentPage, int cntPerPage) {
-		end = currentPage + cntPerPage;
+		end = currentPage * cntPerPage;
 	}
 
 	public void calStart() {
 		start = end - cntPerPage + 1;
 	}
-	
-	//------------getter/setter---------------
 
 	public int getCurrentPage() {
 		return currentPage;

@@ -85,20 +85,22 @@ public class MemberController {
 			mav.addObject("alertMsg","회원가입에 실패하였습니다.");
 			mav.addObject("back","back");
 		}else {
-			mav.setViewName("member/joinComplete");
+			mav.setViewName("index/index.do");
 		}
 		return mav;
 	}
 	
 	
 	// 닉네임 중복체크
-	@RequestMapping(value = "/member/nickChk.do"
-			, method = RequestMethod.POST)
 	@ResponseBody
-	public int nickChk(Member nickname) throws SQLException {
-		int nn = ms.nickChk(nickname);
-		return nn;
+	@RequestMapping(value = "/nickChk"
+	, method=RequestMethod.POST)
+	public int nickChk(Member vo) throws SQLException {
+		int res = ms.nickChk(vo);
+		System.out.println(res);
+		return res;
 	}
+	
 	
 	
 	

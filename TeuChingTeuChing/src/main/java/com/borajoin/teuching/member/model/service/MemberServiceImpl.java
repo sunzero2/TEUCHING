@@ -39,9 +39,10 @@ public class MemberServiceImpl implements MemberService{
 	
 	// 일반회원 닉네임 중복체크
 	@Override
-	public int nickChk(Member nickname) {
-
-		return md.nickChk(nickname);
+	public int nickChk(Member vo){
+		int res = md.nickChk(vo);
+		
+		return res;
 	}
 
 	@Override

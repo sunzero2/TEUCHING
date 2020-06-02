@@ -23,11 +23,11 @@ document.querySelectorAll(".keywordBtn").forEach(function(el) {
 		
 		if(el.value == '타지역') {
 			select.style.display = "inline";
-			area = "어케할지고민중";
+			area = "타지역";
 		} else if(el.value == '등록지 기준') {
 			select.style.display = "none";
 			// 바꿀거야.
-			area = "test";
+			area = "서울";
 		}
 	})
 })
@@ -81,6 +81,12 @@ document.getElementById("inputBtn").addEventListener('click', function(el) {
 
 // 키워드로 검색
 document.getElementById("keywordSearchBtn").addEventListener('click', function(el) {
+	var pList = new Array();
+	
+	if(area == '타지역') {
+		area = select.value;
+	}
+	
 	$.ajax({
 		url: "/teuching/matching/keyword.do",
 		data: {
@@ -92,7 +98,81 @@ document.getElementById("keywordSearchBtn").addEventListener('click', function(e
 			place : place
 		},
 		success: function(v) {
-			console.dir(v);
+			for(i = 0; i < v.length; i++) {
+				pList.push(v[i]);
+			}
+		}
+	})
+	
+	.done(function() {
+		// post list 생성할 table
+		var table = document.getElementById('postTable');
+		
+		for(i = 0; i < pList.length; i++) {
+			// row 생성
+			var tr = table.insertRow();
+			tr.className = 'blog-entry blog-entry-2 justify-content-end col-md-12 ftco-animate fadeInUp ftco-animated';
+			
+			// 트레이너의 이미지 담을 cell 생성
+			var imageTd = tr.insertCell();
+			
+			// 이미지 담을 div 생성
+			var image = document.createElement('div');
+			image.className = 'img rounded-circle mb-2';
+			image.style.backgroundImage = 'url(../resources/img/classes-1.jpg)';
+			image.style.width = '116px';
+			image.style.height = '141px';
+			image.style.marginTop = '54px';
+			imageTd.append(image);
+			
+			// 게시글 콘텐츠 담을 cell 생성
+			var contentTd = tr.insertCell();
+			
+			// 콘텐츠 감싸줄 div 생성
+			var wrapper = document.createElement('div');
+			wrapper.className = 'text pl-md-4 ml-md-2 pt-4';
+			wrapper.style.width = '853px';
+			contentTd.append(wrapper);
+			
+			// 트레이너 이름, 작성일자, 댓글 수 담을 header
+			var header = document.createElement('div');
+			header.className = 'meta';
+			wrapper.append(header);
+			
+			var writeDate = document.createElement('div');
+			writeDate.innerText = pList[i].writeDate;
+			header.append(writeDate);
+			
+			var writer = document.createElement('div');
+			header.append(writer);
+			
+			var writerLink = document.createElement('a');
+			writerLink.href = '#';
+			writerLink.innerText = pList[i].trEmail;
+			writer.append(writerLink);
+			
+			var commentWrapper = document.createElement('div');
+			var comment = document.createElement('span');
+			comment.className = 'icon-chat';
+			comment.innerText = i;
+			header.append(commentWrapper);
+			commentWrapper.append(comment);
+			
+			var body = document.createElement('div');
+			wrapper.append(body);
+			
+			var title = document.createElement('h3');
+			title.className = 'heading mt-2';
+			body.append(title);
+			
+			var titleLink = document.createElement('a');
+			titleLink.href = '#';
+			titleLink.innerText = pList[i].postTitle;
+			title.append(titleLink);
+			
+			var content = document.createElement('p');
+			content.innerText = pList[i].postCont;
+			body.append(content);
 		}
 	})
 })
