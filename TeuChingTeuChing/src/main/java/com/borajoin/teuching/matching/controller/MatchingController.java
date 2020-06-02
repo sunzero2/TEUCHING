@@ -40,9 +40,19 @@ public class MatchingController {
 	*/
 	@RequestMapping("/matching/searchword.do")
 	@ResponseBody
-	public List<Post> searchPosts(@RequestParam Map<String, String> data) {
-		List<Post> pList = matchingService.searchPosts(data);
-		
-		return pList;
+	public List<Post> searchword(@RequestParam Map<String, String> data) {
+		return matchingService.searchword(data);
+	}
+	
+	/**
+	* @Method Name : keyword
+	* @작성일 : 2020. 6. 2.
+	* @작성자 : 이혜영 
+	* @Method 설명 : 키워드로 검색 메소드
+	*/
+	@RequestMapping("/matching/keyword.do")
+	@ResponseBody
+	public List<Post> keyword(@RequestParam Map<String, String> data) {
+		return matchingService.keyword(data);
 	}
 }

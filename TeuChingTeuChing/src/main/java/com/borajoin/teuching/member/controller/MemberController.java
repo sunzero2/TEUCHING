@@ -1,5 +1,6 @@
 package com.borajoin.teuching.member.controller;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,11 +14,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.borajoin.teuching.member.model.service.MemberService;
+import com.borajoin.teuching.member.model.vo.Member;
 
 @Controller
 public class MemberController {
@@ -25,6 +29,7 @@ public class MemberController {
 	@Autowired
 	private MemberService ms;
 	
+	//회원가입 페이지로 이동
 	@RequestMapping("/member/join.do")
 	public ModelAndView join() {
 		ModelAndView mav = new ModelAndView();
@@ -32,7 +37,7 @@ public class MemberController {
 		
 		return mav;
 	}
-	
+	// 일반회원 회원가입 폼으로 이동
 	@RequestMapping("/member/mjoin.do")
 	public ModelAndView mjoin() {
 		ModelAndView mav = new ModelAndView();
@@ -40,7 +45,7 @@ public class MemberController {
 		
 		return mav;
 	}
-	
+	// 트레이너 회원가입 폼으로 이동
 	@RequestMapping("/member/tjoin.do")
 	public ModelAndView tjoin() {
 		ModelAndView mav = new ModelAndView();
@@ -49,7 +54,51 @@ public class MemberController {
 		return mav;
 	}
 	
+	//일반 회원 회원가입
+	@RequestMapping("/member/joinMemberImple.do")
+	public ModelAndView joinMemberImple(@RequestParam Map<String,Object> commandMap) throws SQLException {
+		ModelAndView mav = new ModelAndView();
+		
+		System.out.println(commandMap);
+		
+		int res = ms.joinMember(commandMap);
+		if(res < 1) {
+			mav.setViewName("common/result");
+			mav.addObject("alertMsg","회원가입에 실패하였습니다.");
+			mav.addObject("back","back");
+		}else {
+			mav.setViewName("member/joinComplete");
+		}
+		return mav;
+	}
 	
+	//트레이너 회원가입
+	@RequestMapping("/member/joinimple.do")
+	public ModelAndView joinTrainerImple(@RequestParam Map<String,Object> commandMap) throws SQLException {
+		ModelAndView mav = new ModelAndView();
+		
+		System.out.println(commandMap);
+		
+		int res = ms.joinTrainer(commandMap);
+		if(res < 1) {
+			mav.setViewName("common/result");
+			mav.addObject("alertMsg","회원가입에 실패하였습니다.");
+			mav.addObject("back","back");
+		}else {
+			mav.setViewName("member/joinComplete");
+		}
+		return mav;
+	}
+	
+	
+	// 닉네임 중복체크
+	@RequestMapping(value = "/member/nickChk.do"
+			, method = RequestMethod.POST)
+	@ResponseBody
+	public int nickChk(Member nickname) throws SQLException {
+		int nn = ms.nickChk(nickname);
+		return nn;
+	}
 	
 	
 	

@@ -2,6 +2,7 @@ package com.borajoin.teuching.member.model.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.borajoin.teuching.member.model.dao.MemberDao;
+import com.borajoin.teuching.member.model.vo.Member;
+import com.borajoin.teuching.member.model.vo.Trainer;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -17,6 +20,30 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	private MemberDao md;
 	
+	//일반회원 회원가입
+	@Override
+	public int joinMember(Map<String, Object> commandMap) throws SQLException {
+		int res = md.joinMember(commandMap);
+	
+		return res;
+	}
+	//트레이너 회원가입
+	@Override
+	public int joinTrainer(Map<String, Object> commandMap) throws SQLException {
+		int res = md.joinTrainer(commandMap);
+		
+		return res;
+	}
+	
+	
+	
+	// 일반회원 닉네임 중복체크
+	@Override
+	public int nickChk(Member nickname) {
+
+		return md.nickChk(nickname);
+	}
+
 	@Override
 	public int insertFile(List<Map<String, Object>> fileData) {
 
@@ -45,6 +72,8 @@ public class MemberServiceImpl implements MemberService{
 		
 		return res;
 	}
+
+	
 	
 	
 	

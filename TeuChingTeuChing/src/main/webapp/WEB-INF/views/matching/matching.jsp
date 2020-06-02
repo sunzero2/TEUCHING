@@ -26,158 +26,177 @@
 <link rel="stylesheet" href="../resources/css/flaticon.css">
 <link rel="stylesheet" href="../resources/css/icomoon.css">
 <link rel="stylesheet" href="../resources/css/style.css">
-<style>
-.postlist {
-	width: 300px;
-}
-
-.keywordBtn {
-	background: #ffb5b5;
-	border: 1px solid #ffb5b5;
-	color: white;
-}
-
-.keywordBtn:hover {
-	color: white;
-}
-</style>
+<link rel="stylesheet" href="../resources/css/matching/matching.css"/>
 </head>
-<body onload="reset()">
+<body>
 <%@ include file="../include/top.jsp" %>
 	<section class="ftco-section">
 		<div class="container">
-			<div class="row">
-				<!-- .col-md-8 -->
-				<div class="col-lg-4 sidebar ftco-animate" style="margin-left: 14%;">
-					<div class="sidebar-box">
-						<form action="#" class="search-form" style="width: 530px; margin-left: 83px">
-							<select id="searchOption" style="border: 1px solid #ffb5b5; border-radius: 20px; color: #7b5e5e;">
-								<option value="trainer">트레이너</option>
-								<option value="post">게시판</option>
-							</select>
-							<div class="form-group">
-								<div class="icon">
-									<span class="icon-search"></span>
-								</div>
-								<input type="text" id="keywordInput" class="form-control"
-									placeholder="검색어를 입력하세요.">
-							</div>
-						</form>
+			<div class="searchWordWrapper">
+				<div style="margin-left: 35px;">
+					<select id="searchOption">
+						<option value="trainer">트레이너</option>
+						<option value="post">게시판</option>
+					</select>
+					<div>
+						<input type="text" id="keywordInput" class="form-control" placeholder="검색어를 입력하세요.">
+						<button id="inputBtn" class="icon-search"></button>
 					</div>
-					<button
-						style="position: absolute; margin-top: 23%; margin-left: 317px;"
-						id="inputBtn" class="btn btn-outline-primary">Search</button>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- .section -->
-	<section>
-		<div class="sidebar-box ftco-animate" style="margin-left: 31%;">
-			<h3 class="heading-2">Tag로 검색하기</h3>
-			<div class="tagcloud">
-				<button type="button" class="btn keywordBtn" id="btn01">
-					<input type="hidden" class="keywordChk" id="chk01">dish
-				</button>
-				<button type="button" class="btn keywordBtn" id="btn02">
-					<input type="hidden" class="keywordChk" id="chk02">dish
-				</button>
-				<button type="button" class="btn keywordBtn" id="btn03">
-					<input type="hidden" class="keywordChk" id="chk03">dish
-				</button>
-				<button type="button" class="btn keywordBtn" id="btn04">
-					<input type="hidden" class="keywordChk" id="chk04">dish
-				</button>
-				<button type="button" class="btn keywordBtn" id="btn05">
-					<input type="hidden" class="keywordChk" id="chk05">dish
-				</button>
-				<button type="button" class="btn keywordBtn" id="btn06">
-					<input type="hidden" class="keywordChk" id="chk06">dish
-				</button>
-				<button type="button" class="btn keywordBtn" id="btn07">
-					<input type="hidden" class="keywordChk" id="chk07">dish
-				</button>
-				<button type="button" class="btn keywordBtn" id="btn08">
-					<input type="hidden" class="keywordChk" id="chk08">dish
-				</button>
-				<button type="button" class="btn keywordBtn" id="btn09">
-					<input type="hidden" class="keywordChk" id="chk09">dish
-				</button>
-				<button type="button" class="btn keywordBtn" id="btn10">
-					<input type="hidden" class="keywordChk" id="chk10" value="dish">dish
-				</button>
-				<button
-					style="position: absolute; margin-top: 4%; margin-left: 2.2%;"
-					id="keywordSearchBtn" class="btn btn-outline-primary">Search</button>
-			</div>
+	
+	<section class="container" style="width: 840px;">
+		<div>
+			<table class="keywordSearchTable">
+				<tr>
+					<th class="searchTableTh">운동목적</th>
+					<td class="searchTableTd">
+						<input type="button" class="keywordBtn" name="purpose" value="체형교정">
+						<input type="button" class="keywordBtn" name="purpose" value="건강증진">
+						<input type="button" class="keywordBtn" name="purpose" value="다이어트">
+						<input type="button" class="keywordBtn" name="purpose" value="바디프로필">
+						<input type="button" class="keywordBtn" name="purpose" value="취미">
+						<input type="button" class="keywordBtn" name="purpose" value="대회준비">
+						<input type="button" class="keywordBtn" name="purpose" value="재활치료">
+						<input type="button" class="keywordBtn" name="purpose" value="벌크업">
+						<input type="button" class="keywordBtn" name="purpose" value="기초체력">
+						<input type="button" class="keywordBtn" name="purpose" value="시험준비">
+					</td>
+				</tr>
+				<tr>
+					<th class="searchTableTh">운동종목</th>
+					<td class="searchTableTd">
+						<input type="button" class="keywordBtn" name="sports" value="요가">
+						<input type="button" class="keywordBtn" name="sports" value="필라테스">
+						<input type="button" class="keywordBtn" name="sports" value="스피닝">
+						<input type="button" class="keywordBtn" name="sports" value="헬스">
+						<input type="button" class="keywordBtn" name="sports" value="크로스핏">
+						<input type="button" class="keywordBtn" name="sports" value="수영">
+						<input type="button" class="keywordBtn" name="sports" value="기타">
+					</td>
+				</tr>
+				<tr>
+					<th class="searchTableTh">지역</th>
+					<td class="searchTableTd">
+						<input type="button" class="keywordBtn" name="area" value="등록지 기준">
+						<input type="button" class="keywordBtn" name="area" value="타지역">
+						<select id="placeSelect">
+							<option value="서울">서울</option>
+							<option value="세종">세종</option>
+							<option value="부산">부산</option>
+							<option value="대구">대구</option>
+							<option value="인천">인천</option>
+							<option value="광주">광주</option>
+							<option value="대전">대전</option>
+							<option value="울산">울산</option>
+							<option value="제주">제주</option>
+							<option value="서귀포">서귀포</option>
+							<option value="수원">수원</option>
+							<option value="고양">고양</option>
+							<option value="성남">성남</option>
+							<option value="용인">용인</option>
+							<option value="부천">부천</option>
+							<option value="안산">안산</option>
+							<option value="남양주">남양주</option>
+							<option value="안양">안양</option>
+							<option value="화성">화성</option>
+							<option value="평택">평택</option>
+							<option value="의정부">의정부</option>
+							<option value="시흥">시흥</option>
+							<option value="파주">파주</option>
+							<option value="김포">김포</option>
+							<option value="광명">광명</option>
+							<option value="광주">광주</option>
+							<option value="군포">군포</option>
+							<option value="오산">오산</option>
+							<option value="이천">이천</option>
+							<option value="양주">양주</option>
+							<option value="안성">안성</option>
+							<option value="구리">구리</option>
+							<option value="포천">포천</option>
+							<option value="의왕">의왕</option>
+							<option value="하남">하남</option>
+							<option value="여주">여주</option>
+							<option value="동두천">동두천</option>
+							<option value="과천">과천</option>
+							<option value="춘천">춘천</option>
+							<option value="원주">원주</option>
+							<option value="강릉">강릉</option>
+							<option value="동해">동해</option>
+							<option value="태백">태백</option>
+							<option value="속초">속초</option>
+							<option value="삼척">삼척</option>
+							<option value="청주">청주</option>
+							<option value="충주">충주</option>
+							<option value="제천">제천</option>
+							<option value="천안">천안</option>
+							<option value="공주">공주</option>
+							<option value="보령">보령</option>
+							<option value="아산">아산</option>
+							<option value="서산">서산</option>
+							<option value="논산">논산</option>
+							<option value="계룡">계룡</option>
+							<option value="전주">전주</option>
+							<option value="군산">군산</option>
+							<option value="익산">익산</option>
+							<option value="정읍">정읍</option>
+							<option value="남원">남원</option>
+							<option value="김제">김제</option>
+							<option value="목포">목포</option>
+							<option value="여수">여수</option>
+							<option value="순천">순천</option>
+							<option value="나주">나주</option>
+							<option value="광양">광양</option>
+							<option value="포항">포항</option>
+							<option value="경주">경주</option>
+							<option value="김천">김천</option>
+							<option value="안동">안동</option>
+							<option value="구미">구미</option>
+							<option value="영주">영주</option>
+							<option value="영천">영천</option>
+							<option value="상주">상주</option>
+							<option value="문경">문경</option>
+							<option value="경산">경산</option>
+							<option value="창원">창원</option>
+							<option value="전주">전주</option>
+							<option value="통영">통영</option>
+							<option value="사천">사천</option>
+							<option value="김해">김해</option>
+							<option value="밀양">밀양</option>
+							<option value="거제">거제</option>
+							<option value="양산">양산</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th class="searchTableTh">수업 인원</th>
+					<td class="searchTableTd">
+						<input type="button" class="keywordBtn" name="classSize" value="1:1">
+						<input type="button" class="keywordBtn" name="classSize" value="N:1">
+					</td>
+				</tr>
+				<tr>
+					<th class="searchTableTh">성별</th>
+					<td class="searchTableTd">
+						<input type="button" class="keywordBtn" name="gender" value="남">
+						<input type="button" class="keywordBtn" name="gender" value="여">
+					</td>
+				</tr>
+				<tr>
+					<th class="searchTableTh">장소</th>
+					<td class="searchTableTd">
+						<input type="button" class="keywordBtn" name="place" value="INDOOR EXERCIES">
+						<input type="button" class="keywordBtn" name="place" value="OUTDOOR EXERCIES">
+					</td>
+				</tr>
+			</table>
+			<button id="keywordSearchBtn">Search</button>
 		</div>
 	</section>
-	<section style="margin-top: 13%;">
-		<table style="margin-left: 25%;">
-			<tr class="blog-entry blog-entry-2 justify-content-end col-md-12 ftco-animate">
-				<td>
-					<div class="img rounded-circle mb-2"
-						style="background-image: url(../resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
-				</td>
-				<td>
-					<div class="text pl-md-4 ml-md-2 pt-4" style="width: 853px;">
-						<div class="meta">
-							<div>
-								<a href="#">Sept. 28, 2019</a>
-							</div>
-							<div>
-								<a href="#">Admin</a>
-							</div>
-							<div>
-								<a href="#" class="meta-chat"><span class="icon-chat"></span>
-									3</a>
-							</div>
-						</div>
-						<h3 class="heading mt-2">
-							<a href="#">Is wellness the new luxury</a>
-						</h3>
-						<p>Far far away, behind the word mountains, far from the
-							countries Vokalia and Consonantia, there live the blind texts.
-							Separated they live in Bookmarksgrove right at the coast of the
-							Semantics, a large language ocean.</p>
-						<p>
-							<a href="#" class="btn btn-outline-primary">Learn more</a>
-						</p>
-					</div>
-				</td>
-			</tr>
-			<tr class="blog-entry blog-entry-2 justify-content-end col-md-12 ftco-animate">
-				<td>
-					<div class="img rounded-circle mb-2"
-						style="background-image: url(../resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
-				</td>
-				<td>
-					<div class="text pl-md-4 ml-md-2 pt-4" style="width: 853px;">
-						<div class="meta">
-							<div>
-								<a href="#">Sept. 28, 2019</a>
-							</div>
-							<div>
-								<a href="#">Admin</a>
-							</div>
-							<div>
-								<a href="#" class="meta-chat"><span class="icon-chat"></span>
-									3</a>
-							</div>
-						</div>
-						<h3 class="heading mt-2">
-							<a href="#">Is wellness the new luxury</a>
-						</h3>
-						<p>Far far away, behind the word mountains, far from the
-							countries Vokalia and Consonantia, there live the blind texts.
-							Separated they live in Bookmarksgrove right at the coast of the
-							Semantics, a large language ocean.</p>
-						<p>
-							<a href="#" class="btn btn-outline-primary">Learn more</a>
-						</p>
-					</div>
-				</td>
-			</tr>
+	<section class="container" style="margin-top: 13%;">
+		<table id="postTable" style="margin-left: auto; margin-right: auto;">
 		</table>
 		<div class="row mt-5" style="margin-left: 41%;">
 			<div class="col">

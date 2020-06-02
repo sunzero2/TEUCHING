@@ -15,9 +15,11 @@ public class MatchingService {
 	@Autowired
 	MatchingDao matchingDao;
 	
-	public List<Post> searchPosts(Map<String, String> data) {
-		List<Post> pList = matchingDao.searchPosts(data);
-		System.out.println(pList);
-		return pList;
+	public List<Post> searchword(Map<String, String> data) {
+		return matchingDao.searchword(data);
+	}
+	
+	public List<Post> keyword(Map<String, String> data) {
+		return matchingDao.keyword(data);
 	}
 }
