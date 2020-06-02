@@ -20,9 +20,6 @@ public class MatchingService {
 	}
 	
 	public List<Post> keyword(Map<String, String> data) {
-		List<Post> pList = matchingDao.keyword(data);
-		System.out.println(pList);
-		
-		return pList;
+		return matchingDao.keyword(data);
 	}
 }

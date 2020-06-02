@@ -90,15 +90,18 @@
 						class="glyphicon glyphicon-user"></i> 트레이너 신고</a></li>
 			</ul>
 
-
-
 			<div class="col-md-9  admin-content" id="profile">
 				<c:forEach items="${res.resTra.selectTraReport }" var="r">
 					<div class="panel panel-info" style="margin: 1em;">
 						<div class="panel-heading">
+							<c:if test="${r.ans_yn eq 'Y' }">
+								<h4 style="float: right; transform: translateY(-50%)">✔답변완료</h4>
+							</c:if>
 							<h3 class="panel-title">${ r.report_date}</h3>
 						</div>
-						<div class="panel-body">${r.rep_cont }</div>
+						<div class="panel-body">
+						<a href="${pageContext.request.contextPath }/managerdetail.do?traid=${r.report_idx}">${r.rep_cont }</a>
+						</div>
 					</div>
 				</c:forEach>
 				<div class="row mt-5" style="transform: translateX(25%)">
@@ -150,15 +153,18 @@
 						class="glyphicon glyphicon-user"></i> 리뷰 신고</a></li>
 			</ul>
 
-
-
 			<div class="col-md-9  admin-content" id="profile">
 				<c:forEach items="${res.resRev.selectRevReport }" var="r">
 					<div class="panel panel-info" style="margin: 1em;">
 						<div class="panel-heading">
+							<c:if test="${r.ans_yn eq 'Y' }">
+								<h4 style="float: right; transform: translateY(-50%)">✔답변완료</h4>
+							</c:if>
 							<h3 class="panel-title">${ r.report_date}</h3>
 						</div>
-						<div class="panel-body">${r.rep_cont }</div>
+						<div class="panel-body">
+						<a href="${pageContext.request.contextPath }/managerdetail.do?revid=${r.report_idx}">${r.rep_cont }</a>
+						</div>
 					</div>
 				</c:forEach>
 				<div class="row mt-5" style="transform: translateX(25%)">
@@ -201,7 +207,7 @@
 		</div>
 	</div>
 	<br>
-	<br>
+	<br><br>
 
 
 	<script src="resources/js/jquery.min.js"></script>

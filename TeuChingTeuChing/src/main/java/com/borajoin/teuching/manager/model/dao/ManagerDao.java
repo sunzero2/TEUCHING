@@ -34,4 +34,12 @@ public class ManagerDao {
 		return sqlSession.selectOne("Manager.traCnt");
 	}
 
+	public TrainerReport traManagerDetail(int traid) {
+		return sqlSession.selectOne("Manager.traManagerDetail", traid);
+	}
+
+	public ReviewReport revManagerDetail(int revid) {
+		return sqlSession.selectOne("Manager.revManagerDetail", revid);
+	}
+
 }

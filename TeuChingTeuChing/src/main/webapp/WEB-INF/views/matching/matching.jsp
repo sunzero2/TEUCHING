@@ -47,7 +47,7 @@
 		</div>
 	</section>
 	
-	<section style="margin-left: 24%; width: 840px;">
+	<section class="container" style="width: 840px;">
 		<div>
 			<table class="keywordSearchTable">
 				<tr>
@@ -195,104 +195,8 @@
 			<button id="keywordSearchBtn">Search</button>
 		</div>
 	</section>
-	<section style="margin-top: 13%;">
-		<table style="margin-left: 25%;">
-			<tr class="blog-entry blog-entry-2 justify-content-end col-md-12 ftco-animate">
-				<td>
-					<div class="img rounded-circle mb-2"
-						style="background-image: url(../resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
-				</td>
-				<td>
-					<div class="text pl-md-4 ml-md-2 pt-4" style="width: 853px;">
-						<div class="meta">
-							<div>
-								<a href="#">Sept. 28, 2019</a>
-							</div>
-							<div>
-								<a href="#">Admin</a>
-							</div>
-							<div>
-								<a href="#" class="meta-chat"><span class="icon-chat"></span>
-									3</a>
-							</div>
-						</div>
-						<h3 class="heading mt-2">
-							<a href="#">Is wellness the new luxury</a>
-						</h3>
-						<p>Far far away, behind the word mountains, far from the
-							countries Vokalia and Consonantia, there live the blind texts.
-							Separated they live in Bookmarksgrove right at the coast of the
-							Semantics, a large language ocean.</p>
-						<p>
-							<a href="#" class="btn btn-outline-primary">Learn more</a>
-						</p>
-					</div>
-				</td>
-			</tr>
-			<tr class="blog-entry blog-entry-2 justify-content-end col-md-12 ftco-animate">
-				<td>
-					<div class="img rounded-circle mb-2"
-						style="background-image: url(../resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
-				</td>
-				<td>
-					<div class="text pl-md-4 ml-md-2 pt-4" style="width: 853px;">
-						<div class="meta">
-							<div>
-								<a href="#">Sept. 28, 2019</a>
-							</div>
-							<div>
-								<a href="#">Admin</a>
-							</div>
-							<div>
-								<a href="#" class="meta-chat"><span class="icon-chat"></span>
-									3</a>
-							</div>
-						</div>
-						<h3 class="heading mt-2">
-							<a href="#">Is wellness the new luxury</a>
-						</h3>
-						<p>Far far away, behind the word mountains, far from the
-							countries Vokalia and Consonantia, there live the blind texts.
-							Separated they live in Bookmarksgrove right at the coast of the
-							Semantics, a large language ocean.</p>
-						<p>
-							<a href="#" class="btn btn-outline-primary">Learn more</a>
-						</p>
-					</div>
-				</td>
-			</tr>
-			<tr class="blog-entry blog-entry-2 justify-content-end col-md-12 ftco-animate">
-				<td>
-					<div class="img rounded-circle mb-2"
-						style="background-image: url(../resources/img/classes-1.jpg); width: 116px; height: 141px; margin-top: 54px;"></div>
-				</td>
-				<td>
-					<div class="text pl-md-4 ml-md-2 pt-4" style="width: 853px;">
-						<div class="meta">
-							<div>
-								<a href="#">Sept. 28, 2019</a>
-							</div>
-							<div>
-								<a href="#">Admin</a>
-							</div>
-							<div>
-								<a href="#" class="meta-chat"><span class="icon-chat"></span>
-									3</a>
-							</div>
-						</div>
-						<h3 class="heading mt-2">
-							<a href="#">Is wellness the new luxury</a>
-						</h3>
-						<p>Far far away, behind the word mountains, far from the
-							countries Vokalia and Consonantia, there live the blind texts.
-							Separated they live in Bookmarksgrove right at the coast of the
-							Semantics, a large language ocean.</p>
-						<p>
-							<a href="#" class="btn btn-outline-primary">Learn more</a>
-						</p>
-					</div>
-				</td>
-			</tr>
+	<section class="container" style="margin-top: 13%;">
+		<table id="postTable" style="margin-left: auto; margin-right: auto;">
 		</table>
 		<div class="row mt-5" style="margin-left: 41%;">
 			<div class="col">
