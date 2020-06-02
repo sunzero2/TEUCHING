@@ -39,9 +39,25 @@ public class MemberServiceImpl implements MemberService{
 	
 	// 일반회원 닉네임 중복체크
 	@Override
-	public int nickChk(Member vo){
-		int res = md.nickChk(vo);
+	public int nickChk(String nickname){
+		int res = md.nickChk(nickname);
 		
+		return res;
+	}
+	
+	// 일반회원 이메일 중복체크
+	@Override
+	public int  emailChk(String email){
+		int res = md.emailChk(email);
+		
+		return res;
+	}
+
+	// 트레이너 이메일 중복체크
+	@Override
+	public int t_emailChk(String email) {
+		int res = md.t_emailChk(email);
+
 		return res;
 	}
 

@@ -16,9 +16,13 @@ public interface MemberService {
 	
 	
 	//일반회원 닉네임 체크
-	 public int nickChk(Member vo) throws SQLException;
+	 public int nickChk(String nickname) throws SQLException;
+	 
+	//일반회원 이메일 체크
+	 public int emailChk(String email) throws SQLException;
 	
-	
+	//트레이너 이메일 체크
+	public int t_emailChk(String email) throws SQLException;
 	
 	public int insertFile(List<Map<String,Object>>fileData);
 	
