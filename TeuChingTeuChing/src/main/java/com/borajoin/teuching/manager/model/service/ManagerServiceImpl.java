@@ -34,7 +34,6 @@ public class ManagerServiceImpl implements ManagerService {
 		Map<String, Object> res = new HashMap<String, Object>();
 		Paging pagingTra = new Paging(md.traCnt(), traCurrentPage, 3);
 		res.put("pagingTra", pagingTra);
-		System.out.println(pagingTra);
 		res.put("selectTraReport", md.selectTraReport(pagingTra));
 		return res;
 	}
@@ -47,6 +46,16 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public ReviewReport revManagerDetail(int revid) {
 		return md.revManagerDetail(revid);
+	}
+
+	@Override
+	public int updateManagerDetail_rev(Map<String, Object> commandMap) {
+		return md.updateManagerDetail_rev(commandMap);
+	}
+
+	@Override
+	public int updateManagerDetail_tra(Map<String, Object> commandMap) {
+		return md.updateManagerDetail_tra(commandMap);
 	}
 
 }

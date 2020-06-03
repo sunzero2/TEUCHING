@@ -5,13 +5,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.borajoin.teuching.manager.model.service.ManagerService;
-
-import common.util.Paging;
 
 @Controller
 public class ManagerController {
@@ -52,13 +52,50 @@ public class ManagerController {
 		ModelAndView mv = new ModelAndView();
 
 		if (revid == null) {
+			mv.addObject("type", "tra");
 			mv.addObject("res", ms.traManagerDetail(traid));
 		}
 		if (traid == null) {
+			// getClass해서 ~일경우로 가능할듯
+			mv.addObject("type", "rev");
 			mv.addObject("res", ms.revManagerDetail(revid));
 		}
 		mv.setViewName("manager/managerDetail");
 		return mv;
 	}
 
+	@PostMapping("/managerdetail/answer.do")
+	public ModelAndView managerDetailAnswer(@RequestParam Map<String, Object> commandMap) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("res", commandMap);
+		mv.setViewName("manager/managerAnswer");
+		return mv;
+	}
+
+	@PostMapping("/managerdetail/modify.do")
+	public ModelAndView managerDetailModify(@RequestParam Map<String, Object> commandMap) {
+		ModelAndView mv = new ModelAndView();
+		if (commandMap.get("type").equals("tra")) {
+			ms.updateManagerDetail_tra(commandMap);
+			mv.setViewName("redirect:/managerdetail.do?traid=" + commandMap.get("report_idx"));
+		}
+		if (commandMap.get("type").equals("rev")) {
+			ms.updateManagerDetail_rev(commandMap);
+			mv.setViewName("redirect:/managerdetail.do?revid=" + commandMap.get("report_idx"));
+		}
+		return mv;
+	}
+	
+	//------------임시----------------
+	@RequestMapping("/temporary.do")
+	public String temporary() {
+		return "manager/temporary";
+	}
+	
+	@RequestMapping("/insertreport.do")
+	public ModelAndView insertReport() {
+		ModelAndView mv = new ModelAndView();
+		return mv;
+	}
+	
 }

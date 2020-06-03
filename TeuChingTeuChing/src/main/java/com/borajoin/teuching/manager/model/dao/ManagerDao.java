@@ -1,6 +1,7 @@
 package com.borajoin.teuching.manager.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -41,5 +42,14 @@ public class ManagerDao {
 	public ReviewReport revManagerDetail(int revid) {
 		return sqlSession.selectOne("Manager.revManagerDetail", revid);
 	}
+	
+	public int updateManagerDetail_tra(Map<String, Object> commandMap) {
+		return sqlSession.update("Manager.updateManagerDetail_tra", commandMap);
+	}
+	
+	public int updateManagerDetail_rev(Map<String, Object> commandMap) {
+		return sqlSession.update("Manager.updateManagerDetail_rev", commandMap);
+	}
+	
 
 }
