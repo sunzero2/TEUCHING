@@ -32,12 +32,12 @@
 <body>
 	<%@ include file="../include/top.jsp"%>
 	<section style="margin-bottom: 40px;">
-		<form action="/teuching/post/write.do" onsubmit="return submit_result();" class="postForm">
+		<form action="/teuching/post/write.do" method="post" onsubmit="return submit_result();" class="postForm" enctype="multipart/form-data">
 			<div class="addImageWrapper">
 				<div class="addImageDiv">
 					<img src="../resources/img/addImage2.png" class="addImageIcon">
 					<p class="addImageText">사진첨부</p>
-					<input type="file" id="addImageHidden" name="image" onmouseover="changeImg();" onmouseout="resetImg();" onchange="preview(this);" multiple>
+					<input type="file" id="addImageHidden" name="images" onmouseover="changeImg();" onmouseout="resetImg();" onchange="preview(this);" multiple>
 				</div>
 			</div>
 			<div>
