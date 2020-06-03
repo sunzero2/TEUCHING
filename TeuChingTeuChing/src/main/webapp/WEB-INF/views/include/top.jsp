@@ -1,23 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
-
-
 <header
 	class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 	id="ftco-navbar">
 	<div class="container">
 		<div class="row m-auto">
 			<div class="col-12 w-100 text-center">
-<<<<<<< HEAD
-				<a class="navbar-brand w-100" href="index.html">TeuChing</a>
-				<button class="navbar-toggler" type="button" data-toggsle="collapse"
-=======
 				<a class="navbar-brand w-100" href="/teuching/index/index.do">TeuChing</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
->>>>>>> 42626c953f570bc74b96377d72d1b5a63b1d9110
 					data-target="#ftco-nav" aria-controls="ftco-nav"
 					aria-expanded="false" aria-label="Toggle navigation">
 					<span class="oi oi-menu"></span> Menu
@@ -31,14 +22,11 @@
 							href="/teuching/matching/main.do" class="nav-link">matching</a></li>
 						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
 						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
-<<<<<<< HEAD
 						<li class="nav-item active"><a
 							href="<%=request.getContextPath()%>/mypage/review.do"
 							class="nav-link">MyPage</a></li>
-=======
 						<li class="nav-item active"><a href="<%=request.getContextPath()%>/mypage/review.do" class="nav-link">MyPage</a></li>
 						<!--   <li class="nav-item"><a href="#" class="nav-link">Contact</a></li> -->
->>>>>>> 42626c953f570bc74b96377d72d1b5a63b1d9110
 						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
 					</ul>
 				</div>
@@ -61,9 +49,6 @@
 				</div>
 			</c:if>
 		</div>
-
-
-
 	</div>
 </header>
 <!-- END header -->
