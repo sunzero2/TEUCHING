@@ -30,6 +30,15 @@ public class MemberController {
 	private MemberService ms;
 	
 	//회원가입 페이지로 이동
+		@RequestMapping("/member/login.do")
+		public ModelAndView login() {
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("account/loginform");
+			
+			return mav;
+		}
+	
+	//회원가입 페이지로 이동
 	@RequestMapping("/member/join.do")
 	public ModelAndView join() {
 		ModelAndView mav = new ModelAndView();
