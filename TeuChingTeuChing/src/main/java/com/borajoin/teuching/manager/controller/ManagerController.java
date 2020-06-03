@@ -85,17 +85,13 @@ public class ManagerController {
 		}
 		return mv;
 	}
-	
-	//------------임시----------------
-	@RequestMapping("/temporary.do")
-	public String temporary() {
-		return "manager/temporary";
-	}
-	
+
 	@RequestMapping("/insertreport.do")
-	public ModelAndView insertReport() {
+	public ModelAndView insertReport(@RequestParam Map<String, Object> commandMap) {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("res", commandMap);
+		mv.setViewName("manager/writeReport");
 		return mv;
 	}
-	
+
 }
