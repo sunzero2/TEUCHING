@@ -10,13 +10,8 @@
 	<div class="container">
 		<div class="row m-auto">
 			<div class="col-12 w-100 text-center">
-<<<<<<< HEAD
-				<a class="navbar-brand w-100" href="index.html">TeuChing</a>
-				<button class="navbar-toggler" type="button" data-toggsle="collapse"
-=======
 				<a class="navbar-brand w-100" href="/teuching/index/index.do">TeuChing</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
->>>>>>> 6ca9cd0246763e9726d276a3fb4f75527a9fc387
 					data-target="#ftco-nav" aria-controls="ftco-nav"
 					aria-expanded="false" aria-label="Toggle navigation">
 					<span class="oi oi-menu"></span> Menu
@@ -31,10 +26,7 @@
 						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
 						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
 						<li class="nav-item active"><a href="<%=request.getContextPath()%>/mypage/review.do" class="nav-link">MyPage</a></li>
-<<<<<<< HEAD
-=======
 						<!--   <li class="nav-item"><a href="#" class="nav-link">Contact</a></li> -->
->>>>>>> 6ca9cd0246763e9726d276a3fb4f75527a9fc387
 						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
 					</ul>
 				</div>
