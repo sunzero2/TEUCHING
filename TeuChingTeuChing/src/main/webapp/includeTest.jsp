@@ -1,190 +1,103 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link rel="stylesheet" href="resources/css/joinform.css">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="resources/css/loginform.css">
+
+    <link rel="icon" href="Favicon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- 버튼 css  -->
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	
+    <title>Loginform</title>
+
+<style type="text/css">
+
+#radioBtn .notActive {
+	color: #3276b1;
+	background-color: #fff;
+}
+
+</style>
+
 
 </head>
 <body>
 
-	<div class="main-content">
-		<div class="container mt-7">
-			<!-- Table -->
-			<div class="row">
-				<div class="col-xl-8 m-auto order-xl-1">
-					<div class="card bg-secondary shadow">
-						<div class="card-header bg-white border-0">
-							<div class="row align-items-center">
-								<div class="col-8">
-									<h3 class="mb-0">트칭 트레이너 회원가입</h3>
-								</div>
-								<div class="col-4 text-right">
-									<a href="#!" class="btn btn-sm btn-primary">가입하기</a>
-								</div>
-							</div>
-						</div>
+	<main class="login-form">
+		<div class="cotainer">
+			<div class="row justify-content-center">
+				<div class="col-md-8">
+					<div class="card" style="width: 50% !important; left: 22%;">
+						<div class="card-header">Login</div>
 						<div class="card-body">
-							<form>
-								<h6 class="heading-small text-muted mb-4">User information</h6>
-								<div class="pl-lg-4">
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-username">ID</label>
-												<input type="text" id="input-username"
-													class="form-control form-control-alternative"
-													placeholder="UserID">
-													<!-- 중복확인버튼 설정하기-->
-												<div class="" data-toggle="buttons">
-													<label class="btn btn-lg btn-success active"> <input
-														type="radio" name="options" id="option2"
-														autocomplete="off" checked> <i class="fa fa-check"></i>
-														사용가능한 ID입니다.
-													</label> <label class="btn btn-lg btn-danger"> <input
-														type="radio" name="options" id="option3"
-														autocomplete="off"> <i class="fa fa-warning"></i>
-														사용중인 ID입니다.
-													</label>
-												</div>
+							<form action="" method="">
+								<!-- 일반회원, 트레이너 체크버튼 -->
+								<div class="form-group row">
+									<div class="col-md-6 offset-md-4">
+										<div class="input-group">
+											<div id="radioBtn" class="btn-group">
+												<a class="btn btn-primary btn-sm active" data-toggle="happy"
+													data-title="Y">MEMBER</a> 
+													<a class="btn btn-primary btn-sm notActive"
+													data-toggle="happy" data-title="N">TRAINER</a>
 											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label class="form-control-label" for="input-email">Email
-													주소</label> <input type="email" id="input-email"
-													class="form-control form-control-alternative"
-													placeholder="작성하신 주소로 인증메일이 발송됩니다.">
-											</div>
+											<input type="hidden" name="happy" id="happy">
 										</div>
 									</div>
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-first-name">비밀번호
-													</label> <input type="text" id="input-first-name"
-													class="form-control form-control-alternative">
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-last-name">비밀번호 확인
-												</label> <input type="text" id="input-first-name"
-													class="form-control form-control-alternative">
-											</div>
-										</div>
+
+									<br>
+								</div>
+								<div class="form-group row">
+									<label for="email_address"
+										class="col-md-4 col-form-label text-md-right">E-Mail
+										Address</label>
+									<div class="col-md-6">
+										<input type="text" id="email_address" class="form-control"
+											name="email-address" required autofocus>
 									</div>
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-first-name">성함
-													</label> <input type="text" id="input-first-name"
-													class="form-control form-control-alternative"
-													placeholder="Username">
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-last-name">성별
-												</label> 
-													<select class="form-control form-control-alternative">
-													<option selected="">성별을 선택해주세요</option>
-													<option>남성</option>
-													<option>여성</option>
-												</select>
-												
-											</div>
-										</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="password"
+										class="col-md-4 col-form-label text-md-right">Password</label>
+									<div class="col-md-6">
+										<input type="password" id="password" class="form-control"
+											name="password" required>
 									</div>
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-first-name">신장
-													</label> <input type="text" id="input-first-name"
-													class="form-control form-control-alternative"
-													placeholder="HEIGHT">
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-first-name">체중
-													</label> <input type="text" id="input-first-name"
-													class="form-control form-control-alternative"
-													placeholder="WEIGHT">
-											</div>
+								</div>
+
+								<div class="form-group row">
+									<div class="col-md-6 offset-md-4">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="remember">
+												아이디 저장하기
+											</label>
 										</div>
 									</div>
 								</div>
-								<hr class="my-4">
-								<!-- Address -->
-								<h6 class="heading-small text-muted mb-4">Contact
-									information</h6>
-								<div class="pl-lg-4">
-								<div class="row">
-										<div class="col-lg-4">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-city">연락처</label>
-												<input type="text" id="input-city"
-													class="form-control form-control-alternative">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-12">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-address">주소</label>
-												<input id="input-address"
-													class="form-control form-control-alternative"
-													placeholder="주소를 어뜨케 받으까아아앙"
-													type="text">
-											</div>
-										</div>
-									</div>
-								</div>
-								<hr class="my-4">
-								<!-- Description -->
-								<h6 class="heading-small text-muted mb-4">About Me</h6>
-								<div class="pl-lg-4">
-								<div class="row">
-										<div class="col-lg-4">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-city">사진첨부</label>
-												<input type="file" name="files" id="contract_file" />
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-12">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-address">개인 커리어</label>
-												<input id="input-address"
-													class="form-control form-control-alternative"
-													placeholder="개인커리어를 어떻게 추가해야할까"
-													type="text">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-12">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-address">선호?????</label>
-												<input id="input-address"
-													class="form-control form-control-alternative"
-													placeholder="흠...이건 또 어떻게 넣는게 좋을까"
-													type="text">
-											</div>
-										</div>
-									</div>	
+
+								<div class="col-md-6 offset-md-4">
+									<button type="submit" class="btn btn-primary">로그인</button>
+									<a href="#" class="btn btn-link"> 비밀번호 찾기 </a>
 								</div>
 							</form>
 						</div>
@@ -192,16 +105,20 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<footer class="footer">
-		<div class="row align-items-center justify-content-xl-between">
-			<div class="col-xl-6 m-auto text-center">
-				<div class="copyright">
-				</div>
-			</div>
-		</div>
-	</footer>
-</body>
+
+	</main>
+
+	<script>
+		$('#radioBtn a').on('click', function(){
+		    var sel = $(this).data('title');
+		    var tog = $(this).data('toggle');
+		    $('#'+tog).prop('value', sel);
+		    
+		    $('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
+		    $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
+		})
+	</script>
+
 
 
 
