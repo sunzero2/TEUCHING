@@ -4,11 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import com.borajoin.teuching.review.model.dao.ReviewDao;
 import com.borajoin.teuching.review.model.vo.Review;
 
 import common.util.Paging;
 
+@Service
 public class ReviewServiceImpl implements ReviewService {
 
 	ReviewDao rd = new ReviewDao();

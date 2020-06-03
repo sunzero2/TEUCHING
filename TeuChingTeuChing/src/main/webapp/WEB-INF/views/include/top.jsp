@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <header
 	class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 	id="ftco-navbar">
@@ -23,7 +24,7 @@
 						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
 						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
 						<li class="nav-item active"><a
-							href="<%=request.getContextPath()%>/mypage/review.do"
+							href="<%=request.getContextPath()%>/profile/review.do"
 							class="nav-link">MyPage</a></li>
 						<li class="nav-item active"><a href="<%=request.getContextPath()%>/mypage/review.do" class="nav-link">MyPage</a></li>
 						<!--   <li class="nav-item"><a href="#" class="nav-link">Contact</a></li> -->
@@ -37,7 +38,7 @@
 			style="position: absolute; top: 1vw; right: 1vw;">
 			<c:if test="${logInInfo == null}">
 				<div class="topLogin">
-					<a href="<%=request.getContextPath()%>/member/login.do">Login /
+					<a href="<%=request.getContextPath()%>/member/login.do">Login   /  
 					</a> <a href="<%=request.getContextPath()%>/member/join.do">Join</a>
 				</div>
 			</c:if>
@@ -50,5 +51,6 @@
 			</c:if>
 		</div>
 	</div>
+	
 </header>
 <!-- END header -->
