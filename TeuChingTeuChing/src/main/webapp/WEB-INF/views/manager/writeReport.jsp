@@ -38,7 +38,10 @@
 <link rel="stylesheet" href="resources/css/icomoon.css">
 <link rel="stylesheet" href="resources/css/style.css">
 <!-- 기존꺼말고 새로갖다박은거임 -->
-
+<!-- TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<link href="https://rawgithub.com/hayageek/jquery-upload-file/master/css/uploadfile.css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="https://rawgithub.com/hayageek/jquery-upload-file/master/js/jquery.uploadfile.min.js"></script>
 <style>
 html, body {
 	margin: 0;
@@ -119,24 +122,27 @@ h2 {
 		<div class="ansbox-top">
 			<div
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
-				style="float: left; background-image: url(resources/img/classes-4.jpg); width: 15%; height: 75%;">
+				style="float: left; background-image: url(resources/img/circle_person.jpg); width: 15%; height: 75%;border:1px solid black">
 			</div>
 			<form
 				action="${pageContext.request.contextPath }/managerdetail/answer.do"
 				method="post">
-				<h5>신고하기
+				<h5>
+					${res.reported }
 					<button type="submit" class="btn btn-outline-primary"
 						style="transform: translateX(250%);">작성완료</button>
 				</h5>
 			</form>
-				<h2>신고하기</h2>
+			<h2>신고하기</h2>
 		</div>
 		<div class="ansbox-bottom">
 
 			<div class="col-lg-8 ftco-animate">
 				<h3 class="mb-4">신고내용</h3>
-				<textarea></textarea>
+				<input type="file" multiple id="startbutton" class="ajax-file-upload-green" style="background-color:pink;width:100%;" value="Upload">
+				<textarea class="form-control" id="exampleFormControlTextarea4"></textarea>
 			</div>
+
 		</div>
 
 	</div>
@@ -146,7 +152,6 @@ h2 {
 	<br>
 	<br>
 	<br>
-
 	<script src="resources/js/jquery.min.js"></script>
 	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="resources/js/popper.min.js"></script>

@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<%@ include file="../include/top.jsp" %>
+	<%@ include file="../include/top.jsp"%>
 
 
 
@@ -62,13 +62,23 @@
 					<h2 class="mb-3">여기에 트레이너 이름 나오게 할래요</h2>
 
 
-
 					<div class="about-author d-flex">
 						<div class="bio align-self-md-center mr-5">
 							<img src="../resources/img/person_2.jpg" alt="Image placeholder"
 								class="img-fluid mb-4">
 						</div>
 						<div class="desc align-self-md-center">
+							<!-- ===============버튼을 여기에 넣어보았습니다=================== -->
+							<form
+								action="${pageContext.request.contextPath }/insertreport.do">
+								<input type="hidden" name="tra_email" value="1111"> <input
+									type="hidden" name="mem_email" value="1111"> <input
+									type="hidden" name="nick_name" value="김지수"> <input
+									type="hidden" name="type" value="tra"> <input
+									type="hidden" name="reported" value="김김지수">
+								<button type="submit" class="btn btn-outline-primary">트레이너신고</button>
+							</form>
+							<!-- ===============버튼을 여기까지 넣어보았습니다=================== -->
 							<h3>트레이너 이름!!!</h3>
 							<p>트레이너 소개 소개소개ㅅ개트레이너 소개 소개소개ㅅ트레이너 소개 소개소개ㅅ트레이너 소개 소개소개ㅅ</p>
 							<div class="tag-widget post-tag-container mb-5 mt-5">
@@ -80,7 +90,8 @@
 								</div>
 								<br>
 								<p>
-									<a href="여기에 트레이너 스케줄로 이동할 href작성하거야!!" class="reply">트레이너 스케쥴러로 이동</a>
+									<a href="여기에 트레이너 스케줄로 이동할 href작성하거야!!" class="reply">트레이너
+										스케쥴러로 이동</a>
 								</p>
 							</div>
 						</div>
@@ -95,9 +106,21 @@
 						<ul class="comment-list">
 							<li class="comment">
 								<div class="vcard bio">
-									<img src="../resources/img/person_2.jpg" alt="Image placeholder">
+									<img src="../resources/img/person_2.jpg"
+										alt="Image placeholder">
 								</div>
 								<div class="comment-body">
+									<!-- =======================리뷰신고===========================-->
+									<form
+										action="${pageContext.request.contextPath }/insertreport.do">
+										<input type="hidden" name="tra_email" value="2222"> <input
+											type="hidden" name="mem_email" value="2222"> <input
+											type="hidden" name="nick_name" value="김지수"> <input
+											type="hidden" name="type" value="rev"> <input
+											type="hidden" name="reported" value="김김지수">
+										<button type="submit" class="btn btn-outline-primary">리뷰신고</button>
+									</form>
+									<!-- =======================리뷰신고===========================-->
 									<h3>John Doe</h3>
 									<div class="meta">Sept 25, 2019 at 2:21pm</div>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -112,7 +135,8 @@
 
 							<li class="comment">
 								<div class="vcard bio">
-									<img src="../resources/img/person_1.jpg" alt="Image placeholder">
+									<img src="../resources/img/person_1.jpg"
+										alt="Image placeholder">
 								</div>
 								<div class="comment-body">
 									<h3>John Doe</h3>
@@ -129,7 +153,8 @@
 								<ul class="children">
 									<li class="comment">
 										<div class="vcard bio">
-											<img src="../resources/img/person_1.jpg" alt="Image placeholder">
+											<img src="../resources/img/person_1.jpg"
+												alt="Image placeholder">
 										</div>
 										<div class="comment-body">
 											<h3>John Doe</h3>
@@ -191,7 +216,8 @@
 
 							<li class="comment">
 								<div class="vcard bio">
-									<img src="../resources/img/person_1.jpg" alt="Image placeholder">
+									<img src="../resources/img/person_1.jpg"
+										alt="Image placeholder">
 								</div>
 								<div class="comment-body">
 									<h3>John Doe</h3>
@@ -336,8 +362,8 @@
 	<!-- .section -->
 
 	<!-- -----------------------------------끝-------------------------------------------- -->
-	
-	<%@ include file="../include/footer.jsp" %>
+
+	<%@ include file="../include/footer.jsp"%>
 	<script src="../resources/js/jquery.min.js"></script>
 	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="../resources/js/popper.min.js"></script>
