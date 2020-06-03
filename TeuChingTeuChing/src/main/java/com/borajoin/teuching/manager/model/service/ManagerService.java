@@ -14,5 +14,9 @@ public interface ManagerService {
 	public TrainerReport traManagerDetail(int traid);
 
 	public ReviewReport revManagerDetail(int revid);
+	
+	public int updateManagerDetail_rev(Map<String, Object> commandMap);
+	
+	public int updateManagerDetail_tra(Map<String, Object> commandMap);
 
 }

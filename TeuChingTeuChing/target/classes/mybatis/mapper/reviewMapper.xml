@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Review">
-	<select id="contentCnt" resultType="int">
+<!-- 	<select id="contentCnt" resultType="int">
 		select count(*) from
 		tr_review
 	</select>
@@ -16,7 +16,7 @@
 		order by ${orderby} desc
 		)n1
 		) where rnum between #{page.start} and #{page.end}
-	</select>
+	</select> -->
 	
 
 </mapper>

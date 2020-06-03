@@ -4,41 +4,69 @@
 <mapper namespace="Manager">
 	<select id="selectRevReport" resultType="ReviewReport">
 		select * from(
-			select
-			rownum rnum, n1.* from(
-				select * from
-				tr_rev_report
-				order by report_idx asc
-			)n1)
+		select
+		rownum rnum, n1.* from(
+		select * from
+		tr_rev_report
+		order by report_idx
+		asc
+		)n1)
 		where rnum between #{start} and #{end}
 	</select>
 
 	<select id="selectTraReport" resultType="TrainerReport">
 		select * from(
-			select
-			rownum rnum, n1.* from(
-				select * from
-				tr_tra_report
-				order by report_idx asc
-			)n1)
+		select
+		rownum rnum, n1.* from(
+		select * from
+		tr_tra_report
+		order by report_idx
+		asc
+		)n1)
 		where rnum between #{start} and #{end}
 	</select>
 
 	<select id="revCnt" resultType="int">
-		select count(*) from tr_rev_report
+		select count(*) from
+		tr_rev_report
 	</select>
 
 	<select id="traCnt" resultType="int">
-		select count(*) from tr_tra_report
+		select count(*) from
+		tr_tra_report
 	</select>
-	
-	<select id="traManagerDetail" parameterType="int" resultType="TrainerReport">
+
+	<select id="traManagerDetail" parameterType="int"
+		resultType="TrainerReport">
 		select * from tr_tra_report
 		where report_idx = #{traid}
 	</select>
-	
-	<select id="revManagerDetail" parameterType="int" resultType="ReviewReport">
+
+	<select id="revManagerDetail" parameterType="int"
+		resultType="ReviewReport">
 		select * from tr_rev_report
 		where report_idx = #{revid}
 	</select>
+
+	<update id="updateManagerDetail_rev"
+		parameterType="ReviewReport">
+		update tr_rev_report
+		set report_handel =
+		#{report_handel}, handel_cont = #{handel_cont},
+		ans_yn = 'Y'
+		where report_idx =
+		${report_idx}
+	</update>
+
+	<update id="updateManagerDetail_tra"
+		parameterType="TrainerReport">
+		update tr_tra_report
+		set report_handel =
+		#{report_handel}, handel_cont = #{handel_cont},
+		ans_yn = 'Y'
+		where
+		report_idx =
+		${report_idx}
+	</update>
+
 </mapper>

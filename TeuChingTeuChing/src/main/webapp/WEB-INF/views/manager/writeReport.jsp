@@ -97,6 +97,19 @@ h2 {
 	font-size: 15px;
 }
 
+.purple-border textarea {
+	border: 1px solid #ba68c8;
+}
+
+.purple-border .form-control:focus {
+	border: 1px solid #ba68c8;
+	box-shadow: 0 0 0 0.2rem rgba(186, 104, 200, .25);
+}
+
+.green-border-focus .form-control:focus {
+	border: 1px solid #8bc34a;
+	box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+}
 </style>
 </head>
 <body>
@@ -107,67 +120,22 @@ h2 {
 			<div
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
 				style="float: left; background-image: url(resources/img/classes-4.jpg); width: 15%; height: 75%;">
-				<c:if test="${ res.ans_yn eq 'Y'}">
-					<div
-						style="text-align: right; transform: translate(-70%, -35%); color: #b91e2d; font-size: 5vw">✔</div>
-				</c:if>
 			</div>
 			<form
 				action="${pageContext.request.contextPath }/managerdetail/answer.do"
 				method="post">
-				<h5>${res.report_date }
-					<c:if test="${type eq 'tra' }">
-						<input type="hidden" name="nick_name" value="${res.nick_name }">
-						<input type="hidden" name="type" value="tra">
-					</c:if>
-					<c:if test="${type eq 'rev' }">
-						<input type="hidden" name="trainer_name"
-							value="${res.trainer_name }">
-						<input type="hidden" name="type" value="rev">
-					</c:if>
-					<input type="hidden" name="rep_cont" value="${res.rep_cont }">
-					<input type="hidden" name="report_handel"
-						value="${res.report_handel }"> <input type="hidden"
-						name="handel_cont" value="${res.handel_cont }"> <input
-						type="hidden" name="report_date" value="${res.report_date }">
-					<input type="hidden" name="ans_yn" value="${res.ans_yn }">
-					<input type="hidden" name="report_idx" value="${res.report_idx }">
+				<h5>신고하기
 					<button type="submit" class="btn btn-outline-primary"
-						style="transform: translateX(250%);">답변하기</button>
+						style="transform: translateX(250%);">작성완료</button>
 				</h5>
 			</form>
-			<c:if test="${type eq 'tra' }">
-				<h2>${ res.nick_name}님의 문의내역 입니다</h2>
-			</c:if>
-			<c:if test="${type eq 'rev' }">
-				<h2>${ res.trainer_name}님의 문의내역 입니다</h2>
-			</c:if>
+				<h2>신고하기</h2>
 		</div>
 		<div class="ansbox-bottom">
 
 			<div class="col-lg-8 ftco-animate">
 				<h3 class="mb-4">신고내용</h3>
-				<p id="font-size">${res.rep_cont }</p>
-			</div>
-
-			<div class="col-lg-8 ftco-animate">
-				<h3 class="mb-4">처리결과</h3>
-				<c:if test="${res.report_handel ne ' ' }">
-					<p id="font-size">${res.report_handel }</p>
-				</c:if>
-				<c:if test="${res.report_handel eq ' ' }">
-					<p id="font-size">아직 처리결과가 작성되지 않았습니다</p>
-				</c:if>
-			</div>
-
-			<div class="col-lg-8 ftco-animate">
-				<h3 class="mb-4">처리내용</h3>
-				<c:if test="${res.handel_cont ne ' ' }">
-					<p id="font-size">${res.handel_cont }</p>
-				</c:if>
-				<c:if test="${res.handel_cont eq ' ' }">
-					<p id="font-size">아직 처리내용이 작성되지 않았습니다</p>
-				</c:if>
+				<textarea></textarea>
 			</div>
 		</div>
 
