@@ -67,13 +67,13 @@ public class MemberController {
 			mav.addObject("alertMsg","회원가입에 실패하였습니다.");
 			mav.addObject("back","back");
 		}else {
-			mav.setViewName("member/joinComplete");
+			mav.setViewName("../../index");
 		}
 		return mav;
 	}
 	
 	//트레이너 회원가입
-	@RequestMapping("/member/joinimple.do")
+	@RequestMapping("/member/joinTrainerImple.do")
 	public ModelAndView joinTrainerImple(@RequestParam Map<String,Object> commandMap) throws SQLException {
 		ModelAndView mav = new ModelAndView();
 		
@@ -85,23 +85,41 @@ public class MemberController {
 			mav.addObject("alertMsg","회원가입에 실패하였습니다.");
 			mav.addObject("back","back");
 		}else {
-			mav.setViewName("member/joinComplete");
+			mav.setViewName("../../index");
 		}
 		return mav;
 	}
 	
 	
-	// 닉네임 중복체크
-	@RequestMapping(value = "/member/nickChk.do"
-			, method = RequestMethod.POST)
+	// 일반회원 - 닉네임 중복체크
+	@RequestMapping(value = "/nickChk.do",method = RequestMethod.GET, produces = "application/text; charset=utf8")
 	@ResponseBody
-	public int nickChk(Member nickname) throws SQLException {
-		int nn = ms.nickChk(nickname);
-		return nn;
+	public String nickChk(HttpServletRequest request) throws SQLException {
+		
+		String nickname = request.getParameter("nickname");
+		int result=ms.nickChk(nickname);
+		return Integer.toString(result);
 	}
 	
+	// 일반회원 - 이메일 중복체크
+	@RequestMapping(value = "/emailChk.do",method = RequestMethod.GET, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String emailChk(HttpServletRequest request) throws SQLException {
+		
+		String email = request.getParameter("email");
+		int result=ms.emailChk(email);
+		return Integer.toString(result);
+	}
 	
-	
+	// 트레이너 - 이메일 중복체크
+	@RequestMapping(value = "/t_emailChk.do", method = RequestMethod.GET, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String t_emailChk(HttpServletRequest request) throws SQLException {
+
+		String email = request.getParameter("email");
+		int result = ms.t_emailChk(email);
+		return Integer.toString(result);
+	}
 	
 	@RequestMapping("/notice/noticeupload.do")
 	public ModelAndView fileUpload(@RequestParam List<MultipartFile> files, HttpServletRequest request) {

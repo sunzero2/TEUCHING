@@ -13,13 +13,16 @@ document.querySelectorAll(".keywordBtn").forEach(function(el) {
 			el.checked = false;
 			v.target.style.background = "white";
 			v.target.style.color = "#ff9090";
+			
+			reset(el.name, 'null');
 		} else {
 			el.checked = true;
 			v.target.style.background = "#ff9090";
 			v.target.style.color = "white";
+
+			reset(el.name, el.value);
 		}
 		
-		reset(el.name, el.value);
 		
 		if(el.value == '타지역') {
 			select.style.display = "inline";
@@ -107,6 +110,7 @@ document.getElementById("keywordSearchBtn").addEventListener('click', function(e
 	.done(function() {
 		// post list 생성할 table
 		var table = document.getElementById('postTable');
+		table.innerHTML = "";
 		
 		for(i = 0; i < pList.length; i++) {
 			// row 생성
@@ -147,16 +151,10 @@ document.getElementById("keywordSearchBtn").addEventListener('click', function(e
 			header.append(writer);
 			
 			var writerLink = document.createElement('a');
+			// 트레이너 프로필로 이동할 수 있는 링크
 			writerLink.href = '#';
 			writerLink.innerText = pList[i].trEmail;
 			writer.append(writerLink);
-			
-			var commentWrapper = document.createElement('div');
-			var comment = document.createElement('span');
-			comment.className = 'icon-chat';
-			comment.innerText = i;
-			header.append(commentWrapper);
-			commentWrapper.append(comment);
 			
 			var body = document.createElement('div');
 			wrapper.append(body);
@@ -166,7 +164,7 @@ document.getElementById("keywordSearchBtn").addEventListener('click', function(e
 			body.append(title);
 			
 			var titleLink = document.createElement('a');
-			titleLink.href = '#';
+			titleLink.href = '/teuching/post/detail.do?postNo=' + pList[i].postIdx;
 			titleLink.innerText = pList[i].postTitle;
 			title.append(titleLink);
 			
@@ -175,4 +173,8 @@ document.getElementById("keywordSearchBtn").addEventListener('click', function(e
 			body.append(content);
 		}
 	})
+})
+
+document.getElementById('writeBtn').addEventListener('click', function() {
+	location.href="/teuching/post/writePost.do";
 })

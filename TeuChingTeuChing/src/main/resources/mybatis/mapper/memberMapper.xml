@@ -6,52 +6,42 @@
 
 	<!-- 일반멤버 회원가입 -->
 	<insert id="joinMember">
-		insert into TR_MEMBER(MEMBER_IDX, EMAIL, PASSWORD, NICKNAME, GENDER, CELL,
+		insert into TR_MEMBER(MEM_EMAIL, PASSWORD, NICKNAME, GENDER, CELL,
 							ADDRESS, IS_LEAVE_YN, MANAGER_YN)
-		VALUES(S_MEMBER_IDX.NEXTVAL, #{email}, #{password}, #{nickname}, #{gender}
+		VALUES(#{email}, #{password}, #{nickname}, #{gender}
 				, #{cell}, #{address}, 'N', 'N')
-	</insert>
-	
-	<!-- 트레이너 회원가입 -->
-	<insert id="joinTrainer">
-		insert into TR_TRAINER(TRAINER_IDX, EMAIL, PASSWORD, TRAINER_NAME, GENDER, WEIGHT,
-						HEIGHT, CELL, CAREER, ADDRESS, PREFER_ADD1, PREFER_ADD2, PREFER_ADD3, 
-						PHOTO, TR_LIKE, BLACK_YN, IS_LEAVE_YN)
-		VALUES(S_TRAINER_IDX.NEXTVAL, #{email}, #{password}, #{t_name}, #{gender}, #{weight}, #{height}
-				, #{cell}, #{career}, #{address}, #{prefer1}, #{prefer2}, #{prefer3}, #{photo}, 0, 'N', 'N')
 	</insert>
 	
 	<!-- 일반회원 닉네임 중복 체크 -->
 	<select id="nickChk" resultType="int">
-		select count(*) from tr_member where nickname = #{nickname}
+		select count(*) from tr_member where NICKNAME = #{nickname}
 	</select>
 	
-	
-	
+	<!-- 일반회원 이메일 중복 체크 -->
+	<select id="emailChk" resultType="int">
+		select count(*) from tr_member where MEM_EMAIL = #{email}
+	</select>
+		
 	<!-- 일반멤버 닉네임... 가져오기  -->
 	<select id ="selectMemberId" resultType="String">
  		select NICKNAME from tr_member where NICKNAME = #{nickName}
  	</select>
+ 
  	
- 	<!-- 일반멤버 이메일 중복 확인  -->
-	<select id ="selectMemberEmail" resultType="String">
- 		select m_id from tb_member where m_id= #{id}
- 	</select>
  	
- 	<!-- 트레이너 ID 확인  -->
-	<select id ="selectTrainerId" resultType="String">
- 		select m_id from tb_member where m_id= #{id}
- 	</select>
+ 	
+ 	
+ 	
  	
  	<!-- 관리자 로그인확인 ???????-->
  	
  	<!-- 패스워드는 어떻게 해야하나..? -->
  	<!-- 트레이너 키워드랑 조인해서 트레이너 정보 가져오기 -->
- 	<select id="selectLogin" resultType="Member">
+ 	<!-- <select id="selectLogin" resultType="Member">
  		select m_id, c_info, m_tell, m_reg_date, m_rentable_date 
  		from tb_member inner join tb_code on m_grade = c_code 
  		where m_id= #{id} and m_password= #{pw}
- 	</select>
+ 	</select> -->
  	
  	
  	
