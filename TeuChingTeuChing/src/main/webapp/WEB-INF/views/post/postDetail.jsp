@@ -54,7 +54,7 @@
 								<img class="authorImg" src="../resources/img/person_4.jpg">
 							<div class="details authorInfo">
 								<div class="job">Trainer</div>
-								<a class="author" href="#">${post.trainerName}</a>
+								<a class="author" href="/teuching/profile/review.do">${post.trainerName}</a>
 								<hr>
 								<button class="btn btn-primary">Send Message</button>
 							</div>
