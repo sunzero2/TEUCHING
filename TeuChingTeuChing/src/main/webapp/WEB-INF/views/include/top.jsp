@@ -23,7 +23,7 @@
 						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
 						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
 						<li class="nav-item active"><a
-							href="<%=request.getContextPath()%>/mypage/review.do"
+							href="<%=request.getContextPath()%>/profile/review.do"
 							class="nav-link">MyPage</a></li>
 						<li class="nav-item active"><a href="<%=request.getContextPath()%>/mypage/review.do" class="nav-link">MyPage</a></li>
 						<!--   <li class="nav-item"><a href="#" class="nav-link">Contact</a></li> -->
