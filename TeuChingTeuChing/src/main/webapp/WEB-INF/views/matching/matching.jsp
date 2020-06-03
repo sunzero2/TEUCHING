@@ -196,7 +196,7 @@
 			<button id="writeBtn">Write</button>
 		</div>
 	</section>
-	<section class="container" style="margin-top: 13%;">
+	<section class="container" style="margin-top: 13%; margin-bottom: 10%;">
 		<table id="postTable" style="margin-left: auto; margin-right: auto;">
 		</table>
 		<!-- <div class="row mt-5" style="margin-left: 41%;">

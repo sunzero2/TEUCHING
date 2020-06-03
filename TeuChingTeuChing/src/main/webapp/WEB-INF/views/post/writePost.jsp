@@ -31,5 +31,35 @@
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>
+	<section style="margin-bottom: 40px;">
+		<form action="/teuching/post/write.do" onsubmit="return submit_result();" class="postForm">
+			<div class="addImageWrapper">
+				<div class="addImageDiv">
+					<img src="../resources/img/addImage2.png" class="addImageIcon">
+					<p class="addImageText">사진첨부</p>
+					<input type="file" id="addImageHidden" name="image" onmouseover="changeImg();" onmouseout="resetImg();" onchange="preview(this);" multiple>
+				</div>
+			</div>
+			<div>
+				<div style="margin-top: 36px; margin-left: 50px; width: 1000px;">
+					<div class="titleWrapper">
+						<input class="titleInput" name="title" placeholder="제목을 입력하세요.">
+					</div>
+					<hr>
+					<div class="contentWrapper">
+						<textarea class="contentInput" name="content" placeholder="내용을 입력하세요."></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="previewWrapper">
+				<p class="previewText">미리보기</p>
+				<div class="pre_div">
+				
+				</div>
+			<button class="uploadBtn">저장</button>
+			</div>
+		</form>
+	</section>
+	<script src="../resources/js/post/post.js"></script>
 </body>
 </html>
