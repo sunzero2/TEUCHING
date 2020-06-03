@@ -165,7 +165,7 @@ function createTable() {
 		
 		var writerLink = document.createElement('a');
 		// 트레이너 프로필로 이동할 수 있는 링크
-		writerLink.href = '#';
+		writerLink.href = '/teuching/profile/review.do';
 		writerLink.innerText = pList[i].trainerName;
 		writer.append(writerLink);
 		
