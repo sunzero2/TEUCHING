@@ -8,7 +8,7 @@ public class ReviewReport {
 	private int tr_email; // 트레이너번호
 	private int mem_email; // 회원번호
 	private String rep_cont; // 신고내용
-	private String report_handle; // 처리결과
+	private String report_handel; // 처리결과
 	private String handel_cont; // 처리내용
 	private Date report_date; // 신고일자
 	private String ans_yn; // 답변여부
@@ -50,12 +50,12 @@ public class ReviewReport {
 		this.rep_cont = rep_cont;
 	}
 
-	public String getReport_handle() {
-		return report_handle;
+	public String getReport_handel() {
+		return report_handel;
 	}
 
-	public void setReport_handle(String report_handle) {
-		this.report_handle = report_handle;
+	public void setReport_handel(String report_handel) {
+		this.report_handel = report_handel;
 	}
 
 	public String getHandel_cont() {
@@ -85,7 +85,7 @@ public class ReviewReport {
 	@Override
 	public String toString() {
 		return "ReviewReport [report_idx=" + report_idx + ", tr_email=" + tr_email + ", mem_email=" + mem_email
-				+ ", rep_cont=" + rep_cont + ", report_handle=" + report_handle + ", handel_cont=" + handel_cont
+				+ ", rep_cont=" + rep_cont + ", report_handel=" + report_handel + ", handel_cont=" + handel_cont
 				+ ", report_date=" + report_date + ", ans_yn=" + ans_yn + "]";
 	}
 

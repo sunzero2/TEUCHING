@@ -9,6 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
 	rel="stylesheet">
@@ -37,51 +38,121 @@
 <link rel="stylesheet" href="resources/css/icomoon.css">
 <link rel="stylesheet" href="resources/css/style.css">
 <!-- 기존꺼말고 새로갖다박은거임 -->
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
+
+<style>
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.wrapper {
+	width: 63%;
+	height: 100%;
+	color: pink;
+	transform: translate(28%, 7%);
+}
+
+.ansbox-top {
+	height: 25%;
+	width: 100%;
+	transform: translateX(18%);
+}
+
+.ansbox-bottom {
+	height: 75%;
+	width: 110%;
+	position: absolute;
+	boader: 1px solid black;
+}
+
+#bt1 {
+	float: left;
+	height: 100%;
+	width: 50%;
+}
+
+#bt2 {
+	float: right;
+	height: 100%;
+	width: 50%;
+}
+
+h5 {
+	transform: translate(5%, 30%);
+	font-family: "Open Sans", Arial, sans-serif;
+}
+
+h2 {
+	transform: translate(4%, 38%);
+	font-weight:bold;
+}
+
+.col-lg-8 {
+	left: 10%;
+}
+
+</style>
 </head>
 <body>
-	<nav
-		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-		id="ftco-navbar">
-		<div class="container">
-			<div class="row m-auto">
-				<div class="col-12 w-100 text-center">
-					<a class="navbar-brand w-100" href="index.html">Meditative</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse"
-						data-target="#ftco-nav" aria-controls="ftco-nav"
-						aria-expanded="false" aria-label="Toggle navigation">
-						<span class="oi oi-menu"></span> Menu
-					</button>
-				</div>
-				<div class="col-12 w-100 text-center">
-					<div class="collapse navbar-collapse" id="ftco-nav">
-						<ul class="navbar-nav m-auto">
-							<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-							<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-							<li class="nav-item"><a href="trainer.html" class="nav-link">Trainer</a></li>
-							<li class="nav-item"><a href="classes.html" class="nav-link">Classes</a></li>
-							<li class="nav-item"><a href="schedule.html"
-								class="nav-link">Schedule</a></li>
-							<li class="nav-item active"><a href="blog.html"
-								class="nav-link">Blog</a></li>
-							<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-						</ul>
-					</div>
-				</div>
+	<%@ include file="../include/top.jsp"%>
+
+	<div class="wrapper">
+		<div class="ansbox-top">
+			<div
+				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
+				style="float: left; background-image: url(resources/img/classes-4.jpg); width: 15%; height: 75%;">
+				<c:if test="${ res.ans_yn eq 'Y'}">
+					<div
+						style="text-align: right; transform: translate(-70%, -35%); color: red; font-size: 5vw">✔</div>
+				</c:if>
 			</div>
+			<h5>${res.report_date }
+				<a href="#" class="btn btn-outline-primary"
+					style="transform: translateX(250%);">답변하기</a>
+			</h5>
+			<h2>어쩌구님의 문의 내역입니다</h2>
 		</div>
-	</nav>
-	<!-- END nav -->
+		<div class="ansbox-bottom">
+		
+		<div class="col-lg-8 ftco-animate">
+		<h3 class="mb-4">신고내용</h3>
+			<p class="mb-5" style="color:#f16f85">${res.rep_cont }</p>
+		</div>
 
-	<h1>${res }</h1>
+		<div class="col-lg-8 ftco-animate">
+		<h3 class="mb-4">처리결과</h3>
+		<p class="mb-5">${res.report_handel }</p>
+		
+		<c:if test="${res.report_handel eq null }">
+		<p style="color:#f16f85;">아직 처리결과가 작성되지 않았습니다</p>
+		</c:if>
+		</div>
+
+		<div class="col-lg-8 ftco-animate">
+		<h3 class="mb-4">처리내용</h3>
+			<p class="mb-5">${res.handel_cont }</p> 
+			<c:if test="${res.report_handel eq null }">
+			<p style="color:#f16f85;">아직 처리내용이 작성되지 않았습니다</p>
+			</c:if>
+		</div>
+		</div>
+
+	</div>
+	<%-- 	<div class="ansbox-bottom">
+			<!-- <div id="bt1"></div>
+			<div id="bt2"></div> -->
+			<h3>${res.rep_cont }</h3>
+		</div>
+		<button type="submit"
+			class="btn btn-white btn-outline-white px-4 py-3 mt-3">답변하기</button>
+	</div>
+	<br>
+	<br> --%>
 
 
-	<script
-		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-	<!------ Include the above in your HEAD tag ---------->
+	<%-- <h1>${res }</h1> --%>
 
 
 	<script src="resources/js/jquery.min.js"></script>
