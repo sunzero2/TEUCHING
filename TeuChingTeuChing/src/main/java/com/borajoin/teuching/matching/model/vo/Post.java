@@ -1,10 +1,9 @@
 package com.borajoin.teuching.matching.model.vo;
 
-import java.sql.Date;
-
 public class Post {
 	private int postIdx;
 	private String trEmail;
+	private String trainerName;
 	private String postTitle;
 	private String postCont;
 	private String purpose;
@@ -20,11 +19,12 @@ public class Post {
 		super();
 	}
 
-	public Post(int postIdx, String trEmail, String postTitle, String postCont, String purpose, String sports, String area,
-			String classSize, String gender, String place, int price, String writeDate) {
+	public Post(int postIdx, String trEmail, String trainerName, String postTitle, String postCont, String purpose,
+			String sports, String area, String classSize, String gender, String place, int price, String writeDate) {
 		super();
 		this.postIdx = postIdx;
 		this.trEmail = trEmail;
+		this.trainerName = trainerName;
 		this.postTitle = postTitle;
 		this.postCont = postCont;
 		this.purpose = purpose;
@@ -51,6 +51,14 @@ public class Post {
 
 	public void setTrEmail(String trEmail) {
 		this.trEmail = trEmail;
+	}
+
+	public String getTrainerName() {
+		return trainerName;
+	}
+
+	public void setTrainerName(String trainerName) {
+		this.trainerName = trainerName;
 	}
 
 	public String getPostTitle() {
@@ -135,9 +143,9 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [postIdx=" + postIdx + ", trEmail=" + trEmail + ", postTitle=" + postTitle + ", postCont="
-				+ postCont + ", purpose=" + purpose + ", sports=" + sports + ", area=" + area + ", classSize="
-				+ classSize + ", gender=" + gender + ", place=" + place + ", price=" + price + ", writeDate="
-				+ writeDate + "]";
+		return "Post [postIdx=" + postIdx + ", trEmail=" + trEmail + ", trainerName=" + trainerName + ", postTitle="
+				+ postTitle + ", postCont=" + postCont + ", purpose=" + purpose + ", sports=" + sports + ", area="
+				+ area + ", classSize=" + classSize + ", gender=" + gender + ", place=" + place + ", price=" + price
+				+ ", writeDate=" + writeDate + "]";
 	}
 }
