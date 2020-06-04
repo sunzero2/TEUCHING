@@ -20,7 +20,7 @@ public class PostDao {
 		return sqlSession.selectOne("Matching.postDetail", data);
 	}
 
-	public int insertPost() {
+	public int insertPost(Post post) {
 
 		return 0;
 	}

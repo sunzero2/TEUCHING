@@ -50,3 +50,35 @@ function submit_result() {
 	}
 	return result;
 }
+
+document.querySelectorAll(".keywordBtn").forEach(function(el) {
+	el.addEventListener('click', function(v) {
+		if(el.checked == true) {
+			el.checked = false;
+			v.target.style.background = "white";
+			v.target.style.color = "#ff9090";
+			
+			reset(el.name, 'null');
+		} else {
+			el.checked = true;
+			v.target.style.background = "#ff9090";
+			v.target.style.color = "white";
+
+			reset(el.name, el.value);
+		}
+	})
+})
+
+function reset(name, value) {
+	document.getElementsByName(name).forEach(function(el) {
+		if(el.checked) {
+			if(el.value != value) {
+				el.checked = false;
+				el.style.background = "white";
+				el.style.color = "#ff9090";
+			} 
+		}
+	})
+	
+	document.getElementById(name).value = value;
+}
