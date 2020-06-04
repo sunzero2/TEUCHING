@@ -145,8 +145,19 @@ h2 {
 		<div class="ansbox-bottom">
 
 			<div class="col-lg-8 ftco-animate">
-				<p id="checkfile" onclick="checkfile"
-					style="float: right; color: #2c396b; transform: translateX(-50%); cursor: pointer">📁첨부파일</p>
+				<div style="float: right; transform: translateX(-50%);">
+					<p id="checkfile" onclick="checkfile();"
+						style="float: right; margin-bottom: -1%; color: #2c396b; cursor: pointer">📁첨부파일</p>
+					<br>
+					<div id="showclose" style="display: none">
+						<c:forEach items="${file }" var="f">
+							<a
+								href="${pageContext.request.contextPath }/resources/
+								upload/${f.rename_filename}">${f.origin_filename }</a>
+							<br>
+						</c:forEach>
+					</div>
+				</div>
 				<h3 class="mb-4">신고내용</h3>
 				<p id="font-size">${res.rep_cont }</p>
 			</div>
@@ -179,9 +190,17 @@ h2 {
 	<br>
 	<br>
 	<br>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+		crossorigin="anonymous"></script>
 	<script>
-		function checkfile(){
-			
+		function checkfile() {
+			const showclose = document.querySelector('#showclose');
+			if (showclose.style.display == 'none') {
+				showclose.style.display = 'block';
+			} else {
+				showclose.style.display = 'none';
+			}
 		}
 	</script>
 	<script src="resources/js/jquery.min.js"></script>
