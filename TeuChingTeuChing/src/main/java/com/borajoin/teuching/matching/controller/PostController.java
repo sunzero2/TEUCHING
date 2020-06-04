@@ -67,7 +67,7 @@ public class PostController {
 	* @Method 설명 : 게시글 업로드 메소드
 	*/
 	@RequestMapping("/post/write.do")
-	public ModelAndView write(@RequestParam List<MultipartFile> images, String title, String content, HttpServletRequest request) {
+	public ModelAndView write(@RequestParam List<MultipartFile> images, Post post, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession();
 		
@@ -96,6 +96,7 @@ public class PostController {
 			i++;
 		}
 		
+		int res = postService.insertPost(post, fileData);
 		mav.setViewName("matching/matching");
 		return mav;
 	}

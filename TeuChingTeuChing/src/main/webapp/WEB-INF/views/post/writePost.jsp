@@ -33,7 +33,8 @@
 	<%@ include file="../include/top.jsp"%>
 	<section style="margin-bottom: 40px;">
 		<form action="/teuching/post/write.do" method="post" onsubmit="return submit_result();" class="postForm" enctype="multipart/form-data">
-		<input type="hidden" name="trEmail" value="TEST1@naver.com">
+			<input type="hidden" name="trEmail" value="TEST1@naver.com">
+			<input type="hidden" name="trainerName" value="TEST1">
 			<div class="addImageWrapper">
 				<div class="addImageDiv">
 					<img src="../resources/img/addImage2.png" class="addImageIcon">
@@ -50,6 +51,50 @@
 					<div class="contentWrapper">
 						<textarea class="contentInput" name="postCont" placeholder="내용을 입력하세요."></textarea>
 					</div>
+				</div>
+			</div>
+			<div>
+				<div class="keywordWrapper">
+					<p class="additional">매칭 키워드 선택</p>
+					<p class="precautions">한 가지씩 꼭 선택해주세요!</p>
+					<table class="keywordSearchTable">
+						<tr>
+							<th class="searchTableTh">가격</th>
+							<td style="border-bottom: 1px solid #ffb5b7;"><input class="priceInput" type="text" name="price"></td>
+						</tr>
+						<tr>
+							<th class="searchTableTh">수업목적</th>
+							<td class="searchTableTd">
+								<button type="button" class="keywordBtn" name="purpose" value="체형교정">체형교정</button>
+								<button type="button" class="keywordBtn" name="purpose" value="건강증진">건강증진</button>
+								<button type="button" class="keywordBtn" name="purpose" value="다이어트">다이어트</button>
+								<button type="button" class="keywordBtn" name="purpose" value="바디프로필">바디프로필</button>
+								<button type="button" class="keywordBtn" name="purpose" value="취미">취미</button>
+								<button type="button" class="keywordBtn" name="purpose" value="대회준비">대회준비</button>
+								<button type="button" class="keywordBtn" name="purpose" value="재활치료">재활치료</button>
+								<button type="button" class="keywordBtn" name="purpose" value="벌크업">벌크업</button>
+								<button type="button" class="keywordBtn" name="purpose" value="기초체력">기초체력</button>
+								<button type="button" class="keywordBtn" name="purpose" value="시험준비">시험준비</button>
+								<input type="hidden"name="purpose"  id="purpose">
+							</td>
+						</tr>
+						<tr>
+							<th class="searchTableTh">수업인원</th>
+							<td class="searchTableTd">
+								<button type="button" class="keywordBtn" name="classSize" value="1:1">1:1</button>
+								<button type="button" class="keywordBtn" name="classSize" value="N:1">N:1</button>'
+								<input type="hidden" name="classSize" id="classSize">
+							</td>
+						</tr>
+						<tr>
+							<th class="searchTableTh">장소</th>
+							<td class="searchTableTd">
+								<button type="button" class="keywordBtn" name="place" value="INDOOR EXERCIES">INDOOR EXERCIES</button>
+								<button type="button" class="keywordBtn" name="place" value="OUTDOOR EXERCIES">OUTDOOR EXERCIES</button>
+								<input type="hidden" name="place" id="place">
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 			<div class="previewWrapper">
