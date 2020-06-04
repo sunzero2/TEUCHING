@@ -30,5 +30,8 @@ public interface ManagerService {
 	
 	public int insertFile(List<File_Upload> fileData);
 	
+	public List<File_Upload> selectTraFile(int table_idx);
+	
+	public List<File_Upload> selectRevFile(int table_idx);
 
 }

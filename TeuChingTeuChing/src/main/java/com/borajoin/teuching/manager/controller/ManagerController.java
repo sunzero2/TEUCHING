@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,16 +58,19 @@ public class ManagerController {
 	@RequestMapping("/managerdetail.do")
 	public ModelAndView managerDetail(Integer revid, Integer traid) {
 		ModelAndView mv = new ModelAndView();
-
+		List<File_Upload> fu = new ArrayList<File_Upload>();
 		if (revid == null) {
 			mv.addObject("type", "tra");
 			mv.addObject("res", ms.traManagerDetail(traid));
+			fu = ms.selectTraFile(traid);
 		}
 		if (traid == null) {
 			// getClass해서 ~일경우로 가능할듯
 			mv.addObject("type", "rev");
 			mv.addObject("res", ms.revManagerDetail(revid));
+			fu = ms.selectRevFile(revid);
 		}
+		mv.addObject("file",fu);
 		mv.setViewName("manager/managerDetail");
 		return mv;
 	}

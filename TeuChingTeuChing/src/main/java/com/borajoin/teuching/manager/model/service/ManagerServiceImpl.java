@@ -101,4 +101,14 @@ public class ManagerServiceImpl implements ManagerService {
 		return res;
 	}
 
+	@Override
+	public List<File_Upload> selectTraFile(int table_idx) {
+		return md.selectTraFile(table_idx);
+	}
+	
+	@Override
+	public List<File_Upload> selectRevFile(int table_idx) {
+		return md.selectRevFile(table_idx);
+	}
+
 }

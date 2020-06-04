@@ -69,7 +69,15 @@ public class ManagerDao {
 	}
 
 	public int insertFile(File_Upload file) {
-		return sqlSession.insert("File.insertFile", file);
+		return sqlSession.insert("File.report_insertFile", file);
+	}
+	
+	public List<File_Upload> selectTraFile(int table_idx) {
+		return sqlSession.selectList("Manager.selectTraFile", table_idx);
+	}
+	
+	public List<File_Upload> selectRevFile(int table_idx) {
+		return sqlSession.selectList("Manager.selectRevFile", table_idx);
 	}
 
 }

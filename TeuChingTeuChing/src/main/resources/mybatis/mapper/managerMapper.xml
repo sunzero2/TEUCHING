@@ -103,5 +103,17 @@
 		values(S_FILE_IDX.NEXTVAL, ${table_idx}, #{origin_filename},
 		#{rename_filename}, #{savepath})
 	</insert>
+	
+	<select id="selectTraFile" parameterType="int" resultType="File_Upload">
+		select * from tr_file_upload
+		where table_idx = #{table_idx} and
+		rename_filename like '%TraReport%'
+	</select>
+	
+	<select id="selectRevFile" parameterType="int" resultType="File_Upload">
+		select * from tr_file_upload
+		where table_idx = #{table_idx} and
+		rename_filename like '%RevReport%'
+	</select>
 
 </mapper>
