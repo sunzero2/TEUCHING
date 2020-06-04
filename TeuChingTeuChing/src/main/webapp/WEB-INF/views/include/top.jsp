@@ -47,11 +47,10 @@
 			</c:if>
 			<c:if test="${loginInfo != null}">
 				<div class="topLogOut">
-				${member}
-				<c:if test="${member eq 'member'}">
+				<c:if test="${test eq 'member'}">
 					<a href="<%=request.getContextPath()%>/mypage/mypage.do">${loginInfo.nickname}	님  환영합니다. </a>
 					</c:if>
-				<c:if test="${member eq 'trainer'}">
+				<c:if test="${test eq 'trainer'}">
 					<a href="<%=request.getContextPath()%>/mypage/mypage.do">${loginInfo.trainerName}  님  환영합니다. </a>
 					</c:if>	
 						<!-- <a>MyPage</a>  -->
@@ -68,9 +67,6 @@
 	</div>
 
 	<!-- 모달 스크립트문  -->
-	<script type="text/javascript">
-		$(".modal-content").load("loginModal");
-	</script>
 
 
 

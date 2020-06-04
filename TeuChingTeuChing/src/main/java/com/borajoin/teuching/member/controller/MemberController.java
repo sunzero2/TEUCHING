@@ -48,42 +48,29 @@ public class MemberController {
 	//로그인 하기 
 	@RequestMapping("/member/loginImple.do")
 	public ModelAndView loginImple(@RequestParam Map<String,Object> commandMap, HttpSession session) throws SQLException {
-		
 		ModelAndView mav = new ModelAndView();
-		System.out.println(commandMap);
-
-		System.out.println(commandMap.get("account"));
 		
 		if(commandMap.get("account").equals("member")) {
-			
 			Member res = ms.m_login(commandMap);
 			
 			if(res == null) {
-				mav.addObject("reCheck","true");
-				mav.addObject("msg","true");
 				mav.setViewName("account/loginform");
 			}else {
+				mav.addObject("test", "member");
 				session.setAttribute("loginInfo", res);
-				mav.addObject("member", "member");
-				mav.setViewName("../../index");
+				mav.setViewName("landing/landing");
 			}
-			
 		}else {
-			
 			Trainer res = ms.t_login(commandMap);
 			
 			if(res == null) {
-				mav.addObject("reCheck","true");
-				mav.addObject("msg","true");
 				mav.setViewName("account/loginform");
 			}else {
+				mav.addObject("test", "trainer");
 				session.setAttribute("loginInfo", res);
-				mav.addObject("member", "trainer");
-				mav.setViewName("../../index");
+				mav.setViewName("landing/landing");
 			}
-			
 		}
-		
 		return mav;
 	}
 	
@@ -98,7 +85,7 @@ public class MemberController {
 			session.removeAttribute("loginInfo");
 		}
 		
-		mav.setViewName("../../index");
+		mav.setViewName("landing/landing");
 		
 		
 		return mav;
@@ -110,7 +97,7 @@ public class MemberController {
 	public ModelAndView mypage(HttpSession session) {
 	
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("../../index");
+		mav.setViewName("landing/landing");
 		
 		return mav;
 	}
@@ -159,7 +146,7 @@ public class MemberController {
 			mav.addObject("alertMsg","회원가입에 실패하였습니다.");
 			mav.addObject("back","back");
 		}else {
-			mav.setViewName("../../index");
+			mav.setViewName("landing/landing");
 		}
 		return mav;
 	}
@@ -177,7 +164,7 @@ public class MemberController {
 			mav.addObject("alertMsg","회원가입에 실패하였습니다.");
 			mav.addObject("back","back");
 		}else {
-			mav.setViewName("../../index");
+			mav.setViewName("landing/landing");
 		}
 		return mav;
 	}
