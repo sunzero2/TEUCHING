@@ -238,7 +238,7 @@ background-color: transparent !important;
 		$('#check_email').click(function(){
 			$.ajax({
 				url: "${pageContext.request.contextPath}/emailChk.do",
-				type: "GET",
+				type: "POST",
 				data:{
 					"email":$('#email').val()
 				},

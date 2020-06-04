@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.borajoin.teuching.member.model.service.MemberService;
 import com.borajoin.teuching.member.model.vo.Member;
+import com.borajoin.teuching.member.model.vo.Trainer;
 
 @Controller
 public class MemberController {
@@ -29,16 +31,99 @@ public class MemberController {
 	@Autowired
 	private MemberService ms;
 	
-	//회원가입 페이지로 이동
-		@RequestMapping("/member/login.do")
-		public ModelAndView login() {
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName("account/loginform");
-			
-			return mav;
-		}
+	@GetMapping("/loginModal") 
+	public String loginModal() { 
+		return "/loginModal"; 
+	}
+
+	// 로그인 페이지로 이동
+	@RequestMapping("/member/login.do")
+	public ModelAndView login() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("account/loginform");
+
+		return mav;
+	}
 	
-	//회원가입 페이지로 이동
+	//로그인 하기 
+	@RequestMapping("/member/loginImple.do")
+	public ModelAndView loginImple(@RequestParam Map<String,Object> commandMap, HttpSession session) throws SQLException {
+		
+		ModelAndView mav = new ModelAndView();
+		System.out.println(commandMap);
+
+		System.out.println(commandMap.get("account"));
+		
+		if(commandMap.get("account").equals("member")) {
+			
+			Member res = ms.m_login(commandMap);
+			
+			if(res == null) {
+				mav.addObject("reCheck","true");
+				mav.addObject("msg","true");
+				mav.setViewName("account/loginform");
+			}else {
+				session.setAttribute("loginInfo", res);
+				mav.addObject("member", "member");
+				mav.setViewName("../../index");
+			}
+			
+		}else {
+			
+			Trainer res = ms.t_login(commandMap);
+			
+			if(res == null) {
+				mav.addObject("reCheck","true");
+				mav.addObject("msg","true");
+				mav.setViewName("account/loginform");
+			}else {
+				session.setAttribute("loginInfo", res);
+				mav.addObject("member", "trainer");
+				mav.setViewName("../../index");
+			}
+			
+		}
+		
+		return mav;
+	}
+	
+	
+	//로그아웃
+	@RequestMapping("/member/logout.do")
+	public ModelAndView logout(HttpSession session) {
+	
+		ModelAndView mav = new ModelAndView();
+		
+		if(session != null) {
+			session.removeAttribute("loginInfo");
+		}
+		
+		mav.setViewName("../../index");
+		
+		
+		return mav;
+		
+	}
+	
+	//마이페이지 이동
+	@RequestMapping("/member/mypage.do")
+	public ModelAndView mypage(HttpSession session) {
+	
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("../../index");
+		
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
+	// 회원가입 페이지로 이동
 	@RequestMapping("/member/join.do")
 	public ModelAndView join() {
 		ModelAndView mav = new ModelAndView();
@@ -48,17 +133,15 @@ public class MemberController {
 	}
 	// 일반회원 회원가입 폼으로 이동
 	@RequestMapping("/member/mjoin.do")
-	public ModelAndView mjoin() {
+	public ModelAndView mjoin(String data) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("account/joinform_M");
 		
-		return mav;
-	}
-	// 트레이너 회원가입 폼으로 이동
-	@RequestMapping("/member/tjoin.do")
-	public ModelAndView tjoin() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("account/joinform_T");
+		
+		if(data.equals("member")) {
+			mav.setViewName("account/joinform_M");
+		}else {
+			mav.setViewName("account/joinform_T");
+		}
 		
 		return mav;
 	}
@@ -101,7 +184,7 @@ public class MemberController {
 	
 	
 	// 일반회원 - 닉네임 중복체크
-	@RequestMapping(value = "/nickChk.do",method = RequestMethod.GET, produces = "application/text; charset=utf8")
+	@RequestMapping(value = "/nickChk.do", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String nickChk(HttpServletRequest request) throws SQLException {
 		
@@ -111,24 +194,40 @@ public class MemberController {
 	}
 	
 	// 일반회원 - 이메일 중복체크
-	@RequestMapping(value = "/emailChk.do",method = RequestMethod.GET, produces = "application/text; charset=utf8")
+	@RequestMapping(value = "/emailChk.do", produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String emailChk(HttpServletRequest request) throws SQLException {
+	public String emailChk(@RequestParam Map<String,Object> data) throws SQLException {
+
+		data.put("table", "tr_member");
+		int result=ms.emailChk(data);
 		
-		String email = request.getParameter("email");
-		int result=ms.emailChk(email);
+		if(result<1) {
+			data.put("table", "tr_trainer");
+			result=ms.emailChk(data);
+		}
+		
+		
 		return Integer.toString(result);
 	}
 	
-	// 트레이너 - 이메일 중복체크
-	@RequestMapping(value = "/t_emailChk.do", method = RequestMethod.GET, produces = "application/text; charset=utf8")
-	@ResponseBody
-	public String t_emailChk(HttpServletRequest request) throws SQLException {
-
-		String email = request.getParameter("email");
-		int result = ms.t_emailChk(email);
-		return Integer.toString(result);
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping("/notice/noticeupload.do")
 	public ModelAndView fileUpload(@RequestParam List<MultipartFile> files, HttpServletRequest request) {

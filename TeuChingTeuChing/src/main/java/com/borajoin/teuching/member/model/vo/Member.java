@@ -2,7 +2,7 @@ package com.borajoin.teuching.member.model.vo;
 
 public class Member {
 
-	private String eamil;
+	private String mem_email;
 	private String nickname;
 	private String password;
 	private String gender;
@@ -19,11 +19,11 @@ public class Member {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getEamil() {
-		return eamil;
+	public String getMem_email() {
+		return mem_email;
 	}
-	public void setEamil(String eamil) {
-		this.eamil = eamil;
+	public void setMem_email(String mem_email) {
+		this.mem_email = mem_email;
 	}
 	public String getNickname() {
 		return nickname;
@@ -61,9 +61,10 @@ public class Member {
 	public void setManager_yn(String manager_yn) {
 		this.manager_yn = manager_yn;
 	}
+	
 	@Override
 	public String toString() {
-		return "Member [eamil=" + eamil + ", nickname=" + nickname + ", password=" + password + ", gender=" + gender
+		return "Member [mem_email=" + mem_email + ", nickname=" + nickname + ", password=" + password + ", gender=" + gender
 				+ ", cell=" + cell + ", address=" + address + ", leave_yn=" + leave_yn + ", manager_yn=" + manager_yn
 				+ "]";
 	}

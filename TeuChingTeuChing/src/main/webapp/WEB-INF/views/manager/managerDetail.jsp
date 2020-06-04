@@ -132,7 +132,7 @@ h2 {
 					<input type="hidden" name="ans_yn" value="${res.ans_yn }">
 					<input type="hidden" name="report_idx" value="${res.report_idx }">
 					<button type="submit" class="btn btn-outline-primary"
-						style="transform: translateX(250%);">답변하기</button>
+						style="transform: translateX(300%);">답변하기</button>
 				</h5>
 			</form>
 			<c:if test="${type eq 'tra' }">
@@ -145,11 +145,11 @@ h2 {
 		<div class="ansbox-bottom">
 
 			<div class="col-lg-8 ftco-animate">
-				<div style="float: right; transform: translateX(-50%);">
+				<div style="float: right">
 					<p id="checkfile" onclick="checkfile();"
 						style="float: right; margin-bottom: -1%; color: #2c396b; cursor: pointer">📁첨부파일</p>
 					<br>
-					<div id="showclose" style="display: none">
+					<div id="showclose" style="text-align: right; display: none">
 						<c:forEach items="${file }" var="f">
 							<a
 								href="${pageContext.request.contextPath }/resources/

@@ -3,22 +3,7 @@
 
 <mapper namespace="Trainer">
 	
-	<!-- 트레이너 회원가입 -->
-	<insert id="joinTrainer">
-		insert into TR_TRAINER VALUES(#{email}, #{password}, #{name}, #{gender}, #{weight}, #{height}
-				, #{cell}, #{career}, #{address}, #{address_detail}, #{prefer1}, #{prefer2}, #{prefer3}, #{photo}, 0, 'N', 'N')
-	</insert>
-	
-	<!-- 트레이너 이메일 중복 체크 -->
-	<select id="t_emailChk" resultType="int">
-		select count(*) from tr_trainer where TR_EMAIL = #{email}
-	</select>
- 	
- 	<!-- 트레이너 ID 확인  -->
-	<select id ="selectTrainerId" resultType="String">
- 		select m_id from tb_member where m_id= #{id}
- 	</select>
- 	
+
  	
  	
  	
