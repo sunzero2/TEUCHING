@@ -22,7 +22,7 @@ public interface ManagerService {
 	
 	public int updateManagerDetail_tra(Map<String, Object> commandMap);
 	
-	public int insertReport(Map<String, Object> commandMap);
+	public int[] insertReport(Map<String, Object> commandMap);
 	
 	public int selectTraReportIdx();
 	

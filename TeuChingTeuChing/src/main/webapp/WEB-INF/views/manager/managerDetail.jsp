@@ -136,15 +136,17 @@ h2 {
 				</h5>
 			</form>
 			<c:if test="${type eq 'tra' }">
-				<h2>${ res.nick_name}님의 문의내역</h2>
+				<h2>${ res.nick_name}님의문의내역</h2>
 			</c:if>
 			<c:if test="${type eq 'rev' }">
-				<h2>${ res.trainer_name}님의 문의내역</h2>
+				<h2>${ res.trainer_name}님의문의내역</h2>
 			</c:if>
 		</div>
 		<div class="ansbox-bottom">
 
 			<div class="col-lg-8 ftco-animate">
+				<p id="checkfile" onclick="checkfile"
+					style="float: right; color: #2c396b; transform: translateX(-50%); cursor: pointer">📁첨부파일</p>
 				<h3 class="mb-4">신고내용</h3>
 				<p id="font-size">${res.rep_cont }</p>
 			</div>
@@ -177,7 +179,11 @@ h2 {
 	<br>
 	<br>
 	<br>
-
+	<script>
+		function checkfile(){
+			
+		}
+	</script>
 	<script src="resources/js/jquery.min.js"></script>
 	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="resources/js/popper.min.js"></script>

@@ -69,7 +69,7 @@ public class ManagerDao {
 	}
 
 	public int insertFile(File_Upload file) {
-		return sqlSession.insert("Manager.insertFile", file);
+		return sqlSession.insert("File.insertFile", file);
 	}
 
 }
