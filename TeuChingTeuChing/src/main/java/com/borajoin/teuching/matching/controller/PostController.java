@@ -1,11 +1,20 @@
 package com.borajoin.teuching.matching.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.borajoin.teuching.matching.model.service.PostService;
 import com.borajoin.teuching.matching.model.vo.Post;
@@ -49,9 +58,34 @@ public class PostController {
 	}
 	
 	@RequestMapping("/post/write.do")
-	public ModelAndView write(@RequestParam Map<String, String> data) {
+	public ModelAndView write(@RequestParam List<MultipartFile> images, String title, String content, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println("PostController : " + data);
+		HttpSession session = request.getSession();
+		
+		// webapp까지의 경로를 잡아준다.
+		String root = session.getServletContext().getRealPath("/");
+		
+		// 사용자가 올린 사진의 정보를 담을 List
+		List<Map<String, Object>> fileData = new ArrayList<>();
+		int i = 0;
+		
+		for(MultipartFile mf : images) {
+			HashMap<String, Object> data = new HashMap<>();
+			String savePath = root + "resources\\upload\\";
+			String originFileName = mf.getOriginalFilename();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			String renameFileName = sdf.format(new Date() + "." + i + originFileName.substring(originFileName.lastIndexOf(".") + 1));
+			savePath += renameFileName;
+			
+			data.put("originFileName", originFileName);
+			data.put("renameFileName", renameFileName);
+			data.put("savePath", savePath);
+			data.put("file", mf);
+			
+			fileData.add(data);
+			i++;
+		}
+		
 		mav.setViewName("matching/matching");
 		return mav;
 	}

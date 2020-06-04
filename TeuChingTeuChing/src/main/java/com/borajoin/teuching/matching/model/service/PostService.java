@@ -15,4 +15,8 @@ public class PostService {
 	public Post postDetail(Post data) {
 		return postDao.postDetail(data);
 	}
+	
+	public int insertPost() {
+		return 0;
+	}
 }
