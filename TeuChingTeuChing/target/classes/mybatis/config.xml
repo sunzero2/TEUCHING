@@ -15,5 +15,6 @@
 		<mapper resource="/mybatis/mapper/matchingMapper.xml" />
 		<mapper resource="/mybatis/mapper/memberMapper.xml" />
 		<mapper resource="/mybatis/mapper/trainerMapper.xml" />
+		<mapper resource="/mybatis/mapper/fileMapper.xml" />
 	</mappers>
 </configuration>

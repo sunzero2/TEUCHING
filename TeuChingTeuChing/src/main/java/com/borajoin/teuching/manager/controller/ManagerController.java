@@ -107,7 +107,7 @@ public class ManagerController {
 		ModelAndView mv = new ModelAndView();
 		String root = request.getSession().getServletContext().getRealPath("");
 		List<File_Upload> fileData = new ArrayList<File_Upload>();
-		ms.insertReport(commandMap);
+		int[] res = ms.insertReport(commandMap);
 		// 게시물 insert 가 먼저, 해당 게시물 idx를 가져와서 파일 테이블에 담아야하니까
 		for (MultipartFile mf : files) {
 			UUID uuid = UUID.randomUUID();
@@ -118,11 +118,11 @@ public class ManagerController {
 
 				File_Upload file = new File_Upload();
 				if (commandMap.get("type").equals("tra")) {
-					file.setTable_idx(ms.selectTraReportIdx());
+					file.setTable_idx(res[0]);
 					type = "TraReport";
 				}
 				if (commandMap.get("type").equals("rev")) {
-					file.setTable_idx(ms.selectRevReportIdx());
+					file.setTable_idx(res[0]);
 					type = "RevReport";
 				}
 				String rename_filename = uuid + "_" + type

@@ -9,7 +9,7 @@
 		select * from
 		tr_rev_report
 		order by report_idx
-		asc
+		desc
 		)n1)
 		where rnum between #{start} and #{end}
 	</select>
@@ -21,7 +21,7 @@
 		select * from
 		tr_tra_report
 		order by report_idx
-		asc
+		desc
 		)n1)
 		where rnum between #{start} and #{end}
 	</select>
