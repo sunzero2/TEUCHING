@@ -33,6 +33,7 @@
 	<%@ include file="../include/top.jsp"%>
 	<section style="margin-bottom: 40px;">
 		<form action="/teuching/post/write.do" method="post" onsubmit="return submit_result();" class="postForm" enctype="multipart/form-data">
+		<input type="hidden" name="trEmail" value="TEST1@naver.com">
 			<div class="addImageWrapper">
 				<div class="addImageDiv">
 					<img src="../resources/img/addImage2.png" class="addImageIcon">
@@ -43,11 +44,11 @@
 			<div>
 				<div style="margin-top: 36px; margin-left: 50px; width: 1000px;">
 					<div class="titleWrapper">
-						<input class="titleInput" name="title" placeholder="제목을 입력하세요.">
+						<input class="titleInput" name="postTitle" placeholder="제목을 입력하세요.">
 					</div>
 					<hr>
 					<div class="contentWrapper">
-						<textarea class="contentInput" name="content" placeholder="내용을 입력하세요."></textarea>
+						<textarea class="contentInput" name="postCont" placeholder="내용을 입력하세요."></textarea>
 					</div>
 				</div>
 			</div>

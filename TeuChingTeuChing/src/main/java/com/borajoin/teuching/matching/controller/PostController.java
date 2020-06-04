@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.borajoin.teuching.matching.model.service.PostService;
 import com.borajoin.teuching.matching.model.vo.Post;
+
+import common.util.File_Upload;
 
 @Controller
 public class PostController {
@@ -57,6 +60,12 @@ public class PostController {
 		return mav;
 	}
 	
+	/**
+	* @Method Name : write
+	* @작성일 : 2020. 6. 5.
+	* @작성자 : 이혜영 
+	* @Method 설명 : 게시글 업로드 메소드
+	*/
 	@RequestMapping("/post/write.do")
 	public ModelAndView write(@RequestParam List<MultipartFile> images, String title, String content, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
@@ -66,23 +75,24 @@ public class PostController {
 		String root = session.getServletContext().getRealPath("/");
 		
 		// 사용자가 올린 사진의 정보를 담을 List
-		List<Map<String, Object>> fileData = new ArrayList<>();
+		List<File_Upload> fileData = new ArrayList<>();
 		int i = 0;
 		
 		for(MultipartFile mf : images) {
-			HashMap<String, Object> data = new HashMap<>();
+			File_Upload upload = new File_Upload();
 			String savePath = root + "resources\\upload\\";
 			String originFileName = mf.getOriginalFilename();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-			String renameFileName = sdf.format(new Date() + "." + i + originFileName.substring(originFileName.lastIndexOf(".") + 1));
+			UUID uuid = UUID.randomUUID();
+			String renameFileName = uuid + "_post" + originFileName.substring(originFileName.lastIndexOf(".") + 1);
 			savePath += renameFileName;
 			
-			data.put("originFileName", originFileName);
-			data.put("renameFileName", renameFileName);
-			data.put("savePath", savePath);
-			data.put("file", mf);
+			upload.setOrigin_filename(originFileName);
+			upload.setRename_filename(renameFileName);
+			upload.setSavepath(savePath);
+			upload.setObj(mf);
+			System.out.println(upload);
 			
-			fileData.add(data);
+			fileData.add(upload);
 			i++;
 		}
 		
