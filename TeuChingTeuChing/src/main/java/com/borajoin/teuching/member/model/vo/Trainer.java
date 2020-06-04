@@ -2,9 +2,9 @@ package com.borajoin.teuching.member.model.vo;
 
 public class Trainer {
 
-	private String eamil;
+	private String tr_email;
 	private String password;
-	private String name;
+	private String trainerName;
 	private String gender;
 	private int weight;
 	private int height;
@@ -12,20 +12,19 @@ public class Trainer {
 	private String career;
 	private String address;
 	private String address_detail;
-	private String prefer1;
-	private String prefer2;
-	private String prefer3;
+	private String prefer_add1;
+	private String prefer_add2;
+	private String prefer_add3;
 	private String photo;
-	private int like;
+	private int tr_like;
 	private String black_yn;
 	private String leave_yn;
 	
-	
-	public String getEamil() {
-		return eamil;
+	public String getTr_email() {
+		return tr_email;
 	}
-	public void setEamil(String eamil) {
-		this.eamil = eamil;
+	public void setTr_email(String tr_email) {
+		this.tr_email = tr_email;
 	}
 	public String getPassword() {
 		return password;
@@ -33,11 +32,12 @@ public class Trainer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getName() {
-		return name;
+	
+	public String getTrainerName() {
+		return trainerName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setTrainerName(String trainerName) {
+		this.trainerName = trainerName;
 	}
 	public String getGender() {
 		return gender;
@@ -75,23 +75,29 @@ public class Trainer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getPrefer1() {
-		return prefer1;
+	public String getAddress_detail() {
+		return address_detail;
 	}
-	public void setPrefer1(String prefer1) {
-		this.prefer1 = prefer1;
+	public void setAddress_detail(String address_detail) {
+		this.address_detail = address_detail;
 	}
-	public String getPrefer2() {
-		return prefer2;
+	public String getPrefer_add1() {
+		return prefer_add1;
 	}
-	public void setPrefer2(String prefer2) {
-		this.prefer2 = prefer2;
+	public void setPrefer_add1(String prefer_add1) {
+		this.prefer_add1 = prefer_add1;
 	}
-	public String getPrefer3() {
-		return prefer3;
+	public String getPrefer_add2() {
+		return prefer_add2;
 	}
-	public void setPrefer3(String prefer3) {
-		this.prefer3 = prefer3;
+	public void setPrefer_add2(String prefer_add2) {
+		this.prefer_add2 = prefer_add2;
+	}
+	public String getPrefer_add3() {
+		return prefer_add3;
+	}
+	public void setPrefer_add3(String prefer_add3) {
+		this.prefer_add3 = prefer_add3;
 	}
 	public String getPhoto() {
 		return photo;
@@ -99,11 +105,11 @@ public class Trainer {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	public int getLike() {
-		return like;
+	public int getTr_like() {
+		return tr_like;
 	}
-	public void setLike(int like) {
-		this.like = like;
+	public void setTr_like(int tr_like) {
+		this.tr_like = tr_like;
 	}
 	public String getBlack_yn() {
 		return black_yn;
@@ -117,20 +123,15 @@ public class Trainer {
 	public void setLeave_yn(String leave_yn) {
 		this.leave_yn = leave_yn;
 	}
-	
-	public String getAddress_detail() {
-		return address_detail;
-	}
-	public void setAddress_detail(String address_detail) {
-		this.address_detail = address_detail;
-	}
 	@Override
 	public String toString() {
-		return "Trainer [eamil=" + eamil + ", password=" + password + ", name=" + name + ", gender=" + gender
-				+ ", weight=" + weight + ", height=" + height + ", cell=" + cell + ", career=" + career + ", address="
-				+ address + ", prefer1=" + prefer1 + ", prefer2=" + prefer2 + ", prefer3=" + prefer3 + ", photo="
-				+ photo + ", like=" + like + ", black_yn=" + black_yn + ", leave_yn=" + leave_yn + "]";
+		return "Trainer [tr_email=" + tr_email + ", password=" + password + ", trainerName=" + trainerName + ", gender="
+				+ gender + ", weight=" + weight + ", height=" + height + ", cell=" + cell + ", career=" + career
+				+ ", address=" + address + ", address_detail=" + address_detail + ", prefer_add1=" + prefer_add1
+				+ ", prefer_add2=" + prefer_add2 + ", prefer_add3=" + prefer_add3 + ", photo=" + photo + ", tr_like="
+				+ tr_like + ", black_yn=" + black_yn + ", leave_yn=" + leave_yn + "]";
 	}
+	
 	
 	
 	

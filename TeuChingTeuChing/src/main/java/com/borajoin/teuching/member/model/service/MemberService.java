@@ -18,11 +18,18 @@ public interface MemberService {
 	//일반회원 닉네임 체크
 	 public int nickChk(String nickname) throws SQLException;
 	 
-	//일반회원 이메일 체크
-	 public int emailChk(String email) throws SQLException;
+	//이메일 체크
+	 public int emailChk(Map<String, Object> data) throws SQLException;
 	
-	//트레이너 이메일 체크
-	public int t_emailChk(String email) throws SQLException;
+	 //일반회원 로그인
+	 public Member m_login(Map<String, Object> commandMap) throws SQLException;
+	 
+	 //트레이너 로그인
+	 public Trainer t_login(Map<String, Object> commandMap) throws SQLException;
+	 
+	 
+	 
+	 
 	
 	public int insertFile(List<Map<String,Object>>fileData);
 	

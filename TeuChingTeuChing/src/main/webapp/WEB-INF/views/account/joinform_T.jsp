@@ -103,7 +103,7 @@ background-color: transparent !important;
 										<div class="col-lg-6">
 											<div class="form-group focused">
 												<label class="form-control-label">성함
-													</label> <input type="text" id="name" name="name"
+													</label> <input type="text" id="nickname" name="nickname"
 													class="form-control form-control-alternative">
 											</div>
 										</div>
@@ -236,9 +236,9 @@ background-color: transparent !important;
 				alert("이메일을 입력해주세요.");
 				$('#email').focus();
 				return;
-			}else if($.trim($('#name').val()) == ''){
+			}else if($.trim($('#nickname').val()) == ''){
 				alert("성함을 입력해주세요.");
-				$('#name').focus();
+				$('#nickname').focus();
 				return;
 			}else if($.trim($('#password_1').val()) == ''){
 				alert("패스워드를 입력해주세요.");
@@ -273,8 +273,8 @@ background-color: transparent !important;
 		
 		$('#check_email').click(function(){
 			$.ajax({
-				url: "${pageContext.request.contextPath}/t_emailChk.do",
-				type: "GET",
+				url: "${pageContext.request.contextPath}/emailChk.do",
+				type: "POST",
 				data:{
 					"email":$('#email').val()
 				},

@@ -24,7 +24,7 @@ public class MemberDao {
 	// 트레이너 회원가입
 	public int joinTrainer(Map<String,Object> commandMap) {
 		System.out.println("==>트레이너 회원가입");
-		return session.insert("Trainer.joinTrainer", commandMap);
+		return session.insert("Member.joinTrainer", commandMap);
 	}
 	
 	//일반회원 닉네임 중복확인
@@ -35,24 +35,29 @@ public class MemberDao {
 	}
 	
 	//일반회원 이메일 중복확인
-	public int emailChk(String email) {
-		System.out.println("==>일반 회원 이메일 중복체크!");
-		int res = session.selectOne("Member.emailChk", email);
-		return res;
+	public int emailChk(Map<String,Object> data) {
+		System.out.println("==>메일 중복체크!");
+		 
+		return session.selectOne("Member.emailChk", data);
 	}
-	
-	//일반회원 이메일 중복확인
-	public int t_emailChk(String email) {
-		System.out.println("==>트레이너 이메일 중복체크!");
-		int res = session.selectOne("Trainer.t_emailChk", email);
-		return res;
-	}
-	
-	
 	
 	
 	
 	//로그인
+	public Member m_login(Map<String, Object> commandMap) {
+		
+		return session.selectOne("Member.m_login", commandMap);
+	}
+	
+	//트레이너 로그인
+	public Trainer t_login(Map<String, Object> commandMap) {
+		
+		return session.selectOne("Member.t_login", commandMap);
+	}
+	
+	
+	
+	
 	
 	
 	
