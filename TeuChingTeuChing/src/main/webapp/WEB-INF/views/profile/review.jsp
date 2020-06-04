@@ -3,42 +3,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
 	rel="stylesheet">
-
 <link
 	href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap"
 	rel="stylesheet">
-
 <link rel="stylesheet"
-	href="resources/css/open-iconic-bootstrap.min.css">
+	href="../resources/css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="../resources/css/animate.css">
-
 <link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
 <link rel="stylesheet" href="../resources/css/magnific-popup.css">
-
 <link rel="stylesheet" href="../resources/css/aos.css">
-
 <link rel="stylesheet" href="../resources/css/ionicons.min.css">
-
 <link rel="stylesheet" href="../resources/css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="../resources/css/jquery.timepicker.css">
-
-
 <link rel="stylesheet" href="../resources/css/flaticon.css">
 <link rel="stylesheet" href="../resources/css/icomoon.css">
 <link rel="stylesheet" href="../resources/css/style.css">
+
 </head>
 <body>
 
-<%@include file="../include/top.jsp" %>
+	<%@ include file="../include/top.jsp"%>
 
 
 
@@ -47,7 +37,7 @@
 
 
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('images/bg_3.jpg');"
+		style="background-image: url('../resources/img/bg_3.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
@@ -72,13 +62,23 @@
 					<h2 class="mb-3">여기에 트레이너 이름 나오게 할래요</h2>
 
 
-
 					<div class="about-author d-flex">
 						<div class="bio align-self-md-center mr-5">
 							<img src="../resources/img/person_2.jpg" alt="Image placeholder"
 								class="img-fluid mb-4">
 						</div>
 						<div class="desc align-self-md-center">
+							<!-- ===============버튼을 여기에 넣어보았습니다=================== -->
+							<form
+								action="${pageContext.request.contextPath }/report/viewreport.do">
+								<input type="hidden" name="tr_email" value="1111"> <input
+									type="hidden" name="mem_email" value="1111"> <input
+									type="hidden" name="nick_name" value="김지수"> <input
+									type="hidden" name="type" value="tra"> <input
+									type="hidden" name="reported" value="김김지수">
+								<button type="submit" class="btn btn-outline-primary">트레이너신고</button>
+							</form>
+							<!-- ===============버튼을 여기까지 넣어보았습니다=================== -->
 							<h3>트레이너 이름!!!</h3>
 							<p>트레이너 소개 소개소개ㅅ개트레이너 소개 소개소개ㅅ트레이너 소개 소개소개ㅅ트레이너 소개 소개소개ㅅ</p>
 							<div class="tag-widget post-tag-container mb-5 mt-5">
@@ -90,7 +90,8 @@
 								</div>
 								<br>
 								<p>
-									<a href="여기에 트레이너 스케줄로 이동할 href작성하거야!!" class="reply">트레이너 스케쥴러로 이동</a>
+									<a href="여기에 트레이너 스케줄로 이동할 href작성하거야!!" class="reply">트레이너
+										스케쥴러로 이동</a>
 								</p>
 							</div>
 						</div>
@@ -105,9 +106,21 @@
 						<ul class="comment-list">
 							<li class="comment">
 								<div class="vcard bio">
-									<img src="../resources/img/person_2.jpg" alt="Image placeholder">
+									<img src="../resources/img/person_2.jpg"
+										alt="Image placeholder">
 								</div>
 								<div class="comment-body">
+									<!-- =======================리뷰신고===========================-->
+									<form
+										action="${pageContext.request.contextPath }/report/viewreport.do">
+										<input type="hidden" name="tr_email" value="2222"> <input
+											type="hidden" name="mem_email" value="2222"> <input
+											type="hidden" name="nick_name" value="김지수"> <input
+											type="hidden" name="type" value="rev"> <input
+											type="hidden" name="reported" value="김김지수">
+										<button type="submit" class="btn btn-outline-primary">리뷰신고</button>
+									</form>
+									<!-- =======================리뷰신고===========================-->
 									<h3>John Doe</h3>
 									<div class="meta">Sept 25, 2019 at 2:21pm</div>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -122,7 +135,8 @@
 
 							<li class="comment">
 								<div class="vcard bio">
-									<img src="../resources/img/person_1.jpg" alt="Image placeholder">
+									<img src="../resources/img/person_1.jpg"
+										alt="Image placeholder">
 								</div>
 								<div class="comment-body">
 									<h3>John Doe</h3>
@@ -139,7 +153,8 @@
 								<ul class="children">
 									<li class="comment">
 										<div class="vcard bio">
-											<img src="../resources/img/person_1.jpg" alt="Image placeholder">
+											<img src="../resources/img/person_1.jpg"
+												alt="Image placeholder">
 										</div>
 										<div class="comment-body">
 											<h3>John Doe</h3>
@@ -201,7 +216,8 @@
 
 							<li class="comment">
 								<div class="vcard bio">
-									<img src="../resources/img/person_1.jpg" alt="Image placeholder">
+									<img src="../resources/img/person_1.jpg"
+										alt="Image placeholder">
 								</div>
 								<div class="comment-body">
 									<h3>John Doe</h3>
@@ -271,7 +287,7 @@
 						<h3 class="heading-2">Recent Blog</h3>
 						<div class="block-21 mb-4 d-flex">
 							<a class="blog-img mr-4"
-								style="background-image: url(images/image_1.jpg);"></a>
+								style="background-image: url(../resources/img/image_1.jpg);"></a>
 							<div class="text">
 								<h3 class="heading">
 									<a href="#">Even the all-powerful Pointing has no control
@@ -293,7 +309,7 @@
 						</div>
 						<div class="block-21 mb-4 d-flex">
 							<a class="blog-img mr-4"
-								style="background-image: url(images/image_2.jpg);"></a>
+								style="background-image: url(../resources/img/image_2.jpg);"></a>
 							<div class="text">
 								<h3 class="heading">
 									<a href="#">Even the all-powerful Pointing has no control
@@ -315,7 +331,7 @@
 						</div>
 						<div class="block-21 mb-4 d-flex">
 							<a class="blog-img mr-4"
-								style="background-image: url(images/image_3.jpg);"></a>
+								style="background-image: url(../resources/img/image_3.jpg);"></a>
 							<div class="text">
 								<h3 class="heading">
 									<a href="#">Even the all-powerful Pointing has no control
@@ -346,8 +362,23 @@
 	<!-- .section -->
 
 	<!-- -----------------------------------끝-------------------------------------------- -->
-	
-	<%@include file="../include/footer.jsp" %>
+
+	<%@ include file="../include/footer.jsp"%>
+	<script src="../resources/js/jquery.min.js"></script>
+	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="../resources/js/popper.min.js"></script>
+	<script src="../resources/js/bootstrap.min.js"></script>
+	<script src="../resources/js/jquery.easing.1.3.js"></script>
+	<script src="../resources/js/jquery.waypoints.min.js"></script>
+	<script src="../resources/js/jquery.stellar.min.js"></script>
+	<script src="../resources/js/owl.carousel.min.js"></script>
+	<script src="../resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="../resources/js/aos.js"></script>
+	<script src="../resources/js/jquery.animateNumber.min.js"></script>
+	<script src="../resources/js/bootstrap-datepicker.js"></script>
+	<script src="../resources/js/jquery.timepicker.min.js"></script>
+	<script src="../resources/js/scrollax.min.js"></script>
+	<script src="../resources/js/main.js"></script>
 
 
 </body>

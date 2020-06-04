@@ -86,13 +86,16 @@ h5 {
 
 h2 {
 	transform: translate(4%, 38%);
-	font-weight:bold;
+	font-weight: bold;
 }
 
 .col-lg-8 {
-	left: 10%;
+	left: 14%;
 }
 
+#font-size {
+	font-size: 15px;
+}
 </style>
 </head>
 <body>
@@ -102,59 +105,104 @@ h2 {
 		<div class="ansbox-top">
 			<div
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
-				style="float: left; background-image: url(resources/img/classes-4.jpg); width: 15%; height: 75%;">
+				style="float: left; border: 1px solid black; background-image: url(resources/img/circle_person.jpg); width: 15%; height: 75%;">
 				<c:if test="${ res.ans_yn eq 'Y'}">
 					<div
-						style="text-align: right; transform: translate(-70%, -35%); color: red; font-size: 5vw">✔</div>
+						style="text-align: right; transform: translate(-70%, -35%); color: #b91e2d; font-size: 5vw">✔</div>
 				</c:if>
 			</div>
-			<h5>${res.report_date }
-				<a href="#" class="btn btn-outline-primary"
-					style="transform: translateX(250%);">답변하기</a>
-			</h5>
-			<h2>어쩌구님의 문의 내역입니다</h2>
-		</div>
-		<div class="ansbox-bottom">
-		
-		<div class="col-lg-8 ftco-animate">
-		<h3 class="mb-4">신고내용</h3>
-			<p class="mb-5" style="color:#f16f85">${res.rep_cont }</p>
-		</div>
-
-		<div class="col-lg-8 ftco-animate">
-		<h3 class="mb-4">처리결과</h3>
-		<p class="mb-5">${res.report_handel }</p>
-		
-		<c:if test="${res.report_handel eq null }">
-		<p style="color:#f16f85;">아직 처리결과가 작성되지 않았습니다</p>
-		</c:if>
-		</div>
-
-		<div class="col-lg-8 ftco-animate">
-		<h3 class="mb-4">처리내용</h3>
-			<p class="mb-5">${res.handel_cont }</p> 
-			<c:if test="${res.report_handel eq null }">
-			<p style="color:#f16f85;">아직 처리내용이 작성되지 않았습니다</p>
+			<form
+				action="${pageContext.request.contextPath }/managerdetail/answer.do"
+				method="post">
+				<h5>${res.report_date }
+					<c:if test="${type eq 'tra' }">
+						<input type="hidden" name="nick_name" value="${res.nick_name }">
+						<input type="hidden" name="type" value="tra">
+					</c:if>
+					<c:if test="${type eq 'rev' }">
+						<input type="hidden" name="trainer_name"
+							value="${res.trainer_name }">
+						<input type="hidden" name="type" value="rev">
+					</c:if>
+					<input type="hidden" name="rep_cont" value="${res.rep_cont }">
+					<input type="hidden" name="report_handel"
+						value="${res.report_handel }"> <input type="hidden"
+						name="handel_cont" value="${res.handel_cont }"> <input
+						type="hidden" name="report_date" value="${res.report_date }">
+					<input type="hidden" name="ans_yn" value="${res.ans_yn }">
+					<input type="hidden" name="report_idx" value="${res.report_idx }">
+					<button type="submit" class="btn btn-outline-primary"
+						style="transform: translateX(300%);">답변하기</button>
+				</h5>
+			</form>
+			<c:if test="${type eq 'tra' }">
+				<h2>${ res.nick_name}님의문의내역</h2>
+			</c:if>
+			<c:if test="${type eq 'rev' }">
+				<h2>${ res.trainer_name}님의문의내역</h2>
 			</c:if>
 		</div>
+		<div class="ansbox-bottom">
+
+			<div class="col-lg-8 ftco-animate">
+				<div style="float: right">
+					<p id="checkfile" onclick="checkfile();"
+						style="float: right; margin-bottom: -1%; color: #2c396b; cursor: pointer">📁첨부파일</p>
+					<br>
+					<div id="showclose" style="text-align: right; display: none">
+						<c:forEach items="${file }" var="f">
+							<a
+								href="${pageContext.request.contextPath }/resources/
+								upload/${f.rename_filename}">${f.origin_filename }</a>
+							<br>
+						</c:forEach>
+					</div>
+				</div>
+				<h3 class="mb-4">신고내용</h3>
+				<p id="font-size">${res.rep_cont }</p>
+			</div>
+
+			<div class="col-lg-8 ftco-animate">
+				<h3 class="mb-4">처리결과</h3>
+				<c:if test="${res.report_handel ne ' ' }">
+					<p id="font-size">${res.report_handel }</p>
+				</c:if>
+				<c:if test="${res.report_handel eq ' ' }">
+					<p id="font-size">아직 처리결과가 작성되지 않았습니다</p>
+				</c:if>
+			</div>
+
+			<div class="col-lg-8 ftco-animate">
+				<h3 class="mb-4">처리내용</h3>
+				<c:if test="${res.handel_cont ne ' ' }">
+					<p id="font-size">${res.handel_cont }</p>
+				</c:if>
+				<c:if test="${res.handel_cont eq ' ' }">
+					<p id="font-size">아직 처리내용이 작성되지 않았습니다</p>
+				</c:if>
+			</div>
 		</div>
 
-	</div>
-	<%-- 	<div class="ansbox-bottom">
-			<!-- <div id="bt1"></div>
-			<div id="bt2"></div> -->
-			<h3>${res.rep_cont }</h3>
-		</div>
-		<button type="submit"
-			class="btn btn-white btn-outline-white px-4 py-3 mt-3">답변하기</button>
 	</div>
 	<br>
-	<br> --%>
-
-
-	<%-- <h1>${res }</h1> --%>
-
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+		crossorigin="anonymous"></script>
+	<script>
+		function checkfile() {
+			const showclose = document.querySelector('#showclose');
+			if (showclose.style.display == 'none') {
+				showclose.style.display = 'block';
+			} else {
+				showclose.style.display = 'none';
+			}
+		}
+	</script>
 	<script src="resources/js/jquery.min.js"></script>
 	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="resources/js/popper.min.js"></script>

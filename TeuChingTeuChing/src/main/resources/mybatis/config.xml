@@ -7,6 +7,7 @@
 		<typeAlias type="com.borajoin.teuching.member.model.vo.Trainer" alias="Trainer" />
 		<typeAlias type="com.borajoin.teuching.matching.model.vo.Post" alias="Post" />
 		<typeAlias type="com.borajoin.teuching.manager.model.vo.TrainerReport" alias="TrainerReport" />
+		<typeAlias type="common.util.File_Upload" alias="File_Upload" />
 	</typeAliases>
 
 	<mappers>
@@ -14,5 +15,6 @@
 		<mapper resource="/mybatis/mapper/matchingMapper.xml" />
 		<mapper resource="/mybatis/mapper/memberMapper.xml" />
 		<mapper resource="/mybatis/mapper/trainerMapper.xml" />
+		<mapper resource="/mybatis/mapper/fileMapper.xml" />
 	</mappers>
 </configuration>

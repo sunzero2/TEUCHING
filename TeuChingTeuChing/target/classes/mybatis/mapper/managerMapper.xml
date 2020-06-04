@@ -4,41 +4,116 @@
 <mapper namespace="Manager">
 	<select id="selectRevReport" resultType="ReviewReport">
 		select * from(
-			select
-			rownum rnum, n1.* from(
-				select * from
-				tr_rev_report
-				order by report_idx asc
-			)n1)
+		select
+		rownum rnum, n1.* from(
+		select * from
+		tr_rev_report
+		order by report_idx
+		desc
+		)n1)
 		where rnum between #{start} and #{end}
 	</select>
 
 	<select id="selectTraReport" resultType="TrainerReport">
 		select * from(
-			select
-			rownum rnum, n1.* from(
-				select * from
-				tr_tra_report
-				order by report_idx asc
-			)n1)
+		select
+		rownum rnum, n1.* from(
+		select * from
+		tr_tra_report
+		order by report_idx
+		desc
+		)n1)
 		where rnum between #{start} and #{end}
 	</select>
 
 	<select id="revCnt" resultType="int">
-		select count(*) from tr_rev_report
+		select count(*) from
+		tr_rev_report
 	</select>
 
 	<select id="traCnt" resultType="int">
-		select count(*) from tr_tra_report
+		select count(*) from
+		tr_tra_report
 	</select>
-	
-	<select id="traManagerDetail" parameterType="int" resultType="TrainerReport">
+
+	<select id="traManagerDetail" parameterType="int"
+		resultType="TrainerReport">
 		select * from tr_tra_report
 		where report_idx = #{traid}
 	</select>
-	
-	<select id="revManagerDetail" parameterType="int" resultType="ReviewReport">
+
+	<select id="revManagerDetail" parameterType="int"
+		resultType="ReviewReport">
 		select * from tr_rev_report
 		where report_idx = #{revid}
 	</select>
+
+	<update id="updateManagerDetail_rev"
+		parameterType="ReviewReport">
+		update tr_rev_report
+		set report_handel =
+		#{report_handel}, handel_cont = #{handel_cont},
+		ans_yn = 'Y'
+		where
+		report_idx =
+		${report_idx}
+	</update>
+
+	<update id="updateManagerDetail_tra"
+		parameterType="TrainerReport">
+		update tr_tra_report
+		set report_handel =
+		#{report_handel}, handel_cont = #{handel_cont},
+		ans_yn = 'Y'
+		where
+		report_idx =
+		${report_idx}
+	</update>
+
+	<insert id="insertReportTra" parameterType="TrainerReport">
+		insert into
+		tr_tra_report
+		values(s_tra_report_idx.nextval,#{tr_email},
+		#{mem_email}, #{rep_cont}, ' ', ' ', sysdate, 'N', #{nick_name})
+	</insert>
+	<insert id="insertReportRev" parameterType="ReviewReport">
+		insert into
+		tr_rev_report
+		values(s_rev_report_idx.nextval, #{tr_email},
+		#{mem_email}, #{rep_cont}, ' ', ' ', sysdate, 'N', #{trainer_name})
+	</insert>
+
+	<select id="selectTraReportIdx" resultType="int">
+		SELECT LAST_NUMBER
+		FROM
+		USER_SEQUENCES
+		WHERE SEQUENCE_NAME =
+		'S_TRA_REPORT_IDX'
+	</select>
+	<select id="selectRevReportIdx" resultType="int">
+		SELECT LAST_NUMBER
+		FROM
+		USER_SEQUENCES
+		WHERE SEQUENCE_NAME =
+		'S_REV_REPORT_IDX'
+	</select>
+
+	<insert id="insertFile" parameterType="File_Upload">
+		insert into tr_file_upload
+		values(S_FILE_IDX.NEXTVAL, ${table_idx}, #{origin_filename},
+		#{rename_filename}, #{savepath})
+	</insert>
+	
+	<select id="selectTraFile" parameterType="int" resultType="File_Upload">
+		select * from tr_file_upload
+		where table_idx = #{table_idx} and
+		rename_filename like '%TraReport%'
+	</select>
+	
+	<select id="selectRevFile" parameterType="int" resultType="File_Upload">
+		select * from tr_file_upload
+		where table_idx = #{table_idx} and
+		rename_filename like '%RevReport%'
+	</select>
+
 </mapper>
