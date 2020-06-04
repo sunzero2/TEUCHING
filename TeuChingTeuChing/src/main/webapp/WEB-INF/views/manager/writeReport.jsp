@@ -129,7 +129,7 @@ h2 {
 				style="float: left; background-image: url(../resources/img/circle_person.jpg); width: 15%; height: 75%; border: 1px solid black">
 			</div>
 			<form
-				action="${pageContext.request.contextPath }/managerdetail/answer.do"
+				action="${pageContext.request.contextPath }/report/insertReport.do"
 				method="post" enctype="multipart/form-data">
 				<h5>
 					${res.reported }
@@ -143,12 +143,20 @@ h2 {
 			<div class="col-lg-8 ftco-animate">
 				<h3 class="mb-4">신고내용</h3>
 				<input type="file" multiple id="startbutton"
-					class="ajax-file-upload-green"
+					class="ajax-file-upload-green" name="files"
 					style="background-color: pink; width: 100%;" value="Upload">
 				<textarea name="rep_cont" class="form-control"
 					id="exampleFormControlTextarea4"></textarea>
 			</div>
-
+			<input type="hidden" name="type" value="${res.type }">
+			<input type="hidden" name="tr_email" value="${res.tr_email }">
+			<input type="hidden" name="mem_email" value="${res.mem_email }">
+			<c:if test="${res.type eq 'tra' }">
+			<input type="hidden" name="nick_name" value="${res.nick_name }">
+			</c:if>
+			<c:if test="${res.type eq 'rev' }">
+			<input type="hidden" name="trainer_name" value="${res.trainer_name }">
+			</c:if>
 		</div>
 		</form>
 

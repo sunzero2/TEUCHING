@@ -1,16 +1,20 @@
 package com.borajoin.teuching.manager.model.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.borajoin.teuching.manager.model.dao.ManagerDao;
 import com.borajoin.teuching.manager.model.vo.ReviewReport;
 import com.borajoin.teuching.manager.model.vo.TrainerReport;
 
+import common.util.File_Upload;
 import common.util.Paging;
 
 @Service
@@ -58,10 +62,42 @@ public class ManagerServiceImpl implements ManagerService {
 		return md.updateManagerDetail_tra(commandMap);
 	}
 
-	//미완
 	@Override
 	public int insertReport(Map<String, Object> commandMap) {
-		return 0;
+		int res = 0;
+		if (commandMap.get("type").equals("tra")) {
+			res = md.insertReportTra(commandMap);
+		}
+		if (commandMap.get("type").equals("rev")) {
+			res = md.insertReportRev(commandMap);
+		}
+		return res;
+	}
+
+	@Override
+	public int selectTraReportIdx() {
+		return md.selectTraReportIdx();
+	}
+
+	@Override
+	public int selectRevReportIdx() {
+		return md.selectRevReportIdx();
+	}
+
+	@Override
+	public int insertFile(List<File_Upload> fileData) {
+		int res = 0;
+		for (File_Upload file : fileData) {
+			res = md.insertFile(file);
+			MultipartFile mf = (MultipartFile) file.getObj();
+			File f = new File(file.getSavepath());
+			try {
+				mf.transferTo(f);
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return res;
 	}
 
 }

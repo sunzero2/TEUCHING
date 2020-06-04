@@ -1,8 +1,10 @@
 package com.borajoin.teuching.manager.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,12 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.borajoin.teuching.manager.model.service.ManagerService;
+
+import common.util.File_Upload;
 
 @Controller
 public class ManagerController {
@@ -98,11 +101,42 @@ public class ManagerController {
 		return mv;
 	}
 
-	@RequestMapping("/report/insertReport")
-	public ModelAndView reportFileUpload(@RequestParam List<MultipartFile> files, HttpServletRequest request) {
+	@PostMapping("/report/insertReport")
+	public ModelAndView reportFileUpload(@RequestParam Map<String, Object> commandMap, List<MultipartFile> files,
+			HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		String root = request.getSession().getServletContext().getRealPath("");
-//		ms.insertReport(commandMap);
+		List<File_Upload> fileData = new ArrayList<File_Upload>();
+		ms.insertReport(commandMap);
+		// 게시물 insert 가 먼저, 해당 게시물 idx를 가져와서 파일 테이블에 담아야하니까
+		for (MultipartFile mf : files) {
+			UUID uuid = UUID.randomUUID();
+			if (mf.getSize() > 0) {
+				String savepath = root + "/resources/upload/";
+				String type = "";
+				String origin_filename = mf.getOriginalFilename();
+
+				File_Upload file = new File_Upload();
+				if (commandMap.get("type").equals("tra")) {
+					file.setTable_idx(ms.selectTraReportIdx());
+					type = "TraReport";
+				}
+				if (commandMap.get("type").equals("rev")) {
+					file.setTable_idx(ms.selectRevReportIdx());
+					type = "RevReport";
+				}
+				String rename_filename = uuid + "_" + type
+						+ origin_filename.substring(origin_filename.lastIndexOf("."));
+				savepath += rename_filename;
+
+				file.setOrigin_filename(origin_filename);
+				file.setRename_filename(rename_filename);
+				file.setSavepath(savepath);
+				file.setObj(mf);
+				fileData.add(file);
+			}
+		}
+		ms.insertFile(fileData);
 		mv.setViewName("redirect:/profile/review.do");
 		return mv;
 	}

@@ -5,8 +5,8 @@ import java.sql.Date;
 public class TrainerReport {
 
 	private int report_idx; // 신고번호
-	private int tr_email; // 트레이너번호
-	private int mem_email; // 회원번호
+	private String tr_email; // 트레이너번호
+	private String mem_email; // 회원번호
 	private String rep_cont; // 신고내용
 	private String report_handel; // 처리결과
 	private String handel_cont; // 처리내용
@@ -27,19 +27,19 @@ public class TrainerReport {
 		this.report_idx = report_idx;
 	}
 
-	public int getTr_email() {
+	public String getTr_email() {
 		return tr_email;
 	}
 
-	public void setTr_email(int tr_email) {
+	public void setTr_email(String tr_email) {
 		this.tr_email = tr_email;
 	}
 
-	public int getMem_email() {
+	public String getMem_email() {
 		return mem_email;
 	}
 
-	public void setMem_email(int mem_email) {
+	public void setMem_email(String mem_email) {
 		this.mem_email = mem_email;
 	}
 

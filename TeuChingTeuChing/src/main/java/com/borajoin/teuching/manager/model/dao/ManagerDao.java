@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.borajoin.teuching.manager.model.vo.ReviewReport;
 import com.borajoin.teuching.manager.model.vo.TrainerReport;
 
+import common.util.File_Upload;
 import common.util.Paging;
 
 @Repository
@@ -42,14 +43,33 @@ public class ManagerDao {
 	public ReviewReport revManagerDetail(int revid) {
 		return sqlSession.selectOne("Manager.revManagerDetail", revid);
 	}
-	
+
 	public int updateManagerDetail_tra(Map<String, Object> commandMap) {
 		return sqlSession.update("Manager.updateManagerDetail_tra", commandMap);
 	}
-	
+
 	public int updateManagerDetail_rev(Map<String, Object> commandMap) {
 		return sqlSession.update("Manager.updateManagerDetail_rev", commandMap);
 	}
+
+	public int insertReportTra(Map<String, Object> commandMap) {
+		return sqlSession.insert("Manager.insertReportTra", commandMap);
+	}
 	
+	public int insertReportRev(Map<String, Object> commandMap) {
+		return sqlSession.insert("Manager.insertReportRev", commandMap);
+	}
+
+	public int selectTraReportIdx() {
+		return sqlSession.selectOne("Manager.selectTraReportIdx");
+	}
+
+	public int selectRevReportIdx() {
+		return sqlSession.selectOne("Manager.selectRevReportIdx");
+	}
+
+	public int insertFile(File_Upload file) {
+		return sqlSession.insert("Manager.insertFile", file);
+	}
 
 }

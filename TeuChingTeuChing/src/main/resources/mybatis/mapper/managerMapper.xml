@@ -54,7 +54,8 @@
 		set report_handel =
 		#{report_handel}, handel_cont = #{handel_cont},
 		ans_yn = 'Y'
-		where report_idx =
+		where
+		report_idx =
 		${report_idx}
 	</update>
 
@@ -68,5 +69,39 @@
 		report_idx =
 		${report_idx}
 	</update>
+
+	<insert id="insertReportTra" parameterType="TrainerReport">
+		insert into
+		tr_tra_report
+		values(s_tra_report_idx.nextval,#{tr_email},
+		#{mem_email}, #{rep_cont}, ' ', ' ', sysdate, 'N', #{nick_name})
+	</insert>
+	<insert id="insertReportRev" parameterType="ReviewReport">
+		insert into
+		tr_rev_report
+		values(s_rev_report_idx.nextval, #{tr_email},
+		#{mem_email}, #{rep_cont}, ' ', ' ', sysdate, 'N', #{trainer_name})
+	</insert>
+
+	<select id="selectTraReportIdx" resultType="int">
+		SELECT LAST_NUMBER
+		FROM
+		USER_SEQUENCES
+		WHERE SEQUENCE_NAME =
+		'S_TRA_REPORT_IDX'
+	</select>
+	<select id="selectRevReportIdx" resultType="int">
+		SELECT LAST_NUMBER
+		FROM
+		USER_SEQUENCES
+		WHERE SEQUENCE_NAME =
+		'S_REV_REPORT_IDX'
+	</select>
+
+	<insert id="insertFile" parameterType="File_Upload">
+		insert into tr_file_upload
+		values(S_FILE_IDX.NEXTVAL, ${table_idx}, #{origin_filename},
+		#{rename_filename}, #{savepath})
+	</insert>
 
 </mapper>

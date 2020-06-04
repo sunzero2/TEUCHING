@@ -1,14 +1,14 @@
 package common.util;
 
-public class File {
+public class File_Upload {
 	private int file_idx;
 	private int table_idx;
-	private String table_name;
 	private String origin_filename;
 	private String rename_filename;
 	private String savepath;
+	private Object obj;
 
-	public File() {
+	public File_Upload() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -27,14 +27,6 @@ public class File {
 
 	public void setTable_idx(int table_idx) {
 		this.table_idx = table_idx;
-	}
-
-	public String getTable_name() {
-		return table_name;
-	}
-
-	public void setTable_name(String table_name) {
-		this.table_name = table_name;
 	}
 
 	public String getOrigin_filename() {
@@ -61,11 +53,18 @@ public class File {
 		this.savepath = savepath;
 	}
 
+	public Object getObj() {
+		return obj;
+	}
+
+	public void setObj(Object obj) {
+		this.obj = obj;
+	}
+
 	@Override
 	public String toString() {
-		return "File [file_idx=" + file_idx + ", table_idx=" + table_idx + ", table_name=" + table_name
-				+ ", origin_filename=" + origin_filename + ", rename_filename=" + rename_filename + ", savepath="
-				+ savepath + "]";
+		return "File [file_idx=" + file_idx + ", table_idx=" + table_idx + ", origin_filename=" + origin_filename
+				+ ", rename_filename=" + rename_filename + ", savepath=" + savepath + "]";
 	}
 
 }
