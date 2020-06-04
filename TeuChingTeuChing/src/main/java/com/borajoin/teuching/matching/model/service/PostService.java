@@ -25,7 +25,7 @@ public class PostService {
 	public int insertPost(Post post, List<File_Upload> uploads) {
 		int res = postDao.insertPost(post);
 		insertFile(uploads);
-		return 0;
+		return res;
 	}
 
 	public int insertFile(List<File_Upload> uploads) {

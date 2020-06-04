@@ -71,10 +71,14 @@ public class PostController {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession();
 		
-		// webapp까지의 경로를 잡아준다.
-		String root = session.getServletContext().getRealPath("/");
+		// 로그인 구현되면 바꿔야 할 것!!!!!!!!!!!
+		post.setTrEmail("TEST1@naver.com");
+		post.setSports("요가");
+		post.setArea("서울");
+		post.setGender("남");
+		post.setTrainerName("TEST1");
 		
-		// 사용자가 올린 사진의 정보를 담을 List
+		String root = session.getServletContext().getRealPath("/");
 		List<File_Upload> fileData = new ArrayList<>();
 		int i = 0;
 		
@@ -90,7 +94,6 @@ public class PostController {
 			upload.setRename_filename(renameFileName);
 			upload.setSavepath(savePath);
 			upload.setObj(mf);
-			System.out.println(upload);
 			
 			fileData.add(upload);
 			i++;

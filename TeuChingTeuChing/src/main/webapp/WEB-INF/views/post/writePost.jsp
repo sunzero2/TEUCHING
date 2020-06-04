@@ -33,8 +33,6 @@
 	<%@ include file="../include/top.jsp"%>
 	<section style="margin-bottom: 40px;">
 		<form action="/teuching/post/write.do" method="post" onsubmit="return submit_result();" class="postForm" enctype="multipart/form-data">
-			<input type="hidden" name="trEmail" value="TEST1@naver.com">
-			<input type="hidden" name="trainerName" value="TEST1">
 			<div class="addImageWrapper">
 				<div class="addImageDiv">
 					<img src="../resources/img/addImage2.png" class="addImageIcon">
@@ -56,11 +54,11 @@
 			<div>
 				<div class="keywordWrapper">
 					<p class="additional">매칭 키워드 선택</p>
-					<p class="precautions">한 가지씩 꼭 선택해주세요!</p>
+					<p class="precautions">* 필수 선택입니다 *</p>
 					<table class="keywordSearchTable">
 						<tr>
 							<th class="searchTableTh">가격</th>
-							<td style="border-bottom: 1px solid #ffb5b7;"><input class="priceInput" type="text" name="price"></td>
+							<td style="border-bottom: 1px solid #ffb5b7;"><input class="priceInput" type="text" name="price" id="price"></td>
 						</tr>
 						<tr>
 							<th class="searchTableTh">수업목적</th>

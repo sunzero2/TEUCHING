@@ -7,4 +7,8 @@
 		values(S_FILE_IDX.NEXTVAL, ${table_idx}, #{origin_filename},
 		#{rename_filename}, #{savepath})
 	</insert>
+	<insert id="post_insertFile" parameterType="File_Upload">
+		insert into tr_file_upload values(s_file_idx.nextval, s_post_idx.currval, #{origin_filename}, #{rename_filename}, #{savepath})
+	
+	</insert>
 </mapper>

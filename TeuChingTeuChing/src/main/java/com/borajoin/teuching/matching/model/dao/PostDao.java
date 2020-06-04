@@ -21,11 +21,10 @@ public class PostDao {
 	}
 
 	public int insertPost(Post post) {
-
-		return 0;
+		return sqlSession.insert("Matching.insertPost", post);
 	}
 
 	public int insertFile(File_Upload file) {
-		return 0;
+		return sqlSession.insert("File.post_insertFile", file);
 	}
 }
