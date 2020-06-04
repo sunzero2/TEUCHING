@@ -18,5 +18,7 @@ public interface ManagerService {
 	public int updateManagerDetail_rev(Map<String, Object> commandMap);
 	
 	public int updateManagerDetail_tra(Map<String, Object> commandMap);
+	
+	public int insertReport(Map<String, Object> commandMap);
 
 }

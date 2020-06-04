@@ -96,7 +96,6 @@ h2 {
 #font-size {
 	font-size: 15px;
 }
-
 </style>
 </head>
 <body>
@@ -106,7 +105,7 @@ h2 {
 		<div class="ansbox-top">
 			<div
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
-				style="float: left; background-image: url(resources/img/classes-4.jpg); width: 15%; height: 75%;">
+				style="float: left; border: 1px solid black; background-image: url(resources/img/circle_person.jpg); width: 15%; height: 75%;">
 				<c:if test="${ res.ans_yn eq 'Y'}">
 					<div
 						style="text-align: right; transform: translate(-70%, -35%); color: #b91e2d; font-size: 5vw">✔</div>
@@ -137,10 +136,10 @@ h2 {
 				</h5>
 			</form>
 			<c:if test="${type eq 'tra' }">
-				<h2>${ res.nick_name}님의 문의내역 입니다</h2>
+				<h2>${ res.nick_name}님의 문의내역</h2>
 			</c:if>
 			<c:if test="${type eq 'rev' }">
-				<h2>${ res.trainer_name}님의 문의내역 입니다</h2>
+				<h2>${ res.trainer_name}님의 문의내역</h2>
 			</c:if>
 		</div>
 		<div class="ansbox-bottom">

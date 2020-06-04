@@ -70,7 +70,7 @@
 						<div class="desc align-self-md-center">
 							<!-- ===============버튼을 여기에 넣어보았습니다=================== -->
 							<form
-								action="${pageContext.request.contextPath }/insertreport.do">
+								action="${pageContext.request.contextPath }/report/viewreport.do">
 								<input type="hidden" name="tra_email" value="1111"> <input
 									type="hidden" name="mem_email" value="1111"> <input
 									type="hidden" name="nick_name" value="김지수"> <input
@@ -112,7 +112,7 @@
 								<div class="comment-body">
 									<!-- =======================리뷰신고===========================-->
 									<form
-										action="${pageContext.request.contextPath }/insertreport.do">
+										action="${pageContext.request.contextPath }/report/viewreport.do">
 										<input type="hidden" name="tra_email" value="2222"> <input
 											type="hidden" name="mem_email" value="2222"> <input
 											type="hidden" name="nick_name" value="김지수"> <input

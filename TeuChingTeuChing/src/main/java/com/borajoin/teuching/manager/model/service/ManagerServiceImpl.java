@@ -58,4 +58,10 @@ public class ManagerServiceImpl implements ManagerService {
 		return md.updateManagerDetail_tra(commandMap);
 	}
 
+	//미완
+	@Override
+	public int insertReport(Map<String, Object> commandMap) {
+		return 0;
+	}
+
 }

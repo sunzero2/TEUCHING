@@ -1,7 +1,10 @@
 package com.borajoin.teuching.manager.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.borajoin.teuching.manager.model.service.ManagerService;
@@ -86,11 +90,20 @@ public class ManagerController {
 		return mv;
 	}
 
-	@RequestMapping("/insertreport.do")
-	public ModelAndView insertReport(@RequestParam Map<String, Object> commandMap) {
+	@RequestMapping("/report/viewreport.do")
+	public ModelAndView reportView(@RequestParam Map<String, Object> commandMap) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("res", commandMap);
 		mv.setViewName("manager/writeReport");
+		return mv;
+	}
+
+	@RequestMapping("/report/insertReport")
+	public ModelAndView reportFileUpload(@RequestParam List<MultipartFile> files, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		String root = request.getSession().getServletContext().getRealPath("");
+//		ms.insertReport(commandMap);
+		mv.setViewName("redirect:/profile/review.do");
 		return mv;
 	}
 

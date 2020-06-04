@@ -19,29 +19,33 @@
 	rel="stylesheet">
 
 <link rel="stylesheet"
-	href="resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="resources/css/animate.css">
+	href="../resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="../resources/css/animate.css">
 
-<link rel="stylesheet" href="resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="resources/css/magnific-popup.css">
+<link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="../resources/css/magnific-popup.css">
 
-<link rel="stylesheet" href="resources/css/aos.css">
+<link rel="stylesheet" href="../resources/css/aos.css">
 
-<link rel="stylesheet" href="resources/css/ionicons.min.css">
+<link rel="stylesheet" href="../resources/css/ionicons.min.css">
 
-<link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="resources/css/jquery.timepicker.css">
+<link rel="stylesheet" href="../resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="../resources/css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="resources/css/flaticon.css">
-<link rel="stylesheet" href="resources/css/icomoon.css">
-<link rel="stylesheet" href="resources/css/style.css">
+<link rel="stylesheet" href="../resources/css/flaticon.css">
+<link rel="stylesheet" href="../resources/css/icomoon.css">
+<link rel="stylesheet" href="../resources/css/style.css">
 <!-- 기존꺼말고 새로갖다박은거임 -->
 <!-- TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<link href="https://rawgithub.com/hayageek/jquery-upload-file/master/css/uploadfile.css" rel="stylesheet">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="https://rawgithub.com/hayageek/jquery-upload-file/master/js/jquery.uploadfile.min.js"></script>
+<link
+	href="https://rawgithub.com/hayageek/jquery-upload-file/master/css/uploadfile.css"
+	rel="stylesheet">
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script
+	src="https://rawgithub.com/hayageek/jquery-upload-file/master/js/jquery.uploadfile.min.js"></script>
 <style>
 html, body {
 	margin: 0;
@@ -122,28 +126,31 @@ h2 {
 		<div class="ansbox-top">
 			<div
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
-				style="float: left; background-image: url(resources/img/circle_person.jpg); width: 15%; height: 75%;border:1px solid black">
+				style="float: left; background-image: url(../resources/img/circle_person.jpg); width: 15%; height: 75%; border: 1px solid black">
 			</div>
 			<form
 				action="${pageContext.request.contextPath }/managerdetail/answer.do"
-				method="post">
+				method="post" enctype="multipart/form-data">
 				<h5>
 					${res.reported }
 					<button type="submit" class="btn btn-outline-primary"
 						style="transform: translateX(250%);">작성완료</button>
 				</h5>
-			</form>
-			<h2>신고하기</h2>
+				<h2>신고하기</h2>
 		</div>
 		<div class="ansbox-bottom">
 
 			<div class="col-lg-8 ftco-animate">
 				<h3 class="mb-4">신고내용</h3>
-				<input type="file" multiple id="startbutton" class="ajax-file-upload-green" style="background-color:pink;width:100%;" value="Upload">
-				<textarea class="form-control" id="exampleFormControlTextarea4"></textarea>
+				<input type="file" multiple id="startbutton"
+					class="ajax-file-upload-green"
+					style="background-color: pink; width: 100%;" value="Upload">
+				<textarea name="rep_cont" class="form-control"
+					id="exampleFormControlTextarea4"></textarea>
 			</div>
 
 		</div>
+		</form>
 
 	</div>
 	<br>
@@ -152,23 +159,23 @@ h2 {
 	<br>
 	<br>
 	<br>
-	<script src="resources/js/jquery.min.js"></script>
-	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="resources/js/popper.min.js"></script>
-	<script src="resources/js/bootstrap.min.js"></script>
-	<script src="resources/js/jquery.easing.1.3.js"></script>
-	<script src="resources/js/jquery.waypoints.min.js"></script>
-	<script src="resources/js/jquery.stellar.min.js"></script>
-	<script src="resources/js/owl.carousel.min.js"></script>
-	<script src="resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="resources/js/aos.js"></script>
-	<script src="resources/js/jquery.animateNumber.min.js"></script>
-	<script src="resources/js/bootstrap-datepicker.js"></script>
-	<script src="resources/js/jquery.timepicker.min.js"></script>
-	<script src="resources/js/scrollax.min.js"></script>
+	<script src="../resources/js/jquery.min.js"></script>
+	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="../resources/js/popper.min.js"></script>
+	<script src="../resources/js/bootstrap.min.js"></script>
+	<script src="../resources/js/jquery.easing.1.3.js"></script>
+	<script src="../resources/js/jquery.waypoints.min.js"></script>
+	<script src="../resources/js/jquery.stellar.min.js"></script>
+	<script src="../resources/js/owl.carousel.min.js"></script>
+	<script src="../resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="../resources/js/aos.js"></script>
+	<script src="../resources/js/jquery.animateNumber.min.js"></script>
+	<script src="../resources/js/bootstrap-datepicker.js"></script>
+	<script src="../resources/js/jquery.timepicker.min.js"></script>
+	<script src="../resources/js/scrollax.min.js"></script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="resources/js/google-map.js"></script>
-	<script src="resources/js/main.js"></script>
+	<script src="../resources/js/google-map.js"></script>
+	<script src="../resources/js/main.js"></script>
 </body>
 </html>
