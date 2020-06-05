@@ -8,6 +8,7 @@
 		<typeAlias type="com.borajoin.teuching.matching.model.vo.Post" alias="Post" />
 		<typeAlias type="com.borajoin.teuching.manager.model.vo.TrainerReport" alias="TrainerReport" />
 		<typeAlias type="common.util.File_Upload" alias="File_Upload" />
+		<typeAlias type="com.borajoin.teuching.manager.model.vo.Quali" alias="Quali" />
 	</typeAliases>
 
 	<mappers>
