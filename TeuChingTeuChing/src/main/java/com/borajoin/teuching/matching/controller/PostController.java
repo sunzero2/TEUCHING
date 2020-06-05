@@ -48,9 +48,14 @@ public class PostController {
 	* @Method 설명 : 게시글 쓰기 페이지로 이동하는 메소드
 	*/
 	@RequestMapping("/post/writePost.do")
-	public ModelAndView writePost() {
+	public ModelAndView writePost(int postIdx) {
 		ModelAndView mav = new ModelAndView();
-		
+		if(postIdx > 0) {
+			Post post = new Post();
+			post.setPostIdx(postIdx);
+			Map<String, Object> resMap = postService.postDetail(post);
+			mav.addObject("data", resMap);
+		}
 		mav.setViewName("post/writePost");
 		return mav;
 	}
@@ -65,45 +70,60 @@ public class PostController {
 	public ModelAndView write(@RequestParam List<MultipartFile> images, Post post, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession();
-		
-		// 로그인 구현되면 바꿔야 할 것!!!!!!!!!!!
-		post.setTrEmail("TEST1@naver.com");
-		post.setSports("요가");
-		post.setArea("서울");
-		post.setGender("남");
-		post.setTrainerName("TEST1");
-		
 		String root = session.getServletContext().getRealPath("/");
 		List<File_Upload> fileData = new ArrayList<>();
 		int i = 0;
 		
 		for(MultipartFile mf : images) {
-			File_Upload upload = new File_Upload();
-			String savePath = root + "resources\\upload\\";
-			String originFileName = mf.getOriginalFilename();
-			UUID uuid = UUID.randomUUID();
-			String renameFileName = uuid + "_post" + originFileName.substring(originFileName.lastIndexOf("."));
-			savePath += renameFileName;
-			
-			upload.setOrigin_filename(originFileName);
-			upload.setRename_filename(renameFileName);
-			upload.setSavepath(savePath);
-			upload.setObj(mf);
-			
-			fileData.add(upload);
-			i++;
+			if(!mf.getOriginalFilename().equals("")) {
+				File_Upload upload = new File_Upload();
+				String savePath = root + "resources\\upload\\";
+				String originFileName = mf.getOriginalFilename();
+					
+				UUID uuid = UUID.randomUUID();
+				String renameFileName = uuid + "_post" + originFileName.substring(originFileName.lastIndexOf("."));
+				savePath += renameFileName;
+					
+				upload.setOrigin_filename(originFileName);
+				upload.setRename_filename(renameFileName);
+				upload.setSavepath(savePath);
+				upload.setObj(mf);
+					
+				fileData.add(upload);
+				i++;
+			}
 		}
 		
-		int res = postService.insertPost(post, fileData);
+		if(post.getPostIdx() > 0) {
+			edit(post, fileData);
+		} else {
+			// 로그인 구현되면 바꿔야 할 것!!!!!!!!!!!
+			post.setTrEmail("TEST1@naver.com");
+			post.setSports("요가");
+			post.setArea("서울");
+			post.setGender("남");
+			post.setTrainerName("TEST1");
+			int res = postService.insertPost(post, fileData);
+		}
+		
 		mav.setViewName("redirect:/matching/main.do");
 		return mav;
 	}
 	
+	/**
+	* @Method Name : edit
+	* @작성일 : 2020. 6. 6.
+	* @작성자 : 이혜영 
+	* @Method 설명 : 게시글 수정 메소드
+	*/
 	@RequestMapping("/post/editpost.do")
-	public ModelAndView edit(String postIdx) {
+	public ModelAndView edit(Post post, List<File_Upload> fileData) {
 		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("post/writePost");
+		for (File_Upload file : fileData) {
+			file.setTable_idx(post.getPostIdx());
+		}
+		int res = postService.updatePost(post, fileData);
+		mav.setViewName("redirect:/matching/main.do");
 		return mav;
 	}
 }

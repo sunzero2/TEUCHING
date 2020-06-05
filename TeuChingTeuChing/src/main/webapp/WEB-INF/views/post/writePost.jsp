@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,11 +44,21 @@
 			<div>
 				<div style="margin-top: 36px; margin-left: 50px; width: 1000px;">
 					<div class="titleWrapper">
-						<input class="titleInput" name="postTitle" placeholder="제목을 입력하세요.">
+						<c:if test="${data == null }">
+							<input class="titleInput" name="postTitle" placeholder="제목을 입력하세요.">
+						</c:if>
+						<c:if test="${data != null }">
+							<input class="titleInput" name="postTitle" placeholder="제목을 입력하세요." value="${data.post.postTitle}">
+						</c:if>
 					</div>
 					<hr>
 					<div class="contentWrapper">
-						<textarea class="contentInput" name="postCont" placeholder="내용을 입력하세요."></textarea>
+						<c:if test="${data == null }">
+							<textarea class="contentInput" name="postCont" placeholder="내용을 입력하세요."></textarea>
+						</c:if>
+						<c:if test="${data != null }">
+							<textarea class="contentInput" name="postCont" placeholder="내용을 입력하세요.">${data.post.postCont}</textarea>
+						</c:if>
 					</div>
 				</div>
 			</div>
@@ -58,7 +69,12 @@
 					<table class="keywordSearchTable">
 						<tr>
 							<th class="searchTableTh">가격</th>
-							<td style="border-bottom: 1px solid #ffb5b7;"><input class="priceInput" type="text" name="price" id="price"></td>
+							<c:if test="${data == null}">
+								<td style="border-bottom: 1px solid #ffb5b7;"><input class="priceInput" type="text" name="price" id="price"></td>
+							</c:if>
+							<c:if test="${data != null}">
+								<td style="border-bottom: 1px solid #ffb5b7;"><input class="priceInput" type="text" name="price" id="price" value="${data.post.price}"></td>
+							</c:if>
 						</tr>
 						<tr>
 							<th class="searchTableTh">수업목적</th>
@@ -98,12 +114,44 @@
 			<div class="previewWrapper">
 				<p class="previewText">미리보기</p>
 				<div class="pre_div">
-				
+					<c:if test="${data.fList != null}">
+						<c:forEach items="${data.fList}" var="image">
+							<img class="pre_img" src="../resources/upload/${image.rename_filename}">
+						</c:forEach>
+					</c:if>
 				</div>
+				<c:if test="${data != null}">
+					<input type="hidden" name="postIdx" value="${data.post.postIdx}">
+				</c:if>
 			<button class="uploadBtn">저장</button>
 			</div>
 		</form>
 	</section>
 	<script src="../resources/js/post/post.js"></script>
+	<script>
+		var arr = ['purpose', 'classSize', 'place'];
+		var keyword;
+		var purpose;
+		var classSize;
+		var place;
+		
+		if(${data != null}) {
+			purpose = '${data.post.purpose}';
+			classSize = '${data.post.classSize}';
+			place = '${data.post.place}';
+			keyword = [purpose, classSize, place];
+			
+			for(i = 0; i < arr.length; i++) {
+				document.getElementsByName(arr[i]).forEach(function(el) {
+					if(el.value == keyword[i]) {
+						el.checked = true;
+						el.style.background = "#ff9090";
+						el.style.color = "white";
+						document.getElementById(arr[i]).value = el.value;
+					}
+				})
+			}
+		}
+	</script>
 </body>
 </html>

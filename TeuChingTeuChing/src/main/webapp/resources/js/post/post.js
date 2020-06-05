@@ -3,6 +3,12 @@ var uploadResult = true;
 var keywordResult = true;
 var contentResult = true;
 var imageResult = true;
+var existResult = false;
+
+var exist = document.querySelectorAll('.pre_img');
+if(exist != null) {
+	existResult = true;
+}
 
 function changeImg() {
 	document.querySelector('.addImageIcon').src = '../resources/img/addImage.png';
@@ -92,11 +98,13 @@ function submit_result() {
 		alert("파일 갯수 혹은 확장자를 확인해주세요.");
 	}
 	
-	if(imgs.files.length < 1) {
-		alert("사진은 1장 이상 첨부해야합니다.");
-		imageResult = false;
-	} else {
-		imageResult = true;
+	if(!existResult) {
+		if(imgs.files.length < 1) {
+			alert("사진은 1장 이상 첨부해야합니다.");
+			imageResult = false;
+		} else {
+			imageResult = true;
+		}
 	}
 	
 	if(price.value == "" || purpose.value == "" || classSize.value == "" || place.value == "") {
@@ -108,6 +116,9 @@ function submit_result() {
 	
 	if(title.value == "" || content.value == "") {
 		alert("제목과 내용은 필수로 작성하셔야 합니다.");
+		contentResult = false;
+	} else if(content.value.length >= 3000 ){
+		alert("내용은 3,000자 이하로 작성하셔야 합니다. 현재 글자 수 : " + content.value.length);
 		contentResult = false;
 	} else {
 		contentResult = true;
