@@ -9,6 +9,8 @@
 	</insert>
 	<insert id="post_insertFile" parameterType="File_Upload">
 		insert into tr_file_upload values(s_file_idx.nextval, s_post_idx.currval, #{origin_filename}, #{rename_filename}, #{savepath})
-	
 	</insert>
+	<select id="post_selectFile" resultType="File_Upload">
+		select * from tr_file_upload where table_idx = #{postIdx} and rename_filename like '%post%'
+	</select>
 </mapper>
