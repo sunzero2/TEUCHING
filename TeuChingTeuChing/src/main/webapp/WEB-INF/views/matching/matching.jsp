@@ -30,7 +30,7 @@
 </head>
 <body>
 <%@ include file="../include/top.jsp" %>
-	<section class="ftco-section" style="padding-top: 0px;">
+	<header id="header" class="ftco-section" style="padding-top: 0px;">
 		<div class="container">
 			<div class="searchWordWrapper">
 				<div style="margin-left: 35px;">
@@ -45,8 +45,10 @@
 				</div>
 			</div>
 		</div>
-	</section>
-	
+	</header>
+	<a href="#header" id="topUp">
+		<img style="width: 52px;" src="../resources/img/topUp.png">
+	</a>
 	<section class="container" style="width: 840px;">
 		<div>
 			<table class="keywordSearchTable">
@@ -199,22 +201,6 @@
 	<section class="container" style="margin-top: 13%; margin-bottom: 10%;">
 		<table id="postTable" style="margin-left: auto; margin-right: auto;">
 		</table>
-		<!-- <div class="row mt-5" style="margin-left: 41%;">
-			<div class="col">
-				<div class="block-27">
-					<ul>
-						<li><a href="#">&lt;</a></li>
-						<li class="active"><span>1</span></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">&gt;</a></li>
-					</ul>
-				</div>
-			</div>
-		</div> -->
-		<!-- .col-md-8 -->
 	</section>
 	<%@ include file="../include/footer.jsp" %>
 	<script src="../resources/js/jquery.min.js"></script>

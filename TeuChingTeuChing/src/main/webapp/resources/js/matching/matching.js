@@ -120,6 +120,7 @@ document.getElementById('writeBtn').addEventListener('click', function() {
 })
 
 function createTable() {
+	document.getElementById('topUp').style.display = 'block';
 	// post list 생성할 table
 	var table = document.getElementById('postTable');
 	table.innerHTML = "";
@@ -181,7 +182,9 @@ function createTable() {
 		titleLink.innerText = pList[i].postTitle;
 		title.append(titleLink);
 		
-		var content = document.createElement('p');
+		var content = document.createElement('div');
+		content.style.height = '30px';
+		content.style.overflow = 'hidden';
 		content.innerText = pList[i].postCont;
 		body.append(content);
 	}

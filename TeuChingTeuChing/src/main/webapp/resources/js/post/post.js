@@ -114,6 +114,7 @@ function submit_result() {
 	}
 	
 	if(uploadResult == true && imageResult == true && keywordResult == true && contentResult == true) {
+		alert("게시글이 정상적으로 작성되었습니다.");
 		final = true;
 	} else {
 		final = false;
