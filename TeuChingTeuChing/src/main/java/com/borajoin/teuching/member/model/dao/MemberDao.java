@@ -34,7 +34,7 @@ public class MemberDao {
 		return res;
 	}
 	
-	//일반회원 이메일 중복확인
+	//회원가입 이메일 중복체크 Dao
 	public int emailChk(Map<String,Object> data) {
 		System.out.println("==>메일 중복체크!");
 		 

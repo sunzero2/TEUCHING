@@ -43,7 +43,7 @@ public class MemberServiceImpl implements MemberService{
 		return res;
 	}
 	
-	// 일반회원 이메일 중복체크
+	// 회원가입 이메일 중복체크  Service
 	@Override
 	public int  emailChk(Map<String, Object> data){
 		int res = md.emailChk(data);

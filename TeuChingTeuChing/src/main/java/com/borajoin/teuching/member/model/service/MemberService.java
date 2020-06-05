@@ -18,7 +18,7 @@ public interface MemberService {
 	//일반회원 닉네임 체크
 	 public int nickChk(String nickname) throws SQLException;
 	 
-	//이메일 체크
+	//이메일 체크 Service
 	 public int emailChk(Map<String, Object> data) throws SQLException;
 	
 	 //일반회원 로그인

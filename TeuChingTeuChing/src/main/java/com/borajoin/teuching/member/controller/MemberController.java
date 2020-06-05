@@ -180,19 +180,24 @@ public class MemberController {
 		return Integer.toString(result);
 	}
 	
-	// 일반회원 - 이메일 중복체크
+	// 회원 이메일 중복체크
 	@RequestMapping(value = "/emailChk.do", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String emailChk(@RequestParam Map<String,Object> data) throws SQLException {
 
-		data.put("table", "tr_member");
-		int result=ms.emailChk(data);
+		System.out.println(data + "처음 매핑 타고 들어오는 Map의 데이터 값");
 		
-		if(result<1) {
-			data.put("table", "tr_trainer");
-			result=ms.emailChk(data);
+		data.put("table", "tr_member");  //data Map에 key 값으로 table을 넣고, 이메일을 검색하는 db의 테이블명 "tr_member"을 넣기.
+		System.out.println(data + "Map에 이메일과 테이블명이 들어왔다!");
+		
+		int result=ms.emailChk(data); //Map에 들어있는 값을 가지고 Service와 Dao를 타고 Mapper에서 결과를 가져와서 result에 담는다. 
+		System.out.println(result + "   ==>  tr_member 테이블에서 이메일 검색 결과");
+		
+		if(result<1) {				//m_member 테이블에서 이메일 검색 결과가 0이면 if문이 실행되도록 설정.
+			data.put("table", "tr_trainer"); //data에 이메일을 검색하는 테이블명 "tr_trainer" 넣기
+			result=ms.emailChk(data);	//이메일 정보와 "tr_trainer" 테이블 명을 가지고 결과를 가져와서 result에 담는다.
+			System.out.println(result + "  ==> tr_trainer 테이블에서 이메일 검색 결과");
 		}
-		
 		
 		return Integer.toString(result);
 	}

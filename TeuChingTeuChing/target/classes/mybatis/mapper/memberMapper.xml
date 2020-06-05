@@ -17,7 +17,9 @@
 		select count(*) from tr_member where NICKNAME = #{nickname}
 	</select>
 	
-	<!--회원 이메일 중복 체크 -->
+	
+	
+	<!--회원 이메일 중복 체크 Mapper -->
 	<select id="emailChk" resultType="int">
 		select count(*) from ${table} where
 		<if test='table=="tr_trainer"'>
@@ -27,6 +29,8 @@
 			mem_email = #{email}
 		</if>
 	</select>
+		
+		
 		
 	<!-- 일반멤버 닉네임... 가져오기  -->
 	<select id ="selectMemberId" resultType="String">
