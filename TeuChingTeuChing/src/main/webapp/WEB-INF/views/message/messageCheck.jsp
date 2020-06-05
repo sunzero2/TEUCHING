@@ -49,7 +49,20 @@ html, body {
 	width: 84%;
 	text-align: center;
 	transform: translateX(9%);
-	padding:2%1%1%1%;
+}
+
+.purple-border textarea {
+	border: 1px solid #ba68c8;
+}
+
+.purple-border .form-control:focus {
+	border: 1px solid #ba68c8;
+	box-shadow: 0 0 0 0.2rem rgba(186, 104, 200, .25);
+}
+
+.green-border-focus .form-control:focus {
+	border: 1px solid #8bc34a;
+	box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
 }
 
 p {
@@ -59,25 +72,24 @@ p {
 }
 
 #msgdiv {
-	height: 196px;
+	height: 200px;
+	border: 1px solid black;
 	text-align: left;
 	padding: 1% 1% 1% 1%;
 }
 </style>
 </head>
 <body>
-	<form action="">
+	<form action="${pageContext.request.contextPath }/messageans.do">
 		<div class="wrapper">
-			<p>쪽지 보내기</p>
-			<div id="msgdiv">
-				<textarea class="form-control" id="exampleFormControlTextarea4"></textarea>
-				<br> <input type="hidden" name="tr_email" value=""> <input
-					type="hidden" name="mem_email" value=""> <input
-					type="hidden" name="msg_title" value=""> <input
-					type="hidden" name="msg_cont" value="">
-				<button type="submit" class="btn btn-outline-primary"
-					style="float:right; background-color: pink; color: white">보내기</button>
-			</div>
+			<p>쪽지 확인</p>
+			<div id="msgdiv">하하하핳하하하하하ㅏ하하 예약 가능하십니더!!</div>
+			<br> <input type="hidden" name="tr_email" value=""> <input
+				type="hidden" name="mem_email" value=""> <input
+				type="hidden" name="msg_title" value=""> <input
+				type="hidden" name="msg_cont" value="">
+			<button type="submit" class="btn btn-outline-primary"
+				style="float: right; background-color: pink; color: white">답장하기</button>
 		</div>
 	</form>
 	<script src="resources/js/jquery.min.js"></script>

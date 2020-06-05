@@ -224,4 +224,5 @@
 		WHERE 
 			QUALI_IDX = #{quali_idx}
 	</update>
+	
 </mapper>
