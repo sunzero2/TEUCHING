@@ -17,16 +17,52 @@
 		select count(*) from tr_member where NICKNAME = #{nickname}
 	</select>
 	
-	<!-- 일반회원 이메일 중복 체크 -->
+	
+	
+	<!--회원 이메일 중복 체크 Mapper -->
 	<select id="emailChk" resultType="int">
-		select count(*) from tr_member where MEM_EMAIL = #{email}
+		select count(*) from ${table} where
+		<if test='table=="tr_trainer"'>
+			tr_email = #{email}
+		</if>
+		<if test='table=="tr_member"'>
+			mem_email = #{email}
+		</if>
 	</select>
+		
+		
 		
 	<!-- 일반멤버 닉네임... 가져오기  -->
 	<select id ="selectMemberId" resultType="String">
  		select NICKNAME from tr_member where NICKNAME = #{nickName}
  	</select>
  
+ 	
+ 	<!-- 트레이너 회원가입 -->
+	<insert id="joinTrainer">
+		insert into TR_TRAINER VALUES(#{email}, #{password}, #{nickname}, #{gender}, #{weight}, #{height}
+				, #{cell}, #{career}, #{address}, #{address_detail}, #{prefer1}, #{prefer2}, #{prefer3}, #{photo}, 0, 'N', 'N')
+	</insert>
+	
+	<!-- 일반회원 로그인 -->
+	<select id="m_login" resultType="Member">
+		select mem_email, nickname, gender, cell, address
+		from tr_member where mem_email = #{email} and password = #{password}
+	</select>
+	 	
+ 		<!-- 일반회원 로그인 -->
+	<select id="t_login" resultMap="trainerResult">
+		select tr_email, trainer_name, gender, weight, height, cell, career, address,
+		address_detail, prefer_add1, prefer_add2, prefer_add3, photo, tr_like
+		from tr_trainer where tr_email = #{email} and password = #{password}
+	</select>
+ 	
+ 	<resultMap id="trainerResult" type="Trainer">
+ 		<result column ="trainer_name" property="trainerName"/>
+ 	</resultMap>
+ 	
+ 	
+ 	
  	
  	
  	

@@ -1,16 +1,11 @@
 package com.borajoin.teuching.matching.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,9 +34,9 @@ public class PostController {
 		ModelAndView mav = new ModelAndView();
 		Post data = new Post();
 		data.setPostIdx(postNo);
-		Post post = postService.postDetail(data);
+		Map<String, Object> resMap = postService.postDetail(data);
 		
-		mav.addObject("post", post);
+		mav.addObject("data", resMap);
 		mav.setViewName("post/postDetail");
 		return mav;
 	}
@@ -71,10 +66,14 @@ public class PostController {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession();
 		
-		// webapp까지의 경로를 잡아준다.
-		String root = session.getServletContext().getRealPath("/");
+		// 로그인 구현되면 바꿔야 할 것!!!!!!!!!!!
+		post.setTrEmail("TEST1@naver.com");
+		post.setSports("요가");
+		post.setArea("서울");
+		post.setGender("남");
+		post.setTrainerName("TEST1");
 		
-		// 사용자가 올린 사진의 정보를 담을 List
+		String root = session.getServletContext().getRealPath("/");
 		List<File_Upload> fileData = new ArrayList<>();
 		int i = 0;
 		
@@ -83,21 +82,28 @@ public class PostController {
 			String savePath = root + "resources\\upload\\";
 			String originFileName = mf.getOriginalFilename();
 			UUID uuid = UUID.randomUUID();
-			String renameFileName = uuid + "_post" + originFileName.substring(originFileName.lastIndexOf(".") + 1);
+			String renameFileName = uuid + "_post" + originFileName.substring(originFileName.lastIndexOf("."));
 			savePath += renameFileName;
 			
 			upload.setOrigin_filename(originFileName);
 			upload.setRename_filename(renameFileName);
 			upload.setSavepath(savePath);
 			upload.setObj(mf);
-			System.out.println(upload);
 			
 			fileData.add(upload);
 			i++;
 		}
 		
 		int res = postService.insertPost(post, fileData);
-		mav.setViewName("matching/matching");
+		mav.setViewName("redirect:/matching/main.do");
+		return mav;
+	}
+	
+	@RequestMapping("/post/editpost.do")
+	public ModelAndView edit(String postIdx) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("post/writePost");
 		return mav;
 	}
 }

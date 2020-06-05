@@ -55,4 +55,8 @@
 	<select id="postDetail" resultMap="postMap">
 		select * from tr_post where post_idx=#{postIdx}
 	</select>
+	
+	<insert id="insertPost" parameterType="Post">
+		insert into tr_post values(s_post_idx.nextval, #{trEmail}, #{trainerName}, #{postTitle}, #{postCont}, #{purpose}, #{sports}, #{area}, #{classSize}, #{gender}, #{place}, #{price}, sysdate)
+	</insert>
 </mapper>

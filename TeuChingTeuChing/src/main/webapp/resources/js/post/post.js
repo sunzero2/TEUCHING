@@ -1,4 +1,8 @@
-var result = true;
+var final = true;
+var uploadResult = true;
+var keywordResult = true;
+var contentResult = true;
+var imageResult = true;
 
 function changeImg() {
 	document.querySelector('.addImageIcon').src = '../resources/img/addImage.png';
@@ -19,12 +23,12 @@ function preview(target) {
 	
 	if(files.length > 5 ) {
 		alert("최대 5장까지만 업로드 가능합니다.");
-		result = false;
+		uploadResult = false;
 	} else {
 		fileArr.forEach(function(f) {
 			if(!f.type.match("image/.*")) {
 				alert("이미지만 업로드 가능합니다.");
-				result = false;
+				uploadResult = false;
 				return;
 			} else {
 				var reader = new FileReader();
@@ -35,20 +39,12 @@ function preview(target) {
 					img.className = 'pre_img';
 					preview.append(img);
 				}
-				
 				reader.readAsDataURL(f);
 				
-				result = true;
+				uploadResult = true;
 			}
 		})
 	}
-}
-
-function submit_result() {
-	if(!result) {
-		alert("파일 갯수 혹은 확장자를 확인해주세요. 이미지만 업로드 가능합니다.");
-	}
-	return result;
 }
 
 document.querySelectorAll(".keywordBtn").forEach(function(el) {
@@ -58,7 +54,7 @@ document.querySelectorAll(".keywordBtn").forEach(function(el) {
 			v.target.style.background = "white";
 			v.target.style.color = "#ff9090";
 			
-			reset(el.name, 'null');
+			reset(el.name, null);
 		} else {
 			el.checked = true;
 			v.target.style.background = "#ff9090";
@@ -81,4 +77,48 @@ function reset(name, value) {
 	})
 	
 	document.getElementById(name).value = value;
+}
+
+function submit_result() {
+	var imgs = document.querySelector('#addImageHidden');
+	var price = document.getElementById('price');
+	var purpose = document.getElementById('purpose');
+	var classSize = document.getElementById('classSize');
+	var place = document.getElementById('place');
+	var title = document.querySelector('.titleInput');
+	var content = document.querySelector('.contentInput');
+	
+	if(!uploadResult) {
+		alert("파일 갯수 혹은 확장자를 확인해주세요.");
+	}
+	
+	if(imgs.files.length < 1) {
+		alert("사진은 1장 이상 첨부해야합니다.");
+		imageResult = false;
+	} else {
+		imageResult = true;
+	}
+	
+	if(price.value == "" || purpose.value == "" || classSize.value == "" || place.value == "") {
+		alert("금액과 키워드는 필수 선택사항입니다. 한 가지씩 선택해주세요.");
+		keywordResult = false;
+	} else {
+		keywordResult = true;
+	}
+	
+	if(title.value == "" || content.value == "") {
+		alert("제목과 내용은 필수로 작성하셔야 합니다.");
+		contentResult = false;
+	} else {
+		contentResult = true;
+	}
+	
+	if(uploadResult == true && imageResult == true && keywordResult == true && contentResult == true) {
+		alert("게시글이 정상적으로 작성되었습니다.");
+		final = true;
+	} else {
+		final = false;
+	}
+	
+	return final;
 }

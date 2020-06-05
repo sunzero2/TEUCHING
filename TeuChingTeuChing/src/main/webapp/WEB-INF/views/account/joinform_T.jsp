@@ -47,10 +47,7 @@ background-color: transparent !important;
 				<div class="col-xl-8 m-auto order-xl-1" style="margin-top: 5% !important; margin-bottom: 4% !important;">
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
 					<form id="signFrm" name="signFrm"
-							<%-- action="<%=request.getContextPath()%>/member/joinemailCheck.do" --%>
-	       					action="<%=request.getContextPath()%>/member/joinTrainerImple.do"
-	    				    method="post"
-							>
+	       					action="<%=request.getContextPath()%>/member/joinTrainerImple.do" method="post">
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
 								<div class="col-8">
@@ -103,7 +100,7 @@ background-color: transparent !important;
 										<div class="col-lg-6">
 											<div class="form-group focused">
 												<label class="form-control-label">성함
-													</label> <input type="text" id="name" name="name"
+													</label> <input type="text" id="nickname" name="nickname"
 													class="form-control form-control-alternative">
 											</div>
 										</div>
@@ -236,9 +233,9 @@ background-color: transparent !important;
 				alert("이메일을 입력해주세요.");
 				$('#email').focus();
 				return;
-			}else if($.trim($('#name').val()) == ''){
+			}else if($.trim($('#nickname').val()) == ''){
 				alert("성함을 입력해주세요.");
-				$('#name').focus();
+				$('#nickname').focus();
 				return;
 			}else if($.trim($('#password_1').val()) == ''){
 				alert("패스워드를 입력해주세요.");
@@ -273,8 +270,8 @@ background-color: transparent !important;
 		
 		$('#check_email').click(function(){
 			$.ajax({
-				url: "${pageContext.request.contextPath}/t_emailChk.do",
-				type: "GET",
+				url: "${pageContext.request.contextPath}/emailChk.do",
+				type: "POST",
 				data:{
 					"email":$('#email').val()
 				},

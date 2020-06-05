@@ -35,8 +35,6 @@ public class MemberServiceImpl implements MemberService{
 		return res;
 	}
 	
-	
-	
 	// 일반회원 닉네임 중복체크
 	@Override
 	public int nickChk(String nickname){
@@ -45,21 +43,31 @@ public class MemberServiceImpl implements MemberService{
 		return res;
 	}
 	
-	// 일반회원 이메일 중복체크
+	// 회원가입 이메일 중복체크  Service
 	@Override
-	public int  emailChk(String email){
-		int res = md.emailChk(email);
+	public int  emailChk(Map<String, Object> data){
+		int res = md.emailChk(data);
 		
 		return res;
 	}
 
-	// 트레이너 이메일 중복체크
-	@Override
-	public int t_emailChk(String email) {
-		int res = md.t_emailChk(email);
-
+	
+	//일반회원 로그인 
+	public Member m_login(Map<String, Object> commandMap) throws SQLException {
+		Member res = null;
+		res = md.m_login(commandMap);
+		System.out.println(res);
 		return res;
 	}
+	
+	// 트레이너 로그인
+	public Trainer t_login(Map<String, Object> commandMap) throws SQLException {
+		Trainer res = null;
+		res = md.t_login(commandMap);
+		System.out.println(res);
+		return res;
+	}
+	
 
 	@Override
 	public int insertFile(List<Map<String, Object>> fileData) {

@@ -168,5 +168,9 @@
 	<script src="../resources/js/jquery.timepicker.min.js"></script>
 	<script src="../resources/js/scrollax.min.js"></script>
 	<script src="../resources/js/main.js"></script>
+	<!-- <script>
+		$(".modal-content").load("loginModal");
+	</script> -->
+	
 </body>
 </html>

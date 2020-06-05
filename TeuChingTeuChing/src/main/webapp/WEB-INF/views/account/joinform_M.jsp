@@ -46,10 +46,7 @@ background-color: transparent !important;
 				<div class="col-xl-8 m-auto order-xl-1" style="margin-top: 5% !important;">
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
 					<form id="signFrm" name="signFrm"
-							<%-- action="<%=request.getContextPath()%>/member/joinemailCheck.do" --%>
-	       					action="<%=request.getContextPath()%>/member/joinMemberImple.do"
-	    				    method="post"
-							>
+	       					action="<%=request.getContextPath()%>/member/joinMemberImple.do" method="post">
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
 								<div class="col-8">
@@ -238,7 +235,7 @@ background-color: transparent !important;
 		$('#check_email').click(function(){
 			$.ajax({
 				url: "${pageContext.request.contextPath}/emailChk.do",
-				type: "GET",
+				type: "POST",
 				data:{
 					"email":$('#email').val()
 				},

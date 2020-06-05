@@ -20,12 +20,15 @@ public class PostDao {
 		return sqlSession.selectOne("Matching.postDetail", data);
 	}
 
+	public List<File_Upload> getFiles(int postIdx) {
+		return sqlSession.selectList("File.post_selectFile", postIdx);
+	}
+	
 	public int insertPost(Post post) {
-
-		return 0;
+		return sqlSession.insert("Matching.insertPost", post);
 	}
 
 	public int insertFile(File_Upload file) {
-		return 0;
+		return sqlSession.insert("File.post_insertFile", file);
 	}
 }
