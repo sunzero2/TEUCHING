@@ -3,6 +3,7 @@ package com.borajoin.teuching.manager.model.service;
 import java.util.List;
 import java.util.Map;
 
+import com.borajoin.teuching.manager.model.vo.Quali;
 import com.borajoin.teuching.manager.model.vo.ReviewReport;
 import com.borajoin.teuching.manager.model.vo.TrainerReport;
 
@@ -33,5 +34,14 @@ public interface ManagerService {
 	public List<File_Upload> selectTraFile(int table_idx);
 	
 	public List<File_Upload> selectRevFile(int table_idx);
+	
+	public Map<String, Object> selectQuali(int currentpage);
+	
+	public int qualiAllCnt();
+	
+	public Quali selectQualiDetail(String qualiidx);
+	
+	public int updateQualiYn(int quali_idx);
+	
 
 }

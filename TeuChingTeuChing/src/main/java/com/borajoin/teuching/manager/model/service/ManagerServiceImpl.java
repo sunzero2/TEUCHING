@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.borajoin.teuching.manager.model.dao.ManagerDao;
+import com.borajoin.teuching.manager.model.vo.Quali;
 import com.borajoin.teuching.manager.model.vo.ReviewReport;
 import com.borajoin.teuching.manager.model.vo.TrainerReport;
 
@@ -105,10 +106,35 @@ public class ManagerServiceImpl implements ManagerService {
 	public List<File_Upload> selectTraFile(int table_idx) {
 		return md.selectTraFile(table_idx);
 	}
-	
+
 	@Override
 	public List<File_Upload> selectRevFile(int table_idx) {
 		return md.selectRevFile(table_idx);
+	}
+
+	@Override
+	public Map<String, Object> selectQuali(int currentpage) {
+		Map<String, Object> res = new HashMap<String, Object>();
+		Paging paging = new Paging(qualiAllCnt(), currentpage, 4);
+		List<Quali> quali = md.selectQuali(paging);
+		res.put("paging", paging);
+		res.put("quali", quali);
+		return res;
+	}
+
+	@Override
+	public int qualiAllCnt() {
+		return md.qualiAllCnt();
+	}
+
+	@Override
+	public Quali selectQualiDetail(String qualiidx) {
+		return md.selectQualiDetail(qualiidx);
+	}
+
+	@Override
+	public int updateQualiYn(int quali_idx) {
+		return md.updateQualiYn(quali_idx);
 	}
 
 }

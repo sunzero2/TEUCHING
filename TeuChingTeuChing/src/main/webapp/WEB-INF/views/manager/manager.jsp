@@ -49,6 +49,11 @@
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<!------ Include the above in your HEAD tag ---------->
 	
+	<div style="height:50px;width:100%;text-align:center" class="div">
+		<h4><a style="margin-right:1%" href="${pageContext.request.contextPath }/manager.do">🚨신고</a>
+		<a href="${pageContext.request.contextPath }/quali.do">🏆자격증명</a></h4>
+	</div>
+	<br>
 	<div class="container" style="transform: translateX(5%)">
 
 		<div class="row">
@@ -81,30 +86,30 @@
 								<c:if test="${res.resTra.pagingTra.blockStart le 1 }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?traCurrentPage=${res.resTra.pagingTra.blockStart}">&lt;</a></li>
+								/manager.do?tracurrentpage=${res.resTra.pagingTra.blockStart}">&lt;</a></li>
 								</c:if>
 								<c:if test="${res.resTra.pagingTra.blockStart gt 1 }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?traCurrentPage=${res.resTra.pagingTra.blockStart-1}">&lt;</a></li>
+								/manager.do?tracurrentpage=${res.resTra.pagingTra.blockStart-1}">&lt;</a></li>
 								</c:if>
 								<c:forEach begin="${res.resTra.pagingTra.blockStart }"
 									end="${res.resTra.pagingTra.blockEnd }" var="pt">
 									<li class="active"><span> <a
-											href="${pageContext.request.contextPath }/manager.do?traCurrentPage=${pt}">${pt }</a>
+											href="${pageContext.request.contextPath }/manager.do?tracurrentpage=${pt}">${pt }</a>
 									</span></li>
 								</c:forEach>
 								<c:if
 									test="${res.resTra.pagingTra.blockEnd lt res.resTra.pagingTra.lastPage }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?traCurrentPage=${res.resTra.pagingTra.blockEnd+1}">&gt;</a></li>
+								/manager.do?tracurrentpage=${res.resTra.pagingTra.blockEnd+1}">&gt;</a></li>
 								</c:if>
 								<c:if
 									test="${res.resTra.pagingTra.blockEnd ge res.resTra.pagingTra.lastPage }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?traCurrentPage=${res.resTra.pagingTra.blockEnd}">&gt;</a></li>
+								/manager.do?tracurrentpage=${res.resTra.pagingTra.blockEnd}">&gt;</a></li>
 								</c:if>
 							</ul>
 						</div>
@@ -145,30 +150,30 @@
 								<c:if test="${res.resRev.pagingRev.blockStart le 1 }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?revCurrentPage=${res.resRev.pagingRev.blockStart}">&lt;</a></li>
+								/manager.do?revcurrentpage=${res.resRev.pagingRev.blockStart}">&lt;</a></li>
 								</c:if>
 								<c:if test="${res.resRev.pagingRev.blockStart gt 1 }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?revCurrentPage=${res.resRev.pagingRev.blockStart-1}">&lt;</a></li>
+								/manager.do?revcurrentpage=${res.resRev.pagingRev.blockStart-1}">&lt;</a></li>
 								</c:if>
 								<c:forEach begin="${res.resRev.pagingRev.blockStart }"
 									end="${res.resRev.pagingRev.blockEnd }" var="pr">
 									<li class="active"><span> <a
-											href="${pageContext.request.contextPath }/manager.do?revCurrentPage=${pr}">${pr }</a>
+											href="${pageContext.request.contextPath }/manager.do?revcurrentpage=${pr}">${pr }</a>
 									</span></li>
 								</c:forEach>
 								<c:if
 									test="${res.resRev.pagingRev.blockEnd lt res.resRev.pagingRev.lastPage }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?revCurrentPage=${res.resRev.pagingRev.blockEnd+1}">&gt;</a></li>
+								/manager.do?revcurrentpage=${res.resRev.pagingRev.blockEnd+1}">&gt;</a></li>
 								</c:if>
 								<c:if
 									test="${res.resRev.pagingRev.blockEnd ge res.resRev.pagingRev.lastPage }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?revCurrentPage=${res.resRev.pagingRev.blockEnd}">&gt;</a></li>
+								/manager.do?revcurrentpage=${res.resRev.pagingRev.blockEnd}">&gt;</a></li>
 								</c:if>
 							</ul>
 						</div>

@@ -2,118 +2,226 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Manager">
+
 	<select id="selectRevReport" resultType="ReviewReport">
-		select * from(
-		select
-		rownum rnum, n1.* from(
-		select * from
-		tr_rev_report
-		order by report_idx
-		desc
-		)n1)
-		where rnum between #{start} and #{end}
+		SELECT 
+			* 
+		FROM
+			(SELECT
+				ROWNUM RNUM, N1.* 
+			from
+				(SELECT 
+						* 
+				FROM
+					TR_REV_REPORT
+				ORDER BY
+					REPORT_IDX DESC
+				)N1
+			)
+		WHERE 
+			RNUM BETWEEN #{start} AND #{end}
 	</select>
 
 	<select id="selectTraReport" resultType="TrainerReport">
-		select * from(
-		select
-		rownum rnum, n1.* from(
-		select * from
-		tr_tra_report
-		order by report_idx
-		desc
-		)n1)
-		where rnum between #{start} and #{end}
+		SELECT 
+			* 
+		FROM
+			(SELECT
+				ROWNUM RNUM, N1.* 
+			FROM
+				(SELECT
+					* 
+				FROM
+					TR_TRA_REPORT
+				order by
+					REPORT_IDX DESC
+			)N1
+		)
+		WHERE
+			RNUM BETWEEN #{start} AND #{end}
 	</select>
 
 	<select id="revCnt" resultType="int">
-		select count(*) from
-		tr_rev_report
+		SELECT 
+			COUNT(*)
+		FROM
+			TR_REV_REPORT
 	</select>
 
 	<select id="traCnt" resultType="int">
-		select count(*) from
-		tr_tra_report
+		SELECT 
+			COUNT(*) 
+		FROM
+			TR_TRA_REPORT
 	</select>
 
-	<select id="traManagerDetail" parameterType="int"
-		resultType="TrainerReport">
-		select * from tr_tra_report
-		where report_idx = #{traid}
+	<select id="traManagerDetail" parameterType="int" resultType="TrainerReport">
+		SELECT 
+			* 
+		FROM 
+			TR_TRA_REPORT
+		WHERE
+			REPORT_IDX = #{traid}
 	</select>
 
-	<select id="revManagerDetail" parameterType="int"
-		resultType="ReviewReport">
-		select * from tr_rev_report
-		where report_idx = #{revid}
-	</select>
-
-	<update id="updateManagerDetail_rev"
-		parameterType="ReviewReport">
-		update tr_rev_report
-		set report_handel =
-		#{report_handel}, handel_cont = #{handel_cont},
-		ans_yn = 'Y'
+	<select id="revManagerDetail" parameterType="int" resultType="ReviewReport">
+		SELECT 
+			* 
+		from 
+			TR_REV_REPORT
 		where
-		report_idx =
-		${report_idx}
+			REPORT_IDX = #{revid}
+	</select>
+
+	<update id="updateManagerDetail_rev" parameterType="ReviewReport">
+		UPDATE
+			TR_REV_REPORT
+		SET 
+			REPORT_HANDEL = #{report_handel}
+			, HANDEL_CONT = #{handel_cont}
+			, ANS_YN = 'Y'
+		WHERE
+			REPORT_IDX = ${report_idx}
 	</update>
 
-	<update id="updateManagerDetail_tra"
-		parameterType="TrainerReport">
-		update tr_tra_report
-		set report_handel =
-		#{report_handel}, handel_cont = #{handel_cont},
-		ans_yn = 'Y'
-		where
-		report_idx =
-		${report_idx}
+	<update id="updateManagerDetail_tra" parameterType="TrainerReport">
+		UPDATE 
+			TR_TRA_REPORT
+		SET 
+			REPORT_HANDEL = #{report_handel}
+			, HANDEL_CONT = #{handel_cont}
+			, ANS_YN = 'Y'
+		WHERE
+			REPORT_IDX = ${report_idx}
 	</update>
 
 	<insert id="insertReportTra" parameterType="TrainerReport">
-		insert into
-		tr_tra_report
-		values(s_tra_report_idx.nextval,#{tr_email},
-		#{mem_email}, #{rep_cont}, ' ', ' ', sysdate, 'N', #{nick_name})
+		ISNERT INTO
+				TR_TRA_REPORT
+		VALUES(
+			S_TRA_REPORT_IDX.NEXTVAL
+			, #{tr_email}
+			, #{mem_email}
+			, #{rep_cont}
+			, ' '
+			, ' '
+			, SYSDATE
+			, 'N'
+			, #{nick_name}
+		)
 	</insert>
 	<insert id="insertReportRev" parameterType="ReviewReport">
-		insert into
-		tr_rev_report
-		values(s_rev_report_idx.nextval, #{tr_email},
-		#{mem_email}, #{rep_cont}, ' ', ' ', sysdate, 'N', #{trainer_name})
+		INSERT INTO
+				TR_REV_REPORT
+		values(
+			S_REV_REPORT_IDX.NEXTVAL
+			, #{tr_email}
+			, #{mem_email}
+			, #{rep_cont}
+			, ' '
+			, ' '
+			, SYSDATE
+			, 'N'
+			, #{trainer_name}
+		)
 	</insert>
 
 	<select id="selectTraReportIdx" resultType="int">
-		SELECT LAST_NUMBER
+		SELECT 
+			LAST_NUMBER
 		FROM
-		USER_SEQUENCES
-		WHERE SEQUENCE_NAME =
-		'S_TRA_REPORT_IDX'
+			USER_SEQUENCES
+		WHERE
+			SEQUENCE_NAME = 'S_TRA_REPORT_IDX'
 	</select>
 	<select id="selectRevReportIdx" resultType="int">
-		SELECT LAST_NUMBER
+		SELECT 
+			LAST_NUMBER
 		FROM
-		USER_SEQUENCES
-		WHERE SEQUENCE_NAME =
-		'S_REV_REPORT_IDX'
+			USER_SEQUENCES
+		WHERE
+			SEQUENCE_NAME = 'S_REV_REPORT_IDX'
 	</select>
 
 	<insert id="insertFile" parameterType="File_Upload">
-		insert into tr_file_upload
-		values(S_FILE_IDX.NEXTVAL, ${table_idx}, #{origin_filename},
-		#{rename_filename}, #{savepath})
+		INSERT INTO
+				TR_FILE_UPLOAD
+		VALUES(
+			S_FILE_IDX.NEXTVAL
+			, ${table_idx}
+			, #{origin_filename}
+			, #{rename_filename}
+			, #{savepath}
+		)
 	</insert>
-	
-	<select id="selectTraFile" parameterType="int" resultType="File_Upload">
-		select * from tr_file_upload
-		where table_idx = #{table_idx} and
-		rename_filename like '%TraReport%'
-	</select>
-	
-	<select id="selectRevFile" parameterType="int" resultType="File_Upload">
-		select * from tr_file_upload
-		where table_idx = #{table_idx} and
-		rename_filename like '%RevReport%'
+
+	<select id="selectTraFile" parameterType="int"
+		resultType="File_Upload">
+		SELECT 
+			* 
+		FROM 
+			TR_FILE_UPLOAD
+		WHERE
+			TABLE_IDX = #{table_idx}
+			AND
+			RENAME_FILENAME like '%TraReport%'
 	</select>
 
+	<select id="selectRevFile" parameterType="int"
+		resultType="File_Upload">
+		SELECT 
+			* 
+		FROM 
+			TR_FILE_UPLOAD
+		WHERE
+			TABLE_IDX = #{table_idx}
+			AND
+			RENAME_FILENAME like '%RevReport%'
+	</select>
+
+	<select id="qualiAllCnt" resultType="int">
+		SELECT 
+			COUNT(*) 
+		FROM
+			TR_QUALI
+	</select>
+
+	<select id="selectQuali" resultType="Quali">
+		SELECT 
+			*
+		FROM
+			(SELECT
+				ROWNUM RNUM, N1.* 
+			FROM(
+				SELECT 
+					* 
+				FROM
+					TR_QUALI
+				WHERE
+					AUTH_YN = 'N'
+				ORDER BY
+					QUALI_IDX ASC
+				)N1
+			)
+		WHERE
+			RNUM BETWEEN #{start} AND #{end}
+	</select>
+
+	<select id="selectQualiDetail" resultType="Quali">
+		SELECT
+			* 
+		FROM
+			TR_QUALI
+		WHERE
+			QUALI_IDX = #{qualiidx}
+	</select>
+
+	<update id="updateQualiYn" parameterType="int">
+		UPDATE 
+			TR_QUALI
+		SET
+			AUTH_YN = 'Y'
+		WHERE 
+			QUALI_IDX = #{quali_idx}
+	</update>
 </mapper>
