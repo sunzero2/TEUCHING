@@ -37,94 +37,45 @@
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/icomoon.css">
 <link rel="stylesheet" href="resources/css/style.css">
-<!-- 기존꺼말고 새로갖다박은거임 -->
+<link rel="stylesheet" href="resources/css/manager/qualiDetail.css">
 
-<style>
-html, body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	width: 100%;
-}
 
-.wrapper {
-	width: 63%;
-	height: 100%;
-	color: pink;
-	transform: translate(28%, 7%);
-}
-
-.ansbox-top {
-	height: 25%;
-	width: 100%;
-	transform: translateX(18%);
-}
-
-.ansbox-bottom {
-	height: 75%;
-	width: 110%;
-	position: absolute;
-	boader: 1px solid black;
-}
-
-#bt1 {
-	float: left;
-	height: 100%;
-	width: 50%;
-}
-
-#bt2 {
-	float: right;
-	height: 100%;
-	width: 50%;
-}
-
-h5 {
-	transform: translate(5%, 30%);
-	font-family: "Open Sans", Arial, sans-serif;
-}
-
-h2 {
-	transform: translate(4%, 38%);
-	font-weight: bold;
-}
-
-.col-lg-8 {
-	left: 14%;
-}
-
-#font-size {
-	font-size: 15px;
-}
-</style>
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>
 
 	<div class="wrapper">
 		<div class="ansbox-top">
-			<div
-				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
-				style="float: left; border: 1px solid black; background-image: url(resources/img/circle_person.jpg); width: 15%; height: 75%;">
-				<img src="resources/img/medal.png">
-			</div>
-			<h5>
-				${res.quali_auth } <a
+			<h1 style="text-align:center;font-size:4vw">
+				Profile <a
 					href="${pageContext.request.contextPath }
 					/qualidetail/auth.do?quali_idx=${ res.quali_idx}"
-					class="btn btn-outline-primary"
-					style="transform: translateX(300%);">승인하기</a>
-			</h5>
-			</form>
-		</div>
-		<div class="ansbox-bottom">
+					class="btn btn-outline-primary" onclick="if(!confirm('승인하시겠습니까?')){return false;}">승인하기</a>
+			</h1>
 
+			<div style="transform: translateX(20%)">
+				<img src="resources/img/circle_person.jpg"
+					style="width: 150px; height: 190px; float: left">
+					<h2 style="transform:translateY(135%);float:left">${res.trainer_name } 트레이너</h2>
+					<p style="clear:both"></p>
+					<div style="transform:translateX(5%);margin-top:-2%"> 
+					<div><h5 style="float:left;font-weight:bold;margin-right:1%;">지역</h5><h5 style="float:left">서울시</h5></div>
+					<p style="clear:both"></p>
+					<div><h5 style="float:left;font-weight:bold;margin-right:1%;">번호</h5><h5 style="float:left">010-2424-3434</h5></div>
+					<p style="clear:both"></p>
+					<div><h5 style="float:left;font-weight:bold;margin-right:1%;">메일</h5><h5 style="float:left">cino4615@gmaill.com</h5></div>
+					<p style="clear:both"></p>
+					<div><h5 style="float:left;font-weight:bold;margin-right:1%;">요청</h5><h5 style="float:left">${res.quali_auth }</h5></div>
+					</div>
+			</div>
+			<br><br><br>
 			<div class="col-lg-8 ftco-animate">
 				<div class="row">
 					<div class="col-md-3 ftco-animate">
 						<a href="resources/img/auth.jpg"
 							class="gallery image-popup img d-flex align-items-center"
-							style="background-image: url(resources/img/auth.jpg);">
+							style="height: 195px; width: 400px; background-image: url(resources/img/check.png);
+							transform:translateX(6%)">
 							<div
 								class="icon mb-4 d-flex align-items-center justify-content-center">
 								<span class="icon-instagram"></span>

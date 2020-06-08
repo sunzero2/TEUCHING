@@ -9,60 +9,19 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
-	rel="stylesheet">
-
-<link
-	href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap"
-	rel="stylesheet">
-
-<link rel="stylesheet"
-	href="resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="resources/css/animate.css">
-
-<link rel="stylesheet" href="resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="resources/css/magnific-popup.css">
-
-<link rel="stylesheet" href="resources/css/aos.css">
-
-<link rel="stylesheet" href="resources/css/ionicons.min.css">
-
-<link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="resources/css/jquery.timepicker.css">
-
-
-<link rel="stylesheet" href="resources/css/flaticon.css">
-<link rel="stylesheet" href="resources/css/icomoon.css">
-<link rel="stylesheet" href="resources/css/style.css">
 <style>
-html, body {
-	width: 100%;
-	height: 100%;
+	html, body, form {
+	width: 99%;
+	height: 93%;
 	background-color: #d9edf7;
+	padding-bottom:1%;
 }
 
 .wrapper {
 	height: 77%;
 	width: 84%;
 	text-align: center;
-	transform: translateX(9%);
-}
-
-.purple-border textarea {
-	border: 1px solid #ba68c8;
-}
-
-.purple-border .form-control:focus {
-	border: 1px solid #ba68c8;
-	box-shadow: 0 0 0 0.2rem rgba(186, 104, 200, .25);
-}
-
-.green-border-focus .form-control:focus {
-	border: 1px solid #8bc34a;
-	box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+	transform:translateX(10%);
 }
 
 p {
@@ -72,43 +31,45 @@ p {
 }
 
 #msgdiv {
+	width:92%;
 	height: 200px;
-	border: 1px solid black;
 	text-align: left;
-	padding: 1% 1% 1% 1%;
+	padding: 2% 2% 2% 2%;
+	background-color: white;
+	border: 1px solid pink;
+}
+
+#titlediv {
+	width: 94%;
+	height: 10%;
+	margin-bottom: 2%;
+	text-align: left;
+	padding-left: 2%;
+	background-color: white;
+}
+
+#btn {
+	float: right;
+	background-color: pink;
+	color: white;
+	border:none;
+	height:35px;
+	width:67px;
 }
 </style>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath }/messageans.do">
+	<form
+		action="${pageContext.request.contextPath }/message/sendmessage.do">
 		<div class="wrapper">
 			<p>쪽지 확인</p>
+			<div id="titlediv" style="border: 1px solid pink">안녕하세요!!~!</div>
 			<div id="msgdiv">하하하핳하하하하하ㅏ하하 예약 가능하십니더!!</div>
-			<br> <input type="hidden" name="tr_email" value=""> <input
-				type="hidden" name="mem_email" value=""> <input
-				type="hidden" name="msg_title" value=""> <input
-				type="hidden" name="msg_cont" value="">
-			<button type="submit" class="btn btn-outline-primary"
-				style="float: right; background-color: pink; color: white">답장하기</button>
+			<br> 
+			<input type="hidden" name="tr_email" value="1111">
+			<input type="hidden" name="mem_email" value="2222">
+			<button type="submit" class="btn btn-outline-primary" id="btn">답장하기</button>
 		</div>
 	</form>
-	<script src="resources/js/jquery.min.js"></script>
-	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="resources/js/popper.min.js"></script>
-	<script src="resources/js/bootstrap.min.js"></script>
-	<script src="resources/js/jquery.easing.1.3.js"></script>
-	<script src="resources/js/jquery.waypoints.min.js"></script>
-	<script src="resources/js/jquery.stellar.min.js"></script>
-	<script src="resources/js/owl.carousel.min.js"></script>
-	<script src="resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="resources/js/aos.js"></script>
-	<script src="resources/js/jquery.animateNumber.min.js"></script>
-	<script src="resources/js/bootstrap-datepicker.js"></script>
-	<script src="resources/js/jquery.timepicker.min.js"></script>
-	<script src="resources/js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="resources/js/google-map.js"></script>
-	<script src="resources/js/main.js"></script>
 </body>
 </html>

@@ -37,70 +37,42 @@
 <link rel="stylesheet" href="../resources/css/flaticon.css">
 <link rel="stylesheet" href="../resources/css/icomoon.css">
 <link rel="stylesheet" href="../resources/css/style.css">
-<link rel="stylesheet" href="../resources/css/manager/managerAnswer.css">
-
+<link
+	href="https://rawgithub.com/hayageek/jquery-upload-file/master/css/uploadfile.css"
+	rel="stylesheet">
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script
+	src="https://rawgithub.com/hayageek/jquery-upload-file/master/js/jquery.uploadfile.min.js"></script>
+<link rel="stylesheet" href="../resources/css/manager/qualiRequest.css">
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>
+
 	<div class="wrapper">
 		<div class="ansbox-top">
 			<div
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
-				style="float: left; background-image: url(../resources/img/classes-4.jpg); width: 15%; height: 75%;">
-				<c:if test="${ res.ans_yn eq 'Y'}">
-					<div
-						style="text-align: right; transform: translate(-70%, -35%); color: #b91e2d; font-size: 5vw">✔</div>
-				</c:if>
-			</div>
-
+				id="person"></div>
 			<form
-				action="${pageContext.request.contextPath }/managerdetail/modify.do"
-				method="post">
-				<h5>${res.report_date }
-					<c:if test="${res.type eq 'tra' }">
-						<input type="hidden" name="type" value="tra">
-					</c:if>
-					<c:if test="${res.type eq 'rev' }">
-						<input type="hidden" name="type" value="rev">
-					</c:if>
-					<input type="hidden" name="report_idx" value="${res.report_idx }">
-					<button type="submit" class="btn btn-outline-primary"
-						style="transform: translateX(250%);">작성완료</button>
+				action="${pageContext.request.contextPath }/report/insertReport.do"
+				method="post" enctype="multipart/form-data">
+				<h5>
+					2020-02-02
+					<button type="submit" id="btn" class="btn btn-outline-primary">작성완료</button>
 				</h5>
-
-				<c:if test="${res.type eq 'tra' }">
-					<h2>${ res.nick_name}님의 문의내역 입니다</h2>
-				</c:if>
-				<c:if test="${res.type eq 'rev' }">
-					<h2>${ res.trainer_name}님의 문의내역 입니다</h2>
-				</c:if>
+				<h2>자격 요청</h2>
 		</div>
 		<div class="ansbox-bottom">
 
 			<div class="col-lg-8 ftco-animate">
-				<h3 class="mb-4">신고내용</h3>
-				<p id="font-size">${res.rep_cont }</p>
-			</div>
-
-			<div class="col-lg-8 ftco-animate">
-				<h3 class="mb-4">처리결과</h3>
-
-				<div class="form-group purple-border">
-					<textarea name="report_handel" class="form-control"
-						id="exampleFormControlTextarea4" rows="3">${res.report_handel }</textarea>
-				</div>
-
-			</div>
-
-			<div class="col-lg-8 ftco-animate">
-				<h3 class="mb-4">처리내용</h3>
-				<div class="form-group green-border-focus">
-					<textarea name="handel_cont" class="form-control"
-						id="exampleFormControlTextarea5" rows="3" style="">${res.handel_cont }</textarea>
-				</div>
+				<input type="file" id="startbutton" class="ajax-file-upload-green"
+					name="files" value="Upload">
+				<textarea name="rep_cont" id="textarea" placeholder="자격명을 기입해주세요"></textarea>
 			</div>
 		</div>
 		</form>
+
 	</div>
 	<br>
 	<br>
@@ -108,9 +80,6 @@
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-
 	<script src="../resources/js/jquery.min.js"></script>
 	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="../resources/js/popper.min.js"></script>

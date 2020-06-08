@@ -96,33 +96,33 @@
 	</update>
 
 	<insert id="insertReportTra" parameterType="TrainerReport">
-		ISNERT INTO
+		INSERT INTO
 				TR_TRA_REPORT
 		VALUES(
-			S_TRA_REPORT_IDX.NEXTVAL
-			, #{tr_email}
-			, #{mem_email}
-			, #{rep_cont}
-			, ' '
-			, ' '
-			, SYSDATE
-			, 'N'
-			, #{nick_name}
+				S_TRA_REPORT_IDX.NEXTVAL
+				, #{tr_email}
+				, #{mem_email}
+				, #{rep_cont}
+				, ' '
+				, ' '
+				, SYSDATE
+				, 'N'
+				, #{nick_name}
 		)
 	</insert>
 	<insert id="insertReportRev" parameterType="ReviewReport">
 		INSERT INTO
 				TR_REV_REPORT
-		values(
-			S_REV_REPORT_IDX.NEXTVAL
-			, #{tr_email}
-			, #{mem_email}
-			, #{rep_cont}
-			, ' '
-			, ' '
-			, SYSDATE
-			, 'N'
-			, #{trainer_name}
+		VALUES(
+				S_REV_REPORT_IDX.NEXTVAL
+				, #{tr_email}
+				, #{mem_email}
+				, #{rep_cont}
+				, ' '
+				, ' '
+				, SYSDATE
+				, 'N'
+				, #{trainer_name}
 		)
 	</insert>
 
@@ -147,11 +147,11 @@
 		INSERT INTO
 				TR_FILE_UPLOAD
 		VALUES(
-			S_FILE_IDX.NEXTVAL
-			, ${table_idx}
-			, #{origin_filename}
-			, #{rename_filename}
-			, #{savepath}
+				S_FILE_IDX.NEXTVAL
+				, ${table_idx}
+				, #{origin_filename}
+				, #{rename_filename}
+				, #{savepath}
 		)
 	</insert>
 
@@ -184,6 +184,8 @@
 			COUNT(*) 
 		FROM
 			TR_QUALI
+		WHERE
+			AUTH_YN = 'N'
 	</select>
 
 	<select id="selectQuali" resultType="Quali">

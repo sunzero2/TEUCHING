@@ -37,87 +37,10 @@
 <link rel="stylesheet" href="../resources/css/flaticon.css">
 <link rel="stylesheet" href="../resources/css/icomoon.css">
 <link rel="stylesheet" href="../resources/css/style.css">
-<!-- 기존꺼말고 새로갖다박은거임 -->
-<!-- TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <link
 	href="https://rawgithub.com/hayageek/jquery-upload-file/master/css/uploadfile.css"
 	rel="stylesheet">
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script
-	src="https://rawgithub.com/hayageek/jquery-upload-file/master/js/jquery.uploadfile.min.js"></script>
-<style>
-html, body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	width: 100%;
-}
-
-.wrapper {
-	width: 63%;
-	height: 100%;
-	color: pink;
-	transform: translate(28%, 7%);
-}
-
-.ansbox-top {
-	height: 25%;
-	width: 100%;
-	transform: translateX(18%);
-}
-
-.ansbox-bottom {
-	height: 75%;
-	width: 110%;
-	position: absolute;
-	boader: 1px solid black;
-}
-
-#bt1 {
-	float: left;
-	height: 100%;
-	width: 50%;
-}
-
-#bt2 {
-	float: right;
-	height: 100%;
-	width: 50%;
-}
-
-h5 {
-	transform: translate(5%, 30%);
-	font-family: "Open Sans", Arial, sans-serif;
-}
-
-h2 {
-	transform: translate(4%, 38%);
-	font-weight: bold;
-}
-
-.col-lg-8 {
-	left: 14%;
-}
-
-#font-size {
-	font-size: 15px;
-}
-
-.purple-border textarea {
-	border: 1px solid #ba68c8;
-}
-
-.purple-border .form-control:focus {
-	border: 1px solid #ba68c8;
-	box-shadow: 0 0 0 0.2rem rgba(186, 104, 200, .25);
-}
-
-.green-border-focus .form-control:focus {
-	border: 1px solid #8bc34a;
-	box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
-}
-</style>
+<link rel="stylesheet" href="../resources/css/manager/writeReport.css">
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>
@@ -126,15 +49,14 @@ h2 {
 		<div class="ansbox-top">
 			<div
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
-				style="float: left; background-image: url(../resources/img/circle_person.jpg); width: 15%; height: 75%; border: 1px solid black">
-			</div>
+				id="person"></div>
 			<form
 				action="${pageContext.request.contextPath }/report/insertReport.do"
 				method="post" enctype="multipart/form-data">
 				<h5>
 					${res.reported }
-					<button type="submit" class="btn btn-outline-primary"
-						style="transform: translateX(250%);">작성완료</button>
+					<button type="submit" class="btn btn-outline-primary" id="btn"
+						onclick="if(!confirm('신고하시겠습니까?')){return false;}">작성완료</button>
 				</h5>
 				<h2>신고하기</h2>
 		</div>
@@ -143,19 +65,18 @@ h2 {
 			<div class="col-lg-8 ftco-animate">
 				<h3 class="mb-4">신고내용</h3>
 				<input type="file" multiple id="startbutton"
-					class="ajax-file-upload-green" name="files"
-					style="background-color: pink; width: 100%;" value="Upload">
-				<textarea name="rep_cont" class="form-control"
-					id="exampleFormControlTextarea4"></textarea>
+					class="ajax-file-upload-green" name="files" value="Upload">
+				<textarea name="rep_cont" class="form-control" id="textarea"></textarea>
 			</div>
-			<input type="hidden" name="type" value="${res.type }">
-			<input type="hidden" name="tr_email" value="${res.tr_email }">
-			<input type="hidden" name="mem_email" value="${res.mem_email }">
+			<input type="hidden" name="type" value="${res.type }"> <input
+				type="hidden" name="tr_email" value="${res.tr_email }"> <input
+				type="hidden" name="mem_email" value="${res.mem_email }">
 			<c:if test="${res.type eq 'tra' }">
-			<input type="hidden" name="nick_name" value="${res.nick_name }">
+				<input type="hidden" name="nick_name" value="${res.nick_name }">
 			</c:if>
 			<c:if test="${res.type eq 'rev' }">
-			<input type="hidden" name="trainer_name" value="${res.trainer_name }">
+				<input type="hidden" name="trainer_name"
+					value="${res.trainer_name }">
 			</c:if>
 		</div>
 		</form>
@@ -183,7 +104,10 @@ h2 {
 	<script src="../resources/js/scrollax.min.js"></script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="../resources/js/google-map.js"></script>
 	<script src="../resources/js/main.js"></script>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script
+		src="https://rawgithub.com/hayageek/jquery-upload-file/master/js/jquery.uploadfile.min.js"></script>
 </body>
 </html>

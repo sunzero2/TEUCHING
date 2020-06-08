@@ -57,11 +57,11 @@ public class ManagerController {
 	}
 
 	/**
-	* @Method Name : managerDetail
-	* @작성일 : 2020. 6. 6.
-	* @작성자 : 김지수
-	* @Method 설명 : 신고 게시글에 대한 상세페이지
-	*/
+	 * @Method Name : managerDetail
+	 * @작성일 : 2020. 6. 6.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 신고 게시글에 대한 상세페이지
+	 */
 	@RequestMapping("/managerdetail.do")
 	public ModelAndView managerDetail(Integer revid, Integer traid) {
 		ModelAndView mv = new ModelAndView();
@@ -82,11 +82,11 @@ public class ManagerController {
 	}
 
 	/**
-	* @Method Name : managerDetailAnswer
-	* @작성일 : 2020. 6. 6.
-	* @작성자 : 김지수
-	* @Method 설명 : 신고 게시글에 대한 처리 결과 작성 페이지 매핑
-	*/
+	 * @Method Name : managerDetailAnswer
+	 * @작성일 : 2020. 6. 6.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 신고 게시글에 대한 처리 결과 작성 페이지 매핑
+	 */
 	@PostMapping("/managerdetail/answer.do")
 	public ModelAndView managerDetailAnswer(@RequestParam Map<String, Object> commandMap) {
 		ModelAndView mv = new ModelAndView();
@@ -96,11 +96,11 @@ public class ManagerController {
 	}
 
 	/**
-	* @Method Name : managerDetailModify
-	* @작성일 : 2020. 6. 6.
-	* @작성자 : 김지수
-	* @Method 설명 : 신고 게시글에 대한 처리 결과 작성 및 수정
-	*/
+	 * @Method Name : managerDetailModify
+	 * @작성일 : 2020. 6. 6.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 신고 게시글에 대한 처리 결과 작성 및 수정
+	 */
 	@PostMapping("/managerdetail/modify.do")
 	public ModelAndView managerDetailModify(@RequestParam Map<String, Object> commandMap) {
 		ModelAndView mv = new ModelAndView();
@@ -116,11 +116,11 @@ public class ManagerController {
 	}
 
 	/**
-	* @Method Name : reportView
-	* @작성일 : 2020. 6. 6.
-	* @작성자 : 김지수
-	* @Method 설명 : 트레이너 신고 및 리뷰신고 작성 페이지 매핑
-	*/
+	 * @Method Name : reportView
+	 * @작성일 : 2020. 6. 6.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 트레이너 신고 및 리뷰신고 작성 페이지 매핑
+	 */
 	@RequestMapping("/report/viewreport.do")
 	public ModelAndView reportView(@RequestParam Map<String, Object> commandMap) {
 		ModelAndView mv = new ModelAndView();
@@ -130,11 +130,11 @@ public class ManagerController {
 	}
 
 	/**
-	* @Method Name : reportFileUpload
-	* @작성일 : 2020. 6. 6.
-	* @작성자 : 김지수
-	* @Method 설명 : 트레이너 신고 및 리뷰신고 작성
-	*/
+	 * @Method Name : reportFileUpload
+	 * @작성일 : 2020. 6. 6.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 트레이너 신고 및 리뷰신고 작성 & 다중파일 업로드
+	 */
 	@PostMapping("/report/insertReport")
 	public ModelAndView reportFileUpload(@RequestParam Map<String, Object> commandMap, List<MultipartFile> files,
 			HttpServletRequest request) {
@@ -170,16 +170,18 @@ public class ManagerController {
 			}
 		}
 		ms.insertFile(fileData);
-		mv.setViewName("redirect:/profile/review.do");
+		mv.addObject("msg", "신고 완료 되었습니다");
+		mv.addObject("url", request.getContextPath() + "/profile/review.do");
+		mv.setViewName("common/result");
 		return mv;
 	}
 
 	/**
-	* @Method Name : selectQuali
-	* @작성일 : 2020. 6. 6.
-	* @작성자 : 김지수
-	* @Method 설명 : 관리자 페이지의 자격증명 메뉴 구현
-	*/
+	 * @Method Name : selectQuali
+	 * @작성일 : 2020. 6. 6.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 관리자 페이지의 자격증명 메뉴 구현
+	 */
 	@RequestMapping("/quali.do")
 	public ModelAndView selectQuali(Integer currentpage) {
 		ModelAndView mv = new ModelAndView();
@@ -192,11 +194,11 @@ public class ManagerController {
 	}
 
 	/**
-	* @Method Name : selectQualiDetail
-	* @작성일 : 2020. 6. 6.
-	* @작성자 : 김지수
-	* @Method 설명 : 자격증명 요청글의 상세 내용 확인
-	*/
+	 * @Method Name : selectQualiDetail
+	 * @작성일 : 2020. 6. 6.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 자격증명 요청글의 상세 내용 확인
+	 */
 	@RequestMapping("/qualidetail.do")
 	public ModelAndView selectQualiDetail(String qualiidx) {
 		ModelAndView mv = new ModelAndView();
@@ -206,16 +208,25 @@ public class ManagerController {
 	}
 
 	/**
-	* @Method Name : updateQualiYn
-	* @작성일 : 2020. 6. 6.
-	* @작성자 : 김지수
-	* @Method 설명 : 트레이너 인증 요청 승인처리
-	*/
+	 * @Method Name : updateQualiYn
+	 * @작성일 : 2020. 6. 6.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 트레이너 인증 요청 승인처리
+	 */
 	@RequestMapping("/qualidetail/auth.do")
-	public ModelAndView updateQualiYn(Integer quali_idx) {
+	public ModelAndView updateQualiYn(int quali_idx, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		ms.updateQualiYn(quali_idx);
-		mv.setViewName("redirect:/quali.do");
+		mv.addObject("msg", "승인 완료 되었습니다");
+		mv.addObject("url", request.getContextPath() + "/quali.do");
+		mv.setViewName("common/result");
+		return mv;
+	}
+
+	@RequestMapping("/quali/requestpage.do")
+	public ModelAndView qualiRequest() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("manager/qualiRequest");
 		return mv;
 	}
 

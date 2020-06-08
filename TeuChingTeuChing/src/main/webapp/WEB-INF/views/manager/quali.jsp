@@ -84,50 +84,36 @@
 	</a>
 	</c:forEach>
 	</div>
-	<div class="row mt-5" style="transform: translateX(38%)">
+	<div class="row mt-5" style="transform: translateX(36%)">
 		<div class="col">
 			<div class="block-27">
 				<ul>
-					<%-- <c:if test="${res.resTra.pagingTra.blockStart le 1 }">
+					<c:if test="${res.paging.blockStart le 1 }">
 						<li><a
 							href="${pageContext.request.contextPath }
-								/manager.do?traCurrentPage=${res.resTra.pagingTra.blockStart}">&lt;</a></li>
+								/quali.do?currentpage=${res.paging.blockStart}">&lt;</a></li>
 					</c:if>
-					<c:if test="${res.resTra.pagingTra.blockStart gt 1 }"> --%>
-					<li><a
-						href="${pageContext.request.contextPath }
-								/manager.do?traCurrentPage=">&lt;</a></li>
-					<%-- </c:if> --%>
-					<%-- <c:forEach begin="${res.resTra.pagingTra.blockStart }"
-						end="${res.resTra.pagingTra.blockEnd }" var="pt"> --%>
-					<li class="active"><span> <a
-							href="${pageContext.request.contextPath }/manager.do?traCurrentPage=">1</a>
-					</span></li>
-					<li class="active"><span> <a
-							href="${pageContext.request.contextPath }/manager.do?traCurrentPage=">2</a>
-					</span></li>
-					<li class="active"><span> <a
-							href="${pageContext.request.contextPath }/manager.do?traCurrentPage=">3</a>
-					</span></li>
-					<li class="active"><span> <a
-							href="${pageContext.request.contextPath }/manager.do?traCurrentPage=">4</a>
-					</span></li>
-					<li class="active"><span> <a
-							href="${pageContext.request.contextPath }/manager.do?traCurrentPage=">5</a>
-					</span></li>
-					<%-- </c:forEach> --%>
-					<%-- <c:if
-						test="${res.resTra.pagingTra.blockEnd lt res.resTra.pagingTra.lastPage }"> --%>
-					<li><a
-						href="${pageContext.request.contextPath }
-								/manager.do?traCurrentPage=${res.resTra.pagingTra.blockEnd+1}">&gt;</a></li>
-					<%-- </c:if> --%>
-					<%-- <c:if
-						test="${res.resTra.pagingTra.blockEnd ge res.resTra.pagingTra.lastPage }">
+					<c:if test="${res.paging.blockStart gt 1 }">
 						<li><a
 							href="${pageContext.request.contextPath }
-								/manager.do?traCurrentPage=${res.resTra.pagingTra.blockEnd}">&gt;</a></li>
-					</c:if> --%>
+								/quali.do?currentpage=${res.paging.blockStart-1}">&lt;</a></li>
+					</c:if>
+					<c:forEach begin="${res.paging.blockStart }"
+						end="${res.paging.blockEnd }" var="p">
+						<li class="active"><span> <a
+								href="${pageContext.request.contextPath }/quali.do?currentpage=${ p}">${p }</a>
+						</span></li>
+					</c:forEach>
+					<c:if test="${res.paging.blockEnd lt res.paging.lastPage }">
+						<li><a
+							href="${pageContext.request.contextPath }
+								/quali.do?currentpage=${res.paging.blockEnd+1}">&gt;</a></li>
+					</c:if>
+					<c:if test="${res.paging.blockEnd ge res.paging.lastPage }">
+						<li><a
+							href="${pageContext.request.contextPath }
+								/quali.do?currentpage=${res.paging.blockEnd}">&gt;</a></li>
+					</c:if>
 				</ul>
 			</div>
 		</div>
