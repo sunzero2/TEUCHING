@@ -53,4 +53,18 @@ public class MessageController {
 		return mv;
 	}
 
+	@RequestMapping("/message/matchform.do")
+	public ModelAndView matchForm(String tr_email, String mem_email) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("tr_email", tr_email);
+		mv.addObject("mem_email", mem_email);
+		mv.setViewName("message/messageMatchForm");
+		return mv;
+	}
+	
+	@RequestMapping("/message/message.do")
+	public String meesss() {
+		return "message/messageMatchForm";
+	}
+
 }
