@@ -7,8 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-#star a{ text-decoration: none; color: gray; } 
-#star a.on{ color: red; }
+#star a {
+	text-decoration: none;
+	color: gray;
+}
+
+#star a.on {
+	color: red;
+}
 }
 </style>
 <link
@@ -30,12 +36,19 @@
 <link rel="stylesheet" href="../resources/css/flaticon.css">
 <link rel="stylesheet" href="../resources/css/icomoon.css">
 <link rel="stylesheet" href="../resources/css/style.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</head>
 
 </head>
 <body>
 
 	<%@ include file="../include/top.jsp"%>
-
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
 
@@ -95,7 +108,7 @@
 								</div>
 								<br>
 								<p>
-									<a href="여기에 트레이너 스케줄로 이동할 href작성하거야!!" class="reply">트레이너
+									<a href="${pageContext.request.contextPath }/profile/schedule.do" class="reply">트레이너
 										스케쥴러로 이동</a>
 								</p>
 							</div>
@@ -109,15 +122,14 @@
 					<div class="pt-5 mt-5">
 
 						<!-- 코멘트 리스트 수 가져와서 뿌려 -->
-						<h3 class="mb-5">6 Comments</h3>
+						<h3 class="mb-5">${reviewList.paging.total} Comments</h3>
 
 						<ul class="comment-list">
 
 
 							<c:forEach items="${reviewList.rlist}" var="review">
-
-								<li class="comment"><c:choose>
-
+								<li class="comment">
+									<!-- 프사 별점별로 다르게 --> <c:choose>
 										<c:when test="${review.rev_score < 3}">
 											<div class="vcard bio">
 												<img src="../resources/img/sad.png" alt="Image placeholder">
@@ -136,25 +148,57 @@
 													alt="Image placeholder">
 											</div>
 										</c:otherwise>
-
 									</c:choose>
+
+
 									<div class="comment-body">
-										<h3>${review.mem_nickname}</h3>
+										<h5>${review.mem_nickname}</h5>
 										<div class="meta">${review.rev_date}</div>
 										<p>${review.rev_cont}</p>
 
 										<a
-											href="${pageContext.request.contextPath }/report/viewreport.do?
-                           tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
+											href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
 											class="reply">리뷰신고</a>
 
-									</div></li>
-
+									</div>
+								</li>
 							</c:forEach>
-
-
-
 						</ul>
+
+
+						<div class="row mt-5" style="transform: translateX(25%)">
+						<div class="col">
+								<div class="block-27">
+								<ul>
+										<c:if test="${reviewList.paging.blockStart gt 1 }">
+											<li><span><a href="<%=request.getContextPath()%>/profile/review.do?reviewPage=${reviewList.paging.blockStart-1}">&lt;</a></span></li>
+										</c:if>
+
+										<c:if test="${reviewList.paging.blockStart le 1 }">
+											<li><span><a href="<%=request.getContextPath()%>/profile/review.do?reviewPage=${reviewList.paging.blockStart}">&lt;</a></span></li>
+										</c:if>
+
+
+										<c:forEach begin="${reviewList.paging.blockStart}" end="${reviewList.paging.blockEnd}" var="page">
+											<li class="active"><span><a
+												href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${page}"
+												class="num active">${page}</a></span></li>
+										</c:forEach>
+
+										<c:if test="${reviewList.paging.blockEnd+1 ge reviewList.paging.lastPage}">
+											<li><span><a
+												href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${reviewList.paging.blockEnd}">&gt;</a></span></li>
+										</c:if>
+										<c:if test="${reviewList.paging.blockEnd+1 lt reviewList.paging.lastPage }">
+											<li><span><a
+												href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${reviewList.paging.blockEnd+1}">&gt;</a></span></li>
+										</c:if>
+
+									</ul>
+								</div>
+</div>
+						</div>
+
 						<!-- END comment-list -->
 
 
@@ -164,7 +208,9 @@
 
 						<div class="comment-form-wrap pt-5">
 							<h3 class="mb-5">Leave a comment</h3>
-							<form action="${pageContext.request.contextPath }/review/writereview.do" method="post" enctype="multipart/form-data">
+							<form
+								action="${pageContext.request.contextPath }/review/writereview.do"
+								method="post" enctype="multipart/form-data">
 								<div class="form-group">
 									<label for="memNickname">Nickname</label> <input type="text"
 										class="form-control bg-white" id="memNickname"
@@ -175,20 +221,18 @@
 										class="form-control" id="reviewPw" name="reviewPw">
 								</div>
 								<div class="form-group">
-									<label for="revScore">d</label>
+									<label for="revScore">Star rating</label>
 									<div id="star" name="revScore">
-										<a href="#a" value="1">★</a>
-										<a href="#a" value="2">★</a> 
-										<a href="#a" value="3">★</a> 
-										<a href="#a" value="4">★</a> 
-										<a href="#a" value="5">★</a>
+										<a href="#a" value="1">★</a> <a href="#a" value="2">★</a> <a
+											href="#a" value="3">★</a> <a href="#a" value="4">★</a> <a
+											href="#a" value="5">★</a>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label for="revCont">Review</label>
-									<textarea id="revCont" cols="30" rows="10"
-										class="form-control" name="revCont"></textarea>
+									<textarea id="revCont" cols="30" rows="10" class="form-control"
+										name="revCont"></textarea>
 								</div>
 
 								<div class="form-group">
@@ -202,6 +246,10 @@
 				</div>
 
 				<!-- 댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝-->
+
+
+
+
 
 				<!-- .col-md-8  여기서부터 오른쪽 카테고리 -->
 				<div class="col-lg-4 sidebar ftco-animate">
@@ -217,6 +265,8 @@
 							<li><a href="#">Yoga <span>(140)</span></a></li>
 						</div>
 					</div>
+
+
 
 					<!-- -----------최근 게시글--------------------- -->
 					<div class="sidebar-box ftco-animate">
@@ -297,16 +347,18 @@
 	</section>
 	<!-- .section -->
 
+
+
 	<!-- -----------------------------------끝-------------------------------------------- -->
-	<script src="https://code.jquery.com/jquery-3.4.1.js"
-		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-		crossorigin="anonymous"></script>
+
+
 
 	<script>
-	$('#star a').click(function(){ $(this).parent().children("a").removeClass("on"); $(this).addClass("on").prevAll("a").addClass("on"); 
-	console.log($(this).attr("value")); 
-	});
-
+		$('#star a').click(function() {
+			$(this).parent().children("a").removeClass("on");
+			$(this).addClass("on").prevAll("a").addClass("on");
+			console.log($(this).attr("value"));
+		});
 	</script>
 
 	<%@ include file="../include/footer.jsp"%>

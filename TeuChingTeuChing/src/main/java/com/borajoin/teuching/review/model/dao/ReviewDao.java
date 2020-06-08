@@ -19,7 +19,6 @@ public class ReviewDao {
 	private SqlSessionTemplate sqlSession;
 
 	public int contentCnt() {
-		int res = 0;
 
 		// 게시글 갯수를 반환해줄 메서드
 
