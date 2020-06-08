@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,7 +60,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 ftco-animate">
-					<h2 class="mb-3">여기에 트레이너 이름 나오게 할래요</h2>
+					<h2 class="mb-3">누구누구의 프로필입니다 이런거 뜨게하자 굳ㅎㅎ</h2>
 
 
 					<div class="about-author d-flex">
@@ -68,17 +69,14 @@
 								class="img-fluid mb-4">
 						</div>
 						<div class="desc align-self-md-center">
+
 							<!-- ===============버튼을 여기에 넣어보았습니다=================== -->
-							<form
-								action="${pageContext.request.contextPath }/report/viewreport.do">
-								<input type="hidden" name="tr_email" value="1111"> <input
-									type="hidden" name="mem_email" value="1111"> <input
-									type="hidden" name="nick_name" value="김지수"> <input
-									type="hidden" name="type" value="tra"> <input
-									type="hidden" name="reported" value="김김지수">
-								<button type="submit" class="btn btn-outline-primary">트레이너신고</button>
-							</form>
+								<a href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=1111
+                     &mem_eamil=1111&nick_name=김지수&type=tra&reported=김김지수" class="reply">트레이너 신고</a>
+						
 							<!-- ===============버튼을 여기까지 넣어보았습니다=================== -->
+
+
 							<h3>트레이너 이름!!!</h3>
 							<p>트레이너 소개 소개소개ㅅ개트레이너 소개 소개소개ㅅ트레이너 소개 소개소개ㅅ트레이너 소개 소개소개ㅅ</p>
 							<div class="tag-widget post-tag-container mb-5 mt-5">
@@ -102,147 +100,73 @@
 					<!-- 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글 -->
 
 					<div class="pt-5 mt-5">
+
+						<!-- 코멘트 리스트 수 가져와서 뿌려 -->
 						<h3 class="mb-5">6 Comments</h3>
+
 						<ul class="comment-list">
-							<li class="comment">
-								<div class="vcard bio">
-									<img src="../resources/img/person_2.jpg"
-										alt="Image placeholder">
-								</div>
-								<div class="comment-body">
-									<!-- =======================리뷰신고===========================-->
-									<form
-										action="${pageContext.request.contextPath }/report/viewreport.do">
-										<input type="hidden" name="tr_email" value="2222"> <input
-											type="hidden" name="mem_email" value="2222"> <input
-											type="hidden" name="nick_name" value="김지수"> <input
-											type="hidden" name="type" value="rev"> <input
-											type="hidden" name="reported" value="김김지수">
-										<button type="submit" class="btn btn-outline-primary">리뷰신고</button>
-									</form>
-									<!-- =======================리뷰신고===========================-->
-									<h3>John Doe</h3>
-									<div class="meta">Sept 25, 2019 at 2:21pm</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit. Pariatur quidem laborum necessitatibus, ipsam impedit
-										vitae autem, eum officia, fugiat saepe enim sapiente iste
-										iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-									<p>
-										<a href="#" class="reply">Reply</a>
-									</p>
-								</div>
-							</li>
 
-							<li class="comment">
-								<div class="vcard bio">
-									<img src="../resources/img/person_1.jpg"
-										alt="Image placeholder">
-								</div>
-								<div class="comment-body">
-									<h3>John Doe</h3>
-									<div class="meta">Sept 25, 2019 at 2:21pm</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit. Pariatur quidem laborum necessitatibus, ipsam impedit
-										vitae autem, eum officia, fugiat saepe enim sapiente iste
-										iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-									<p>
-										<a href="#" class="reply">Reply</a>
-									</p>
-								</div>
-
-								<ul class="children">
+			
+							<c:forEach items="${reviewList.rlist}" var="review">
+					
 									<li class="comment">
-										<div class="vcard bio">
-											<img src="../resources/img/person_1.jpg"
-												alt="Image placeholder">
-										</div>
-										<div class="comment-body">
-											<h3>John Doe</h3>
-											<div class="meta">Sept 25, 2019 at 2:21pm</div>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit. Pariatur quidem laborum necessitatibus, ipsam impedit
-												vitae autem, eum officia, fugiat saepe enim sapiente iste
-												iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-											<p>
-												<a href="#" class="reply">Reply</a>
-											</p>
-										</div>
+							
+									
+									<c:choose>
 
-
-										<ul class="children">
-											<li class="comment">
+											<c:when test="${review.rev_score < 3}">
 												<div class="vcard bio">
-													<img src="../resources/img/person_1.jpg"
+													<img src="../resources/img/sad.png" alt="Image placeholder">
+												</div>
+											</c:when>
+
+											<c:when test="${review.rev_score == 3}">
+												<div class="vcard bio">
+													<img src="../resources/img/soso.png"
 														alt="Image placeholder">
 												</div>
-												<div class="comment-body">
-													<h3>John Doe</h3>
-													<div class="meta">Sept 25, 2019 at 2:21pm</div>
-													<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-														elit. Pariatur quidem laborum necessitatibus, ipsam
-														impedit vitae autem, eum officia, fugiat saepe enim
-														sapiente iste iure! Quam voluptas earum impedit
-														necessitatibus, nihil?</p>
-													<p>
-														<a href="#" class="reply">Reply</a>
-													</p>
+											</c:when>
+
+											<c:otherwise>
+												<div class="vcard bio">
+													<img src="../resources/img/smile.png"
+														alt="Image placeholder">
 												</div>
+											</c:otherwise>
 
-												<ul class="children">
-													<li class="comment">
-														<div class="vcard bio">
-															<img src="../resources/img/person_1.jpg"
-																alt="Image placeholder">
-														</div>
-														<div class="comment-body">
-															<h3>John Doe</h3>
-															<div class="meta">Sept 25, 2019 at 2:21pm</div>
-															<p>Lorem ipsum dolor sit amet, consectetur
-																adipisicing elit. Pariatur quidem laborum
-																necessitatibus, ipsam impedit vitae autem, eum officia,
-																fugiat saepe enim sapiente iste iure! Quam voluptas
-																earum impedit necessitatibus, nihil?</p>
-															<p>
-																<a href="#" class="reply">Reply</a>
-															</p>
-														</div>
-													</li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
+										</c:choose>
+										<div class="comment-body">
+											<h3>${review.mem_nickname}</h3>
+											<div class="meta">${review.rev_date}</div>
+											<p>${review.rev_cont}</p>
+									
+											<a href="${pageContext.request.contextPath }/report/viewreport.do?
+                           tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수" class="reply">리뷰신고</a>
+								
+										</div>
+										</li>
 
-							<li class="comment">
-								<div class="vcard bio">
-									<img src="../resources/img/person_1.jpg"
-										alt="Image placeholder">
-								</div>
-								<div class="comment-body">
-									<h3>John Doe</h3>
-									<div class="meta">Sept 25, 2019 at 2:21pm</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit. Pariatur quidem laborum necessitatibus, ipsam impedit
-										vitae autem, eum officia, fugiat saepe enim sapiente iste
-										iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-									<p>
-										<a href="#" class="reply">Reply</a>
-									</p>
-								</div>
-							</li>
+								</c:forEach>
+
+							
+
 						</ul>
 						<!-- END comment-list -->
+
+
+
+<!-- 댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기 -->
+
 
 						<div class="comment-form-wrap pt-5">
 							<h3 class="mb-5">Leave a comment</h3>
 							<form action="#" class="bg-light p-4">
 								<div class="form-group">
-									<label for="name">Name *</label> <input type="text"
+									<label for="name">NickName</label> <input type="text"
 										class="form-control bg-white" id="name">
 								</div>
 								<div class="form-group">
-									<label for="email">Email *</label> <input type="email"
+									<label for="email">Password</label> <input type="email"
 										class="form-control" id="email">
 								</div>
 								<div class="form-group">
@@ -265,7 +189,7 @@
 					</div>
 				</div>
 
-
+<!-- 댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝-->
 
 				<!-- .col-md-8  여기서부터 오른쪽 카테고리 -->
 				<div class="col-lg-4 sidebar ftco-animate">
