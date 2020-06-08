@@ -2,13 +2,18 @@ package com.borajoin.teuching.review.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.borajoin.teuching.member.model.vo.Member;
 import com.borajoin.teuching.review.model.service.ReviewService;
+import com.borajoin.teuching.review.model.vo.Review;
 
 @Controller
 public class ReviewController {
@@ -46,11 +51,34 @@ public class ReviewController {
 		mav.addObject("reviewList",res);
 		mav.setViewName("profile/review");
 
+	
 		return mav;
 
 	}
 	
-	
+	@RequestMapping("review/writereview.do")
+	public ModelAndView writeReview(Review review, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		/*
+		 * Member member = (Member) session.getAttribute("logInInfo");
+		 * member.setNickname(member.getNickname());
+		 */
+		
+		int res = rs.insertReview(review);
+		if(res == 0) {
+			mav.addObject("msg","게시글 등록에 실패하였습니다. 다시한번 확인해주세요.");
+			mav.addObject("url", "/teuching/profile/review.do");
+			mav.setViewName("common/result");
+		}
+		mav.addObject("msg","게시글이 등록되었습니다.");
+		mav.addObject("url", "/teuching/profile/review.do");
+		mav.setViewName("common/result");
+		
+		
+		return mav;
+
+	}
 	
 	
 	

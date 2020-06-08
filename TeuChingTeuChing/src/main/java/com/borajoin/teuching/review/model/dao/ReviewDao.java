@@ -35,4 +35,8 @@ public class ReviewDao {
 		return sqlSession.selectList("Review.selectReviewList", data);
 
 	}
+	
+	public int insertReview(Review review) {
+		return sqlSession.insert("Review.insertReview",review);
+	}
 }

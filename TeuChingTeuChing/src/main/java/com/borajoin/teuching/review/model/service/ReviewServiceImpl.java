@@ -33,4 +33,10 @@ public class ReviewServiceImpl implements ReviewService {
 		return res;
 	}
 
+	@Override
+	public int insertReview(Review review) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

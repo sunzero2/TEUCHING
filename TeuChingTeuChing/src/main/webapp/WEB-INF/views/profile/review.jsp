@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#star a{ text-decoration: none; color: gray; } 
+#star a.on{ color: red; }
+}
+</style>
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
 	rel="stylesheet">
@@ -71,9 +76,11 @@
 						<div class="desc align-self-md-center">
 
 							<!-- ===============버튼을 여기에 넣어보았습니다=================== -->
-								<a href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=1111
-                     &mem_eamil=1111&nick_name=김지수&type=tra&reported=김김지수" class="reply">트레이너 신고</a>
-						
+							<a
+								href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=1111
+                     &mem_eamil=1111&nick_name=김지수&type=tra&reported=김김지수"
+								class="reply">트레이너 신고</a>
+
 							<!-- ===============버튼을 여기까지 넣어보았습니다=================== -->
 
 
@@ -106,79 +113,84 @@
 
 						<ul class="comment-list">
 
-			
+
 							<c:forEach items="${reviewList.rlist}" var="review">
-					
-									<li class="comment">
-							
-									
-									<c:choose>
 
-											<c:when test="${review.rev_score < 3}">
-												<div class="vcard bio">
-													<img src="../resources/img/sad.png" alt="Image placeholder">
-												</div>
-											</c:when>
+								<li class="comment"><c:choose>
 
-											<c:when test="${review.rev_score == 3}">
-												<div class="vcard bio">
-													<img src="../resources/img/soso.png"
-														alt="Image placeholder">
-												</div>
-											</c:when>
+										<c:when test="${review.rev_score < 3}">
+											<div class="vcard bio">
+												<img src="../resources/img/sad.png" alt="Image placeholder">
+											</div>
+										</c:when>
 
-											<c:otherwise>
-												<div class="vcard bio">
-													<img src="../resources/img/smile.png"
-														alt="Image placeholder">
-												</div>
-											</c:otherwise>
+										<c:when test="${review.rev_score == 3}">
+											<div class="vcard bio">
+												<img src="../resources/img/soso.png" alt="Image placeholder">
+											</div>
+										</c:when>
 
-										</c:choose>
-										<div class="comment-body">
-											<h3>${review.mem_nickname}</h3>
-											<div class="meta">${review.rev_date}</div>
-											<p>${review.rev_cont}</p>
-									
-											<a href="${pageContext.request.contextPath }/report/viewreport.do?
-                           tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수" class="reply">리뷰신고</a>
-								
-										</div>
-										</li>
+										<c:otherwise>
+											<div class="vcard bio">
+												<img src="../resources/img/smile.png"
+													alt="Image placeholder">
+											</div>
+										</c:otherwise>
 
-								</c:forEach>
+									</c:choose>
+									<div class="comment-body">
+										<h3>${review.mem_nickname}</h3>
+										<div class="meta">${review.rev_date}</div>
+										<p>${review.rev_cont}</p>
 
-							
+										<a
+											href="${pageContext.request.contextPath }/report/viewreport.do?
+                           tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
+											class="reply">리뷰신고</a>
+
+									</div></li>
+
+							</c:forEach>
+
+
 
 						</ul>
 						<!-- END comment-list -->
 
 
 
-<!-- 댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기 -->
+						<!-- 댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기 -->
 
 
 						<div class="comment-form-wrap pt-5">
 							<h3 class="mb-5">Leave a comment</h3>
-							<form action="#" class="bg-light p-4">
+							<form action="${pageContext.request.contextPath }/review/writereview.do" method="post" enctype="multipart/form-data">
 								<div class="form-group">
-									<label for="name">NickName</label> <input type="text"
-										class="form-control bg-white" id="name">
+									<label for="memNickname">Nickname</label> <input type="text"
+										class="form-control bg-white" id="memNickname"
+										name="memNickname">
 								</div>
 								<div class="form-group">
-									<label for="email">Password</label> <input type="email"
-										class="form-control" id="email">
+									<label for="reviewPw">Password</label> <input type="text"
+										class="form-control" id="reviewPw" name="reviewPw">
 								</div>
 								<div class="form-group">
-									<label for="website">Website</label> <input type="url"
-										class="form-control" id="website">
+									<label for="revScore">d</label>
+									<div id="star" name="revScore">
+										<a href="#a" value="1">★</a>
+										<a href="#a" value="2">★</a> 
+										<a href="#a" value="3">★</a> 
+										<a href="#a" value="4">★</a> 
+										<a href="#a" value="5">★</a>
+									</div>
 								</div>
 
 								<div class="form-group">
-									<label for="message">Message</label>
-									<textarea name="" id="message" cols="30" rows="10"
-										class="form-control"></textarea>
+									<label for="revCont">Review</label>
+									<textarea id="revCont" cols="30" rows="10"
+										class="form-control" name="revCont"></textarea>
 								</div>
+
 								<div class="form-group">
 									<input type="submit" value="Post Comment"
 										class="btn py-3 px-4 btn-primary">
@@ -189,7 +201,7 @@
 					</div>
 				</div>
 
-<!-- 댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝-->
+				<!-- 댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝-->
 
 				<!-- .col-md-8  여기서부터 오른쪽 카테고리 -->
 				<div class="col-lg-4 sidebar ftco-animate">
@@ -286,6 +298,16 @@
 	<!-- .section -->
 
 	<!-- -----------------------------------끝-------------------------------------------- -->
+	<script src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script>
+
+	<script>
+	$('#star a').click(function(){ $(this).parent().children("a").removeClass("on"); $(this).addClass("on").prevAll("a").addClass("on"); 
+	console.log($(this).attr("value")); 
+	});
+
+	</script>
 
 	<%@ include file="../include/footer.jsp"%>
 	<script src="../resources/js/jquery.min.js"></script>

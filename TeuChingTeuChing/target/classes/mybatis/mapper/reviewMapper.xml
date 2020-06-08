@@ -10,4 +10,9 @@
 	<select id="selectReviewList" resultType="Review">
 		select * from (select rownum rnum, n1.* from ( select * from tr_review order by ${orderby} desc)n1) where rnum between #{page.start} and #{page.end}
 	</select>
+	
+	<!-- <insert id="insertReview">
+		insert into tr_review values(S_REVIEW_IDX.nextval,'아이걸어케넣지','이메일도어케넣지','로그인한회원닉넴',#{rev_cont),#{rev_score},#{rev_password},
+		'n',#{recommend},sysdate)
+	</insert> -->
 </mapper>
