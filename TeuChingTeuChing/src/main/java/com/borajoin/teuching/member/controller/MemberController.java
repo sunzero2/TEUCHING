@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,7 +42,7 @@ public class MemberController {
 	public ModelAndView login() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("account/loginform");
-
+		
 		return mav;
 	}
 	
@@ -49,14 +50,18 @@ public class MemberController {
 	@RequestMapping("/member/loginImple.do")
 	public ModelAndView loginImple(@RequestParam Map<String,Object> commandMap, HttpSession session) throws SQLException {
 		ModelAndView mav = new ModelAndView();
+
+		
 		
 		if(commandMap.get("account").equals("member")) {
 			Member res = ms.m_login(commandMap);
 			
 			if(res == null) {
+				mav.addObject("msg","0");
 				mav.setViewName("account/loginform");
 			}else {
 				mav.addObject("test", "member");
+				mav.addObject("msg","1");
 				session.setAttribute("loginInfo", res);
 				mav.setViewName("landing/landing");
 			}
@@ -64,9 +69,11 @@ public class MemberController {
 			Trainer res = ms.t_login(commandMap);
 			
 			if(res == null) {
+				mav.addObject("msg","0");
 				mav.setViewName("account/loginform");
 			}else {
 				mav.addObject("test", "trainer");
+				mav.addObject("msg","1");
 				session.setAttribute("loginInfo", res);
 				mav.setViewName("landing/landing");
 			}
@@ -170,6 +177,10 @@ public class MemberController {
 	}
 	
 	
+	//회원가입 합치기
+	
+	
+	
 	// 일반회원 - 닉네임 중복체크
 	@RequestMapping(value = "/nickChk.do", produces = "application/text; charset=utf8")
 	@ResponseBody
@@ -204,9 +215,42 @@ public class MemberController {
 	
 	
 	
+	//이메일 인증하기
+	//일반회원
+	@RequestMapping("/member/m_joinemailCheck.do")
+	public ModelAndView m_joinEmailCheck(@RequestParam Map<String,Object> commandMap, HttpServletRequest request) throws SQLException {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		String path = request.getServerName() + ":" + request.getServerPort() + request.getContextPath(); 
+		
+		System.out.println(path +"들어오나??");
+		
+		commandMap.put("urlPath", path);
+		ms.m_mailSending(commandMap);
+		
+		mav.setViewName("landing/landing");
+		
+		return mav;
+	}
 	
-	
-	
+	//트레이너 
+	@RequestMapping("/member/t_joinemailCheck.do")
+	public ModelAndView t_joinEmailCheck(@RequestParam Map<String,Object> commandMap, HttpServletRequest request) throws SQLException {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		String path = request.getServerName() + ":" + request.getServerPort() + request.getContextPath(); 
+		
+		System.out.println(path +"들어오나??");
+		
+		commandMap.put("urlPath", path);
+		ms.t_mailSending(commandMap);
+		
+		mav.setViewName("landing/landing");
+		
+		return mav;
+	}
 	
 	
 	

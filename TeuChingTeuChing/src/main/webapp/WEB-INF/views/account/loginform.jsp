@@ -171,7 +171,8 @@
 	</main>
 
 	<script type="text/javascript">
-
+	
+	
 		$('#signUp').click(function(){
 			
 			if($.trim($('#email').val()) == ''){
@@ -184,19 +185,25 @@
 				return;
 			}else{
 				$('#signFrm').submit();
-			} 
+				
+			}
+			
+			var message = '${msg}';
+			
+			if(message == "0"){
+			alert("아이디 혹은 비밀번호를 확인하세요.");
+			location.reload();
+			}else if(message == "1"){
+			alert("환영합니다!");
+			}
+			
 		});
 		
+		
 	</script>
-	<script type="text/javascript">
-	var flg = ${data.reCheck};
-	
-	if(flg){
-		var msg = ${data.msg};
-		console.dir(document.querySelector('#checkMsg'));
-		document.querySelector('#checkMsg').textContent = '아이디 혹은 비밀번호를 확인 해주세요';
-	};
-	</script>
+
+
+
 
 
 

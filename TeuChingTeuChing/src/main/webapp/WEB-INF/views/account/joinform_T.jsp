@@ -47,7 +47,9 @@ background-color: transparent !important;
 				<div class="col-xl-8 m-auto order-xl-1" style="margin-top: 5% !important; margin-bottom: 4% !important;">
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
 					<form id="signFrm" name="signFrm"
-	       					action="<%=request.getContextPath()%>/member/joinTrainerImple.do" method="post">
+					action="<%=request.getContextPath()%>/member/t_joinemailCheck.do"
+	       					action="<%=request.getContextPath()%>/member/joinTrainerImple.do" 
+	       					method="post">
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
 								<div class="col-8">
@@ -100,7 +102,7 @@ background-color: transparent !important;
 										<div class="col-lg-6">
 											<div class="form-group focused">
 												<label class="form-control-label">성함
-													</label> <input type="text" id="nickname" name="nickname"
+													</label> <input type="text" id="name" name="name"
 													class="form-control form-control-alternative">
 											</div>
 										</div>
@@ -233,9 +235,9 @@ background-color: transparent !important;
 				alert("이메일을 입력해주세요.");
 				$('#email').focus();
 				return;
-			}else if($.trim($('#nickname').val()) == ''){
+			}else if($.trim($('#name').val()) == ''){
 				alert("성함을 입력해주세요.");
-				$('#nickname').focus();
+				$('#name').focus();
 				return;
 			}else if($.trim($('#password_1').val()) == ''){
 				alert("패스워드를 입력해주세요.");
@@ -262,7 +264,7 @@ background-color: transparent !important;
 				alert("이메일 중복체크를 해주세요.");
 				return;
 			}else{
-				alert("트칭 트레이너 가입이 완료되었습니다. Let's Teach & Exercise!");
+				alert("작성하신 이메일로 인증메일이 전송되었습니다.                              메일 인증 시 회원가입이 완료됩니다.");
 				$('#signFrm').submit();
 			} 
 			

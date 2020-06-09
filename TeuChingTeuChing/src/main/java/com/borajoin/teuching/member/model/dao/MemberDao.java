@@ -27,6 +27,14 @@ public class MemberDao {
 		return session.insert("Member.joinTrainer", commandMap);
 	}
 	
+	//회원가입 합치기
+	public int joinAccount(Map<String,Object> commandMap) {
+		System.out.println("==>트레이너 회원가입");
+		return session.insert("Member.joinAccount", commandMap);
+	}
+	
+	
+	
 	//일반회원 닉네임 중복확인
 	public int nickChk(String nickname) {
 		System.out.println("==>일반회원 닉네임 중복체크!");
