@@ -28,26 +28,31 @@
 	.toptrainer{
 		height: 126px;
 	}
+	
+	.slide-subheading {
+		font-weight: bold;
+		color: #ffb5b5;
+		font-size: initial;
+	}
 </style>
 </head>
 <body>
 	<%@ include file="../include/top.jsp" %>
 	<section class="home-slider js-fullheight owl-carousel">
+			<!-- style="background-image: url(https://source.unsplash.com/category/gym/1600x800/collection);"> -->
 		<div class="slider-item js-fullheight"
-			style="background-image: url(../resources/img/bg_1.jpg);">
+			style="background-image: url(https://source.unsplash.com/collection/827737/1);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
 					class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
 					data-scrollax-parent="true">
 					<div class="col-md-10 text ftco-animate text-center">
-						<h1 class="mb-4">Discover Your Inner Sanctuary</h1>
-						<h3 class="subheading">Everyday We Bring Hope and Smile to
-							the Patient We Serve</h3>
+						<h1 class="mb-4">Your First Visit?</h1>
+						<h3 class="slide-subheading">우리의 서비스를 소개합니다.</h3>
 						<p>
 							<a href="#"
-								class="btn btn-white btn-outline-white px-4 py-3 mt-3">View
-								our works</a>
+								class="btn btn-white btn-outline-white px-4 py-3 mt-3">알아보러 가기</a>
 						</p>
 					</div>
 				</div>
@@ -55,20 +60,18 @@
 		</div>
 
 		<div class="slider-item js-fullheight"
-			style="background-image: url(../resources/img/bg_2.jpg);">
+			style="background-image: url(https://source.unsplash.com/collection/827737/2);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
 					class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
 					data-scrollax-parent="true">
 					<div class="col-md-10 text ftco-animate text-center">
-						<h1 class="mb-4">Lighting Your Heart &amp; Mind</h1>
-						<h3 class="subheading">Your Health is Our Top Priority with
-							Comprehensive, Affordable medical.</h3>
+						<h1 class="mb-4">Trainer Matching</h1>
+						<h3 class="slide-subheading">차별화된 트레이너 매칭서비스를 만나보세요!</h3>
 						<p>
 							<a href="#"
-								class="btn btn-white btn-outline-white px-4 py-3 mt-3">View
-								our works</a>
+								class="btn btn-white btn-outline-white px-4 py-3 mt-3">매칭하러 가기</a>
 						</p>
 					</div>
 				</div>
