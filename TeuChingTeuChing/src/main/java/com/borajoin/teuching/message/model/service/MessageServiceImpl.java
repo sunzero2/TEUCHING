@@ -14,8 +14,13 @@ public class MessageServiceImpl implements MessageService {
 	MessageDao md;
 
 	@Override
-	public int insertMessage(Map<String, Object> commandMap) {
-		return md.insertMessage(commandMap);
+	public int insertMatchMessage(Map<String, Object> commandMap) {
+		return md.insertMatchMessage(commandMap);
+	}
+
+	@Override
+	public int insertMatch(Map<String, Object> commandMap) {
+		return md.insertMatch(commandMap);
 	}
 
 }

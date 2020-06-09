@@ -27,8 +27,6 @@
 	<form id="form3"
 		action="${pageContext.request.contextPath }/message/matchform.do"
 		target="pop">
-		<input type="hidden" name="tr_email" value="1111"> <input
-			type="hidden" name="mem_email" value="2222">
 	</form>
 	<button onclick="openPopUp3();">상담신청</button>
 	
