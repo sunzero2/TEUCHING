@@ -67,6 +67,7 @@
 			<div class="row justify-content-center mb-8 pb-6">
 				<div class="text-center">
 					<h2 class="mb-1">예약가능 으로 표시된 시간만 예약이 가능합니다.</h2>
+					<button onclick="openPopUp();">상담신청(이건 임시여 디자인보고 기겁하지마..)</button>
 					<br>
 				</div>
 			</div>
@@ -227,7 +228,7 @@
 			</div>
 		</div>
 	</section>
-
+	<form id="form" action="${pageContext.request.contextPath }/message/matchform.do" target="pop"></form>
 	<script>
 		
 	  
@@ -268,7 +269,14 @@
 	  }
 	  
 	  load();
-
+	  
+	  /* 트레이너 상담신청시 띄울 팝업용 */
+	  function openPopUp() {
+			const form = document.querySelector('#form');
+			window.open("", 'pop',
+							'width=450,height=400,left=420,top=150,toolbars=no,scrollbars=no');
+			form.submit();
+		}	
 	</script>
 	<%@ include file="../include/footer.jsp"%>
 	<script src="../resources/js/jquery.min.js"></script>
