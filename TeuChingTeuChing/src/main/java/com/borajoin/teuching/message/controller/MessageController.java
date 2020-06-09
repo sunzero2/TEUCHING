@@ -52,6 +52,7 @@ public class MessageController {
 		mv.setViewName("message/result");
 		return mv;
 	}
+	//----------------매칭폼
 
 	@RequestMapping("/message/matchform.do")
 	public ModelAndView matchForm(String tr_email, String mem_email) {
@@ -62,9 +63,9 @@ public class MessageController {
 		return mv;
 	}
 	
-	@RequestMapping("/message/message.do")
-	public String meesss() {
-		return "message/messageMatchForm";
+	@RequestMapping("/message/matchformcheck.do")
+	public String matchformcheck() {
+		return "message/messageMatchCheck";
 	}
-
+	
 }

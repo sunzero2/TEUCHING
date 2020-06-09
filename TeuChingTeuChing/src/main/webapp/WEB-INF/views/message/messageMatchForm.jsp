@@ -34,19 +34,22 @@
 			});
 		});
 	</script>
+	<link rel="stylesheet"
+		href="../resources/css/message/messageMatchForm.css">
 </head>
 
 <body>
 	<div class="container">
 		<h1>상담신청</h1>
-		<div class="input-group date">
-			<input type="text" placeholder="날짜를 선택해주세요" class="form-control">
+		Date
+		<div class="input-group date" style="width: 50%;">
+			<input type="text" name="match_date" placeholder="날짜를 선택해주세요" class="form-control">
 			<span class="input-group-addon"> <i
 				class="glyphicon glyphicon-calendar"></i></span>
 		</div>
 		<div class="row">
 			<div class="col-sm-4">
-				<select class="form-control">
+				Time <select name="match_time" class="form-control">
 					<optgroup label="오전">
 						<option value="07:00">07:00</option>
 						<option value="07:30">07:30</option>
@@ -86,8 +89,12 @@
 				</select>
 			</div>
 		</div>
-		<textarea placeholder="내용을 입력해주세요"></textarea>
-		<button>신청하기</button>
+		<textarea name="msg_cont" id="textarea" placeholder="내용을 입력해주세요"></textarea>
+		<br>
+		<input type="hidden" name="" value="">
+		<input type="hidden" name="" value="">
+		<input type="hidden" name="" value="">
+		<button id="btn">신청하기</button>
 	</div>
 </body>
 </body>
