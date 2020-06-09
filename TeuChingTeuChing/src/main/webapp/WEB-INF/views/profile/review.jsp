@@ -1,10 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#star a {
+	text-decoration: none;
+	color: gray;
+}
+
+#star a.on {
+	color: red;
+}
+}
+</style>
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
 	rel="stylesheet">
@@ -24,12 +36,19 @@
 <link rel="stylesheet" href="../resources/css/flaticon.css">
 <link rel="stylesheet" href="../resources/css/icomoon.css">
 <link rel="stylesheet" href="../resources/css/style.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</head>
 
 </head>
 <body>
 
 	<%@ include file="../include/top.jsp"%>
-
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
 
@@ -59,7 +78,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 ftco-animate">
-					<h2 class="mb-3">여기에 트레이너 이름 나오게 할래요</h2>
+					<h2 class="mb-3">누구누구의 프로필입니다 이런거 뜨게하자 굳ㅎㅎ</h2>
 
 
 					<div class="about-author d-flex">
@@ -68,17 +87,16 @@
 								class="img-fluid mb-4">
 						</div>
 						<div class="desc align-self-md-center">
+
 							<!-- ===============버튼을 여기에 넣어보았습니다=================== -->
-							<form
-								action="${pageContext.request.contextPath }/report/viewreport.do">
-								<input type="hidden" name="tr_email" value="1111"> <input
-									type="hidden" name="mem_email" value="1111"> <input
-									type="hidden" name="nick_name" value="김지수"> <input
-									type="hidden" name="type" value="tra"> <input
-									type="hidden" name="reported" value="김김지수">
-								<button type="submit" class="btn btn-outline-primary">트레이너신고</button>
-							</form>
+							<a
+								href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=1111
+                     &mem_eamil=1111&nick_name=김지수&type=tra&reported=김김지수"
+								class="reply">트레이너 신고</a>
+
 							<!-- ===============버튼을 여기까지 넣어보았습니다=================== -->
+
+
 							<h3>트레이너 이름!!!</h3>
 							<p>트레이너 소개 소개소개ㅅ개트레이너 소개 소개소개ㅅ트레이너 소개 소개소개ㅅ트레이너 소개 소개소개ㅅ</p>
 							<div class="tag-widget post-tag-container mb-5 mt-5">
@@ -90,7 +108,7 @@
 								</div>
 								<br>
 								<p>
-									<a href="여기에 트레이너 스케줄로 이동할 href작성하거야!!" class="reply">트레이너
+									<a href="${pageContext.request.contextPath }/profile/schedule.do" class="reply">트레이너
 										스케쥴러로 이동</a>
 								</p>
 							</div>
@@ -102,159 +120,121 @@
 					<!-- 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글 -->
 
 					<div class="pt-5 mt-5">
-						<h3 class="mb-5">6 Comments</h3>
+
+						<!-- 코멘트 리스트 수 가져와서 뿌려 -->
+						<h3 class="mb-5">${reviewList.paging.total} Comments</h3>
+
 						<ul class="comment-list">
-							<li class="comment">
-								<div class="vcard bio">
-									<img src="../resources/img/person_2.jpg"
-										alt="Image placeholder">
-								</div>
-								<div class="comment-body">
-									<!-- =======================리뷰신고===========================-->
-									<form
-										action="${pageContext.request.contextPath }/report/viewreport.do">
-										<input type="hidden" name="tr_email" value="2222"> <input
-											type="hidden" name="mem_email" value="2222"> <input
-											type="hidden" name="nick_name" value="김지수"> <input
-											type="hidden" name="type" value="rev"> <input
-											type="hidden" name="reported" value="김김지수">
-										<button type="submit" class="btn btn-outline-primary">리뷰신고</button>
-									</form>
-									<!-- =======================리뷰신고===========================-->
-									<h3>John Doe</h3>
-									<div class="meta">Sept 25, 2019 at 2:21pm</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit. Pariatur quidem laborum necessitatibus, ipsam impedit
-										vitae autem, eum officia, fugiat saepe enim sapiente iste
-										iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-									<p>
-										<a href="#" class="reply">Reply</a>
-									</p>
-								</div>
-							</li>
-
-							<li class="comment">
-								<div class="vcard bio">
-									<img src="../resources/img/person_1.jpg"
-										alt="Image placeholder">
-								</div>
-								<div class="comment-body">
-									<h3>John Doe</h3>
-									<div class="meta">Sept 25, 2019 at 2:21pm</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit. Pariatur quidem laborum necessitatibus, ipsam impedit
-										vitae autem, eum officia, fugiat saepe enim sapiente iste
-										iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-									<p>
-										<a href="#" class="reply">Reply</a>
-									</p>
-								</div>
-
-								<ul class="children">
-									<li class="comment">
-										<div class="vcard bio">
-											<img src="../resources/img/person_1.jpg"
-												alt="Image placeholder">
-										</div>
-										<div class="comment-body">
-											<h3>John Doe</h3>
-											<div class="meta">Sept 25, 2019 at 2:21pm</div>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit. Pariatur quidem laborum necessitatibus, ipsam impedit
-												vitae autem, eum officia, fugiat saepe enim sapiente iste
-												iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-											<p>
-												<a href="#" class="reply">Reply</a>
-											</p>
-										</div>
 
 
-										<ul class="children">
-											<li class="comment">
-												<div class="vcard bio">
-													<img src="../resources/img/person_1.jpg"
-														alt="Image placeholder">
-												</div>
-												<div class="comment-body">
-													<h3>John Doe</h3>
-													<div class="meta">Sept 25, 2019 at 2:21pm</div>
-													<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-														elit. Pariatur quidem laborum necessitatibus, ipsam
-														impedit vitae autem, eum officia, fugiat saepe enim
-														sapiente iste iure! Quam voluptas earum impedit
-														necessitatibus, nihil?</p>
-													<p>
-														<a href="#" class="reply">Reply</a>
-													</p>
-												</div>
+							<c:forEach items="${reviewList.rlist}" var="review">
+								<li class="comment">
+									<!-- 프사 별점별로 다르게 --> <c:choose>
+										<c:when test="${review.rev_score < 3}">
+											<div class="vcard bio">
+												<img src="../resources/img/sad.png" alt="Image placeholder">
+											</div>
+										</c:when>
 
-												<ul class="children">
-													<li class="comment">
-														<div class="vcard bio">
-															<img src="../resources/img/person_1.jpg"
-																alt="Image placeholder">
-														</div>
-														<div class="comment-body">
-															<h3>John Doe</h3>
-															<div class="meta">Sept 25, 2019 at 2:21pm</div>
-															<p>Lorem ipsum dolor sit amet, consectetur
-																adipisicing elit. Pariatur quidem laborum
-																necessitatibus, ipsam impedit vitae autem, eum officia,
-																fugiat saepe enim sapiente iste iure! Quam voluptas
-																earum impedit necessitatibus, nihil?</p>
-															<p>
-																<a href="#" class="reply">Reply</a>
-															</p>
-														</div>
-													</li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
+										<c:when test="${review.rev_score == 3}">
+											<div class="vcard bio">
+												<img src="../resources/img/soso.png" alt="Image placeholder">
+											</div>
+										</c:when>
 
-							<li class="comment">
-								<div class="vcard bio">
-									<img src="../resources/img/person_1.jpg"
-										alt="Image placeholder">
-								</div>
-								<div class="comment-body">
-									<h3>John Doe</h3>
-									<div class="meta">Sept 25, 2019 at 2:21pm</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit. Pariatur quidem laborum necessitatibus, ipsam impedit
-										vitae autem, eum officia, fugiat saepe enim sapiente iste
-										iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-									<p>
-										<a href="#" class="reply">Reply</a>
-									</p>
-								</div>
-							</li>
+										<c:otherwise>
+											<div class="vcard bio">
+												<img src="../resources/img/smile.png"
+													alt="Image placeholder">
+											</div>
+										</c:otherwise>
+									</c:choose>
+
+
+									<div class="comment-body">
+										<h5>${review.mem_nickname}</h5>
+										<div class="meta">${review.rev_date}</div>
+										<p>${review.rev_cont}</p>
+
+										<a
+											href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
+											class="reply">리뷰신고</a>
+
+									</div>
+								</li>
+							</c:forEach>
 						</ul>
+
+
+						<div class="row mt-5" style="transform: translateX(25%)">
+						<div class="col">
+								<div class="block-27">
+								<ul>
+										<c:if test="${reviewList.paging.blockStart gt 1 }">
+											<li><span><a href="<%=request.getContextPath()%>/profile/review.do?reviewPage=${reviewList.paging.blockStart-1}">&lt;</a></span></li>
+										</c:if>
+
+										<c:if test="${reviewList.paging.blockStart le 1 }">
+											<li><span><a href="<%=request.getContextPath()%>/profile/review.do?reviewPage=${reviewList.paging.blockStart}">&lt;</a></span></li>
+										</c:if>
+
+
+										<c:forEach begin="${reviewList.paging.blockStart}" end="${reviewList.paging.blockEnd}" var="page">
+											<li class="active"><span><a
+												href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${page}"
+												class="num active">${page}</a></span></li>
+										</c:forEach>
+
+										<c:if test="${reviewList.paging.blockEnd+1 ge reviewList.paging.lastPage}">
+											<li><span><a
+												href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${reviewList.paging.blockEnd}">&gt;</a></span></li>
+										</c:if>
+										<c:if test="${reviewList.paging.blockEnd+1 lt reviewList.paging.lastPage }">
+											<li><span><a
+												href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${reviewList.paging.blockEnd+1}">&gt;</a></span></li>
+										</c:if>
+
+									</ul>
+								</div>
+</div>
+						</div>
+
 						<!-- END comment-list -->
+
+
+
+						<!-- 댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기 -->
+
 
 						<div class="comment-form-wrap pt-5">
 							<h3 class="mb-5">Leave a comment</h3>
-							<form action="#" class="bg-light p-4">
+							<form
+								action="${pageContext.request.contextPath }/review/writereview.do"
+								method="post" enctype="multipart/form-data">
 								<div class="form-group">
-									<label for="name">Name *</label> <input type="text"
-										class="form-control bg-white" id="name">
+									<label for="memNickname">Nickname</label> <input type="text"
+										class="form-control bg-white" id="memNickname"
+										name="memNickname">
 								</div>
 								<div class="form-group">
-									<label for="email">Email *</label> <input type="email"
-										class="form-control" id="email">
+									<label for="reviewPw">Password</label> <input type="text"
+										class="form-control" id="reviewPw" name="reviewPw">
 								</div>
 								<div class="form-group">
-									<label for="website">Website</label> <input type="url"
-										class="form-control" id="website">
+									<label for="revScore">Star rating</label>
+									<div id="star" name="revScore">
+										<a href="#a" value="1">★</a> <a href="#a" value="2">★</a> <a
+											href="#a" value="3">★</a> <a href="#a" value="4">★</a> <a
+											href="#a" value="5">★</a>
+									</div>
 								</div>
 
 								<div class="form-group">
-									<label for="message">Message</label>
-									<textarea name="" id="message" cols="30" rows="10"
-										class="form-control"></textarea>
+									<label for="revCont">Review</label>
+									<textarea id="revCont" cols="30" rows="10" class="form-control"
+										name="revCont"></textarea>
 								</div>
+
 								<div class="form-group">
 									<input type="submit" value="Post Comment"
 										class="btn py-3 px-4 btn-primary">
@@ -264,6 +244,10 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- 댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝-->
+
+
 
 
 
@@ -281,6 +265,8 @@
 							<li><a href="#">Yoga <span>(140)</span></a></li>
 						</div>
 					</div>
+
+
 
 					<!-- -----------최근 게시글--------------------- -->
 					<div class="sidebar-box ftco-animate">
@@ -361,7 +347,19 @@
 	</section>
 	<!-- .section -->
 
+
+
 	<!-- -----------------------------------끝-------------------------------------------- -->
+
+
+
+	<script>
+		$('#star a').click(function() {
+			$(this).parent().children("a").removeClass("on");
+			$(this).addClass("on").prevAll("a").addClass("on");
+			console.log($(this).attr("value"));
+		});
+	</script>
 
 	<%@ include file="../include/footer.jsp"%>
 	<script src="../resources/js/jquery.min.js"></script>

@@ -19,7 +19,6 @@ public class ReviewDao {
 	private SqlSessionTemplate sqlSession;
 
 	public int contentCnt() {
-		int res = 0;
 
 		// 게시글 갯수를 반환해줄 메서드
 
@@ -27,11 +26,16 @@ public class ReviewDao {
 	}
 
 	public List<Review> selectReviewList(Paging page, String orderby) {
+		System.out.println("리뷰 다오이비다..");
 		Map<String, Object> data = new HashMap<>();
 		data.put("page", page);
 		data.put("orderby", orderby);
-
+		System.out.println("값담아서 넘어가는 다오임다"+ orderby);
 		return sqlSession.selectList("Review.selectReviewList", data);
 
+	}
+	
+	public int insertReview(Review review) {
+		return sqlSession.insert("Review.insertReview",review);
 	}
 }

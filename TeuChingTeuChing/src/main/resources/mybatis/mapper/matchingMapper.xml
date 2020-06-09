@@ -26,6 +26,7 @@
 		<if test='option.equals("post")'>
 			post_title like '%' || #{input} || '%'
 		</if>
+		order by post_idx desc
 	</select>
 	
 	<select id="keyword" resultMap="postMap">
@@ -50,6 +51,7 @@
 				and place = #{place}
 			</if>
 		</where>
+		order by post_idx desc
 	</select>
 	
 	<select id="postDetail" resultMap="postMap">
@@ -59,4 +61,8 @@
 	<insert id="insertPost" parameterType="Post">
 		insert into tr_post values(s_post_idx.nextval, #{trEmail}, #{trainerName}, #{postTitle}, #{postCont}, #{purpose}, #{sports}, #{area}, #{classSize}, #{gender}, #{place}, #{price}, sysdate)
 	</insert>
+	
+	<update id="updatePost" parameterType="Post">
+		update tr_post set post_title = #{postTitle}, post_cont = #{postCont}, purpose = #{purpose}, class_size = #{classSize}, place = #{place}, price = #{price} where post_idx = #{postIdx}
+	</update>
 </mapper>

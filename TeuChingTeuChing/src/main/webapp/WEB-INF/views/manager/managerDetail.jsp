@@ -38,76 +38,17 @@
 <link rel="stylesheet" href="resources/css/icomoon.css">
 <link rel="stylesheet" href="resources/css/style.css">
 <!-- 기존꺼말고 새로갖다박은거임 -->
-
-<style>
-html, body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	width: 100%;
-}
-
-.wrapper {
-	width: 63%;
-	height: 100%;
-	color: pink;
-	transform: translate(28%, 7%);
-}
-
-.ansbox-top {
-	height: 25%;
-	width: 100%;
-	transform: translateX(18%);
-}
-
-.ansbox-bottom {
-	height: 75%;
-	width: 110%;
-	position: absolute;
-	boader: 1px solid black;
-}
-
-#bt1 {
-	float: left;
-	height: 100%;
-	width: 50%;
-}
-
-#bt2 {
-	float: right;
-	height: 100%;
-	width: 50%;
-}
-
-h5 {
-	transform: translate(5%, 30%);
-	font-family: "Open Sans", Arial, sans-serif;
-}
-
-h2 {
-	transform: translate(4%, 38%);
-	font-weight: bold;
-}
-
-.col-lg-8 {
-	left: 14%;
-}
-
-#font-size {
-	font-size: 15px;
-}
-</style>
+<link rel="stylesheet" href="resources/css/manager/managerDetail.css">
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>
 
 	<div class="wrapper">
 		<div class="ansbox-top">
-			<div
-				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
-				style="float: left; border: 1px solid black; background-image: url(resources/img/circle_person.jpg); width: 15%; height: 75%;">
+			<div id="person"
+				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated">
 				<c:if test="${ res.ans_yn eq 'Y'}">
-					<div
+					<div id="check"
 						style="text-align: right; transform: translate(-70%, -35%); color: #b91e2d; font-size: 5vw">✔</div>
 				</c:if>
 			</div>
@@ -131,15 +72,14 @@ h2 {
 						type="hidden" name="report_date" value="${res.report_date }">
 					<input type="hidden" name="ans_yn" value="${res.ans_yn }">
 					<input type="hidden" name="report_idx" value="${res.report_idx }">
-					<button type="submit" class="btn btn-outline-primary"
-						style="transform: translateX(300%);">답변하기</button>
+					<button type="submit" class="btn btn-outline-primary" id="btn">답변하기</button>
 				</h5>
 			</form>
 			<c:if test="${type eq 'tra' }">
-				<h2>${ res.nick_name}님의문의내역</h2>
+				<h2>${ res.nick_name}님의문의 내역</h2>
 			</c:if>
 			<c:if test="${type eq 'rev' }">
-				<h2>${ res.trainer_name}님의문의내역</h2>
+				<h2>${ res.trainer_name}님의문의 내역</h2>
 			</c:if>
 		</div>
 		<div class="ansbox-bottom">
@@ -184,6 +124,7 @@ h2 {
 		</div>
 
 	</div>
+	<br>
 	<br>
 	<br>
 	<br>

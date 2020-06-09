@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.borajoin.teuching.manager.model.vo.Quali;
 import com.borajoin.teuching.manager.model.vo.ReviewReport;
 import com.borajoin.teuching.manager.model.vo.TrainerReport;
 
@@ -55,7 +56,7 @@ public class ManagerDao {
 	public int insertReportTra(Map<String, Object> commandMap) {
 		return sqlSession.insert("Manager.insertReportTra", commandMap);
 	}
-	
+
 	public int insertReportRev(Map<String, Object> commandMap) {
 		return sqlSession.insert("Manager.insertReportRev", commandMap);
 	}
@@ -71,13 +72,29 @@ public class ManagerDao {
 	public int insertFile(File_Upload file) {
 		return sqlSession.insert("File.report_insertFile", file);
 	}
-	
+
 	public List<File_Upload> selectTraFile(int table_idx) {
 		return sqlSession.selectList("Manager.selectTraFile", table_idx);
 	}
-	
+
 	public List<File_Upload> selectRevFile(int table_idx) {
 		return sqlSession.selectList("Manager.selectRevFile", table_idx);
+	}
+
+	public List<Quali> selectQuali(Paging paging) {
+		return sqlSession.selectList("Manager.selectQuali", paging);
+	}
+
+	public int qualiAllCnt() {
+		return sqlSession.selectOne("Manager.qualiAllCnt");
+	}
+	
+	public Quali selectQualiDetail(String qualiidx) {
+		return sqlSession.selectOne("Manager.selectQualiDetail", qualiidx);
+	}
+	
+	public int updateQualiYn(int quali_idx) {
+		return sqlSession.update("Manager.updateQualiYn", quali_idx);
 	}
 
 }

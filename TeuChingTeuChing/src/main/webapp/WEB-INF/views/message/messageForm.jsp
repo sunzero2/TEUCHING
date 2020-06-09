@@ -37,32 +37,21 @@
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/icomoon.css">
 <link rel="stylesheet" href="resources/css/style.css">
+<link rel="stylesheet" href="resources/css/message/messageForm.css">
 <style>
-html, body {
-	width: 100%;
-	height: 100%;
+	html, body, form {
+	width: 99%;
+	height: 93%;
 	background-color: #d9edf7;
+	margin-top:-1.5%;
 }
 
 .wrapper {
-	height: 77%;
+	height: 90%;
 	width: 84%;
 	text-align: center;
-	transform: translateX(9%);
-}
-
-.purple-border textarea {
-	border: 1px solid #ba68c8;
-}
-
-.purple-border .form-control:focus {
-	border: 1px solid #ba68c8;
-	box-shadow: 0 0 0 0.2rem rgba(186, 104, 200, .25);
-}
-
-.green-border-focus .form-control:focus {
-	border: 1px solid #8bc34a;
-	box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+	transform:translateX(5%);
+	padding: 4% 1% 1% 3%;
 }
 
 p {
@@ -70,16 +59,52 @@ p {
 	font-weight: 500;
 	color: pink;
 }
+
+#msgdiv {
+	height: 75%;
+	text-align: left;
+	padding: 1% 1% 1% 1%;
+}
+
+#msg-title {
+	width: 100%;
+	height: 15%;
+	font-size: 3vw;
+	margin-bottom: 2%;
+	border: 1px solid pink;
+}
+
+#button {
+	border: none;
+	float: right;
+	background-color: pink;
+	color: white;
+	height: 35px;
+	width: 70px;
+}
+
+#textarea {
+	width: 100%;
+	height: 80%;
+	margin-bottom: 3%;
+	border: 1px solid pink;
+}
 </style>
 </head>
 <body>
-	<div class="wrapper">
-		<p>쪽지 보내기</p>
-		<textarea class="form-control" id="exampleFormControlTextarea4"></textarea>
-		<br>
-		<button type="submit" class="btn btn-outline-primary"
-			style="transform: translateX(250%); background-color: pink; color: white">보내기</button>
-	</div>
+	<form action="${pageContext.request.contextPath }/message/insertmessage.do">
+		<div class="wrapper">
+		<p>쪽지보내기</p>
+			<div id="msgdiv">
+				<input id="msg-title" type="text" name="msg_title" placeholder="제목을 입력해주세요"><br>
+				<textarea name="msg_cont" id="textarea" style="font-size: 3vw;"></textarea>
+				<br> 
+				<input type="hidden" name="tr_email" value="${tr_email }">
+				<input type="hidden" name="mem_email" value="${mem_email }">
+				<button onclick="close()" class="btn btn-outline-primary" id="button">보내기</button>
+			</div>
+		</div>
+	</form>
 	<script src="resources/js/jquery.min.js"></script>
 	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="resources/js/popper.min.js"></script>

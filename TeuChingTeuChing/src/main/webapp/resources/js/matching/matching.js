@@ -116,7 +116,7 @@ document.getElementById("keywordSearchBtn").addEventListener('click', function(e
 })
 
 document.getElementById('writeBtn').addEventListener('click', function() {
-	location.href="/teuching/post/writePost.do";
+	location.href="/teuching/post/writePost.do?postIdx=0";
 })
 
 function createTable() {

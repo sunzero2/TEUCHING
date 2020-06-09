@@ -41,6 +41,19 @@ public class PostServiceImpl implements PostService {
 		return res;
 	}
 
+	public int updatePost(Post post, List<File_Upload> uploads) {
+		int res = postDao.updatePost(post);
+		if(uploads.size() > 0) {
+			updateFile(post.getPostIdx());
+			insertFile(uploads);
+		}
+		return res;
+	}
+	
+	public int updateFile(int postIdx) {
+		return postDao.updateFile(postIdx);
+	}
+	
 	public int insertFile(List<File_Upload> uploads) {
 		int res = 0;
 

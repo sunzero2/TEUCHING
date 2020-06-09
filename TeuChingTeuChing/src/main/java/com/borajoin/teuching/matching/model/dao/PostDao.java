@@ -27,7 +27,15 @@ public class PostDao {
 	public int insertPost(Post post) {
 		return sqlSession.insert("Matching.insertPost", post);
 	}
-
+	
+	public int updatePost(Post post) {
+		return sqlSession.update("Matching.updatePost", post);
+	}
+	
+	public int updateFile(int postIdx) {
+		return sqlSession.update("File.post_updateFile", postIdx);
+	}
+	
 	public int insertFile(File_Upload file) {
 		return sqlSession.insert("File.post_insertFile", file);
 	}

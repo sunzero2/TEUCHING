@@ -7,10 +7,21 @@
 		values(S_FILE_IDX.NEXTVAL, ${table_idx}, #{origin_filename},
 		#{rename_filename}, #{savepath})
 	</insert>
+	
 	<insert id="post_insertFile" parameterType="File_Upload">
-		insert into tr_file_upload values(s_file_idx.nextval, s_post_idx.currval, #{origin_filename}, #{rename_filename}, #{savepath})
+		<if test="table_idx == 0">
+			insert into tr_file_upload values(s_file_idx.nextval, s_post_idx.currval, #{origin_filename}, #{rename_filename}, #{savepath}, 'N')
+		</if>
+		<if test="table_idx != 0">
+			insert into tr_file_upload values(s_file_idx.nextval, #{table_idx}, #{origin_filename}, #{rename_filename}, #{savepath}, 'N')
+		</if>
 	</insert>
+	
 	<select id="post_selectFile" resultType="File_Upload">
-		select * from tr_file_upload where table_idx = #{postIdx} and rename_filename like '%post%'
+		select * from tr_file_upload where table_idx = #{postIdx} and rename_filename like '%post%' and edit_yn = 'N'
 	</select>
+	
+	<update id="post_updateFile">
+		update tr_file_upload set edit_yn = 'Y' where table_idx = #{postIdx}
+	</update>
 </mapper>

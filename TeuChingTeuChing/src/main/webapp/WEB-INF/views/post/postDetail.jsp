@@ -61,7 +61,7 @@
 								<a class="author" href="/teuching/profile/review.do">${data.post.trainerName}</a>
 								<hr>
 								<button class="btn btn-primary">Send Message</button>
-								<a href="/teuching/post/editpost.do?postIdx=${data.post.postIdx}"><button class="btn btn-primary">Edit Post</button></a>
+								<a href="/teuching/post/writePost.do?postIdx=${data.post.postIdx}"><button class="btn btn-primary">Edit Post</button></a>
 							</div>
 						</div>
 					</div>

@@ -1,74 +1,91 @@
 package com.borajoin.teuching.review.model.vo;
 
-public class Review {
+import java.io.Serializable;
+import java.sql.Date;
 
-	private int reviewIdx;
-	private String trainerName;
-	private String nickName;
-	private String revCont;
-	private int revScore;
-	private int revPassword;
-	private String reportYn;
+public class Review implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8565222011723910582L;
+	private int review_idx;
+	private String trainer_name;
+	private String tr_email;
+	private String mem_nickname;
+	private String rev_cont;
+	private int rev_score;
+	private int rev_password;
+	private String report_yn;
 	private int recommend;
+	private Date rev_date;
 	
 	public Review() {
 		
 	}
 
-	public int getReviewIdx() {
-		return reviewIdx;
+	public int getReview_idx() {
+		return review_idx;
 	}
 
-	public void setReviewIdx(int reviewIdx) {
-		this.reviewIdx = reviewIdx;
+	public void setReview_idx(int review_idx) {
+		this.review_idx = review_idx;
 	}
 
-	public String getTrainerName() {
-		return trainerName;
+	public String getTrainer_name() {
+		return trainer_name;
 	}
 
-	public void setTrainerName(String trainerName) {
-		this.trainerName = trainerName;
+	public void setTrainer_name(String trainer_name) {
+		this.trainer_name = trainer_name;
 	}
 
-	public String getNickName() {
-		return nickName;
+	public String getTr_email() {
+		return tr_email;
 	}
 
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
+	public void setTr_email(String tr_email) {
+		this.tr_email = tr_email;
 	}
 
-	public String getRevCont() {
-		return revCont;
+	public String getMem_nickname() {
+		return mem_nickname;
 	}
 
-	public void setRevCont(String revCont) {
-		this.revCont = revCont;
+	public void setMem_nickname(String mem_nickname) {
+		this.mem_nickname = mem_nickname;
 	}
 
-	public int getRevScore() {
-		return revScore;
+	public String getRev_cont() {
+		return rev_cont;
 	}
 
-	public void setRevScore(int revScore) {
-		this.revScore = revScore;
+	public void setRev_cont(String rev_cont) {
+		this.rev_cont = rev_cont;
 	}
 
-	public int getRevPassword() {
-		return revPassword;
+	public int getRev_score() {
+		return rev_score;
 	}
 
-	public void setRevPassword(int revPassword) {
-		this.revPassword = revPassword;
+	public void setRev_score(int rev_score) {
+		this.rev_score = rev_score;
 	}
 
-	public String getReportYn() {
-		return reportYn;
+	public int getRev_password() {
+		return rev_password;
 	}
 
-	public void setReportYn(String reportYn) {
-		this.reportYn = reportYn;
+	public void setRev_password(int rev_password) {
+		this.rev_password = rev_password;
+	}
+
+	public String getReport_yn() {
+		return report_yn;
+	}
+
+	public void setReport_yn(String report_yn) {
+		this.report_yn = report_yn;
 	}
 
 	public int getRecommend() {
@@ -79,12 +96,27 @@ public class Review {
 		this.recommend = recommend;
 	}
 
+	public Date getRev_date() {
+		return rev_date;
+	}
+
+	public void setRev_date(Date rev_date) {
+		this.rev_date = rev_date;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
-		return "Review [reviewIdx=" + reviewIdx + ", trainerName=" + trainerName + ", nickName=" + nickName
-				+ ", revCont=" + revCont + ", revScore=" + revScore + ", revPassword=" + revPassword + ", reportYn="
-				+ reportYn + ", recommend=" + recommend + "]";
+		return "Review [review_idx=" + review_idx + ", trainer_name=" + trainer_name + ", tr_email=" + tr_email
+				+ ", mem_nickname=" + mem_nickname + ", rev_cont=" + rev_cont + ", rev_score=" + rev_score
+				+ ", rev_password=" + rev_password + ", report_yn=" + report_yn + ", recommend=" + recommend
+				+ ", rev_date=" + rev_date + "]";
 	}
+
+	
 	
 	
 	
