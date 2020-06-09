@@ -29,7 +29,11 @@
 		height: 126px;
 	}
 	
-	/* 1583x1089 */
+	.slide-subheading {
+		font-weight: bold;
+		color: #ffb5b5;
+		font-size: initial;
+	}
 </style>
 </head>
 <body>
@@ -45,7 +49,7 @@
 					data-scrollax-parent="true">
 					<div class="col-md-10 text ftco-animate text-center">
 						<h1 class="mb-4">Your First Visit?</h1>
-						<h3 class="subheading" style="font-weight: bold;">우리의 서비스를 소개합니다.</h3>
+						<h3 class="slide-subheading">우리의 서비스를 소개합니다.</h3>
 						<p>
 							<a href="#"
 								class="btn btn-white btn-outline-white px-4 py-3 mt-3">알아보러 가기</a>
@@ -64,7 +68,7 @@
 					data-scrollax-parent="true">
 					<div class="col-md-10 text ftco-animate text-center">
 						<h1 class="mb-4">Trainer Matching</h1>
-						<h3 class="subheading" style="font-weight: bold;">차별화된 트레이너 매칭서비스를 만나보세요!</h3>
+						<h3 class="slide-subheading">차별화된 트레이너 매칭서비스를 만나보세요!</h3>
 						<p>
 							<a href="#"
 								class="btn btn-white btn-outline-white px-4 py-3 mt-3">매칭하러 가기</a>

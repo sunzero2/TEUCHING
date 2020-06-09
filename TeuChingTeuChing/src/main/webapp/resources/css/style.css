@@ -8454,7 +8454,8 @@ h1, h2, h3, h4, h5,
           position: relative; }
         .owl-carousel.home-slider .slider-item .slider-text h1 {
           font-size: 60px;
-          color: #fff;
+          color: #ffb5b5;
+          text-shadow: 3px 1px 1px black;
           line-height: 1.2;
           font-weight: 400;
           font-family: "EB Garamond", serif; }
@@ -8730,7 +8731,7 @@ h1, h2, h3, h4, h5,
       color: #fff; }
   .btn.btn-white {
     background: #fff;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
     color: #000; }
     .btn.btn-white span {
       color: #000; }
@@ -8741,10 +8742,10 @@ h1, h2, h3, h4, h5,
       .btn.btn-white:hover span {
         color: #fff; }
     .btn.btn-white.btn-outline-white {
-      border-color: rgba(255, 255, 255, 0.8);
+      border-color: #ffb5b5;
       background: none;
       border-width: 1px;
-      color: #fff; }
+      color: #ffb5b5; }
       .btn.btn-white.btn-outline-white:hover, .btn.btn-white.btn-outline-white:focus, .btn.btn-white.btn-outline-white:active {
         background: #ffb5b5;
         border-color: #ffb5b5;
