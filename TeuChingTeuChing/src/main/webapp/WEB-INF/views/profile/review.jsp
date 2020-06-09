@@ -367,36 +367,47 @@
 			console.log($(this).attr("value"));
 		});
 		
+		var list = new Array();
+		<c:forEach items="${reviewList.rlist}" var="review">
 		
-		$(function(){
+		list.push("${review.review_idx}")
+		
+		</c:forEach>
+		var id = '<c:out value="${loginInfo.mem_email}"/>';
+		
 			// 추천버튼 클릭시(추천 추가 또는 추천 제거)
-			$("#likeclick").click(function(){
+			$('#likeclick').click(function(){
 				$.ajax({
-					url: "/expro/recupdate.do",
+					url: "/review/recupdate.do",
 	                type: "POST",
 	                data: {
-	                    no: ${reviewList.review.review_idx},
-	                    id: ${loginInfo.mem_email}
+	                    no: list,
+	                    id: id
 	                },
 	                success: function () {
 				        recCount();
 	                },
 				})
-			})
-			
+			});
+		
+	
+		
 			  function recCount() {
 					$.ajax({
-						url: "/expro/RecCount.do",
+						url: "/review/reccount.do",
 		                type: "POST",
 		                data: {
-		                    no: ${reviewList.review.review_idx}
+		                    no: list
 		                },
 		                success: function (count) {
 		                	$("#recommendcnt").html(count);
 		                },
+		                error: function (error) {
+							alert(error);
+						}
 					})
 			    };
-			    recCount();
+	  
 
 
 
