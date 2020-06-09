@@ -37,7 +37,9 @@
 <link rel="stylesheet" href="../resources/css/style.css">
 </head>
 <body>
-
+<script src='fullcalendar/core/main.js'></script>
+<script src='fullcalendar/google-calendar/main.js'></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<%@include file="../include/top.jsp"%>
 
 
@@ -226,23 +228,64 @@
 		</div>
 	</section>
 
-	
-   <%@ include file="../include/footer.jsp"%>
-   <script src="../resources/js/jquery.min.js"></script>
-   <script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
-   <script src="../resources/js/popper.min.js"></script>
-   <script src="../resources/js/bootstrap.min.js"></script>
-   <script src="../resources/js/jquery.easing.1.3.js"></script>
-   <script src="../resources/js/jquery.waypoints.min.js"></script>
-   <script src="../resources/js/jquery.stellar.min.js"></script>
-   <script src="../resources/js/owl.carousel.min.js"></script>
-   <script src="../resources/js/jquery.magnific-popup.min.js"></script>
-   <script src="../resources/js/aos.js"></script>
-   <script src="../resources/js/jquery.animateNumber.min.js"></script>
-   <script src="../resources/js/bootstrap-datepicker.js"></script>
-   <script src="../resources/js/jquery.timepicker.min.js"></script>
-   <script src="../resources/js/scrollax.min.js"></script>
-   <script src="../resources/js/main.js"></script>
+	<script>
+		
+	  
+	var clientId = "1088625250366-84uhb8sjfo9aj4l125mr1rmokojffrjl.apps.googleusercontent.com"; // oAuth2 webapp
+
+	  var apiKey = "AIzaSyCGMudBq_ybOnv7mS_53vJzDKMM_-CjyeY";// Key for browser apps (with referers) 
+
+	  var scopes = 'https://www.googleapis.com/auth/calendar';// google authentication scopes
+
+
+
+	  //구글 api load
+
+	  function load() {
+
+	   gapi.load("client:auth2", function() {
+
+	    gapi.auth2.init({
+
+	     client_id: clientId,
+
+	     scope: scopes
+
+	    }).then(function () { 
+
+	     gapi.auth2.getAuthInstance().isSignedIn.listen(function() {
+
+	      gapi.client.load("calendar", "v3", function() {}); 
+
+	     })
+
+	     gapi.auth2.getAuthInstance().signIn();
+
+	    });
+
+	   });
+
+	  }
+	  
+	  load();
+
+	</script>
+	<%@ include file="../include/footer.jsp"%>
+	<script src="../resources/js/jquery.min.js"></script>
+	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="../resources/js/popper.min.js"></script>
+	<script src="../resources/js/bootstrap.min.js"></script>
+	<script src="../resources/js/jquery.easing.1.3.js"></script>
+	<script src="../resources/js/jquery.waypoints.min.js"></script>
+	<script src="../resources/js/jquery.stellar.min.js"></script>
+	<script src="../resources/js/owl.carousel.min.js"></script>
+	<script src="../resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="../resources/js/aos.js"></script>
+	<script src="../resources/js/jquery.animateNumber.min.js"></script>
+	<script src="../resources/js/bootstrap-datepicker.js"></script>
+	<script src="../resources/js/jquery.timepicker.min.js"></script>
+	<script src="../resources/js/scrollax.min.js"></script>
+	<script src="../resources/js/main.js"></script>
 
 </body>
 </html>

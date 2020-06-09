@@ -29,7 +29,6 @@ public class ReviewServiceImpl implements ReviewService {
 		System.out.println(rlist);
 		res.put("paging", page);
 		res.put("rlist", rlist);
-	
 		return res;
 	}
 
@@ -38,5 +37,8 @@ public class ReviewServiceImpl implements ReviewService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
+
 
 }

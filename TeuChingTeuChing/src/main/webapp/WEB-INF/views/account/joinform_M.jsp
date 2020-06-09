@@ -46,7 +46,9 @@ background-color: transparent !important;
 				<div class="col-xl-8 m-auto order-xl-1" style="margin-top: 5% !important;">
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
 					<form id="signFrm" name="signFrm"
-	       					action="<%=request.getContextPath()%>/member/joinMemberImple.do" method="post">
+						action="<%=request.getContextPath()%>/member/m_joinemailCheck.do"
+	       					action="<%=request.getContextPath()%>/member/joinMemberImple.do"
+	       					 method="post">
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
 								<div class="col-8">
@@ -200,7 +202,7 @@ background-color: transparent !important;
 				alert("닉네임 중복체크를 해주세요.");
 				return;
 			}else{
-				alert("트칭 회원가입이 완료되었습니다. Let's Exercise!");
+				alert("작성하신 이메일로 인증메일이 전송되었습니다.                              메일 인증 시 회원가입이 완료됩니다.");
 				$('#signFrm').submit();
 			} 
 			
