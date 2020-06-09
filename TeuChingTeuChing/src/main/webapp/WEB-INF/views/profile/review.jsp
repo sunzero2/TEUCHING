@@ -153,6 +153,7 @@
 
 									<div class="comment-body">
 										<h5>${review.mem_nickname}</h5>
+										<button id="likeclick"><i class="fas fa-heart" style="font-size:16px;color:grey"></i></button> <span id="recommendcnt"></span>
 										<div class="meta">${review.rev_date}</div>
 										<p>${review.rev_cont}</p>
 
@@ -161,6 +162,8 @@
 											class="reply">리뷰신고</a>
 
 									</div>
+									
+									
 								</li>
 							</c:forEach>
 						</ul>
@@ -196,7 +199,7 @@
 
 									</ul>
 								</div>
-</div>
+							</div>
 						</div>
 
 						<!-- END comment-list -->
@@ -211,15 +214,19 @@
 							<form
 								action="${pageContext.request.contextPath }/review/writereview.do"
 								method="post" enctype="multipart/form-data">
+								
 								<div class="form-group">
-									<label for="memNickname">Nickname</label> <input type="text"
+									<label for="memNickname">Nickname</label> <input type="hidden"
 										class="form-control bg-white" id="memNickname"
 										name="memNickname">
+										<div style="transform: translateX(1%)">${loginInfo.nickname}</div>
 								</div>
+								
 								<div class="form-group">
 									<label for="reviewPw">Password</label> <input type="text"
 										class="form-control" id="reviewPw" name="reviewPw">
 								</div>
+								
 								<div class="form-group">
 									<label for="revScore">Star rating</label>
 									<div id="star" name="revScore">
@@ -359,6 +366,41 @@
 			$(this).addClass("on").prevAll("a").addClass("on");
 			console.log($(this).attr("value"));
 		});
+		
+		
+		$(function(){
+			// 추천버튼 클릭시(추천 추가 또는 추천 제거)
+			$("#likeclick").click(function(){
+				$.ajax({
+					url: "/expro/recupdate.do",
+	                type: "POST",
+	                data: {
+	                    no: ${reviewList.review.review_idx},
+	                    id: ${loginInfo.mem_email}
+	                },
+	                success: function () {
+				        recCount();
+	                },
+				})
+			})
+			
+			  function recCount() {
+					$.ajax({
+						url: "/expro/RecCount.do",
+		                type: "POST",
+		                data: {
+		                    no: ${reviewList.review.review_idx}
+		                },
+		                success: function (count) {
+		                	$("#recommendcnt").html(count);
+		                },
+					})
+			    };
+			    recCount();
+
+
+
+
 	</script>
 
 	<%@ include file="../include/footer.jsp"%>
