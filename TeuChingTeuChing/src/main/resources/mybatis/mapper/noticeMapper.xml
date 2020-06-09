@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Notice">
-	<select id="selectNotice" resultType="Notice">
+	<resultMap type="Notice" id="noticeMap">
+		<id column="notice_idx" property="noticeIdx"></id>
+		<result column="notice_title" property="noticeTitle"></result>
+		<result column="notice_cont" property="noticeCont"></result>
+		<result column="write_date" property="writeDate"></result>
+	</resultMap>
+	<select id="selectNotice" resultMap="noticeMap">
 		select * from tr_notice order by notice_idx desc
 	</select>
 </mapper>

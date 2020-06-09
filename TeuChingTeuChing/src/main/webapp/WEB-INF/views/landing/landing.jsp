@@ -4,15 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Teu-Ching Teu-Ching</title>
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
 	rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet"
-	href="../resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="../resources/css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="../resources/css/animate.css">
 <link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
@@ -51,7 +50,7 @@
 						<h1 class="mb-4">Your First Visit?</h1>
 						<h3 class="slide-subheading">우리의 서비스를 소개합니다.</h3>
 						<p>
-							<a href="#"
+							<a href="/teuching/notice/notice.do"
 								class="btn btn-white btn-outline-white px-4 py-3 mt-3">알아보러 가기</a>
 						</p>
 					</div>
@@ -70,7 +69,7 @@
 						<h1 class="mb-4">Trainer Matching</h1>
 						<h3 class="slide-subheading">차별화된 트레이너 매칭서비스를 만나보세요!</h3>
 						<p>
-							<a href="#"
+							<a href="/teuching/matching/main.do"
 								class="btn btn-white btn-outline-white px-4 py-3 mt-3">매칭하러 가기</a>
 						</p>
 					</div>

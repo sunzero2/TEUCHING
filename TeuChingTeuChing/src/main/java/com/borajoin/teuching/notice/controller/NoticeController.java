@@ -21,7 +21,7 @@ public class NoticeController {
 	* @작성자 : 이혜영 
 	* @Method 설명 : 공지사항 게시판으로 이동하는 메소드
 	*/
-	@RequestMapping("/notice/list.do")
+	@RequestMapping("/notice/notice.do")
 	public ModelAndView noticeList() {
 		ModelAndView mav = new ModelAndView();
 		List<Notice> nList = noticeService.noticeList();
