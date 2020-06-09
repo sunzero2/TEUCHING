@@ -98,5 +98,13 @@ public class ReviewController {
 	}
 
 	
+	public ModelAndView recUpdate(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		
+		return mav;
+	}
+	
 
 }
