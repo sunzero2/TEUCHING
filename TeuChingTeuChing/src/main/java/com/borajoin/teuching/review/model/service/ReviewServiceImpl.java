@@ -37,8 +37,12 @@ public class ReviewServiceImpl implements ReviewService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	
+
+	@Override
+	public int recUpdate() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 
 }

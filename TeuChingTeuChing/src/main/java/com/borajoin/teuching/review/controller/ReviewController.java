@@ -1,5 +1,6 @@
 package com.borajoin.teuching.review.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -98,8 +99,21 @@ public class ReviewController {
 	}
 
 	
+	
+	/**
+	  * @Method Name : recUpdate
+	  * @작성일 : 2020. 6. 10.
+	  * @작성자 : 이보라
+	  * @Method 설명 : 추천수 업데이트
+	  */
+	@RequestMapping("review/recupdate.do")
 	public ModelAndView recUpdate(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
+		System.out.println("여까지옵니까?..");
+		Map<String, Object> res = new HashMap<>();
+		res.put("no",request.getParameter("no"));
+		res.put("id",request.getParameter("id"));
+		
 		
 		
 		
