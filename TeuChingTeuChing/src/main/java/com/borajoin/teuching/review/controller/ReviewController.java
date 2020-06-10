@@ -57,8 +57,8 @@ public class ReviewController {
 
 	}
 	
-	@RequestMapping("review/writereview.do")
-	public ModelAndView writeReview(Review review, HttpServletRequest request) {
+	@RequestMapping("review/uploadreview.do")
+	public ModelAndView uploadReview(Review review, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession();
 		/*
