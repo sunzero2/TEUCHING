@@ -47,7 +47,7 @@ public class PostController {
 	* @작성자 : 이혜영 
 	* @Method 설명 : 게시글 쓰기 페이지로 이동하는 메소드
 	*/
-	@RequestMapping("/post/writePost.do")
+	@RequestMapping("/post/writepost.do")
 	public ModelAndView writePost(int postIdx) {
 		ModelAndView mav = new ModelAndView();
 		if(postIdx > 0) {
@@ -67,9 +67,8 @@ public class PostController {
 	* @Method 설명 : 게시글 업로드 메소드
 	*/
 	@RequestMapping("/post/write.do")
-	public ModelAndView write(@RequestParam List<MultipartFile> images, Post post, HttpServletRequest request) {
+	public ModelAndView write(@RequestParam List<MultipartFile> images, Post post, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		HttpSession session = request.getSession();
 		String root = session.getServletContext().getRealPath("/");
 		List<File_Upload> fileData = new ArrayList<>();
 		int i = 0;
@@ -124,6 +123,20 @@ public class PostController {
 		}
 		int res = postService.updatePost(post, fileData);
 		mav.setViewName("redirect:/matching/main.do");
+		return mav;
+	}
+	
+	/**
+	* @Method Name : delete
+	* @작성일 : 2020. 6. 11.
+	* @작성자 : 이혜영 
+	* @Method 설명 : 게시글 삭제 메소드
+	*/
+	@RequestMapping("/post/deletepost.do")
+	public ModelAndView delete(String postIdx) {
+		ModelAndView mav = new ModelAndView();
+		int res = postService.deletePost(postIdx);
+		mav.setViewName("matching/matching");
 		return mav;
 	}
 }

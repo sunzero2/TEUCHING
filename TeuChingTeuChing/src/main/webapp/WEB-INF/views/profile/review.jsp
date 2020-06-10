@@ -153,9 +153,9 @@
 
 									<div class="comment-body">
 										<h5>${review.mem_nickname}</h5>
-										<input type="button" value="좋아요" onclick="likeack()"/>
+										<input type="button" value="좋아요" id="likecnt" onclick="likeclickfs(${review.review_idx});"/>
 										<i class="fas fa-heart" style="font-size:16px;color:grey"></i>
-										</a> <span id="recommendcnt">${review.recommend}</span>
+										<span id="recommendcnt">${review.recommend}</span>
 										<div class="meta">${review.rev_date}</div>
 										<p>${review.rev_cont}</p>
 
@@ -362,44 +362,9 @@
 
 
 
-	<script>
-		$('#star a').click(function() {
-			$(this).parent().children("a").removeClass("on");
-			$(this).addClass("on").prevAll("a").addClass("on");
-			console.log($(this).attr("value"));
-		});
-		
-		function likeack() {
-			var id = '${loginInfo.mem_email}';
-	        var no = '${reviewList.rlist.review_idx}';
-	        like(id,no);
-
-		};
-		function like(id,no) {
-	         
-	         $.ajax({
-	            
-	            url : "review/recupdate.do",
-	            type : 'POST',
-	            data : {
-	               
-	               id : id ,
-	               no : no
-	               
-	            },
-	            
-	            success : function(data) {
-	               $('#recommendcnt').html(data);
-	            }
-	            
-	            
-	         });
-
-
-
-	</script>
 
 	<%@ include file="../include/footer.jsp"%>
+	
 	<script src="../resources/js/jquery.min.js"></script>
 	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="../resources/js/popper.min.js"></script>
@@ -415,7 +380,36 @@
 	<script src="../resources/js/jquery.timepicker.min.js"></script>
 	<script src="../resources/js/scrollax.min.js"></script>
 	<script src="../resources/js/main.js"></script>
-
+	<script>
+	var id;
+	var no;
+	
+	$('#star a').click(function() {
+			$(this).parent().children("a").removeClass("on");
+			$(this).addClass("on").prevAll("a").addClass("on");
+			console.log($(this).attr("value"));
+		});
+		
+    function likeclickfs(index) {
+        id = '${loginInfo.mem_email}';
+        no = index;
+        console.log("id ", id);
+        console.log("no ", no);
+     }
+    
+	function like(id,no) {
+        $.ajax({
+           url : "review/recupdate.do",
+           type : 'POST',
+           data : {
+              id : id
+           },
+           success : function(data) {
+              $('#recommendcnt').html(data);
+           }
+        })
+     } 
+	</script>
 
 </body>
 </html>

@@ -44,11 +44,13 @@
 	<div class="wrapper">
 		<div class="innerwrapper">
 			<div class="menu">
-				<a style="float: left; border-bottom: 2px solid lightgray; color: black"
-					href="${pageContext.request.contextPath }/message/msgboxsend.do">📪 보낸쪽지</a>
 				<a
+					style="float: left; border-bottom: 2px solid lightgray; color: black"
+					href="${pageContext.request.contextPath }/message/msgboxsend.do">📪
+					보낸쪽지</a> <a
 					style="float: right; border-bottom: 2px solid pink; color: black"
-					href="${pageContext.request.contextPath }/message/msgboxrecv.do">📬 받은쪽지</a>
+					href="${pageContext.request.contextPath }/message/msgboxrecv.do">📬
+					받은쪽지</a>
 			</div>
 			<div id="table">
 				<table>
@@ -61,48 +63,47 @@
 						</tr>
 					</thead>
 					<tbody id="tbody">
-						<tr>
-							<td>1</td>
-							<td>하이하이하이하이하이</td>
-							<td>김트레이너</td>
-							<td>2020-02-02</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>하이하이하이하이하이</td>
-							<td>김트레이너</td>
-							<td>2020-02-02</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>잘지내십니까!!!</td>
-							<td>김트레이너</td>
-							<td>2020-02-02</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>하이하이머하구지네쇼이</td>
-							<td>김트레이너</td>
-							<td>2020-02-02</td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td>간만에 문의드립니다</td>
-							<td>김트레이너</td>
-							<td>2020-02-02</td>
-						</tr>
+						<c:forEach items="${res.msg }" var="msg">
+							<tr>
+								<td>1</td>
+								<td>${msg.msg_cont }</td>
+								<c:if test="${msg.writer eq 'Trainer'}">
+									<td>${msg.mem_email }</td>
+								</c:if>
+								<c:if test="${msg.writer eq 'Member'}">
+									<td>${msg.tr_email }</td>
+								</c:if>
+								<td>${msg.write_date }</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
+
 				<div class="col">
 					<div class="block-27">
 						<ul>
-							<li><a href="#">&lt;</a></li>
-							<li class="active"><span>1</span></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">&gt;</a></li>
+							<c:if test="${res.paging.blockStart le 1 }">
+							<li><a href="${pageContext.request.contextPath }/message/msgboxrecv.do?currentpage=${res.paging.blockStart}">&lt;</a></li>
+							</c:if>
+							<c:if test="${res.paging.blockStart gt 1 }">
+							<li><a href="${pageContext.request.contextPath }/message/msgboxrecv.do?currentpage=${res.paging.blockStart-1}">&lt;</a></li>
+							</c:if>
+							
+							<c:forEach begin="${res.paging.blockStart }" end="${res.paging.blockEnd }" var="p">
+								<c:if test="${res.paging.currentPage eq p }">
+								<li class="active"><a href="${pageContext.request.contextPath }/message/msgboxrecv.do?currentpage=${p}">${p }</a></li>
+								</c:if>
+								<c:if test="${res.paging.currentPage ne p }">
+								<li><a href="${pageContext.request.contextPath }/message/msgboxrecv.do?currentpage=${p}">${p }</a></li>
+								</c:if>
+							</c:forEach>
+							
+							<c:if test="${res.paging.blockEnd lt res.paging.lastPage }">
+							<li><a href="${pageContext.request.contextPath }/message/msgboxrecv.do?currentpage=${res.paging.blockEnd+1}">&gt;</a></li>
+							</c:if>
+							<c:if test="${res.paging.blockEnd ge res.paging.lastPage }">
+							<li><a href="${pageContext.request.contextPath }/message/msgboxrecv.do?currentpage=${res.paging.blockEnd}">&gt;</a></li>
+							</c:if>
 						</ul>
 					</div>
 				</div>
