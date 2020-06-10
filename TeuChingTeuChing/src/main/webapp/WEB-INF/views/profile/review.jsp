@@ -153,8 +153,9 @@
 
 									<div class="comment-body">
 										<h5>${review.mem_nickname}</h5>
-										<a onclick="return confirm('추천하시겠습니까?')" href="${pageContext.request.contextPath }/review/updaterec.do">
-										<i class="fas fa-heart" style="font-size:16px;color:grey"></i></a> <span id="recommendcnt"></span>
+										<input type="button" value="좋아요" onclick="likeack()"/>
+										<i class="fas fa-heart" style="font-size:16px;color:grey"></i>
+										</a> <span id="recommendcnt">${review.recommend}</span>
 										<div class="meta">${review.rev_date}</div>
 										<p>${review.rev_cont}</p>
 
@@ -213,7 +214,7 @@
 						<div class="comment-form-wrap pt-5">
 							<h3 class="mb-5">Leave a comment</h3>
 							<form
-								action="${pageContext.request.contextPath }/review/writereview.do"
+								action="${pageContext.request.contextPath }/review/uploadreview"
 								method="post" enctype="multipart/form-data">
 								
 								<div class="form-group">
@@ -367,7 +368,32 @@
 			$(this).addClass("on").prevAll("a").addClass("on");
 			console.log($(this).attr("value"));
 		});
-	  
+		
+		function likeack() {
+			var id = '${loginInfo.mem_email}';
+	        var no = '${reviewList.rlist.review_idx}';
+	        like(id,no);
+
+		};
+		function like(id,no) {
+	         
+	         $.ajax({
+	            
+	            url : "review/recupdate.do",
+	            type : 'POST',
+	            data : {
+	               
+	               id : id ,
+	               no : no
+	               
+	            },
+	            
+	            success : function(data) {
+	               $('#recommendcnt').html(data);
+	            }
+	            
+	            
+	         });
 
 
 
