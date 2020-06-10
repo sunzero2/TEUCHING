@@ -9,7 +9,7 @@
 		FROM
 			(SELECT
 				ROWNUM RNUM, N1.* 
-			from
+			FROM
 				(SELECT 
 						* 
 				FROM
@@ -33,7 +33,7 @@
 					* 
 				FROM
 					TR_TRA_REPORT
-				order by
+				ORDER BY
 					REPORT_IDX DESC
 			)N1
 		)

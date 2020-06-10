@@ -49,12 +49,9 @@
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<!------ Include the above in your HEAD tag ---------->
 
-	<div style="height: 50px; width: 100%; text-align: center" class="div">
-		<h4>
-			<a style="margin-right: 1%"
-				href="${pageContext.request.contextPath }/manager.do">🚨신고</a> <a
-				href="${pageContext.request.contextPath }/quali.do">🏆자격증명</a>
-		</h4>
+	<div style="height:50px;width:18%;transform:translateX(220%);"class="div">
+		<h4 style="float:left;padding-bottom:3%;border-bottom:2px solid lightgray;padding-left:1%;padding-right:1%;"><a style="color:black;" href="${pageContext.request.contextPath }/manager.do">🚨 신고</a></h4>
+		<h4 style="float:right;padding-bottom:3%;border-bottom:2px solid lightblue;padding-right:1%;"><a style="color:black;" href="${pageContext.request.contextPath }/quali.do">🏅 자격증명</a></h4>
 	</div>
 	<br>
 	<div class="container" style="width: 45%;">
@@ -70,7 +67,6 @@
 				<div class="d-flex align-items-center">
 					<div class="user-img"
 						style="background-image: url(resources/img/circle_person.jpg)">
-						<img src="resources/img/medal.png">
 					</div>
 					<div class="ml-4">
 						<span class="position">Trainer</span>

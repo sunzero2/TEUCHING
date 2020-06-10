@@ -13,6 +13,7 @@ public class Message {
 	private String msg_title;
 	private String msg_cont;
 	private Date write_date;
+	private String writer;
 
 	public Message() {
 		super();
@@ -67,10 +68,19 @@ public class Message {
 		this.write_date = write_date;
 	}
 
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
 	@Override
 	public String toString() {
 		return "Message [message_idx=" + message_idx + ", tr_email=" + tr_email + ", mem_email=" + mem_email
-				+ ", msg_title=" + msg_title + ", msg_cont=" + msg_cont + ", write_date=" + write_date + "]";
+				+ ", msg_title=" + msg_title + ", msg_cont=" + msg_cont + ", write_date=" + write_date + ", writer="
+				+ writer + "]";
 	}
 
 }

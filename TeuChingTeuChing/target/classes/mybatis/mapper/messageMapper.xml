@@ -11,6 +11,7 @@
 				, #{mem_email}
 				, #{msg_cont}
 				, SYSDATE
+				, MEMBER
 		)
 	</insert>
 	
@@ -26,4 +27,58 @@
 				,'N'
 		)
 	</insert>
+	
+	<select id="selectMsgBoxSend" resultType="Message">
+		SELECT 
+			*
+		FROM
+			(SELECT
+				ROWNUM RNUM, N1.*
+			FROM
+				(SELECT 
+						* 
+				FROM
+					TR_MESSAGE
+				<if test="WRITER == 'Trainer' ">
+				WHERE 
+					 TR_EMAIL = #{email}
+				</if>
+				<if test="WRITER == 'Member'">
+				WHERE 
+					 MEM_EMAIL = #{email}
+				</if>
+				ORDER BY 
+					WRITE_DATE DESC
+				)N1
+			)
+		WHERE
+			RNUM BETWEEN #{paging.start} AND #{paging.end}
+	</select>
+	
+	<select id="selectMsgBoxRecv" >
+		SELECT
+			*
+		FROM
+			(SELECT
+				ROWNUM RNUM, N1.*
+			FROM
+				(SELECT
+						*
+				FROM
+					TR_MESSAGE
+				ORDER BY
+					WRITE_DATE DESC
+				)
+			N1)
+		WHERE
+			RNUM BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="selectMsgCnt" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			TR_MESSAGE
+	</select>
+	
 </mapper>

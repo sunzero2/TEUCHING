@@ -1,11 +1,16 @@
 package com.borajoin.teuching.message.model.service;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.borajoin.teuching.message.model.dao.MessageDao;
+import com.borajoin.teuching.message.model.vo.Message;
+
+import common.util.Paging;
 
 @Service
 public class MessageServiceImpl implements MessageService {
@@ -21,6 +26,26 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public int insertMatch(Map<String, Object> commandMap) {
 		return md.insertMatch(commandMap);
+	}
+
+	@Override
+	public int selectMsgCnt() {
+		return md.selectMsgCnt();
+	}
+
+	@Override
+	public Map<String, Object> selectMsgBoxSend(String email, int currentpage) {
+		Map<String, Object> commandMap = new HashMap<String, Object>();
+		Map<String, Object> res = new HashMap<String, Object>();
+		Paging paging = new Paging(selectMsgCnt(), currentpage, 5);
+		
+		commandMap.put("email", email);
+		commandMap.put("paging", paging);
+		
+		res.put("msg", md.selectMsgBoxSend(commandMap));
+		res.put("paging", paging);
+		
+		return res;
 	}
 
 }
