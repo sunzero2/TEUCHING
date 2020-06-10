@@ -39,14 +39,19 @@
 						* 
 				FROM
 					TR_MESSAGE
-				<if test="WRITER == 'Trainer' ">
-				WHERE 
-					 TR_EMAIL = #{email}
-				</if>
-				<if test="WRITER == 'Member'">
-				WHERE 
-					 MEM_EMAIL = #{email}
-				</if>
+				<where>
+						 TR_EMAIL = #{email}
+					OR 
+						 MEM_EMAIL = #{email}
+					<if test='type.equalsIgnoreCase("Trainer")'>
+					AND
+						WRITER = 'Trainer'
+					</if>
+					<if test='type.equalsIgnoreCase("Member")'>
+					AND
+						WRITER = 'Member'
+					</if>
+				</where>
 				ORDER BY 
 					WRITE_DATE DESC
 				)N1
@@ -55,7 +60,7 @@
 			RNUM BETWEEN #{paging.start} AND #{paging.end}
 	</select>
 	
-	<select id="selectMsgBoxRecv" >
+	<select id="selectMsgBoxRecv" resultType="Message">
 		SELECT
 			*
 		FROM
@@ -66,12 +71,25 @@
 						*
 				FROM
 					TR_MESSAGE
+				<where>
+						MEM_EMAIL = #{email}
+					OR
+						TR_EMAIL = #{email}
+					<if test='type.equalsIgnoreCase("Trainer")'>
+					AND
+						WRITER = 'Member'
+					</if>
+					<if test='type.equalsIgnoreCase("Member")'>
+					AND
+						WRITER = 'Trainer'
+					</if>
+				</where>
 				ORDER BY
 					WRITE_DATE DESC
 				)
 			N1)
 		WHERE
-			RNUM BETWEEN #{start} AND #{end}
+			RNUM BETWEEN #{paging.start} AND #{paging.end}
 	</select>
 	
 	<select id="selectMsgCnt" resultType="int">

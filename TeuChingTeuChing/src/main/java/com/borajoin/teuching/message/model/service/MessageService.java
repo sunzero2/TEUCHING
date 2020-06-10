@@ -9,5 +9,8 @@ public interface MessageService {
 	
 	public int selectMsgCnt();
 	
-	public Map<String, Object> selectMsgBoxSend(String email, int currentpage);
+	public Map<String, Object> selectMsgBoxSend(String email, int currentpage, String type);
+	
+	public Map<String, Object> selectMsgBoxRecv(String email, int currentpage, String type);
+	
 }

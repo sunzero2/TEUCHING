@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.support.SQLErrorCodes;
 import org.springframework.stereotype.Repository;
 
 import com.borajoin.teuching.message.model.vo.Message;
@@ -29,5 +30,9 @@ public class MessageDao {
 
 	public List<Message> selectMsgBoxSend(Map<String, Object> commandMap) {
 		return sqlSession.selectList("Message.selectMsgBoxSend", commandMap);
+	}
+
+	public List<Message> selectMsgBoxRecv(Map<String, Object> commandMap){
+		return sqlSession.selectList("Message.selectMsgBoxRecv", commandMap);
 	}
 }

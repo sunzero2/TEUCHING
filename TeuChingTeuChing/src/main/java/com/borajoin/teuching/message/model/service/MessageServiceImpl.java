@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.search.StringTerm;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,17 +36,34 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public Map<String, Object> selectMsgBoxSend(String email, int currentpage) {
+	public Map<String, Object> selectMsgBoxSend(String email, int currentpage, String type) {
 		Map<String, Object> commandMap = new HashMap<String, Object>();
 		Map<String, Object> res = new HashMap<String, Object>();
 		Paging paging = new Paging(selectMsgCnt(), currentpage, 5);
-		
+
 		commandMap.put("email", email);
 		commandMap.put("paging", paging);
-		
+		commandMap.put("type", type);
+
 		res.put("msg", md.selectMsgBoxSend(commandMap));
 		res.put("paging", paging);
-		
+
+		return res;
+	}
+
+	@Override
+	public Map<String, Object> selectMsgBoxRecv(String email, int currentpage, String type) {
+		Map<String, Object> commandMap = new HashMap<String, Object>();
+		Map<String, Object> res = new HashMap<String, Object>();
+		Paging paging = new Paging(selectMsgCnt(), currentpage, 5);
+
+		commandMap.put("email", email);
+		commandMap.put("paging", paging);
+		commandMap.put("type", type);
+
+		res.put("msg", md.selectMsgBoxRecv(commandMap));
+		res.put("paging", paging);
+
 		return res;
 	}
 

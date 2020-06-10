@@ -57,7 +57,7 @@
 						<tr>
 							<th>Num</th>
 							<th>Title</th>
-							<th>From</th>
+							<th>To</th>
 							<th>Date</th>
 						</tr>
 					</thead>
@@ -65,14 +65,14 @@
 						<c:forEach items="${res.msg }" var="msg">
 							<tr>
 								<td>1</td>
-								<td><a style="color: black" href="">${msg.msg_cont }</a></td>
+								<td id="title"><a style="color: black" href="">${msg.msg_cont }</a></td>
 								<c:if test="${msg.writer eq 'Trainer' }">
 									<td>${msg.mem_email }</td>
 								</c:if>
 								<c:if test="${msg.writer eq 'Member' }">
 									<td>${msg.tra_email }</td>
 								</c:if>
-								<td>2020-02-02</td>
+								<td>${msg.write_date }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -80,13 +80,28 @@
 				<div class="col">
 					<div class="block-27">
 						<ul>
-							<li><a href="#">&lt;</a></li>
-							<li class="active"><span>1</span></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">&gt;</a></li>
+							<c:if test="${res.paging.blockStart le 1 }">
+							<li><a href="${pageContext.request.contextPath }/message/msgboxsend.do?currentpage=${res.paging.blockStart}">&lt;</a></li>
+							</c:if>
+							<c:if test="${res.paging.blockStart gt 1 }">
+							<li><a href="${pageContext.request.contextPath }/message/msgboxsend.do?currentpage=${res.paging.blockStart-1}">&lt;</a></li>
+							</c:if>
+							
+							<c:forEach begin="${res.paging.blockStart }" end="${res.paging.blockEnd }" var="p">
+								<c:if test="${res.paging.currentPage eq p }">
+								<li class="active"><a href="${pageContext.request.contextPath }/message/msgboxsend.do?currentpage=${p}">${p }</a></li>
+								</c:if>
+								<c:if test="${res.paging.currentPage ne p }">
+								<li><a href="${pageContext.request.contextPath }/message/msgboxsend.do?currentpage=${p}">${p }</a></li>
+								</c:if>
+							</c:forEach>
+							
+							<c:if test="${res.paging.blockEnd lt res.paging.lastPage }">
+							<li><a href="${pageContext.request.contextPath }/message/msgboxsend.do?currentpage=${res.paging.blockEnd+1}">&gt;</a></li>
+							</c:if>
+							<c:if test="${res.paging.blockEnd ge res.paging.lastPage }">
+							<li><a href="${pageContext.request.contextPath }/message/msgboxsend.do?currentpage=${res.paging.blockEnd}">&gt;</a></li>
+							</c:if>
 						</ul>
 					</div>
 				</div>
