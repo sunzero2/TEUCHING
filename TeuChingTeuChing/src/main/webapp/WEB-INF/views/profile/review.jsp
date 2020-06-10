@@ -153,7 +153,8 @@
 
 									<div class="comment-body">
 										<h5>${review.mem_nickname}</h5>
-										<button id="likeclick"><i class="fas fa-heart" style="font-size:16px;color:grey"></i></button> <span id="recommendcnt"></span>
+										<a onclick="return confirm('추천하시겠습니까?')" href="${pageContext.request.contextPath }/review/updaterec.do">
+										<i class="fas fa-heart" style="font-size:16px;color:grey"></i></a> <span id="recommendcnt"></span>
 										<div class="meta">${review.rev_date}</div>
 										<p>${review.rev_cont}</p>
 
@@ -366,49 +367,7 @@
 			$(this).addClass("on").prevAll("a").addClass("on");
 			console.log($(this).attr("value"));
 		});
-		
-		var list = new Array();
-		<c:forEach items="${reviewList.rlist}" var="review">
-		
-		list.push("${review.review_idx}")
-		
-		</c:forEach>
-		var id = '<c:out value="${loginInfo.mem_email}"/>';
-		
-			// 추천버튼 클릭시(추천 추가 또는 추천 제거)
-			$('#likeclick').click(function(){
-				$.ajax({
-					url: "/review/recupdate.do",
-	                type: "POST",
-	                data: {
-	                    no: list,
-	                    id: id
-	                },
-	                success: function () {
-				        recCount();
-	                },
-				})
-			});
-		
-	
-		
-			  function recCount() {
-					$.ajax({
-						url: "/review/reccount.do",
-		                type: "POST",
-		                data: {
-		                    no: list
-		                },
-		                success: function (count) {
-		                	$("#recommendcnt").html(count);
-		                },
-		                error: function (error) {
-							alert(error);
-						}
-					})
-			    };
 	  
-
 
 
 
