@@ -12,6 +12,7 @@
 		<typeAlias type="com.borajoin.teuching.message.model.vo.Message" alias="Message" />
 		<typeAlias type="com.borajoin.teuching.review.model.vo.Review" alias="Review" />
 		<typeAlias type="com.borajoin.teuching.notice.model.vo.Notice" alias="Notice" />
+		<typeAlias type="com.borajoin.teuching.message.model.vo.Match" alias="Match" />
 	</typeAliases>
 
 	<mappers>

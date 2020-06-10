@@ -2,16 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Message">
-	<insert id="insertMessage" parameterType="Message">
+	<insert id="insertMatchMessage" parameterType="Message">
 		INSERT INTO
 				TR_MESSAGE
 		VALUES(
 				S_MESSAGE_IDX.NEXTVAL
 				, #{tr_email}
 				, #{mem_email}
-				, #{msg_title}
 				, #{msg_cont}
 				, SYSDATE
+		)
+	</insert>
+	
+	<insert id="insertMatch" parameterType="Match">
+		INSERT INTO
+				TR_MATCH
+		VALUES(
+				S_MATCH_IDX.NEXTVAL
+				, #{tr_email}
+				, #{mem_email}
+				, #{match_date}
+				, #{match_time}
+				,'N'
 		)
 	</insert>
 </mapper>

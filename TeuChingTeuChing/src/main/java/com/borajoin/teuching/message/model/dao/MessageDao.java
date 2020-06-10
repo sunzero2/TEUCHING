@@ -12,7 +12,11 @@ public class MessageDao {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
-	public int insertMessage(Map<String, Object> commandMap) {
-		return sqlSession.insert("Message.insertMessage", commandMap);
+	public int insertMatchMessage(Map<String, Object> commandMap) {
+		return sqlSession.insert("Message.insertMatchMessage", commandMap);
+	}
+	
+	public int insertMatch(Map<String, Object> commandMap) {
+		return sqlSession.insert("Message.insertMatch", commandMap);
 	}
 }
