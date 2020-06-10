@@ -153,9 +153,9 @@
 
 									<div class="comment-body">
 										<h5>${review.mem_nickname}</h5>
-										<input type="button" value="좋아요" onclick="likeack()"/>
+										<input type="button" value="좋아요" id="likecnt"/>
 										<i class="fas fa-heart" style="font-size:16px;color:grey"></i>
-										</a> <span id="recommendcnt">${review.recommend}</span>
+										<span id="recommendcnt">${review.recommend}</span>
 										<div class="meta">${review.rev_date}</div>
 										<p>${review.rev_cont}</p>
 
@@ -369,35 +369,8 @@
 			console.log($(this).attr("value"));
 		});
 		
-		function likeack() {
-			var id = '${loginInfo.mem_email}';
-	        var no = '${reviewList.rlist.review_idx}';
-	        like(id,no);
-
-		};
-		function like(id,no) {
-	         
-	         $.ajax({
-	            
-	            url : "review/recupdate.do",
-	            type : 'POST',
-	            data : {
-	               
-	               id : id ,
-	               no : no
-	               
-	            },
-	            
-	            success : function(data) {
-	               $('#recommendcnt').html(data);
-	            }
-	            
-	            
-	         });
-
-
-
 	</script>
+	
 
 	<%@ include file="../include/footer.jsp"%>
 	<script src="../resources/js/jquery.min.js"></script>
