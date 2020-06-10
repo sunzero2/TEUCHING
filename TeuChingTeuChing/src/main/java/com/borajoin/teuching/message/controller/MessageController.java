@@ -1,6 +1,8 @@
 package com.borajoin.teuching.message.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.mail.Session;
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.borajoin.teuching.member.model.vo.Member;
 import com.borajoin.teuching.member.model.vo.Trainer;
 import com.borajoin.teuching.message.model.service.MessageService;
+import com.borajoin.teuching.message.model.vo.Message;
 
 @Controller
 public class MessageController {
@@ -28,10 +31,33 @@ public class MessageController {
 		return "message/temporary";
 	}
 
-//	@RequestMapping("/message/messagecheck.do")
-//	public String messageCheck() {
-//		return "message/messageCheck";
-//	}
+	@RequestMapping("/message/msgboxsend.do")
+	public ModelAndView msgBoxSend(HttpSession session, Integer currentpage) {
+		ModelAndView mv = new ModelAndView();
+		Map<String, Object> res = new HashMap<String, Object>();
+		if(currentpage == null) {
+			currentpage = 1;
+		}
+		
+		if(session.getAttribute("loginInfo").getClass().getTypeName().contains("Member")) {
+			Member m = (Member) session.getAttribute("loginInfo");
+			 res = ms.selectMsgBoxSend(m.getMem_email(), currentpage);
+		}
+		if(session.getAttribute("loginInfo").getClass().getTypeName().contains("Trainer")) {
+			Trainer t = (Trainer) session.getAttribute("loginInfo");
+			res = ms.selectMsgBoxSend(t.getTr_email(), currentpage);
+		}
+		mv.addObject("res", res);
+		mv.setViewName("message/msgBoxSend");
+		return mv;
+	}
+	
+	@RequestMapping("/message/msgboxrecv.do")
+	public ModelAndView msgBoxRecv() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("message/msgBoxRecv");
+		return mv;
+	}
 //
 //	@RequestMapping("/message/sendmessage.do")
 //	public ModelAndView messageForm(String mem_email, String tr_email) {

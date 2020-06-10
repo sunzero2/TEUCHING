@@ -24,12 +24,6 @@
 	</form>
 	<button onclick="openPopUp2();">쪽지확인</button>
 	
-	<form id="form3"
-		action="${pageContext.request.contextPath }/message/matchform.do"
-		target="pop">
-	</form>
-	<button onclick="openPopUp3();">상담신청</button>
-	
 	<form id="form4"
 		action="${pageContext.request.contextPath }/message/matchformcheck.do"
 		target="pop">
@@ -48,13 +42,6 @@
 
 		function openPopUp2() {
 			const form = document.querySelector('#form2');
-			window.open("", 'pop',
-							'width=450,height=400,left=420,top=150,toolbars=no,scrollbars=no');
-			form.submit();
-		}
-		
-		function openPopUp3() {
-			const form = document.querySelector('#form3');
 			window.open("", 'pop',
 							'width=450,height=400,left=420,top=150,toolbars=no,scrollbars=no');
 			form.submit();

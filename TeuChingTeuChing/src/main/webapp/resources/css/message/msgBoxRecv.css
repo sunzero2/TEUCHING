@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+html, body, form {
+	height: 100%;
+	width: 100%;
+	font-family:"나눔고딕";
+}
+
+.wrapper {
+	height: 100%;
+	width: 100%;
+}
+
+.innerwrapper {
+	height: 80%;
+	width: 60%;
+	transform: translateX(33%);
+}
+
+#h1 {
+	text-align: center
+}
+
+.menu {
+	width: 30%;
+	transform: translateX(110%);
+	height: 10%;
+}
+
+#table {
+	height: 70%;
+	width: 100%;
+	transform: translateX(7%);
+	font-size: 1.3vw;
+}
+
+table {
+	width: 90%;
+}
+
+#tbody {
+	border-top: 2px solid pink;
+}
+
+td, th {
+	transform: translateX(13%);
+	padding-right: 3%;
+}
+
+td {
+	border-bottom: 1px solid lightgray;
+}
+
+#title {
+	width: 50%;
+}
+
+.col{
+	transform:translate(19%,80%);
+}
+
