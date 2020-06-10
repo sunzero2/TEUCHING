@@ -35,26 +35,45 @@ public class MessageController {
 	public ModelAndView msgBoxSend(HttpSession session, Integer currentpage) {
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> res = new HashMap<String, Object>();
-		if(currentpage == null) {
+		String type = "";
+		if (currentpage == null) {
 			currentpage = 1;
 		}
-		
-		if(session.getAttribute("loginInfo").getClass().getTypeName().contains("Member")) {
+
+		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Member")) {
+			type = "Member";
 			Member m = (Member) session.getAttribute("loginInfo");
-			 res = ms.selectMsgBoxSend(m.getMem_email(), currentpage);
+			res = ms.selectMsgBoxSend(m.getMem_email(), currentpage, type);
 		}
-		if(session.getAttribute("loginInfo").getClass().getTypeName().contains("Trainer")) {
+		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Trainer")) {
+			type = "Trainer";
 			Trainer t = (Trainer) session.getAttribute("loginInfo");
-			res = ms.selectMsgBoxSend(t.getTr_email(), currentpage);
+			res = ms.selectMsgBoxSend(t.getTr_email(), currentpage, type);
 		}
 		mv.addObject("res", res);
 		mv.setViewName("message/msgBoxSend");
 		return mv;
 	}
-	
+
 	@RequestMapping("/message/msgboxrecv.do")
-	public ModelAndView msgBoxRecv() {
+	public ModelAndView msgBoxRecv(HttpSession session, Integer currentpage) {
 		ModelAndView mv = new ModelAndView();
+		Map<String, Object> res = new HashMap<String, Object>();
+		String type = "";
+		if (currentpage == null)
+			currentpage = 1;
+
+		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Trainer")) {
+			type = "Trainer";
+			Trainer t = (Trainer) session.getAttribute("loginInfo");
+			res = ms.selectMsgBoxRecv(t.getTr_email(), currentpage, type);
+		}
+		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Member")) {
+			type = "Member";
+			Member m = (Member) session.getAttribute("loginInfo");
+			res = ms.selectMsgBoxRecv(m.getMem_email(), currentpage, type);
+		}
+		mv.addObject("res", res);
 		mv.setViewName("message/msgBoxRecv");
 		return mv;
 	}
@@ -122,17 +141,17 @@ public class MessageController {
 			HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> commandMap = new HashMap<String, Object>();
-		
+
 		Member m = (Member) session.getAttribute("loginInfo");
 		commandMap.put("tr_email", tr_email);
 		commandMap.put("mem_email", m.getMem_email());
 		commandMap.put("msg_cont", msg_cont);
 		commandMap.put("match_date", match_date);
 		commandMap.put("match_time", match_time);
-		
+
 		ms.insertMatchMessage(commandMap);
 		ms.insertMatch(commandMap);
-		
+
 		mv.addObject("msg", "발송이 완료되었습니다");
 		mv.setViewName("message/result");
 		return mv;
