@@ -6,12 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Teu-Ching Teu-Ching</title>
-</head>
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
 	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap"
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="../resources/css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="../resources/css/animate.css">
@@ -25,34 +22,30 @@
 <link rel="stylesheet" href="../resources/css/flaticon.css">
 <link rel="stylesheet" href="../resources/css/icomoon.css">
 <link rel="stylesheet" href="../resources/css/style.css">
+<link rel="stylesheet" href="../resources/css/notice/notice.css"/>
+</head>
 <body>
 	<%@ include file="../include/top.jsp"%>
 	<section>
 		<h1>Notice</h1>
-		<table>
 			<c:if test="${nList != null}">
-				<script>
-					var nList = new Array();
-				</script>
+				<table>
+					<tr>
+						<th class="tableHead" style="width: 260px;">제목</th>
+						<th class="tableHead" style="width: 700px;">내용</th>
+						<th class="tableHead">작성일자</th>
+						<th class="tableHead">작성자</th>
+					</tr>
 				<c:forEach items="${nList}" var="notice">
-					<script>
-						var notice = {
-								title : '${notice.noticeTitle}',
-								content : '${notice.noticeCont}',
-								write : '${notice.writeDate}'
-						}
-						nList.push(notice);
-					</script>
-					<%-- <tr>
-						<th>
-							<a href="/teuching/notice/detail.do?noticeNo=${notice.noticeIdx}">${notice.noticeTitle}</a></th>
-						<td>${notice.noticeCont}</td>
-						<td>${notice.writeDate}</td>
-						<td>TEUCHING</td>
-					</tr> --%>
+						<tr>
+							<td class="tableBody"><a class="noticeTitle" href="/teuching/notice/detail.do?noticeIdx=${notice.noticeIdx}">${notice.noticeTitle}</a></td>
+							<td class="tableBody">${notice.noticeCont}</td>
+							<td class="tableBody tableSmaller">${notice.writeDate}</td>
+							<td class="tableBody tableSmaller">TEUCHING</td>
+						</tr>
 				</c:forEach>
+				</table>
 			</c:if>
-		</table>
 	</section>
 	<%@ include file="../include/footer.jsp"%>
 	<script src="../resources/js/jquery.min.js"></script>
@@ -70,5 +63,6 @@
 	<script src="../resources/js/jquery.timepicker.min.js"></script>
 	<script src="../resources/js/scrollax.min.js"></script>
 	<script src="../resources/js/notice/notice.js"></script>
+	<script src="../resources/js/main.js"></script>
 </body>
 </html>
