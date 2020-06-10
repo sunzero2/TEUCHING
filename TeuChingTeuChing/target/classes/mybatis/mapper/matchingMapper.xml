@@ -65,4 +65,8 @@
 	<update id="updatePost" parameterType="Post">
 		update tr_post set post_title = #{postTitle}, post_cont = #{postCont}, purpose = #{purpose}, class_size = #{classSize}, place = #{place}, price = #{price} where post_idx = #{postIdx}
 	</update>
+	
+	<delete id="deletePost">
+		delete tr_post where post_idx=#{postIdx}
+	</delete>
 </mapper>
