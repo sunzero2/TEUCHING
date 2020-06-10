@@ -72,4 +72,9 @@ public class PostServiceImpl implements PostService {
 
 		return res;
 	}
+
+	@Override
+	public int deletePost(String postIdx) {
+		return postDao.deletePost(postIdx);
+	}
 }

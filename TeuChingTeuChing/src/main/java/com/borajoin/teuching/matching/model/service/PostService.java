@@ -13,4 +13,5 @@ public interface PostService {
 	public int insertPost(Post post, List<File_Upload> uploads);
 	public int insertFile(List<File_Upload> uploads);
 	public int updatePost(Post post, List<File_Upload> uploads);
+	public int deletePost(String postIdx);
 }

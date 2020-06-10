@@ -1,6 +1,7 @@
 package com.borajoin.teuching.notice.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ public class NoticeServiceImpl implements NoticeService{
 	NoticeDao noticeDao;
 
 	@Override
-	public List<Notice> noticeList() {
-		return noticeDao.noticeList();
+	public List<Notice> noticeList(Map<String, String> data) {
+		return noticeDao.noticeList(data);
 	}
 }

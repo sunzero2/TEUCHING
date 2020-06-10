@@ -39,4 +39,8 @@ public class PostDao {
 	public int insertFile(File_Upload file) {
 		return sqlSession.insert("File.post_insertFile", file);
 	}
+	
+	public int deletePost(String postIdx) {
+		return sqlSession.delete("Matching.deletePost", postIdx);
+	}
 }

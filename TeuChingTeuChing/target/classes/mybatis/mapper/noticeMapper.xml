@@ -8,6 +8,6 @@
 		<result column="write_date" property="writeDate"></result>
 	</resultMap>
 	<select id="selectNotice" resultMap="noticeMap">
-		select * from tr_notice order by notice_idx desc
+		select * from tr_notice where notice_idx between #{start} and #{end} order by notice_idx desc 
 	</select>
 </mapper>
