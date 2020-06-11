@@ -54,6 +54,8 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public int recDelete(Map<String, Object> data) {
+		int res = rd.recRealDelete(data);
+		System.out.println(res);
 		return rd.recDelete(data);
 		
 	}

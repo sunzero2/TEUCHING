@@ -69,4 +69,9 @@ public class ReviewDao {
 	public int recDelete(Map<String, Object> data) {
 		return sqlSession.update("Review.recDelete", data);
 	}
+	
+	public int recRealDelete(Map<String, Object> data) {
+	
+		return sqlSession.delete("Review.recRealDelete", data);
+	}
 }

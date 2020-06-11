@@ -13,7 +13,7 @@
 	
 	
 	<update id="recUpdate">
-		update tr_review set recommend = recommend + 1 where mem_nickname = #{nickname}
+		update tr_review set recommend = recommend + 1 where review_idx = #{no}
 	</update>
 	
 	<select id="getLike" resultType="int">
@@ -35,6 +35,10 @@
 		update tr_review set recommend = recommend - 1 where mem_nickname = #{nickname}
 	</update>
 	
+	<delete id="recRealDelete">
+		delete from review_rec where mem_nickname = #{nickname} and review_idx = #{no}
+	
+	</delete>
 	
 	
 	<!-- <insert id="insertReview">
