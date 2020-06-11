@@ -24,8 +24,12 @@ public class MessageDao {
 		return sqlSession.insert("Message.insertMatch", commandMap);
 	}
 
-	public int selectMsgCnt() {
-		return sqlSession.selectOne("Message.selectMsgCnt");
+	public int selectSendMsgCnt(Map<String, Object> commandMap) {
+		return sqlSession.selectOne("Message.selectSendMsgCnt", commandMap);
+	}
+	
+	public int selectRecvMsgCnt(Map<String, Object> commandMap) {
+		return sqlSession.selectOne("Message.selectRecvMsgCnt", commandMap);
 	}
 
 	public List<Message> selectMsgBoxSend(Map<String, Object> commandMap) {

@@ -31,15 +31,26 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public int selectMsgCnt() {
-		return md.selectMsgCnt();
+	public int selectSendMsgCnt(String type, String email) {
+		Map<String, Object> commandMap = new HashMap<String, Object>();
+		commandMap.put("type", type);
+		commandMap.put("email", email);
+		return md.selectSendMsgCnt(commandMap);
+	}
+
+	@Override
+	public int selectRecvMsgCnt(String type, String email) {
+		Map<String, Object> commandMap = new HashMap<String, Object>();
+		commandMap.put("type", type);
+		commandMap.put("email", email);
+		return md.selectRecvMsgCnt(commandMap);
 	}
 
 	@Override
 	public Map<String, Object> selectMsgBoxSend(String email, int currentpage, String type) {
 		Map<String, Object> commandMap = new HashMap<String, Object>();
 		Map<String, Object> res = new HashMap<String, Object>();
-		Paging paging = new Paging(selectMsgCnt(), currentpage, 5);
+		Paging paging = new Paging(selectSendMsgCnt(type, email), currentpage, 5);
 
 		commandMap.put("email", email);
 		commandMap.put("paging", paging);
@@ -55,7 +66,7 @@ public class MessageServiceImpl implements MessageService {
 	public Map<String, Object> selectMsgBoxRecv(String email, int currentpage, String type) {
 		Map<String, Object> commandMap = new HashMap<String, Object>();
 		Map<String, Object> res = new HashMap<String, Object>();
-		Paging paging = new Paging(selectMsgCnt(), currentpage, 5);
+		Paging paging = new Paging(selectRecvMsgCnt(type, email), currentpage, 5);
 
 		commandMap.put("email", email);
 		commandMap.put("paging", paging);

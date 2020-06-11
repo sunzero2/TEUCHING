@@ -92,11 +92,44 @@
 			RNUM BETWEEN #{paging.start} AND #{paging.end}
 	</select>
 	
-	<select id="selectMsgCnt" resultType="int">
+	<select id="selectSendMsgCnt" resultType="int">
 		SELECT
 			COUNT(*)
 		FROM
 			TR_MESSAGE
+		<where>
+				 TR_EMAIL = #{email}
+			OR 
+				 MEM_EMAIL = #{email}
+			<if test='type.equalsIgnoreCase("Trainer")'>
+			AND
+				WRITER = 'Trainer'
+			</if>
+			<if test='type.equalsIgnoreCase("Member")'>
+			AND
+				WRITER = 'Member'
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectRecvMsgCnt" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			TR_MESSAGE
+		<where>
+				MEM_EMAIL = #{email}
+			OR
+				TR_EMAIL = #{email}
+			<if test='type.equalsIgnoreCase("Trainer")'>
+			AND
+				WRITER = 'Member'
+			</if>
+			<if test='type.equalsIgnoreCase("Member")'>
+			AND
+				WRITER = 'Trainer'
+			</if>
+		</where>
 	</select>
 	
 </mapper>
