@@ -30,7 +30,6 @@ public class ReviewDao {
 		Map<String, Object> data = new HashMap<>();
 		data.put("page", page);
 		data.put("orderby", orderby);
-		System.out.println("값담아서 넘어가는 다오임다"+ orderby);
 		return sqlSession.selectList("Review.selectReviewList", data);
 
 	}
@@ -41,53 +40,33 @@ public class ReviewDao {
 	
 	
 	// 추천 
-	public void recUpdate(String nickname, String no) {
-		
-		System.out.println("실행됨?");
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("nickname",nickname);
-		map.put("no",no);
-		sqlSession.update("Review.recUpdate",map);
-		
+	public int recUpdate(Map<String, Object> data) {
+		return sqlSession.update("Review.recUpdate", data);
 	}
 	
 	
 	// reviewrec테이블에 데이터 추가
-	public int insertreviewrrec(String nickname, String no) {
-		System.out.println("실행됨?22");
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("nickname",nickname);
-		map.put("no",no);
-		return sqlSession.insert("Review.insertreviewrrec",map);
-		
+	public int insertreviewrrec(Map<String, Object> data) {
+		return sqlSession.insert("Review.insertreviewrrec", data);
 	}
 	
 	
 	
 	// 추천수 가져오기
 	public int getLike(String nickname) {
-		System.out.println(nickname);
 		return sqlSession.selectOne("Review.getLike",nickname);
 	}
 	
 	
 	
 	// 추천여부
-	public int reviewrecyn(String nickname, String no) {
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("nickname",nickname);
-		map.put("no",no);
-		return (Integer) sqlSession.selectOne("Review.reviewrecyn",map);
+	public int reviewrecyn(Map<String, Object> data) {
+		return sqlSession.selectOne("Review.reviewrecyn", data);
 	}
 	
 	
 	// 추천 제거
-	public void recDelete(String nickname, String no) {
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("nickname",nickname);
-		map.put("no",no);
-		sqlSession.update("Review.recDelete",map);
+	public int recDelete(Map<String, Object> data) {
+		return sqlSession.update("Review.recDelete", data);
 	}
-	
-	
 }

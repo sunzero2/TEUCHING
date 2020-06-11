@@ -396,8 +396,8 @@
 		             nickname : nickname,
 		              no : no
 		           },
-		           success : function() {
-		              
+		           success : function(v) {
+		              console.log("likeitajax method ", v);
 		              recCount(nickname,no);
 		           },
 		           error : function (error) {
@@ -405,7 +405,10 @@
 		      }
 		        })
 		     };
+		     
    		function recCount(nickname,no) {
+   			console.log("recCount ", nickname, no);
+   			
 			 $.ajax({
 		           url : '<%=request.getContextPath()%>/review/reccount.do',
 		           type : 'POST',
@@ -418,6 +421,7 @@
 		        	  $('#likecnt').html(count);
 		           },
 		           error : function (error) {
+		        	  alert("ㅅㅂ");
 		              alert(error);
 		      }
 		        })

@@ -103,37 +103,24 @@ public class ReviewController {
 	@RequestMapping(value = "review/recupdate.do", method = RequestMethod.POST)
 	@ResponseBody
 	public int recUpdate(@RequestParam Map<String, Object> data) {
-
-		String nickname = (String) data.get("nickname");
-		String no = (String) data.get("no");
-		System.out.println("출력체스트" + nickname + no);
-
-		int result = rs.reviewrecyn(nickname, no);
-
+		int res = 0;
+		int result = rs.reviewrecyn(data);
 		if (result == 0) {
 			// 추천을 한적 없다면 추천 추가
-			rs.recUpdate(nickname, no);
+			res = rs.recUpdate(data);
 		} else {
 			// 추천 한적 있으면 다시 삭제
-			rs.recDelete(nickname, no);
+			res = rs.recDelete(data);
 		}
-
-		return 0;
+		return res;
 	}
 
 	@RequestMapping(value = "review/reccount.do", method = RequestMethod.POST)
 	@ResponseBody
 	public int recCount(@RequestParam Map<String, Object> data) {
-
 		// 추천수 구함
-		String nickname = (String) data.get("nickname");
-		String no = (String) data.get("no");
-		System.out.println("recCount" + nickname + no);
-		
-		int count = rs.recCount(nickname, no);
-
+		int count = rs.recCount((String)data.get("nickname"));
 		return count;
-
 	}
 
 }

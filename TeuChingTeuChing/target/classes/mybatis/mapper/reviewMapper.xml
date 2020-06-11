@@ -29,7 +29,6 @@
 	
 	<select id="reviewrecyn"  parameterType="map" resultType="int">
 		select count(*) from review_rec where mem_nickname = #{nickname} and review_idx = #{no}
-	
 	</select>
 	
 	<update id="recDelete">
