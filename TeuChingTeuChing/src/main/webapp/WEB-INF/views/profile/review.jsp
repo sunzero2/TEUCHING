@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Teu-Ching Teu-Ching</title>
 <style>
 #star a {
 	text-decoration: none;
@@ -48,7 +48,7 @@
 <body>
 
 	<%@ include file="../include/top.jsp"%>
-	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	
 
 
 
@@ -153,9 +153,19 @@
 
 									<div class="comment-body">
 										<h5>${review.mem_nickname}</h5>
-										<input type="button" value="좋아요" id="likecnt" onclick="likeclickfs(${review.review_idx});"/>
+										
+										<c:if test="${loginInfo == null }">
 										<i class="fas fa-heart" style="font-size:16px;color:grey"></i>
 										<span id="recommendcnt">${review.recommend}</span>
+										</c:if>
+										
+										<!-- 로그인 해야만 좋아요 가능 -->
+										<c:if test="${loginInfo != null }">
+										<input type="button" value="좋아요" id="recUpdate" onclick="likeit(${review.review_idx});">
+										<i class="fas fa-heart" style="font-size:16px;color:grey"></i>
+										<span id="likecnt">${review.recommend}</span>
+										</c:if>
+										
 										<div class="meta">${review.rev_date}</div>
 										<p>${review.rev_cont}</p>
 
@@ -360,7 +370,69 @@
 
 	<!-- -----------------------------------끝-------------------------------------------- -->
 
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script>
+	
+	
+	$('#star a').click(function() {
+			$(this).parent().children("a").removeClass("on");
+			$(this).addClass("on").prevAll("a").addClass("on");
+			console.log($(this).attr("value"));
+		});
+	
+	   function likeit(index) {
+		      nickname = '${loginInfo.nickname}';
+		      no = index;
+		      console.log("nickname ", nickname);
+		      console.log("no ", no);
+		      likeitajx(nickname,no);
+		   };
+		   
+		 function likeitajx(nickname,no) {
+		        $.ajax({
+		           url : '<%=request.getContextPath()%>/review/recupdate.do' ,
+		           type : 'POST',
+		           data : {
+		             nickname : nickname,
+		              no : no
+		           },
+		           success : function(v) {
+		              console.log("likeitajax method ", v);
+		              recCount(nickname,no);
+		           },
+		           error : function (error) {
+		              alert(error);
+		      }
+		        })
+		     };
+		     
+   		function recCount(nickname,no) {
+   			console.log("recCount ", nickname, no);
+   			
+			 $.ajax({
+		           url : '<%=request.getContextPath()%>/review/reccount.do',
+		           type : 'POST',
+		           data : {
+		             nickname : nickname,
+		              no : no
+		           },
+		           success : function(count) {
+		              
+		        	  $('#likecnt').html(count);
+		           },
+		           error : function (error) {
+		        	  alert("ㅅㅂ");
+		              alert(error);
+		      }
+		        })
+			
+			
+		}
+	   
 
+     
+     
+	</script>
 
 
 	<%@ include file="../include/footer.jsp"%>
@@ -380,36 +452,8 @@
 	<script src="../resources/js/jquery.timepicker.min.js"></script>
 	<script src="../resources/js/scrollax.min.js"></script>
 	<script src="../resources/js/main.js"></script>
-	<script>
-	var id;
-	var no;
 	
-	$('#star a').click(function() {
-			$(this).parent().children("a").removeClass("on");
-			$(this).addClass("on").prevAll("a").addClass("on");
-			console.log($(this).attr("value"));
-		});
-		
-    function likeclickfs(index) {
-        id = '${loginInfo.mem_email}';
-        no = index;
-        console.log("id ", id);
-        console.log("no ", no);
-     }
-    
-	function like(id,no) {
-        $.ajax({
-           url : "review/recupdate.do",
-           type : 'POST',
-           data : {
-              id : id
-           },
-           success : function(data) {
-              $('#recommendcnt').html(data);
-           }
-        })
-     } 
-	</script>
+
 
 </body>
 </html>

@@ -30,12 +30,48 @@ public class ReviewDao {
 		Map<String, Object> data = new HashMap<>();
 		data.put("page", page);
 		data.put("orderby", orderby);
-		System.out.println("값담아서 넘어가는 다오임다"+ orderby);
 		return sqlSession.selectList("Review.selectReviewList", data);
 
 	}
 	
 	public int insertReview(Review review) {
 		return sqlSession.insert("Review.insertReview",review);
+	}
+	
+	
+	// 추천 
+	public int recUpdate(Map<String, Object> data) {
+		return sqlSession.update("Review.recUpdate", data);
+	}
+	
+	
+	// reviewrec테이블에 데이터 추가
+	public int insertreviewrrec(Map<String, Object> data) {
+		return sqlSession.insert("Review.insertreviewrrec", data);
+	}
+	
+	
+	
+	// 추천수 가져오기
+	public int getLike(String nickname) {
+		return sqlSession.selectOne("Review.getLike",nickname);
+	}
+	
+	
+	
+	// 추천여부
+	public int reviewrecyn(Map<String, Object> data) {
+		return sqlSession.selectOne("Review.reviewrecyn", data);
+	}
+	
+	
+	// 추천 제거
+	public int recDelete(Map<String, Object> data) {
+		return sqlSession.update("Review.recDelete", data);
+	}
+	
+	public int recRealDelete(Map<String, Object> data) {
+	
+		return sqlSession.delete("Review.recRealDelete", data);
 	}
 }

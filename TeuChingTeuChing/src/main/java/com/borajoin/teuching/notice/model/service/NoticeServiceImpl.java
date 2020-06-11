@@ -13,9 +13,34 @@ import com.borajoin.teuching.notice.model.vo.Notice;
 public class NoticeServiceImpl implements NoticeService{
 	@Autowired
 	NoticeDao noticeDao;
+	
+	@Override
+	public int noticeListCnt() {
+		return noticeDao.noticeListCnt();
+	}
 
 	@Override
 	public List<Notice> noticeList(Map<String, String> data) {
 		return noticeDao.noticeList(data);
+	}
+
+	@Override
+	public Notice noticeDetail(int noticeIdx) {
+		return noticeDao.noticeDetail(noticeIdx);
+	}
+
+	@Override
+	public int deleteNotice(String noticeIdx) {
+		return noticeDao.deleteNotice(noticeIdx);
+	}
+
+	@Override
+	public int updateNotice(Notice notice) {
+		return noticeDao.updateNotice(notice);
+	}
+
+	@Override
+	public int insertNotice(Notice notice) {
+		return noticeDao.insertNotice(notice);
 	}
 }

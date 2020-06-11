@@ -11,6 +11,36 @@
 		select * from (select rownum rnum, n1.* from ( select * from tr_review order by ${orderby} desc)n1) where rnum between #{page.start} and #{page.end}
 	</select>
 	
+	
+	<update id="recUpdate">
+		update tr_review set recommend = recommend + 1 where review_idx = #{no}
+	</update>
+	
+	<select id="getLike" resultType="int">
+		select recommend from tr_review where mem_nickname = #{nickname}
+	</select>
+	
+	<insert id="insertreviewrrec">
+	insert into review_rec values(
+		#{no},
+		#{nickname}
+		)
+	</insert>
+	
+	<select id="reviewrecyn"  parameterType="map" resultType="int">
+		select count(*) from review_rec where mem_nickname = #{nickname} and review_idx = #{no}
+	</select>
+	
+	<update id="recDelete">
+		update tr_review set recommend = recommend - 1 where mem_nickname = #{nickname}
+	</update>
+	
+	<delete id="recRealDelete">
+		delete from review_rec where mem_nickname = #{nickname} and review_idx = #{no}
+	
+	</delete>
+	
+	
 	<!-- <insert id="insertReview">
 		insert into tr_review values(S_REVIEW_IDX.nextval,'아이걸어케넣지','이메일도어케넣지','로그인한회원닉넴',#{rev_cont),#{rev_score},#{rev_password},
 		'n',#{recommend},sysdate)

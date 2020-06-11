@@ -32,7 +32,7 @@
 					<ul class="list-unstyled">
 						<li><a href="/teuching/index/index.do">Home</a></li>
 						<li><a href="#">About</a></li>
-						<li><a href="/teuching/notice/notice.do">Notice</a></li>
+						<li><a href="/teuching/notice/notice.do?start=1&end=5">Notice</a></li>
 					</ul>
 				</div>
 			</div>
