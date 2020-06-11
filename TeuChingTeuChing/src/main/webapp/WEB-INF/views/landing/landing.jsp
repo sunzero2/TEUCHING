@@ -50,7 +50,7 @@
 						<h1 class="mb-4">Your First Visit?</h1>
 						<h3 class="slide-subheading">우리의 서비스를 소개합니다.</h3>
 						<p>
-							<a href="/teuching/notice/notice.do?start=1&end=5"
+							<a href="/teuching/index/aboutus.do"
 								class="btn btn-white btn-outline-white px-4 py-3 mt-3">알아보러 가기</a>
 						</p>
 					</div>
@@ -170,9 +170,5 @@
 	<script src="../resources/js/jquery.timepicker.min.js"></script>
 	<script src="../resources/js/scrollax.min.js"></script>
 	<script src="../resources/js/main.js"></script>
-	<!-- <script>
-		$(".modal-content").load("loginModal");
-	</script> -->
-	
 </body>
 </html>

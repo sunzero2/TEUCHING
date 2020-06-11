@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Teu-Ching Teu-Ching</title>
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
 	rel="stylesheet">
@@ -33,35 +33,31 @@
 <body>
 	<%@ include file="../include/top.jsp"%>
 	<section style="margin-bottom: 40px;">
-		<form action="/teuching/post/write.do" method="post" onsubmit="return submit_result();" class="postForm" enctype="multipart/form-data">
-			<div class="addImageWrapper">
-				<div class="addImageDiv">
-					<img src="../resources/img/addImage2.png" class="addImageIcon">
-					<p class="addImageText">사진첨부</p>
-					<input type="file" id="addImageHidden" name="images" onmouseover="changeImg();" onmouseout="resetImg();" onchange="preview(this);" multiple>
-				</div>
-			</div>
+		<form action="/teuching/notice/writeNotice.do" method="post" onsubmit="return submit_result();" class="postForm">
 			<div>
 				<div style="margin-top: 36px; margin-left: 50px; width: 1000px;">
 					<div class="titleWrapper">
-						<c:if test="${data == null }">
-							<input class="titleInput" name="postTitle" placeholder="제목을 입력하세요.">
+						<c:if test="${notice == null }">
+							<input class="titleInput" name="noticeTitle" placeholder="제목을 입력하세요.">
 						</c:if>
-						<c:if test="${data != null }">
-							<input class="titleInput" name="postTitle" placeholder="제목을 입력하세요." value="${data.post.postTitle}">
+						<c:if test="${notice != null }">
+							<input class="titleInput" name="noticeTitle" placeholder="제목을 입력하세요." value="${notice.noticeTitle}">
 						</c:if>
 					</div>
 					<hr>
 					<div class="contentWrapper">
-						<c:if test="${data == null }">
-							<textarea class="contentInput" name="postCont" placeholder="내용을 입력하세요."></textarea>
+						<c:if test="${notice == null }">
+							<textarea class="contentInput" name="noticeCont" placeholder="내용을 입력하세요."></textarea>
 						</c:if>
-						<c:if test="${data != null }">
-							<textarea class="contentInput" name="postCont" placeholder="내용을 입력하세요.">${data.post.postCont}</textarea>
+						<c:if test="${notice != null }">
+							<textarea class="contentInput" name="noticeCont" placeholder="내용을 입력하세요.">${notice.noticeCont}</textarea>
 						</c:if>
 					</div>
 				</div>
 			</div>
+			<c:if test="${notice != null}">
+					<input type="hidden" name="noticeIdx" value="${notice.noticeIdx}">
+				</c:if>
 			<div>
 				<button class="uploadBtn">저장</button>
 			</div>
