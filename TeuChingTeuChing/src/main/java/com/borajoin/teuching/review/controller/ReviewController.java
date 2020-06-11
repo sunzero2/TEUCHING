@@ -107,12 +107,11 @@ public class ReviewController {
 	  * @Method 설명 : 추천수 업데이트
 	  */
 	@RequestMapping("review/recupdate.do")
-	public ModelAndView recUpdate(HttpServletRequest request) {
+	public ModelAndView recUpdate(@RequestParam Map<String, Object> data) {
+		System.out.println(data);
 		ModelAndView mav = new ModelAndView();
 		System.out.println("여까지옵니까?..");
 		Map<String, Object> res = new HashMap<>();
-		res.put("no",request.getParameter("no"));
-		res.put("id",request.getParameter("id"));
 		
 		
 		

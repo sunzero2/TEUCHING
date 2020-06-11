@@ -19,8 +19,15 @@ html {
 	background-size: cover;
 	overflow-x: hidden;
 }
-body{
-background-color: transparent !important;
+
+body {
+	background-color: transparent !important;
+}
+
+#imagePreview {
+	background-image: url(../resources/img/profileicon.png);
+	width: 400px;
+	height: 300px;
 }
 </style>
 
@@ -175,24 +182,25 @@ background-color: transparent !important;
 								<div class="row">
 										<div class="col-lg-4">
 											<div class="form-group focused">
-												<label class="form-control-label">사진첨부</label>
-												<input type="text" id="input-city"
-													class="form-control form-control-alternative" name="photo"
-													placeholder="사진첨부 기능넣기">
+												<label class="form-control-label">프로필 사진</label>
+												<div id="imagePreview">
+												<img id="img" style="max-width: 100%;"/>
+											</div>
+											<input type="file" id="photo" accept="image/*" onchange="setThumbnail(event);" name="photo" />
 											</div>
 										</div>
 									</div>
+									<br>
 									<div class="row">
-										<div class="col-lg-12">
+										<div class="pl-lg-4">
 											<div class="form-group focused">
-												<label class="form-control-label" for="input-address">개인 커리어</label>
-												<input id="input-address"
-													class="form-control form-control-alternative" name="career"
-													placeholder="개인커리어를 어떻게 추가해야할까"
-													type="text">
+												<label>개인 커리어</label>
+												<textarea class="form-control form-control-alternative" cols="80" rows="10"
+												placeholder="트레이너님을 나타낼 수 있는 커리어를 자유롭게 작성해 주세요." name="career"></textarea>	
 											</div>
 										</div>
 									</div>
+									<br>
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="form-group focused">
@@ -297,6 +305,22 @@ background-color: transparent !important;
 		});
 		
 	});
+</script>
+<script>
+function setThumbnail(event) { 
+	
+	var reader = new FileReader(); 
+	
+	reader.onload = function(event) { 
+		var img = document.createElement("img"); 
+		img.setAttribute("src", event.target.result); 
+		document.querySelector("div#imagePreview").appendChild(img);
+		
+	}; 
+	
+	reader.readAsDataURL(event.target.files[0]); 
+
+}
 </script>
 
 <!-- 비밀번호 체크 -->
