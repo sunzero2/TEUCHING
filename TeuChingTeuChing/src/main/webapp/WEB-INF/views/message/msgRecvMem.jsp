@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Teu-Ching Teu-Ching</title>
 <style>
 html, body, form {
 	height: 96%;
@@ -42,15 +42,18 @@ a {
 
 #btn {
 	width: 75px;
-	height: 35px;
+	height: 30px;
 	float: right;
 	transform: translateX(-10%);
 	left: 20%;
 	margin-top: 2%;
 	border: 1px solid lightgray;
 	background-color: white;
-	outline:0;
-	cursor:pointer;
+	outline: 0;
+	cursor: pointer;
+	color: black;
+	text-align: center;
+	padding-top: 2%;
 }
 
 h1 {
@@ -63,14 +66,10 @@ h1 {
 		<h1>상담요청</h1>
 		<p>✅ 수락된 요청 입니다</p>
 		<!-- <p>❎ 요청 대기중 입니다</p> -->
-		<p id="p">
-			Date 02-24 13:00
-		</p>
+		<p id="p">Date 02-24 13:00</p>
 		<div id="text">네 가능하십니다</div>
-		<button id="btn" style="transform: translateX(-52%)">답장하기</button>
+		<a href="${pageContext.request.contextPath }/message/msgreturn.do"
+			id="btn" style="transform: translateX(-52%)">답장하기</a>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.5.1.js"
-		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-		crossorigin="anonymous"></script>
 </body>
 </html>

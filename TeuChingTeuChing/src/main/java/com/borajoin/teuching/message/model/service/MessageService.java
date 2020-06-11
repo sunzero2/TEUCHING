@@ -15,4 +15,5 @@ public interface MessageService {
 	
 	public Map<String, Object> selectMsgBoxRecv(String email, int currentpage, String type);
 	
+	public int selectMsgDetail(int message_idx);
 }
