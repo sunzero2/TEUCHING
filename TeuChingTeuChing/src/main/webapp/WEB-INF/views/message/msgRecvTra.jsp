@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 <style>
 html, body, form {
-	height: 100%: 
-	width:100%;
+	height: 96%;
+	width: 96%;
 	margin-left: 3%;
 }
 
@@ -37,22 +37,22 @@ a {
 	border-radius: 4px;
 	border: 1px solid lightgray;
 	margin-top: 3%;
-	font-size:3vw;
+	font-size: 3vw;
 }
 
 #btn {
 	width: 75px;
 	height: 35px;
 	float: right;
-	transfrom: translateX(-10%);
+	transform: translateX(-10%);
 	left: 20%;
 	margin-top: 2%;
-	border:1px solid lightgray;
-	background-color:white;
+	border: 1px solid lightgray;
+	background-color: white;
 }
 
-h1{
-	font-weight:500;
+h1 {
+	font-weight: 500;
 }
 </style>
 </head>
@@ -60,8 +60,7 @@ h1{
 	<div class="wrapper">
 		<h1>상담요청</h1>
 		<p id="p">
-			Date 02-24 13:00 
-			<a title="수락 시 매칭이 성사됩니다" id="a" href="">수락</a>
+			Date 02-24 13:00 <a title="수락 시 매칭이 성사됩니다" id="a" href="">수락</a>
 		</p>
 		<div id="text">이날 예약 가능한가요</div>
 		<textarea id="textarea" placeholder="내용을 입력해주세요"></textarea>

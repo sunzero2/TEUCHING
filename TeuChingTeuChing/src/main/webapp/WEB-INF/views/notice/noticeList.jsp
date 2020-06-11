@@ -45,6 +45,13 @@
 						</tr>
 				</c:forEach>
 				</table>
+				<div class="block-27">
+					<ul>
+						<li><a onclick="back(${page.start}, this);" href="#">&lt;</a></li>
+						<li><a onclick="next(${page.end}, this, ${size});" href="#">&gt;</a></li>
+					</ul>
+				</div>
+				<a href="/teuching/notice/write.do?noticeIdx=0"><button class="btn btn-primary">Write</button></a>
 			</c:if>
 	</section>
 	<%@ include file="../include/footer.jsp"%>
@@ -64,5 +71,22 @@
 	<script src="../resources/js/scrollax.min.js"></script>
 	<script src="../resources/js/notice/notice.js"></script>
 	<script src="../resources/js/main.js"></script>
+	<script>
+		function back(start, el) {
+			if(start <= 1) {
+				alert("첫 번째 페이지입니다.");
+			} else {
+				el.href = "/teuching/notice/notice.do?start=" + (start-5) + "&end=" + (start-1);
+			}
+		}
+		
+		function next(end, el, size) {
+			if((end + 1) > size) {
+				alert("마지막 페이지입니다.");
+			} else {
+				el.href = "/teuching/notice/notice.do?start=" + (end+1) + "&end=" + (end+5);
+			}
+		}
+	</script>
 </body>
 </html>

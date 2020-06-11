@@ -1,36 +1,31 @@
 package com.borajoin.teuching.message.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import javax.mail.Session;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.borajoin.teuching.member.model.vo.Member;
 import com.borajoin.teuching.member.model.vo.Trainer;
 import com.borajoin.teuching.message.model.service.MessageService;
-import com.borajoin.teuching.message.model.vo.Message;
 
 @Controller
 public class MessageController {
 
 	@Autowired
 	MessageService ms;
-
-	@RequestMapping("/message.do")
-	public String message() {
-		return "message/temporary";
-	}
-
+	
+	/**
+	 * @Method Name : msgBoxSend
+	 * @작성일 : 2020. 6. 12.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 받은 쪽지함
+	 */
 	@RequestMapping("/message/msgboxsend.do")
 	public ModelAndView msgBoxSend(HttpSession session, Integer currentpage) {
 		ModelAndView mv = new ModelAndView();
@@ -55,6 +50,12 @@ public class MessageController {
 		return mv;
 	}
 
+	/**
+	 * @Method Name : msgBoxRecv
+	 * @작성일 : 2020. 6. 12.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 보낸 쪽지 함
+	 */
 	@RequestMapping("/message/msgboxrecv.do")
 	public ModelAndView msgBoxRecv(HttpSession session, Integer currentpage) {
 		ModelAndView mv = new ModelAndView();
@@ -77,17 +78,46 @@ public class MessageController {
 		mv.setViewName("message/msgBoxRecv");
 		return mv;
 	}
-//
-//	@RequestMapping("/message/sendmessage.do")
-//	public ModelAndView messageForm(String mem_email, String tr_email) {
-//		ModelAndView mv = new ModelAndView();
-//		mv.addObject("mem_email", mem_email);
-//		mv.addObject("tr_email", tr_email);
-//		mv.setViewName("message/messageForm");
-//		return mv;
-//	}
-//	// ------위에 갖다버릴수도
-//
+	
+	/**
+	 * @Method Name : msgRecvDetail
+	 * @작성일 : 2020. 6. 12.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 받은 메시지 자세히 보기
+	 */
+	@RequestMapping("/message/msgrecvdetail.do")
+	public ModelAndView msgRecvDetail(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Trainer")) {
+			//트레이너일경우 받은 메시지 폼 체크
+			mv.setViewName("message/msgRecvTra");
+		}
+		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Member")) {
+			//회원일 경우 트레이너에게 받은 메시지
+			mv.setViewName("message/msgRecvMem");
+		}
+		return mv;
+	}
+
+	/**
+	 * @Method Name : msgSendDetail
+	 * @작성일 : 2020. 6. 12.
+	 * @작성자 : 김지수
+	 * @Method 설명 :보낸메시지 자세히 보기
+	 */
+	@RequestMapping("/message/msgsenddetail.do")
+	public ModelAndView msgSendDetail(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Trainer")) {
+			mv.setViewName("message/msgSendTra");
+		}
+		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Member")) {
+			mv.setViewName("message/msgSendMem");
+		}
+		return mv;
+	}
+
+	
 //	@RequestMapping("/message/insertmessage.do")
 //	public ModelAndView insertMessage(String tr_email, String mem_email, String msg_cont, String msg_title,
 //			HttpServletRequest request) {
