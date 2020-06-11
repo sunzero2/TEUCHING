@@ -1,5 +1,7 @@
 package com.borajoin.teuching.manager.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -229,5 +231,16 @@ public class ManagerController {
 		mv.setViewName("manager/qualiRequest");
 		return mv;
 	}
+	
+//	public void fileUpMedthod(MultipartFile file, HttpServletRequest request) {
+//		String savepath = request.getServletContext().getRealPath("/") + "/resources";
+//		File f = new File(savepath);
+//		try {
+//			file.transferTo(f);
+//		} catch (IllegalStateException | IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 
 }

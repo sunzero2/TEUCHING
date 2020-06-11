@@ -7,7 +7,9 @@ public interface MessageService {
 
 	public int insertMatch(Map<String, Object> commandMap);
 	
-	public int selectMsgCnt();
+	public int selectSendMsgCnt(String type, String email);
+	
+	public int selectRecvMsgCnt(String type, String email);
 	
 	public Map<String, Object> selectMsgBoxSend(String email, int currentpage, String type);
 	
