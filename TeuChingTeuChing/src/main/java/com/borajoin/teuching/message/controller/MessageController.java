@@ -13,13 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.borajoin.teuching.member.model.vo.Member;
 import com.borajoin.teuching.member.model.vo.Trainer;
 import com.borajoin.teuching.message.model.service.MessageService;
+import com.sun.mail.auth.MD4;
 
 @Controller
 public class MessageController {
 
 	@Autowired
 	MessageService ms;
-	
+
 	/**
 	 * @Method Name : msgBoxSend
 	 * @작성일 : 2020. 6. 12.
@@ -78,7 +79,8 @@ public class MessageController {
 		mv.setViewName("message/msgBoxRecv");
 		return mv;
 	}
-	
+
+	// ---------------------------------------------------------------------------------------
 	/**
 	 * @Method Name : msgRecvDetail
 	 * @작성일 : 2020. 6. 12.
@@ -86,16 +88,17 @@ public class MessageController {
 	 * @Method 설명 : 받은 메시지 자세히 보기
 	 */
 	@RequestMapping("/message/msgrecvdetail.do")
-	public ModelAndView msgRecvDetail(HttpSession session) {
+	public ModelAndView msgRecvDetail(HttpSession session, int message_idx) {
 		ModelAndView mv = new ModelAndView();
 		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Trainer")) {
-			//트레이너일경우 받은 메시지 폼 체크
+			// 트레이너일경우 받은 메시지 폼 체크
 			mv.setViewName("message/msgRecvTra");
 		}
 		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Member")) {
-			//회원일 경우 트레이너에게 받은 메시지
+			// 회원일 경우 트레이너에게 받은 메시지
 			mv.setViewName("message/msgRecvMem");
 		}
+		mv.addObject("res", ms.selectMsgDetail(message_idx));
 		return mv;
 	}
 
@@ -117,7 +120,13 @@ public class MessageController {
 		return mv;
 	}
 
-	
+	@RequestMapping("/message/msgreturn.do")
+	public ModelAndView msgReturn() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("message/msgReturn");
+		return mv;
+	}
+
 //	@RequestMapping("/message/insertmessage.do")
 //	public ModelAndView insertMessage(String tr_email, String mem_email, String msg_cont, String msg_title,
 //			HttpServletRequest request) {
@@ -164,7 +173,7 @@ public class MessageController {
 	 * @Method Name : matchFormSend
 	 * @작성일 : 2020. 6. 10.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 트레이너에게 상담신청 메시지 발송
+	 * @Method 설명 : 트레이너에게 상담신청 메시지 발송 & 매칭 요청
 	 */
 	@RequestMapping("/message/matchformsend.do")
 	public ModelAndView matchFormSend(String tr_email, String msg_cont, String match_date, String match_time,

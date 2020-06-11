@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
+<title>Teu-Ching Teu-Ching</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -63,6 +63,11 @@
 					</thead>
 					<tbody id="tbody">
 						<c:forEach items="${res.msg }" var="msg">
+							<form id="form"
+								action="${pageContext.request.contextPath }/message/msgrecvdetail.do"
+								target="pop">
+								<input type="hidden" name="message_idx" value="${msg.message_idx }">
+							</form>
 							<tr>
 								<td>1</td>
 								<td><button onclick="openPopUp();" id="btn">${msg.msg_cont }</button></td>
@@ -116,11 +121,6 @@
 			</div>
 		</div>
 	</div>
-	<c:if test="${sessionScope.loginInfo.mem_email eq null }">
-	<form id="form"
-		action="${pageContext.request.contextPath }/message/msgsenddetail.do"
-		target="pop"></form>
-	</c:if>
 
 	<script>
 		function openPopUp() {

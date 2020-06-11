@@ -28,6 +28,7 @@
 		)
 	</insert>
 	
+	
 	<select id="selectMsgBoxSend" resultType="Message">
 		SELECT 
 			*
@@ -130,6 +131,16 @@
 				WRITER = 'Trainer'
 			</if>
 		</where>
+	</select>
+	
+	<!-- ================================================= -->
+	<select id="selectMsgDetail" resultType="Message">
+		SELECT
+			*
+		FROM
+			TR_MESSAGE
+		WHERE
+			MESSAGE_IDX = #{message_idx}
 	</select>
 	
 </mapper>

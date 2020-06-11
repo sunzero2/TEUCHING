@@ -78,4 +78,9 @@ public class MessageServiceImpl implements MessageService {
 		return res;
 	}
 
+	@Override
+	public int selectMsgDetail(int message_idx) {
+		return md.selectMsgDetail(message_idx);
+	}
+
 }
