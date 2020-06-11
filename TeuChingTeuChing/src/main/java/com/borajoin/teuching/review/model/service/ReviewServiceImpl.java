@@ -39,10 +39,42 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public int recUpdate() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void recUpdate(String nickname, String no) {
+		
+		rd.recUpdate(nickname, no);
+		// 추천수 업데이트 시키기
+		
+		rd.insertreviewrrec(nickname, no);
+		// reviewrec테이블에 데이터 넣기
+		
 	}
 
+	@Override
+	public int reviewrecyn(String nickname, String no) {
+		
+		int yn = rd.reviewrecyn(nickname, no);
+		System.out.println("reviewrecyn 서비스단에서 나오는 값 : "+yn);
+		
+		
+		return yn;
+	}
+
+	@Override
+	public void recDelete(String nickname, String no) {
+		
+		rd.recDelete(nickname, no);
+		
+	}
+
+	@Override
+	public int recCount(String nickname, String no) {
+		int res = rd.getLike(nickname);
+		// 좋아요의 수 (업데이트된)
+		System.out.println(res);
+		return res;
+	}
+
+	
+	
 
 }
