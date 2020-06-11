@@ -45,14 +45,6 @@ public class MemberServiceImpl implements MemberService {
 		return res;
 	}
 	
-	// 회원가입 합치기
-	public int joinAccount(Map<String, Object> commandMap) throws SQLException {
-		int res = md.joinAccount(commandMap);
-
-		return res;
-	}
-	
-
 	// 일반회원 닉네임 중복체크
 	@Override
 	public int nickChk(String nickname) {

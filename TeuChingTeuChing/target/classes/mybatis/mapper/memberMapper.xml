@@ -23,21 +23,6 @@
 		select count(*) from tr_member where NICKNAME = #{nickname}
 	</select>
 	
-	<!-- 회원가입 합치기 -->
-	<insert id="joinAccount">
-		<if test='table=="tr_member"'>
-		insert into ${table}(MEM_EMAIL, PASSWORD, NICKNAME, GENDER, CELL,
-							ADDRESS, IS_LEAVE_YN, MANAGER_YN)
-		VALUES(#{email}, #{password}, #{nickname}, #{gender}
-				, #{cell}, #{address}, 'N', 'N')
-		</if>
-		<if test='table=="tr_trainer"'>
-		insert into ${table} VALUES(#{email}, #{password}, #{name}, #{gender}, #{weight}, #{height}
-				, #{cell}, #{career}, #{address}, #{address_detail}, #{prefer1}, #{prefer2}, #{prefer3}, #{photo}, 0, 'N', 'N')
-		</if>
-	</insert>
-	
-	
 	<!--회원 이메일 중복 체크 Mapper -->
 	<select id="emailChk" resultType="int">
 		select count(*) from ${table} where
@@ -48,16 +33,6 @@
 			mem_email = #{email}
 		</if>
 	</select>
-		
-		
-		
-	<!-- 일반멤버 닉네임... 가져오기  -->
-	<select id ="selectMemberId" resultType="String">
- 		select NICKNAME from tr_member where NICKNAME = #{nickName}
- 	</select>
- 
- 	
- 	
 	
 	<!-- 일반회원 로그인 -->
 	<select id="m_login" resultType="Member">
@@ -65,7 +40,7 @@
 		from tr_member where mem_email = #{email} and password = #{password}
 	</select>
 	 	
- 		<!-- 일반회원 로그인 -->
+ 	<!-- 트레이너 로그인 -->
 	<select id="t_login" resultMap="trainerResult">
 		select tr_email, trainer_name, gender, weight, height, cell, career, address,
 		address_detail, prefer_add1, prefer_add2, prefer_add3, photo, tr_like
@@ -76,6 +51,10 @@
  		<result column ="trainer_name" property="trainerName"/>
  	</resultMap>
  	
+ 	<!-- 비밀번호 변경 -->
+	<update id="update_pw" parameterType="member">
+		update member set pw = #{pw} where id = #{id}
+	</update>
  	
  	
  	
@@ -84,17 +63,9 @@
  	
  	
  	
- 	<!-- 관리자 로그인확인 ???????-->
+ 	<!-- 패스워드 찾기 -->
  	
- 	<!-- 패스워드는 어떻게 해야하나..? -->
- 	<!-- 트레이너 키워드랑 조인해서 트레이너 정보 가져오기 -->
- 	<!-- <select id="selectLogin" resultType="Member">
- 		select m_id, c_info, m_tell, m_reg_date, m_rentable_date 
- 		from tb_member inner join tb_code on m_grade = c_code 
- 		where m_id= #{id} and m_password= #{pw}
- 	</select> -->
- 	
- 	
+ 	<!-- 패스워드 변경하기 -->
  	
  	<!-- 회원탈퇴 -->
  	

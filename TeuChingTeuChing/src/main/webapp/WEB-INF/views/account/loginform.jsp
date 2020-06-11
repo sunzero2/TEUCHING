@@ -29,7 +29,7 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
 
-<title>Loginform</title>
+<title>Teu-Ching Teu-Ching</title>
 
 <style type="text/css">
 
@@ -158,9 +158,8 @@
 
 								<div class="col-md-6 offset-md-4">
 									<button type="button" id="signUp" class="btn btn-primary">로그인</button>
-									<a href="#" class="btn btn-link"> 비밀번호 찾기 </a>
+									<a href="<%=request.getContextPath()%>/member/find_pw_form.do" class="btn btn-link"> 비밀번호 찾기 </a>
 								</div>
-								
 							</form>
 						</div>
 					</div>
