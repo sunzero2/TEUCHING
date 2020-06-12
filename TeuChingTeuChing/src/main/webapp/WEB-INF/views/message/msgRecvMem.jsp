@@ -66,8 +66,8 @@ h1 {
 		<h1>상담요청</h1>
 		<p>✅ 수락된 요청 입니다</p>
 		<!-- <p>❎ 요청 대기중 입니다</p> -->
-		<p id="p">Date 02-24 13:00</p>
-		<div id="text">네 가능하십니다</div>
+		<p id="p">Date ${res.write_date }</p>
+		<div id="text">${res.msg_cont }</div>
 		<a href="${pageContext.request.contextPath }/message/msgreturn.do"
 			id="btn" style="transform: translateX(-52%)">답장하기</a>
 	</div>

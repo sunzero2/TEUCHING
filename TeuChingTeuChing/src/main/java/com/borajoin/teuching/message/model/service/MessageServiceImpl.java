@@ -79,8 +79,13 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public int selectMsgDetail(int message_idx) {
+	public Message selectMsgDetail(int message_idx) {
 		return md.selectMsgDetail(message_idx);
+	}
+
+	@Override
+	public int insertMsgAnsTra(Map<String, Object> commandMap) {
+		return md.insertMsgAnsTra(commandMap);
 	}
 
 }

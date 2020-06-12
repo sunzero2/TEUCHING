@@ -9,7 +9,6 @@ public class Quali {
 
 	public Quali() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getQuali_idx() {
