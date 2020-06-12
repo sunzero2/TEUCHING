@@ -11,11 +11,11 @@ public interface ReviewService {
 
 	
 	public Map<String,Object> selectReviewList(String orderby, int currentPage, int cntPerPage);
-	public int insertReview(Review review);
+	public int uploadReview(Review review);
 	public int recUpdate(Map<String, Object> data);
 	public int reviewrecyn(Map<String, Object> data);
 	public int recDelete(Map<String, Object> data);
-	public int recCount(String nickname);	
+	public int recCount(String no);	
 	
 	
 	

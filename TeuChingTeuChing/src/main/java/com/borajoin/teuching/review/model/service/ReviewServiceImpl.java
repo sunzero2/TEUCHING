@@ -30,9 +30,9 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public int insertReview(Review review) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int uploadReview(Review review) {
+		int res = rd.uploadReview(review);
+		return res;
 	}
 
 	@Override
@@ -49,20 +49,22 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int reviewrecyn(Map<String, Object> data) {
 		int yn = rd.reviewrecyn(data);
+		System.out.println("추천한적이 있는지? " + yn);
 		return yn;
 	}
 
 	@Override
 	public int recDelete(Map<String, Object> data) {
 		int res = rd.recRealDelete(data);
-		System.out.println(res);
+		System.out.println("realDelete " + res);
 		return rd.recDelete(data);
 		
 	}
 
 	@Override
-	public int recCount(String nickname) {
-		int res = rd.getLike(nickname);
+	public int recCount(String no) {
+		int res = rd.getLike(no);
+		System.out.println("ServiceImple recCount : " + res);
 		// 좋아요의 수 (업데이트된)
 		return res;
 	}

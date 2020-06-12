@@ -1,11 +1,7 @@
 package com.borajoin.teuching.review.controller;
 
-import java.util.HashMap;
+
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.borajoin.teuching.member.model.vo.Member;
+
 import com.borajoin.teuching.review.model.service.ReviewService;
 import com.borajoin.teuching.review.model.vo.Review;
 
@@ -58,26 +54,16 @@ public class ReviewController {
 	}
 
 	@RequestMapping("review/uploadreview.do")
-	public ModelAndView uploadReview(Review review, HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView();
-		HttpSession session = request.getSession();
-		/*
-		 * Member member = (Member) session.getAttribute("logInInfo");
-		 * member.setNickname(member.getNickname());
-		 */
-
-		int res = rs.insertReview(review);
-		if (res == 0) {
-			mav.addObject("msg", "게시글 등록에 실패하였습니다. 다시한번 확인해주세요.");
-			mav.addObject("url", "/teuching/profile/review.do");
-			mav.setViewName("common/result");
-		}
-		mav.addObject("msg", "게시글이 등록되었습니다.");
-		mav.addObject("url", "/teuching/profile/review.do");
-		mav.setViewName("common/result");
-
-		return mav;
-
+	public int uploadReview(Review review, @RequestParam Map<String, Object> data) {
+		System.out.println(data);
+		
+		review.setMem_nickname((String) data.get("memNickname"));
+		review.setRev_password((String) data.get("reviewPw"));
+		review.setRev_score((String) data.get("rev_score"));
+		review.setRev_cont((String) data.get("revCont"));
+		
+		int res = rs.uploadReview(review);
+		return res;
 	}
 
 	/**
@@ -105,6 +91,7 @@ public class ReviewController {
 	public int recUpdate(@RequestParam Map<String, Object> data) {
 		int res = 0;
 		int result = rs.reviewrecyn(data);
+		System.out.println("Controller 추천한적이 있나요? " + result);
 		if (result == 0) {
 			// 추천을 한적 없다면 추천 추가
 			res = rs.recUpdate(data);
@@ -112,14 +99,16 @@ public class ReviewController {
 			// 추천 한적 있으면 다시 삭제
 			res = rs.recDelete(data);
 		}
-		return res;
+		System.out.println("넘어가기 직전의 result" + result);
+		return result;
 	}
 
 	@RequestMapping(value = "review/reccount.do", method = RequestMethod.POST)
 	@ResponseBody
 	public int recCount(@RequestParam Map<String, Object> data) {
 		// 추천수 구함
-		int count = rs.recCount((String)data.get("nickname"));
+		int count = rs.recCount((String)data.get("no"));
+		System.out.println("추천수 " + count);
 		return count;
 	}
 

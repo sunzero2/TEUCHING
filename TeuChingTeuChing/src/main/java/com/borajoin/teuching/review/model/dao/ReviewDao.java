@@ -34,8 +34,9 @@ public class ReviewDao {
 
 	}
 	
-	public int insertReview(Review review) {
-		return sqlSession.insert("Review.insertReview",review);
+	public int uploadReview(Review review) {
+		
+		return sqlSession.insert("Review.uploadReview",review);
 	}
 	
 	
@@ -53,8 +54,8 @@ public class ReviewDao {
 	
 	
 	// 추천수 가져오기
-	public int getLike(String nickname) {
-		return sqlSession.selectOne("Review.getLike",nickname);
+	public int getLike(String no) {
+		return sqlSession.selectOne("Review.getLike",no);
 	}
 	
 	
@@ -70,6 +71,7 @@ public class ReviewDao {
 		return sqlSession.update("Review.recDelete", data);
 	}
 	
+	// review_rec테이블에 데이터 제거
 	public int recRealDelete(Map<String, Object> data) {
 	
 		return sqlSession.delete("Review.recRealDelete", data);
