@@ -109,7 +109,7 @@ public class MessageController {
 	 * @Method 설명 :보낸메시지 자세히 보기
 	 */
 	@RequestMapping("/message/msgsenddetail.do")
-	public ModelAndView msgSendDetail(HttpSession session) {
+	public ModelAndView msgSendDetail(HttpSession session, int message_idx) {
 		ModelAndView mv = new ModelAndView();
 		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Trainer")) {
 			mv.setViewName("message/msgSendTra");
@@ -117,6 +117,7 @@ public class MessageController {
 		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Member")) {
 			mv.setViewName("message/msgSendMem");
 		}
+		mv.addObject("res", ms.selectMsgDetail(message_idx));
 		return mv;
 	}
 

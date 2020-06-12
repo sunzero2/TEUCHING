@@ -41,7 +41,14 @@ public interface ManagerService {
 	
 	public Quali selectQualiDetail(String qualiidx);
 	
+	public String selectQualiFile(String qualiidx);
+	
 	public int updateQualiYn(int quali_idx);
 	
-
+	public int selectQualiIdx();
+	
+	public int insertQuali(Quali quali);
+	
+	public int insertQualiFile(File_Upload file_Upload);
+	
 }

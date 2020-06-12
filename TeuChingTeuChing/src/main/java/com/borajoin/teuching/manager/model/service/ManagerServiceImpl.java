@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -131,10 +132,39 @@ public class ManagerServiceImpl implements ManagerService {
 	public Quali selectQualiDetail(String qualiidx) {
 		return md.selectQualiDetail(qualiidx);
 	}
+	
+	@Override
+	public String selectQualiFile(String qualiidx) {
+		return md.selectQualiFile(qualiidx);
+	}
+
 
 	@Override
 	public int updateQualiYn(int quali_idx) {
 		return md.updateQualiYn(quali_idx);
 	}
+
+	@Override
+	public int selectQualiIdx() {
+		return md.selectQualiIdx();
+	}
+
+	@Override
+	public int insertQuali(Quali quali) {
+		return md.insertQuali(quali);
+	}
+
+	@Override
+	public int insertQualiFile(File_Upload file_Upload) {
+		File file = new File(file_Upload.getSavepath());
+		MultipartFile mf = (MultipartFile) file_Upload.getObj();
+		try {
+			mf.transferTo(file);
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
+		return md.insertQualiFile(file_Upload);
+	}
+
 
 }

@@ -10,7 +10,6 @@ html, body {
 .wrapper {
 	width: 63%;
 	height: 100%;
-	color: pink;
 	transform: translate(28%, 7%);
 }
 
@@ -24,7 +23,6 @@ html, body {
 	height: 75%;
 	width: 110%;
 	position: absolute;
-	boader: 1px solid black;
 }
 
 #bt1 {
@@ -60,7 +58,6 @@ h2 {
 #textarea {
 	font-size: 1.2vw;
 	width: 100%;
-	border: 1px solid pink;
 }
 
 #btn {

@@ -49,7 +49,7 @@
 					<div id="time">14:00</div>
 				</div>
 			</div>
-			<div id="cont">횐님 이날은 이날은 예약이 다차서요 다른날 가능하실까욕!</div>
+			<div id="cont">${res.msg_cont }</div>
 		</div>
 	</form>
 </body>

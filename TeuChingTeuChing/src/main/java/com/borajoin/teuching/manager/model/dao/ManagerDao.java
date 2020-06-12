@@ -3,7 +3,6 @@ package com.borajoin.teuching.manager.model.dao;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -93,8 +92,24 @@ public class ManagerDao {
 		return sqlSession.selectOne("Manager.selectQualiDetail", qualiidx);
 	}
 	
+	public String selectQualiFile (String qualiidx) {
+		return sqlSession.selectOne("File.selectQualiFile", qualiidx);
+	}
+	
 	public int updateQualiYn(int quali_idx) {
 		return sqlSession.update("Manager.updateQualiYn", quali_idx);
+	}
+	
+	public int selectQualiIdx() {
+		return sqlSession.selectOne("Manager.selectQualiIdx");
+	}
+	
+	public int insertQuali(Quali quali) {
+		return sqlSession.insert("Manager.insertQuali", quali);
+	}
+	
+	public int insertQualiFile(File_Upload file_Upload) {
+		return sqlSession.insert("File.insertQualiFile", file_Upload);
 	}
 
 }

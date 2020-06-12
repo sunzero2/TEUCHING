@@ -40,7 +40,7 @@ public class MessageDao {
 		return sqlSession.selectList("Message.selectMsgBoxRecv", commandMap);
 	}
 	
-	public int selectMsgDetail(int message_idx) {
+	public Message selectMsgDetail(int message_idx) {
 		return sqlSession.selectOne("Message.selectMsgDetail", message_idx);
 	}
 }

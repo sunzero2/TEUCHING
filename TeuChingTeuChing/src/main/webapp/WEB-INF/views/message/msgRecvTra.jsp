@@ -60,9 +60,9 @@ h1 {
 	<div class="wrapper">
 		<h1>상담요청</h1>
 		<p id="p">
-			Date 02-24 13:00 <a title="수락 시 매칭이 성사됩니다" id="a" href="">수락</a>
+			Date ${res.write_date } <a title="수락 시 매칭이 성사됩니다" id="a" href="">수락</a>
 		</p>
-		<div id="text">이날 예약 가능한가요</div>
+		<div id="text">${res.msg_cont }</div>
 		<textarea id="textarea" placeholder="내용을 입력해주세요"></textarea>
 		<button id="btn" style="transform: translateX(-52%)">작성완료</button>
 	</div>

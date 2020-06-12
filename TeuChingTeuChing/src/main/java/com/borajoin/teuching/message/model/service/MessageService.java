@@ -2,6 +2,8 @@ package com.borajoin.teuching.message.model.service;
 
 import java.util.Map;
 
+import com.borajoin.teuching.message.model.vo.Message;
+
 public interface MessageService {
 	public int insertMatchMessage(Map<String, Object> commandMap);
 
@@ -15,5 +17,5 @@ public interface MessageService {
 	
 	public Map<String, Object> selectMsgBoxRecv(String email, int currentpage, String type);
 	
-	public int selectMsgDetail(int message_idx);
+	public Message selectMsgDetail(int message_idx);
 }

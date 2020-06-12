@@ -60,9 +60,9 @@
 			<a style="color: black"
 				href="${pageContext.request.contextPath }/qualidetail.do?qualiidx=${q.quali_idx}">
 				<c:if test="${cnt.index % 2 eq 0 }">
-					<div class="testimony-wrap p-4 pb-5" style="float: right">
-				</c:if> <c:if test="${cnt.index % 2 ne 0 }">
 					<div class="testimony-wrap p-4 pb-5" style="float: left">
+				</c:if> <c:if test="${cnt.index % 2 ne 0 }">
+					<div class="testimony-wrap p-4 pb-5" style="float: right">
 				</c:if>
 				<div class="d-flex align-items-center">
 					<div class="user-img"
