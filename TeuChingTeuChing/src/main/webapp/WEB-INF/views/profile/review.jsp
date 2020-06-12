@@ -169,6 +169,7 @@
 										<input type="button" value="좋아요" id="recUpdate" onclick="likeit(${review.review_idx});">
 										<i class="fas fa-heart" style="font-size:16px;color:grey"></i>
 										<span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
+										<input type="hidden" id="click${review.review_idx}" value="true"/>
 										</c:if>
 										
 										
@@ -397,8 +398,9 @@
 		      var nickname = '${loginInfo.nickname}';
 		      var no = index;
 		      console.log("nickname ", nickname);
-		      console.log("no ", no);
+		      console.log("no ", no); 
 		      likeitajx(nickname,no);
+		     
 		   };
 		   
 		 function likeitajx(nickname,no) {
@@ -433,7 +435,9 @@
 		              no : no
 		           },
 		           success : function(count) {
-		        	 	 $('#id'+no).html(count);
+		        		    $('#id'+no).html(count);
+		        	  
+		        	 	
 		           },
 		           error : function (error) {
 		              alert(error);

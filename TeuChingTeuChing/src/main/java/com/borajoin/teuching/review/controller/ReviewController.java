@@ -90,17 +90,20 @@ public class ReviewController {
 	@ResponseBody
 	public int recUpdate(@RequestParam Map<String, Object> data) {
 		int res = 0;
+		int real = 0;
 		int result = rs.reviewrecyn(data);
 		System.out.println("Controller 추천한적이 있나요? " + result);
 		if (result == 0) {
 			// 추천을 한적 없다면 추천 추가
 			res = rs.recUpdate(data);
+			real = 0;
 		} else {
 			// 추천 한적 있으면 다시 삭제
-			res = rs.recDelete(data);
+			real = 1;
+			
 		}
 		System.out.println("넘어가기 직전의 result" + result);
-		return result;
+		return real;
 	}
 
 	@RequestMapping(value = "review/reccount.do", method = RequestMethod.POST)
