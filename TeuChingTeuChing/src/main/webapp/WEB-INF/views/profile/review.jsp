@@ -48,7 +48,7 @@
 <body>
 
 	<%@ include file="../include/top.jsp"%>
-	
+
 
 
 
@@ -64,6 +64,8 @@
 				class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
 				<div class="col-md-9 ftco-animate text-center">
 					<h1 class="mb-3 bread">P r o f i l e</h1>
+
+
 					<p class="breadcrumbs">
 						<span class="mr-2"><a href="index.html">Home</a></span> <span
 							class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog
@@ -78,40 +80,54 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 ftco-animate">
-					<h2 class="mb-3">누구누구의 프로필입니다 이런거 뜨게하자 굳ㅎㅎ</h2>
-
-
+					<h2 class="mb-3" id="trainername"></h2>
 					<div class="about-author d-flex">
 						<div class="bio align-self-md-center mr-5">
 							<img src="../resources/img/person_2.jpg" alt="Image placeholder"
-								class="img-fluid mb-4">
+								class="img-fluid mb-4" width="300px" height="300px">
 						</div>
 						<div class="desc align-self-md-center">
-
-							<!-- ===============버튼을 여기에 넣어보았습니다=================== -->
-							<a
-								href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=1111
-                     &mem_eamil=1111&nick_name=김지수&type=tra&reported=김김지수"
-								class="reply">트레이너 신고</a>
-
-							<!-- ===============버튼을 여기까지 넣어보았습니다=================== -->
-
-
-							<h3>트레이너 이름!!!</h3>
-							<p>트레이너 소개 소개소개ㅅ개트레이너 소개 소개소개ㅅ트레이너 소개 소개소개ㅅ트레이너 소개 소개소개ㅅ</p>
-							<div class="tag-widget post-tag-container mb-5 mt-5">
-								<div class="tagcloud">
-									<a href="#" class="tag-cloud-link">Life</a> <a href="#"
-										class="tag-cloud-link">Sport</a> <a href="#"
-										class="tag-cloud-link">Tech</a> <a href="#"
-										class="tag-cloud-link">Travel</a>
-								</div>
+							<c:forEach items="${trainerInfo.tlist}" var="Trainer">
+								<h3 id="trainer"></h3>
 								<br>
 								<p>
-									<a href="${pageContext.request.contextPath }/profile/schedule.do" class="reply">트레이너
-										스케쥴러로 이동</a>
+									Address : <span id="totalAdress">${Trainer.address}
+										${Trainer.address_detail}</span>
 								</p>
-							</div>
+								<p>
+									Gender : <span id="totalAdress">${Trainer.gender}</span>
+								</p>
+								<p>
+									Phone Number : <span id="totalAdress">${Trainer.cell}</span>
+								</p>
+								<p>
+									Career : <span id="totalAdress">${Trainer.career}</span>
+								</p>
+								<div class="tag-widget post-tag-container mb-5 mt-5">
+
+									<div class="tagcloud">
+										<a href="#" class="tag-cloud-link">${Trainer.address}</a> <a
+											href="#" class="tag-cloud-link">${Trainer.prefer_add1}</a> <a
+											href="#" class="tag-cloud-link">${Trainer.prefer_add2}</a> <a
+											href="#" class="tag-cloud-link">${Trainer.prefer_add3}</a>
+									</div>
+									<br>
+
+									<div class="comment-body">
+										<a
+											href="${pageContext.request.contextPath }/profile/schedule.do"
+											class="reply">트레이너 스케쥴러로 이동</a>
+
+
+										<a
+											href="${pageContext.request.contextPath}/report/viewreport.do?tr_email=1111
+                     &mem_eamil=1111&nick_name=김지수&type=tra&reported=김김지수"
+											class="reply">트레이너 신고</a>
+									
+								</div>
+								</div>
+							</c:forEach>
+
 						</div>
 					</div>
 
@@ -122,7 +138,7 @@
 					<div class="pt-5 mt-5">
 
 						<!-- 코멘트 리스트 수 가져와서 뿌려 -->
-						<h3 class="mb-5">${reviewList.paging.total} Comments</h3>
+						<h3 class="mb-5">${reviewList.paging.total}Comments</h3>
 
 						<ul class="comment-list">
 
@@ -154,68 +170,74 @@
 
 									<div class="comment-body">
 										<h5>${review.mem_nickname}</h5>
-										
-										
-										
-										
+
+
+
+
 										<c:if test="${loginInfo == null }">
-										<i class="fas fa-heart" style="font-size:16px;color:grey"></i>
-										<span id="recommendcnt">${review.recommend}</span>
+											<i class="fas fa-heart" style="font-size: 16px; color: grey"></i>
+											<span id="recommendcnt">${review.recommend}</span>
 										</c:if>
-										
-										
+
+
 										<!-- 로그인 해야만 좋아요 가능 -->
 										<c:if test="${loginInfo != null }">
-										<input type="button" value="좋아요" id="recUpdate" onclick="likeit(${review.review_idx});">
-										<i class="fas fa-heart" style="font-size:16px;color:grey"></i>
-										<span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
-										<input type="hidden" id="click${review.review_idx}" value="true"/>
+											<input type="button" value="좋아요" id="recUpdate"
+												onclick="likeit(${review.review_idx});">
+											<i class="fas fa-heart" style="font-size: 16px; color: grey"></i>
+											<span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
+											<input type="hidden" id="click${review.review_idx}"
+												value="true" />
 										</c:if>
-										
-										
-										
+
+
+
 										<div class="meta">${review.rev_date}</div>
 										<p>${review.rev_cont}</p>
 
-										<a
-											href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
+										<a href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
 											class="reply">리뷰신고</a>
 									</div>
-									
-									
-									
-									
+
+
+
+
 								</li>
 							</c:forEach>
 						</ul>
 
 
 						<div class="row mt-5" style="transform: translateX(25%)">
-						<div class="col">
+							<div class="col">
 								<div class="block-27">
-								<ul>
+									<ul>
 										<c:if test="${reviewList.paging.blockStart gt 1 }">
-											<li><span><a href="<%=request.getContextPath()%>/profile/review.do?reviewPage=${reviewList.paging.blockStart-1}">&lt;</a></span></li>
+											<li><span><a
+													href="<%=request.getContextPath()%>/profile/review.do?reviewPage=${reviewList.paging.blockStart-1}">&lt;</a></span></li>
 										</c:if>
 
 										<c:if test="${reviewList.paging.blockStart le 1 }">
-											<li><span><a href="<%=request.getContextPath()%>/profile/review.do?reviewPage=${reviewList.paging.blockStart}">&lt;</a></span></li>
+											<li><span><a
+													href="<%=request.getContextPath()%>/profile/review.do?reviewPage=${reviewList.paging.blockStart}">&lt;</a></span></li>
 										</c:if>
 
 
-										<c:forEach begin="${reviewList.paging.blockStart}" end="${reviewList.paging.blockEnd}" var="page">
+										<c:forEach begin="${reviewList.paging.blockStart}"
+											end="${reviewList.paging.blockEnd}" var="page">
 											<li class="active"><span><a
-												href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${page}"
-												class="num active">${page}</a></span></li>
+													href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${page}"
+													class="num active">${page}</a></span></li>
 										</c:forEach>
 
-										<c:if test="${reviewList.paging.blockEnd+1 ge reviewList.paging.lastPage}">
+										<c:if
+											test="${reviewList.paging.blockEnd+1 ge reviewList.paging.lastPage}">
 											<li><span><a
-												href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${reviewList.paging.blockEnd}">&gt;</a></span></li>
+													href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${reviewList.paging.blockEnd}">&gt;</a></span></li>
 										</c:if>
-										<c:if test="${reviewList.paging.blockEnd+1 lt reviewList.paging.lastPage }">
+										<c:if
+											test="${reviewList.paging.blockEnd+1 lt reviewList.paging.lastPage }">
 											<li><span><a
-												href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${reviewList.paging.blockEnd+1}">&gt;</a></span></li>
+													href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${reviewList.paging.blockEnd+1}">&gt;</a></span></li>
 										</c:if>
 
 									</ul>
@@ -232,29 +254,39 @@
 
 						<div class="comment-form-wrap pt-5">
 							<h3 class="mb-5">Leave a comment</h3>
-							<form method="post" enctype="multipart/form-data" id="uploadReview">
-								
+
+
+
+							<form method="post" enctype="multipart/form-data"
+								id="uploadReview">
+
+								<div class="form-group">
+									<label for="TrainerName">TrainerName</label> <input
+										type="hidden" class="form-control bg-white" id="trNickname"
+										name="trNickname" value="">
+									<div style="transform: translateX(1%)" id="trnn"></div>
+								</div>
+
+
+
 								<div class="form-group">
 									<label for="memNickname">Nickname</label> <input type="hidden"
 										class="form-control bg-white" id="memNickname"
 										name="memNickname" value="${loginInfo.nickname}">
-										<div style="transform: translateX(1%)">${loginInfo.nickname}</div>
+									<div style="transform: translateX(1%)">${loginInfo.nickname}</div>
 								</div>
-								
+
 								<div class="form-group">
 									<label for="reviewPw">Password</label> <input type="text"
 										class="form-control" id="reviewPw" name="reviewPw">
 								</div>
 								<!-- 별점 -->
 								<div class="form-group">
-								<input type="hidden" name="rev_score" id="starvalue" value="">
+									<input type="hidden" name="rev_score" id="starvalue" value="">
 									<label for="revScore">Star rating</label>
 									<div id="star" name="revScore">
-										<a href="#a" value="1">★</a> 
-										<a href="#a" value="2">★</a> 
-										<a href="#a" value="3">★</a> 
-										<a href="#a" value="4">★</a> 
-										<a href="#a" value="5">★</a>
+										<a value="1">★</a> <a value="2">★</a> <a value="3">★</a> <a
+											value="4">★</a> <a value="5">★</a>
 									</div>
 								</div>
 
@@ -392,7 +424,7 @@
 		});
 	
 	
-	
+	/* 좋아요 */
 	   function likeit(index) {
 	
 		      var nickname = '${loginInfo.nickname}';
@@ -448,6 +480,7 @@
 		};
 		
 		
+		/* 리뷰 업로드 */
 		function uploadReview() {
 			
 			$.ajax({
@@ -462,8 +495,30 @@
 		};
 		
 		
+		/* 해당 프로필의 트레이너정보를 갖고오기 위해 url에서 파라미터 추출하는 부분 */
 		
-		
+		var getParameters = function (paramName) { 
+			// 리턴값을 위한 변수 선언
+			var returnValue; 
+			// 현재 URL 가져오기 
+			var url = location.href; 
+			// get 파라미터 값을 가져올 수 있는 ? 를 기점으로 slice 한 후 split 으로 나눔
+			var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&'); 
+			// 나누어진 값의 비교를 통해 paramName 으로 요청된 데이터의 값만 return 
+			for (var i = 0; i < parameters.length; i++) { 
+				var varName = parameters[i].split('=')[0]; 
+					if (varName.toUpperCase() == paramName.toUpperCase()) { 
+						returnValue = parameters[i].split('=')[1]; 
+						return decodeURIComponent(returnValue); 
+					} 
+				} 
+			};
+
+		var trainerName = getParameters('trainerName');
+		var trainerEmail = getParameters('trainerEmail');
+		$('#trainername').html(trainerName + "님의 프로필입니다.");
+		$('#trainer').html(trainerName);
+		$('#trnn').html(trainerName);
 		
 		
 
@@ -471,7 +526,7 @@
 
 
 	<%@ include file="../include/footer.jsp"%>
-	
+
 	<script src="../resources/js/jquery.min.js"></script>
 	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="../resources/js/popper.min.js"></script>
@@ -487,7 +542,7 @@
 	<script src="../resources/js/jquery.timepicker.min.js"></script>
 	<script src="../resources/js/scrollax.min.js"></script>
 	<script src="../resources/js/main.js"></script>
-	
+
 
 
 </body>
