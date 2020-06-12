@@ -52,8 +52,18 @@
  	</resultMap>
  	
  	<!-- 비밀번호 변경 -->
-	<update id="update_pw" parameterType="member">
-		update member set pw = #{pw} where id = #{id}
+	<update id="update_pw">
+		update ${table} set 
+		<if test='table=="tr_trainer"'>
+			password = #{password}		
+			where
+			tr_email = #{email}
+		</if>
+		<if test='table=="tr_member"'>
+			password = #{password}		
+			where
+			mem_email = #{email}
+		</if>
 	</update>
  	
  	

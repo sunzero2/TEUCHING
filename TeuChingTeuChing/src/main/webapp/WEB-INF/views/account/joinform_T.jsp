@@ -55,7 +55,7 @@ body {
 				<div class="col-xl-8 m-auto order-xl-1" style="margin-top: 5% !important; margin-bottom: 4% !important;">
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
 					<form id="signFrm" name="signFrm"
-					action="<%=request.getContextPath()%>/member/t_joinemailCheck.do"
+					 action="<%=request.getContextPath()%>/member/t_joinemailCheck.do"
 	       					action="<%=request.getContextPath()%>/member/joinTrainerImple.do" 
 	       					method="post">
 						<div class="card-header bg-white border-0">
@@ -207,19 +207,19 @@ body {
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="form-group focused">
-												<label class="form-control-label" for="input-address">선호 지역구 선택하기</label>
+												<label class="form-control-label" for="input-address">선호 지역 선택하기</label>
 												<br>
 												지역 1 
-												<select name="prefer1" id="sido1"></select>
-												<select name="prefer1" id="gugun1"></select>
+												<select name="prefer1-1" id="sido1"></select>
+												<select name="prefer1-2" id="gugun1"></select>
 												<br>
 												지역 2 
-												<select name="prefer2" id="sido2"></select>
-												<select name="prefer2" id="gugun2"></select>
+												<select name="prefer2-1" id="sido2"></select>
+												<select name="prefer2-2" id="gugun2"></select>
 												<br>
 												지역 3 
-												<select name="prefer3" id="sido3"></select>
-												<select name="prefer3" id="gugun3"></select>
+												<select name="prefer3-1" id="sido3"></select>
+												<select name="prefer3-2" id="gugun3"></select>
 											</div>
 										</div>
 									</div>	
@@ -237,7 +237,6 @@ body {
 	$(document).ready(function(e){
 		
 		var idx_email = false;
-		var idx_nick = false;
 		
 		$('#signUp').click(function(){
 			if($.trim($('#email').val()) == ''){
@@ -397,8 +396,6 @@ $('document').ready(function() {
   });
   $selsido.next().append("<option value=''>구/군 선택</option>");
  });
-
- 
 
  // 시/도 선택시 구/군 설정
 

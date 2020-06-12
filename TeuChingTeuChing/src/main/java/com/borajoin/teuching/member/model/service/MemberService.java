@@ -26,11 +26,8 @@ public interface MemberService {
 	 //트레이너 로그인
 	 public Trainer t_login(Map<String, Object> commandMap) throws SQLException;
 	 
-	 //일반회원 인증메일 전송
-	 public void m_mailSending(Map<String, Object> commandMap) throws SQLException;
-	 
-	//트레이너 인증메일 전송
-	 public void t_mailSending(Map<String, Object> commandMap) throws SQLException;
+	//합쳐진 메일관련
+	 public void mailSending(Map<String, Object> commandMap, String mailfor) throws SQLException;
 	 
 	
 	public int insertFile(List<Map<String,Object>>fileData);
