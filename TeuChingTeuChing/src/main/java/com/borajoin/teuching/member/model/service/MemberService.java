@@ -14,7 +14,6 @@ public interface MemberService {
 	//트레이너 회원가입
 	public int joinTrainer(Map<String, Object> commandMap) throws SQLException;
 	
-	
 	//일반회원 닉네임 체크
 	 public int nickChk(String nickname) throws SQLException;
 	 

@@ -151,20 +151,28 @@
 									</c:choose>
 
 
+
 									<div class="comment-body">
 										<h5>${review.mem_nickname}</h5>
+										
+										
+										
 										
 										<c:if test="${loginInfo == null }">
 										<i class="fas fa-heart" style="font-size:16px;color:grey"></i>
 										<span id="recommendcnt">${review.recommend}</span>
 										</c:if>
 										
+										
 										<!-- 로그인 해야만 좋아요 가능 -->
 										<c:if test="${loginInfo != null }">
 										<input type="button" value="좋아요" id="recUpdate" onclick="likeit(${review.review_idx});">
 										<i class="fas fa-heart" style="font-size:16px;color:grey"></i>
-										<span id="likecnt">${review.recommend}</span>
+										<span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
+										<input type="hidden" id="click${review.review_idx}" value="true"/>
 										</c:if>
+										
+										
 										
 										<div class="meta">${review.rev_date}</div>
 										<p>${review.rev_cont}</p>
@@ -172,8 +180,9 @@
 										<a
 											href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
 											class="reply">리뷰신고</a>
-
 									</div>
+									
+									
 									
 									
 								</li>
@@ -223,14 +232,12 @@
 
 						<div class="comment-form-wrap pt-5">
 							<h3 class="mb-5">Leave a comment</h3>
-							<form
-								action="${pageContext.request.contextPath }/review/uploadreview"
-								method="post" enctype="multipart/form-data">
+							<form method="post" enctype="multipart/form-data" id="uploadReview">
 								
 								<div class="form-group">
 									<label for="memNickname">Nickname</label> <input type="hidden"
 										class="form-control bg-white" id="memNickname"
-										name="memNickname">
+										name="memNickname" value="${loginInfo.nickname}">
 										<div style="transform: translateX(1%)">${loginInfo.nickname}</div>
 								</div>
 								
@@ -238,13 +245,16 @@
 									<label for="reviewPw">Password</label> <input type="text"
 										class="form-control" id="reviewPw" name="reviewPw">
 								</div>
-								
+								<!-- 별점 -->
 								<div class="form-group">
+								<input type="hidden" name="rev_score" id="starvalue" value="">
 									<label for="revScore">Star rating</label>
 									<div id="star" name="revScore">
-										<a href="#a" value="1">★</a> <a href="#a" value="2">★</a> <a
-											href="#a" value="3">★</a> <a href="#a" value="4">★</a> <a
-											href="#a" value="5">★</a>
+										<a href="#a" value="1">★</a> 
+										<a href="#a" value="2">★</a> 
+										<a href="#a" value="3">★</a> 
+										<a href="#a" value="4">★</a> 
+										<a href="#a" value="5">★</a>
 									</div>
 								</div>
 
@@ -256,7 +266,7 @@
 
 								<div class="form-group">
 									<input type="submit" value="Post Comment"
-										class="btn py-3 px-4 btn-primary">
+										class="btn py-3 px-4 btn-primary" onclick="uploadReview()">
 								</div>
 
 							</form>
@@ -373,19 +383,24 @@
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script>
 	
-	
+	/* 벌점 */
 	$('#star a').click(function() {
 			$(this).parent().children("a").removeClass("on");
 			$(this).addClass("on").prevAll("a").addClass("on");
 			console.log($(this).attr("value"));
+			$('#starvalue').val($(this).attr("value"));
 		});
 	
+	
+	
 	   function likeit(index) {
-		      nickname = '${loginInfo.nickname}';
-		      no = index;
+	
+		      var nickname = '${loginInfo.nickname}';
+		      var no = index;
 		      console.log("nickname ", nickname);
-		      console.log("no ", no);
+		      console.log("no ", no); 
 		      likeitajx(nickname,no);
+		     
 		   };
 		   
 		 function likeitajx(nickname,no) {
@@ -396,26 +411,33 @@
 		             nickname : nickname,
 		              no : no
 		           },
-		           success : function() {
-		              
-		              recCount(nickname,no);
+		           success : function(v) {
+		              console.log("likeitajax method ", v);
+		             if(v == 1){
+		            	 alert("추천은 한번만 가능합니다.")
+		             }
+		              recCount(no);
 		           },
 		           error : function (error) {
 		              alert(error);
 		      }
 		        })
 		     };
-   		function recCount(nickname,no) {
+		     
+   		function recCount(no) {
+   			
+		       console.log("recCount ", no);
+   			
 			 $.ajax({
 		           url : '<%=request.getContextPath()%>/review/reccount.do',
 		           type : 'POST',
 		           data : {
-		             nickname : nickname,
 		              no : no
 		           },
 		           success : function(count) {
-		              
-		        	  $('#likecnt').html(count);
+		        		    $('#id'+no).html(count);
+		        	  
+		        	 	
 		           },
 		           error : function (error) {
 		              alert(error);
@@ -423,11 +445,28 @@
 		        })
 			
 			
-		}
-	   
+		};
+		
+		
+		function uploadReview() {
+			
+			$.ajax({
+				type:'POST',
+				url: '<%=request.getContextPath()%>/review/uploadreview.do',
+				data: $("#uploadReview").serialize(),
+				success: function(data) {
+					alert("성공")
+				}
+				
+			})
+		};
+		
+		
+		
+		
+		
+		
 
-     
-     
 	</script>
 
 

@@ -14,8 +14,8 @@ public class Review implements Serializable{
 	private String tr_email;
 	private String mem_nickname;
 	private String rev_cont;
-	private int rev_score;
-	private int rev_password;
+	private String rev_score;
+	private String rev_password;
 	private String report_yn;
 	private int recommend;
 	private Date rev_date;
@@ -64,19 +64,20 @@ public class Review implements Serializable{
 		this.rev_cont = rev_cont;
 	}
 
-	public int getRev_score() {
+
+	public String getRev_score() {
 		return rev_score;
 	}
 
-	public void setRev_score(int rev_score) {
+	public void setRev_score(String rev_score) {
 		this.rev_score = rev_score;
 	}
 
-	public int getRev_password() {
+	public String getRev_password() {
 		return rev_password;
 	}
 
-	public void setRev_password(int rev_password) {
+	public void setRev_password(String rev_password) {
 		this.rev_password = rev_password;
 	}
 

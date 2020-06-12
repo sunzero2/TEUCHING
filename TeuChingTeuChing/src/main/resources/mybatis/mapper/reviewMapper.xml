@@ -2,6 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Review">
+
+
+	<insert id="uploadReview">
+	
+		insert into tr_review values(S_REVIEW_IDX.nextval,'임의의 트레이너','임의의이메일', #{mem_nickname}, #{rev_cont}, #{rev_score}, #{rev_password},'n',0,sysdate)
+	</insert> 
+
+
  	<select id="contentCnt" resultType="int">
 		select count(*) from
 		tr_review
@@ -11,13 +19,12 @@
 		select * from (select rownum rnum, n1.* from ( select * from tr_review order by ${orderby} desc)n1) where rnum between #{page.start} and #{page.end}
 	</select>
 	
-	
 	<update id="recUpdate">
-		update tr_review set recommend = recommend + 1 where mem_nickname = #{nickname}
+		update tr_review set recommend = recommend + 1 where review_idx = #{no}
 	</update>
 	
 	<select id="getLike" resultType="int">
-		select recommend from tr_review where mem_nickname = #{nickname}
+		select recommend from tr_review where review_idx = #{no}
 	</select>
 	
 	<insert id="insertreviewrrec">
@@ -27,19 +34,17 @@
 		)
 	</insert>
 	
-	<select id="reviewrecyn"  parameterType="map" resultType="int">
+	<select id="reviewrecyn"  resultType="int">
 		select count(*) from review_rec where mem_nickname = #{nickname} and review_idx = #{no}
-	
 	</select>
 	
 	<update id="recDelete">
 		update tr_review set recommend = recommend - 1 where mem_nickname = #{nickname}
 	</update>
 	
+	<delete id="recRealDelete">
+		delete from review_rec where mem_nickname = #{nickname} and review_idx = #{no}
+	</delete>
 	
-	
-	<!-- <insert id="insertReview">
-		insert into tr_review values(S_REVIEW_IDX.nextval,'아이걸어케넣지','이메일도어케넣지','로그인한회원닉넴',#{rev_cont),#{rev_score},#{rev_password},
-		'n',#{recommend},sysdate)
-	</insert> -->
+
 </mapper>

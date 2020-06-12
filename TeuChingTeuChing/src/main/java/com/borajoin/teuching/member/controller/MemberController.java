@@ -46,6 +46,12 @@ public class MemberController {
 		return mav;
 	}
 	
+	// 비밀번호 찾기 폼
+	@RequestMapping(value = "/find_pw_form.do")
+	public String find_pw_form() throws Exception{
+		return "/member/find_pw_form";
+	}
+	
 	//로그인 하기 
 	@RequestMapping("/member/loginImple.do")
 	public ModelAndView loginImple(@RequestParam Map<String,Object> commandMap, HttpSession session) throws SQLException {
@@ -177,10 +183,6 @@ public class MemberController {
 	}
 	
 	
-	//회원가입 합치기
-	
-	
-	
 	// 일반회원 - 닉네임 중복체크
 	@RequestMapping(value = "/nickChk.do", produces = "application/text; charset=utf8")
 	@ResponseBody
@@ -252,7 +254,7 @@ public class MemberController {
 		return mav;
 	}
 	
-	
+
 	
 	
 	

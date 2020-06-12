@@ -42,7 +42,7 @@
 			<c:if test="${loginInfo == null}">
 				<div class="topLogin">
 					<a href="<%=request.getContextPath()%>/member/login.do">Login /
-					</a> <a href="<%=request.getContextPath()%>/member/join.do">Join</a>
+					</a> <a href="<%=request.getContextPath()%>/member/join.do"> Join</a>
 				</div>
 			</c:if>
 			<c:if test="${loginInfo != null}">

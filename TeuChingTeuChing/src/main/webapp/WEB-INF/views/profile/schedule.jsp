@@ -129,7 +129,7 @@
 									<td><i class="ion-ios-close"></i></td>
 									<td class="text-center"><div
 											class="img rounded-circle mb-2"
-											style="background-image: url(resources/img/classes-7.jpg);"></div>
+											style="background-image: url(../resources/img/classes-7.jpg);"></div>
 										<a href="#"><strong>Yoga training</strong> <br> 7
 											am-6 am</a></td>
 								</tr>
@@ -229,6 +229,16 @@
 		</div>
 	</section>
 	<form id="form" action="${pageContext.request.contextPath }/message/matchform.do" target="pop"></form>
+	
+	 <!--This page JavaScript(calendar) -->
+      <script src="../resources/calendar/libs/moment/min/moment.min.js"></script>
+      <script src="../resources/calendar/libs/fullcalendar\dist/fullcalendar.min.js"></script>
+      <script src="../resources/calendar/pages/calendar/cal-init.min.js"></script>
+  
+      <!-- this page js -->
+      <script src="../resources/calendar/app-style-switcher.js"></script>
+      <script src=".../resources/calendar/feather.min.js"></script>
+	
 	<script>
 		
 	  
@@ -239,36 +249,50 @@
 	  var scopes = 'https://www.googleapis.com/auth/calendar';// google authentication scopes
 
 
-
-	  //구글 api load
-
-	  function load() {
-
-	   gapi.load("client:auth2", function() {
-
-	    gapi.auth2.init({
-
-	     client_id: clientId,
-
-	     scope: scopes
-
-	    }).then(function () { 
-
-	     gapi.auth2.getAuthInstance().isSignedIn.listen(function() {
-
-	      gapi.client.load("calendar", "v3", function() {}); 
-
-	     })
-
-	     gapi.auth2.getAuthInstance().signIn();
-
+	  jQuery(document).ready(function() {
+	        jQuery("#calendar").fullCalendar({
+	              defaultDate : "2020-05-01"
+	            , editable : false // 수정 기능 지원 (false가 편함)
+	            , eventLimit : true // + more처럼 표현
+	            // 데이터를 json 방식으로 넣어주기
+	            , events: [
+	               
+	                  
+	                {
+	                    id : '' // 습관번호
+	                  , title : ''
+	                  , textColor : '#eaecf4' 
+	                  , backgroundColor : '#e36e88'
+	                  , start : ''
+	                  , end : '' // 종료일
+	                     , borderColor : "#FFF" // 보더 색상
+	                          
+	                            
+	                }
+	              
+	                
+	                
+	              
+	            ]
+	        });
 	    });
 
-	   });
-
-	  }
 	  
-	  load();
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 	  
 	  /* 트레이너 상담신청시 띄울 팝업용 */
 	  function openPopUp() {
