@@ -64,13 +64,18 @@
 					</thead>
 					<tbody id="tbody">
 						<c:forEach items="${res.msg }" var="msg">
+							<form id="form"
+								action="${pageContext.request.contextPath }/message/msgsenddetail.do"
+								target="pop">
+								<input type="hidden" name="message_idx" value="${msg.message_idx }">
+							</form>
 							<tr>
 								<td>1</td>
 								<td id="title"><button onclick="openPopUp();" id="btn">${msg.msg_cont }</button></td>
-								<c:if test="${msg.writer eq 'Trainer' }">
+								<c:if test="${type eq 'Trainer'}">
 									<td>${msg.mem_email }</td>
 								</c:if>
-								<c:if test="${msg.writer eq 'Member' }">
+								<c:if test="${type eq 'Member'}">
 									<td>${msg.tr_email }</td>
 								</c:if>
 								<td>${msg.write_date }</td>
@@ -118,9 +123,7 @@
 
 	</div>
 
-	<form id="form"
-		action="${pageContext.request.contextPath }/message/msgsenddetail.do"
-		target="pop"></form>
+
 
 	<script>
 		function openPopUp() {

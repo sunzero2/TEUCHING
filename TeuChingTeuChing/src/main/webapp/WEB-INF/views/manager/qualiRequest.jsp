@@ -55,7 +55,7 @@
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
 				id="person"></div>
 			<form
-				action="${pageContext.request.contextPath }/report/insertReport.do"
+				action="${pageContext.request.contextPath }/quali/insertquali.do"
 				method="post" enctype="multipart/form-data">
 				<h5>
 					2020-02-02
@@ -64,11 +64,10 @@
 				<h2>자격 요청</h2>
 		</div>
 		<div class="ansbox-bottom">
-
 			<div class="col-lg-8 ftco-animate">
 				<input type="file" id="startbutton" class="ajax-file-upload-green"
-					name="files" value="Upload">
-				<textarea name="rep_cont" id="textarea" placeholder="자격명을 기입해주세요"></textarea>
+					name="file" value="Upload">
+				<textarea name="quali_auth" id="textarea" placeholder="자격명을 기입해주세요"></textarea>
 			</div>
 		</div>
 		</form>

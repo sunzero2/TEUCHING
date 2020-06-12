@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.borajoin.teuching.member.model.vo.Trainer;
 import com.borajoin.teuching.review.model.vo.Review;
 
 import common.util.Paging;
@@ -75,5 +76,9 @@ public class ReviewDao {
 	public int recRealDelete(Map<String, Object> data) {
 	
 		return sqlSession.delete("Review.recRealDelete", data);
+	}
+	
+	public  List<Trainer> selectTrainerInformation(String trainerEmail) {
+		return sqlSession.selectList("Review.selectTrainerInformation", trainerEmail);
 	}
 }

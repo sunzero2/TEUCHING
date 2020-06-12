@@ -48,7 +48,7 @@
 					<div id="time">14:00</div>
 				</div>
 			</div>
-			<div id="cont">이날 시간되나요 저꼭 트레이닝 받고싶숩다</div>
+			<div id="cont">${res.msg_cont }</div>
 		</div>
 	</form>
 </body>

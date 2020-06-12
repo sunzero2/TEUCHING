@@ -46,5 +46,9 @@
 		delete from review_rec where mem_nickname = #{nickname} and review_idx = #{no}
 	</delete>
 	
+	<select id="selectTrainerInformation" resultType="Trainer">
+		select * from tr_trainer where tr_email = #{trainerEmail}
+	</select>
+	
 
 </mapper>

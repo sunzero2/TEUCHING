@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="Manager">
 
 	<select id="selectRevReport" resultType="ReviewReport">
-		SELECT 
-			* 
+		SELECT
+			*
 		FROM
 			(SELECT
 				ROWNUM RNUM, N1.* 
 			FROM
-				(SELECT 
-						* 
+				(SELECT
+						*
 				FROM
 					TR_REV_REPORT
 				ORDER BY
 					REPORT_IDX DESC
 				)N1
 			)
-		WHERE 
+		WHERE
 			RNUM BETWEEN #{start} AND #{end}
 	</select>
 
 	<select id="selectTraReport" resultType="TrainerReport">
-		SELECT 
-			* 
+		SELECT
+			*
 		FROM
 			(SELECT
 				ROWNUM RNUM, N1.* 
 			FROM
 				(SELECT
-					* 
+					*
 				FROM
 					TR_TRA_REPORT
 				ORDER BY
@@ -42,32 +41,32 @@
 	</select>
 
 	<select id="revCnt" resultType="int">
-		SELECT 
+		SELECT
 			COUNT(*)
 		FROM
 			TR_REV_REPORT
 	</select>
 
 	<select id="traCnt" resultType="int">
-		SELECT 
-			COUNT(*) 
+		SELECT
+			COUNT(*)
 		FROM
 			TR_TRA_REPORT
 	</select>
 
 	<select id="traManagerDetail" parameterType="int" resultType="TrainerReport">
-		SELECT 
-			* 
-		FROM 
+		SELECT
+			*
+		FROM
 			TR_TRA_REPORT
 		WHERE
 			REPORT_IDX = #{traid}
 	</select>
 
 	<select id="revManagerDetail" parameterType="int" resultType="ReviewReport">
-		SELECT 
-			* 
-		from 
+		SELECT
+			*
+		from
 			TR_REV_REPORT
 		where
 			REPORT_IDX = #{revid}
@@ -76,7 +75,7 @@
 	<update id="updateManagerDetail_rev" parameterType="ReviewReport">
 		UPDATE
 			TR_REV_REPORT
-		SET 
+		SET
 			REPORT_HANDEL = #{report_handel}
 			, HANDEL_CONT = #{handel_cont}
 			, ANS_YN = 'Y'
@@ -85,9 +84,9 @@
 	</update>
 
 	<update id="updateManagerDetail_tra" parameterType="TrainerReport">
-		UPDATE 
+		UPDATE
 			TR_TRA_REPORT
-		SET 
+		SET
 			REPORT_HANDEL = #{report_handel}
 			, HANDEL_CONT = #{handel_cont}
 			, ANS_YN = 'Y'
@@ -110,6 +109,7 @@
 				, #{nick_name}
 		)
 	</insert>
+
 	<insert id="insertReportRev" parameterType="ReviewReport">
 		INSERT INTO
 				TR_REV_REPORT
@@ -127,15 +127,16 @@
 	</insert>
 
 	<select id="selectTraReportIdx" resultType="int">
-		SELECT 
+		SELECT
 			LAST_NUMBER
 		FROM
 			USER_SEQUENCES
 		WHERE
 			SEQUENCE_NAME = 'S_TRA_REPORT_IDX'
 	</select>
+
 	<select id="selectRevReportIdx" resultType="int">
-		SELECT 
+		SELECT
 			LAST_NUMBER
 		FROM
 			USER_SEQUENCES
@@ -152,14 +153,15 @@
 				, #{origin_filename}
 				, #{rename_filename}
 				, #{savepath}
+				,'N'
 		)
 	</insert>
 
 	<select id="selectTraFile" parameterType="int"
 		resultType="File_Upload">
-		SELECT 
-			* 
-		FROM 
+		SELECT
+			*
+		FROM
 			TR_FILE_UPLOAD
 		WHERE
 			TABLE_IDX = #{table_idx}
@@ -169,9 +171,9 @@
 
 	<select id="selectRevFile" parameterType="int"
 		resultType="File_Upload">
-		SELECT 
-			* 
-		FROM 
+		SELECT
+			*
+		FROM
 			TR_FILE_UPLOAD
 		WHERE
 			TABLE_IDX = #{table_idx}
@@ -180,8 +182,8 @@
 	</select>
 
 	<select id="qualiAllCnt" resultType="int">
-		SELECT 
-			COUNT(*) 
+		SELECT
+			COUNT(*)
 		FROM
 			TR_QUALI
 		WHERE
@@ -189,20 +191,20 @@
 	</select>
 
 	<select id="selectQuali" resultType="Quali">
-		SELECT 
+		SELECT
 			*
 		FROM
 			(SELECT
-				ROWNUM RNUM, N1.* 
+				ROWNUM RNUM, N1.*
 			FROM(
-				SELECT 
-					* 
+				SELECT
+					*
 				FROM
 					TR_QUALI
 				WHERE
 					AUTH_YN = 'N'
 				ORDER BY
-					QUALI_IDX ASC
+					QUALI_IDX DESC
 				)N1
 			)
 		WHERE
@@ -211,20 +213,42 @@
 
 	<select id="selectQualiDetail" resultType="Quali">
 		SELECT
-			* 
+			*
 		FROM
 			TR_QUALI
 		WHERE
 			QUALI_IDX = #{qualiidx}
 	</select>
+	
 
 	<update id="updateQualiYn" parameterType="int">
-		UPDATE 
+		UPDATE
 			TR_QUALI
 		SET
 			AUTH_YN = 'Y'
-		WHERE 
+		WHERE
 			QUALI_IDX = #{quali_idx}
 	</update>
 	
+	<select id="selectQualiIdx" resultType="int">
+		SELECT
+			LAST_NUMBER
+		FROM
+			USER_SEQUENCES
+		WHERE
+			SEQUENCE_NAME = 'S_QUALI_IDX'
+	</select>
+	
+	<insert id="insertQuali" parameterType="Quali">
+		INSERT INTO
+				TR_QUALI
+		VALUES(
+				S_QUALI_IDX.NEXTVAL
+				, #{quali_auth}
+				, #{tr_email}
+				, #{trainer_name}
+				, 'N'
+		)
+	</insert>
+
 </mapper>

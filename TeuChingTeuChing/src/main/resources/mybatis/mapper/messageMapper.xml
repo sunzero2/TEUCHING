@@ -133,7 +133,6 @@
 		</where>
 	</select>
 	
-	<!-- ================================================= -->
 	<select id="selectMsgDetail" resultType="Message">
 		SELECT
 			*
@@ -141,6 +140,19 @@
 			TR_MESSAGE
 		WHERE
 			MESSAGE_IDX = #{message_idx}
+	</select>
+	
+	<select id="insertMsgAnsTra">
+		INSERT INTO
+				TR_MESSAGE
+		VALUES(
+				S_MESSAGE_IDX.NEXTVAL
+				, #{tr_email}
+				, #{mem_email}
+				, #{msg_cont}
+				, SYSDATE
+				, 'Trainer'
+		)
 	</select>
 	
 </mapper>

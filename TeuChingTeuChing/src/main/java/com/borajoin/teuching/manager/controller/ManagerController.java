@@ -1,7 +1,5 @@
 package com.borajoin.teuching.manager.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +8,6 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.borajoin.teuching.manager.model.service.ManagerService;
-import com.sun.mail.auth.MD4;
+import com.borajoin.teuching.manager.model.vo.Quali;
+import com.borajoin.teuching.member.model.vo.Trainer;
 
 import common.util.File_Upload;
 
@@ -206,6 +204,7 @@ public class ManagerController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("manager/qualiDetail");
 		mv.addObject("res", ms.selectQualiDetail(qualiidx));
+		mv.addObject("file", ms.selectQualiFile(qualiidx));
 		return mv;
 	}
 
@@ -225,22 +224,46 @@ public class ManagerController {
 		return mv;
 	}
 
-	@RequestMapping("/quali/requestpage.do")
+	/**
+	* @Method Name : qualiRequest
+	* @작성일 : 2020. 6. 12.
+	* @작성자 : 김지수
+	* @Method 설명 : 자격증명 요청페이지로 이동
+	*/
+	@RequestMapping("/quali/qualirequest.do")
 	public ModelAndView qualiRequest() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("manager/qualiRequest");
 		return mv;
 	}
 	
-//	public void fileUpMedthod(MultipartFile file, HttpServletRequest request) {
-//		String savepath = request.getServletContext().getRealPath("/") + "/resources";
-//		File f = new File(savepath);
-//		try {
-//			file.transferTo(f);
-//		} catch (IllegalStateException | IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-
+	@RequestMapping("/quali/insertquali.do")
+	public ModelAndView  insertQuali(HttpServletRequest request, String quali_auth, MultipartFile file) {
+		ModelAndView mv = new ModelAndView();
+		Trainer t = (Trainer) request.getSession().getAttribute("loginInfo");
+		UUID uuid = UUID.randomUUID();
+		String origin_filename = file.getOriginalFilename();
+		String rename_filename = uuid + "tr_quali" + origin_filename.substring(origin_filename.lastIndexOf("."));
+		String savepath = request.getServletContext().getRealPath("") + "/resources/upload/" + rename_filename;
+		
+		File_Upload file_Upload = new File_Upload();
+		file_Upload.setOrigin_filename(origin_filename);
+		file_Upload.setRename_filename(rename_filename);
+		file_Upload.setSavepath(savepath);
+		file_Upload.setTable_idx(ms.selectQualiIdx());
+		file_Upload.setObj(file);
+		ms.insertQualiFile(file_Upload);
+		
+		Quali quali = new Quali();
+		quali.setQuali_auth(quali_auth);
+		quali.setTr_email(t.getTr_email());
+		quali.setTrainer_name(t.getTrainerName());
+		ms.insertQuali(quali);
+		
+		mv.addObject("msg", "요청이 완료되었습니다");
+		mv.addObject("url", request.getContextPath() + "/index/index.do");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
 }

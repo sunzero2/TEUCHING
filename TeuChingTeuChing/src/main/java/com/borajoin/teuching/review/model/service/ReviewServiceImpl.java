@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.borajoin.teuching.member.model.vo.Trainer;
 import com.borajoin.teuching.review.model.dao.ReviewDao;
 import com.borajoin.teuching.review.model.vo.Review;
 
@@ -66,6 +67,16 @@ public class ReviewServiceImpl implements ReviewService {
 		int res = rd.getLike(no);
 		System.out.println("ServiceImple recCount : " + res);
 		// 좋아요의 수 (업데이트된)
+		return res;
+	}
+
+	
+	// 해당하는 트레이너의 정보를 가져오는 메소드
+	@Override
+	public Map<String, Object> selectTrainerInformation(String trainerEmail) {
+		Map<String, Object> res = new HashMap<>();
+		List<Trainer> tlist = rd.selectTrainerInformation(trainerEmail);
+		res.put("tlist",tlist);
 		return res;
 	}
 }

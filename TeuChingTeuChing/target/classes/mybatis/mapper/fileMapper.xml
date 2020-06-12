@@ -24,4 +24,28 @@
 	<update id="post_updateFile">
 		update tr_file_upload set edit_yn = 'Y' where table_idx = #{postIdx}
 	</update>
+	
+	<insert id="insertQualiFile" parameterType="File_Upload">
+		INSERT INTO
+				TR_FILE_UPLOAD
+		VALUES(
+				S_FILE_IDX.NEXTVAL
+				, ${table_idx}
+				, #{origin_filename}
+				, #{rename_filename}
+				, #{savepath}
+				,'N'
+		)
+	</insert>
+	
+	<select id="selectQualiFile" resultType="string">
+		SELECT
+			RENAME_FILENAME
+		FROM
+			TR_FILE_UPLOAD
+		WHERE
+			TABLE_IDX = #{qualiidx}
+			AND
+			RENAME_FILENAME LIKE '%tr_quali%'
+	</select>
 </mapper>

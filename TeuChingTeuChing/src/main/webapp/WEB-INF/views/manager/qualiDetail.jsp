@@ -46,36 +46,50 @@
 
 	<div class="wrapper">
 		<div class="ansbox-top">
-			<h1 style="text-align:center;font-size:4vw">
+			<h1 style="text-align: center; font-size: 4vw">
 				Profile <a
 					href="${pageContext.request.contextPath }
 					/qualidetail/auth.do?quali_idx=${ res.quali_idx}"
-					class="btn btn-outline-primary" onclick="if(!confirm('승인하시겠습니까?')){return false;}">승인하기</a>
+					class="btn btn-outline-primary"
+					onclick="if(!confirm('승인하시겠습니까?')){return false;}">승인하기</a>
 			</h1>
-
 			<div style="transform: translateX(20%)">
 				<img src="resources/img/circle_person.jpg"
 					style="width: 150px; height: 190px; float: left">
-					<h2 style="transform:translateY(135%);float:left">${res.trainer_name } 트레이너</h2>
-					<p style="clear:both"></p>
-					<div style="transform:translateX(5%);margin-top:-2%"> 
-					<div><h5 style="float:left;font-weight:bold;margin-right:1%;">지역</h5><h5 style="float:left">서울시</h5></div>
-					<p style="clear:both"></p>
-					<div><h5 style="float:left;font-weight:bold;margin-right:1%;">번호</h5><h5 style="float:left">010-2424-3434</h5></div>
-					<p style="clear:both"></p>
-					<div><h5 style="float:left;font-weight:bold;margin-right:1%;">메일</h5><h5 style="float:left">cino4615@gmaill.com</h5></div>
-					<p style="clear:both"></p>
-					<div><h5 style="float:left;font-weight:bold;margin-right:1%;">요청</h5><h5 style="float:left">${res.quali_auth }</h5></div>
+				<h2 style="transform: translateY(135%); float: left">${res.trainer_name }
+					트레이너</h2>
+				<p style="clear: both"></p>
+				<div style="transform: translateX(5%); margin-top: -2%">
+					<div>
+						<h5 style="float: left; font-weight: bold; margin-right: 1%;">지역</h5>
+						<h5 style="float: left">서울시</h5>
 					</div>
+					<p style="clear: both"></p>
+					<div>
+						<h5 style="float: left; font-weight: bold; margin-right: 1%;">번호</h5>
+						<h5 style="float: left">010-2424-3434</h5>
+					</div>
+					<p style="clear: both"></p>
+					<div>
+						<h5 style="float: left; font-weight: bold; margin-right: 1%;">메일</h5>
+						<h5 style="float: left">cino4615@gmaill.com</h5>
+					</div>
+					<p style="clear: both"></p>
+					<div>
+						<h5 style="float: left; font-weight: bold; margin-right: 1%;">요청</h5>
+						<h5 style="float: left">${res.quali_auth }</h5>
+					</div>
+				</div>
 			</div>
-			<br><br><br>
+			<br>
+			<br>
+			<br>
 			<div class="col-lg-8 ftco-animate">
 				<div class="row">
 					<div class="col-md-3 ftco-animate">
-						<a href="resources/img/auth.jpg"
+						<a href="${pageContext.request.contextPath }/resources/upload/${file }"
 							class="gallery image-popup img d-flex align-items-center"
-							style="height: 195px; width: 400px; background-image: url(resources/img/check.png);
-							transform:translateX(6%)">
+							style="height: 195px; width: 400px; background-image: url(resources/img/check.png); transform: translateX(6%)">
 							<div
 								class="icon mb-4 d-flex align-items-center justify-content-center">
 								<span class="icon-instagram"></span>
