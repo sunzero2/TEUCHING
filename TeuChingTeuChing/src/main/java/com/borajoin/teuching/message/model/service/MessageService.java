@@ -18,4 +18,6 @@ public interface MessageService {
 	public Map<String, Object> selectMsgBoxRecv(String email, int currentpage, String type);
 	
 	public Message selectMsgDetail(int message_idx);
+	
+	public int insertMsgAnsTra(Map<String, Object> commandMap);
 }

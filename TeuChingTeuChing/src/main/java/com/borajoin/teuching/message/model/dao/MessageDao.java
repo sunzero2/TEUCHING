@@ -43,4 +43,8 @@ public class MessageDao {
 	public Message selectMsgDetail(int message_idx) {
 		return sqlSession.selectOne("Message.selectMsgDetail", message_idx);
 	}
+	
+	public int insertMsgAnsTra(Map<String, Object> commandMap) {
+		return sqlSession.insert("Message.insertMsgAnsTra", commandMap);
+	}
 }

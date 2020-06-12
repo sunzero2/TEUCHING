@@ -47,6 +47,7 @@ public class MessageController {
 			res = ms.selectMsgBoxSend(t.getTr_email(), currentpage, type);
 		}
 		mv.addObject("res", res);
+		mv.addObject("type", type);
 		mv.setViewName("message/msgBoxSend");
 		return mv;
 	}
@@ -76,6 +77,7 @@ public class MessageController {
 			res = ms.selectMsgBoxRecv(m.getMem_email(), currentpage, type);
 		}
 		mv.addObject("res", res);
+		mv.addObject("type", type);
 		mv.setViewName("message/msgBoxRecv");
 		return mv;
 	}
@@ -122,9 +124,33 @@ public class MessageController {
 	}
 
 	@RequestMapping("/message/msgreturn.do")
-	public ModelAndView msgReturn() {
+	public ModelAndView msgAnsMem() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("message/msgReturn");
+		mv.setViewName("message/msgAnsMem");
+		return mv;
+	}
+	
+	/**
+	* @Method Name : msgAnsTra
+	* @작성일 : 2020. 6. 13.
+	* @작성자 : 김지수
+	* @Method 설명 : 트레이너가 회원에게 보내는 답장
+	*/
+	@RequestMapping("/message/msganstra.do")
+	public ModelAndView msgAnsTra(HttpSession session, String msg_cont, String mem_email) {
+		ModelAndView mv = new ModelAndView();
+		Map<String, Object> commandMap = new HashMap<String, Object>();
+		Trainer t = (Trainer)session.getAttribute("loginInfo");
+		
+		commandMap.put("msg_cont", msg_cont);
+		commandMap.put("mem_email", mem_email);
+		commandMap.put("tr_email", t.getTr_email());
+		
+		ms.insertMsgAnsTra(commandMap);
+		
+		mv.addObject("msg", "발송이 완료 되었습니다");
+		mv.setViewName("message/result");
+		
 		return mv;
 	}
 

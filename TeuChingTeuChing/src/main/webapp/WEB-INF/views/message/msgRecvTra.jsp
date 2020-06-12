@@ -57,17 +57,18 @@ h1 {
 </style>
 </head>
 <body>
+<form action="${pageContext.request.contextPath }/message/msganstra.do">
 	<div class="wrapper">
 		<h1>상담요청</h1>
 		<p id="p">
-			Date ${res.write_date } <a title="수락 시 매칭이 성사됩니다" id="a" href="">수락</a>
+			Date ${res.write_date } 
+			<a title="수락 시 매칭이 성사됩니다" id="a" href="">수락</a>
 		</p>
 		<div id="text">${res.msg_cont }</div>
-		<textarea id="textarea" placeholder="내용을 입력해주세요"></textarea>
+		<textarea name="msg_cont" id="textarea" placeholder="내용을 입력해주세요"></textarea>
 		<button id="btn" style="transform: translateX(-52%)">작성완료</button>
+		<input type="hidden" name="mem_email" value="${res.mem_email }">
 	</div>
-	<script src="https://code.jquery.com/jquery-3.5.1.js"
-		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-		crossorigin="anonymous"></script>
+</form>
 </body>
 </html>
