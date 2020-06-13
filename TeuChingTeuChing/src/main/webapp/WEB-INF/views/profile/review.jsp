@@ -475,12 +475,9 @@
 		              alert(error);
 		      }
 		        })
-			
-			
-		};
+							};
 		
-		
-		/* 리뷰 업로드 */
+				/* 리뷰 업로드 */
 		function uploadReview() {
 			
 			$.ajax({
@@ -493,8 +490,6 @@
 				
 			})
 		};
-		
-		
 		/* 해당 프로필의 트레이너정보를 갖고오기 위해 url에서 파라미터 추출하는 부분 */
 		
 		var getParameters = function (paramName) { 
@@ -520,6 +515,12 @@
 		$('#trainer').html(trainerName);
 		$('#trnn').html(trainerName);
 		
+		// 페이징
+		$.ajax({
+			type:'GET', 
+			url: '<%=request.getContextPath()%>/review/uploadreview.do' + ,
+			data: 
+		})
 		
 
 	</script>

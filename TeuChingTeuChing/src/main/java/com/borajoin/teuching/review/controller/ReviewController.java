@@ -38,6 +38,7 @@ public class ReviewController {
 
 		String orderby = "review_idx"; // 기준으로 orderby할 것 가져오기
 
+		
 		if (commandMap.get("reviewPage") != null) {
 			currentPage = Integer.parseInt((String) commandMap.get("reviewPage"));
 		}
@@ -94,6 +95,7 @@ public class ReviewController {
 		ModelAndView mav = new ModelAndView();
 
 		mav.setViewName("profile/schedule");
+		//mav.setViewName("profile/test");
 		return mav;
 	}
 
