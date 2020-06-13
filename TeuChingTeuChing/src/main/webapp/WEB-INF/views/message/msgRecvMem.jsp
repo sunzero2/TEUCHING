@@ -1,10 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Teu-Ching Teu-Ching</title>
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <style>
 html, body, form {
 	height: 96%;
@@ -14,16 +21,17 @@ html, body, form {
 
 .wrapper {
 	height: 100%;
-	width: 98%;
-	margin-left: 3%;
+	width: 96%;
+	margin-left: 2%;
 }
 
 #text {
 	border: 1px solid black;
-	height: 145px;
-	width: 90%;
+	height: 77px;
+	width: 91%;
 	border-radius: 4px;
 	border: 1px solid lightgray;
+	padding:1%1%1%1%;
 }
 
 a {
@@ -32,7 +40,7 @@ a {
 }
 
 #textarea {
-	width: 89%;
+	width: 91%;
 	height: 75px;
 	border-radius: 4px;
 	border: 1px solid lightgray;
@@ -42,11 +50,12 @@ a {
 
 #btn {
 	width: 75px;
-	height: 30px;
+	height: 35px;
 	float: right;
-	transform: translateX(-10%);
+	transform: translateX(-37%);
 	left: 20%;
-	margin-top: 2%;
+	margin-top: 3%;
+	margin-bottom: 1%;
 	border: 1px solid lightgray;
 	background-color: white;
 	outline: 0;
@@ -59,17 +68,59 @@ a {
 h1 {
 	font-weight: 500;
 }
+
+
 </style>
 </head>
 <body>
+<form action="${pageContext.request.contextPath }/message/msgansmem.do">
 	<div class="wrapper">
-		<h1>상담요청</h1>
-		<p>✅ 수락된 요청 입니다</p>
-		<!-- <p>❎ 요청 대기중 입니다</p> -->
-		<p id="p">Date ${res.write_date }</p>
+		<h2>상담요청</h2>
+		<h5> | ${res.write_date} | ${res.tr_email }</h5>
+		<ul class="nav navbar-nav">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown">요청내역 <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<c:forEach items="${match }" var="m">
+							<li><a> 
+							<c:if test="${m.match_yn eq 'N' }">❎</c:if> 
+							<c:if test="${m.match_yn eq 'Y' }">✅</c:if> 
+								${m.match_date }
+								${m.match_time }
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<c:if test="${m.match_yn eq 'N' }">승인 요청중</c:if> 
+							<c:if test="${m.match_yn eq 'Y' }">승인 완료</c:if> 
+							</a></li>
+						</c:forEach>
+					</ul></li>
+			</ul>
 		<div id="text">${res.msg_cont }</div>
-		<a href="${pageContext.request.contextPath }/message/msgreturn.do"
-			id="btn" style="transform: translateX(-52%)">답장하기</a>
+		<textarea name="msg_cont" id="textarea" placeholder="내용을 입력해주세요"></textarea>
+		<button	id="btn" style="transform: translateX(-52%)">답장하기</button>
 	</div>
+	<input type="hidden" name="mem_email" value="${res.mem_email }">
+	<input type="hidden" name="tr_email" value="${res.tr_email }">
+</form>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+			integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+			crossorigin="anonymous"></script>
+	<script>
+			$(document).ready(
+					function() {
+						$(".dropdown").hover(
+							function() {
+								$('.dropdown-menu', this).not(
+										'.in .dropdown-menu').stop(true,
+										true).slideDown("fast");
+								$(this).toggleClass('open');
+							},
+							function() {
+								$('.dropdown-menu', this).not(
+										'.in .dropdown-menu').stop(true,
+										true).slideUp("fast");
+								$(this).toggleClass('open');
+					});
+				});
+	</script>
 </body>
 </html>

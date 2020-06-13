@@ -155,4 +155,50 @@
 		)
 	</select>
 	
+	<select id="showMatchInfo" resultType="Match">
+		SELECT
+			*
+		FROM
+			TR_MATCH
+		WHERE
+			TR_EMAIL = #{tr_email}
+			AND
+			MEM_EMAIL = #{mem_email}
+		ORDER BY
+			MATCH_DATE DESC
+	</select>
+	
+	<update id="updateMatchYn" parameterType="int">
+		UPDATE
+			TR_MATCH
+		SET
+			MATCH_YN = 'Y'
+		WHERE
+			MATCH_IDX = #{match_idx}
+	</update>
+	
+	<select id="matchYnCheck" parameterType="int" resultType="int">
+		SELECT
+			count(*)
+		FROM
+			TR_MATCH
+		WHERE
+			MATCH_IDX = #{match_idx}
+			AND
+			MATCH_YN = 'N'
+	</select>
+	
+	<insert id="insertMsgAnsMem" parameterType="Message">
+		INSERT INTO
+				TR_MESSAGE
+		VALUES(
+				S_MESSAGE_IDX.NEXTVAL
+				, #{tr_email}
+				, #{mem_email}
+				, #{msg_cont}
+				, SYSDATE
+				, 'Member'
+		)
+	</insert>
+	
 </mapper>

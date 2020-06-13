@@ -8,6 +8,12 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 <style>
@@ -38,20 +44,42 @@
 	<form style="transform: translateX(10%); width: 90%;"
 		action="${pageContext.request.contextPath }/message/matchformsend.do">
 		<div class="container">
-			<h1>보낸쪽지</h1>
-			Date
-			<div style="width: 50%;">
-				<div id="date">2020-02-02</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-4">
-					Time <br>
-					<div id="time">14:00</div>
-				</div>
-			</div>
+			<h2>보낸쪽지</h2>
+			<h5>${res.write_date }|${res.mem_email }</h5>
+			<ul class="nav navbar-nav">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown">요청내역 <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<c:forEach items="${match }" var="m">
+							<li><a> <c:if test="${m.match_yn eq 'N' }">❎</c:if> <c:if
+										test="${m.match_yn eq 'Y' }">✅</c:if> ${m.match_date }
+									${m.match_time } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <c:if
+										test="${m.match_yn eq 'N' }">승인 요청중</c:if> <c:if
+										test="${m.match_yn eq 'Y' }">승인 완료</c:if>
+							</a></li>
+						</c:forEach>
+					</ul></li>
+			</ul>
 			<div id="cont">${res.msg_cont }</div>
 		</div>
 	</form>
-</body>
+	<script>
+		$(document).ready(
+				function() {
+					$(".dropdown").hover(
+							function() {
+								$('.dropdown-menu', this).not(
+										'.in .dropdown-menu').stop(true, true)
+										.slideDown("fast");
+								$(this).toggleClass('open');
+							},
+							function() {
+								$('.dropdown-menu', this).not(
+										'.in .dropdown-menu').stop(true, true)
+										.slideUp("fast");
+								$(this).toggleClass('open');
+							});
+				});
+	</script>
 </body>
 </html>
