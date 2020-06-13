@@ -5,6 +5,7 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.borajoin.teuching.member.model.vo.Member;
 import com.borajoin.teuching.member.model.vo.Trainer;
@@ -56,10 +57,19 @@ public class MemberDao {
 		return session.selectOne("Member.t_login", commandMap);
 	}
 	
+	//일반회원 비밀번호 변경하기
+	public int m_update_pw(Member member) throws Exception{
+		return session.update("Member.m_update_pw", member);
+	}
+	//트레이너 비밀번호 변경하기
+	public int t_update_pw(Trainer trainer) throws Exception{
+		return session.update("Member.t_update_pw", trainer);
+	}
 	
-	
-	
-	
+	// 비밀번호 변경하기
+	public int update_pw(Map<String, Object> commandMap) {
+		return session.update("Member.update_pw", commandMap);
+	}
 	
 	
 	
