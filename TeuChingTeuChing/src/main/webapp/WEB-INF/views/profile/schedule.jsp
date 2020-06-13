@@ -105,11 +105,13 @@
 						</table>
 					</div>
 				</div>
-				<button onclick="openPopUp();">상담신청(이건 임시여 디자인보고 기겁하지마..)</button>
 			</div>
 		</div>
 	</section>
-	<form id="form" action="${pageContext.request.contextPath }/message/matchform.do" target="pop"></form>
+	<form id="form" action="${pageContext.request.contextPath }/message/matchform.do" target="pop">
+		<input type="hidden" id="month" value="" name="month">
+		<input type="hidden" id="date" value="" name="date">
+	</form>
 	
 	 <!--This page JavaScript(calendar) -->
       <script src="../resources/calendar/libs/moment/min/moment.min.js"></script>
@@ -376,7 +378,12 @@
 			window.open("", 'pop',
 							'width=450,height=400,left=420,top=150,toolbars=no,scrollbars=no');
 			form.submit();
-		}	
+		}
+	  
+	  $('tbody[id="calendar-body"] > tr > td').click(function(e){
+		  $('#date').val(e.target.id);
+		  openPopUp();
+	  })
 	</script>
 	<%@ include file="../include/footer.jsp"%>
 	<script src="../resources/js/jquery.min.js"></script>

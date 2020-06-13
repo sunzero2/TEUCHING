@@ -169,11 +169,12 @@ public class MessageController {
 	 * @Method 설명 : 트레이너에게 상담신청 폼으로 연결
 	 */
 	@RequestMapping("/message/matchform.do")
-	public ModelAndView matchForm(String tr_email, HttpSession session) {
+	public ModelAndView matchForm(String tr_email, HttpSession session, String date) {
 		// -------확인
 		ModelAndView mv = new ModelAndView();
 		Member m = (Member) session.getAttribute("loginInfo");
 		mv.addObject("tr_email", tr_email);
+		mv.addObject("date", date);
 		mv.setViewName("message/messageMatchForm");
 		return mv;
 	}
