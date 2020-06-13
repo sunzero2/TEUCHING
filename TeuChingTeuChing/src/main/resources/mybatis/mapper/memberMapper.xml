@@ -41,7 +41,7 @@
 	</select>
 	 	
  	<!-- 트레이너 로그인 -->
-	<select id="t_login" resultMap="trainerResult">
+	<select id="t_login" resultType="Trainer">
 		select tr_email, trainer_name, gender, weight, height, cell, career, address,
 		address_detail, prefer_add1, prefer_add2, prefer_add3, photo, tr_like
 		from tr_trainer where tr_email = #{email} and password = #{password}
@@ -66,7 +66,15 @@
 		</if>
 	</update>
  	
+ 	<!-- 비밀번호 변경 -->
+	<update id="m_update_pw" parameterType="Member">
+		update tr_member set password = #{password} where mem_email = #{email}
+	</update>
  	
+ 	 	<!-- 비밀번호 변경 -->
+	<update id="t_update_pw" parameterType="Trainer">
+		update tr_trainer set password = #{password} where tr_email = #{email}
+	</update>
  	
  	
  	

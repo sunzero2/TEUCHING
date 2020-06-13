@@ -219,17 +219,26 @@ public class MemberController {
 		System.out.println("@@임시 비밀번호 전송 메소드@@");
 
 		String mailfor = "";
+		String pw = "";		//랜덤 임시 비밀번호 생성
+		for (int i = 0; i < 12; i++) {
+			pw += (char) ((Math.random() * 26) + 97);
+		}
 		
-		commandMap.put("table", "tr_member");
-		int result = ms.emailChk(commandMap);
-
+		commandMap.put("table", "tr_member");  //비교 테이블 값 넣기
+		int result = ms.emailChk(commandMap);	// 테이블 조회
+		
+		commandMap.put("password", pw);	// 임시 비밀번호 담기
+		
 		if (result == 0) {
-			// 트레이너 비밀번호 메일전송
+			// 트레이너 비밀번호 변경 및 메일전송
+			commandMap.put("table", "tr_trainer");
+			ms.change_pw(commandMap);
 			mailfor = "t_findpw";
 			commandMap.put("urlPath", path); 
 			ms.mailSending(commandMap, mailfor);
 		} else {
-			// 일반회원 비밀번호 메일전송
+			// 일반회원 비밀번호 변경 및 메일전송
+			ms.change_pw(commandMap);
 			mailfor = "m_findpw";
 			commandMap.put("urlPath", path); 
 			ms.mailSending(commandMap, mailfor);

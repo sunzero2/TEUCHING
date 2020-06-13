@@ -29,7 +29,14 @@ public interface MemberService {
 	//합쳐진 메일관련
 	 public void mailSending(Map<String, Object> commandMap, String mailfor) throws SQLException;
 	 
-	
+	 //패스워드 변경
+	 public int change_pw(Map<String, Object> commandMap) throws SQLException;
+	 
+	 
+	 
+	 
+	 
+	 
 	public int insertFile(List<Map<String,Object>>fileData);
 	
 	
