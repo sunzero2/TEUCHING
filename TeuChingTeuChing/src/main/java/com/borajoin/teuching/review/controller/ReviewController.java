@@ -1,6 +1,7 @@
 package com.borajoin.teuching.review.controller;
 
 
+import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.borajoin.teuching.member.model.vo.Trainer;
 import com.borajoin.teuching.review.model.service.ReviewService;
 import com.borajoin.teuching.review.model.vo.Review;
 
@@ -33,6 +34,7 @@ public class ReviewController {
 
 		int currentPage = 1;
 		int cntPerPage = 5;
+		String trainerEmail = (String) commandMap.get("trainerEmail");
 
 		String orderby = "review_idx"; // 기준으로 orderby할 것 가져오기
 
@@ -43,9 +45,18 @@ public class ReviewController {
 		if (commandMap.get("cntPerPage") != null) {
 			cntPerPage = Integer.parseInt((String) commandMap.get("cntPerPage"));
 		}
+		
+		 if (commandMap.get("trainerEmail") != null) { 
+			 System.out.println("가져온 트레이너 이메일 : " + trainerEmail);
+		}
+		 
 
 		Map<String, Object> res = rs.selectReviewList(orderby, currentPage, cntPerPage);
 		System.out.println("컨트롤 값 받아온거" + res);
+		
+		Map<String, Object> trainerInfo = rs.selectTrainerInformation(trainerEmail);
+		System.out.println("트레이너의 정보 " +trainerInfo );
+		mav.addObject("trainerInfo", trainerInfo);
 		mav.addObject("reviewList", res);
 		mav.setViewName("profile/review");
 
@@ -56,13 +67,19 @@ public class ReviewController {
 	@RequestMapping("review/uploadreview.do")
 	public int uploadReview(Review review, @RequestParam Map<String, Object> data) {
 		System.out.println(data);
+		ModelAndView mav = new ModelAndView();
 		
 		review.setMem_nickname((String) data.get("memNickname"));
 		review.setRev_password((String) data.get("reviewPw"));
 		review.setRev_score((String) data.get("rev_score"));
 		review.setRev_cont((String) data.get("revCont"));
 		
+		
 		int res = rs.uploadReview(review);
+		
+		
+		
+		
 		return res;
 	}
 

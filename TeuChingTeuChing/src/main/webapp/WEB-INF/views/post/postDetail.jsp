@@ -58,7 +58,7 @@
 								<img class="authorImg" src="../resources/img/person_4.jpg">
 							<div class="details authorInfo">
 								<div class="job">Trainer</div>
-								<a class="author" href="/teuching/profile/review.do">${data.post.trainerName}</a>
+								<a class="author" href="/teuching/profile/review.do?trainerEmail=${data.post.trEmail}&trainerName=${data.post.trainerName}">${data.post.trainerName}</a>
 								<hr>
 								<button class="btn btn-primary">Send Message</button>
 								<a href="/teuching/post/writepost.do?postIdx=${data.post.postIdx}"><button class="btn btn-primary">Edit Post</button></a>
