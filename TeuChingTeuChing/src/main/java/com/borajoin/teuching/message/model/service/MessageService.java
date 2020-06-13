@@ -1,7 +1,9 @@
 package com.borajoin.teuching.message.model.service;
 
+import java.util.List;
 import java.util.Map;
 
+import com.borajoin.teuching.message.model.vo.Match;
 import com.borajoin.teuching.message.model.vo.Message;
 
 public interface MessageService {
@@ -20,4 +22,12 @@ public interface MessageService {
 	public Message selectMsgDetail(int message_idx);
 	
 	public int insertMsgAnsTra(Map<String, Object> commandMap);
+	
+	public List<Match> showMatchInfo(Map<String, Object> commandMap);
+	
+	public int updateMatchYn(int match_idx);
+	
+	public int matchYnCheck(int match_idx);
+	
+	public int insertMsgAnsMem(Map<String, Object> commanMap);
 }

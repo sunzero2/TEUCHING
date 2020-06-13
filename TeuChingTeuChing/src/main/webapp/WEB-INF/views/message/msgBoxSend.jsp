@@ -130,7 +130,7 @@
 			const form = document.querySelector('#form');
 			window
 					.open("", 'pop',
-							'width=450,height=380,left=420,top=150,toolbars=no,scrollbars=no');
+							'width=450,height=300,left=420,top=150,toolbars=no,scrollbars=no');
 			form.submit();
 		}
 	</script>

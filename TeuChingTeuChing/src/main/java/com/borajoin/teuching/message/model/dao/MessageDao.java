@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.support.SQLErrorCodes;
 import org.springframework.stereotype.Repository;
 
+import com.borajoin.teuching.message.model.vo.Match;
 import com.borajoin.teuching.message.model.vo.Message;
+import com.sun.mail.handlers.message_rfc822;
 
 @Repository
 public class MessageDao {
@@ -46,5 +48,25 @@ public class MessageDao {
 	
 	public int insertMsgAnsTra(Map<String, Object> commandMap) {
 		return sqlSession.insert("Message.insertMsgAnsTra", commandMap);
+	}
+	
+	//쪽지에 보여줄 매칭 정보
+	public List<Match> showMatchInfo(Map<String, Object> commandMap) {
+		return sqlSession.selectList("Message.showMatchInfo", commandMap);
+	}
+	
+	//트레이너의 매칭 수락
+	public int updateMatchYn(int match_idx) {
+		return sqlSession.update("Message.updateMatchYn", match_idx);
+	}
+	
+	//트레이너의 매칭 수락 시, 매칭여부 확인용
+	public int matchYnCheck(int match_idx) {
+		return sqlSession.selectOne("Message.matchYnCheck", match_idx);
+	}
+	
+	//회원이 트레이너에게 보내는 답장
+	public int insertMsgAnsMem(Map<String, Object> commanMap) {
+		return sqlSession.insert("Message.insertMsgAnsMem", commanMap);
 	}
 }

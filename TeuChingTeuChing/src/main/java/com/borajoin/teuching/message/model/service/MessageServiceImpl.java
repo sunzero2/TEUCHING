@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.borajoin.teuching.message.model.dao.MessageDao;
+import com.borajoin.teuching.message.model.vo.Match;
 import com.borajoin.teuching.message.model.vo.Message;
 
 import common.util.Paging;
@@ -86,6 +87,30 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public int insertMsgAnsTra(Map<String, Object> commandMap) {
 		return md.insertMsgAnsTra(commandMap);
+	}
+
+	//트레이너에의 받은 쪽지에 보여줄 매칭 정보
+	@Override
+	public List<Match> showMatchInfo(Map<String, Object> commandMap) {
+		return md.showMatchInfo(commandMap);
+	}
+
+	//트레이너의 매칭 요청 수락
+	@Override
+	public int updateMatchYn(int match_idx) {
+		return md.updateMatchYn(match_idx);
+	}
+
+	//트레이너의 매칭 요청 수락 시 , 매칭여부 확인용
+	@Override
+	public int matchYnCheck(int match_idx) {
+		return md.matchYnCheck(match_idx);
+	}
+
+	//회원이 트레이너에게 보내는 답장
+	@Override
+	public int insertMsgAnsMem(Map<String, Object> commanMap) {
+		return md.insertMsgAnsMem(commanMap);
 	}
 
 }
