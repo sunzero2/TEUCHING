@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>Teu-Ching Teu-Ching</title><meta charset="utf-8">
+<title>Teu-Ching Teu-Ching</title>
+<meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
@@ -45,8 +46,8 @@
 			Date
 			<div class="input-group date" style="width: 50%;">
 				<input type="text" name="match_date" placeholder="날짜를 선택해주세요"
-					value="2020/02/<c:if test="${date < 10}">0${date }</c:if><c:if test="${date >= 10}">${date }</c:if>"
-					 class="form-control"> <span class="input-group-addon">
+					value="${year }/<c:if test="${month < 10 }">0${month }</c:if><c:if test="${month >= 10 }">${month }</c:if>/<c:if test="${date < 10}">0${date }</c:if><c:if test="${date >= 10}">${date }</c:if>"
+					class="form-control"> <span class="input-group-addon">
 					<i class="glyphicon glyphicon-calendar"></i>
 				</span>
 			</div>

@@ -141,6 +141,7 @@ td a{
 		</div>
 	</section>
 	<form id="form" action="${pageContext.request.contextPath }/message/matchform.do" target="pop">
+		<input type="hidden" id="year" value="" name="year">
 		<input type="hidden" id="month" value="" name="month">
 		<input type="hidden" id="date" value="" name="date">
 	</form>
@@ -355,8 +356,14 @@ td a{
 	   	그리고 클릭했ㅅ을때 팝업 열리게하는거 > td까지만 되어있었는데 a하나 붙였어! 
 	   */
 	   
-	  $('tbody[id="calendar-body"] > tr > td > a').click(function(e){
-		  $('#date').val(e.target.id);
+	  $('tbody[id="calendar-body"] > tr > td ').click(function(e){
+		  let month_year = $('#current-year-month').text();
+		  let year = month_year.substring(0,4);
+		  let month = month_year.substring(8);
+		  
+		  $('#year').val(year);
+		  $('#month').val(month);
+		  $('#date').val(e.target.previousSibling.innerText);
 		  openPopUp();
 	  });
 	  
