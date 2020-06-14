@@ -57,7 +57,7 @@ body {
 					<form id="signFrm" name="signFrm"
 					 action="<%=request.getContextPath()%>/member/t_joinemailCheck.do"
 	       					action="<%=request.getContextPath()%>/member/joinTrainerImple.do" 
-	       					method="post">
+	       					method="post" enctype="multipart/form-data">
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
 								<div class="col-8">
@@ -186,8 +186,8 @@ body {
 												<label class="form-control-label">프로필 사진 등록</label>
 												<div id="imagePreview">
 												<img id="img">
-											</div>
-											<input type="file" id="photo" accept="image/*" onchange="setThumbnail(event);" name="photo" />
+												</div>
+											<input type="file" id="photo" accept="image/*" onchange="setThumbnail(event);" name="file" />
 											</div>
 										</div>
 									</div>

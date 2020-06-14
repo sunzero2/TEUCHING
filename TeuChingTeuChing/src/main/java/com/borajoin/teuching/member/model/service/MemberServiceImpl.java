@@ -1,9 +1,6 @@
 package com.borajoin.teuching.member.model.service;
 
-import java.io.File;
-import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Map;
 
 import javax.mail.MessagingException;
@@ -14,7 +11,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.borajoin.teuching.member.model.dao.MemberDao;
 import com.borajoin.teuching.member.model.vo.Member;
@@ -65,6 +61,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	// 일반회원 로그인
+	@Override
 	public Member m_login(Map<String, Object> commandMap) throws SQLException {
 		Member res = null;
 		res = md.m_login(commandMap);
@@ -73,6 +70,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	// 트레이너 로그인
+	@Override
 	public Trainer t_login(Map<String, Object> commandMap) throws SQLException {
 		Trainer res = null;
 		res = md.t_login(commandMap);
@@ -87,6 +85,7 @@ public class MemberServiceImpl implements MemberService {
 	private String title = "";
 	private String htmlBody = "";
 
+	@Override
 	public void mailSending(Map<String, Object> commandMap, String mailfor) {
 			
 			from = "teuching.official@gmail.com"; // 발신자메일 설정
@@ -163,45 +162,31 @@ public class MemberServiceImpl implements MemberService {
 
 		}
 	
-		//비밀번호 변경하기
-		@Override
-		public int change_pw(Map<String, Object> commandMap){
-			int res = md.update_pw(commandMap);
-			
-			return res;
-		}
-	
-	
-	
-	
-	
-	
-
-	// 파일 업로드
+	// 비밀번호 변경하기
 	@Override
-	public int insertFile(List<Map<String, Object>> fileData) {
-
-		int res = 0;
-
-		for (Map<String, Object> file : fileData) {
-
-			md.insertFile(file);
-
-			MultipartFile mf = (MultipartFile) file.get("file");
-			File f = new File((String) file.get("savePath"));
-
-			try {
-
-				mf.transferTo(f);
-
-			} catch (IllegalStateException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		}
+	public int change_pw(Map<String, Object> commandMap) {
+		int res = md.update_pw(commandMap);
 
 		return res;
 	}
+	
+	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

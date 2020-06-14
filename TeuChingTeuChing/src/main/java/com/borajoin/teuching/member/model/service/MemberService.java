@@ -1,7 +1,6 @@
 package com.borajoin.teuching.member.model.service;
 
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Map;
 
 import com.borajoin.teuching.member.model.vo.Member;
@@ -37,8 +36,6 @@ public interface MemberService {
 	 
 	 
 	 
-	public int insertFile(List<Map<String,Object>>fileData);
-	
 	
 	
 	

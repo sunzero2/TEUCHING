@@ -1,5 +1,6 @@
 package com.borajoin.teuching.member.controller;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.borajoin.teuching.member.model.service.MemberService;
@@ -32,12 +35,25 @@ public class MemberController {
 	@Autowired
 	private MemberService ms;
 
+	
+	/**
+	* @Method Name : loginModal
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : Modal창 띄우기 테스트중..
+	*/
 	@GetMapping("/loginModal")
 	public String loginModal() {
 		return "/loginModal";
 	}
 
-	// 로그인 페이지로 이동
+	
+	/**
+	* @Method Name : login
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 로그인 페이지로 이동
+	*/
 	@RequestMapping("/member/login.do")
 	public ModelAndView login() {
 		ModelAndView mav = new ModelAndView();
@@ -46,7 +62,12 @@ public class MemberController {
 		return mav;
 	}
 
-	// 비밀번호 찾기 폼으로 이동
+	/**
+	* @Method Name : find_pw_form
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 비밀번호 찾기 폼으로 이동
+	*/
 	@RequestMapping("/member/find_pw_form.do")
 	public ModelAndView find_pw_form() {
 		ModelAndView mav = new ModelAndView();
@@ -55,7 +76,12 @@ public class MemberController {
 		return mav;
 	}
 
-	// 로그인 하기
+	/**
+	* @Method Name : loginImple
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 로그인 하기
+	*/
 	@RequestMapping("/member/loginImple.do")
 	public ModelAndView loginImple(@RequestParam Map<String, Object> commandMap, HttpSession session)
 			throws SQLException {
@@ -91,7 +117,12 @@ public class MemberController {
 		return mav;
 	}
 
-	// 로그아웃
+	/**
+	* @Method Name : logout
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 로그아웃
+	*/
 	@RequestMapping("/member/logout.do")
 	public ModelAndView logout(HttpSession session) {
 
@@ -107,7 +138,12 @@ public class MemberController {
 
 	}
 
-	// 마이페이지 이동
+	/**
+	* @Method Name : mypage
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 마이페이지 이동
+	*/
 	@RequestMapping("/member/mypage.do")
 	public ModelAndView mypage(HttpSession session) {
 
@@ -117,7 +153,12 @@ public class MemberController {
 		return mav;
 	}
 
-	// 회원가입 페이지로 이동
+	/**
+	* @Method Name : join
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 회원가입 페이지로 이동
+	*/
 	@RequestMapping("/member/join.do")
 	public ModelAndView join() {
 		ModelAndView mav = new ModelAndView();
@@ -126,7 +167,12 @@ public class MemberController {
 		return mav;
 	}
 
-	// 일반회원 회원가입 폼으로 이동
+	/**
+	* @Method Name : mjoin
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 일반회원 회원가입 폼으로 이동
+	*/
 	@RequestMapping("/member/mjoin.do")
 	public ModelAndView mjoin(String data) {
 		ModelAndView mav = new ModelAndView();
@@ -140,7 +186,12 @@ public class MemberController {
 		return mav;
 	}
 
-	// 일반 회원 회원가입
+	/**
+	* @Method Name : joinMemberImple
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 일반 회원 회원가입
+	*/
 	@RequestMapping("/member/joinMemberImple.do")
 	public ModelAndView joinMemberImple(@RequestParam Map<String, Object> commandMap) throws SQLException {
 		ModelAndView mav = new ModelAndView();
@@ -158,12 +209,17 @@ public class MemberController {
 		return mav;
 	}
 
-	// 트레이너 회원가입
+	/**
+	* @Method Name : joinTrainerImple
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 트레이너 회원가입
+	*/
 	@RequestMapping("/member/joinTrainerImple.do")
 	public ModelAndView joinTrainerImple(@RequestParam Map<String, Object> commandMap) throws SQLException {
 		ModelAndView mav = new ModelAndView();
 
-		System.out.println(commandMap);
+		System.out.println("메일인증 후 들어오는 맵 " + commandMap);
 		
 		int res = ms.joinTrainer(commandMap);
 		if (res < 1) {
@@ -175,8 +231,85 @@ public class MemberController {
 		}
 		return mav;
 	}
+	
+	/**
+	* @Method Name : m_joinEmailCheck
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 일반회원 회원가입 이메일 발송 
+	*/
+	@RequestMapping("/member/m_joinemailCheck.do")
+	public ModelAndView m_joinEmailCheck(@RequestParam Map<String, Object> commandMap, HttpServletRequest request)
+			throws SQLException {
 
-	// 일반회원 - 닉네임 중복체크
+		ModelAndView mav = new ModelAndView();
+		String mailfor ="m_join";
+		String path = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+
+		commandMap.put("urlPath", path);
+		ms.mailSending(commandMap,mailfor);
+
+		mav.setViewName("landing/landing");
+
+		return mav;
+	}
+
+	/**
+	* @Method Name : t_joinEmailCheck
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 트레이너 회원가입 이메일 발송 + 파일 넣기
+	*/
+	@RequestMapping("/member/t_joinemailCheck.do")
+	public ModelAndView t_joinEmailCheck(@RequestParam Map<String, Object> commandMap, HttpServletRequest request, MultipartHttpServletRequest mtf)
+			throws SQLException {
+
+		ModelAndView mav = new ModelAndView();
+		System.out.println("이메일체크로 들어오는 맵 1"+commandMap);
+		// 파일 태그
+		String fileTag = "file";
+	    // 업로드 파일이 저장될 경로
+		String root = request.getSession().getServletContext().getRealPath("/");
+		String filePath = root + "resources\\upload\\profileImg\\";
+		// 파일 이름	
+		MultipartFile file = mtf.getFile(fileTag);
+		String fileName = file.getOriginalFilename();
+		// 파일 전송
+		try {
+		    file.transferTo(new File(filePath + fileName));
+		} catch(Exception e) {
+		    System.out.println("업로드 오류");
+		}
+		commandMap.put("photo", filePath + fileName);
+		System.out.println(commandMap.put("photo", filePath + fileName));
+		System.out.println(commandMap);
+		
+		String preMap1 = (String)commandMap.get("prefer1-1")+" "+(String)commandMap.get("prefer1-2");
+		String preMap2 = (String)commandMap.get("prefer2-1")+" "+(String)commandMap.get("prefer2-2");
+		String preMap3 = (String)commandMap.get("prefer3-1")+" "+(String)commandMap.get("prefer3-2");
+		
+		commandMap.put("prefer1", preMap1);
+		commandMap.put("prefer2", preMap2);
+		commandMap.put("prefer3", preMap3);
+		System.out.println("메일 전송으로 가는 맵"+ commandMap);
+		
+		String mailfor ="t_join";
+		String path = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+
+		commandMap.put("urlPath", path);
+		ms.mailSending(commandMap,mailfor);
+
+		mav.setViewName("landing/landing");
+
+		return mav;
+	}
+
+	/**
+	* @Method Name : nickChk
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 일반회원 - 닉네임 중복체크
+	*/
 	@RequestMapping(value = "/nickChk.do", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String nickChk(HttpServletRequest request) throws SQLException {
@@ -186,7 +319,12 @@ public class MemberController {
 		return Integer.toString(result);
 	}
 
-	// 회원 이메일 중복체크
+	/**
+	* @Method Name : emailChk
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 두분류 회원 이메일 중복체크
+	*/
 	@RequestMapping(value = "/emailChk.do", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String emailChk(@RequestParam Map<String, Object> data) throws SQLException {
@@ -208,7 +346,12 @@ public class MemberController {
 		return Integer.toString(result);
 	}
 
-	// 비밀번호 찾기
+	/**
+	* @Method Name : findpw
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 비밀번호 찾기 (비밀번호 변경 + 임시 비밀번호 메일전송)
+	*/
 	@RequestMapping("/member/findpw.do")
 	public ModelAndView findpw(@RequestParam Map<String, Object> commandMap, HttpServletRequest request)
 			throws SQLException {
@@ -250,54 +393,23 @@ public class MemberController {
 		return mav;
 	}
 	
-	//비밀번호 변경하기
+	
+	
+	
+	/**
+	* @Method Name : editAccount
+	* @작성일 : 2020. 6. 14.
+	* @작성자 : 이남규 
+	* @Method 설명 : 회원정보 수정하기
+	*/
+	@RequestMapping
+	public ModelAndView editAccount(@RequestParam Map<String, Object> commandMap) {
+		
+		return null;
+	}
 	
 	
 
-	// 이메일 인증하기
-	// 일반회원
-	@RequestMapping("/member/m_joinemailCheck.do")
-	public ModelAndView m_joinEmailCheck(@RequestParam Map<String, Object> commandMap, HttpServletRequest request)
-			throws SQLException {
 
-		ModelAndView mav = new ModelAndView();
-		String mailfor ="m_join";
-		String path = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-
-		commandMap.put("urlPath", path);
-		ms.mailSending(commandMap,mailfor);
-
-		mav.setViewName("landing/landing");
-
-		return mav;
-	}
-
-	// 트레이너
-	@RequestMapping("/member/t_joinemailCheck.do")
-	public ModelAndView t_joinEmailCheck(@RequestParam Map<String, Object> commandMap, HttpServletRequest request)
-			throws SQLException {
-
-		ModelAndView mav = new ModelAndView();
-		
-		System.out.println(commandMap);
-		String preMap1 = (String)commandMap.get("prefer1-1")+" "+(String)commandMap.get("prefer1-2");
-		String preMap2 = (String)commandMap.get("prefer2-1")+" "+(String)commandMap.get("prefer2-2");
-		String preMap3 = (String)commandMap.get("prefer3-1")+" "+(String)commandMap.get("prefer3-2");
-		
-		commandMap.put("prefer1", preMap1);
-		commandMap.put("prefer2", preMap2);
-		commandMap.put("prefer3", preMap3);
-		System.out.println(commandMap);
-		
-		String mailfor ="t_join";
-		String path = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-
-		commandMap.put("urlPath", path);
-		ms.mailSending(commandMap,mailfor);
-
-		mav.setViewName("landing/landing");
-
-		return mav;
-	}
 
 }
