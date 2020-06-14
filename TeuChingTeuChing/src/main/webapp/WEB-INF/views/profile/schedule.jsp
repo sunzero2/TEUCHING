@@ -1,12 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
+<title>Teu-Ching Teu-Ching</title>
+
+<style>
+
+#current-year-month{
+	font-weight: bold;
+	font-size : 17px;
+	color : #ffb5b5;
+	font-family: 'Nanum Pen Script', cursive;
+	font-family: 'Nunito', sans-serif;
+}
+
+td p{
+	margin-top: -22px;
+	font-weight: bold;
+	color:#ffb5b5;
+	font-family: 'Nanum Pen Script', cursive;
+font-family: 'Nunito', sans-serif;
+}
+
+td a{
+	width: 100px;
+	transform: translateX(25%);
+	
+
+}
+
+
+</style>
+
+
+
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Nunito:ital,wght@1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Nunito:ital,wght@1,600&display=swap" rel="stylesheet">
 
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
@@ -37,8 +71,6 @@
 <link rel="stylesheet" href="../resources/css/style.css">
 </head>
 <body>
-<script src='fullcalendar/core/main.js'></script>
-<script src='fullcalendar/google-calendar/main.js'></script>
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<%@include file="../include/top.jsp"%>
 
@@ -46,7 +78,7 @@
 	<!-- 시작 시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작 -->
 
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('resources/img/bg_3.jpg');"
+		style="background-image: url('../resources/img/bg_3.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
@@ -74,7 +106,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="table-responsive">
-						<table class="table table-bordered text-center">
+						<table class="table table-bordered text-center" border="1" style="table-layout: fixed">
 							<thead>
 							
 							<!-- 이전달, 다음달 -->
@@ -90,13 +122,13 @@
 								
 								<!-- 요일 -->
 								<tr class="bg-primary text-white">
-									<td >Sunday</td>
-									<td>Monday</td>
-									<td>Tuesday</td>
-									<td>Wednesday</td>
-									<td>Thursday</td>
-									<td>Friday</td>
-									<td>Saturday</td>
+									<td>Sun</td>
+									<td>Mon</td>
+									<td>Tue</td>
+									<td>Wed</td>
+									<td>Thu</td>
+									<td>Fri</td>
+									<td>Sat</td>
 								</tr>
 								
 							</thead>
@@ -105,80 +137,29 @@
 						</table>
 					</div>
 				</div>
-				<button onclick="openPopUp();">상담신청(이건 임시여 디자인보고 기겁하지마..)</button>
 			</div>
 		</div>
 	</section>
-	<form id="form" action="${pageContext.request.contextPath }/message/matchform.do" target="pop"></form>
+	<form id="form" action="${pageContext.request.contextPath }/message/matchform.do" target="pop">
+		<input type="hidden" id="month" value="" name="month">
+		<input type="hidden" id="date" value="" name="date">
+	</form>
 	
-	 <!--This page JavaScript(calendar) -->
-      <script src="../resources/calendar/libs/moment/min/moment.min.js"></script>
-      <script src="../resources/calendar/libs/fullcalendar\dist/fullcalendar.min.js"></script>
-      <script src="../resources/calendar/pages/calendar/cal-init.min.js"></script>
-  
-      <!-- this page js -->
-      <script src="../resources/calendar/app-style-switcher.js"></script>
-      <script src=".../resources/calendar/feather.min.js"></script>
+	
 	
 	<script>
-		
-	  
-	var clientId = "1088625250366-84uhb8sjfo9aj4l125mr1rmokojffrjl.apps.googleusercontent.com"; // oAuth2 webapp
-
-	  var apiKey = "AIzaSyCGMudBq_ybOnv7mS_53vJzDKMM_-CjyeY";// Key for browser apps (with referers) 
-
-	  var scopes = 'https://www.googleapis.com/auth/calendar';// google authentication scopes
-
-
-	  jQuery(document).ready(function() {
-	        jQuery("#calendar").fullCalendar({
-	              defaultDate : "2020-05-01"
-	            , editable : false // 수정 기능 지원 (false가 편함)
-	            , eventLimit : true // + more처럼 표현
-	            // 데이터를 json 방식으로 넣어주기
-	            , events: [
-	               
-	                  
-	                {
-	                    id : '' // 습관번호
-	                  , title : ''
-	                  , textColor : '#eaecf4' 
-	                  , backgroundColor : '#e36e88'
-	                  , start : ''
-	                  , end : '' // 종료일
-	                     , borderColor : "#FFF" // 보더 색상
-	                          
-	                            
-	                }
-	              
-	                
-	                
-	              
-	            ]
-	        });
-	    });
-
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
 	  
 	  var currentTitle = document.getElementById('current-year-month');
 	  /* 현재 년도와 월 */
 		var calendarBody = document.getElementById('calendar-body');
 		var mainTodayDay = document.getElementById('main-day');
 		var mainTodayDate = document.getElementById('main-date');
-		var mainTodayDate;
 	  
 		
 		/* Date객체를 사용하여 오늘의 날짜, 연도, 요일등의 정보를 담기. */
 		var today = new Date();
 		var first = new Date(today.getFullYear(), today.getMonth(),1);
-		var dayList = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+		var dayList = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 		var monthList = ['1','2','3','4','5','6','7','8','9','10','11','12'];
 		var leapYear=[31,29,31,30,31,30,31,31,30,31,30,31];
 		var notLeapYear=[31,28,31,30,31,30,31,31,30,31,30,31];
@@ -217,17 +198,29 @@
 		            	/* td로 생성된 요소를 $td로 담아  */
 		                $tr.appendChild($td);
 		            	/* 아까 주에서 추가할때 썼던 $tr에 appendChild 해주기. */
+		            	$td.setAttribute('class','text-center');
+		            	$td.style.wordBreak="break-all";
 		            }else{
 		            	/* 만약 첫번째 주가 아니라면(2,3,4,5,6...) */
 		                var $td = document.createElement('td');
-		                $td.textContent = cnt;
+		                $td.innerHTML = "<p>"+cnt + "</p>";
 		                /* td 변수에 날짜를 text로 넣기!! */
 		                $td.setAttribute('id', cnt);     
 		                /* $td(일)의 id값을 cnt로 주기 */
 		                $tr.appendChild($td);
 		                /* tr(주) 밑에 td(일) appendChild하기 */
+		                
+		                $td.setAttribute('class','text-center');
+		            	$td.style.wordBreak="break-all";
+		            	
+		            	var $at = document.createElement('a');
+		            	/* 예약하기 버튼 생성 */
+		            	$td.appendChild($at);
+		            	$at.innerHTML = "예약하기";
+		            	$at.setAttribute('href','#a');
+			            $at.setAttribute('class','reply');
 		                cnt++;
-		                /* cnt(일) 계속 증가하게 */
+		                
 		            }
 		        }
 		        monthCnt++;
@@ -235,6 +228,7 @@
 		        
 		        calendarBody.appendChild($tr);
 		        /* calendarBody 태그 밑에 tr(주) appendChild 하기 */
+		        currentTitle.innerHTML = first.getFullYear() + '&nbsp;&nbsp;&nbsp;&nbsp;'+ monthList[first.getMonth()];
 		    }
 		}
 		showCalendar();
@@ -249,7 +243,7 @@
 		
 
 		function removeCalendar(){
-			/* 추후 달력 업데이를 위해 미리 만들어놓은 부분  */
+			/* 추후 달력 업데이를 위해 미리 만들어놓는  부분  */
 		    let catchTr = 100;
 		    for(var i = 100; i< 106; i++){
 		        var $tr = document.getElementById(catchTr);
@@ -258,10 +252,6 @@
 		    }
 		}
 
-		function showMain(){
-			/* 날짜를 클릭하면 해당 날짜의 색상과 왼쪽화면이 변경되게 하기 위한 함수 */
-		    mainTodayDay.innerHTML = dayList[today.getDay()];
-		}
 		
 		
 		function clickStart(){
@@ -279,7 +269,6 @@
 		    clickedDate1 = e.currentTarget;
 		    clickedDate1.classList.add('active');
 		    today = new Date(today.getFullYear(), today.getMonth(), clickedDate1.id);
-		    showMain();
 		    keyValue = today.getFullYear() + '' + today.getMonth()+ '' + today.getDate();
 		   
 		}
@@ -322,7 +311,6 @@
 		    removeCalendar();
 		    showCalendar();
 		    /* 다시 showCalendar함수를 호출해서 달력 불러 */
-		    showMain();
 		    clickedDate1 = document.getElementById(today.getDate());
 		    clickedDate1.classList.add('active');
 		    clickStart();
@@ -348,27 +336,12 @@
 		    currentTitle.innerHTML = first.getFullYear() + '&nbsp;&nbsp;&nbsp;&nbsp;'+ monthList[first.getMonth()];
 		    removeCalendar();
 		    showCalendar(); 
-		    showMain();
 		    clickedDate1 = document.getElementById(today.getDate());
 		    clickedDate1.classList.add('active');  
 		    clickStart();
 		}
 		
 		
-		
-		/* 라벨 */
-
-		
-	
-		
-		
-		
-		
-		</script>
-
-	  
-	  
-	  <script>
 	  
 	  /* 트레이너 상담신청시 띄울 팝업용 */
 	  function openPopUp() {
@@ -376,7 +349,18 @@
 			window.open("", 'pop',
 							'width=450,height=400,left=420,top=150,toolbars=no,scrollbars=no');
 			form.submit();
-		}	
+		}
+	  
+	   /* 지수야 이거 달력 넘기면 예약이 안되는데 고거 어케해야할듯!  -보라- 
+	   	그리고 클릭했ㅅ을때 팝업 열리게하는거 > td까지만 되어있었는데 a하나 붙였어! 
+	   */
+	   
+	  $('tbody[id="calendar-body"] > tr > td > a').click(function(e){
+		  $('#date').val(e.target.id);
+		  openPopUp();
+	  });
+	  
+	 
 	</script>
 	<%@ include file="../include/footer.jsp"%>
 	<script src="../resources/js/jquery.min.js"></script>

@@ -42,7 +42,7 @@
 				and area = #{area}
 			</if>
 			<if test='!classSize.equals("null")'>
-				and classSize = #{classSize}
+				and class_size = #{classSize}
 			</if>
 			<if test='!gender.equals("null")'>
 				and gender = #{gender}

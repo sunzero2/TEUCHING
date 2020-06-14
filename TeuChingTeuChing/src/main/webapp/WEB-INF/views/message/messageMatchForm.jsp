@@ -45,7 +45,8 @@
 			Date
 			<div class="input-group date" style="width: 50%;">
 				<input type="text" name="match_date" placeholder="날짜를 선택해주세요"
-					class="form-control"> <span class="input-group-addon">
+					value="2020/02/<c:if test="${date < 10}">0${date }</c:if><c:if test="${date >= 10}">${date }</c:if>"
+					 class="form-control"> <span class="input-group-addon">
 					<i class="glyphicon glyphicon-calendar"></i>
 				</span>
 			</div>
