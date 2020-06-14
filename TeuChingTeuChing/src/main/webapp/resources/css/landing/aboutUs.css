@@ -1,0 +1,58 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+html {
+	scroll-behavior: smooth;
+}
+
+.bodyWrapper {
+	width: 1300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#backImage {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.explainImageWrapper {
+	width: 100%;
+	height: 80vh;
+	position: absolute;
+}
+
+.explainImage {
+	width: 100%;
+	height: 100%;
+	background: url('/teuching/resources/img/backImage1.jpg');
+	background-size: cover;
+}
+
+.explainText {
+	height: 20vh;
+	margin-left: 15px;
+	margin-top: 15px;
+	font-family: 'Jeju Gothic', sans-serif;
+}
+
+.explainText h1 {
+	font-weight: bold;
+	color: #ffbab5;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.explainText h2 {
+	font-weight: bold;
+	color: #ff958e;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.explainText p {
+	margin: 0;
+}
+
+#img02 {
+	transition-duration: 500ms;
+}

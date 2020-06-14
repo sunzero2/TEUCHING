@@ -19,19 +19,20 @@
 			<div class="col-12 w-100 text-center">
 				<div class="collapse navbar-collapse" id="ftco-nav">
 					<ul class="navbar-nav m-auto">
-						<li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
-						<li class="nav-item active"><a
-							href="/teuching/matching/main.do" class="nav-link">matching</a></li>
-						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
-						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
-						<li class="nav-item active"><a
-							href="<%=request.getContextPath()%>/profile/review.do"
-							class="nav-link">MyPage</a></li>
-						<li class="nav-item active"><a
-							href="<%=request.getContextPath()%>/profile/schedule.do"
-							class="nav-link">MyPage</a></li>
-						<!--   <li class="nav-item"><a href="#" class="nav-link">Contact</a></li> -->
-						<li class="nav-item active"><a href="#" class="nav-link">MyPage</a></li>
+						<c:if test="${loginInfo != null}">
+							<li class="nav-item active">
+								<a href="#" class="nav-link">MyPage</a>
+							</li>
+						</c:if>
+						<li class="nav-item active">
+							<a href="<%=request.getContextPath()%>/index/aboutus.do" class="nav-link">AboutUs</a>
+						</li>
+						<li class="nav-item active">
+							<a href="<%=request.getContextPath()%>/matching/main.do" class="nav-link">Matching</a>
+						</li>
+						<li class="nav-item active">
+							<a href="<%=request.getContextPath()%>/profile/schedule.do" class="nav-link">Calendar</a>
+						</li>
 					</ul>
 				</div>
 			</div>

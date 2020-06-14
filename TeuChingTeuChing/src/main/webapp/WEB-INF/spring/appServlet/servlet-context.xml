@@ -42,6 +42,14 @@
 		</tx:attributes>
 	</tx:advice>
 	
+	<!-- interceptor -->
+ 	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<beans:bean class="common.interceptor.AuthInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 	<aop:config>
 		<aop:pointcut
 			expression="execution(* com.spring.springmvc..*.*ServiceImpl(..))"

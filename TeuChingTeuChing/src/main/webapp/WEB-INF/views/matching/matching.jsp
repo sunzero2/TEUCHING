@@ -28,7 +28,7 @@
 </head>
 <body>
 <%@ include file="../include/top.jsp" %>
-	<header id="header" class="ftco-section" style="padding-top: 0px;">
+	<header id="header" class="ftco-section">
 		<div class="container">
 			<div class="searchWordWrapper">
 				<div style="margin-left: 35px;">

@@ -38,7 +38,6 @@
 <body>
 	<%@ include file="../include/top.jsp" %>
 	<section class="home-slider js-fullheight owl-carousel">
-			<!-- style="background-image: url(https://source.unsplash.com/category/gym/1600x800/collection);"> -->
 		<div class="slider-item js-fullheight"
 			style="background-image: url(https://source.unsplash.com/collection/827737/1);">
 			<div class="overlay"></div>
