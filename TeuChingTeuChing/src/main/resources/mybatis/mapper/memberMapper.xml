@@ -6,10 +6,7 @@
 
 	<!-- 일반멤버 회원가입 -->
 	<insert id="joinMember">
-		insert into TR_MEMBER(MEM_EMAIL, PASSWORD, NICKNAME, GENDER, CELL,
-							ADDRESS, IS_LEAVE_YN, MANAGER_YN)
-		VALUES(#{email}, #{password}, #{nickname}, #{gender}
-				, #{cell}, #{address}, 'N', 'N')
+		insert into TR_MEMBER VALUES(#{email}, #{password}, #{nickname}, #{gender}, #{cell}, #{address}, 'N', 'N')
 	</insert>
 	
 	<!-- 트레이너 회원가입 -->
@@ -36,14 +33,13 @@
 	
 	<!-- 일반회원 로그인 -->
 	<select id="m_login" resultType="Member">
-		select mem_email, nickname, gender, cell, address
+		select *
 		from tr_member where mem_email = #{email} and password = #{password}
 	</select>
 	 	
  	<!-- 트레이너 로그인 -->
 	<select id="t_login" resultType="Trainer">
-		select tr_email, trainer_name, gender, weight, height, cell, career, address,
-		address_detail, prefer_add1, prefer_add2, prefer_add3, photo, tr_like
+		select *
 		from tr_trainer where tr_email = #{email} and password = #{password}
 	</select>
  	

@@ -1,7 +1,6 @@
 package com.borajoin.teuching.member.model.vo;
 
 public class Trainer {
-
 	private String tr_email;
 	private String password;
 	private String trainerName;
@@ -19,6 +18,7 @@ public class Trainer {
 	private int tr_like;
 	private String black_yn;
 	private String leave_yn;
+	private String purpose_keyword;
 	
 	public String getTr_email() {
 		return tr_email;
@@ -123,6 +123,14 @@ public class Trainer {
 	public void setLeave_yn(String leave_yn) {
 		this.leave_yn = leave_yn;
 	}
+	
+	public String getPurpose_keyword() {
+		return purpose_keyword;
+	}
+	public void setPurpose_keyword(String purpose_keyword) {
+		this.purpose_keyword = purpose_keyword;
+	}
+	
 	@Override
 	public String toString() {
 		return "Trainer [tr_email=" + tr_email + ", password=" + password + ", trainerName=" + trainerName + ", gender="

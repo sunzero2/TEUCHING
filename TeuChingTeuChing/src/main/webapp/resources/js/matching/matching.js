@@ -30,7 +30,7 @@ document.querySelectorAll(".keywordBtn").forEach(function(el) {
 		} else if(el.value == '등록지 기준') {
 			select.style.display = "none";
 			// 바꿀거야.
-			area = "서울";
+			area = "등록지";
 		}
 	})
 })
@@ -93,6 +93,9 @@ document.getElementById("keywordSearchBtn").addEventListener('click', function(e
 	
 	if(area == '타지역') {
 		area = select.value;
+	} else {
+		area = document.getElementById('memberArea').value;
+		console.log("area ", area);
 	}
 	
 	$.ajax({

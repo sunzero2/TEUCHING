@@ -46,7 +46,7 @@ background-color: transparent !important;
 				<div class="col-xl-8 m-auto order-xl-1" style="margin-top: 5% !important;">
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
 					<form id="signFrm" name="signFrm"
-						action="<%=request.getContextPath()%>/member/m_joinemailCheck.do"
+						<%-- action="<%=request.getContextPath()%>/member/m_joinemailCheck.do" --%>
 	       					action="<%=request.getContextPath()%>/member/joinMemberImple.do"
 	       					 method="post">
 						<div class="card-header bg-white border-0">
@@ -68,7 +68,7 @@ background-color: transparent !important;
 											<div class="form-group">
 												<label class="form-control-label">Email 주소</label> 
 												<button type="button" id="check_email" style="font-size: small;">중복확인</button><br>
-												<input type="email" id="email" name="email"
+												<input type="email" id="email" name="email" maxlength="50"
 													class="form-control form-control-alternative"
 													placeholder="작성하신 주소로 인증메일이 발송됩니다."
 													style= "font-size: small; width:100%; height:30px">
@@ -130,7 +130,7 @@ background-color: transparent !important;
 										<div class="col-lg-4">
 											<div class="form-group focused">
 												<label class="form-control-label">연락처</label>
-												<input type="text" id="cell" name="cell"
+												<input type="text" id="cell" name="cell" maxlength="13"
 													class="form-control form-control-alternative">
 											</div>
 										</div>
@@ -210,7 +210,7 @@ background-color: transparent !important;
 		
 		$('#check_nick').click(function(){
 			$.ajax({
-				url: "${pageContext.request.contextPath}/nickChk.do",
+				url: "${pageContext.request.contextPath}/member/nickChk.do",
 				type: "GET",
 				data:{
 					"nickname":$('#nickname').val()
@@ -236,7 +236,7 @@ background-color: transparent !important;
 		
 		$('#check_email').click(function(){
 			$.ajax({
-				url: "${pageContext.request.contextPath}/emailChk.do",
+				url: "${pageContext.request.contextPath}/member/emailChk.do",
 				type: "POST",
 				data:{
 					"email":$('#email').val()
