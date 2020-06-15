@@ -48,13 +48,15 @@
 			</c:if>
 			<c:if test="${loginInfo != null}">
 				<div class="topLogOut">
-				<c:if test="${test eq 'member'}">
+				<c:if test="${memberType eq 'member'}">
 					<a style="color:black" href="${pageContext.request.contextPath }/message/msgboxrecv.do">✉</a>
 					<a onclick="location= 'detail.cs?id=${loginInfo.nickname}">${loginInfo.nickname}	님  환영합니다. </a>
+					<a href ="<%=request.getContextPath()%>/member/mypage.do"> /  myPage</a>
 					</c:if>
-				<c:if test="${test eq 'trainer'}">
+				<c:if test="${memberType eq 'trainer'}">
 					<a style="color:black" href="${pageContext.request.contextPath }/message/msgboxrecv.do">✉</a>
 					<a onclick="location= 'detail.cs?id=${loginInfo.trainerName}">${loginInfo.trainerName}  님  환영합니다. </a>
+					<a href ="<%=request.getContextPath()%>/member/mypage.do"> /  myPage</a>
 					</c:if>	
 						<!-- <a>MyPage</a>  -->
 						<a href="<%=request.getContextPath()%>/member/logout.do">/  logout</a>

@@ -77,7 +77,7 @@ body {
 											<div class="form-group">
 												<label class="form-control-label">Email 주소</label> 
 												<button type="button" id="check_email" style="font-size: small;">중복확인</button><br>
-												<input type="email" id="email" name="email"
+												<input type="email" id="email" name="email" maxlength="50"
 													class="form-control form-control-alternative"
 													placeholder="작성하신 주소로 인증메일이 발송됩니다."
 													style= "font-size: small; width:100%; height:30px">
@@ -109,8 +109,8 @@ body {
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group focused">
-												<label class="form-control-label">성함
-													</label> <input type="text" id="name" name="name"
+												<label class="form-control-label">성함 
+													</label> <input type="text" id="name" name="name" maxlength="20"
 													class="form-control form-control-alternative">
 											</div>
 										</div>
@@ -154,7 +154,7 @@ body {
 										<div class="col-lg-4">
 											<div class="form-group focused">
 												<label class="form-control-label">연락처</label>
-												<input type="text" id="cell" name="cell"
+												<input type="text" id="cell" name="cell" maxlength="13"
 													class="form-control form-control-alternative">
 											</div>
 										</div>
@@ -280,7 +280,7 @@ body {
 		
 		$('#check_email').click(function(){
 			$.ajax({
-				url: "${pageContext.request.contextPath}/emailChk.do",
+				url: "${pageContext.request.contextPath}/member/emailChk.do",
 				type: "POST",
 				data:{
 					"email":$('#email').val()

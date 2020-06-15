@@ -28,10 +28,20 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
+	
+	
 
 <title>Teu-Ching Teu-Ching</title>
 
 <style type="text/css">
+
+html {
+	background-image: url(../resources/img/tr1.jpg) !important;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
 
 .toggle_radio{
   position: relative;
@@ -106,9 +116,9 @@ input::placeholder {
 </head>
 <body>
 	
-	<main class="login-form">
+	<main class="login-form" style="margin-top: 5% !important; margin-bottom: 4% !important;">
 		<div class="cotainer">
-			<div class="row justify-content-center">
+			<div class="row justify-content-center" style="background-color: transparent !important;">
 				<div class="col-md-8">
 					<div class="card" style="width	: 50% !important; left: 22%;">
 						<div class="card-header">비밀번호 찾기</div>
