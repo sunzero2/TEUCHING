@@ -34,10 +34,10 @@ public class AuthInterceptor implements HandlerInterceptor {
 			}
 		} 
 		
-		//매니저 페이지 접근 방지
+		// 회원용 매니저 페이지 접근 방지
 		if (session.getAttribute("loginInfo")!= null && session.getAttribute("memberType").equals("member")) {
 			Member m = (Member)session.getAttribute("loginInfo");
-			if(!m.getManager_yn().equals("Y")) {
+			if(m.getManager_yn().equals("N")) {
 				if (request.getRequestURI().contains("/manager")) {
 					request.setAttribute("msg", "관리자 페이지 입니다");
 					request.setAttribute("back", "back");
@@ -47,11 +47,17 @@ public class AuthInterceptor implements HandlerInterceptor {
 			}
 		}
 		
-		//트레이너 상담요청 접근방지
+		// 트레이너 상담요청, 매니저 페이지 접근방지
 		if(session.getAttribute("loginInfo")!= null && session.getAttribute("memberType").equals("trainer")) {
 			if(request.getRequestURI().contains("/matchform")) {
 				request.setAttribute("msg", "회원만 요청 가능한 페이지입니다");
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/message/result.jsp");
+				rd.forward(request, response);
+			}
+			if (request.getRequestURI().contains("/manager")) {
+				request.setAttribute("msg", "관리자 페이지 입니다");
+				request.setAttribute("back", "back");
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/result.jsp");
 				rd.forward(request, response);
 			}
 		}
