@@ -220,6 +220,11 @@ td a{
 		            	$at.innerHTML = "예약하기";
 		            	$at.setAttribute('href','#a');
 			            $at.setAttribute('class','reply');
+			            /*  */
+			            $at.setAttribute('id', "day");
+			            $at.setAttribute('data-date', cnt);
+			            $at.onclick = click;
+			            /*  */
 		                cnt++;
 		                
 		            }
@@ -356,16 +361,17 @@ td a{
 	   	그리고 클릭했ㅅ을때 팝업 열리게하는거 > td까지만 되어있었는데 a하나 붙였어! 
 	   */
 	   
-	  $('tbody[id="calendar-body"] > tr > td ').click(function(e){
-		  let month_year = $('#current-year-month').text();
-		  let year = month_year.substring(0,4);
-		  let month = month_year.substring(8);
-		  
-		  $('#year').val(year);
-		  $('#month').val(month);
-		  $('#date').val(e.target.previousSibling.innerText);
-		  openPopUp();
-	  });
+	   	function click(e){
+	   		let month_year = $('#current-year-month').text();
+		 	let year = month_year.substring(0,4);
+			let month = month_year.substring(8);
+			  
+			$('#year').val(year);
+			$('#month').val(month);
+			$('#date').val(e.target.dataset.date);
+			
+	   		openPopUp();
+	   	}
 	  
 	 
 	</script>
