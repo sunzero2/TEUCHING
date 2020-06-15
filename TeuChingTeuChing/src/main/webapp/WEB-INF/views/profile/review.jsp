@@ -16,16 +16,34 @@
 	color: red;
 }
 
+a{
+	
+}
 
 
 #heart {
 	cursor: pointer;
 }
+
+#loginrecUpdate{
+padding-left: 470px;
+
+}
 #recUpdate{
 	padding-left: 500px;
 }
 
+#gogo{
+
+	color:#ffb5b5;
+	font-family: 'Nanum Pen Script', cursive;
+	font-size:1.5vw;
+	
+}
+
 </style>
+
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
 	rel="stylesheet">
@@ -98,7 +116,11 @@
 								class="img-fluid mb-4" width="300px" height="300px">
 						</div>
 						<div class="desc align-self-md-center">
-								<h3 id="trainer"></h3>
+								<h3 id="trainer">${Trainer.trainerName} 님의 프로필 입니다.
+								
+								<a
+											href="${pageContext.request.contextPath}/report/viewreport.do?tr_email=${Trainer.tr_email}&
+                     nick_name=김지수&type=tra&reported=김김지수" id="gogo">  🚨</a></h3>
 								<br>
 								<p>
 									Address : <span id="totalAdress">${Trainer.address}
@@ -124,15 +146,11 @@
 									<br>
 
 									<div class="comment-body">
-										<a
-											href="${pageContext.request.contextPath }/profile/schedule.do"
-											class="reply">트레이너 스케쥴러로 이동</a>
+									<a href="${pageContext.request.contextPath}/profile/schedule.do?trainerName=${Trainer.tr_email}"
+											id="gogo">스케줄로 이동  →  📅</a>
 
 
-										<a
-											href="${pageContext.request.contextPath}/report/viewreport.do?tr_email=1111
-                     &mem_eamil=1111&nick_name=김지수&type=tra&reported=김김지수"
-											class="reply">트레이너 신고</a>
+										
 									
 								</div></c:forEach>
 								</div>
@@ -195,7 +213,7 @@
 										<p>${review.rev_cont}</p>
 
 										<a href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
-											class="reply">리뷰신고</a>
+											class="reply">🚨</a>
 										</c:if>	
 										
 										
@@ -211,8 +229,9 @@
 
 										<p>${review.rev_cont}</p>
 
-										<a href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
-											class="reply">리뷰신고</a>
+
+										<a href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=${review.tr_email}&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
+											class="reply">🚨</a>
 										</c:if>	
 									</div>
 
@@ -515,6 +534,18 @@
 		
 		/* 리뷰 삭제 */
 		
+		function deleteReview() {
+			
+			$.ajax({
+				type:'POST',
+				url: '<%=request.getContextPath()%>/review/deletereview.do',
+				data: $("#uploadReview").serialize(),
+				success: function(data) {
+					alert(data);
+				}
+				
+			})
+		};
 		
 		
 		
@@ -543,7 +574,6 @@
 
 		var trainerName = getParameters('trainerName');
 		var trainerEmail = getParameters('trainerEmail');
-		$('#trainername').html(trainerName + "님의 프로필입니다.");
 		$('#trainer').html(trainerName);
 		$('#trnn').html(trainerName);
 		

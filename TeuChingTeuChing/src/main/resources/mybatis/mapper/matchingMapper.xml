@@ -33,7 +33,7 @@
 		select * from tr_post
 		<where>
 			<if test='!purpose.equals("null")'>
-				purpose = #{purpose}
+				purpose like '%' || #{purpose} || '%'
 			</if>
 			<if test='!sports.equals("null")'>
 				and sports = #{sports}
