@@ -81,6 +81,7 @@
 					<th class="searchTableTh">지역</th>
 					<td class="searchTableTd">
 						<input type="button" class="keywordBtn" name="area" value="등록지 기준">
+						<input type="hidden" id="memberArea" value="${loginInfo.address}">
 						<input type="button" class="keywordBtn" name="area" value="타지역">
 						<select id="placeSelect">
 							<option value="서울">서울</option>
