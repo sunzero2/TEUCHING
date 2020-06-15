@@ -55,7 +55,7 @@ body {
 				<div class="col-xl-8 m-auto order-xl-1" style="margin-top: 5% !important; margin-bottom: 4% !important;">
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
 					<form id="signFrm" name="signFrm"
-					 action="<%=request.getContextPath()%>/member/t_joinemailCheck.do"
+					 <%-- action="<%=request.getContextPath()%>/member/t_joinemailCheck.do" --%>
 	       					action="<%=request.getContextPath()%>/member/joinTrainerImple.do" 
 	       					method="post" enctype="multipart/form-data">
 						<div class="card-header bg-white border-0">

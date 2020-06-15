@@ -12,7 +12,7 @@
 	<!-- 트레이너 회원가입 -->
 	<insert id="joinTrainer">
 		insert into TR_TRAINER VALUES(#{email}, #{password}, #{name}, #{gender}, #{weight}, #{height}
-				, #{cell}, #{career}, #{address}, #{address_detail}, #{prefer1}, #{prefer2}, #{prefer3}, #{photo}, 0, 'N', 'N')
+				, #{cell}, #{career}, #{address}, #{address_detail}, #{prefer1}, #{prefer2}, #{prefer3}, #{photo}, 0, 'N', 'N', null)
 	</insert>
 	
 	<!-- 일반회원 닉네임 중복 체크 -->
