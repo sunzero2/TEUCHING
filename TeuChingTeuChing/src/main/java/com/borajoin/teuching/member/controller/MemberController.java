@@ -78,12 +78,14 @@ public class MemberController {
 	public ModelAndView loginImple(@RequestParam Map<String, Object> commandMap, HttpSession session)
 			throws SQLException {
 		ModelAndView mav = new ModelAndView();
-
+		System.out.println(commandMap);
 		if (commandMap.get("account").equals("member")) {
 			Member res = ms.m_login(commandMap);
 
 			if (res == null) {
-				mav.setViewName("account/loginform");
+				mav.addObject("msg", "아이디 혹은 비밀번호를 확인해주세요.");
+				mav.setViewName("account/redirect");
+				
 			} else {
 				session.setAttribute("loginInfo", res);
 				session.setAttribute("memberType", "member");
@@ -93,7 +95,9 @@ public class MemberController {
 			Trainer res = ms.t_login(commandMap);
 
 			if (res == null) {
-				mav.setViewName("account/loginform");
+				mav.addObject("msg", "아이디 혹은 비밀번호를 확인해주세요.");
+				mav.addObject("url", "account/loginform");
+				mav.setViewName("account/redirect");
 			} else {
 				session.setAttribute("loginInfo", res);
 				session.setAttribute("memberType", "trainer");

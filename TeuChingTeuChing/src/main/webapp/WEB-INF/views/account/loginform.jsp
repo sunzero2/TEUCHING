@@ -187,14 +187,6 @@
 				
 			}
 			
-			var message = '${msg}';
-			
-			if(message == "0"){
-			alert("아이디 혹은 비밀번호를 확인하세요.");
-			location.reload();
-			}else if(message == "1"){
-			alert("환영합니다!");
-			}
 			
 		});
 		

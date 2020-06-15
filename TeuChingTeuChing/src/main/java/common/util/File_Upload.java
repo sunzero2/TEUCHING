@@ -7,6 +7,7 @@ public class File_Upload {
 	private String rename_filename;
 	private String savepath;
 	private Object obj;
+	private String edit_yn;
 
 	public File_Upload() {
 		super();
@@ -59,6 +60,14 @@ public class File_Upload {
 
 	public void setObj(Object obj) {
 		this.obj = obj;
+	}
+
+	public String getEdit_yn() {
+		return edit_yn;
+	}
+
+	public void setEdit_yn(String edit_yn) {
+		this.edit_yn = edit_yn;
 	}
 
 	@Override

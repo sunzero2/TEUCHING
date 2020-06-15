@@ -29,7 +29,7 @@
 				calendarWeeks : false,
 				todayHighlight : true,
 				autoclose : true,
-				format : "yyyy/mm/dd",
+				format : "yyyy-mm-dd",
 				language : "kr"
 			});
 		});
@@ -46,7 +46,7 @@
 			Date
 			<div class="input-group date" style="width: 50%;">
 				<input type="text" name="match_date" placeholder="날짜를 선택해주세요"
-					value="${year }/<c:if test="${month < 10 }">0${month }</c:if><c:if test="${month >= 10 }">${month }</c:if>/<c:if test="${date < 10}">0${date }</c:if><c:if test="${date >= 10}">${date }</c:if>"
+					value="${year }-<c:if test="${month < 10 }">0${month }</c:if><c:if test="${month >= 10 }">${month }</c:if>-<c:if test="${date < 10}">0${date }</c:if><c:if test="${date >= 10}">${date }</c:if>"
 					class="form-control"> <span class="input-group-addon">
 					<i class="glyphicon glyphicon-calendar"></i>
 				</span>
