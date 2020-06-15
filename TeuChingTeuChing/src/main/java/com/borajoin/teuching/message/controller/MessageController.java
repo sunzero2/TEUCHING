@@ -1,5 +1,6 @@
 package com.borajoin.teuching.message.controller;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -190,7 +191,7 @@ public class MessageController {
 	 * @Method 설명 : 트레이너에게 상담신청 메시지 발송 & 매칭 요청
 	 */
 	@RequestMapping("/message/matchformsend.do")
-	public ModelAndView matchFormSend(String tr_email, String msg_cont, String match_date, String match_time,
+	public ModelAndView matchFormSend(String tr_email, String msg_cont, Date match_date, String match_time,
 			HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> commandMap = new HashMap<String, Object>();
