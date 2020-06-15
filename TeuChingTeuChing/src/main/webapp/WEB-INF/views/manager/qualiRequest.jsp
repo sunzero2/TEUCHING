@@ -55,7 +55,7 @@
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
 				id="person"></div>
 			<form
-				action="${pageContext.request.contextPath }/quali/insertquali.do"
+				action="${pageContext.request.contextPath }/manager/quali/insertquali.do"
 				method="post" enctype="multipart/form-data">
 				<h5>
 					2020-02-02
