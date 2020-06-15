@@ -28,7 +28,7 @@ public class MessageController {
 	 * @Method Name : msgBoxSend
 	 * @작성일 : 2020. 6. 12.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 받은 쪽지함 목록 띄우기
+	 * @Method 설명 : 보낸 쪽지함 목록 띄우기
 	 */
 	@RequestMapping("/message/msgboxsend.do")
 	public ModelAndView msgBoxSend(HttpSession session, Integer currentpage) {
@@ -59,7 +59,7 @@ public class MessageController {
 	 * @Method Name : msgBoxRecv
 	 * @작성일 : 2020. 6. 12.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 보낸 쪽지 함 목록띄우기
+	 * @Method 설명 : 받은 쪽지 함 목록띄우기
 	 */
 	@RequestMapping("/message/msgboxrecv.do")
 	public ModelAndView msgBoxRecv(HttpSession session, Integer currentpage) {

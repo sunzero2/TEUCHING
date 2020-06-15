@@ -18,24 +18,24 @@
 	rel="stylesheet">
 
 <link rel="stylesheet"
-	href="resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="resources/css/animate.css">
+	href="../resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="../resources/css/animate.css">
 
-<link rel="stylesheet" href="resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="resources/css/magnific-popup.css">
+<link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="../resources/css/magnific-popup.css">
 
-<link rel="stylesheet" href="resources/css/aos.css">
+<link rel="stylesheet" href="../resources/css/aos.css">
 
-<link rel="stylesheet" href="resources/css/ionicons.min.css">
+<link rel="stylesheet" href="../resources/css/ionicons.min.css">
 
-<link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="resources/css/jquery.timepicker.css">
+<link rel="stylesheet" href="../resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="../resources/css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="resources/css/flaticon.css">
-<link rel="stylesheet" href="resources/css/icomoon.css">
-<link rel="stylesheet" href="resources/css/style.css">
+<link rel="stylesheet" href="../resources/css/flaticon.css">
+<link rel="stylesheet" href="../resources/css/icomoon.css">
+<link rel="stylesheet" href="../resources/css/style.css">
 <!-- 기존꺼말고 새로갖다박은거임 -->
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
@@ -50,8 +50,8 @@
 	<!------ Include the above in your HEAD tag ---------->
 	
 	<div style="height:50px;width:18%;transform:translateX(220%);"class="div">
-		<h4 style="float:left;padding-bottom:3%;border-bottom:2px solid lightblue;padding-left:1%;padding-right:1%;"><a style="color:black;" href="${pageContext.request.contextPath }/manager.do">🚨 신고</a></h4>
-		<h4 style="float:right;padding-bottom:3%;border-bottom:2px solid lightgray;padding-right:1%;"><a style="color:black;" href="${pageContext.request.contextPath }/quali.do">🏅 자격증명</a></h4>
+		<h4 style="float:left;padding-bottom:3%;border-bottom:2px solid lightblue;padding-left:1%;padding-right:1%;"><a style="color:black;" href="${pageContext.request.contextPath }/manager/reportdetail.do">🚨 신고</a></h4>
+		<h4 style="float:right;padding-bottom:3%;border-bottom:2px solid lightgray;padding-right:1%;"><a style="color:black;" href="${pageContext.request.contextPath }/manager/quali.do">🏅 자격증명</a></h4>
 	</div>
 	<br>
 	<div class="container" style="width:62%;">
@@ -75,7 +75,7 @@
 						</div>
 						<div class="panel-body">
 							<a
-								href="${pageContext.request.contextPath }/managerdetail.do?traid=${r.report_idx}">${r.rep_cont }</a>
+								href="${pageContext.request.contextPath }/manager/reportdetail.do?traid=${r.report_idx}">${r.rep_cont }</a>
 						</div>
 					</div>
 				</c:forEach>
@@ -86,30 +86,30 @@
 								<c:if test="${res.resTra.pagingTra.blockStart le 1 }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?tracurrentpage=${res.resTra.pagingTra.blockStart}">&lt;</a></li>
+								/manager/report.do?tracurrentpage=${res.resTra.pagingTra.blockStart}">&lt;</a></li>
 								</c:if>
 								<c:if test="${res.resTra.pagingTra.blockStart gt 1 }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?tracurrentpage=${res.resTra.pagingTra.blockStart-1}">&lt;</a></li>
+								/manager/report.do?tracurrentpage=${res.resTra.pagingTra.blockStart-1}">&lt;</a></li>
 								</c:if>
 								<c:forEach begin="${res.resTra.pagingTra.blockStart }"
 									end="${res.resTra.pagingTra.blockEnd }" var="pt">
 									<li class="active"><span> <a
-											href="${pageContext.request.contextPath }/manager.do?tracurrentpage=${pt}">${pt }</a>
+											href="${pageContext.request.contextPath }/manager/report.do?tracurrentpage=${pt}">${pt }</a>
 									</span></li>
 								</c:forEach>
 								<c:if
 									test="${res.resTra.pagingTra.blockEnd lt res.resTra.pagingTra.lastPage }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?tracurrentpage=${res.resTra.pagingTra.blockEnd+1}">&gt;</a></li>
+								/manager/report.do?tracurrentpage=${res.resTra.pagingTra.blockEnd+1}">&gt;</a></li>
 								</c:if>
 								<c:if
 									test="${res.resTra.pagingTra.blockEnd ge res.resTra.pagingTra.lastPage }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?tracurrentpage=${res.resTra.pagingTra.blockEnd}">&gt;</a></li>
+								/manager/report.do?tracurrentpage=${res.resTra.pagingTra.blockEnd}">&gt;</a></li>
 								</c:if>
 							</ul>
 						</div>
@@ -139,7 +139,7 @@
 						</div>
 						<div class="panel-body">
 							<a
-								href="${pageContext.request.contextPath }/managerdetail.do?revid=${r.report_idx}">${r.rep_cont }</a>
+								href="${pageContext.request.contextPath }/manager/reportdetail.do?revid=${r.report_idx}">${r.rep_cont }</a>
 						</div>
 					</div>
 				</c:forEach>
@@ -150,30 +150,30 @@
 								<c:if test="${res.resRev.pagingRev.blockStart le 1 }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?revcurrentpage=${res.resRev.pagingRev.blockStart}">&lt;</a></li>
+								/manager/report.do?revcurrentpage=${res.resRev.pagingRev.blockStart}">&lt;</a></li>
 								</c:if>
 								<c:if test="${res.resRev.pagingRev.blockStart gt 1 }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?revcurrentpage=${res.resRev.pagingRev.blockStart-1}">&lt;</a></li>
+								/manager/report.do?revcurrentpage=${res.resRev.pagingRev.blockStart-1}">&lt;</a></li>
 								</c:if>
 								<c:forEach begin="${res.resRev.pagingRev.blockStart }"
 									end="${res.resRev.pagingRev.blockEnd }" var="pr">
 									<li class="active"><span> <a
-											href="${pageContext.request.contextPath }/manager.do?revcurrentpage=${pr}">${pr }</a>
+											href="${pageContext.request.contextPath }/manager/report.do?revcurrentpage=${pr}">${pr }</a>
 									</span></li>
 								</c:forEach>
 								<c:if
 									test="${res.resRev.pagingRev.blockEnd lt res.resRev.pagingRev.lastPage }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?revcurrentpage=${res.resRev.pagingRev.blockEnd+1}">&gt;</a></li>
+								/manager/report.do?revcurrentpage=${res.resRev.pagingRev.blockEnd+1}">&gt;</a></li>
 								</c:if>
 								<c:if
 									test="${res.resRev.pagingRev.blockEnd ge res.resRev.pagingRev.lastPage }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager.do?revcurrentpage=${res.resRev.pagingRev.blockEnd}">&gt;</a></li>
+								/manager/report.do?revcurrentpage=${res.resRev.pagingRev.blockEnd}">&gt;</a></li>
 								</c:if>
 							</ul>
 						</div>
@@ -187,23 +187,23 @@
 	<br>
 
 
-	<script src="resources/js/jquery.min.js"></script>
-	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="resources/js/popper.min.js"></script>
-	<script src="resources/js/bootstrap.min.js"></script>
-	<script src="resources/js/jquery.easing.1.3.js"></script>
-	<script src="resources/js/jquery.waypoints.min.js"></script>
-	<script src="resources/js/jquery.stellar.min.js"></script>
-	<script src="resources/js/owl.carousel.min.js"></script>
-	<script src="resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="resources/js/aos.js"></script>
-	<script src="resources/js/jquery.animateNumber.min.js"></script>
-	<script src="resources/js/bootstrap-datepicker.js"></script>
-	<script src="resources/js/jquery.timepicker.min.js"></script>
-	<script src="resources/js/scrollax.min.js"></script>
+	<script src="../resources/js/jquery.min.js"></script>
+	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="../resources/js/popper.min.js"></script>
+	<script src="../resources/js/bootstrap.min.js"></script>
+	<script src="../resources/js/jquery.easing.1.3.js"></script>
+	<script src="../resources/js/jquery.waypoints.min.js"></script>
+	<script src="../resources/js/jquery.stellar.min.js"></script>
+	<script src="../resources/js/owl.carousel.min.js"></script>
+	<script src="../resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="../resources/js/aos.js"></script>
+	<script src="../resources/js/jquery.animateNumber.min.js"></script>
+	<script src="../resources/js/bootstrap-datepicker.js"></script>
+	<script src="../resources/js/jquery.timepicker.min.js"></script>
+	<script src="../resources/js/scrollax.min.js"></script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="resources/js/google-map.js"></script>
-	<script src="resources/js/main.js"></script>
+	<script src="../resources/js/google-map.js"></script>
+	<script src="../resources/js/main.js"></script>
 </body>
 </html>

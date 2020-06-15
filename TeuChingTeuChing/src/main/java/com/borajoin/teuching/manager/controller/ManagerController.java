@@ -34,7 +34,7 @@ public class ManagerController {
 	 * @작성자 : 김지수
 	 * @Method 설명 : 관리자 페이지 내 리뷰신고, 트레이너 신고 게시판 구현
 	 */
-	@RequestMapping("/manager.do")
+	@RequestMapping("/manager/report.do")
 	public ModelAndView managerPage(Integer revcurrentpage, Integer tracurrentpage) {
 
 		ModelAndView mv = new ModelAndView();
@@ -62,7 +62,7 @@ public class ManagerController {
 	 * @작성자 : 김지수
 	 * @Method 설명 : 신고 게시글에 대한 상세페이지
 	 */
-	@RequestMapping("/managerdetail.do")
+	@RequestMapping("/manager/reportdetail.do")
 	public ModelAndView managerDetail(Integer revid, Integer traid) {
 		ModelAndView mv = new ModelAndView();
 		List<File_Upload> fu = new ArrayList<File_Upload>();
@@ -87,7 +87,7 @@ public class ManagerController {
 	 * @작성자 : 김지수
 	 * @Method 설명 : 신고 게시글에 대한 처리 결과 작성 페이지 매핑
 	 */
-	@PostMapping("/managerdetail/answer.do")
+	@PostMapping("/manager/reportdetail/ans.do")
 	public ModelAndView managerDetailAnswer(@RequestParam Map<String, Object> commandMap) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("res", commandMap);
@@ -101,16 +101,16 @@ public class ManagerController {
 	 * @작성자 : 김지수
 	 * @Method 설명 : 신고 게시글에 대한 처리 결과 작성 및 수정
 	 */
-	@PostMapping("/managerdetail/modify.do")
+	@PostMapping("/manager/reportdetail/modify.do")
 	public ModelAndView managerDetailModify(@RequestParam Map<String, Object> commandMap) {
 		ModelAndView mv = new ModelAndView();
 		if (commandMap.get("type").equals("tra")) {
 			ms.updateManagerDetail_tra(commandMap);
-			mv.setViewName("redirect:/managerdetail.do?traid=" + commandMap.get("report_idx"));
+			mv.setViewName("redirect:/manager/reportdetail.do?traid=" + commandMap.get("report_idx"));
 		}
 		if (commandMap.get("type").equals("rev")) {
 			ms.updateManagerDetail_rev(commandMap);
-			mv.setViewName("redirect:/managerdetail.do?revid=" + commandMap.get("report_idx"));
+			mv.setViewName("redirect:/manager/reportdetail.do?revid=" + commandMap.get("report_idx"));
 		}
 		return mv;
 	}
@@ -121,7 +121,7 @@ public class ManagerController {
 	 * @작성자 : 김지수
 	 * @Method 설명 : 트레이너 신고 및 리뷰신고 작성 페이지 매핑
 	 */
-	@RequestMapping("/report/viewreport.do")
+	@RequestMapping("/manager/reportrequest.do")
 	public ModelAndView reportView(@RequestParam Map<String, Object> commandMap) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("res", commandMap);
@@ -133,9 +133,9 @@ public class ManagerController {
 	 * @Method Name : reportFileUpload
 	 * @작성일 : 2020. 6. 6.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 트레이너 신고 및 리뷰신고 작성 & 다중파일 업로드
+	 * @Method 설명 : 트레이너 신고 및 리뷰신고 작성 & 파일 업로드
 	 */
-	@PostMapping("/report/insertReport")
+	@PostMapping("/manager/report/insertreport.do")
 	public ModelAndView reportFileUpload(@RequestParam Map<String, Object> commandMap, List<MultipartFile> files,
 			HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
@@ -182,7 +182,7 @@ public class ManagerController {
 	 * @작성자 : 김지수
 	 * @Method 설명 : 관리자 페이지의 자격증명 메뉴 구현
 	 */
-	@RequestMapping("/quali.do")
+	@RequestMapping("/manager/quali.do")
 	public ModelAndView selectQuali(Integer currentpage) {
 		ModelAndView mv = new ModelAndView();
 		if (currentpage == null) {
@@ -199,7 +199,7 @@ public class ManagerController {
 	 * @작성자 : 김지수
 	 * @Method 설명 : 자격증명 요청글의 상세 내용 확인
 	 */
-	@RequestMapping("/qualidetail.do")
+	@RequestMapping("/manager/qualidetail.do")
 	public ModelAndView selectQualiDetail(String qualiidx) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("manager/qualiDetail");
@@ -214,12 +214,12 @@ public class ManagerController {
 	 * @작성자 : 김지수
 	 * @Method 설명 : 트레이너 인증 요청 승인처리
 	 */
-	@RequestMapping("/qualidetail/auth.do")
+	@RequestMapping("/manager/qualidetail/auth.do")
 	public ModelAndView updateQualiYn(int quali_idx, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		ms.updateQualiYn(quali_idx);
 		mv.addObject("msg", "승인 완료 되었습니다");
-		mv.addObject("url", request.getContextPath() + "/quali.do");
+		mv.addObject("url", request.getContextPath() + "/manager/quali.do");
 		mv.setViewName("common/result");
 		return mv;
 	}
@@ -230,14 +230,14 @@ public class ManagerController {
 	* @작성자 : 김지수
 	* @Method 설명 : 자격증명 요청페이지로 이동
 	*/
-	@RequestMapping("/quali/qualirequest.do")
+	@RequestMapping("/manager/qualirequest.do")
 	public ModelAndView qualiRequest() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("manager/qualiRequest");
 		return mv;
 	}
 	
-	@RequestMapping("/quali/insertquali.do")
+	@RequestMapping("/manager/quali/insertquali.do")
 	public ModelAndView  insertQuali(HttpServletRequest request, String quali_auth, MultipartFile file) {
 		ModelAndView mv = new ModelAndView();
 		Trainer t = (Trainer) request.getSession().getAttribute("loginInfo");
