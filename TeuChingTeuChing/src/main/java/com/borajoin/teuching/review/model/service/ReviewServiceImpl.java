@@ -20,7 +20,7 @@ public class ReviewServiceImpl implements ReviewService {
 	ReviewDao rd;
 	
 	@Override
-	public Map<String, Object> selectReviewList(String orderby, int currentPage, int cntPerPage) {
+	public Map<String,Object> selectReviewList(String orderby, int currentPage, int cntPerPage) {
 		Map<String, Object> res = new HashMap<>();
 		Paging page = new Paging(rd.contentCnt(), currentPage, cntPerPage);
 		List<Review> rlist = rd.selectReviewList(page, orderby);

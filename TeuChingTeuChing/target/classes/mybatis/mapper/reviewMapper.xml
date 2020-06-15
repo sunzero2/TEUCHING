@@ -3,10 +3,27 @@
 
 <mapper namespace="Review">
 
+	<resultMap id="trainermap" type="Trainer">
+		<id column="tr_email" property="tr_email"></id>
+		<result column="password" property="password"></result>
+		<result column="trainer_name" property="trainerName"></result>
+		<result column="gender" property="gender"></result>
+		<result column="weight" property="weight"></result>
+		<result column="cell" property="cell"></result>
+		<result column="career" property="career"></result>
+		<result column="address" property="address"></result>
+		<result column="adress_detail" property="adress_detail"></result>
+		<result column="prefer_add1" property="prefer_add1"></result>
+		<result column="prefer_add2" property="prefer_add2"></result>
+		<result column="prefer_add3" property="prefer_add3"></result>
+		<result column="photo" property="photo"></result>
+		<result column="tr_like" property="tr_like"></result>
+		<result column="black_yn" property="black_yn"></result>
+		<result column="is_leave_yn" property="leave_yn"></result>
+	</resultMap>
 
 	<insert id="uploadReview">
-	
-		insert into tr_review values(S_REVIEW_IDX.nextval,'임의의 트레이너','임의의이메일', #{mem_nickname}, #{rev_cont}, #{rev_score}, #{rev_password},'n',0,sysdate)
+		insert into tr_review values(S_REVIEW_IDX.nextval,'임의의 트레이너','sdfsdfsdfsdf', #{mem_nickname}, #{rev_cont}, #{rev_score}, #{rev_password},'n',0,sysdate)
 	</insert> 
 
 
@@ -46,8 +63,8 @@
 		delete from review_rec where mem_nickname = #{nickname} and review_idx = #{no}
 	</delete>
 	
-	<select id="selectTrainerInformation" resultType="Trainer">
-		select * from tr_trainer where tr_email = #{trainerEmail}
+	<select id="selectTrainerInformation" resultMap="trainermap">
+		select * from tr_trainer where tr_email = #{tr_email}
 	</select>
 	
 

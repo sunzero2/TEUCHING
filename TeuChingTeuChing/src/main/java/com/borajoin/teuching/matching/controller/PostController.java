@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.javassist.expr.NewArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.borajoin.teuching.matching.model.service.PostService;
 import com.borajoin.teuching.matching.model.vo.Post;
+import com.borajoin.teuching.member.model.vo.Member;
+import com.borajoin.teuching.member.model.vo.Trainer;
 
 import common.util.File_Upload;
 
@@ -71,6 +75,7 @@ public class PostController {
 		ModelAndView mav = new ModelAndView();
 		String root = session.getServletContext().getRealPath("/");
 		List<File_Upload> fileData = new ArrayList<>();
+		
 		int i = 0;
 		
 		for(MultipartFile mf : images) {
@@ -96,12 +101,13 @@ public class PostController {
 		if(post.getPostIdx() > 0) {
 			edit(post, fileData);
 		} else {
-			// 로그인 구현되면 바꿔야 할 것!!!!!!!!!!!
-			post.setTrEmail("TEST1@naver.com");
-			post.setSports("요가");
-			post.setArea("서울");
-			post.setGender("남");
-			post.setTrainerName("TEST1");
+			Trainer trainer = (Trainer) session.getAttribute("loginInfo");
+			post.setTrEmail(trainer.getTr_email());
+			post.setSports(trainer.getPurpose_keyword());
+			post.setArea(trainer.getAddress());
+			post.setGender(trainer.getGender());
+			post.setTrainerName(trainer.getTrainerName());
+			
 			int res = postService.insertPost(post, fileData);
 		}
 		

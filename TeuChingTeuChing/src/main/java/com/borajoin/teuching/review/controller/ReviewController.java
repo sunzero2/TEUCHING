@@ -64,6 +64,16 @@ public class ReviewController {
 		return mav;
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@RequestMapping("review/uploadreview.do")
 	public int uploadReview(Review review, @RequestParam Map<String, Object> data) {
