@@ -144,19 +144,6 @@
 			SEQUENCE_NAME = 'S_REV_REPORT_IDX'
 	</select>
 
-	<insert id="insertFile" parameterType="File_Upload">
-		INSERT INTO
-				TR_FILE_UPLOAD
-		VALUES(
-				S_FILE_IDX.NEXTVAL
-				, ${table_idx}
-				, #{origin_filename}
-				, #{rename_filename}
-				, #{savepath}
-				,'N'
-		)
-	</insert>
-
 	<select id="selectTraFile" parameterType="int"
 		resultType="File_Upload">
 		SELECT

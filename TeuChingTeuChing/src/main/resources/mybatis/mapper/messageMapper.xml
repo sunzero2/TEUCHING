@@ -11,7 +11,7 @@
 				, #{mem_email}
 				, #{msg_cont}
 				, SYSDATE
-				, MEMBER
+				, 'Member'
 		)
 	</insert>
 	
