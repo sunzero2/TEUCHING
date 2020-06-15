@@ -2,11 +2,6 @@ package com.borajoin.teuching.member.controller;
 
 import java.io.File;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,15 +9,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.borajoin.teuching.member.model.service.MemberService;
@@ -91,11 +83,8 @@ public class MemberController {
 			Member res = ms.m_login(commandMap);
 
 			if (res == null) {
-				mav.addObject("msg", "0");
 				mav.setViewName("account/loginform");
 			} else {
-				mav.addObject("test", "member");
-				mav.addObject("msg", "1");
 				session.setAttribute("loginInfo", res);
 				session.setAttribute("memberType", "member");
 				mav.setViewName("landing/landing");
@@ -104,11 +93,8 @@ public class MemberController {
 			Trainer res = ms.t_login(commandMap);
 
 			if (res == null) {
-				mav.addObject("msg", "0");
 				mav.setViewName("account/loginform");
 			} else {
-				mav.addObject("test", "trainer");
-				mav.addObject("msg", "1");
 				session.setAttribute("loginInfo", res);
 				session.setAttribute("memberType", "trainer");
 				mav.setViewName("landing/landing");
@@ -148,7 +134,7 @@ public class MemberController {
 	public ModelAndView mypage(HttpSession session) {
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("landing/landing");
+		mav.setViewName("account/mypage");
 
 		return mav;
 	}
@@ -196,7 +182,7 @@ public class MemberController {
 	public ModelAndView joinMemberImple(@RequestParam Map<String, Object> commandMap) throws SQLException {
 		ModelAndView mav = new ModelAndView();
 
-		System.out.println(commandMap);
+		System.out.println("메일인증 후 들어오는 맵 " + commandMap);
 
 		int res = ms.joinMember(commandMap);
 		if (res < 1) {
@@ -310,7 +296,7 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : 일반회원 - 닉네임 중복체크
 	*/
-	@RequestMapping(value = "/nickChk.do", produces = "application/text; charset=utf8")
+	@RequestMapping(value = "/member/nickChk.do", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String nickChk(HttpServletRequest request) throws SQLException {
 
@@ -325,7 +311,7 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : 두분류 회원 이메일 중복체크
 	*/
-	@RequestMapping(value = "/emailChk.do", produces = "application/text; charset=utf8")
+	@RequestMapping(value = "/member/emailChk.do", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String emailChk(@RequestParam Map<String, Object> data) throws SQLException {
 
@@ -392,9 +378,6 @@ public class MemberController {
 
 		return mav;
 	}
-	
-	
-	
 	
 	/**
 	* @Method Name : editAccount
