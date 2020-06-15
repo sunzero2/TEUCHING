@@ -15,7 +15,16 @@
 #star a.on {
 	color: red;
 }
+
+
+
+#heart {
+	cursor: pointer;
 }
+#recUpdate{
+	padding-left: 500px;
+}
+
 </style>
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
@@ -79,7 +88,9 @@
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 ftco-animate">
+		
+				<div class="col-lg-8 ftco-animate">	
+				<c:forEach items="${trainerInfo.tlist}" var="Trainer">
 					<h2 class="mb-3" id="trainername"></h2>
 					<div class="about-author d-flex">
 						<div class="bio align-self-md-center mr-5">
@@ -87,7 +98,6 @@
 								class="img-fluid mb-4" width="300px" height="300px">
 						</div>
 						<div class="desc align-self-md-center">
-							<c:forEach items="${trainerInfo.tlist}" var="Trainer">
 								<h3 id="trainer"></h3>
 								<br>
 								<p>
@@ -124,9 +134,9 @@
                      &mem_eamil=1111&nick_name=김지수&type=tra&reported=김김지수"
 											class="reply">트레이너 신고</a>
 									
+								</div></c:forEach>
 								</div>
-								</div>
-							</c:forEach>
+							
 
 						</div>
 					</div>
@@ -168,35 +178,42 @@
 
 
 
-									<div class="comment-body">
-										<h5>${review.mem_nickname}</h5>
+									<div class="comment-body"><!-- 좋아요! -->
+									<c:if test="${loginInfo.nickname eq review.mem_nickname}">
+								<div class="meta">${review.rev_date}</div>
+										<h5>${review.mem_nickname} 
+										
+										<a id="loginrecUpdate" onclick="likeit(${review.review_idx});">
+										
+										
+										<i class="far fa-trash-alt"></i>
+										
+											<i class="fas fa-heart" id="heart" style="font-size: 16px; color: grey"></i>
+											</a><span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
+											<input type="hidden" id="click${review.review_idx}" value="true" /></h5>
 
-
-
-
-										<c:if test="${loginInfo == null }">
-											<i class="fas fa-heart" style="font-size: 16px; color: grey"></i>
-											<span id="recommendcnt">${review.recommend}</span>
-										</c:if>
-
-
-										<!-- 로그인 해야만 좋아요 가능 -->
-										<c:if test="${loginInfo != null }">
-											<input type="button" value="좋아요" id="recUpdate"
-												onclick="likeit(${review.review_idx});">
-											<i class="fas fa-heart" style="font-size: 16px; color: grey"></i>
-											<span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
-											<input type="hidden" id="click${review.review_idx}"
-												value="true" />
-										</c:if>
-
-
-
-										<div class="meta">${review.rev_date}</div>
 										<p>${review.rev_cont}</p>
 
 										<a href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
 											class="reply">리뷰신고</a>
+										</c:if>	
+										
+										
+										<c:if test="${loginInfo.nickname ne review.mem_nickname}">
+								<div class="meta">${review.rev_date}</div>
+										<h5>${review.mem_nickname} 
+										
+										<a id="recUpdate" onclick="likeit(${review.review_idx});">
+										
+											<i class="fas fa-heart" id="heart" style="font-size: 16px; color: grey"></i>
+											</a><span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
+											<input type="hidden" id="click${review.review_idx}" value="true" /></h5>
+
+										<p>${review.rev_cont}</p>
+
+										<a href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
+											class="reply">리뷰신고</a>
+										</c:if>	
 									</div>
 
 
@@ -205,7 +222,7 @@
 								</li>
 							</c:forEach>
 						</ul>
-
+			<c:forEach items="${trainerInfo.tlist}" var="Trainer">
 
 						<div class="row mt-5" style="transform: translateX(25%)">
 							<div class="col">
@@ -213,44 +230,44 @@
 									<ul>
 										<c:if test="${reviewList.paging.blockStart gt 1 }">
 											<li><span><a
-													href="<%=request.getContextPath()%>/profile/review.do?reviewPage=${reviewList.paging.blockStart-1}">&lt;</a></span></li>
+													href="<%=request.getContextPath()%>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockStart-1}">&lt;</a></span></li>
 										</c:if>
 
 										<c:if test="${reviewList.paging.blockStart le 1 }">
 											<li><span><a
-													href="<%=request.getContextPath()%>/profile/review.do?reviewPage=${reviewList.paging.blockStart}">&lt;</a></span></li>
+													href="<%=request.getContextPath()%>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockStart}">&lt;</a></span></li>
 										</c:if>
 
 
 										<c:forEach begin="${reviewList.paging.blockStart}"
 											end="${reviewList.paging.blockEnd}" var="page">
 											<li class="active"><span><a
-													href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${page}"
+													href="<%= request.getContextPath() %>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${page}"
 													class="num active">${page}</a></span></li>
 										</c:forEach>
 
 										<c:if
 											test="${reviewList.paging.blockEnd+1 ge reviewList.paging.lastPage}">
 											<li><span><a
-													href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${reviewList.paging.blockEnd}">&gt;</a></span></li>
+													href="<%= request.getContextPath() %>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockEnd}">&gt;</a></span></li>
 										</c:if>
 										<c:if
 											test="${reviewList.paging.blockEnd+1 lt reviewList.paging.lastPage }">
 											<li><span><a
-													href="<%= request.getContextPath() %>/profile/review.do?reviewPage=${reviewList.paging.blockEnd+1}">&gt;</a></span></li>
+													href="<%= request.getContextPath() %>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockEnd+1}">&gt;</a></span></li>
 										</c:if>
 
 									</ul>
 								</div>
 							</div>
 						</div>
-
+	</c:forEach>
 						<!-- END comment-list -->
 
-
+		
 
 						<!-- 댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기 -->
-
+			<c:forEach items="${trainerInfo.tlist}" var="Trainer">
 
 						<div class="comment-form-wrap pt-5">
 							<h3 class="mb-5">Leave a comment</h3>
@@ -263,11 +280,10 @@
 								<div class="form-group">
 									<label for="TrainerName">TrainerName</label> <input
 										type="hidden" class="form-control bg-white" id="trNickname"
-										name="trNickname" value="">
-									<div style="transform: translateX(1%)" id="trnn"></div>
+										name="trNickname" value="${Trainer.trainerName}"> 
+										
+									<div style="transform: translateX(1%)" id="trnn">${Trainer.trainerName}</div>
 								</div>
-
-
 
 								<div class="form-group">
 									<label for="memNickname">Nickname</label> <input type="hidden"
@@ -302,11 +318,15 @@
 								</div>
 
 							</form>
-						</div>
+						</div>	
+						
+						</c:forEach>
 					</div>
 				</div>
+				
 
 				<!-- 댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝-->
+
 
 
 
@@ -326,7 +346,6 @@
 							<li><a href="#">Yoga <span>(140)</span></a></li>
 						</div>
 					</div>
-
 
 
 					<!-- -----------최근 게시글--------------------- -->
@@ -406,6 +425,7 @@
 			</div>
 		</div>
 	</section>
+	
 	<!-- .section -->
 
 
@@ -485,11 +505,23 @@
 				url: '<%=request.getContextPath()%>/review/uploadreview.do',
 				data: $("#uploadReview").serialize(),
 				success: function(data) {
-					alert("성공")
+					alert(data);
 				}
 				
 			})
 		};
+		
+		
+		
+		/* 리뷰 삭제 */
+		
+		
+		
+		
+		
+		
+		
+		
 		/* 해당 프로필의 트레이너정보를 갖고오기 위해 url에서 파라미터 추출하는 부분 */
 		
 		var getParameters = function (paramName) { 
@@ -515,12 +547,7 @@
 		$('#trainer').html(trainerName);
 		$('#trnn').html(trainerName);
 		
-		// 페이징
-		$.ajax({
-			type:'GET', 
-			url: '<%=request.getContextPath()%>/review/uploadreview.do' + ,
-			data: 
-		})
+	
 		
 
 	</script>

@@ -39,7 +39,7 @@
 				and sports = #{sports}
 			</if>
 			<if test='!area.equals("null")'>
-				and area = #{area}
+				and area like '%' || #{area} || '%'
 			</if>
 			<if test='!classSize.equals("null")'>
 				and class_size = #{classSize}
