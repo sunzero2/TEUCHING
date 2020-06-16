@@ -88,7 +88,7 @@ public class MemberController {
 				mav.setViewName("account/redirect");
 
 			} else {
-				if (res.getManager_yn().equals("y")) {
+				if (res.getManager_yn().equals("Y")) {
 					session.setAttribute("loginInfo", res);
 					session.setAttribute("memberType", "manager");
 					mav.setViewName("landing/landing");
