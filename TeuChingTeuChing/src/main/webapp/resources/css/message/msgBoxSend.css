@@ -9,6 +9,7 @@ html, body, form {
 .wrapper {
 	height: 100%;
 	width: 100%;
+	transform:translateX(15px);
 }
 
 .innerwrapper {
@@ -29,13 +30,13 @@ html, body, form {
 
 #table {
 	height: 70%;
-	width: 100%;
-	transform: translateX(7%);
+	width: 101%;
+	transform: translateX(3%);
 	font-size: 1.3vw;
 }
 
 table {
-	width: 90%;
+	width: 93%;
 }
 
 #tbody {
@@ -52,7 +53,7 @@ td {
 }
 
 #title {
-	width: 35%;
+	width: 38%;
 }
 
 .col {
@@ -64,4 +65,7 @@ td {
 	outline: 0;
 	background-color: white;
 	cursor: pointer;
+}
+#num{
+	width:5px;
 }

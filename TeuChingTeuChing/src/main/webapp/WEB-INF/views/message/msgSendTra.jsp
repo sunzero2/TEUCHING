@@ -33,7 +33,7 @@
 	width: 90%;
 	border: 1px solid lightgray;
 	border-radius: 4px;
-	color: gray;
+	color: black;
 	padding: 1% 1% 1% 1%;
 	font-family: "나눔고딕";
 }
