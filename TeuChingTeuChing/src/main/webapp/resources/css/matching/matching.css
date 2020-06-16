@@ -114,3 +114,17 @@
 	background: white;
 	color: #ff9090;
 }
+
+#failMsg {
+	color: #ff7761;
+	font-weight: bold;
+	font-size: large;
+}
+
+#failImg {
+	width: 40px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}

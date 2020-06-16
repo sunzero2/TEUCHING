@@ -45,7 +45,7 @@
 							</header>
 							<hr>
 							<div class="main">
-								<p>
+								<p id="postCont">
 								${data.post.postCont}
 								</p>
 							</div>
