@@ -25,24 +25,9 @@ body {
 }
 
 #imagePreview {
-	background-image: url(../resources/img/profileicon.png);
-	background-size: contain;
-	background-repeat: no-repeat;
-	overflow: hidden; display : flex; align-items : center; justify-content
-	: center; width : 300px;
+	width: 240px;
 	height: 300px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 300px;
-}
-
-#imagePreview img {
-	min-width: 300px;
-	min-height: 300px;
-	overflow: hidden;
-	width: auto;
-	height: auto;
+	overflow: hidden !important;
 }
 
 </style>
@@ -167,7 +152,7 @@ body {
 								<div class="row">
 										<div class="col-lg-4">
 											<div class="form-group focused">
-												<label class="form-control-label">연락처</label>
+												<label class="form-control-label">연락처 <br><span style="font-size: small;">붙임표(-)까지 입력해주세요.</span></span></label>
 												<input type="text" id="cell" name="cell" maxlength="13"
 													class="form-control form-control-alternative">
 											</div>
