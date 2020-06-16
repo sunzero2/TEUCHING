@@ -61,8 +61,12 @@
 								<a class="author" href="/teuching/profile/review.do?trainerEmail=${data.post.trEmail}">${data.post.trainerName}</a>
 								<hr>
 								<button class="btn btn-primary">Send Message</button>
-								<a href="/teuching/post/writepost.do?postIdx=${data.post.postIdx}"><button class="btn btn-primary">Edit Post</button></a>
-								<a href="/teuching/post/deletepost.do?postIdx=${data.post.postIdx}"><button id="postDelBtn" class="btn btn-primary">Delete Post</button></a>
+								<c:if test="${memberType == 'trainer'}">
+									<c:if test="${loginInfo.tr_email == data.post.trEmail}">
+										<a href="/teuching/post/writepost.do?postIdx=${data.post.postIdx}"><button class="btn btn-primary">Edit Post</button></a>
+										<a href="/teuching/post/deletepost.do?postIdx=${data.post.postIdx}"><button id="postDelBtn" class="btn btn-primary">Delete Post</button></a>
+									</c:if>
+								</c:if>
 							</div>
 						</div>
 					</div>

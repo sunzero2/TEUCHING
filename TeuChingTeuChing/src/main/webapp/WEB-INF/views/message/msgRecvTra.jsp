@@ -89,9 +89,10 @@ h1 {
 						<c:forEach items="${match }" var="m">
 							<li><a onclick="match(${m.match_idx});"
 								id="match${m.match_idx }" data-match_date="${m.match_date }"
-								data-match_time="${m.match_time }"> <c:if
-										test="${m.match_yn eq 'N' }">❎</c:if> <c:if
-										test="${m.match_yn eq 'Y' }">✅</c:if> ${m.match_date }
+								data-match_time="${m.match_time }"> 
+										<c:if test="${m.match_yn eq 'N' }">❎</c:if> 
+										<c:if test="${m.match_yn eq 'Y' }">✅</c:if> 
+										${m.match_date }
 									${m.match_time }
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<button id="matchbtn" type="button">수락</button>

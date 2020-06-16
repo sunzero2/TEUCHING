@@ -91,6 +91,7 @@ document.getElementById("inputBtn").addEventListener('click', function(el) {
 var eight_provinces = ['경기', '경북', '경남', '충북', '충남', '전남', '전북', '강원'];
 document.getElementById("keywordSearchBtn").addEventListener('click', function(el) {
 	pList = new Array();
+	var registration = document.getElementById('registration');
 	
 	if(area == '타지역') {
 		area = select.value;
@@ -104,29 +105,45 @@ document.getElementById("keywordSearchBtn").addEventListener('click', function(e
 		}
 	}
 	
-	if(area.length > 0) {
-		$.ajax({
-			url: "/teuching/matching/keyword.do",
-			data: {
-				purpose : purpose,
-				sports : sports,
-				area : area,
-				classSize : classSize,
-				gender : gender,
-				place : place
-			},
-			success: function(v) {
-				for(i = 0; i < v.length; i++) {
-					pList.push(v[i]);
-				}
-				
-				createTable();
+	// area는 input #memberAread의 값이 들어있음
+	// 비회원이면 아무것도 안들어있고, 회원이면 회원의 주소가 담겨있음
+	if(area.length < 1) { // 비회원일 경우
+		if(registration.checked == true) { // 등록지 기준 버튼을 클릭했는지에 대한 여부
+			alert("비회원은 등록지 기준 매칭이 불가능합니다. 타지역 선택 후 직접 골라주세요."); // 클릭했을 경우 해당 알림창 띄움
+		} else {
+			// 등록지 기준 버튼을 클릭하지 않으면, 자동으로 지역을 서울로 매칭하는 것에 대한 찬반
+			if(confirm('비회원은 서울을 기준으로 매칭합니다. 괜찮으신가요?')) {
+				area = '서울';
+				keywordSearch();
+			} else {
+				alert("타지역 선택 후 직접 골라주세요.");
 			}
-		})
-	} else {
-		alert("비회원은 등록지 기준 매칭이 불가능합니다. 타지역 선택 후 직접 골라주세요.");
+		}
+	} else { // 회원일 경우
+		keywordSearch();
 	}
 })
+
+function keywordSearch() {
+	$.ajax({
+		url: "/teuching/matching/keyword.do",
+		data: {
+			purpose : purpose,
+			sports : sports,
+			area : area,
+			classSize : classSize,
+			gender : gender,
+			place : place
+		},
+		success: function(v) {
+			for(i = 0; i < v.length; i++) {
+				pList.push(v[i]);
+			}
+			
+			createTable();
+		}
+	})
+}
 
 document.getElementById('writeBtn').addEventListener('click', function() {
 	location.href="/teuching/post/writepost.do?postIdx=0";
@@ -178,7 +195,7 @@ function createTable() {
 			
 			var writerLink = document.createElement('a');
 			// 트레이너 프로필로 이동할 수 있는 링크
-			writerLink.href = '/teuching/profile/review.do';
+			writerLink.href = '/teuching/profile/review.do?trainerEmail=' + pList[i].trEmail;
 			writerLink.innerText = pList[i].trainerName;
 			writer.append(writerLink);
 			
