@@ -22,18 +22,24 @@
 		<result column="is_leave_yn" property="leave_yn"></result>
 	</resultMap>
 
+	<!-- 리뷰 업로드 -->
 	<insert id="uploadReview">
-		insert into tr_review values(S_REVIEW_IDX.nextval,'임의의 트레이너','sdfsdfsdfsdf', #{mem_nickname}, #{rev_cont}, #{rev_score}, #{rev_password},'n',0,sysdate)
+		insert into tr_review values(S_REVIEW_IDX.nextval,#{trainer_name},#{tr_email}, #{mem_nickname}, #{rev_cont}, #{rev_score}, #{rev_password},'n',0,sysdate,'n')
 	</insert> 
+	
+	<select id="deleteReview">
+		update tr_review set tr_leave_yn = 'y' where review_idx = #{no}
+	</select>
 
 
  	<select id="contentCnt" resultType="int">
 		select count(*) from
-		tr_review
+		tr_review where tr_email = #{trainerEmail} and tr_leave_yn = 'n'
 	</select>
 	
 	<select id="selectReviewList" resultType="Review">
-		select * from (select rownum rnum, n1.* from ( select * from tr_review order by ${orderby} desc)n1) where rnum between #{page.start} and #{page.end}
+		select * from (select rownum rnum, n1.* from ( select * from tr_review where tr_leave_yn = 'n' and tr_email = #{trainerEmail} order by ${orderby} desc )n1) 
+		where rnum between #{page.start} and #{page.end}
 	</select>
 	
 	<update id="recUpdate">
@@ -55,9 +61,6 @@
 		select count(*) from review_rec where mem_nickname = #{nickname} and review_idx = #{no}
 	</select>
 	
-	<update id="recDelete">
-		update tr_review set recommend = recommend - 1 where mem_nickname = #{nickname}
-	</update>
 	
 	<delete id="recRealDelete">
 		delete from review_rec where mem_nickname = #{nickname} and review_idx = #{no}

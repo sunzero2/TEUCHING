@@ -19,6 +19,7 @@ public class Review implements Serializable{
 	private String report_yn;
 	private int recommend;
 	private Date rev_date;
+	private String tr_leave_yn;
 	
 	public Review() {
 		
@@ -109,14 +110,24 @@ public class Review implements Serializable{
 		return serialVersionUID;
 	}
 
+	
+	public String getTr_leave_yn() {
+		return tr_leave_yn;
+	}
+
+	public void setTr_leave_yn(String tr_leave_yn) {
+		this.tr_leave_yn = tr_leave_yn;
+	}
+
 	@Override
 	public String toString() {
 		return "Review [review_idx=" + review_idx + ", trainer_name=" + trainer_name + ", tr_email=" + tr_email
 				+ ", mem_nickname=" + mem_nickname + ", rev_cont=" + rev_cont + ", rev_score=" + rev_score
 				+ ", rev_password=" + rev_password + ", report_yn=" + report_yn + ", recommend=" + recommend
-				+ ", rev_date=" + rev_date + "]";
+				+ ", rev_date=" + rev_date + ", tr_leave_yn=" + tr_leave_yn + "]";
 	}
 
+	
 	
 	
 	

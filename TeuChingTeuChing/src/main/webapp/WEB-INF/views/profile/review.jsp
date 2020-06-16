@@ -7,25 +7,28 @@
 <meta charset="UTF-8">
 <title>Teu-Ching Teu-Ching</title>
 <style>
-#star a {
-	text-decoration: none;
-	color: gray;
+
+
+#reviewDelete { 
+
+cursor: pointer;
+
 }
 
-#star a.on {
-	color: red;
-}
-
-a{
-	
-}
 
 
 #heart {
 	cursor: pointer;
+	text-decoration: none;
+	color: gray;
+	
+}
+#heart:hover {
+	color:#ffb5b5;
+	
 }
 
-#loginrecUpdate{
+#loginman{
 padding-left: 470px;
 
 }
@@ -196,19 +199,19 @@ padding-left: 470px;
 
 
 
-									<div class="comment-body"><!-- 좋아요! -->
+									<div class="comment-body">
+									<!-- 좋아요! -->
+									<!-- 작성자만 삭제 가능하게 하기 -->
 									<c:if test="${loginInfo.nickname eq review.mem_nickname}">
-								<div class="meta">${review.rev_date}</div>
+									<div class="meta">${review.rev_date}</div>
 										<h5>${review.mem_nickname} 
-										
+										<span id="loginman">
+										<a id="reviewDelete" onclick="deleteReview(${review.review_idx});">
+										<i class="far fa-trash-alt"></i></a>
 										<a id="loginrecUpdate" onclick="likeit(${review.review_idx});">
-										
-										
-										<i class="far fa-trash-alt"></i>
-										
 											<i class="fas fa-heart" id="heart" style="font-size: 16px; color: grey"></i>
 											</a><span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
-											<input type="hidden" id="click${review.review_idx}" value="true" /></h5>
+											<input type="hidden" id="click${review.review_idx}" value="true" /></span></h5>
 
 										<p>${review.rev_cont}</p>
 
@@ -218,8 +221,8 @@ padding-left: 470px;
 										
 										
 										<c:if test="${loginInfo.nickname ne review.mem_nickname}">
-								<div class="meta">${review.rev_date}</div>
-										<h5>${review.mem_nickname} 
+											<div class="meta">${review.rev_date}</div>
+											<h5>${review.mem_nickname} 
 										
 										<a id="recUpdate" onclick="likeit(${review.review_idx});">
 										
@@ -295,7 +298,7 @@ padding-left: 470px;
 
 							<form method="post" enctype="multipart/form-data"
 								id="uploadReview">
-
+								<input type="hidden" value="${Trainer.tr_email}" name="tr_email">
 								<div class="form-group">
 									<label for="TrainerName">TrainerName</label> <input
 										type="hidden" class="form-control bg-white" id="trNickname"
@@ -524,7 +527,9 @@ padding-left: 470px;
 				url: '<%=request.getContextPath()%>/review/uploadreview.do',
 				data: $("#uploadReview").serialize(),
 				success: function(data) {
-					alert(data);
+					if(data> 0) {
+						alert("리뷰가 성공적으로 등록되었습니다.");
+					}
 				}
 				
 			})
@@ -534,14 +539,19 @@ padding-left: 470px;
 		
 		/* 리뷰 삭제 */
 		
-		function deleteReview() {
-			
+		function deleteReview(data) {
+			console.log(data);
 			$.ajax({
 				type:'POST',
 				url: '<%=request.getContextPath()%>/review/deletereview.do',
-				data: $("#uploadReview").serialize(),
+				data: {
+					
+					no : data
+				},
 				success: function(data) {
-					alert(data);
+						alert("정상적으로 삭제되었습니다.");
+						location.reload();
+					
 				}
 				
 			})

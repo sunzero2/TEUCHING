@@ -16,7 +16,6 @@ import com.borajoin.teuching.member.model.vo.Member;
 import com.borajoin.teuching.member.model.vo.Trainer;
 import com.borajoin.teuching.message.model.service.MessageService;
 import com.borajoin.teuching.message.model.vo.Message;
-import com.sun.mail.auth.MD4;
 
 @Controller
 public class MessageController {
@@ -35,23 +34,25 @@ public class MessageController {
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> res = new HashMap<String, Object>();
 		String type = "";
+		
 		if (currentpage == null) {
 			currentpage = 1;
 		}
 
-		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Member")) {
+		if (session.getAttribute("memberType").equals("member")) {
 			type = "Member";
 			Member m = (Member) session.getAttribute("loginInfo");
 			res = ms.selectMsgBoxSend(m.getMem_email(), currentpage, type);
-		}
-		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Trainer")) {
+		}else if (session.getAttribute("memberType").equals("trainer")) {
 			type = "Trainer";
 			Trainer t = (Trainer) session.getAttribute("loginInfo");
 			res = ms.selectMsgBoxSend(t.getTr_email(), currentpage, type);
 		}
+		
 		mv.addObject("res", res);
 		mv.addObject("type", type);
 		mv.setViewName("message/msgBoxSend");
+		
 		return mv;
 	}
 
@@ -69,12 +70,11 @@ public class MessageController {
 		if (currentpage == null)
 			currentpage = 1;
 
-		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Trainer")) {
+		if (session.getAttribute("memberType").equals("trainer")) {
 			type = "Trainer";
 			Trainer t = (Trainer) session.getAttribute("loginInfo");
 			res = ms.selectMsgBoxRecv(t.getTr_email(), currentpage, type);
-		}
-		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Member")) {
+		}else if (session.getAttribute("memberType").equals("member")) {
 			type = "Member";
 			Member m = (Member) session.getAttribute("loginInfo");
 			res = ms.selectMsgBoxRecv(m.getMem_email(), currentpage, type);
@@ -96,18 +96,19 @@ public class MessageController {
 		ModelAndView mv = new ModelAndView();
 		Message m = ms.selectMsgDetail(message_idx);
 		Map<String, Object> commandMap = new HashMap<String, Object>();
+		
 		commandMap.put("tr_email", m.getTr_email());
 		commandMap.put("mem_email", m.getMem_email());
-		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Trainer")) {
-			// 트레이너일경우 받은 메시지 폼 체크
+		
+		if (session.getAttribute("memberType").equals("trainer")) {
 			mv.setViewName("message/msgRecvTra");
-		}
-		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Member")) {
-			// 회원일 경우 트레이너에게 받은 메시지
+		}else if (session.getAttribute("memberType").equals("member")) {
 			mv.setViewName("message/msgRecvMem");
 		}
+		
 		mv.addObject("match", ms.showMatchInfo(commandMap));
 		mv.addObject("res", m);
+		
 		return mv;
 	}
 
@@ -119,16 +120,17 @@ public class MessageController {
 	 */
 	@RequestMapping("/message/msgsenddetail.do")
 	public ModelAndView msgSendDetail(HttpSession session, int message_idx) {
+		
 		ModelAndView mv = new ModelAndView();
 		Message m = ms.selectMsgDetail(message_idx);
 		Map<String, Object> commandMap = new HashMap<String, Object>();
+		
 		commandMap.put("tr_email", m.getTr_email());
 		commandMap.put("mem_email", m.getMem_email());
-		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Trainer")) {
-			// 매칭정보
+		
+		if (session.getAttribute("memberType").equals("trainer")) {
 			mv.setViewName("message/msgSendTra");
-		}
-		if (session.getAttribute("loginInfo").getClass().getTypeName().contains("Member")) {
+		}else if (session.getAttribute("memberType").equals("member")) {
 			mv.setViewName("message/msgSendMem");
 		}
 
@@ -152,7 +154,9 @@ public class MessageController {
 		Trainer t = (Trainer) session.getAttribute("loginInfo");
 
 		commandMap.put("msg_cont", msg_cont);
+		//----------------------------------
 		commandMap.put("mem_email", mem_email);
+		//----------------------------------
 		commandMap.put("tr_email", t.getTr_email());
 
 		ms.insertMsgAnsTra(commandMap);
@@ -179,7 +183,9 @@ public class MessageController {
 		mv.addObject("date", date);
 		mv.addObject("year", year);
 		mv.addObject("month", month);
-		
+		//----------------------------------
+		//mv.addObject("tr_email", tr_email);
+		//----------------------------------
 		mv.setViewName("message/messageMatchForm");
 		return mv;
 	}
@@ -197,7 +203,9 @@ public class MessageController {
 		Map<String, Object> commandMap = new HashMap<String, Object>();
 
 		Member m = (Member) session.getAttribute("loginInfo");
+		//----------------------------------
 		commandMap.put("tr_email", tr_email);
+		//----------------------------------
 		commandMap.put("mem_email", m.getMem_email());
 		commandMap.put("msg_cont", msg_cont);
 		commandMap.put("match_date", match_date);
@@ -237,12 +245,17 @@ public class MessageController {
 	* @Method 설명 : 회원이 트레이너에게 보내는 답장
 	*/
 	@RequestMapping("/message/msgansmem.do")
-	public ModelAndView msgAnsMem(String mem_email, String tr_email, String msg_cont) {
+	public ModelAndView msgAnsMem(HttpSession session, String mem_email, String tr_email, String msg_cont) {
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> commanMap = new HashMap<String, Object>();
-		commanMap.put("mem_email", mem_email);
+		Member m = (Member)session.getAttribute("loginInfo");
+		
+		commanMap.put("mem_email", m.getMem_email());
+		//----------------------------------
 		commanMap.put("tr_email", tr_email);
+		//----------------------------------
 		commanMap.put("msg_cont", msg_cont);
+		
 		ms.insertMsgAnsMem(commanMap);
 		mv.addObject("msg","발송이 완료되었습니다");
 		mv.setViewName("message/result");
