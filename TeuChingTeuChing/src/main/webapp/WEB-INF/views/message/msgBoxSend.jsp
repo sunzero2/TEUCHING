@@ -123,7 +123,7 @@
 
 	</div>
 
-
+<%@ include file="../include/footer.jsp" %>
 
 	<script>
 		function openPopUp() {

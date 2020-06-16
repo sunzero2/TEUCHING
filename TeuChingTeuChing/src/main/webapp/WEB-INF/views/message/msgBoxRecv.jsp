@@ -121,7 +121,7 @@
 			</div>
 		</div>
 	</div>
-
+<%@ include file="../include/footer.jsp" %>
 	<script>
 		function openPopUp() {
 			const form = document.querySelector('#form');

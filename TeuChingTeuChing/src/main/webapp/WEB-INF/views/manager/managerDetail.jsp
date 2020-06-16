@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -85,6 +86,7 @@
 		<div class="ansbox-bottom">
 
 			<div class="col-lg-8 ftco-animate">
+				<c:if test="${fn:length(file) > 0}">
 				<div style="float: right">
 					<p id="checkfile" onclick="checkfile();"
 						style="float: right; margin-bottom: -1%; color: #2c396b; cursor: pointer">📁첨부파일</p>
@@ -98,6 +100,7 @@
 						</c:forEach>
 					</div>
 				</div>
+				</c:if>
 				<h3 class="mb-4">신고내용</h3>
 				<p id="font-size">${res.rep_cont }</p>
 			</div>

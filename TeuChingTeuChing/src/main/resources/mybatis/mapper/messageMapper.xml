@@ -41,17 +41,25 @@
 				FROM
 					TR_MESSAGE
 				<where>
-						 TR_EMAIL = #{email}
+					TR_EMAIL = #{email}
+						<if test='type.equals("Trainer")'>
+						AND
+							WRITER = 'Trainer'
+						</if>
+						<if test='type.equals("Member")'>
+						AND
+							WRITER = 'Member'
+						</if>
 					OR 
-						 MEM_EMAIL = #{email}
-					<if test='type.equalsIgnoreCase("Trainer")'>
-					AND
-						WRITER = 'Trainer'
-					</if>
-					<if test='type.equalsIgnoreCase("Member")'>
-					AND
-						WRITER = 'Member'
-					</if>
+					MEM_EMAIL = #{email}
+						<if test='type.equals("Trainer")'>
+						AND
+							WRITER = 'Trainer'
+						</if>
+						<if test='type.equals("Member")'>
+						AND
+							WRITER = 'Member'
+						</if>
 				</where>
 				ORDER BY 
 					WRITE_DATE DESC
@@ -73,17 +81,25 @@
 				FROM
 					TR_MESSAGE
 				<where>
-						MEM_EMAIL = #{email}
+					MEM_EMAIL = #{email}
+						<if test='type.equals("Trainer")'>
+						AND
+							WRITER = 'Member'
+						</if>
+						<if test='type.equals("Member")'>
+						AND
+							WRITER = 'Trainer'
+						</if>
 					OR
-						TR_EMAIL = #{email}
-					<if test='type.equalsIgnoreCase("Trainer")'>
-					AND
-						WRITER = 'Member'
-					</if>
-					<if test='type.equalsIgnoreCase("Member")'>
-					AND
-						WRITER = 'Trainer'
-					</if>
+					TR_EMAIL = #{email}
+						<if test='type.equals("Trainer")'>
+						AND
+							WRITER = 'Member'
+						</if>
+						<if test='type.equals("Member")'>
+						AND
+							WRITER = 'Trainer'
+						</if>
 				</where>
 				ORDER BY
 					WRITE_DATE DESC
@@ -99,17 +115,25 @@
 		FROM
 			TR_MESSAGE
 		<where>
-				 TR_EMAIL = #{email}
-			OR 
-				 MEM_EMAIL = #{email}
-			<if test='type.equalsIgnoreCase("Trainer")'>
-			AND
-				WRITER = 'Trainer'
-			</if>
-			<if test='type.equalsIgnoreCase("Member")'>
-			AND
-				WRITER = 'Member'
-			</if>
+				TR_EMAIL = #{email}
+					<if test='type.equals("Trainer")'>
+					AND
+						WRITER = 'Trainer'
+					</if>
+					<if test='type.equals("Member")'>
+					AND
+						WRITER = 'Member'
+					</if>
+				OR 
+				MEM_EMAIL = #{email}
+					<if test='type.equals("Trainer")'>
+					AND
+						WRITER = 'Trainer'
+					</if>
+					<if test='type.equals("Member")'>
+					AND
+						WRITER = 'Member'
+					</if>
 		</where>
 	</select>
 	
@@ -119,17 +143,25 @@
 		FROM
 			TR_MESSAGE
 		<where>
-				MEM_EMAIL = #{email}
+			MEM_EMAIL = #{email}
+				<if test='type.equals("Trainer")'>
+				AND
+					WRITER = 'Member'
+				</if>
+				<if test='type.equals("Member")'>
+				AND
+					WRITER = 'Trainer'
+				</if>
 			OR
-				TR_EMAIL = #{email}
-			<if test='type.equalsIgnoreCase("Trainer")'>
-			AND
-				WRITER = 'Member'
-			</if>
-			<if test='type.equalsIgnoreCase("Member")'>
-			AND
-				WRITER = 'Trainer'
-			</if>
+			TR_EMAIL = #{email}
+				<if test='type.equals("Trainer")'>
+				AND
+					WRITER = 'Member'
+				</if>
+				<if test='type.equals("Member")'>
+				AND
+					WRITER = 'Trainer'
+				</if>
 		</where>
 	</select>
 	
