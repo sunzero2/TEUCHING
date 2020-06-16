@@ -19,25 +19,32 @@ public class ReviewDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public int contentCnt() {
+	public int contentCnt(String trainerEmail) {
 
 		// 게시글 갯수를 반환해줄 메서드
 
-		return sqlSession.selectOne("Review.contentCnt");
+		return sqlSession.selectOne("Review.contentCnt",trainerEmail );
 	}
 
-	public List<Review> selectReviewList(Paging page, String orderby) {
-		System.out.println("리뷰 다오이비다..");
+	public List<Review> selectReviewList(Paging page, String orderby,String trainerEmail) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("page", page);
 		data.put("orderby", orderby);
+		data.put("trainerEmail",trainerEmail);
+		System.out.println("다오에서 확인해보는 data " + data);
 		return sqlSession.selectList("Review.selectReviewList", data);
 
 	}
 	
+	// 리뷰업로드
 	public int uploadReview(Review review) {
 		
 		return sqlSession.insert("Review.uploadReview",review);
+	}
+	
+	// 리뷰삭제
+	public int deleteReview(Map<String,Object> data) {
+		return sqlSession.update("Review.deleteReview",data);
 	}
 	
 	

@@ -12,7 +12,7 @@
 	<!-- 트레이너 회원가입 -->
 	<insert id="joinTrainer">
 		insert into TR_TRAINER VALUES(#{email}, #{password}, #{name}, #{gender}, #{weight}, #{height}
-				, #{cell}, #{career}, #{address}, #{address_detail}, #{prefer1}, #{prefer2}, #{prefer3}, #{photo}, 0, 'N', 'N', null)
+				, #{cell}, #{career}, #{address}, #{address_detail}, #{prefer1}, #{prefer2}, #{prefer3}, #{photo}, null, 0, 'N', 'N')
 	</insert>
 	
 	<!-- 일반회원 닉네임 중복 체크 -->
@@ -34,7 +34,7 @@
 	<!-- 일반회원 로그인 -->
 	<select id="m_login" resultType="Member">
 		select *
-		from tr_member where mem_email = #{email} and password = #{password}
+		from TR_MEMBER where MEM_EMAIL = #{email} and password = #{password}
 	</select>
 	 	
  	<!-- 트레이너 로그인 -->

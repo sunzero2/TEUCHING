@@ -84,8 +84,8 @@ public class MemberController {
 
 			if (res == null) {
 				mav.addObject("msg", "아이디 혹은 비밀번호를 확인해주세요.");
+				mav.addObject("url", "account/loginform");
 				mav.setViewName("account/redirect");
-				
 			} else {
 				session.setAttribute("loginInfo", res);
 				session.setAttribute("memberType", "member");
@@ -263,15 +263,15 @@ public class MemberController {
 		String filePath = root + "resources\\upload\\profileImg\\";
 		// 파일 이름	
 		MultipartFile file = mtf.getFile(fileTag);
-		String fileName = file.getOriginalFilename();
+		String fileName = (String)commandMap.get("email")+".jpg";
 		// 파일 전송
 		try {
 		    file.transferTo(new File(filePath + fileName));
 		} catch(Exception e) {
 		    System.out.println("업로드 오류");
 		}
-		commandMap.put("photo", filePath + fileName);
-		System.out.println(commandMap.put("photo", filePath + fileName));
+		commandMap.put("photo", fileName);
+		System.out.println(commandMap.put("photo", fileName));
 		System.out.println(commandMap);
 		
 		String preMap1 = (String)commandMap.get("prefer1-1")+" "+(String)commandMap.get("prefer1-2");

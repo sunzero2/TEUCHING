@@ -20,11 +20,12 @@ public class ReviewServiceImpl implements ReviewService {
 	ReviewDao rd;
 	
 	@Override
-	public Map<String,Object> selectReviewList(String orderby, int currentPage, int cntPerPage) {
+	public Map<String,Object> selectReviewList(String orderby, int currentPage, int cntPerPage, String trainerEmail) {
 		Map<String, Object> res = new HashMap<>();
-		Paging page = new Paging(rd.contentCnt(), currentPage, cntPerPage);
-		List<Review> rlist = rd.selectReviewList(page, orderby);
-		System.out.println(rlist);
+		Paging page = new Paging(rd.contentCnt(trainerEmail), currentPage, cntPerPage);
+		List<Review> rlist = rd.selectReviewList(page, orderby,trainerEmail);
+		System.out.println("서비스임플에서 테스트 해보는 trainerEmail " + trainerEmail);
+		System.out.println("서비스임플에서 rlist입니다 " + rlist);
 		res.put("paging", page);
 		res.put("rlist", rlist);
 		return res;
@@ -78,5 +79,11 @@ public class ReviewServiceImpl implements ReviewService {
 		List<Trainer> tlist = rd.selectTrainerInformation(trainerEmail);
 		res.put("tlist",tlist);
 		return res;
+	}
+
+	@Override
+	public int deleteReview(Map<String, Object> data) {
+		int res = rd.deleteReview(data);
+		return 0;
 	}
 }
