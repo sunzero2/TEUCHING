@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -263,7 +264,8 @@ public class MemberController {
 		String filePath = root + "resources\\upload\\profileImg\\";
 		// 파일 이름	
 		MultipartFile file = mtf.getFile(fileTag);
-		String fileName = (String)commandMap.get("email")+".jpg";
+		String filetype = StringUtils.getFilenameExtension(file.getOriginalFilename());
+		String fileName = (String)commandMap.get("email") +"."+filetype;
 		// 파일 전송
 		try {
 		    file.transferTo(new File(filePath + fileName));
@@ -272,7 +274,6 @@ public class MemberController {
 		}
 		commandMap.put("photo", fileName);
 		System.out.println(commandMap.put("photo", fileName));
-		System.out.println(commandMap);
 		
 		String preMap1 = (String)commandMap.get("prefer1-1")+" "+(String)commandMap.get("prefer1-2");
 		String preMap2 = (String)commandMap.get("prefer2-1")+" "+(String)commandMap.get("prefer2-2");
