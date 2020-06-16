@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,7 +81,7 @@
 				<tr>
 					<th class="searchTableTh">지역</th>
 					<td class="searchTableTd">
-						<input type="button" class="keywordBtn" name="area" value="등록지 기준">
+						<input type="button" class="keywordBtn" id="registration" name="area" value="등록지 기준">
 						<input type="hidden" id="memberArea" value="${loginInfo.address}">
 						<input type="button" class="keywordBtn" name="area" value="타지역">
 						<select id="placeSelect">
@@ -194,7 +195,9 @@
 				</tr>
 			</table>
 			<button id="keywordSearchBtn">Search</button>
-			<button id="writeBtn">Write</button>
+			<c:if test="${memberType == 'trainer'}">
+				<button id="writeBtn">Write</button>
+			</c:if>
 		</div>
 	</section>
 	<section class="container" style="margin-top: 13%; margin-bottom: 10%;">

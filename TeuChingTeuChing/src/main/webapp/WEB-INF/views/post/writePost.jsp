@@ -58,6 +58,11 @@
 						</c:if>
 						<c:if test="${data != null }">
 							<textarea class="contentInput" name="postCont" placeholder="내용을 입력하세요.">${data.post.postCont}</textarea>
+							<script>
+								var content = document.querySelector('.contentInput').value;
+								content = content.replace(/<br>/g, '\r\n');
+								document.querySelector('.contentInput').value = content;
+							</script>
 						</c:if>
 					</div>
 				</div>

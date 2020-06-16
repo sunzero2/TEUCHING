@@ -125,6 +125,9 @@ function submit_result() {
 	}
 	
 	if(uploadResult == true && imageResult == true && keywordResult == true && contentResult == true) {
+		content = content.value;
+		content = content.replace(/(?:\r\n|\r|\n)/g, '<br>');
+		document.querySelector('.contentInput').value = content;
 		alert("게시글이 정상적으로 작성되었습니다.");
 		final = true;
 	} else {

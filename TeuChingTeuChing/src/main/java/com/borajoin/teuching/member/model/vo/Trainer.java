@@ -130,15 +130,17 @@ public class Trainer {
 	public void setPurpose_keyword(String purpose_keyword) {
 		this.purpose_keyword = purpose_keyword;
 	}
-	
 	@Override
 	public String toString() {
 		return "Trainer [tr_email=" + tr_email + ", password=" + password + ", trainerName=" + trainerName + ", gender="
 				+ gender + ", weight=" + weight + ", height=" + height + ", cell=" + cell + ", career=" + career
 				+ ", address=" + address + ", address_detail=" + address_detail + ", prefer_add1=" + prefer_add1
 				+ ", prefer_add2=" + prefer_add2 + ", prefer_add3=" + prefer_add3 + ", photo=" + photo + ", tr_like="
-				+ tr_like + ", black_yn=" + black_yn + ", leave_yn=" + leave_yn + "]";
+				+ tr_like + ", black_yn=" + black_yn + ", leave_yn=" + leave_yn + ", purpose_keyword=" + purpose_keyword
+				+ "]";
 	}
+	
+
 	
 	
 	
