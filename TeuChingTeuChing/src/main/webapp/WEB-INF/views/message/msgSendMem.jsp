@@ -35,6 +35,7 @@
 	border-radius: 4px;
 	padding: 1% 1% 1% 1%;
 	font-family: "나눔고딕";
+	color:black;
 }
 </style>
 </head>

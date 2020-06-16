@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -63,23 +64,23 @@
 						</tr>
 					</thead>
 					<tbody id="tbody">
-						<c:forEach items="${res.msg }" var="msg">
+						<c:forEach items="${res.msg }" var="msg" varStatus="cnt">
 							<form id="form"
 								action="${pageContext.request.contextPath }/message/msgsenddetail.do"
 								target="pop">
+								<tr>
+									<td id="num">${(res.paging.currentPage-1) * 5 + cnt.count }</td>
+									<td id="title"><button onclick="openPopUp();" id="btn">${fn:substring(msg.msg_cont,0,15) }...</button></td>
+									<c:if test="${type eq 'Trainer'}">
+										<td>${msg.mem_email }</td>
+									</c:if>
+									<c:if test="${type eq 'Member'}">
+										<td>${msg.tr_email }</td>
+									</c:if>
+									<td>${msg.write_date }</td>
+								</tr>
 								<input type="hidden" name="message_idx" value="${msg.message_idx }">
 							</form>
-							<tr>
-								<td>1</td>
-								<td id="title"><button onclick="openPopUp();" id="btn">${msg.msg_cont }</button></td>
-								<c:if test="${type eq 'Trainer'}">
-									<td>${msg.mem_email }</td>
-								</c:if>
-								<c:if test="${type eq 'Member'}">
-									<td>${msg.tr_email }</td>
-								</c:if>
-								<td>${msg.write_date }</td>
-							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
