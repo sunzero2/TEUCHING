@@ -41,7 +41,7 @@
 								<a href="javascript:history.back()" style="display: inline; color: #4c4c4c;">뒤로가기</a>
 							<header>
 									<h1>${data.post.postTitle}</h1>
-									<p>Posted on ${post.writeDate}</p>
+									<p>Posted on ${data.post.writeDate}</p>
 							</header>
 							<hr>
 							<div class="main">

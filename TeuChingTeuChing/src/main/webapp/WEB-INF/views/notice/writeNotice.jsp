@@ -51,6 +51,11 @@
 						</c:if>
 						<c:if test="${notice != null }">
 							<textarea class="contentInput" name="noticeCont" placeholder="내용을 입력하세요.">${notice.noticeCont}</textarea>
+							<script>
+								var content = document.querySelector('.contentInput').value;
+								content = content.replace(/<br>/g, '\r\n');
+								document.querySelector('.contentInput').value = content;
+							</script>
 						</c:if>
 					</div>
 				</div>
@@ -63,5 +68,13 @@
 			</div>
 		</form>
 	</section>
+	
+	<script>
+		function submit_result() {
+			content = document.querySelector('.contentInput').value;
+			content = content.replace(/(?:\r\n|\r|\n)/g, '<br>');
+			document.querySelector('.contentInput').value = content;
+		}
+	</script>
 </body>
 </html>

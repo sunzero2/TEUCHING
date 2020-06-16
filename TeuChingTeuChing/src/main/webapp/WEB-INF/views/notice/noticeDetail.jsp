@@ -52,8 +52,10 @@
 						</article>
 						<div class="authorWrapper">
 							<hr>
+							<c:if test="${memberType == 'manager'}">
 								<a href="/teuching/notice/write.do?noticeIdx=${notice.noticeIdx}"><button class="btn btn-primary">Edit</button></a>
 								<a id="deleteNoticeBtn" href="/teuching/notice/delete.do?noticeIdx=${notice.noticeIdx}"><button class="btn btn-primary">Delete</button></a>
+							</c:if>
 						</div>
 					</div>
 				</div>

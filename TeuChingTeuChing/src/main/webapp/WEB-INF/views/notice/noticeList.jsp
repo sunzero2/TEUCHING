@@ -39,7 +39,7 @@
 				<c:forEach items="${nList}" var="notice">
 						<tr>
 							<td class="tableBody"><a class="noticeTitle" href="/teuching/notice/detail.do?noticeIdx=${notice.noticeIdx}">${notice.noticeTitle}</a></td>
-							<td class="tableBody">${notice.noticeCont}</td>
+							<td class="tableBody"><div style="height: 20px; overflow: hidden;">${notice.noticeCont}</div></td>
 							<td class="tableBody tableSmaller">${notice.writeDate}</td>
 							<td class="tableBody tableSmaller">TEUCHING</td>
 						</tr>
@@ -50,8 +50,10 @@
 						<li><a onclick="back(${page.start}, this);" href="#">&lt;</a></li>
 						<li><a onclick="next(${page.end}, this, ${size});" href="#">&gt;</a></li>
 					</ul>
+					<c:if test="${memberType == 'manager'}">
+						<a href="/teuching/notice/write.do?noticeIdx=0"><button class="btn btn-primary">Write</button></a>
+					</c:if>
 				</div>
-				<a href="/teuching/notice/write.do?noticeIdx=0"><button class="btn btn-primary">Write</button></a>
 			</c:if>
 	</section>
 	<%@ include file="../include/footer.jsp"%>
