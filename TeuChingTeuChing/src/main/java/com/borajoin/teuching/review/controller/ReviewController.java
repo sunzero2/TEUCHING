@@ -52,7 +52,7 @@ public class ReviewController {
 		}
 		 
 
-		Map<String, Object> res = rs.selectReviewList(orderby, currentPage, cntPerPage);
+		Map<String, Object> res = rs.selectReviewList(orderby, currentPage, cntPerPage,trainerEmail );
 		System.out.println("컨트롤 값 받아온거" + res);
 		
 		Map<String, Object> trainerInfo = rs.selectTrainerInformation(trainerEmail);
@@ -66,24 +66,21 @@ public class ReviewController {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 
+	// 리뷰 업로드
 	@RequestMapping("review/uploadreview.do")
+	@ResponseBody
 	public int uploadReview(Review review, @RequestParam Map<String, Object> data) {
-		System.out.println(data);
-		ModelAndView mav = new ModelAndView();
+		System.out.println("리뷰 업로드 " + data);
 		
+		review.setTrainer_name((String)data.get("trNickname"));
+		review.setTr_email((String)data.get("tr_email"));
 		review.setMem_nickname((String) data.get("memNickname"));
 		review.setRev_password((String) data.get("reviewPw"));
 		review.setRev_score((String) data.get("rev_score"));
 		review.setRev_cont((String) data.get("revCont"));
+		
+		System.out.println("review toString" + review.toString());
 		
 		
 		int res = rs.uploadReview(review);
@@ -91,6 +88,14 @@ public class ReviewController {
 		
 		
 		
+		return res;
+	}
+	
+	@RequestMapping("review/deletereview.do")
+	@ResponseBody
+	public int deleteReview(@RequestParam Map<String, Object> data) {
+		int res = rs.deleteReview(data);
+		System.out.println("deleteReview " + res);
 		return res;
 	}
 
@@ -143,5 +148,7 @@ public class ReviewController {
 		System.out.println("추천수 " + count);
 		return count;
 	}
+	
+	
 
 }
