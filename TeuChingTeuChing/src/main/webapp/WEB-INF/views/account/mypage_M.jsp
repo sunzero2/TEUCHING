@@ -49,11 +49,6 @@ input::placeholder {
 	<div class="main-content">
 		<div class="container mt-7"  style="margin-top: 1% !important; margin-bottom: 2% !important;">
 			<!-- Table -->
-			<ul class="list-group">
-            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Likes♡</strong></span> ${loginInfo.tr_like}</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-          </ul> 
 			<div class="row">
 				<div class="col-xl-8 m-auto order-xl-1">
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
