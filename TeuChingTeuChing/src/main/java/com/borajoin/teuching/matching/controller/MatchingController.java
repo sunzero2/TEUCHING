@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.borajoin.teuching.matching.model.service.MatchingService;
 import com.borajoin.teuching.matching.model.vo.Post;
+import com.borajoin.teuching.member.model.vo.Trainer;
 
 @Controller
 public class MatchingController {
