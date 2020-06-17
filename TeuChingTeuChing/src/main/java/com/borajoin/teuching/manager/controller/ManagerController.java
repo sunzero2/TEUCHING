@@ -35,19 +35,15 @@ public class ManagerController {
 	 * @Method 설명 : 관리자 페이지 내 리뷰신고, 트레이너 신고 게시판 구현
 	 */
 	@RequestMapping("/manager/report.do")
-	public ModelAndView managerPage(Integer revcurrentpage, Integer tracurrentpage) {
+	public ModelAndView managerPage(Integer tracurrentpage) {
 
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> res = new HashMap<String, Object>();
 
-		if (revcurrentpage == null) {
-			revcurrentpage = 1;
-		}
 		if (tracurrentpage == null) {
 			tracurrentpage = 1;
 		}
 
-		res.put("resRev", ms.selectRevReport(revcurrentpage));
 		res.put("resTra", ms.selectTraReport(tracurrentpage));
 
 		mv.addObject("res", res);
@@ -55,6 +51,25 @@ public class ManagerController {
 
 		return mv;
 	}
+	
+	@RequestMapping("/manager/reviewreport.do")
+	public ModelAndView reviewReport(Integer revcurrentpage) {
+
+		ModelAndView mv = new ModelAndView();
+		Map<String, Object> res = new HashMap<String, Object>();
+
+		if (revcurrentpage == null) {
+			revcurrentpage = 1;
+		}
+
+		res.put("resRev", ms.selectRevReport(revcurrentpage));
+
+		mv.addObject("res", res);
+		mv.setViewName("manager/reviewReport");
+
+		return mv;
+	}
+
 
 	/**
 	 * @Method Name : managerDetail
