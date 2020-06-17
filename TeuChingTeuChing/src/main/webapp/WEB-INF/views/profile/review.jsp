@@ -19,9 +19,17 @@
    cursor: pointer;
 }
 
-hr {
+#reviewnn {
    border-top: 1px solid #9C9C9C;
    border-bottom: 1px solid #F6F6F6;
+   color: #767575;
+font-family: 'Gamja Flower', cursive;
+   font-size: 1.4vw;
+}
+
+.likecnt {
+
+	color: #ffb5b5;
 }
 
 #sidebarTitle {
@@ -44,7 +52,16 @@ hr {
    color: gray;
 }
 
+#trainer {
+font-family: 'Poor Story', cursive;
+}
 
+.heading a{
+
+font-family: 'Noto Sans KR', sans-serif;
+}
+
+	
 
 
 #gogo {
@@ -62,11 +79,13 @@ hr {
 
 #photo {
    width: 100%;
-   height: 100%;
+   height: 120%;
    object-fit: cover;
 }
 </style>
-
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 <link
    href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
    rel="stylesheet">
@@ -92,9 +111,6 @@ hr {
 <link rel="stylesheet"
    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
-<link
-   href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-   rel="stylesheet" id="bootstrap-css">
 </head>
 
 </head>
@@ -108,25 +124,23 @@ hr {
    <!-- 시작이오시작이오시작이오시작이오시작이오시작이오시작이오시작이오시작이오시작이오시작이오시작이오시작이오시작이오시작이오시작이오시작이오시작이오 -->
 
 
-   <section class="hero-wrap hero-wrap-2"
-      style="background-image: url('../resources/img/bg_3.jpg');"
-      data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-         <div
-            class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center">
-               <h1 class="mb-3 bread">P r o f i l e</h1>
-
-
-               <p class="breadcrumbs">
-                  <span class="mr-2">Information</span>
+  	<section class="hero-wrap hero-wrap-2"
+		style="background-image: url('../resources/img/bg_3.jpg');"
+		data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+				<div class="col-md-9 ftco-animate text-center">
+					<h1 class="mb-3 bread">P r o f i l e</h1>
+					<p class="breadcrumbs">
+						 <span class="mr-2">Information</span>
                   <span class="mr-2">Review</span>
-               </p>
-            </div>
-         </div>
-      </div>
-   </section>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
 
    <section class="ftco-section">
       <div class="container">
@@ -225,21 +239,19 @@ hr {
                      <!-- 작성자만 삭제 가능하게 하기 -->
                      <c:if test="${loginInfo.nickname eq review.mem_nickname}">
                         <div class="meta">${review.rev_date}</div>
-                        <h5>${review.mem_nickname}
+                        <span id="reviewnn">${review.mem_nickname}
                            
                             <a id="reviewDelete"
-                              onclick="deleteReview(${review.review_idx});"> <i
-                                 class="far fa-trash-alt"></i></a> 
-                                 <a id="loginrecUpdate"
-                              onclick="likeit(${review.review_idx});"> <i
-                                 class="fas fa-heart" id="heart"
-                                 style="font-size: 16px; color: grey"></i>
+                              onclick="deleteReview(${review.review_idx});"> 
+                              <i class="far fa-trash-alt"></i></a> 
+                                 <a id="loginrecUpdate"  onclick="likeit(${review.review_idx});"> 
+                                 <i class="fas fa-heart" id="heart" style="font-size: 16px;"></i>
                            </a>
                            
                            <span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
                               <input type="hidden" id="click${review.review_idx}"
                               value="true" />
-                        </h5>
+                        </span>
 
                         <p>${review.rev_cont}</p>
 
@@ -251,7 +263,7 @@ hr {
 
                      <c:if test="${loginInfo.nickname ne review.mem_nickname}">
                         <div class="meta">${review.rev_date}</div>
-                        <h5>${review.mem_nickname}
+                        <span id="reviewnn">${review.mem_nickname}
 
                            <a id="recUpdate" onclick="likeit(${review.review_idx});">
 
@@ -260,7 +272,7 @@ hr {
                            </a><span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
                            <input type="hidden" id="click${review.review_idx}"
                               value="true" />
-                        </h5>
+                        </span>
 
                         <p>${review.rev_cont}</p>
 
