@@ -2,6 +2,7 @@ package com.borajoin.teuching.member.controller;
 
 import java.io.File;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -391,8 +392,5 @@ public class MemberController {
 		return null;
 	}
 	
-	
-
-
 
 }
