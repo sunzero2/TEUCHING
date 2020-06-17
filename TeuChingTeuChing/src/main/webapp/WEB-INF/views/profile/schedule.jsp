@@ -390,14 +390,24 @@ td a{
 	   
 	   	function click(e){
 	   		let month_year = $('#current-year-month').text();
-		 	let year = month_year.substring(0,4);
-			let month = month_year.substring(8);
-			  
-			$('#year').val(year);
-			$('#month').val(month);
-			$('#date').val(e.target.dataset.date);
+		 	let click_year = month_year.substring(0,4);
+			let click_month = month_year.substring(8);
+			let click_date = e.target.dataset.date;
+				
+			$('#year').val(click_year);
+			$('#month').val(click_month);
+			$('#date').val(click_date);
 			
-	   		openPopUp();
+	   			/* openPopUp(); */
+			
+	   		
+	   		if((year > click_year) || (year == click_year && month > click_month) || 
+	   				(year == click_year && month == click_month && date > click_date)){
+	   			noclick();
+	   		}else{
+	   			openPopUp();
+	   		}
+	   		
 	   	}
 	   	
 	   	function noclick() {
