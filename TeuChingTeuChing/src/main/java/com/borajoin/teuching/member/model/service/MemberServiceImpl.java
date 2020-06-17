@@ -1,6 +1,7 @@
 package com.borajoin.teuching.member.model.service;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import javax.mail.MessagingException;
@@ -167,6 +168,7 @@ public class MemberServiceImpl implements MemberService {
 
 		return res;
 	}
+
 	
 	
 

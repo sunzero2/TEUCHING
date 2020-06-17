@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.borajoin.teuching.matching.model.vo.Post;
 import com.borajoin.teuching.member.model.vo.Trainer;
 import com.borajoin.teuching.review.model.vo.Review;
 
@@ -85,7 +86,13 @@ public class ReviewDao {
 		return sqlSession.delete("Review.recRealDelete", data);
 	}
 	
+	// 트레이너 정보 가져오기
 	public  List<Trainer> selectTrainerInformation(String trainerEmail) {
 		return sqlSession.selectList("Review.selectTrainerInformation", trainerEmail);
+	}
+	
+	// 포스트 리스트 가져오기
+	public List<Post> selectPostList(String trainerEmail){
+		return sqlSession.selectList("Review.selectPostList", trainerEmail);
 	}
 }

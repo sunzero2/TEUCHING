@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,11 +87,12 @@
         </div>
         <div class="ftco-animate">
             <div class="carousel-testimony owl-carousel">
+            <c:forEach items="${tList}" var="trainer">
               <div class="item">
                 <div class="testimony-wrap p-4 pb-5">
                   <div class="text">
                   	<div class="line toptrainer">
-	                    <p class="mb-4 pb-1" style="font-family: sans-serif; font-weight: bold;">한달 안에 3대 500으로 만들어드리겠습니다! 함께라면 두렵지 않습니다!</p>
+	                    <p class="mb-4 pb-1" style="font-family: sans-serif; font-weight: bold;">${trainer.career}</p>
 	                    <span class="quote d-flex align-items-center justify-content-center">
 	                      <i class="icon-quote-left"></i>
 	                    </span>
@@ -99,55 +101,14 @@
                     	<div class="user-img" style="background-image: url(../resources/img/person_1.jpg)">
 		                  </div>
 		                  <div class="ml-4">
-		                  	<p class="name">Namkyu Lee</p>
-		                    <span class="position" style="font-family: sans-serif; font-weight: bold;">경기도 화성시 동탄2머시기</span>
+		                  	<p class="name">${trainer.trainerName}</p>
+		                    <span class="position" style="font-family: sans-serif; font-weight: bold;">${trainer.address}</span>
 		                  </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="text">
-                    <div class="line toptrainer">
-	                    <p class="mb-4 pb-1" style="font-family: sans-serif; font-weight: bold;">지수지수지수지수지수지수지수지수지수지수지수지수</p>
-	                    <span class="quote d-flex align-items-center justify-content-center">
-	                      <i class="icon-quote-left"></i>
-	                    </span>
-	                  </div>
-
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(../resources/img/person_2.jpg)">
-		                  </div>
-		                  <div class="ml-4">
-		                  	<p class="name">Jisoo Kim</p>
-		                    <span class="position" style="font-family: sans-serif; font-weight: bold;">경기도 파주시 치즈마을</span>
-		                  </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="text">
-                    <div class="line toptrainer">
-	                    <p class="mb-4 pb-1" style="font-family: sans-serif; font-weight: bold;">보라보라보라보라보라보라보라보라보라보라보라보라</p>
-	                    <span class="quote d-flex align-items-center justify-content-center">
-	                      <i class="icon-quote-left"></i>
-	                    </span>
-	                  </div>
-
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(../resources/img/person_3.jpg)">
-		                  </div>
-		                  <div class="ml-4">
-		                  	<p class="name">Bora Lee</p>
-		                    <span class="position" style="font-family: sans-serif; font-weight: bold;">경기도 의정부시 부대찌개동</span>
-		                  </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            </c:forEach>
           </div>
         </div>
       </div>

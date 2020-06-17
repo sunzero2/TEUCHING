@@ -75,7 +75,7 @@
  	
  	
  	
- 	
- 	
-	
+ 	<select id="selectTopTrainer" resultMap="trainerResult">
+ 		<![CDATA[select rownum, t.* from (select * from tr_trainer t order by tr_like desc) t where rownum < 4]]>
+ 	</select>
 </mapper>

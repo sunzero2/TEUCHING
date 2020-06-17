@@ -15,6 +15,27 @@ cursor: pointer;
 
 }
 
+hr{
+ border-top:1px solid #9C9C9C; 
+ border-bottom:1px solid #F6F6F6; 
+}
+
+#sidebarTitle{
+	color:#ffb5b5;
+	font-family: 'Nanum Pen Script', cursive;
+	font-size:2vw;
+
+}
+
+#span{
+color:#524040;
+
+}
+
+#recentList{
+	font-size:0.7vw;
+	
+}
 
 
 #heart {
@@ -115,15 +136,13 @@ padding-left: 470px;
 					<h2 class="mb-3" id="trainername"></h2>
 					<div class="about-author d-flex">
 						<div class="bio align-self-md-center mr-5">
-							<img src="../resources/img/person_2.jpg" alt="Image placeholder"
+						<img src="../resources/upload/profileImg/${Trainer.photo}.PNG" alt="Image placeholder"
 								class="img-fluid mb-4" width="300px" height="300px">
 						</div>
 						<div class="desc align-self-md-center">
 								<h3 id="trainer">${Trainer.trainerName} 님의 프로필 입니다.
 								
-								<a
-											href="${pageContext.request.contextPath}/report/viewreport.do?tr_email=${Trainer.tr_email}&
-                     nick_name=김지수&type=tra&reported=김김지수" id="gogo">  🚨</a></h3>
+								</h3>
 								<br>
 								<p>
 									Address : <span id="totalAdress">${Trainer.address}
@@ -151,7 +170,8 @@ padding-left: 470px;
 									<div class="comment-body">
 									<a href="${pageContext.request.contextPath}/profile/schedule.do?trainerName=${Trainer.tr_email}"
 											id="gogo">스케줄로 이동  →  📅</a>
-
+<a href="${pageContext.request.contextPath}/report/viewreport.do?tr_email=${Trainer.tr_email}&
+                     nick_name=김지수&type=tra&reported=김김지수" id="gogo">&nbsp&nbsp&nbsp 트레이너 신고  →   🚨</a></h3>
 
 										
 									
@@ -358,87 +378,49 @@ padding-left: 470px;
 				<div class="col-lg-4 sidebar ftco-animate">
 					<div class="sidebar-box"></div>
 					<div class="sidebar-box ftco-animate">
+					
+					
 						<div class="categories">
-							<h3 class="heading-2">Categories</h3>
-							<li><a href="#">Workout <span>(12)</span></a></li>
-							<li><a href="#">Gym <span>(22)</span></a></li>
-							<li><a href="#">Crossfit <span>(37)</span></a></li>
-							<li><a href="#">Body Fit <span>(42)</span></a></li>
-							<li><a href="#">Fitness <span>(14)</span></a></li>
-							<li><a href="#">Yoga <span>(140)</span></a></li>
+						
+							<h3 class="heading-2" id="sidebarTitle">KeyWord</h3>
+							<c:forEach items="${trainerInfo.tlist}" var="Trainer">
+							<input type="hidden" id="trKeyword" value="${Trainer.purpose_keyword}">
+							<span id="span">
+							
+							
+							
+							</span>
+							
+							</c:forEach>
 						</div>
+						
 					</div>
 
 
 					<!-- -----------최근 게시글--------------------- -->
 					<div class="sidebar-box ftco-animate">
-						<h3 class="heading-2">Recent Blog</h3>
+						<h3 class="heading-2" id="sidebarTitle">최근 게시글</h3>
+						<p id="recentList">가장 최근 5개의 게시글만 표시됩니다.</p>
+						<c:forEach items="${postList.plist}" var="Post" end="5">
+						<hr>
 						<div class="block-21 mb-4 d-flex">
-							<a class="blog-img mr-4"
-								style="background-image: url(../resources/img/image_1.jpg);"></a>
+						
 							<div class="text">
-								<h3 class="heading">
-									<a href="#">Even the all-powerful Pointing has no control
-										about the blind texts</a>
+								  <h3 class="heading">
+									<a href="#">${Post.postTitle}</a>
 								</h3>
 								<div class="meta">
 									<div>
-										<a href="#"><span class="icon-calendar"></span> Sept. 25,
-											2019</a>
+										<a href="#"><span class="icon-calendar"></span>&nbsp${Post.writeDate}</a>
 									</div>
 									<div>
-										<a href="#"><span class="icon-person"></span> Admin</a>
-									</div>
-									<div>
-										<a href="#"><span class="icon-chat"></span> 19</a>
+										<a href="#"><span class="icon-person"></span>${Post.trainerName}</a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="block-21 mb-4 d-flex">
-							<a class="blog-img mr-4"
-								style="background-image: url(../resources/img/image_2.jpg);"></a>
-							<div class="text">
-								<h3 class="heading">
-									<a href="#">Even the all-powerful Pointing has no control
-										about the blind texts</a>
-								</h3>
-								<div class="meta">
-									<div>
-										<a href="#"><span class="icon-calendar"></span> Sept. 25,
-											2019</a>
-									</div>
-									<div>
-										<a href="#"><span class="icon-person"></span> Admin</a>
-									</div>
-									<div>
-										<a href="#"><span class="icon-chat"></span> 19</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="block-21 mb-4 d-flex">
-							<a class="blog-img mr-4"
-								style="background-image: url(../resources/img/image_3.jpg);"></a>
-							<div class="text">
-								<h3 class="heading">
-									<a href="#">Even the all-powerful Pointing has no control
-										about the blind texts</a>
-								</h3>
-								<div class="meta">
-									<div>
-										<a href="#"><span class="icon-calendar"></span> Sept. 25,
-											2019</a>
-									</div>
-									<div>
-										<a href="#"><span class="icon-person"></span> Admin</a>
-									</div>
-									<div>
-										<a href="#"><span class="icon-chat"></span> 19</a>
-									</div>
-								</div>
-							</div>
-						</div>
+						
+						</c:forEach>
 					</div>
 
 
@@ -586,6 +568,20 @@ padding-left: 470px;
 		var trainerEmail = getParameters('trainerEmail');
 		$('#trainer').html(trainerName);
 		$('#trnn').html(trainerName);
+		
+		
+		
+		
+		     //변수를 선언합니다.
+			var trKeyword = $('#trKeyword').val();
+		    var span = document.getElementById('span');
+			var test = trKeyword.split(",");
+	
+			for(var i = 0; i < test.length; i++){
+				
+				console.log(test[i]);
+				span.innerHTML += '<li><a>' + test[i] + '</a></li>'; 
+			};
 		
 	
 		

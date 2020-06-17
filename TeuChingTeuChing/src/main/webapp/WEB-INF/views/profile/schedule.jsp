@@ -27,8 +27,14 @@ font-family: 'Nunito', sans-serif;
 td a{
 	width: 100px;
 	transform: translateX(25%);
-	
+}
 
+#title {
+	color:#ffb5b5;
+	font-family: 'Nanum Pen Script', cursive;
+	font-size:2vw;
+	
+	
 }
 
 
@@ -39,6 +45,8 @@ td a{
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Nunito:ital,wght@1,600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Nunito:ital,wght@1,600&display=swap" rel="stylesheet">
 
@@ -98,7 +106,7 @@ td a{
 		<div class="container">
 			<div class="row justify-content-center mb-8 pb-6">
 				<div class="text-center">
-					<h2 class="mb-1">예약가능 으로 표시된 시간만 예약이 가능합니다.</h2>
+					<h2 class="mb-1" id="title">예약은 해당 트레이너와 쪽지 후 최종 매칭이 가능합니다.</h2>
 					
 					<br>
 				</div>

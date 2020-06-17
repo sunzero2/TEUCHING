@@ -17,9 +17,26 @@
 		<result column="prefer_add2" property="prefer_add2"></result>
 		<result column="prefer_add3" property="prefer_add3"></result>
 		<result column="photo" property="photo"></result>
+		<result column="purpose_keyword" property="purpose_keyword"></result>
 		<result column="tr_like" property="tr_like"></result>
 		<result column="black_yn" property="black_yn"></result>
 		<result column="is_leave_yn" property="leave_yn"></result>
+	</resultMap>
+	
+	<resultMap id="postMap" type="Post">
+		<id column="post_idx" property="postIdx"></id>
+		<result column="tr_email" property="trEmail"></result>
+		<result column="trainer_name" property="trainerName"></result>
+		<result column="post_title" property="postTitle"></result>
+		<result column="post_cont" property="postCont"></result>
+		<result column="purpose" property="purpose"></result>
+		<result column="sports" property="sports"></result>
+		<result column="area" property="area"></result>
+		<result column="class_size" property="classSize"></result>
+		<result column="gender" property="gender"></result>
+		<result column="place" property="place"></result>
+		<result column="price" property="price"></result>
+		<result column="write_date" property="writeDate"></result>
 	</resultMap>
 
 	<!-- 리뷰 업로드 -->
@@ -70,5 +87,8 @@
 		select * from tr_trainer where tr_email = #{tr_email}
 	</select>
 	
+	<select id="selectPostList" resultMap="postMap"> 
+		select * from tr_post where tr_email = #{trainerEmail}
+	</select>
 
 </mapper>

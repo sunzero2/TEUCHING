@@ -1,6 +1,7 @@
 package com.borajoin.teuching.member.model.service;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import com.borajoin.teuching.member.model.vo.Member;
@@ -30,7 +31,6 @@ public interface MemberService {
 	 
 	 //패스워드 변경
 	 public int change_pw(Map<String, Object> commandMap) throws SQLException;
-	 
 	 
 	 
 	 

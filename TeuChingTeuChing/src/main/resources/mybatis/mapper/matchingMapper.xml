@@ -45,7 +45,7 @@
 				and class_size = #{classSize}
 			</if>
 			<if test='!gender.equals("null")'>
-				and gender = #{gender}
+				and gender like '%' || #{gender} || '%'
 			</if>
 			<if test='!place.equals("null")'>
 				and place = #{place}
