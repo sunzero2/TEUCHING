@@ -30,28 +30,27 @@
 </head>
 <body>
 	<%@ include file="../include/top.jsp" %>
-	<section style="width: 100%; height: 80vh;">
-		<div class="explainImageWrapper">
-			<div class="explainImage" id="img01"></div>
-		</div>
-		<div style="width: 100%; height: 80vh; background: #000000ba; position: absolute;"></div>
-		<div id="text01" class="explainText">
-				<h1>Our Service</h1>
+	<section id="slide1">
+		<div class="blackBox blackBox_first"></div>
+		<div class="whiteBox whiteBox_first">
 				<p>TeuChing의 매칭 서비스는 사용자가 선택한 키워드를 기반으로 일일 트레이너를 소개시켜줍니다.</p>
-				<p>트레이너의 경력, 수상내역이 궁금하다면 트레이너의 프로필을 확인할 수 있습니다.</p>
-				<p>궁금한 점이 생기면 트레이너에게 직접 물어볼 수 있죠.</p>
-				<p>이제 매장에 직접 방문하지 않고도 나에게 맞는 트레이너를 찾을 수 있습니다.</p>
 		</div>
 	</section>
-	<!-- section style="width: 100%; height: 60vh;">
-		<video controls style="width: 100%; height: 100%;">
-			<source src="../resources/video/aboutUs.mp4" type="video/mp4"/>
-		</video>
+	<section class="about_slide" id="slide2">
+		<div class="blackBox"></div>
+		<div class="whiteBox">
+				<p>트레이너의 경력, 수상내역이 궁금하다면 트레이너의 프로필을 확인할 수 있습니다.</p>
+		</div>
 	</section>
-	<section class="explainText">
-		<h2>트레이너 매칭? 어떻게 하는 건가요?</h2>
-		<p>위 동영상을 보고 따라해보세요. 어렵지 않습니다!</p>
-	</section> -->
+	<section class="about_slide" id="slide3">
+		<div class="blackBox"></div>
+		<div class="whiteBox">
+				<p>궁금한 점이 생기면 트레이너에게 직접 물어볼 수 있죠.</p>
+		</div>
+	</section>
+				<!-- <h1>Our Service</h1>
+				<p>이제 매장에 직접 방문하지 않고도 나에게 맞는 트레이너를 찾을 수 있습니다.</p> -->
+
 	<%@ include file="../include/footer.jsp" %>
 	<script src="../resources/js/jquery.min.js"></script>
 	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>

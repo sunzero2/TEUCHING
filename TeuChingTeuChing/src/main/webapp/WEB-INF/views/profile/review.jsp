@@ -15,8 +15,6 @@ cursor: pointer;
 
 }
 
-
-
 #heart {
 	cursor: pointer;
 	text-decoration: none;
