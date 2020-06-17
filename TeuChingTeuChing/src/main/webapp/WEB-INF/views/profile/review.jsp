@@ -7,67 +7,69 @@
 <meta charset="UTF-8">
 <title>Teu-Ching Teu-Ching</title>
 <style>
-
-
-#reviewDelete { 
-
-cursor: pointer;
-
+#star {
+	cursor: pointer;
 }
 
-hr{
- border-top:1px solid #9C9C9C; 
- border-bottom:1px solid #F6F6F6; 
+#star a.on {
+	color: red;
 }
 
-#sidebarTitle{
-	color:#ffb5b5;
+#reviewDelete {
+	cursor: pointer;
+}
+
+hr {
+	border-top: 1px solid #9C9C9C;
+	border-bottom: 1px solid #F6F6F6;
+}
+
+#sidebarTitle {
+	color: #ffb5b5;
 	font-family: 'Nanum Pen Script', cursive;
-	font-size:2vw;
-
+	font-size: 2vw;
 }
 
-#span{
-color:#524040;
-
+#span {
+	color: #524040;
 }
 
-#recentList{
-	font-size:0.7vw;
-	
+#recentList {
+	font-size: 0.7vw;
 }
-
 
 #heart {
 	cursor: pointer;
 	text-decoration: none;
 	color: gray;
-	
-}
-#heart:hover {
-	color:#ffb5b5;
-	
 }
 
-#loginman{
-padding-left: 470px;
 
-}
-#recUpdate{
-	padding-left: 500px;
-}
 
-#gogo{
 
-	color:#ffb5b5;
+#gogo {
+	color: #ffb5b5;
 	font-family: 'Nanum Pen Script', cursive;
-	font-size:1.5vw;
-	
+	font-size: 1.5vw;
 }
 
+#box {
+	width: 300px;
+	height: 300px;
+	border-radius: 70%;
+	overflow: hidden;
+}
+
+#photo {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 </style>
 
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
+	rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
 	rel="stylesheet">
@@ -118,9 +120,8 @@ padding-left: 470px;
 
 
 					<p class="breadcrumbs">
-						<span class="mr-2"><a href="index.html">Home</a></span> <span
-							class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog
-							Single</span>
+						<span class="mr-2">Information</span>
+						<span class="mr-2">Review</span>
 					</p>
 				</div>
 			</div>
@@ -130,19 +131,17 @@ padding-left: 470px;
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
-		
-				<div class="col-lg-8 ftco-animate">	
-				<c:forEach items="${trainerInfo.tlist}" var="Trainer">
-					<h2 class="mb-3" id="trainername"></h2>
-					<div class="about-author d-flex">
-						<div class="bio align-self-md-center mr-5">
-						<img src="../resources/upload/profileImg/${Trainer.photo}.PNG" alt="Image placeholder"
-								class="img-fluid mb-4" width="300px" height="300px">
-						</div>
-						<div class="desc align-self-md-center">
-								<h3 id="trainer">${Trainer.trainerName} 님의 프로필 입니다.
-								
-								</h3>
+
+				<div class="col-lg-8 ftco-animate">
+					<c:forEach items="${trainerInfo.tlist}" var="Trainer">
+						<h2 class="mb-3" id="trainername"></h2>
+						<div class="about-author d-flex">
+							<div class="bio align-self-md-center mr-5" id="box">
+								<img src="../resources/upload/profileImg/${Trainer.photo}"
+									alt="${Trainer.photo}" class="img-fluid mb-4" id="photo">
+							</div>
+							<div class="desc align-self-md-center">
+								<h3 id="trainer">${Trainer.trainerName}님의 프로필 입니다.</h3>
 								<br>
 								<p>
 									Address : <span id="totalAdress">${Trainer.address}
@@ -160,276 +159,286 @@ padding-left: 470px;
 								<div class="tag-widget post-tag-container mb-5 mt-5">
 
 									<div class="tagcloud">
-										<a href="#" class="tag-cloud-link">${Trainer.address}</a> <a
-											href="#" class="tag-cloud-link">${Trainer.prefer_add1}</a> <a
+										<a href="#" class="tag-cloud-link">${Trainer.prefer_add1}</a> <a
 											href="#" class="tag-cloud-link">${Trainer.prefer_add2}</a> <a
 											href="#" class="tag-cloud-link">${Trainer.prefer_add3}</a>
 									</div>
 									<br>
 
 									<div class="comment-body">
-									<a href="${pageContext.request.contextPath}/profile/schedule.do?trainerName=${Trainer.tr_email}"
-											id="gogo">스케줄로 이동  →  📅</a>
-<a href="${pageContext.request.contextPath}/report/viewreport.do?tr_email=${Trainer.tr_email}&
-                     nick_name=김지수&type=tra&reported=김김지수" id="gogo">&nbsp&nbsp&nbsp 트레이너 신고  →   🚨</a></h3>
-
-										
-									
-								</div></c:forEach>
-								</div>
-							
-
-						</div>
-					</div>
+										<a
+											href="${pageContext.request.contextPath}/profile/schedule.do?trainerName=${Trainer.tr_email}"
+											id="gogo">스케줄로 이동 → 📅</a> <a
+											href="${pageContext.request.contextPath}/report/viewreport.do?tr_email=${Trainer.tr_email}&
+                     nick_name=김지수&type=tra&reported=김김지수"
+											id="gogo">&nbsp&nbsp&nbsp 트레이너 신고 → 🚨</a>
+										</h3>
 
 
 
-					<!-- 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글 -->
-
-					<div class="pt-5 mt-5">
-
-						<!-- 코멘트 리스트 수 가져와서 뿌려 -->
-						<h3 class="mb-5">${reviewList.paging.total}Comments</h3>
-
-						<ul class="comment-list">
-
-
-							<c:forEach items="${reviewList.rlist}" var="review">
-								<li class="comment">
-									<!-- 프사 별점별로 다르게 --> <c:choose>
-										<c:when test="${review.rev_score < 3}">
-											<div class="vcard bio">
-												<img src="../resources/img/sad.png" alt="Image placeholder">
-											</div>
-										</c:when>
-
-										<c:when test="${review.rev_score == 3}">
-											<div class="vcard bio">
-												<img src="../resources/img/soso.png" alt="Image placeholder">
-											</div>
-										</c:when>
-
-										<c:otherwise>
-											<div class="vcard bio">
-												<img src="../resources/img/smile.png"
-													alt="Image placeholder">
-											</div>
-										</c:otherwise>
-									</c:choose>
-
-
-
-									<div class="comment-body">
-									<!-- 좋아요! -->
-									<!-- 작성자만 삭제 가능하게 하기 -->
-									<c:if test="${loginInfo.nickname eq review.mem_nickname}">
-									<div class="meta">${review.rev_date}</div>
-										<h5>${review.mem_nickname} 
-										<span id="loginman">
-										<a id="reviewDelete" onclick="deleteReview(${review.review_idx});">
-										<i class="far fa-trash-alt"></i></a>
-										<a id="loginrecUpdate" onclick="likeit(${review.review_idx});">
-											<i class="fas fa-heart" id="heart" style="font-size: 16px; color: grey"></i>
-											</a><span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
-											<input type="hidden" id="click${review.review_idx}" value="true" /></span></h5>
-
-										<p>${review.rev_cont}</p>
-
-										<a href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
-											class="reply">🚨</a>
-										</c:if>	
-										
-										
-										<c:if test="${loginInfo.nickname ne review.mem_nickname}">
-											<div class="meta">${review.rev_date}</div>
-											<h5>${review.mem_nickname} 
-										
-										<a id="recUpdate" onclick="likeit(${review.review_idx});">
-										
-											<i class="fas fa-heart" id="heart" style="font-size: 16px; color: grey"></i>
-											</a><span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
-											<input type="hidden" id="click${review.review_idx}" value="true" /></h5>
-
-										<p>${review.rev_cont}</p>
-
-
-										<a href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=${review.tr_email}&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
-											class="reply">🚨</a>
-										</c:if>	
 									</div>
-
-
-
-
-								</li>
-							</c:forEach>
-						</ul>
-			<c:forEach items="${trainerInfo.tlist}" var="Trainer">
-
-						<div class="row mt-5" style="transform: translateX(25%)">
-							<div class="col">
-								<div class="block-27">
-									<ul>
-										<c:if test="${reviewList.paging.blockStart gt 1 }">
-											<li><span><a
-													href="<%=request.getContextPath()%>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockStart-1}">&lt;</a></span></li>
-										</c:if>
-
-										<c:if test="${reviewList.paging.blockStart le 1 }">
-											<li><span><a
-													href="<%=request.getContextPath()%>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockStart}">&lt;</a></span></li>
-										</c:if>
-
-
-										<c:forEach begin="${reviewList.paging.blockStart}"
-											end="${reviewList.paging.blockEnd}" var="page">
-											<li class="active"><span><a
-													href="<%= request.getContextPath() %>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${page}"
-													class="num active">${page}</a></span></li>
-										</c:forEach>
-
-										<c:if
-											test="${reviewList.paging.blockEnd+1 ge reviewList.paging.lastPage}">
-											<li><span><a
-													href="<%= request.getContextPath() %>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockEnd}">&gt;</a></span></li>
-										</c:if>
-										<c:if
-											test="${reviewList.paging.blockEnd+1 lt reviewList.paging.lastPage }">
-											<li><span><a
-													href="<%= request.getContextPath() %>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockEnd+1}">&gt;</a></span></li>
-										</c:if>
-
-									</ul>
-								</div>
-							</div>
-						</div>
-	</c:forEach>
-						<!-- END comment-list -->
-
-		
-
-						<!-- 댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기 -->
-			<c:forEach items="${trainerInfo.tlist}" var="Trainer">
-
-						<div class="comment-form-wrap pt-5">
-							<h3 class="mb-5">Leave a comment</h3>
-
-
-
-							<form method="post" enctype="multipart/form-data"
-								id="uploadReview">
-								<input type="hidden" value="${Trainer.tr_email}" name="tr_email">
-								<div class="form-group">
-									<label for="TrainerName">TrainerName</label> <input
-										type="hidden" class="form-control bg-white" id="trNickname"
-										name="trNickname" value="${Trainer.trainerName}"> 
-										
-									<div style="transform: translateX(1%)" id="trnn">${Trainer.trainerName}</div>
-								</div>
-
-								<div class="form-group">
-									<label for="memNickname">Nickname</label> <input type="hidden"
-										class="form-control bg-white" id="memNickname"
-										name="memNickname" value="${loginInfo.nickname}">
-									<div style="transform: translateX(1%)">${loginInfo.nickname}</div>
-								</div>
-
-								<div class="form-group">
-									<label for="reviewPw">Password</label> <input type="text"
-										class="form-control" id="reviewPw" name="reviewPw">
-								</div>
-								<!-- 별점 -->
-								<div class="form-group">
-									<input type="hidden" name="rev_score" id="starvalue" value="">
-									<label for="revScore">Star rating</label>
-									<div id="star" name="revScore">
-										<a value="1">★</a> <a value="2">★</a> <a value="3">★</a> <a
-											value="4">★</a> <a value="5">★</a>
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label for="revCont">Review</label>
-									<textarea id="revCont" cols="30" rows="10" class="form-control"
-										name="revCont"></textarea>
-								</div>
-
-								<div class="form-group">
-									<input type="submit" value="Post Comment"
-										class="btn py-3 px-4 btn-primary" onclick="uploadReview()">
-								</div>
-
-							</form>
-						</div>	
-						
-						</c:forEach>
-					</div>
+					</c:forEach>
 				</div>
-				
 
-				<!-- 댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝-->
-
-
-
-
-
-
-				<!-- .col-md-8  여기서부터 오른쪽 카테고리 -->
-				<div class="col-lg-4 sidebar ftco-animate">
-					<div class="sidebar-box"></div>
-					<div class="sidebar-box ftco-animate">
-					
-					
-						<div class="categories">
-						
-							<h3 class="heading-2" id="sidebarTitle">KeyWord</h3>
-							<c:forEach items="${trainerInfo.tlist}" var="Trainer">
-							<input type="hidden" id="trKeyword" value="${Trainer.purpose_keyword}">
-							<span id="span">
-							
-							
-							
-							</span>
-							
-							</c:forEach>
-						</div>
-						
-					</div>
-
-
-					<!-- -----------최근 게시글--------------------- -->
-					<div class="sidebar-box ftco-animate">
-						<h3 class="heading-2" id="sidebarTitle">최근 게시글</h3>
-						<p id="recentList">가장 최근 5개의 게시글만 표시됩니다.</p>
-						<c:forEach items="${postList.plist}" var="Post" end="5">
-						<hr>
-						<div class="block-21 mb-4 d-flex">
-						
-							<div class="text">
-								  <h3 class="heading">
-									<a href="#">${Post.postTitle}</a>
-								</h3>
-								<div class="meta">
-									<div>
-										<a href="#"><span class="icon-calendar"></span>&nbsp${Post.writeDate}</a>
-									</div>
-									<div>
-										<a href="#"><span class="icon-person"></span>${Post.trainerName}</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						</c:forEach>
-					</div>
-
-
-				</div>
 
 			</div>
 		</div>
+
+
+
+		<!-- 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글 -->
+
+		<div class="pt-5 mt-5">
+
+			<!-- 코멘트 리스트 수 가져와서 뿌려 -->
+			<h3 class="mb-5">${reviewList.paging.total}&nbspComments</h3>
+
+			<ul class="comment-list">
+
+
+				<c:forEach items="${reviewList.rlist}" var="review">
+					<li class="comment">
+						<!-- 프사 별점별로 다르게 --> <c:choose>
+							<c:when test="${review.rev_score < 3}">
+								<div class="vcard bio">
+									<img src="../resources/img/sad.png" alt="Image placeholder">
+								</div>
+							</c:when>
+
+							<c:when test="${review.rev_score == 3}">
+								<div class="vcard bio">
+									<img src="../resources/img/soso.png" alt="Image placeholder">
+								</div>
+							</c:when>
+
+							<c:otherwise>
+								<div class="vcard bio">
+									<img src="../resources/img/smile.png" alt="Image placeholder">
+								</div>
+							</c:otherwise>
+						</c:choose>
+
+
+
+						<div class="comment-body">
+							<!-- 좋아요! -->
+							<!-- 작성자만 삭제 가능하게 하기 -->
+							<c:if test="${loginInfo.nickname eq review.mem_nickname}">
+								<div class="meta">${review.rev_date}</div>
+								<h5>${review.mem_nickname}
+									
+									 <a id="reviewDelete"
+										onclick="deleteReview(${review.review_idx});"> <i
+											class="far fa-trash-alt"></i></a> 
+											<a id="loginrecUpdate"
+										onclick="likeit(${review.review_idx});"> <i
+											class="fas fa-heart" id="heart"
+											style="font-size: 16px; color: grey"></i>
+									</a>
+									
+									<span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
+										<input type="hidden" id="click${review.review_idx}"
+										value="true" />
+								</h5>
+
+								<p>${review.rev_cont}</p>
+
+								<a
+									href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=2222&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
+									class="reply">🚨</a>
+							</c:if>
+
+
+							<c:if test="${loginInfo.nickname ne review.mem_nickname}">
+								<div class="meta">${review.rev_date}</div>
+								<h5>${review.mem_nickname}
+
+									<a id="recUpdate" onclick="likeit(${review.review_idx});">
+
+										<i class="fas fa-heart" id="heart"
+										style="font-size: 16px; color: grey"></i>
+									</a><span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
+									<input type="hidden" id="click${review.review_idx}"
+										value="true" />
+								</h5>
+
+								<p>${review.rev_cont}</p>
+
+
+								<a
+									href="${pageContext.request.contextPath }/report/viewreport.do?tr_email=${review.tr_email}&mem_email=222&nick_name=김지수&type=rev&reported=김김지수"
+									class="reply">🚨</a>
+							</c:if>
+						</div>
+
+
+
+
+					</li>
+				</c:forEach>
+			</ul>
+			<c:forEach items="${trainerInfo.tlist}" var="Trainer">
+
+				<div class="row mt-5" style="transform: translateX(25%)">
+					<div class="col">
+						<div class="block-27">
+							<ul>
+								<c:if test="${reviewList.paging.blockStart gt 1 }">
+									<li><span><a
+											href="<%=request.getContextPath()%>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockStart-1}">&lt;</a></span></li>
+								</c:if>
+
+								<c:if test="${reviewList.paging.blockStart le 1 }">
+									<li><span><a
+											href="<%=request.getContextPath()%>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockStart}">&lt;</a></span></li>
+								</c:if>
+
+
+								<c:forEach begin="${reviewList.paging.blockStart}"
+									end="${reviewList.paging.blockEnd}" var="page">
+									<li class="active"><span><a
+											href="<%= request.getContextPath() %>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${page}"
+											class="num active">${page}</a></span></li>
+								</c:forEach>
+
+								<c:if
+									test="${reviewList.paging.blockEnd+1 ge reviewList.paging.lastPage}">
+									<li><span><a
+											href="<%= request.getContextPath() %>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockEnd}">&gt;</a></span></li>
+								</c:if>
+								<c:if
+									test="${reviewList.paging.blockEnd+1 lt reviewList.paging.lastPage }">
+									<li><span><a
+											href="<%= request.getContextPath() %>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockEnd+1}">&gt;</a></span></li>
+								</c:if>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+			<!-- END comment-list -->
+
+
+
+			<!-- 댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기 -->
+			<c:forEach items="${trainerInfo.tlist}" var="Trainer">
+
+				<div class="comment-form-wrap pt-5">
+					<h3 class="mb-5">Leave a comment</h3>
+
+
+
+					<form method="post" enctype="multipart/form-data" id="uploadReview">
+						<input type="hidden" value="${Trainer.tr_email}" name="tr_email">
+						<div class="form-group">
+							<label for="TrainerName">TrainerName</label> <input type="hidden"
+								class="form-control bg-white" id="trNickname" name="trNickname"
+								value="${Trainer.trainerName}">
+
+							<div style="transform: translateX(1%)" id="trnn">${Trainer.trainerName}</div>
+						</div>
+
+						<div class="form-group">
+							<label for="memNickname">Nickname</label> <input type="hidden"
+								class="form-control bg-white" id="memNickname"
+								name="memNickname" value="${loginInfo.nickname}">
+							<div style="transform: translateX(1%)">${loginInfo.nickname}</div>
+						</div>
+
+						<div class="form-group">
+							<label for="reviewPw">Password</label> <input type="text"
+								class="form-control" id="reviewPw" name="reviewPw">
+						</div>
+						<!-- 별점 -->
+						<div class="form-group">
+							<input type="hidden" name="rev_score" id="starvalue" value="">
+							<label for="revScore">Star rating</label>
+							<div id="star" name="revScore">
+								<a value="1">★</a> <a value="2">★</a> <a value="3">★</a> <a
+									value="4">★</a> <a value="5">★</a>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="revCont">Review</label>
+							<textarea id="revCont" cols="30" rows="10" class="form-control"
+								name="revCont"></textarea>
+						</div>
+
+						<div class="form-group">
+							<input type="submit" value="Post Comment"
+								class="btn py-3 px-4 btn-primary" onclick="uploadReview()">
+						</div>
+
+					</form>
+				</div>
+
+			</c:forEach>
+		</div>
+		</div>
+
+
+		<!-- 댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝-->
+
+
+
+
+
+
+		<!-- .col-md-8  여기서부터 오른쪽 카테고리 -->
+		<div class="col-lg-4 sidebar ftco-animate">
+			<div class="sidebar-box"></div>
+			<div class="sidebar-box ftco-animate">
+
+
+				<div class="categories">
+
+					<h3 class="heading-2" id="sidebarTitle">KeyWord</h3>
+					<c:forEach items="${trainerInfo.tlist}" var="Trainer">
+						<input type="hidden" id="trKeyword"
+							value="${Trainer.purpose_keyword}">
+						<span id="span"> </span>
+
+					</c:forEach>
+				</div>
+
+			</div>
+
+
+			<!-- -----------최근 게시글--------------------- -->
+			<div class="sidebar-box ftco-animate">
+				<h3 class="heading-2" id="sidebarTitle">최근 게시글</h3>
+				<p id="recentList">가장 최근 5개의 게시글만 표시됩니다.</p>
+				<c:forEach items="${postList.plist}" var="Post" end="4">
+					<hr>
+					<div class="block-21 mb-4 d-flex">
+
+						<div class="text">
+							<h3 class="heading">
+								<a href="#">${Post.postTitle}</a>
+							</h3>
+							<div class="meta">
+								<div>
+									<a href="<%=request.getContextPath()%>/post/detail.do?postNo=${Post.postIdx}"><span class="icon-calendar"></span>&nbsp${Post.writeDate}</a>
+								</div>
+								<div>
+									<a href="<%=request.getContextPath()%>/post/detail.do?postNo=${Post.postIdx}"><span class="icon-person"></span>${Post.trainerName}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</c:forEach>
+			</div>
+
+
+		</div>
+
+		</div>
+		</div>
 	</section>
-	
+
 	<!-- .section -->
 
 

@@ -36,6 +36,10 @@ td a{
 	
 	
 }
+#noclick{
+	color : red;
+
+}
 
 
 </style>
@@ -174,7 +178,10 @@ td a{
 		var notLeapYear=[31,28,31,30,31,30,31,31,30,31,30,31];
 		var pageFirst = first;
 		var pageYear;
-		
+		var date = today.getDate();
+		var month = today.getMonth()+1;
+		var year = today.getFullYear();
+		var nextyear = today.getFullYear()+1;
 		
 		if(first.getFullYear() % 4 === 0){
 			/* 윤년을 체크하기 위한 IF문. 윤년일 경우  leapYear 배열을 pageYear에 담고 */
@@ -221,17 +228,29 @@ td a{
 		                
 		                $td.setAttribute('class','text-center');
 		            	$td.style.wordBreak="break-all";
-		            	
 		            	var $at = document.createElement('a');
+		            	var $pt = document.createElement('a');
+		            	console.log(nextyear);
+		            	
+		            	if(month <=  monthList[first.getMonth()]){
+		            	
 		            	/* 예약하기 버튼 생성 */
 		            	$td.appendChild($at);
 		            	$at.innerHTML = "예약하기";
 		            	$at.setAttribute('href','#a');
 			            $at.setAttribute('class','reply');
+		            	}else{
+		            		$td.appendChild($pt);
+			            	$pt.innerHTML = "예약불가";
+				            $pt.setAttribute('class','reply');
+				            $pt.setAttribute('id','noclick');
+		            		
+		            	}
 			            /*  */
 			            $at.setAttribute('id', "day");
 			            $at.setAttribute('data-date', cnt);
 			            $at.onclick = click;
+			            $pt.onclick = noclick;
 			            /*  */
 		                cnt++;
 		                
@@ -380,6 +399,10 @@ td a{
 			
 	   		openPopUp();
 	   	}
+	   	
+	   	function noclick() {
+			alert("이전 날짜에는 예약이 불가합니다.")
+		}
 	  
 	 
 	</script>
