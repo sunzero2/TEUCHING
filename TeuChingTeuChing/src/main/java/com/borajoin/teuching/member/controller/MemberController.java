@@ -2,6 +2,7 @@ package com.borajoin.teuching.member.controller;
 
 import java.io.File;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -79,7 +80,6 @@ public class MemberController {
 	public ModelAndView loginImple(@RequestParam Map<String, Object> commandMap, HttpSession session)
 			throws SQLException {
 		ModelAndView mav = new ModelAndView();
-		System.out.println(commandMap);
 		if (commandMap.get("account").equals("member")) {
 			Member res = ms.m_login(commandMap);
 
@@ -87,11 +87,19 @@ public class MemberController {
 				mav.addObject("msg", "아이디 혹은 비밀번호를 확인해주세요.");
 				mav.addObject("url", "account/loginform");
 				mav.setViewName("account/redirect");
+
 			} else {
-				session.setAttribute("loginInfo", res);
-				session.setAttribute("memberType", "member");
-				mav.setViewName("landing/landing");
-			}
+				if (res.getManager_yn().equals("Y")) {
+					session.setAttribute("loginInfo", res);
+					session.setAttribute("memberType", "manager");
+					mav.setViewName("landing/landing");
+				}else {
+					session.setAttribute("loginInfo", res);
+					session.setAttribute("memberType", "member");
+					mav.setViewName("landing/landing");
+				}
+			}	
+			
 		} else {
 			Trainer res = ms.t_login(commandMap);
 
@@ -127,21 +135,6 @@ public class MemberController {
 
 		return mav;
 
-	}
-
-	/**
-	* @Method Name : mypage
-	* @작성일 : 2020. 6. 14.
-	* @작성자 : 이남규 
-	* @Method 설명 : 마이페이지 이동
-	*/
-	@RequestMapping("/member/mypage.do")
-	public ModelAndView mypage(HttpSession session) {
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("account/mypage");
-
-		return mav;
 	}
 
 	/**
@@ -187,8 +180,6 @@ public class MemberController {
 	public ModelAndView joinMemberImple(@RequestParam Map<String, Object> commandMap) throws SQLException {
 		ModelAndView mav = new ModelAndView();
 
-		System.out.println("메일인증 후 들어오는 맵 " + commandMap);
-
 		int res = ms.joinMember(commandMap);
 		if (res < 1) {
 			mav.setViewName("common/result");
@@ -210,8 +201,6 @@ public class MemberController {
 	public ModelAndView joinTrainerImple(@RequestParam Map<String, Object> commandMap) throws SQLException {
 		ModelAndView mav = new ModelAndView();
 
-		System.out.println("메일인증 후 들어오는 맵 " + commandMap);
-		
 		int res = ms.joinTrainer(commandMap);
 		if (res < 1) {
 			mav.setViewName("common/result");
@@ -256,7 +245,6 @@ public class MemberController {
 			throws SQLException {
 
 		ModelAndView mav = new ModelAndView();
-		System.out.println("이메일체크로 들어오는 맵 1"+commandMap);
 		// 파일 태그
 		String fileTag = "file";
 	    // 업로드 파일이 저장될 경로
@@ -270,10 +258,9 @@ public class MemberController {
 		try {
 		    file.transferTo(new File(filePath + fileName));
 		} catch(Exception e) {
-		    System.out.println("업로드 오류");
+		    System.out.println("파일 업로드 오류");
 		}
 		commandMap.put("photo", fileName);
-		System.out.println(commandMap.put("photo", fileName));
 		
 		String preMap1 = (String)commandMap.get("prefer1-1")+" "+(String)commandMap.get("prefer1-2");
 		String preMap2 = (String)commandMap.get("prefer2-1")+" "+(String)commandMap.get("prefer2-2");
@@ -282,7 +269,6 @@ public class MemberController {
 		commandMap.put("prefer1", preMap1);
 		commandMap.put("prefer2", preMap2);
 		commandMap.put("prefer3", preMap3);
-		System.out.println("메일 전송으로 가는 맵"+ commandMap);
 		
 		String mailfor ="t_join";
 		String path = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
@@ -320,18 +306,14 @@ public class MemberController {
 	@ResponseBody
 	public String emailChk(@RequestParam Map<String, Object> data) throws SQLException {
 
-		System.out.println(data + "처음 매핑 타고 들어오는 Map의 데이터 값");
 
-		data.put("table", "tr_member"); // data Map에 key 값으로 table을 넣고, 이메일을 검색하는 db의 테이블명 "tr_member"을 넣기.
-		System.out.println(data + "Map에 이메일과 테이블명이 들어왔다!");
+		data.put("table", "tr_member"); 
 
-		int result = ms.emailChk(data); // Map에 들어있는 값을 가지고 Service와 Dao를 타고 Mapper에서 결과를 가져와서 result에 담는다.
-		System.out.println(result + "   ==>  tr_member 테이블에서 이메일 검색 결과");
+		int result = ms.emailChk(data); 
 
-		if (result < 1) { // m_member 테이블에서 이메일 검색 결과가 0이면 if문이 실행되도록 설정.
-			data.put("table", "tr_trainer"); // data에 이메일을 검색하는 테이블명 "tr_trainer" 넣기
-			result = ms.emailChk(data); // 이메일 정보와 "tr_trainer" 테이블 명을 가지고 결과를 가져와서 result에 담는다.
-			System.out.println(result + "  ==> tr_trainer 테이블에서 이메일 검색 결과");
+		if (result < 1) { 
+			data.put("table", "tr_trainer"); 
+			result = ms.emailChk(data); 
 		}
 
 		return Integer.toString(result);
@@ -350,7 +332,6 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		String path = request.getServerName() + ":" + request.getServerPort() +
 		request.getContextPath();
-		System.out.println("@@임시 비밀번호 전송 메소드@@");
 
 		String mailfor = "";
 		String pw = "";		//랜덤 임시 비밀번호 생성
@@ -396,8 +377,5 @@ public class MemberController {
 		return null;
 	}
 	
-	
-
-
 
 }

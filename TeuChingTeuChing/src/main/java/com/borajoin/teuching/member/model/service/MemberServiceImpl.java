@@ -1,6 +1,7 @@
 package com.borajoin.teuching.member.model.service;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import javax.mail.MessagingException;
@@ -65,7 +66,6 @@ public class MemberServiceImpl implements MemberService {
 	public Member m_login(Map<String, Object> commandMap) throws SQLException {
 		Member res = null;
 		res = md.m_login(commandMap);
-		System.out.println(res);
 		return res;
 	}
 
@@ -74,7 +74,6 @@ public class MemberServiceImpl implements MemberService {
 	public Trainer t_login(Map<String, Object> commandMap) throws SQLException {
 		Trainer res = null;
 		res = md.t_login(commandMap);
-		System.out.println(res);
 		return res;
 	}
 
@@ -169,6 +168,7 @@ public class MemberServiceImpl implements MemberService {
 
 		return res;
 	}
+
 	
 	
 

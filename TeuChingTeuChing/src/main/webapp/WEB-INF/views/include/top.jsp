@@ -31,6 +31,9 @@
 							<a href="<%=request.getContextPath()%>/matching/main.do" class="nav-link">Matching</a>
 						</li>
 						<li class="nav-item active">
+							<a href="<%=request.getContextPath()%>/notice/notice.do?start=1&end=5" class="nav-link">Notice</a>
+						</li>
+						<li class="nav-item active">
 							<a href="<%=request.getContextPath()%>/profile/schedule.do" class="nav-link">Calendar</a>
 						</li>
 					</ul>

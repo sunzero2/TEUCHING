@@ -30,9 +30,9 @@
 				<div class="ftco-footer-widget mb-4">
 					<h2 class="ftco-heading-2">Quick Links</h2>
 					<ul class="list-unstyled">
-						<li><a href="/teuching/index/index.do">Home</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="/teuching/notice/notice.do?start=1&end=5">Notice</a></li>
+						<li><a href="<%=request.getContextPath()%>/index/index.do">Home</a></li>
+						<li><a href="<%=request.getContextPath()%>/index/aboutus.do">About</a></li>
+						<li><a href="<%=request.getContextPath()%>/notice/notice.do?start=1&end=5">Notice</a></li>
 					</ul>
 				</div>
 			</div>
