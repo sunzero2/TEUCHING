@@ -120,7 +120,6 @@ public class MessageController {
 	 */
 	@RequestMapping("/message/msgsenddetail.do")
 	public ModelAndView msgSendDetail(HttpSession session, int message_idx) {
-		System.out.println(message_idx);
 		ModelAndView mv = new ModelAndView();
 		Message m = ms.selectMsgDetail(message_idx);
 		Map<String, Object> commandMap = new HashMap<String, Object>();

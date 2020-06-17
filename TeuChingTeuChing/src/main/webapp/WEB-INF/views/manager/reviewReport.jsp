@@ -47,16 +47,15 @@
 	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-	<!------ Include the above in your HEAD tag ---------->
-	
-	<div style="height:50px;width:18%;transform:translateX(220%);"class="div">
+<body>
+<div style="height:50px;width:18%;transform:translateX(220%);"class="div">
 		<h4 style="float:left;padding-bottom:3%;border-bottom:2px solid lightblue;padding-left:1%;padding-right:1%;"><a style="color:black;" href="${pageContext.request.contextPath }/manager/report.do">🚨 신고</a></h4>
 		<h4 style="float:right;padding-bottom:3%;border-bottom:2px solid lightgray;padding-right:1%;"><a style="color:black;" href="${pageContext.request.contextPath }/manager/quali.do">🏅 자격증명</a></h4>
 	</div>
 	<br>
 	<div class="container" style="width:62%;">
 
-		<div class="row">
+<div class="row">
 
 			<ul class="nav nav-pills nav-stacked admin-menu"
 				style="float:left;transform: translateY(5%)">
@@ -67,70 +66,7 @@
 				<li class="active"><a href="${pageContext.request.contextPath }/manager/reviewreport.do" data-target-id="profile">리뷰 신고</a></li>
 			</ul>
 
-			<div class="col-md-9  admin-content" id="profile" style="transform: translate(109px,-51px)">
-				<c:forEach items="${res.resTra.selectTraReport }" var="r">
-					<div class="panel panel-info" style="margin: 1em;">
-						<div class="panel-heading">
-							<c:if test="${r.ans_yn eq 'Y' }">
-								<h4 style="float: right; transform: translateY(-50%)">✔답변완료</h4>
-							</c:if>
-							<h3 class="panel-title">${ r.report_date}</h3>
-						</div>
-						<div class="panel-body">
-							<a
-								href="${pageContext.request.contextPath }/manager/reportdetail.do?traid=${r.report_idx}">${r.rep_cont }</a>
-						</div>
-					</div>
-				</c:forEach>
-				<div class="row mt-5" style="transform: translateX(25%)">
-					<div class="col">
-						<div class="block-27">
-							<ul>
-								<c:if test="${res.resTra.pagingTra.blockStart le 1 }">
-									<li><a
-										href="${pageContext.request.contextPath }
-								/manager/report.do?tracurrentpage=${res.resTra.pagingTra.blockStart}">&lt;</a></li>
-								</c:if>
-								<c:if test="${res.resTra.pagingTra.blockStart gt 1 }">
-									<li><a
-										href="${pageContext.request.contextPath }
-								/manager/report.do?tracurrentpage=${res.resTra.pagingTra.blockStart-1}">&lt;</a></li>
-								</c:if>
-								<c:forEach begin="${res.resTra.pagingTra.blockStart }"
-									end="${res.resTra.pagingTra.blockEnd }" var="pt">
-									<li class="active"><span> <a
-											href="${pageContext.request.contextPath }/manager/report.do?tracurrentpage=${pt}">${pt }</a>
-									</span></li>
-								</c:forEach>
-								<c:if
-									test="${res.resTra.pagingTra.blockEnd lt res.resTra.pagingTra.lastPage }">
-									<li><a
-										href="${pageContext.request.contextPath }
-								/manager/report.do?tracurrentpage=${res.resTra.pagingTra.blockEnd+1}">&gt;</a></li>
-								</c:if>
-								<c:if
-									test="${res.resTra.pagingTra.blockEnd ge res.resTra.pagingTra.lastPage }">
-									<li><a
-										href="${pageContext.request.contextPath }
-								/manager/report.do?tracurrentpage=${res.resTra.pagingTra.blockEnd}">&gt;</a></li>
-								</c:if>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="container" style="width:62%;transform:translateX(3.56%);">
-
-		<div class="row">
-
-			<ul class="nav nav-pills nav-stacked admin-menu"
-				style="transform: translate(-20%, 5%)">
-				<li class="active"><a href="" data-target-id="profile"><i class="glyphicon glyphicon-user"></i> 리뷰 신고</a></li>
-			</ul>
-
-			<div class="col-md-9  admin-content" id="profile">
+		<div class="col-md-9  admin-content" id="profile" style="transform: translate(109px,-51px)">
 				<c:forEach items="${res.resRev.selectRevReport }" var="r">
 					<div class="panel panel-info" style="margin: 1em;">
 						<div class="panel-heading">
@@ -186,8 +122,7 @@
 	</div>
 	<br><br>
 	<%@ include file="../include/footer.jsp"%>
-
-	<script src="../resources/js/jquery.min.js"></script>
+<script src="../resources/js/jquery.min.js"></script>
 	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="../resources/js/popper.min.js"></script>
 	<script src="../resources/js/bootstrap.min.js"></script>

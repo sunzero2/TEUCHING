@@ -138,21 +138,6 @@ public class MemberController {
 	}
 
 	/**
-	* @Method Name : mypage
-	* @작성일 : 2020. 6. 14.
-	* @작성자 : 이남규 
-	* @Method 설명 : 마이페이지 이동
-	*/
-	@RequestMapping("/member/mypage.do")
-	public ModelAndView mypage(HttpSession session) {
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("account/mypage");
-
-		return mav;
-	}
-
-	/**
 	* @Method Name : join
 	* @작성일 : 2020. 6. 14.
 	* @작성자 : 이남규 
