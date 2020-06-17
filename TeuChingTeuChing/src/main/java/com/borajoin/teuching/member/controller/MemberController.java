@@ -365,17 +365,21 @@ public class MemberController {
 		return mav;
 	}
 	
-	/**
-	* @Method Name : editAccount
-	* @작성일 : 2020. 6. 14.
-	* @작성자 : 이남규 
-	* @Method 설명 : 회원정보 수정하기
-	*/
-	@RequestMapping
-	public ModelAndView editAccount(@RequestParam Map<String, Object> commandMap) {
-		
-		return null;
-	}
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

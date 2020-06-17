@@ -63,15 +63,39 @@
 		</if>
 	</update>
  	
- 	<!-- 회원탈퇴 -->
- 	
- 	
+ 	<!-- 일반회원 회원정보 수정 -->
+ 	<update id="update_mypage_M">
+		update tr_trainer set 
+		photo = #{photo} 
+		
+		where tr_email = #{tr_email}
+	</update>
+	
+ 	<!-- 트레이너 회원정보 수정 -->
+ 	<update id="update_mypage_T">
+		update tr_trainer set 
+		photo = #{photo} 
+		
+		
+		where tr_email = #{tr_email}
+	</update>
+	
+ 	<!-- 트레이너 프로필 사진 변경 -->
+	<update id="photoUpdate">
+		update tr_trainer set photo = #{photo} where tr_email = #{tr_email}
+	</update>
  	
  	
  	<!-- 트레이너의 게시글 가져오기 -->
+ 	<select id="t_postlist" resultMap="postMap">
+		select * from tr_post where TR_EMAIL like '%' || #{input} || '%' order by post_idx desc
+	</select>
+	<resultMap id="postMap" type="Post">
+		<result column="tr_email" property="trEmail"></result>
+	</resultMap>
  	
  	
- 	
+ 	<!-- 회원탈퇴 -->
  	
  	
  	

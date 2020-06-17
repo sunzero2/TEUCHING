@@ -71,12 +71,16 @@
     <div class="row">
   		<div class="col-sm-3"><!--left col-->
               
-
+		
       <div class="text-center">
-        <img src="/teuching/resources/upload/profileImg/${loginInfo.photo}" class="avatar img-circle img-thumbnail" alt="avatar" name="file">
+        <img src="/teuching/resources/upload/profileImg/${loginInfo.photo}" class="avatar img-circle img-thumbnail" alt="avatar">
         <h6>프로필 사진 변경하기</h6>
-        <input type="file" class="text-center center-block file-upload">
-      </div></hr><br>
+        <form name="photoUpdate" action="<%=request.getContextPath()%>/member/photoUpdate.do" method="post" enctype="multipart/form-data">
+        <input type="file" class="text-center center-block file-upload" name="file"><button type="submit">변경하기</button>
+        <input type="hidden" name="tr_email" value="${loginInfo.tr_email}" /> 
+         </form>
+      </div>
+      <br>
 
           <ul class="list-group">
             <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
@@ -232,7 +236,7 @@
                            <div class="col-xs-12">
                                 <br>
                               	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                               	<button class="btn btn-lg" type="reset" onClick="window.location.reload()" style="cursor: pointer;"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
                             </div>
                       </div>
                       
@@ -456,9 +460,9 @@ $('document').ready(function() {
 	pList = new Array();
 	
 	$.ajax({
-		url : "/teuching/matching/searchword.do",
+		url : "/teuching/member/t_postlist.do",
 		data : {
-			"input" : "${loginInfo.trainerName}",
+			"input" : "${loginInfo.tr_email}",
 			"option" : "trainer"
 		},
 		success : function(v) {
@@ -534,7 +538,7 @@ function createTable() {
 			
 			var content = document.createElement('div');
 			content.style.height = 'auto';
-			//content.style.overflow = 'hidden';
+			content.style.overflow = 'hidden';
 			var con = pList[i].postCont;
 			con = con.replace('<br>', '\r\n');
 			content.innerText = con;
