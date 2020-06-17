@@ -1,41 +1,50 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 
-.explainImageWrapper {
+/* 	font-family: 'Jeju Gothic', sans-serif; */
+.about_slide {
 	width: 100%;
-	height: 80vh;
-	position: absolute;
+	height: 90vh;
 }
 
-.explainImage {
-	width: 100%;
-	height: 100%;
-	background: url('/teuching/resources/img/backImage1.jpg');
+#slide1 {
+	height: 80vh;
+	background: url(../../img/backImage2.jpg);
 	background-size: cover;
 }
 
-.explainText {
-	height: 20vh;
-	font-family: 'Jeju Gothic', sans-serif;
+#slide2 {
+	background: url(../../img/backImage3.jpg);
+	background-size: cover;
+}
+
+#slide3 {
+	background: url(../../img/backImage4.jpg);
+	background-size: cover;
+}
+
+.blackBox {
+	position: absolute;
+	background: #000000b8;
 	width: 100%;
-	color: white;
+	height: 90vh;
 }
 
-.explainText h1 {
-	font-weight: bold;
-	font-family: 'Noto Sans KR', sans-serif;
-	color: white;
+.blackBox_first {
+	height: 80vh;
 }
 
-.explainText h2 {
-	font-weight: bold;
-	font-family: 'Noto Sans KR', sans-serif;
+.whiteBox {
+	background: white;
+	width: 100%;
+	height: 25vh;
+	transform: translateY(65vh);
+	color: black;
+ 	font-family: 'Noto Sans KR', sans-serif;
+ 	font-weight: bold;
+ 	font-size: middle;
 }
 
-.explainText p {
-	margin: 0;
-}
-
-#img02 {
-	transition-duration: 500ms;
+.whiteBox_first {
+	transform: translateY(55vh);
 }
