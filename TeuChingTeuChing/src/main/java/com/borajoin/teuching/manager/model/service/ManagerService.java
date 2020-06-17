@@ -51,4 +51,6 @@ public interface ManagerService {
 	
 	public int insertQualiFile(File_Upload file_Upload);
 	
+	public List<TrainerReport> selectTraReportMypage(String mem_email);
+	
 }

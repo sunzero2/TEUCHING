@@ -18,16 +18,16 @@ html, body {
 	height: auto;
 	width: 80%;
 	transform: translateX(18%);
-	border: 1px solid red;
-	padding-top:2%;
-	margin-bottom:5%;
+	border: 0.4px solid #2c396b;
+	padding-top: 2%;
+	margin-bottom: 5%;
+	border-radius:11px;
 }
 
 .ansbox-bottom {
 	height: 75%;
 	width: 110%;
 	position: absolute;
-	boader: 1px solid black;
 }
 
 #bt1 {
@@ -45,6 +45,7 @@ html, body {
 h5 {
 	transform: translate(5%, 30%);
 	font-family: "Open Sans", Arial, sans-serif;
+	font-size:1.3vw;
 }
 
 h2 {
@@ -59,3 +60,4 @@ h2 {
 #font-size {
 	font-size: 15px;
 }
+

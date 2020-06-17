@@ -46,18 +46,17 @@
 
 	<div class="wrapper">
 		<div class="ansbox-top">
-			<h1 style="text-align: center; font-size: 4vw">
-				Profile <a
+			<h1 style="text-align: center; font-size: 2.5vw">
+			<a
 					href="${pageContext.request.contextPath }
 					/manager/qualidetail/auth.do?quali_idx=${ res.quali_idx}"
-					class="btn btn-outline-primary"
-					onclick="if(!confirm('승인하시겠습니까?')){return false;}">승인하기</a>
+					class="btn btn-outline-primary" style="transform: translateX(200%);"
+					onclick="if(!confirm('승인하시겠습니까?')){return false;}">승인하기</a><br>
+				 ${res.trainer_name } 트레이너
 			</h1>
-			<div style="transform: translateX(20%)">
-				<img src="../resources/img/circle_person.jpg"
-					style="width: 150px; height: 190px; float: left">
-				<h2 style="transform: translateY(135%); float: left">${res.trainer_name }
-					트레이너</h2>
+			<div style="transform: translateX(27%)">
+				<img src="../resources/upload/profileImg/${res.tr_email}.PNG"
+					style="width: 280px; height: 300px; float: left; border-radius:1000px;">
 				<p style="clear: both"></p>
 				<div style="transform: translateX(5%); margin-top: -2%">
 					<div>

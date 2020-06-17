@@ -46,16 +46,13 @@
 
 	<div class="wrapper">
 		<div class="ansbox-top">
-			<div id="person" style="background-image: url(../resources/upload/profileImg/${res.tr_email}.PNG);"
+			<div id="person"
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated">
 				<c:if test="${ res.ans_yn eq 'Y'}">
 					<div id="check"
 						style="text-align: right; transform: translate(-70%, -35%); color: #b91e2d; font-size: 5vw">✔</div>
 				</c:if>
 			</div>
-			<form
-				action="${pageContext.request.contextPath }/manager/reportdetail/ans.do"
-				method="post">
 				<h5>${res.report_date }
 					<c:if test="${type eq 'tra' }">
 						<input type="hidden" name="nick_name" value="${res.nick_name }">
@@ -73,15 +70,8 @@
 						type="hidden" name="report_date" value="${res.report_date }">
 					<input type="hidden" name="ans_yn" value="${res.ans_yn }">
 					<input type="hidden" name="report_idx" value="${res.report_idx }">
-					<button type="submit" class="btn btn-outline-primary" id="btn">답변하기</button>
 				</h5>
-			</form>
-			<c:if test="${type eq 'tra' }">
-				<h2>${ res.nick_name}님의 문의 내역</h2>
-			</c:if>
-			<c:if test="${type eq 'rev' }">
-				<h2>${ res.trainer_name}님의 문의 내역</h2>
-			</c:if>
+				<h2>나의 문의 내역</h2>
 		</div>
 		<div class="ansbox-bottom">
 
@@ -134,7 +124,6 @@
 	<br>
 	<br>
 	<br>
-	<%@ include file="../include/footer.jsp"%>
 	<script src="https://code.jquery.com/jquery-3.5.1.js"
 		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 		crossorigin="anonymous"></script>

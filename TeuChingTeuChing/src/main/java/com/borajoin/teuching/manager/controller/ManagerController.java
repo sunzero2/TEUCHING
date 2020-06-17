@@ -7,9 +7,11 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.borajoin.teuching.manager.model.service.ManagerService;
 import com.borajoin.teuching.manager.model.vo.Quali;
+import com.borajoin.teuching.member.model.vo.Member;
 import com.borajoin.teuching.member.model.vo.Trainer;
 
 import common.util.File_Upload;
@@ -136,7 +139,7 @@ public class ManagerController {
 	 * @작성자 : 김지수
 	 * @Method 설명 : 트레이너 신고 및 리뷰신고 작성 페이지 매핑
 	 */
-	@RequestMapping("/manager/reportrequest.do")
+	@RequestMapping("/report/reportrequest.do")
 	public ModelAndView reportView(@RequestParam Map<String, Object> commandMap) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("res", commandMap);
@@ -150,7 +153,7 @@ public class ManagerController {
 	 * @작성자 : 김지수
 	 * @Method 설명 : 트레이너 신고 및 리뷰신고 작성 & 파일 업로드
 	 */
-	@PostMapping("/manager/report/insertreport.do")
+	@PostMapping("/report/insertreport.do")
 	public ModelAndView reportFileUpload(@RequestParam Map<String, Object> commandMap, List<MultipartFile> files,
 			HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
@@ -245,14 +248,14 @@ public class ManagerController {
 	* @작성자 : 김지수
 	* @Method 설명 : 자격증명 요청페이지로 이동
 	*/
-	@RequestMapping("/manager/qualirequest.do")
+	@RequestMapping("/quali/qualirequest.do")
 	public ModelAndView qualiRequest() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("manager/qualiRequest");
 		return mv;
 	}
 	
-	@RequestMapping("/manager/quali/insertquali.do")
+	@RequestMapping("/quali/insertquali.do")
 	public ModelAndView  insertQuali(HttpServletRequest request, String quali_auth, MultipartFile file) {
 		ModelAndView mv = new ModelAndView();
 		Trainer t = (Trainer) request.getSession().getAttribute("loginInfo");
@@ -281,6 +284,23 @@ public class ManagerController {
 		return mv;
 	}
 	
+	@RequestMapping("/report/mypagerev.do")
+	public ModelAndView selectRevReportMypage(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Member m = (Member)session.getAttribute("loginInfo");
+		mv.addObject("report",ms.selectTraReportMypage(m.getMem_email()));
+		mv.setViewName("manager/test");
+		return mv;
+	}
+	
+	@RequestMapping("/report/trainerdetail.do")
+	public ModelAndView selectRevReportMypage(int traid) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("res", ms.traManagerDetail(traid));
+		mv.addObject("file", ms.selectTraFile(traid));
+		mv.setViewName("manager/reportdetail_M");
+		return mv;
+	}
 }
 
 

@@ -42,19 +42,20 @@
 	rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
-	<%@ include file="../include/top.jsp"%>
 
 	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<!------ Include the above in your HEAD tag ---------->
+	
+	<%@ include file="../include/top.jsp"%>
 
 	<div style="height:50px;width:18%;transform:translateX(220%);"class="div">
 		<h4 style="float:left;padding-bottom:3%;border-bottom:2px solid lightgray;padding-left:1%;padding-right:1%;"><a style="color:black;" href="${pageContext.request.contextPath }/manager/report.do">🚨 신고</a></h4>
 		<h4 style="float:right;padding-bottom:3%;border-bottom:2px solid lightblue;padding-right:1%;"><a style="color:black;" href="${pageContext.request.contextPath }/manager/quali.do">🏅 자격증명</a></h4>
 	</div>
 	<br>
-	<div class="container" style="width: 45%;">
+	<div class="container" style="width: 48%;">
 
 		<c:forEach items="${res.quali }" var="q" varStatus="cnt">
 			<a style="color: black"
@@ -66,18 +67,19 @@
 				</c:if>
 				<div class="d-flex align-items-center">
 					<div class="user-img"
-						style="background-image: url(../resources/img/circle_person.jpg)">
+						style="background-image: url(../resources/upload/profileImg/${q.tr_email}.PNG)">
 					</div>
 					<div class="ml-4">
 						<span class="position">Trainer</span>
 						<p class="name">${q.trainer_name }</p>
 					</div>
 				</div>
+				<br>
 				<div class="text">
 					<div class="line">${q.quali_auth }</div>
 				</div>
-	</div>
-	</a>
+			</div>
+		</a>
 	</c:forEach>
 	</div>
 	<div class="row mt-5" style="transform: translateX(36%)">
@@ -118,7 +120,7 @@
 	<br>
 	<br>
 
-
+<%@ include file="../include/footer.jsp"%>
 	<script src="../resources/js/jquery.min.js"></script>
 	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="../resources/js/popper.min.js"></script>

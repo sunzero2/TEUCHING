@@ -237,5 +237,23 @@
 				, 'N'
 		)
 	</insert>
+	
+	<select id="selectRevReportMypage" resultType="ReviewReport">
+		SELECT
+			*
+		FROM
+			TR_REV_REPORT
+		WHERE
+			TR_EMAIL = #{tr_email} 
+	</select>
+	
+	<select id="selectTraReportMypage" resultType="TrainerReport">
+		SELECT
+			*
+		FROM
+			TR_TRA_REPORT
+		WHERE
+			MEM_EMAIL = #{mem_email} 
+	</select>
 
 </mapper>

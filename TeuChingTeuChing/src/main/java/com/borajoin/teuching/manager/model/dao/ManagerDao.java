@@ -111,5 +111,14 @@ public class ManagerDao {
 	public int insertQualiFile(File_Upload file_Upload) {
 		return sqlSession.insert("File.insertQualiFile", file_Upload);
 	}
+	
+	public List<TrainerReport> selectTraReportMypage(String mem_email){
+		return sqlSession.selectList("Manager.selectTraReportMypage", mem_email);
+	}
+	
+//	public List<ReviewReport> selectRevReportAns(String tr_email){
+//		
+//	}
+	
 
 }

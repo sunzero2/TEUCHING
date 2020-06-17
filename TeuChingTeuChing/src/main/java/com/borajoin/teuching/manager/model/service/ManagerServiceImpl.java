@@ -166,5 +166,9 @@ public class ManagerServiceImpl implements ManagerService {
 		return md.insertQualiFile(file_Upload);
 	}
 
+	@Override
+	public List<TrainerReport> selectTraReportMypage(String mem_email) {
+		return md.selectTraReportMypage(mem_email);
+	}
 
 }

@@ -121,69 +121,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="container" style="width:62%;transform:translateX(3.56%);">
-
-		<div class="row">
-
-			<ul class="nav nav-pills nav-stacked admin-menu"
-				style="transform: translate(-20%, 5%)">
-				<li class="active"><a href="" data-target-id="profile"><i class="glyphicon glyphicon-user"></i> 리뷰 신고</a></li>
-			</ul>
-
-			<div class="col-md-9  admin-content" id="profile">
-				<c:forEach items="${res.resRev.selectRevReport }" var="r">
-					<div class="panel panel-info" style="margin: 1em;">
-						<div class="panel-heading">
-							<c:if test="${r.ans_yn eq 'Y' }">
-								<h4 style="float: right; transform: translateY(-50%)">✔답변완료</h4>
-							</c:if>
-							<h3 class="panel-title">${ r.report_date}</h3>
-						</div>
-						<div class="panel-body">
-							<a
-								href="${pageContext.request.contextPath }/manager/reportdetail.do?revid=${r.report_idx}">${r.rep_cont }</a>
-						</div>
-					</div>
-				</c:forEach>
-				<div class="row mt-5" style="transform: translateX(25%)">
-					<div class="col">
-						<div class="block-27">
-							<ul>
-								<c:if test="${res.resRev.pagingRev.blockStart le 1 }">
-									<li><a
-										href="${pageContext.request.contextPath }
-								/manager/report.do?revcurrentpage=${res.resRev.pagingRev.blockStart}">&lt;</a></li>
-								</c:if>
-								<c:if test="${res.resRev.pagingRev.blockStart gt 1 }">
-									<li><a
-										href="${pageContext.request.contextPath }
-								/manager/report.do?revcurrentpage=${res.resRev.pagingRev.blockStart-1}">&lt;</a></li>
-								</c:if>
-								<c:forEach begin="${res.resRev.pagingRev.blockStart }"
-									end="${res.resRev.pagingRev.blockEnd }" var="pr">
-									<li class="active"><span> <a
-											href="${pageContext.request.contextPath }/manager/report.do?revcurrentpage=${pr}">${pr }</a>
-									</span></li>
-								</c:forEach>
-								<c:if
-									test="${res.resRev.pagingRev.blockEnd lt res.resRev.pagingRev.lastPage }">
-									<li><a
-										href="${pageContext.request.contextPath }
-								/manager/report.do?revcurrentpage=${res.resRev.pagingRev.blockEnd+1}">&gt;</a></li>
-								</c:if>
-								<c:if
-									test="${res.resRev.pagingRev.blockEnd ge res.resRev.pagingRev.lastPage }">
-									<li><a
-										href="${pageContext.request.contextPath }
-								/manager/report.do?revcurrentpage=${res.resRev.pagingRev.blockEnd}">&gt;</a></li>
-								</c:if>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<br><br>
 	<%@ include file="../include/footer.jsp"%>
 
