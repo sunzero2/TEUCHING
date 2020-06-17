@@ -46,6 +46,16 @@
 	margin-bottom: 20px;
 }
 
+.blog-entry .text .heading a {
+    color: #000;
+    font-size: medium;
+    font-weight: bold;
+}    
+
+.text pl-md-4 ml-md-2 pt-4{
+	font-size: small;
+
+}
 </style>
 
 
@@ -241,7 +251,7 @@
                   <form class="form" action="##" method="post" id="registrationForm">
 					<div class="col-xs-12">
 							<section class="container"
-								style="margin-top: 13%; margin-bottom: 10%;">
+								style="margin-top: 2%; margin-bottom: 2%; width: 100%;">
 								<table id="postTable"></table>
 							</section>
 					</div>
@@ -489,7 +499,7 @@ function createTable() {
 			// 콘텐츠 감싸줄 div 생성
 			var wrapper = document.createElement('div');
 			wrapper.className = 'text pl-md-4 ml-md-2 pt-4';
-			wrapper.style.width = '853px';
+			wrapper.style.width = 'auto';
 			contentTd.append(wrapper);
 			
 			// 트레이너 이름, 작성일자, 댓글 수 담을 header
@@ -523,8 +533,8 @@ function createTable() {
 			title.append(titleLink);
 			
 			var content = document.createElement('div');
-			content.style.height = '30px';
-			content.style.overflow = 'hidden';
+			content.style.height = 'auto';
+			//content.style.overflow = 'hidden';
 			var con = pList[i].postCont;
 			con = con.replace('<br>', '\r\n');
 			content.innerText = con;
