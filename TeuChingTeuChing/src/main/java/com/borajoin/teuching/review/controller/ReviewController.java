@@ -51,12 +51,17 @@ public class ReviewController {
 			 System.out.println("가져온 트레이너 이메일 : " + trainerEmail);
 		}
 		 
+		 
 
 		Map<String, Object> res = rs.selectReviewList(orderby, currentPage, cntPerPage,trainerEmail );
 		System.out.println("컨트롤 값 받아온거" + res);
 		
 		Map<String, Object> trainerInfo = rs.selectTrainerInformation(trainerEmail);
 		System.out.println("트레이너의 정보 " +trainerInfo );
+		
+		Map<String,Object> postList = rs.selectPostList(trainerEmail);
+		System.out.println("포스트 목록 " + postList);
+		mav.addObject("postList",postList);
 		mav.addObject("trainerInfo", trainerInfo);
 		mav.addObject("reviewList", res);
 		mav.setViewName("profile/review");
