@@ -13,8 +13,6 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="../resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet"
-	href="../resources/css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="../resources/css/animate.css">
 <link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
@@ -28,28 +26,43 @@
 <link rel="stylesheet" href="../resources/css/style.css">
 <link rel="stylesheet" href="../resources/css/landing/aboutUs.css"/>
 </head>
-<body>
+<body onload="move_text('false')">
 	<%@ include file="../include/top.jsp" %>
-	<section id="slide1">
-		<div class="blackBox blackBox_first"></div>
-		<div class="whiteBox whiteBox_first">
-				<p>TeuChing의 매칭 서비스는 사용자가 선택한 키워드를 기반으로 일일 트레이너를 소개시켜줍니다.</p>
-		</div>
-	</section>
-	<section class="about_slide" id="slide2">
-		<div class="blackBox"></div>
-		<div class="whiteBox">
-				<p>트레이너의 경력, 수상내역이 궁금하다면 트레이너의 프로필을 확인할 수 있습니다.</p>
-		</div>
-	</section>
-	<section class="about_slide" id="slide3">
-		<div class="blackBox"></div>
-		<div class="whiteBox">
-				<p>궁금한 점이 생기면 트레이너에게 직접 물어볼 수 있죠.</p>
-		</div>
-	</section>
-				<!-- <h1>Our Service</h1>
-				<p>이제 매장에 직접 방문하지 않고도 나에게 맞는 트레이너를 찾을 수 있습니다.</p> -->
+	<ul class="slide_btn_wrap">
+		<li><button class="slide_btn" id="btn1"></button></li>
+		<li><button class="slide_btn" id="btn2"></button></li>
+		<li><button class="slide_btn" id="btn3"></button></li>
+	</ul>
+	
+	<ul class="about_slide">
+		<li id="slide1" class="slide_common">
+			<div class="blackBox">
+				<h1 class="about_title">About Us</h1>
+				<p class="about_content">TeuChing의 매칭 서비스는 사용자가 선택한 키워드를 기반으로 일일 트레이너를 소개시켜줍니다.</p>
+				<p class="about_content">트레이너의 경력, 수상내역이 궁금하다면 트레이너의 프로필을 확인할 수 있습니다.</p>
+				<p class="about_content">궁금한 점이 생기면 트레이너에게 직접 물어볼 수 있죠.</p>
+				<p class="about_content">이제 매장에 직접 방문하지 않고도 나에게 맞는 트레이너를 찾을 수 있습니다.</p>
+			</div>
+		</li>
+		<li id="slide2" class="slide_common">
+			<div class="blackBox">
+				<h1 class="about_title">About Us</h1>
+				<p class="about_content">TeuChing의 매칭 서비스는 사용자가 선택한 키워드를 기반으로 일일 트레이너를 소개시켜줍니다.</p>
+				<p class="about_content">트레이너의 경력, 수상내역이 궁금하다면 트레이너의 프로필을 확인할 수 있습니다.</p>
+				<p class="about_content">궁금한 점이 생기면 트레이너에게 직접 물어볼 수 있죠.</p>
+				<p class="about_content">이제 매장에 직접 방문하지 않고도 나에게 맞는 트레이너를 찾을 수 있습니다.</p>
+			</div>
+		</li>
+		<li id="slide3" class="slide_common">
+			<div class="blackBox">
+				<h1 class="about_title">About Us</h1>
+				<p class="about_content">TeuChing의 매칭 서비스는 사용자가 선택한 키워드를 기반으로 일일 트레이너를 소개시켜줍니다.</p>
+				<p class="about_content">트레이너의 경력, 수상내역이 궁금하다면 트레이너의 프로필을 확인할 수 있습니다.</p>
+				<p class="about_content">궁금한 점이 생기면 트레이너에게 직접 물어볼 수 있죠.</p>
+				<p class="about_content">이제 매장에 직접 방문하지 않고도 나에게 맞는 트레이너를 찾을 수 있습니다.</p>
+			</div>
+		</li>
+	</ul>
 
 	<%@ include file="../include/footer.jsp" %>
 	<script src="../resources/js/jquery.min.js"></script>
