@@ -55,11 +55,7 @@ public class MemberDao {
 	}
 	
 	
-	// 트레이너 프로필 사진 삭제?
-	public int deleteFile(int noticeNo) {
 
-		return session.delete("Notice.deleteFile", noticeNo);
-	}
 
 	
 	
