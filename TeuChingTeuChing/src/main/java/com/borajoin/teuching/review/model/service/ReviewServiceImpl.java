@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.borajoin.teuching.matching.model.vo.Post;
 import com.borajoin.teuching.member.model.vo.Trainer;
 import com.borajoin.teuching.review.model.dao.ReviewDao;
 import com.borajoin.teuching.review.model.vo.Review;
@@ -85,5 +86,13 @@ public class ReviewServiceImpl implements ReviewService {
 	public int deleteReview(Map<String, Object> data) {
 		int res = rd.deleteReview(data);
 		return 0;
+	}
+
+	@Override
+	public Map<String, Object> selectPostList(String trainerEmail) {
+		Map<String,Object> res = new HashMap<>();
+		List<Post> plist = rd.selectPostList(trainerEmail);
+		res.put("plist",plist);
+		return res;
 	}
 }

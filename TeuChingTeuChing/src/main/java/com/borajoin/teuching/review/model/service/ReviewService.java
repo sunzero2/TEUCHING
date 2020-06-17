@@ -18,6 +18,7 @@ public interface ReviewService {
 	public int recCount(String no);	
 	public int deleteReview(Map<String, Object> data);
 	public Map<String,Object> selectTrainerInformation(String trainerEmail);
+	public Map<String,Object> selectPostList(String trainerEmail);
 	
 	
 	
