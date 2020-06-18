@@ -140,8 +140,18 @@ public class ManagerController {
 	 * @Method 설명 : 트레이너 신고 및 리뷰신고 작성 페이지 매핑
 	 */
 	@RequestMapping("/report/reportrequest.do")
-	public ModelAndView reportView(@RequestParam Map<String, Object> commandMap) {
+	public ModelAndView reportView(@RequestParam Map<String, Object> commandMap, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		//res안에 들어가는거, type, tr_email, mem_email, &trainer_name or nick_name
+		if(session.getAttribute("memberType").equals("member")) {
+			Member m = (Member)session.getAttribute("loginInfo");
+			commandMap.put("mem_email", m.getMem_email());
+			commandMap.put("nick_name", m.getNickname());
+		}else if(session.getAttribute("memberType").equals("trainer")) {
+			Trainer t = (Trainer)session.getAttribute("loginInfo");
+			commandMap.put("tr_email", t.getTrainerName());
+			commandMap.put("trainer_name", t.getTrainerName());
+		}
 		mv.addObject("res", commandMap);
 		mv.setViewName("manager/writeReport");
 		return mv;
