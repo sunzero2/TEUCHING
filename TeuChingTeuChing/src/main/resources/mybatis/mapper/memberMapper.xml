@@ -48,7 +48,7 @@
  		<result column ="IS_LEAVE_YN" property="leave_yn"/>
  	</resultMap>
  	
- 	<!-- 비밀번호 변경 -->
+ 	<!-- 비밀번호 찾기 -> 비밀번호 변경 -->
 	<update id="update_pw">
 		update ${table} set 
 		<if test='table=="tr_trainer"'>
@@ -63,43 +63,30 @@
 		</if>
 	</update>
  	
- 	<!-- 일반회원 회원정보 수정 -->
- 	<update id="update_mypage_M">
-		update tr_trainer set 
-		photo = #{photo} 
-		
-		where tr_email = #{tr_email}
-	</update>
-	
- 	<!-- 트레이너 회원정보 수정 -->
- 	<update id="update_mypage_T">
-		update tr_trainer set 
-		photo = #{photo} 
-		
-		
-		where tr_email = #{tr_email}
-	</update>
-	
- 	<!-- 트레이너 프로필 사진 변경 -->
-	<update id="photoUpdate">
-		update tr_trainer set photo = #{photo} where tr_email = #{tr_email}
-	</update>
- 	
- 	
  	<!-- 트레이너의 게시글 가져오기 -->
  	<select id="t_postlist" resultMap="postMap">
 		select * from tr_post where TR_EMAIL like '%' || #{input} || '%' order by post_idx desc
 	</select>
 	<resultMap id="postMap" type="Post">
+		<id column="post_idx" property="postIdx"></id>
 		<result column="tr_email" property="trEmail"></result>
+		<result column="trainer_name" property="trainerName"></result>
+		<result column="post_title" property="postTitle"></result>
+		<result column="post_cont" property="postCont"></result>
+		<result column="purpose" property="purpose"></result>
+		<result column="sports" property="sports"></result>
+		<result column="area" property="area"></result>
+		<result column="class_size" property="classSize"></result>
+		<result column="gender" property="gender"></result>
+		<result column="place" property="place"></result>
+		<result column="price" property="price"></result>
+		<result column="write_date" property="writeDate"></result>
 	</resultMap>
- 	
- 	
- 	<!-- 회원탈퇴 -->
- 	
- 	
+
  	
  	<select id="selectTopTrainer" resultMap="trainerResult">
  		<![CDATA[select rownum, t.* from (select * from tr_trainer t order by tr_like desc) t where rownum < 4]]>
  	</select>
+ 	
+ 	
 </mapper>

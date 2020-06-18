@@ -30,16 +30,50 @@ public class MypageServiceImpl implements MypageService{
 	
 	// 트레이너 회원정보 수정
 	@Override
-	public Trainer update_mypage_T(Trainer trainer) throws Exception {
-		mypageDao.update_mypage_T(trainer);
-		return mypageDao.t_login(trainer);
+	public Trainer update_mypage_T(Map<String, Object> commandMap) throws Exception {
+		mypageDao.update_mypage_T(commandMap);
+		return mypageDao.t_login(commandMap);
 	}
 	
 	// 일반회원 회원정보 수정
 	@Override
-	public Member update_mypage_M(Member member) throws Exception {
-		mypageDao.update_mypage_M(member);
-		return mypageDao.m_login(member);
+	public Member update_mypage_M(Map<String, Object> commandMap) throws Exception {
+		mypageDao.update_mypage_M(commandMap);
+		return mypageDao.m_login(commandMap);
 	}
 
+	// 일반회원 로그인
+	@Override
+	public Member m_login(Map<String, Object> commandMap) throws SQLException {
+		Member res = null;
+		res = mypageDao.m_login(commandMap);
+		return res;
+	}
+
+	// 트레이너 로그인
+	@Override
+	public Trainer t_login(Map<String, Object> commandMap) throws SQLException {
+		Trainer res = null;
+		res = mypageDao.t_login(commandMap);
+		return res;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

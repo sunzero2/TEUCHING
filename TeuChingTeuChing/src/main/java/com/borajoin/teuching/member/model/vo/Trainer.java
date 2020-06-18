@@ -20,6 +20,7 @@ public class Trainer {
 	private String leave_yn;
 	private String purpose_keyword;
 	
+	
 	public String getTr_email() {
 		return tr_email;
 	}

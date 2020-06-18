@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Mypage">
+
+	<!-- 일반회원  세션값 다시 넣기 -->
+	<select id="m_newlogin" resultType="Member">
+		select *
+		from TR_MEMBER where MEM_EMAIL = #{email}
+	</select>
+	 	
+ 	<!-- 트레이너 세션값 다시 넣기 -->
+	<select id="t_newlogin" resultMap="t_loginMap">
+		select *
+		from tr_trainer where tr_email = #{tr_email}
+	</select>
+ 	<resultMap id="t_loginMap" type="Trainer">
+ 		<result column ="trainer_name" property="trainerName"/>
+ 		<result column ="IS_LEAVE_YN" property="leave_yn"/>
+ 	</resultMap>
+ 	
+ 	<!-- 일반회원 회원정보 수정 -->
+ 	<update id="update_mypage_M">
+		update tr_member set 
+		photo = #{photo} 
+		
+		where mem_email = #{mem_email}
+	</update>
+	
+ 	<!-- 트레이너 회원정보 수정 -->
+ 	<update id="update_mypage_T">
+		update tr_trainer set 
+		photo = #{photo} 
+		
+		
+		where tr_email = #{tr_email}
+	</update>
+	
+ 	<!-- 트레이너 프로필 사진 변경 -->
+	<update id="photoUpdate">
+		update tr_trainer set photo = #{photo} where tr_email = #{tr_email}
+	</update>
+ 	
+ 	
+ 	
+ 	
+ 	<!-- 회원탈퇴 -->
+ 	
+ 	
+ 	
+</mapper>

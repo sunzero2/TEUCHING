@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -59,15 +60,15 @@
 		<div class="row">
 
 			<ul class="nav nav-pills nav-stacked admin-menu"
-				style="float:left;transform: translateY(5%)">
+				style="float:left;transform: translate(80%,5%)">
 				<li class="active"><a href="${pageContext.request.contextPath }/manager/report.do" data-target-id="profile">트레이너 신고</a></li>
 			</ul>
 			<ul class="nav nav-pills nav-stacked admin-menu"
-				style="float:left;transform: translate(-101%,145%)">
+				style="float:left;transform: translate(4%,20%)">
 				<li class="active"><a href="${pageContext.request.contextPath }/manager/reviewreport.do" data-target-id="profile">리뷰 신고</a></li>
 			</ul>
 
-			<div class="col-md-9  admin-content" id="profile" style="transform: translate(109px,-51px)">
+			<div class="col-md-9  admin-content" id="profile">
 				<c:forEach items="${res.resTra.selectTraReport }" var="r">
 					<div class="panel panel-info" style="margin: 1em;">
 						<div class="panel-heading">
@@ -78,7 +79,7 @@
 						</div>
 						<div class="panel-body">
 							<a
-								href="${pageContext.request.contextPath }/manager/reportdetail.do?traid=${r.report_idx}">${r.rep_cont }</a>
+								href="${pageContext.request.contextPath }/manager/reportdetail.do?traid=${r.report_idx}">${fn:substring(r.rep_cont, 0, 35) }...</a>
 						</div>
 					</div>
 				</c:forEach>
