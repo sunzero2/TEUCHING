@@ -383,9 +383,6 @@ td a{
 			form.submit();
 		}
 	  
-	   /* 지수야 이거 달력 넘기면 예약이 안되는데 고거 어케해야할듯!  -보라- 
-	   	그리고 클릭했ㅅ을때 팝업 열리게하는거 > td까지만 되어있었는데 a하나 붙였어! 
-	   */
 	   
 	   	function click(e){
 	   		let month_year = $('#current-year-month').text();

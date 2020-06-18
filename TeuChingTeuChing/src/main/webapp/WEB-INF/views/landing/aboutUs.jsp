@@ -38,28 +38,30 @@
 		<li id="slide1" class="slide_common">
 			<div class="blackBox">
 				<h1 class="about_title">About Us</h1>
-				<p class="about_content">TeuChing의 매칭 서비스는 사용자가 선택한 키워드를 기반으로 일일 트레이너를 소개시켜줍니다.</p>
-				<p class="about_content">트레이너의 경력, 수상내역이 궁금하다면 트레이너의 프로필을 확인할 수 있습니다.</p>
-				<p class="about_content">궁금한 점이 생기면 트레이너에게 직접 물어볼 수 있죠.</p>
-				<p class="about_content">이제 매장에 직접 방문하지 않고도 나에게 맞는 트레이너를 찾을 수 있습니다.</p>
+				<p class="about_content">TeuChing은 회원이 원하는 운동을 적시적기에 할 수 있게 트레이너와 매칭해줍니다.</p>
+				<p class="about_content">회원은 먼저 키워드를 선택하고, 그 키워드에 해당하는 트레이너들을 비교하여 선택합니다.</p>
+				<p class="about_content">모든 트레이너의 리뷰와 수상 경력, 자격 증명으로 꼼꼼히 따져볼 수 있습니다.</p>
+				<p class="about_content">물론, 궁금한 점이 생긴다면 쪽지를 통해 직접 물어볼 수도 있죠.</p>
+				<p class="about_content">예약 또한 쪽지를 통해 가능하기 때문에 꼼꼼히 따져보고 물어가며 예약이 가능합니다!</p>
 			</div>
 		</li>
 		<li id="slide2" class="slide_common">
 			<div class="blackBox">
 				<h1 class="about_title">About Us</h1>
-				<p class="about_content">TeuChing의 매칭 서비스는 사용자가 선택한 키워드를 기반으로 일일 트레이너를 소개시켜줍니다.</p>
-				<p class="about_content">트레이너의 경력, 수상내역이 궁금하다면 트레이너의 프로필을 확인할 수 있습니다.</p>
-				<p class="about_content">궁금한 점이 생기면 트레이너에게 직접 물어볼 수 있죠.</p>
-				<p class="about_content">이제 매장에 직접 방문하지 않고도 나에게 맞는 트레이너를 찾을 수 있습니다.</p>
+				<p class="about_content">COVID-19로 인해 예전처럼 선뜻 운동하러 나서기 힘든 요즘,</p>
+				<p class="about_content">보다 안전하고 검증된 트레이너 인증 시스템으로 걱정 없는 운동을 즐기실 수 있습니다.</p>
+				<p class="about_content">혹시 불쾌하게 했거나 적절하지 못한 트레이너나 회원은 신고해 주세요.</p>
+				<p class="about_content">관리자의 철저한 검증을 통해 부적절한 트레이너, 회원이라고 판단이 되면</p>
+				<p class="about_content">블랙리스트에 올라가고 이는 프로필을 통해 확인이 가능하답니다!</p>
 			</div>
 		</li>
 		<li id="slide3" class="slide_common">
 			<div class="blackBox">
 				<h1 class="about_title">About Us</h1>
-				<p class="about_content">TeuChing의 매칭 서비스는 사용자가 선택한 키워드를 기반으로 일일 트레이너를 소개시켜줍니다.</p>
-				<p class="about_content">트레이너의 경력, 수상내역이 궁금하다면 트레이너의 프로필을 확인할 수 있습니다.</p>
-				<p class="about_content">궁금한 점이 생기면 트레이너에게 직접 물어볼 수 있죠.</p>
-				<p class="about_content">이제 매장에 직접 방문하지 않고도 나에게 맞는 트레이너를 찾을 수 있습니다.</p>
+				<p class="about_content">트레이너 프로필에 있는 리뷰에서 추천을 많이 받는 트레이너는 영광스러운 TOP 3에 올라갈 수 있습니다!</p>
+				<p class="about_content">메인 페이지에서 확인이 가능하죠.</p>
+				<p class="about_content">뭐가 좋은 거냐고요? 다른 트레이너보다 노출이 더 많이 되기 때문에 회원들의 접근성이 보다 뛰어납니다.</p>
+				<p class="about_content">이보다 더 좋은 혜택이 어딨습니까?</p>
 			</div>
 		</li>
 	</ul>
