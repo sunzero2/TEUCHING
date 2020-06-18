@@ -46,7 +46,7 @@
 
 	<div class="wrapper">
 		<div class="ansbox-top">
-			<div id="person"
+			<div id="person" style="background-image:url(../resources/upload/profileImg/${res.tr_email}.PNG);"
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated">
 				<c:if test="${ res.ans_yn eq 'Y'}">
 					<div id="check"

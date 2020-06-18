@@ -223,6 +223,7 @@ public class ManagerController {
 		mv.setViewName("manager/qualiDetail");
 		mv.addObject("res", ms.selectQualiDetail(qualiidx));
 		mv.addObject("file", ms.selectQualiFile(qualiidx));
+		mv.addObject("trainer", ms.selectTrainerforQuali(qualiidx));
 		return mv;
 	}
 
@@ -255,6 +256,12 @@ public class ManagerController {
 		return mv;
 	}
 	
+	/**
+	* @Method Name : insertQuali
+	* @작성일 : 2020. 6. 18.
+	* @작성자 : 김지수
+	* @Method 설명 : 자격 증명 요청 페이지
+	*/
 	@RequestMapping("/quali/insertquali.do")
 	public ModelAndView  insertQuali(HttpServletRequest request, String quali_auth, MultipartFile file) {
 		ModelAndView mv = new ModelAndView();
@@ -284,6 +291,7 @@ public class ManagerController {
 		return mv;
 	}
 	
+	//테스트
 	@RequestMapping("/report/mypagerev.do")
 	public ModelAndView selectRevReportMypage(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -293,12 +301,30 @@ public class ManagerController {
 		return mv;
 	}
 	
+	/**
+	* @Method Name : selectRevReportMypage
+	* @작성일 : 2020. 6. 18.
+	* @작성자 : 김지수
+	* @Method 설명 : 회원의 마이페이지 내 신고내역
+	*/
 	@RequestMapping("/report/trainerdetail.do")
 	public ModelAndView selectRevReportMypage(int traid) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("res", ms.traManagerDetail(traid));
 		mv.addObject("file", ms.selectTraFile(traid));
 		mv.setViewName("manager/reportdetail_M");
+		return mv;
+	}
+	
+	/**
+	* @Method Name : selectTraReportMypage
+	* @작성일 : 2020. 6. 18.
+	* @작성자 : 김지수
+	* @Method 설명 : 트레이너의 마이페이지 내 신고내역 
+	*/
+	@RequestMapping("/report/memberdetail.do")
+	public ModelAndView selectTraReportMypage(int revid) {
+		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
 }

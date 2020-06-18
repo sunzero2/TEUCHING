@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.borajoin.teuching.manager.model.vo.Quali;
 import com.borajoin.teuching.manager.model.vo.ReviewReport;
 import com.borajoin.teuching.manager.model.vo.TrainerReport;
+import com.borajoin.teuching.member.model.vo.Trainer;
 
 import common.util.File_Upload;
 import common.util.Paging;
@@ -119,6 +120,11 @@ public class ManagerDao {
 //	public List<ReviewReport> selectRevReportAns(String tr_email){
 //		
 //	}
+	
+	public Trainer selectTrainerforQuali(String qualiidx) {
+		String tr_email = sqlSession.selectOne("Manager.selectEmailForQuali", qualiidx);
+		return sqlSession.selectOne("Manager.selectTrainerforQuali",tr_email);
+	}
 	
 
 }

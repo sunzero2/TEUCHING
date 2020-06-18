@@ -6,6 +6,7 @@ import java.util.Map;
 import com.borajoin.teuching.manager.model.vo.Quali;
 import com.borajoin.teuching.manager.model.vo.ReviewReport;
 import com.borajoin.teuching.manager.model.vo.TrainerReport;
+import com.borajoin.teuching.member.model.vo.Trainer;
 
 import common.util.File_Upload;
 
@@ -52,5 +53,7 @@ public interface ManagerService {
 	public int insertQualiFile(File_Upload file_Upload);
 	
 	public List<TrainerReport> selectTraReportMypage(String mem_email);
+	
+	public Trainer selectTrainerforQuali(String qualiidx);
 	
 }
