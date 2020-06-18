@@ -58,15 +58,15 @@
 <div class="row">
 
 			<ul class="nav nav-pills nav-stacked admin-menu"
-				style="float:left;transform: translateY(5%)">
+				style="float:left;transform: translate(80%,5%)">
 				<li class="active"><a href="${pageContext.request.contextPath }/manager/report.do" data-target-id="profile">트레이너 신고</a></li>
 			</ul>
 			<ul class="nav nav-pills nav-stacked admin-menu"
-				style="float:left;transform: translate(-101%,145%)">
+				style="float:left;transform: translate(4%,20%)">
 				<li class="active"><a href="${pageContext.request.contextPath }/manager/reviewreport.do" data-target-id="profile">리뷰 신고</a></li>
 			</ul>
 
-		<div class="col-md-9  admin-content" id="profile" style="transform: translate(109px,-51px)">
+			<div class="col-md-9  admin-content" id="profile">
 				<c:forEach items="${res.resRev.selectRevReport }" var="r">
 					<div class="panel panel-info" style="margin: 1em;">
 						<div class="panel-heading">

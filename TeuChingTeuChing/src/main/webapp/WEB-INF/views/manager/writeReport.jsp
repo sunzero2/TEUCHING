@@ -47,14 +47,14 @@
 
 	<div class="wrapper">
 		<div class="ansbox-top">
-			<div
+			<div style="background-image:url(../resources/upload/profileImg/${res.tr_email}.PNG)"
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
 				id="person"></div>
 			<form
-				action="${pageContext.request.contextPath }/report/insertReport.do"
+				action="${pageContext.request.contextPath }/report/insertreport.do"
 				method="post" enctype="multipart/form-data">
 				<h5>
-					${res.reported }
+				트레이너
 					<button type="submit" class="btn btn-outline-primary" id="btn"
 						onclick="if(!confirm('신고하시겠습니까?')){return false;}">작성완료</button>
 				</h5>
@@ -63,10 +63,9 @@
 		<div class="ansbox-bottom">
 
 			<div class="col-lg-8 ftco-animate">
-				<h3 class="mb-4">신고내용</h3>
 				<input type="file" multiple id="startbutton"
 					class="ajax-file-upload-green" name="files" value="Upload">
-				<textarea name="rep_cont" class="form-control" id="textarea"></textarea>
+				<textarea name="rep_cont" class="form-control" id="textarea" style=";"></textarea>
 			</div>
 			<input type="hidden" name="type" value="${res.type }"> <input
 				type="hidden" name="tr_email" value="${res.tr_email }"> <input

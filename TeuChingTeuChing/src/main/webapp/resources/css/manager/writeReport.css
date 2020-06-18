@@ -24,7 +24,6 @@ html, body {
 	height: 75%;
 	width: 110%;
 	position: absolute;
-	boader: 1px solid black;
 }
 
 #bt1 {
@@ -41,7 +40,6 @@ html, body {
 
 h5 {
 	transform: translate(5%, 30%);
-	font-family: "Open Sans", Arial, sans-serif;
 }
 
 h2 {
