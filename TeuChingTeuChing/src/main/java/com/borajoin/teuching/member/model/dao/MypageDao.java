@@ -18,36 +18,35 @@ public class MypageDao {
 	private SqlSessionTemplate session;
 	
 	// 일반회원 세션 새로 가져오기용
-	public Member m_login(Member member) {
-		return session.selectOne("Member.m_login", member);
+	public Member m_login(Map<String, Object> commandMap) {
+		return session.selectOne("Mypage.m_newlogin", commandMap);
 	}
 
 	// 트레이너 세션 새로 가져오기용
-	public Trainer t_login(Trainer trainer) {
-		return session.selectOne("Member.t_login", trainer);
+	public Trainer t_login(Map<String, Object> commandMap) {
+		return session.selectOne("Mypage.t_newlogin", commandMap);
 	}
 	
 	// 일반회원 회원정보 업데이트
-	public int update_mypage_M(Member member){
-		return session.update("Member.update_mypage_M", member);
+	public int update_mypage_M(Map<String, Object> commandMap){
+		return session.update("Mypage.update_mypage_M", commandMap);
 	}
 	
 	// 트레이너 회원정보 업데이트
-	public int update_mypage_T(Trainer trainer){
-		return session.update("Member.update_mypage_T", trainer);
+	public int update_mypage_T(Map<String, Object> commandMap){
+		return session.update("Mypage.update_mypage_T", commandMap);
 	}
 
 	
 	//트레이너 프로필사진 업데이트
 	public int photoUpdate(Map<String, Object> commandMap) {
-		return session.update("Member.photoUpdate", commandMap);
+		return session.update("Mypage.photoUpdate", commandMap);
 	}
 	
 	//트레이너 게시글 리스트
 	public List<Post> t_postlist(Map<String, String> data) {
 		return session.selectList("Member.t_postlist", data);
 	}
-	
 	
 	
 	

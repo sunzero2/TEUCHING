@@ -10,15 +10,22 @@ import com.borajoin.teuching.member.model.vo.Trainer;
 
 public interface MypageService {
 
+	// 트레이너 게시글 데이터 가져오기
 	public List<Post> t_postlist(Map<String, String> data);
 
 	// 트레이너 프로필 사진 변경
 	public int photoUpdate(Map<String, Object> commandMap) throws SQLException;
 
 	// 트레이너 정보 업데이트
-	public Trainer update_mypage_T(Trainer trainer) throws Exception;
+	public Trainer update_mypage_T(Map<String, Object> commandMap) throws Exception;
 
 	// 일반회원 정보 업데이트
-	public Member update_mypage_M(Member member) throws Exception;
+	public Member update_mypage_M(Map<String, Object> commandMap) throws Exception;
+
+	// 일반회원 로그인
+	public Member m_login(Map<String, Object> commandMap) throws SQLException;
+
+	// 트레이너 로그인
+	public Trainer t_login(Map<String, Object> commandMap) throws SQLException;
 
 }

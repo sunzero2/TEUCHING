@@ -4,6 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<%
+ response.setHeader("Cache-Control","no-cache");
+ response.setHeader("Pragma","no-cache");
+ response.setDateHeader("Expires",0);
+%>
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
@@ -54,13 +62,12 @@
 
 .text pl-md-4 ml-md-2 pt-4{
 	font-size: small;
-
 }
 </style>
 
 
 </head>
-<body>
+<body onload="imgLoad('${loginInfo.photo}');">
 
 <%@ include file="../include/top.jsp" %>
 <hr>
@@ -72,8 +79,7 @@
   		<div class="col-sm-3"><!--left col-->
               
 		
-      <div class="text-center">
-        <img src="/teuching/resources/upload/profileImg/${loginInfo.photo}" class="avatar img-circle img-thumbnail" alt="avatar">
+      <div id="imgWrap" class="text-center">
         <h6>프로필 사진 변경하기</h6>
         <form name="photoUpdate" action="<%=request.getContextPath()%>/member/photoUpdate.do" method="post" enctype="multipart/form-data">
         <input type="file" class="text-center center-block file-upload" name="file"><button type="submit">변경하기</button>
@@ -115,7 +121,7 @@
                           
                           <div class="col-xs-6">
                             <label><h4>Trainer Name</h4></label>
-									<div class="form-control" id="name">
+									<div class="form-control">
 										<span style="color: black;">${loginInfo.trainerName}</span>
 									</div>
 								</div>
@@ -269,7 +275,18 @@
     </div><!--/row-->
 
 
-<script>                                           
+<script>
+function imgLoad(img) {
+	window.setTimeout(function() {
+		var div = document.getElementById('imgWrap');
+		var imgDiv = document.createElement('img');
+		imgDiv.className="avatar img-circle img-thumbnail";
+		imgDiv.alt="avatar";
+		imgDiv.src = "/teuching/resources/upload/profileImg/" + img;
+		div.append(imgDiv);
+	}, 1000);
+}
+
 $(document).ready(function() {
 
     
@@ -456,106 +473,110 @@ function sample6_execDaumPostcode() {
 
 
 //해당 트레이너의 포스트리스트 뽑아주기
-$('document').ready(function() {
-	pList = new Array();
-	
-	$.ajax({
-		url : "/teuching/member/t_postlist.do",
-		data : {
-			"input" : "${loginInfo.tr_email}",
-			"option" : "trainer"
-		},
-		success : function(v) {
-			for(i = 0; i < v.length; i++) {
-				pList.push(v[i]);
-			}
-			
-			createTable();
-		}
-	})
 
+	$('document').ready(function() {
+						pList = new Array();
 
-function createTable() {
-	// post list 생성할 table
-	var table = document.getElementById('postTable');
-	table.innerHTML = "";
-	if(pList.length > 0) {
-		for(i = 0; i < pList.length; i++) {
-			// row 생성
-			var tr = table.insertRow();
-			tr.className = 'blog-entry blog-entry-2 justify-content-end col-md-12 ftco-animate fadeInUp ftco-animated';
-			
-			// 트레이너의 이미지 담을 cell 생성
-			var imageTd = tr.insertCell();
-			
-			// 이미지 담을 div 생성
-			var image = document.createElement('div');
-			image.className = 'img rounded-circle mb-2';
-			image.style.backgroundImage = 'url(../resources/img/classes-1.jpg)';
-			image.style.width = '116px';
-			image.style.height = '141px';
-			image.style.marginTop = '54px';
-			imageTd.append(image);
-			
-			// 게시글 콘텐츠 담을 cell 생성
-			var contentTd = tr.insertCell();
-			
-			// 콘텐츠 감싸줄 div 생성
-			var wrapper = document.createElement('div');
-			wrapper.className = 'text pl-md-4 ml-md-2 pt-4';
-			wrapper.style.width = 'auto';
-			contentTd.append(wrapper);
-			
-			// 트레이너 이름, 작성일자, 댓글 수 담을 header
-			var header = document.createElement('div');
-			header.className = 'meta';
-			wrapper.append(header);
-			
-			var writeDate = document.createElement('div');
-			writeDate.innerText = pList[i].writeDate;
-			header.append(writeDate);
-			
-			var writer = document.createElement('div');
-			header.append(writer);
-			
-			var writerLink = document.createElement('a');
-			// 트레이너 프로필로 이동할 수 있는 링크
-			writerLink.href = '/teuching/profile/review.do?trainerEmail=' + pList[i].trEmail;
-			writerLink.innerText = pList[i].trainerName;
-			writer.append(writerLink);
-			
-			var body = document.createElement('div');
-			wrapper.append(body);
-			
-			var title = document.createElement('h3');
-			title.className = 'heading mt-2';
-			body.append(title);
-			
-			var titleLink = document.createElement('a');
-			titleLink.href = '/teuching/post/detail.do?postNo=' + pList[i].postIdx;
-			titleLink.innerText = pList[i].postTitle;
-			title.append(titleLink);
-			
-			var content = document.createElement('div');
-			content.style.height = 'auto';
-			content.style.overflow = 'hidden';
-			var con = pList[i].postCont;
-			con = con.replace('<br>', '\r\n');
-			content.innerText = con;
-			body.append(content);
-		}
-	} else {
-		var failMsg = document.createElement('p');
-		var failImg = document.createElement('img');
-		failImg.src = "data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIC0yIDUxMiA1MTIiIHdpZHRoPSI1MTJwdCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNDQ4IDUwOC44MDA3ODEtMTQ4LjU5Mzc1LTkyLjgwMDc4MWgtMjY3LjQwNjI1Yy0xNy42NzE4NzUgMC0zMi0xNC4zMjgxMjUtMzItMzJ2LTM1MmMwLTE3LjY3MTg3NSAxNC4zMjgxMjUtMzIgMzItMzJoNDQ4YzE3LjY3MTg3NSAwIDMyIDE0LjMyODEyNSAzMiAzMnYzNTJjMCAxNy42NzE4NzUtMTQuMzI4MTI1IDMyLTMyIDMyaC0zMnptMCAwIiBmaWxsPSIjZmY3NzYxIi8+PGcgZmlsbD0iI2ZmZiI+PHBhdGggZD0ibTI3MiAyNTZoLTMydi0xNDRjMC04LjgzNTkzOCA3LjE2NDA2Mi0xNiAxNi0xNnMxNiA3LjE2NDA2MiAxNiAxNnptMCAwIi8+PHBhdGggZD0ibTI0MCAyODhoMzJ2MzJoLTMyem0wIDAiLz48L2c+PC9zdmc+";
-		failImg.id = 'failImg';
-		failMsg.id = 'failMsg';
-		failMsg.innerText = "아직 등록하신 게시글이 없습니다. 게시글을 등록하여 튜터분들과 운동을 시작해볼까요?";
-		table.append(failImg);
-		table.append(failMsg);
-	}
-}
-});
+						$.ajax({
+							url : "/teuching/member/t_postlist.do",
+							data : {
+								"input" : "${loginInfo.tr_email}",
+								"option" : "trainer"
+							},
+							success : function(v) {
+								for (i = 0; i < v.length; i++) {
+									pList.push(v[i]);
+								}
+
+								createTable();
+							}
+						})
+
+						function createTable() {
+							// post list 생성할 table
+							var table = document.getElementById('postTable');
+							table.innerHTML = "";
+							if (pList.length > 0) {
+								for (i = 0; i < pList.length; i++) {
+									// row 생성
+									var tr = table.insertRow();
+									tr.className = 'blog-entry blog-entry-2 justify-content-end col-md-12 ftco-animate fadeInUp ftco-animated';
+
+									// 트레이너의 이미지 담을 cell 생성
+									var imageTd = tr.insertCell();
+
+									// 이미지 담을 div 생성
+									var image = document.createElement('div');
+									image.className = 'img rounded-circle mb-2';
+									image.style.backgroundImage = 'url(../resources/img/classes-1.jpg)';
+									image.style.width = '116px';
+									image.style.height = '141px';
+									image.style.marginTop = '54px';
+									imageTd.append(image);
+
+									// 게시글 콘텐츠 담을 cell 생성
+									var contentTd = tr.insertCell();
+
+									// 콘텐츠 감싸줄 div 생성
+									var wrapper = document.createElement('div');
+									wrapper.className = 'text pl-md-4 ml-md-2 pt-4';
+									wrapper.style.width = 'auto';
+									contentTd.append(wrapper);
+
+									// 트레이너 이름, 작성일자, 댓글 수 담을 header
+									var header = document.createElement('div');
+									header.className = 'meta';
+									wrapper.append(header);
+
+									var writeDate = document
+											.createElement('div');
+									writeDate.innerText = pList[i].writeDate;
+									header.append(writeDate);
+
+									var writer = document.createElement('div');
+									header.append(writer);
+
+									var writerLink = document
+											.createElement('a');
+									// 트레이너 프로필로 이동할 수 있는 링크
+									writerLink.href = '/teuching/profile/review.do?trainerEmail='
+											+ pList[i].trEmail;
+									writerLink.innerText = pList[i].trainerName;
+									writer.append(writerLink);
+
+									var body = document.createElement('div');
+									wrapper.append(body);
+
+									var title = document.createElement('h3');
+									title.className = 'heading mt-2';
+									body.append(title);
+
+									var titleLink = document.createElement('a');
+									titleLink.href = '/teuching/post/detail.do?postNo='
+											+ pList[i].postIdx;
+									titleLink.innerText = pList[i].postTitle;
+									title.append(titleLink);
+
+									var content = document.createElement('div');
+									content.style.height = 'auto';
+									content.style.overflow = 'hidden';
+									var con = pList[i].postCont;
+									con = con.replace('<br>', '\r\n');
+									content.innerText = con;
+									body.append(content);
+								}
+							} else {
+								var failMsg = document.createElement('p');
+								var failImg = document.createElement('img');
+								failImg.src = "data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIC0yIDUxMiA1MTIiIHdpZHRoPSI1MTJwdCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNDQ4IDUwOC44MDA3ODEtMTQ4LjU5Mzc1LTkyLjgwMDc4MWgtMjY3LjQwNjI1Yy0xNy42NzE4NzUgMC0zMi0xNC4zMjgxMjUtMzItMzJ2LTM1MmMwLTE3LjY3MTg3NSAxNC4zMjgxMjUtMzIgMzItMzJoNDQ4YzE3LjY3MTg3NSAwIDMyIDE0LjMyODEyNSAzMiAzMnYzNTJjMCAxNy42NzE4NzUtMTQuMzI4MTI1IDMyLTMyIDMyaC0zMnptMCAwIiBmaWxsPSIjZmY3NzYxIi8+PGcgZmlsbD0iI2ZmZiI+PHBhdGggZD0ibTI3MiAyNTZoLTMydi0xNDRjMC04LjgzNTkzOCA3LjE2NDA2Mi0xNiAxNi0xNnMxNiA3LjE2NDA2MiAxNiAxNnptMCAwIi8+PHBhdGggZD0ibTI0MCAyODhoMzJ2MzJoLTMyem0wIDAiLz48L2c+PC9zdmc+";
+								failImg.id = 'failImg';
+								failMsg.id = 'failMsg';
+								failMsg.innerText = "아직 등록하신 게시글이 없습니다. 게시글을 등록하여 튜터분들과 운동을 시작해볼까요?";
+								table.append(failImg);
+								table.append(failMsg);
+							}
+						}
+					});
 </script>
 
 

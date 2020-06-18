@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.borajoin.teuching.matching.model.vo.Post;
 import com.borajoin.teuching.member.model.service.MypageService;
+import com.borajoin.teuching.member.model.vo.Member;
 import com.borajoin.teuching.member.model.vo.Trainer;
 
 @Controller
@@ -59,31 +61,48 @@ public class MypageController {
 			return mav;
 		}
 		
-		
 		/**
 		* @Method Name : mypageUpdate_M
 		* @작성일 : 2020. 6. 17.
 		* @작성자 : 이남규
 		* @Method 설명 : 일반회원 마이페이지 정보 업데이트
 		*/
-		@RequestMapping("/member/mypageUpdate_M.do")
-		public ModelAndView mypageUpdate_M(@RequestParam Map<String, Object> commandMap, HttpSession session) {
-			
-			return null;
-		}
 		
+		/*
+		 * @RequestMapping("/member/mypageUpdate_M.do") public ModelAndView
+		 * mypageUpdate_M(@RequestParam Map<String, Object> commandMap, HttpSession
+		 * session) {
+		 * 
+		 * ModelAndView mav = new ModelAndView(); Member res = mys.m_login(commandMap);
+		 * session.setAttribute("loginInfo", res);
+		 * 
+		 * mav.addObject("msg", "아이디 혹은 비밀번호를 확인해주세요."); mav.addObject("url",
+		 * "account/loginform"); mav.setViewName("account/mypage_T");
+		 * 
+		 * return mav; }
+		 * 
+		 */
 		/**
 		* @Method Name : mypageUpdate_T
 		* @작성일 : 2020. 6. 17.
 		* @작성자 : 이남규
 		* @Method 설명 : 트레이너 마이페이지 정보 업데이트
 		*/
-		@RequestMapping("/member/mypageUpdate_T.do")
-		public ModelAndView mypageUpdate_T(@RequestParam Map<String, Object> commandMap, HttpSession session) {
-			
-			return null;
-		}
 		
+		/*
+		 * @RequestMapping("/member/mypageUpdate_T.do") public ModelAndView
+		 * mypageUpdate_T(@RequestParam Map<String, Object> commandMap, HttpSession
+		 * session) {
+		 * 
+		 * ModelAndView mav = new ModelAndView(); Trainer res = mys.t_login(commandMap);
+		 * session.setAttribute("loginInfo", res);
+		 * 
+		 * mav.addObject("msg", "아이디 혹은 비밀번호를 확인해주세요."); mav.addObject("url",
+		 * "account/loginform"); mav.setViewName("account/mypage_T");
+		 * 
+		 * return mav; }
+		 */
+		 
 		
 		
 		/**
@@ -130,15 +149,12 @@ public class MypageController {
 		* @Method 설명 :  사진 업데이트하기
 		*/
 		@RequestMapping("/member/photoUpdate.do")
-		public ModelAndView photoUpdate(@RequestParam Map<String, Object> commandMap, HttpServletRequest request, HttpSession session,
+		public ModelAndView photoUpdate(@RequestParam Map<String, Object> commandMap, HttpServletRequest request, HttpServletResponse response,
 				MultipartHttpServletRequest mtf) throws SQLException {
 			
 			ModelAndView mav = new ModelAndView();
+			System.out.println(commandMap);
 			
-			Trainer res = new Trainer();
-			session.removeAttribute("photo");
-
-			//////////////////////////////////////////////////////////////////////////////
 			// 파일 태그
 			String fileTag = "file";
 			// 업로드 파일이 저장될 경로
@@ -146,25 +162,21 @@ public class MypageController {
 			String filePath = root + "resources\\upload\\profileImg\\";
 			// 파일에 넣기
 			MultipartFile file = mtf.getFile(fileTag);
-			System.out.println(file.getOriginalFilename());
-			String filetype = StringUtils.getFilenameExtension(file.getOriginalFilename());
-			String fileName = (String) commandMap.get("tr_email") + "." + filetype;
+			//String filetype = StringUtils.getFilenameExtension(file.getOriginalFilename());
+			String fileName = (String) commandMap.get("tr_email") + ".PNG";
 
-			// 기존 파일을 삭제
-			new File(filePath + request.getParameter("photo")).delete();
-			
 			// 파일 전송
 			try {
 				file.transferTo(new File(filePath + fileName));
 			} catch (Exception e) {
 				System.out.println("파일 업로드 오류");
 			}
-			commandMap.put("photo", fileName);
-			mys.photoUpdate(commandMap);
-			///////////////////////////////////////////////////////////////////////////////
 			
-			res.setPhoto(fileName);
-			session.setAttribute("loginInfo", res);
+			response.setHeader("Cache-Control", "no-store");
+			
+			mav.addObject("msg", "프로필 사진 수정이 완료되었습니다.");
+			mav.addObject("url", "account/loginform");
+			
 			mav.setViewName("account/mypage_T");
 			
 			return mav;

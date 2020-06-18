@@ -24,5 +24,6 @@
 		<mapper resource="/mybatis/mapper/messageMapper.xml" />
 		<mapper resource="/mybatis/mapper/reviewMapper.xml" />
 		<mapper resource="/mybatis/mapper/noticeMapper.xml" />
+		<mapper resource="/mybatis/mapper/mypageMapper.xml" />
 	</mappers>
 </configuration>
