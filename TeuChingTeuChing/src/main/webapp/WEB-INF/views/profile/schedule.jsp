@@ -228,24 +228,23 @@ td a{
 		                
 		                $td.setAttribute('class','text-center');
 		            	$td.style.wordBreak="break-all";
+		            	
+		            	
 		            	var $at = document.createElement('a');
 		            	var $pt = document.createElement('a');
 		            	console.log(nextyear);
 		            	
-		            	if(month <=  monthList[first.getMonth()]){
+		            	
 		            	
 		            	/* 예약하기 버튼 생성 */
 		            	$td.appendChild($at);
 		            	$at.innerHTML = "예약하기";
 		            	$at.setAttribute('href','#a');
 			            $at.setAttribute('class','reply');
-		            	}else{
-		            		$td.appendChild($pt);
-			            	$pt.innerHTML = "예약불가";
-				            $pt.setAttribute('class','reply');
-				            $pt.setAttribute('id','noclick');
+		            	
 		            		
-		            	}
+		            		
+		            	
 			            /*  */
 			            $at.setAttribute('id', "day");
 			            $at.setAttribute('data-date', cnt);
