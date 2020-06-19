@@ -192,6 +192,11 @@
 										<span id="totalAdress">인증된 자격증명이 없습니다</span>
 									</c:if>
 								</p>
+								<p>
+									<c:if test="${Trainer.black_yn eq 'Y' }">
+									❗ 주의 : <span id="totalAdress">경고가 누적된 트레이너 입니다</span>
+									</c:if>
+								</p>
 								<div class="tag-widget post-tag-container mb-5 mt-5">
 
 									<div class="tagcloud">
