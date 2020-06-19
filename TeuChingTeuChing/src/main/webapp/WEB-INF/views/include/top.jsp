@@ -106,9 +106,16 @@
 				<div class="collapse navbar-collapse" id="ftco-nav">
 					<ul class="navbar-nav m-auto">
 						<c:if test="${loginInfo != null}">
-							<li class="nav-item active">
-								<a href="#" class="nav-link">MyPage</a>
-							</li>
+							<c:if test="${memberType eq 'member'}">
+								<li class="nav-item active"><a
+									href="<%=request.getContextPath()%>/member/mypage_M.do"
+									class="nav-link">MyPage</a></li>
+							</c:if>
+							<c:if test="${memberType eq 'trainer'}">
+								<li class="nav-item active"><a
+									href="<%=request.getContextPath()%>/member/mypage_T.do"
+									class="nav-link">MyPage</a></li>
+							</c:if>
 						</c:if>
 						<li class="nav-item active">
 							<a href="<%=request.getContextPath()%>/index/aboutus.do" class="nav-link">AboutUs</a>

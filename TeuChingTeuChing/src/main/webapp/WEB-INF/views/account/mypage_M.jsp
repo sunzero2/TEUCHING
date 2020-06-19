@@ -38,25 +38,23 @@
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42e0be41ec144283c6bfe7c0ed8dae35&libraries=services"></script>
 
 <style>
-<<<<<<< HEAD
-	input::placeholder {
-		color: black !important;
-	}
-	
-	form-height {
-		height: 110px;
-	}
-	.col-sm-9 {
-    width: 100%;
-    margin-left: 10%;
-=======
 input::placeholder {
 	color: black !important;
 }
 
 form-height {
 	height: 110px;
->>>>>>> 22342abf89c339953e39b36c6586addc37b592cd
+}
+
+.col-sm-9 {
+	width: 100%;
+	margin-left: 10%;
+	input: :placeholder{ 
+	color: black !important;
+}
+
+form-height {
+	height: 110px;
 }
 </style>
 </head>
@@ -78,7 +76,6 @@ form-height {
 						</ul>
 						<div class="tab-content">
 							<div class="tab-pane active" id="home">
-								<hr>
 								<form class="form"
 									action="<%=request.getContextPath()%>/member/mypageUpdate_M.do"
 									method="post" id="memberMypage">
@@ -95,60 +92,21 @@ form-height {
 											<span style="color: black;">${loginInfo.nickname}</span>
 										</div>
 									</div>
-<<<<<<< HEAD
-								</div>
-								<div class="col-xs-6 form-height">
-									<h4>Phone&nbsp;&nbsp;<span style="font-size: 11px;">붙임표(-)까지 입력해주세요.</span></h4>
-									<input type="text" id="cell" name="cell" maxlength="13"	class="form-control" placeholder="${loginInfo.cell}">
-								</div>
-								<div class="col-xs-6 form-height">
-									<h4>Gender</h4>
-									<select class="form-control form-control-alternative" style="font-size: small;" name="gender" id="gender">
-										<option value="${loginInfo.gender}" selected>${loginInfo.gender}</option>
-										<option>남성</option>
-										<option>여성</option>
-									</select>
-								</div>
-								<div class="col-xs-6 form-height">
-									<label for="password"><h4>Password</h4></label><br>
-									<input type="password"  class="form-control" id="password_1" name="password" class="pw" maxlength="20">
-								</div>
-								<div class="col-xs-6 form-height">
-									<label for="password2"><h4>Password Check</h4></label>
-									<input type="password" id="password_2" class="form-control">
-									<span id="alert-success" style="display: none;">비밀번호가 일치합니다.</span>
-									<span id="alert-danger" style="display: none; color: #d92742; font-weight: bold; ">	비밀번호가 일치하지 않습니다.</span>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group focused">
-										<label><h4>GYM Address</h4></label><br>
-										<input type="text" id="sample6_postcode" placeholder="우편번호">
-										<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
-										<br>
-										<br>
-										<input type="text" id="sample6_address" placeholder="현재 주소 : ${loginInfo.address}" name="address" style="width: 55%; height: 30px;">
-										<label class="form-control-label" for="input-address"></label>
-										<br>
-										<br>
-										<label class="form-control-label" for="input-address"></label>
-										<input type="text" id="sample6_extraAddress" placeholder="참고항목">
-=======
 									<div class="col-xs-6 form-height">
-										<h4>Phone</h4>
-										<span style="font-size: small;">붙임표(-)까지 입력해주세요.</span> <input
-											type="text" id="cell" name="cell" maxlength="13"
+										<h4>Phone&nbsp;&nbsp;<span style="font-size: 11px;">붙임표(-)까지
+												입력해주세요.</span></h4>
+										<input type="text" id="cell" name="cell" maxlength="13"
 											class="form-control" placeholder="${loginInfo.cell}">
 									</div>
 									<div class="col-xs-6 form-height">
 										<h4>Gender</h4>
 										<select class="form-control form-control-alternative"
 											style="font-size: small;" name="gender" id="gender">
-											<option value="${loginInfo.gender}" selected disabled>${loginInfo.gender}</option>
+											<option value="${loginInfo.gender}" selected>${loginInfo.gender}</option>
 											<option>남성</option>
 											<option>여성</option>
 										</select>
 									</div>
-									<br> <br>
 									<div class="col-xs-6 form-height">
 										<label for="password"><h4>Password</h4></label><br> <input
 											type="password" class="form-control" id="password_1"
@@ -161,9 +119,7 @@ form-height {
 											일치합니다.</span> <span id="alert-danger"
 											style="display: none; color: #d92742; font-weight: bold;">
 											비밀번호가 일치하지 않습니다.</span>
->>>>>>> 22342abf89c339953e39b36c6586addc37b592cd
 									</div>
-									<br>
 									<div class="col-md-12">
 										<div class="form-group focused">
 											<label><h4>GYM Address</h4></label><br> <input
@@ -179,8 +135,7 @@ form-height {
 												id="sample6_extraAddress" placeholder="참고항목">
 										</div>
 									</div>
-									<br>
-									<div class="col-xs-12 form-height">
+								<div class="col-xs-12 form-height">
 										<br>
 										<button class="btn btn-lg btn-success" type="button"
 											id="membersignUp">
@@ -240,7 +195,6 @@ form-height {
 							</div>
 							<div class="tab-pane active" id="report">
 								<h2></h2>
-								<hr>
 								<div class="col-xs-12">
 									<section class="container"
 										style="margin-top: 2%; margin-bottom: 2%; width: 100%;">
@@ -274,7 +228,6 @@ form-height {
 </body>
 
 <script type="text/javascript">
-<<<<<<< HEAD
 $(document).ready(function(e) {
 
 		$('#membersignUp').click(function() {
@@ -346,76 +299,7 @@ $(document).ready(function(e) {
 	
 	
 });	
-=======
-	$(document)
-			.ready(
-					function(e) {
-
-						$('#membersignUp')
-								.click(
-										function() {
-
-											if ($.trim($('#password_1').val()) == '') {
-												alert("패스워드를 입력해주세요.");
-												$('#password_1').focus();
-												return;
-											}
-											//패스워드 확인
-											else if ($('#password_1').val() != $(
-													'#password_2').val()) {
-												alert('패스워드가 다릅니다.');
-												return;
-											} else {
-
-												if ($.trim($('#gender').val()) == '') {
-													document
-															.getElementById('gender').value = "${loginInfo.gender}";
-												}
-												if ($.trim($('#cell').val()) == '') {
-													document
-															.getElementById('cell').value = "${loginInfo.cell}";
-												}
-												if ($
-														.trim($(
-																'#sample6_address')
-																.val()) == '') {
-													document
-															.getElementById('sample6_address').value = "${loginInfo.address}";
-												}
-
-												alert("회원정보 수정이 완료되었습니다!");
-												$('#memberMypage').submit();
-											}
-
-										});
-
-						$('.pw')
-								.focusout(
-										function() {
-											var pwd1 = $("#password_1").val();
-											var pwd2 = $("#password_2").val();
-
-											if (pwd1 != '' && pwd2 == '') {
-												null;
-											} else if (pwd1 != "" || pwd2 != "") {
-												if (pwd1 == pwd2) {
-													$("#alert-success").css(
-															'display',
-															'inline-block');
-													$("#alert-danger").css(
-															'display', 'none');
-												} else {
-													alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.");
-													$("#alert-success").css(
-															'display', 'none');
-													$("#alert-danger").css(
-															'display',
-															'inline-block');
-												}
-											}
-										});
-					});
->>>>>>> 22342abf89c339953e39b36c6586addc37b592cd
+	
 	function sample6_execDaumPostcode() {
 		new daum.Postcode(
 				{

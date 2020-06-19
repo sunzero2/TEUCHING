@@ -76,7 +76,6 @@ public class MypageController {
 		* @작성자 : 이남규
 		* @Method 설명 : 일반회원 마이페이지 정보 업데이트
 		*/
-		
 		@RequestMapping("/member/mypageUpdate_M.do")
 		public ModelAndView mypageUpdate_M(@RequestParam Map<String, Object> commandMap, HttpSession session) throws Exception {
 
@@ -99,20 +98,21 @@ public class MypageController {
 		* @작성자 : 이남규
 		* @Method 설명 : 트레이너 마이페이지 정보 업데이트
 		*/
-		
-		/*
-		 * @RequestMapping("/member/mypageUpdate_T.do") public ModelAndView
-		 * mypageUpdate_T(@RequestParam Map<String, Object> commandMap, HttpSession
-		 * session) {
-		 * 
-		 * ModelAndView mav = new ModelAndView(); Trainer res = mys.t_login(commandMap);
-		 * session.setAttribute("loginInfo", res);
-		 * 
-		 * mav.addObject("msg", "아이디 혹은 비밀번호를 확인해주세요."); mav.addObject("url",
-		 * "account/loginform"); mav.setViewName("account/mypage_T");
-		 * 
-		 * return mav; }
-		 */
+		@RequestMapping("/member/mypageUpdate_T.do")
+		public ModelAndView mypageUpdate_T(@RequestParam Map<String, Object> commandMap, HttpSession session) throws Exception {
+
+			ModelAndView mav = new ModelAndView();
+			System.out.println(commandMap);
+			
+			Trainer res = mys.update_mypage_T(commandMap);
+			session.setAttribute("loginInfo", res);
+
+			mav.addObject("msg", "회원정보가 변경되었습니다.");
+			mav.addObject("url", "account/loginform");
+			mav.setViewName("account/mypage_T");
+
+			return mav;
+		}	
 		 
 		
 		
