@@ -16,6 +16,7 @@ import com.borajoin.teuching.manager.model.vo.Quali;
 import com.borajoin.teuching.manager.model.vo.ReviewReport;
 import com.borajoin.teuching.manager.model.vo.TrainerReport;
 import com.borajoin.teuching.member.model.vo.Trainer;
+import com.borajoin.teuching.message.model.vo.Match;
 
 import common.util.File_Upload;
 import common.util.Paging;
@@ -175,6 +176,21 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public Trainer selectTrainerforQuali(String qualiidx) {
 		return md.selectTrainerforQuali(qualiidx);
+	}
+	//트레이너 마이페이젱 표시할 리뷰신고 내역
+	@Override
+	public List<Quali> selectTraQualiMypage(String tr_email) {
+		return md.selectTraQualiMypage(tr_email);
+	}
+	//트레이너 마이페이지에 표시할 자격증명 내역
+	@Override
+	public List<ReviewReport> selectRevReportMypage(String tr_email) {
+		return md.selectRevReportMypage(tr_email);
+	}
+
+	@Override
+	public List<Match> selectTraMatchMypage(String tr_email) {
+		return md.selectTraMatchMypage(tr_email);
 	}
 
 }

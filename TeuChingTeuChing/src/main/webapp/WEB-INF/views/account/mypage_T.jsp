@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,8 @@
 <link
 	href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="../resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet"
+	href="../resources/css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="../resources/css/animate.css">
 <link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
@@ -48,12 +50,12 @@
 }
 
 .blog-entry .text .heading a {
-    color: #000;
-    font-size: medium;
-    font-weight: bold;
-}    
+	color: #000;
+	font-size: medium;
+	font-weight: bold;
+}
 
-.text pl-md-4 ml-md-2 pt-4{
+.text pl-md-4 ml-md-2 pt-4 {
 	font-size: small;
 }
 </style>
@@ -62,121 +64,136 @@
 </head>
 <body onload="imgLoad('${loginInfo.photo}');">
 
-<%@ include file="../include/top.jsp" %>
-<hr>
-<div class="container bootstrap snippet" style="margin-bottom: 2% !important;">
-    <div class="row">
-  		<div class="col-sm-10"><h1> Trainer ${loginInfo.trainerName}</h1></div>
-    </div>
-    <div class="row">
-  		<div class="col-sm-3"><!--left col-->
-              
-		
-	<div id="imgWrap" class="text-center">
-        <h6>프로필 사진 변경하기</h6>
-        <form id="imgForm">
-	        <input type="file" class="text-center center-block file-upload" id="profileImage">
-	        <button type="button" onclick="changeImage();">변경하기</button>
-        </form>
-      </div>
-      <br>
+	<%@ include file="../include/top.jsp"%>
+	<hr>
+	<div class="container bootstrap snippet"
+		style="margin-bottom: 2% !important;">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1>Trainer ${loginInfo.trainerName}</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<!--left col-->
 
-          <ul class="list-group">
-            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Likes♡</strong></span> ${loginInfo.tr_like}</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-          </ul> 
-          
-        </div><!--/col-3-->
-    	<div class="col-sm-9">
-            <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#home">회원정보 수정하기</a></li>
-                <li><a data-toggle="tab" href="#messages">작성한 게시글</a></li>
-              </ul>
 
-              
-          <div class="tab-content">
-            <div class="tab-pane active" id="home">
-                <hr>
-                  <form class="form" method="post" id="trainerUpdate"
-                  action="<%=request.getContextPath()%>/member/mypageUpdate_T.do"
-                  >
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label><h4>Email Address</h4></label>
-                              <div class="form-control" id="email">
-									<span style="color: black;">${loginInfo.tr_email}</span>
-									 <input type="hidden" name="email" value="${loginInfo.tr_email}" />
+				<div id="imgWrap" class="text-center">
+					<h6>프로필 사진 변경하기</h6>
+					<form id="imgForm">
+						<input type="file" class="text-center center-block file-upload"
+							id="profileImage">
+						<button type="button" onclick="changeImage();">변경하기</button>
+					</form>
+				</div>
+				<br>
+
+				<ul class="list-group">
+					<li class="list-group-item text-muted">Activity <i
+						class="fa fa-dashboard fa-1x"></i></li>
+					<li class="list-group-item text-right"><span class="pull-left"><strong>Likes♡</strong></span>
+						${loginInfo.tr_like}</li>
+					<li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span>
+						37</li>
+				</ul>
+
+			</div>
+			<!--/col-3-->
+			<div class="col-sm-9">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#home">회원정보
+							수정하기</a></li>
+					<li><a data-toggle="tab" href="#messages">작성한 게시글</a></li>
+					<li><a data-toggle="tab" href="#match">매칭내역</a></li>
+					<li><a data-toggle="tab" href="#report">신고/인증</a></li>
+				</ul>
+
+
+				<div class="tab-content">
+					<div class="tab-pane active" id="home">
+						<hr>
+						<form class="form" method="post" id="trainerUpdate"
+							action="<%=request.getContextPath()%>/member/mypageUpdate_T.do">
+							<div class="form-group">
+
+								<div class="col-xs-6">
+									<label><h4>Email Address</h4></label>
+									<div class="form-control" id="email">
+										<span style="color: black;">${loginInfo.tr_email}</span> <input
+											type="hidden" name="email" value="${loginInfo.tr_email}" />
+									</div>
 								</div>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label><h4>Trainer Name</h4></label>
+							</div>
+							<div class="form-group">
+
+								<div class="col-xs-6">
+									<label><h4>Trainer Name</h4></label>
 									<div class="form-control">
 										<span style="color: black;">${loginInfo.trainerName}</span>
 									</div>
 								</div>
-                      </div>
-          
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                              <label><h4>Phone</h4></label>
-                              <span style="font-size: small;">붙임표(-)까지 입력해주세요.</span></label>
-							<input type="text" id="cell" name="cell" maxlength="13"	class="form-control"
-							placeholder="${loginInfo.cell}"	>
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                             <label><h4>Gender</h4></label>
-                              <select class="form-control form-control-alternative"
-													style="font-size: small;" name="gender" id="gender">
-													<option value="${loginInfo.gender}" selected disabled>${loginInfo.gender}</option>
-													<option>남성</option>
-													<option>여성</option>
-												</select>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label><h4>Height(cm)</h4></label>
-                              <input type="text" id="height" name="height"
-													class="form-control form-control-alternative"
-													placeholder="${loginInfo.height}">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label><h4>Weight(kg)</h4></label>
-                              <input type="text" id="weight" name="weight"
-													class="form-control form-control-alternative"
-													placeholder="${loginInfo.weight}">                          
 							</div>
-                      </div>
-                     
-                       <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="password"><h4>Password</h4></label><br>
-                              <input type="password"  class="form-control" id="password_1" name="password" class="pw" maxlength="20">
-											
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="password2"><h4>Password Check</h4></label>
-                              <input type="password" id="password_2" class="form-control">
-							<span id="alert-success" style="display: none;">비밀번호가 일치합니다.</span>
-    						<span id="alert-danger" style="display: none; color: #d92742; font-weight: bold; ">	비밀번호가 일치하지 않습니다.</span>
-                          </div>
-                      </div><br>
+
+							<div class="form-group">
+								<div class="col-xs-6">
+									<label><h4>Phone</h4></label> <span style="font-size: small;">붙임표(-)까지
+										입력해주세요.</span></label> <input type="text" id="cell" name="cell"
+										maxlength="13" class="form-control"
+										placeholder="${loginInfo.cell}">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-xs-6">
+									<label><h4>Gender</h4></label> <select
+										class="form-control form-control-alternative"
+										style="font-size: small;" name="gender" id="gender">
+										<option value="${loginInfo.gender}" selected disabled>${loginInfo.gender}</option>
+										<option>남성</option>
+										<option>여성</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+
+								<div class="col-xs-6">
+									<label><h4>Height(cm)</h4></label> <input type="text"
+										id="height" name="height"
+										class="form-control form-control-alternative"
+										placeholder="${loginInfo.height}">
+								</div>
+							</div>
+							<div class="form-group">
+
+								<div class="col-xs-6">
+									<label><h4>Weight(kg)</h4></label> <input type="text"
+										id="weight" name="weight"
+										class="form-control form-control-alternative"
+										placeholder="${loginInfo.weight}">
+								</div>
+							</div>
+
+							<div class="form-group">
+
+								<div class="col-xs-6">
+									<label for="password"><h4>Password</h4></label><br> <input
+										type="password" class="form-control" id="password_1"
+										name="password" class="pw" maxlength="20">
+
+								</div>
+							</div>
+							<div class="form-group">
+
+								<div class="col-xs-6">
+									<label for="password2"><h4>Password Check</h4></label> <input
+										type="password" id="password_2" class="form-control">
+									<span id="alert-success" style="display: none;">비밀번호가
+										일치합니다.</span> <span id="alert-danger"
+										style="display: none; color: #d92742; font-weight: bold;">
+										비밀번호가 일치하지 않습니다.</span>
+								</div>
+							</div>
+							<br>
 
 							<div class="form-group">
 								<div class="col-md-12">
@@ -204,20 +221,14 @@
 
 								<div class="col-xs-6">
 									<div class="form-group focused">
-												<label class="form-control-label" for="input-address">선호 지역 선택하기</label>
-												<br>
-												지역 1 
-												<select name="prefer1-1" id="sido1"></select>
-												<select name="prefer1-2" id="gugun1"></select>
-												<br>
-												지역 2 
-												<select name="prefer2-1" id="sido2"></select>
-												<select name="prefer2-2" id="gugun2"></select>
-												<br>
-												지역 3 
-												<select name="prefer3-1" id="sido3"></select>
-												<select name="prefer3-2" id="gugun3"></select>
-											</div>
+										<label class="form-control-label" for="input-address">선호
+											지역 선택하기</label> <br> 지역 1 <select name="prefer1-1" id="sido1"></select>
+										<select name="prefer1-2" id="gugun1"></select> <br> 지역 2
+										<select name="prefer2-1" id="sido2"></select> <select
+											name="prefer2-2" id="gugun2"></select> <br> 지역 3 <select
+											name="prefer3-1" id="sido3"></select> <select
+											name="prefer3-2" id="gugun3"></select>
+									</div>
 								</div>
 							</div>
 							<br>
@@ -225,85 +236,239 @@
 
 								<div class="col-xs-12">
 									<label><h4>Trainer Information</h4></label>
-												<textarea class="form-control form-control-alternative" cols="80" rows="10" id="career"
-												placeholder="트레이너님을 나타낼 수 있는 정보와 커리어를 자유롭게 작성해 주세요." name="career"></textarea>	
-												<br />
-												<span style="color:#aaa;" id="counter">(0 / 최대 500자)</span>
+									<textarea class="form-control form-control-alternative"
+										cols="80" rows="10" id="career"
+										placeholder="트레이너님을 나타낼 수 있는 정보와 커리어를 자유롭게 작성해 주세요."
+										name="career"></textarea>
+									<br /> <span style="color: #aaa;" id="counter">(0 / 최대
+										500자)</span>
 								</div>
 							</div>
 
 							<div class="form-group">
-                           <div class="col-xs-12">
-                                <br>
-                              	<button class="btn btn-lg btn-success" type="button" id="updateT"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset" onClick="window.location.reload()" style="cursor: pointer;"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                            </div>
-                      </div>
-                      
- 
-                      
-              	</form>
-              
-              <hr>
-              
-             </div><!--/tab-pane-->
-             <div class="tab-pane" id="messages">
-               
-               <h2></h2>
-               
-               <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
-					<div class="col-xs-12">
+								<div class="col-xs-12">
+									<br>
+									<button class="btn btn-lg btn-success" type="button"
+										id="updateT">
+										<i class="glyphicon glyphicon-ok-sign"></i> Save
+									</button>
+									<button class="btn btn-lg" type="reset"
+										onClick="window.location.reload()" style="cursor: pointer;">
+										<i class="glyphicon glyphicon-repeat"></i> Reset
+									</button>
+								</div>
+							</div>
+
+
+
+						</form>
+
+						<hr>
+
+					</div>
+					<!--/tab-pane-->
+					<div class="tab-pane" id="messages">
+
+						<h2></h2>
+
+						<hr>
+						<form class="form" action="##" method="post" id="registrationForm">
+							<div class="col-xs-12">
+								<section class="container"
+									style="margin-top: 2%; margin-bottom: 2%; width: 100%;">
+									<table id="postTable"></table>
+								</section>
+							</div>
+						</form>
+					</div>
+					<!--/tab-pane-->
+					<div class="tab-pane" id="match">
+						<h2></h2>
+						<hr>
+						<div class="col-xs-12">
 							<section class="container"
 								style="margin-top: 2%; margin-bottom: 2%; width: 100%;">
-								<table id="postTable"></table>
+								<table id="matchTable" style="width: 70%">
+									<thead>
+										<tr>
+											<th>State</th>
+											<th>Mail</th>
+											<th>Time</th>
+											<th>Date</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${match }" var="m" varStatus="cnt">
+											<c:if test="${cnt.index < 15 }">
+												<tr>
+													<c:if test="${m.match_yn eq 'N' }">
+														<td>✖</td>
+													</c:if>
+													<c:if test="${m.match_yn eq 'Y' }">
+														<td>✔</td>
+													</c:if>
+													<td>${m.mem_email }</td>
+													<td>${m.match_time }</td>
+													<td>${m.match_date }</td>
+													<td><a onclick="match(${m.match_idx});"
+														style="cursor: pointer" id="match${m.match_idx }"
+														data-match_date="${m.match_date }"
+														data-match_time="${m.match_time }"> <c:if
+																test="${m.match_yn eq 'Y' }">
+                                       수락하기
+                                       </c:if> <c:if
+																test="${m.match_yn eq 'N' }">
+                                       수락완료
+                                       </c:if>
+													</a></td>
+												</tr>
+											</c:if>
+											<c:if test="${cnt.index >= 15 }">
+												<tr id="moreview${cnt.index }" style="display: none">
+													<c:if test="${m.match_yn eq 'N' }">
+														<td>✖</td>
+													</c:if>
+													<c:if test="${m.match_yn eq 'Y' }">
+														<td>✔</td>
+													</c:if>
+													<td>${m.mem_email }</td>
+													<td>${m.match_time }</td>
+													<td>${m.match_date }</td>
+													<td><a onclick="match(${m.match_idx});"
+														style="cursor: pointer" id="match${m.match_idx }"
+														data-match_date="${m.match_date }"
+														data-match_time="${m.match_time }"> <c:if
+																test="${m.match_yn eq 'Y' }">
+                                       수락하기
+                                       </c:if> <c:if
+																test="${m.match_yn eq 'N' }">
+                                       수락완료
+                                       </c:if>
+													</a></td>
+												</tr>
+											</c:if>
+										</c:forEach>
+									</tbody>
+								</table>
+								<a id="morea" onclick="moreview();">더보기</a>
 							</section>
+						</div>
 					</div>
-						</form>
-               
-             </div><!--/tab-pane-->
-              </div><!--/tab-pane-->
-          </div><!--/tab-content-->
+					<!--/tab-pane-->
+					<!--/tab-pane-->
+					<div class="tab-pane" id="report">
+						<h4>
+							자격증명 <a
+								href="${pageContext.request.contextPath }/quali/qualirequest.do">작성</a>
+						</h4>
 
-        </div><!--/col-9-->
-    </div><!--/row-->
+						<div class="col-xs-12">
+							<section class="container"
+								style="margin-top: 2%; margin-bottom: 2%; width: 100%;">
+								<table id="reportTable" style="width: 60%;">
+									<thead>
+										<tr>
+											<th>State</th>
+											<th>Content</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${quali }" var="q">
+											<tr>
+												<c:if test="${q.auth_yn eq 'N' }">
+													<td>✖</td>
+												</c:if>
+												<c:if test="${q.auth_yn eq 'Y' }">
+													<td>✔</td>
+												</c:if>
+												<td>${q.quali_auth }</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</section>
+						</div>
+						<h4>나의 신고내역</h4>
+						<hr>
+						<div class="col-xs-12">
+							<section class="container"
+								style="margin-top: 2%; margin-bottom: 2%; width: 100%;">
+								<table id="reportTable" style="width: 60%;">
+									<thead>
+										<tr>
+											<th>State</th>
+											<th>Content</th>
+											<th style="width: 20%">Date</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${report }" var="r">
+											<tr>
+												<c:if test="${r.ans_yn eq 'Y' }">
+													<td>✔</td>
+												</c:if>
+												<c:if test="${r.ans_yn eq 'N' }">
+													<td>✖</td>
+												</c:if>
+												<td><a
+													href="${pageContext.request.contextPath }/report/mypagereport.do?revid=${r.report_idx}">
+														${fn:substring(r.rep_cont,0,20) }...</a></td>
+												<td>${r.report_date }</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</section>
+						</div>
+					</div>
+					<!--/tab-pane-->
+				</div>
+				<!--/tab-pane-->
+			</div>
+			<!--/tab-content-->
+
+		</div>
+		<!--/col-9-->
+	</div>
+	<!--/row-->
 
 
-<script>
+	<script>
 function imgLoad(img) {
-	window.setTimeout(function() {
-		var div = document.getElementById('imgWrap');
-		var imgDiv = document.createElement('img');
-		imgDiv.className="avatar img-circle img-thumbnail";
-		imgDiv.alt="avatar";
-		imgDiv.src = "/teuching/resources/upload/profileImg/" + img;
-		div.append(imgDiv);
-	}, 1000);
+   window.setTimeout(function() {
+      var div = document.getElementById('imgWrap');
+      var imgDiv = document.createElement('img');
+      imgDiv.className="avatar img-circle img-thumbnail";
+      imgDiv.alt="avatar";
+      imgDiv.src = "/teuching/resources/upload/profileImg/" + img;
+      div.append(imgDiv);
+   }, 1000);
 }
 
 function changeImage() {
-	var form = document.getElementById('imgForm');
-	if(form[0].files.length > 0) {
-		var formdata = new FormData();
-		formdata.append('file', form[0].files[0]);
-		
-		$.ajax({
-			url: '/teuching/member/photoUpdate.do',
-			type: 'post',
-	       	data: formdata,
-	        processData : false,
-	        contentType: false,
-	        success: function(v) {
-	        	if(v > 0) {
-	        		alert("사진이 정상적으로 변경되었습니다.");
-	        	} else {
-	        		alert("사진 변경 중 오류가 발생했습니다.");
-	        	}
-	        }
-		})
-	} else {
-		alert("변경할 사진이 존재하지 않습니다.");
-	}
+   var form = document.getElementById('imgForm');
+   if(form[0].files.length > 0) {
+      var formdata = new FormData();
+      formdata.append('file', form[0].files[0]);
+      
+      $.ajax({
+         url: '/teuching/member/photoUpdate.do',
+         type: 'post',
+             data: formdata,
+           processData : false,
+           contentType: false,
+           success: function(v) {
+              if(v > 0) {
+                 alert("사진이 정상적으로 변경되었습니다.");
+              } else {
+                 alert("사진 변경 중 오류가 발생했습니다.");
+              }
+           }
+      })
+   } else {
+      alert("변경할 사진이 존재하지 않습니다.");
+   }
 }
 
 $(document).ready(function() {
@@ -332,21 +497,21 @@ $(document).ready(function() {
 
 
 $(document).ready(function(e){
-	$('#updateT').click(function(){
-		if($.trim($('#password_1').val()) == ''){
-			alert("패스워드를 입력해주세요.");
-			$('#password_1').focus();
-			return;
-		}
-		//패스워드 확인
-		else if($('#password_1').val() != $('#password_2').val()){
-			alert('패스워드가 다릅니다.');
-			return;
-		}else{
-			alert("회원정보 수정이 완료되었습니다.");
-			$('#signFrm').submit();
-		} 
-	});
+   $('#updateT').click(function(){
+      if($.trim($('#password_1').val()) == ''){
+         alert("패스워드를 입력해주세요.");
+         $('#password_1').focus();
+         return;
+      }
+      //패스워드 확인
+      else if($('#password_1').val() != $('#password_2').val()){
+         alert('패스워드가 다릅니다.');
+         return;
+      }else{
+         alert("회원정보 수정이 완료되었습니다.");
+         $('#signFrm').submit();
+      } 
+   });
 });
 
 //비밀번호 체크
@@ -384,13 +549,13 @@ $('.pw').focusout(function () {
 
 //커리어 글자 제한두기 
 $('#career').keyup(function (e){
-	var content = $(this).val();
-	$('#counter').html("("+content.length+" / 최대 500자)");    //글자수 실시간 카운팅
-	if (content.length > 500){
-		    alert("최대 500자까지 입력 가능합니다.");
-		    $(this).val(content.substring(0, 500));
-		    $('#counter').html("(500 / 최대 500자)");
-		}
+   var content = $(this).val();
+   $('#counter').html("("+content.length+" / 최대 500자)");    //글자수 실시간 카운팅
+   if (content.length > 500){
+          alert("최대 500자까지 입력 가능합니다.");
+          $(this).val(content.substring(0, 500));
+          $('#counter').html("(500 / 최대 500자)");
+      }
 });
 
 
@@ -418,28 +583,28 @@ var area16 = ["서귀포시","제주시","남제주군","북제주군"];
 
 // 시/도 선택 박스 초기화
 $("select[id^=sido]").each(function() {
-	$selsido = $(this);
-	$.each(eval(area0), function() {
-		$selsido.append("<option value='"+this+"'>"+this+"</option>");
-	});
-	$selsido.next().append("<option value=''>구/군 선택</option>");
+   $selsido = $(this);
+   $.each(eval(area0), function() {
+      $selsido.append("<option value='"+this+"'>"+this+"</option>");
+   });
+   $selsido.next().append("<option value=''>구/군 선택</option>");
 });
 
 // 시/도 선택시 구/군 설정
 
 $("select[id^=sido]").change(function() {
 var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
-	var $gugun = $(this).next(); // 선택영역 군구 객체
-	$("option",$gugun).remove(); // 구군 초기화
-	
-	if(area == "area0") {
-		$gugun.append("<option value=''>구/군 선택</option>");
-		
-	} else {
-		$.each(eval(area), function() {
-			$gugun.append("<option value='"+this+"'>"+this+"</option>");
-		});
-	}
+   var $gugun = $(this).next(); // 선택영역 군구 객체
+   $("option",$gugun).remove(); // 구군 초기화
+   
+   if(area == "area0") {
+      $gugun.append("<option value=''>구/군 선택</option>");
+      
+   } else {
+      $.each(eval(area), function() {
+         $gugun.append("<option value='"+this+"'>"+this+"</option>");
+      });
+   }
 });
 });
 
@@ -494,109 +659,135 @@ function sample6_execDaumPostcode() {
 
 //해당 트레이너의 포스트리스트 뽑아주기
 
-	$('document').ready(function() {
-						pList = new Array();
+   $('document').ready(function() {
+                  pList = new Array();
 
-						$.ajax({
-							url : "/teuching/member/t_postlist.do",
-							data : {
-								"input" : "${loginInfo.tr_email}",
-								"option" : "trainer"
-							},
-							success : function(v) {
-								for (i = 0; i < v.length; i++) {
-									pList.push(v[i]);
-								}
+                  $.ajax({
+                     url : "/teuching/member/t_postlist.do",
+                     data : {
+                        "input" : "${loginInfo.tr_email}",
+                        "option" : "trainer"
+                     },
+                     success : function(v) {
+                        for (i = 0; i < v.length; i++) {
+                           pList.push(v[i]);
+                        }
 
-								createTable();
-							}
-						})
+                        createTable();
+                     }
+                  })
 
-						function createTable() {
-							// post list 생성할 table
-							var table = document.getElementById('postTable');
-							table.innerHTML = "";
-							if (pList.length > 0) {
-								for (i = 0; i < pList.length; i++) {
-									// row 생성
-									var tr = table.insertRow();
-									tr.className = 'blog-entry blog-entry-2 justify-content-end col-md-12 ftco-animate fadeInUp ftco-animated';
+                  function createTable() {
+                     // post list 생성할 table
+                     var table = document.getElementById('postTable');
+                     table.innerHTML = "";
+                     if (pList.length > 0) {
+                        for (i = 0; i < pList.length; i++) {
+                           // row 생성
+                           var tr = table.insertRow();
+                           tr.className = 'blog-entry blog-entry-2 justify-content-end col-md-12 ftco-animate fadeInUp ftco-animated';
 
-									// 트레이너의 이미지 담을 cell 생성
-									var imageTd = tr.insertCell();
+                           // 트레이너의 이미지 담을 cell 생성
+                           var imageTd = tr.insertCell();
 
-									// 이미지 담을 div 생성
-									var image = document.createElement('div');
-									image.className = 'img rounded-circle mb-2';
-									image.style.backgroundImage = 'url(../resources/img/classes-1.jpg)';
-									image.style.width = '116px';
-									image.style.height = '141px';
-									image.style.marginTop = '54px';
-									imageTd.append(image);
+                           // 이미지 담을 div 생성
+                           var image = document.createElement('div');
+                           image.className = 'img rounded-circle mb-2';
+                           image.style.backgroundImage = 'url(../resources/img/classes-1.jpg)';
+                           image.style.width = '116px';
+                           image.style.height = '141px';
+                           image.style.marginTop = '54px';
+                           imageTd.append(image);
 
-									// 게시글 콘텐츠 담을 cell 생성
-									var contentTd = tr.insertCell();
+                           // 게시글 콘텐츠 담을 cell 생성
+                           var contentTd = tr.insertCell();
 
-									// 콘텐츠 감싸줄 div 생성
-									var wrapper = document.createElement('div');
-									wrapper.className = 'text pl-md-4 ml-md-2 pt-4';
-									wrapper.style.width = 'auto';
-									contentTd.append(wrapper);
+                           // 콘텐츠 감싸줄 div 생성
+                           var wrapper = document.createElement('div');
+                           wrapper.className = 'text pl-md-4 ml-md-2 pt-4';
+                           wrapper.style.width = 'auto';
+                           contentTd.append(wrapper);
 
-									// 트레이너 이름, 작성일자, 댓글 수 담을 header
-									var header = document.createElement('div');
-									header.className = 'meta';
-									wrapper.append(header);
+                           // 트레이너 이름, 작성일자, 댓글 수 담을 header
+                           var header = document.createElement('div');
+                           header.className = 'meta';
+                           wrapper.append(header);
 
-									var writeDate = document
-											.createElement('div');
-									writeDate.innerText = pList[i].writeDate;
-									header.append(writeDate);
+                           var writeDate = document
+                                 .createElement('div');
+                           writeDate.innerText = pList[i].writeDate;
+                           header.append(writeDate);
 
-									var writer = document.createElement('div');
-									header.append(writer);
+                           var writer = document.createElement('div');
+                           header.append(writer);
 
-									var writerLink = document
-											.createElement('a');
-									// 트레이너 프로필로 이동할 수 있는 링크
-									writerLink.href = '/teuching/profile/review.do?trainerEmail='
-											+ pList[i].trEmail;
-									writerLink.innerText = pList[i].trainerName;
-									writer.append(writerLink);
+                           var writerLink = document
+                                 .createElement('a');
+                           // 트레이너 프로필로 이동할 수 있는 링크
+                           writerLink.href = '/teuching/profile/review.do?trainerEmail='
+                                 + pList[i].trEmail;
+                           writerLink.innerText = pList[i].trainerName;
+                           writer.append(writerLink);
 
-									var body = document.createElement('div');
-									wrapper.append(body);
+                           var body = document.createElement('div');
+                           wrapper.append(body);
 
-									var title = document.createElement('h3');
-									title.className = 'heading mt-2';
-									body.append(title);
+                           var title = document.createElement('h3');
+                           title.className = 'heading mt-2';
+                           body.append(title);
 
-									var titleLink = document.createElement('a');
-									titleLink.href = '/teuching/post/detail.do?postNo='
-											+ pList[i].postIdx;
-									titleLink.innerText = pList[i].postTitle;
-									title.append(titleLink);
+                           var titleLink = document.createElement('a');
+                           titleLink.href = '/teuching/post/detail.do?postNo='
+                                 + pList[i].postIdx;
+                           titleLink.innerText = pList[i].postTitle;
+                           title.append(titleLink);
 
-									var content = document.createElement('div');
-									content.style.height = 'auto';
-									content.style.overflow = 'hidden';
-									var con = pList[i].postCont;
-									con = con.replace('<br>', '\r\n');
-									content.innerText = con;
-									body.append(content);
-								}
-							} else {
-								var failMsg = document.createElement('p');
-								var failImg = document.createElement('img');
-								failImg.src = "data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIC0yIDUxMiA1MTIiIHdpZHRoPSI1MTJwdCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNDQ4IDUwOC44MDA3ODEtMTQ4LjU5Mzc1LTkyLjgwMDc4MWgtMjY3LjQwNjI1Yy0xNy42NzE4NzUgMC0zMi0xNC4zMjgxMjUtMzItMzJ2LTM1MmMwLTE3LjY3MTg3NSAxNC4zMjgxMjUtMzIgMzItMzJoNDQ4YzE3LjY3MTg3NSAwIDMyIDE0LjMyODEyNSAzMiAzMnYzNTJjMCAxNy42NzE4NzUtMTQuMzI4MTI1IDMyLTMyIDMyaC0zMnptMCAwIiBmaWxsPSIjZmY3NzYxIi8+PGcgZmlsbD0iI2ZmZiI+PHBhdGggZD0ibTI3MiAyNTZoLTMydi0xNDRjMC04LjgzNTkzOCA3LjE2NDA2Mi0xNiAxNi0xNnMxNiA3LjE2NDA2MiAxNiAxNnptMCAwIi8+PHBhdGggZD0ibTI0MCAyODhoMzJ2MzJoLTMyem0wIDAiLz48L2c+PC9zdmc+";
-								failImg.id = 'failImg';
-								failMsg.id = 'failMsg';
-								failMsg.innerText = "아직 등록하신 게시글이 없습니다. 게시글을 등록하여 튜터분들과 운동을 시작해볼까요?";
-								table.append(failImg);
-								table.append(failMsg);
-							}
-						}
-					})
+                           var content = document.createElement('div');
+                           content.style.height = 'auto';
+                           content.style.overflow = 'hidden';
+                           var con = pList[i].postCont;
+                           con = con.replace('<br>', '\r\n');
+                           content.innerText = con;
+                           body.append(content);
+                        }
+                     } else {
+                        var failMsg = document.createElement('p');
+                        var failImg = document.createElement('img');
+                        failImg.src = "data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIC0yIDUxMiA1MTIiIHdpZHRoPSI1MTJwdCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNDQ4IDUwOC44MDA3ODEtMTQ4LjU5Mzc1LTkyLjgwMDc4MWgtMjY3LjQwNjI1Yy0xNy42NzE4NzUgMC0zMi0xNC4zMjgxMjUtMzItMzJ2LTM1MmMwLTE3LjY3MTg3NSAxNC4zMjgxMjUtMzIgMzItMzJoNDQ4YzE3LjY3MTg3NSAwIDMyIDE0LjMyODEyNSAzMiAzMnYzNTJjMCAxNy42NzE4NzUtMTQuMzI4MTI1IDMyLTMyIDMyaC0zMnptMCAwIiBmaWxsPSIjZmY3NzYxIi8+PGcgZmlsbD0iI2ZmZiI+PHBhdGggZD0ibTI3MiAyNTZoLTMydi0xNDRjMC04LjgzNTkzOCA3LjE2NDA2Mi0xNiAxNi0xNnMxNiA3LjE2NDA2MiAxNiAxNnptMCAwIi8+PHBhdGggZD0ibTI0MCAyODhoMzJ2MzJoLTMyem0wIDAiLz48L2c+PC9zdmc+";
+                        failImg.id = 'failImg';
+                        failMsg.id = 'failMsg';
+                        failMsg.innerText = "아직 등록하신 게시글이 없습니다. 게시글을 등록하여 튜터분들과 운동을 시작해볼까요?";
+                        table.append(failImg);
+                        table.append(failMsg);
+                     }
+                  }
+               })
 </script>
+	<script>
+   function match(match_idx){
+      if(confirm("수락하시겠습니까?")){
+         $.ajax({
+            url:"${pageContext.request.contextPath}/message/msgaccept.do?match_idx=" + match_idx,
+            type:"get",
+            success: function(data){
+               if(data == 'success'){
+                  const match_date = $('#match' + match_idx).data("match_date");
+                  const match_time = $('#match' + match_idx).data("match_time")
+                  alert('수락완료');
+                  $('#match' + match_idx).html('✅ ' + match_date + " " + match_time 
+                        +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "수락완료");
+               }else{
+                  alert('이미 수락된 매칭입니다');
+               }
+            }
+         });
+      }
+   }
+   
+   function moreview(){
+      $('tr[id^="moreview"]').show();
+      $('#morea').hide();
+   }
+   </script>
 </body>
 </html>

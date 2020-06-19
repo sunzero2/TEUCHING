@@ -50,14 +50,13 @@
 
 	<div class="wrapper">
 		<div class="ansbox-top">
-			<div
+			<div style="background-image:url(../resources/upload/profileImg/${loginInfo.tr_email}.PNG)"
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
 				id="person"></div>
 			<form
-				action="${pageContext.request.contextPath }/manager/quali/insertquali.do"
+				action="${pageContext.request.contextPath }/quali/insertquali.do"
 				method="post" enctype="multipart/form-data">
 				<h5>
-					2020-02-02
 					<button type="submit" id="btn" class="btn btn-outline-primary">작성완료</button>
 				</h5>
 				<h2>자격 요청</h2>
@@ -65,7 +64,7 @@
 		<div class="ansbox-bottom">
 			<div class="col-lg-8 ftco-animate">
 				<input type="file" id="startbutton" class="ajax-file-upload-green"
-					name="file" value="Upload">
+					name="qualiFile" value="Upload">
 				<textarea name="quali_auth" id="textarea" placeholder="자격명을 기입해주세요"></textarea>
 			</div>
 		</div>

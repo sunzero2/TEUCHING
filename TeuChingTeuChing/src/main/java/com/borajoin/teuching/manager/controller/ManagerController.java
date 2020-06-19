@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,7 +53,7 @@ public class ManagerController {
 
 		return mv;
 	}
-	
+
 	@RequestMapping("/manager/reviewreport.do")
 	public ModelAndView reviewReport(Integer revcurrentpage) {
 
@@ -72,7 +71,6 @@ public class ManagerController {
 
 		return mv;
 	}
-
 
 	/**
 	 * @Method Name : managerDetail
@@ -142,13 +140,13 @@ public class ManagerController {
 	@RequestMapping("/report/reportrequest.do")
 	public ModelAndView reportView(@RequestParam Map<String, Object> commandMap, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		//res안에 들어가는거, type, tr_email, mem_email, &trainer_name or nick_name
-		if(session.getAttribute("memberType").equals("member")) {
-			Member m = (Member)session.getAttribute("loginInfo");
+		// res안에 들어가는거, type, tr_email, mem_email, &trainer_name or nick_name
+		if (session.getAttribute("memberType").equals("member")) {
+			Member m = (Member) session.getAttribute("loginInfo");
 			commandMap.put("mem_email", m.getMem_email());
 			commandMap.put("nick_name", m.getNickname());
-		}else if(session.getAttribute("memberType").equals("trainer")) {
-			Trainer t = (Trainer)session.getAttribute("loginInfo");
+		} else if (session.getAttribute("memberType").equals("trainer")) {
+			Trainer t = (Trainer) session.getAttribute("loginInfo");
 			commandMap.put("tr_email", t.getTrainerName());
 			commandMap.put("trainer_name", t.getTrainerName());
 		}
@@ -199,7 +197,7 @@ public class ManagerController {
 		}
 		ms.insertFile(fileData);
 		mv.addObject("msg", "신고 완료 되었습니다");
-		mv.addObject("url", request.getContextPath() + "/profile/review.do?trainerEmail="+ commandMap.get("tr_email"));
+		mv.addObject("url", request.getContextPath() + "/profile/review.do?trainerEmail=" + commandMap.get("tr_email"));
 		mv.setViewName("common/result");
 		return mv;
 	}
@@ -254,89 +252,106 @@ public class ManagerController {
 	}
 
 	/**
-	* @Method Name : qualiRequest
-	* @작성일 : 2020. 6. 12.
-	* @작성자 : 김지수
-	* @Method 설명 : 자격증명 요청페이지로 이동
-	*/
+	 * @Method Name : qualiRequest
+	 * @작성일 : 2020. 6. 12.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 자격증명 요청페이지로 이동
+	 */
 	@RequestMapping("/quali/qualirequest.do")
 	public ModelAndView qualiRequest() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("manager/qualiRequest");
 		return mv;
 	}
-	
+
 	/**
-	* @Method Name : insertQuali
-	* @작성일 : 2020. 6. 18.
-	* @작성자 : 김지수
-	* @Method 설명 : 자격 증명 요청 페이지
-	*/
+	 * @Method Name : insertQuali
+	 * @작성일 : 2020. 6. 18.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 자격 증명 요청 페이지
+	 */
 	@RequestMapping("/quali/insertquali.do")
-	public ModelAndView  insertQuali(HttpServletRequest request, String quali_auth, MultipartFile file) {
+	public ModelAndView insertQuali(MultipartFile qualiFile, HttpServletRequest request, String quali_auth) {
+		System.out.println("퀄리" + quali_auth);
+		System.out.println("퀄리파일" + qualiFile);
 		ModelAndView mv = new ModelAndView();
 		Trainer t = (Trainer) request.getSession().getAttribute("loginInfo");
 		UUID uuid = UUID.randomUUID();
-		String origin_filename = file.getOriginalFilename();
+		String origin_filename = qualiFile.getOriginalFilename();
 		String rename_filename = uuid + "tr_quali" + origin_filename.substring(origin_filename.lastIndexOf("."));
 		String savepath = request.getServletContext().getRealPath("") + "/resources/upload/" + rename_filename;
-		
+
 		File_Upload file_Upload = new File_Upload();
 		file_Upload.setOrigin_filename(origin_filename);
 		file_Upload.setRename_filename(rename_filename);
 		file_Upload.setSavepath(savepath);
 		file_Upload.setTable_idx(ms.selectQualiIdx());
-		file_Upload.setObj(file);
+		file_Upload.setObj(qualiFile);
 		ms.insertQualiFile(file_Upload);
-		
+
 		Quali quali = new Quali();
 		quali.setQuali_auth(quali_auth);
 		quali.setTr_email(t.getTr_email());
 		quali.setTrainer_name(t.getTrainerName());
 		ms.insertQuali(quali);
-		
+
 		mv.addObject("msg", "요청이 완료되었습니다");
-		mv.addObject("url", request.getContextPath() + "/index/index.do");
+		mv.addObject("url", request.getContextPath() + "/member/mypage_T.do");
 		mv.setViewName("common/result");
 		return mv;
 	}
-	
-	//테스트
+
+	// 테스트
 	@RequestMapping("/report/mypagerev.do")
 	public ModelAndView selectRevReportMypage(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		Member m = (Member)session.getAttribute("loginInfo");
-		mv.addObject("report",ms.selectTraReportMypage(m.getMem_email()));
+		Member m = (Member) session.getAttribute("loginInfo");
+		mv.addObject("report", ms.selectTraReportMypage(m.getMem_email()));
 		mv.setViewName("manager/test");
 		return mv;
 	}
-	
+
 	/**
-	* @Method Name : selectRevReportMypage
-	* @작성일 : 2020. 6. 18.
-	* @작성자 : 김지수
-	* @Method 설명 : 회원의 마이페이지 내 신고내역
-	*/
-	@RequestMapping("/report/trainerdetail.do")
-	public ModelAndView selectRevReportMypage(int traid) {
+	 * @Method Name : selectRevReportMypage
+	 * @작성일 : 2020. 6. 18.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 회원의 마이페이지 내 신고내역
+	 */
+	@RequestMapping("/report/mypagereport.do")
+	public ModelAndView selectRevReportMypage(Integer traid, Integer revid) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("res", ms.traManagerDetail(traid));
-		mv.addObject("file", ms.selectTraFile(traid));
-		mv.setViewName("manager/reportdetail_M");
+		if (traid != null) {
+			mv.addObject("res", ms.traManagerDetail(traid));
+			mv.addObject("file", ms.selectTraFile(traid));
+		} else if (revid != null) {
+			mv.addObject("res", ms.revManagerDetail(revid));
+			mv.addObject("file", ms.selectRevFile(revid));
+		}
+		mv.setViewName("manager/reportdetail_MT");
 		return mv;
 	}
-	
+
 	/**
-	* @Method Name : selectTraReportMypage
-	* @작성일 : 2020. 6. 18.
-	* @작성자 : 김지수
-	* @Method 설명 : 트레이너의 마이페이지 내 신고내역 
-	*/
+	 * @Method Name : selectTraReportMypage
+	 * @작성일 : 2020. 6. 18.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 트레이너의 마이페이지 내 신고내역
+	 */
 	@RequestMapping("/report/memberdetail.do")
 	public ModelAndView selectTraReportMypage(int revid) {
 		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
+
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping("/qualirequest.do") public String
+	 * insertQualiRequest(HttpServletRequest request, String quali_auth,
+	 * MultipartFile qualiFile) { System.out.println("자격증명"+quali_auth); return
+	 * null; }
+	 */
+	
+	
+
 }
-
-

@@ -12,6 +12,14 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link
+	href="https://rawgithub.com/hayageek/jquery-upload-file/master/css/uploadfile.css"
+	rel="stylesheet">
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script
+	src="https://rawgithub.com/hayageek/jquery-upload-file/master/js/jquery.uploadfile.min.js"></script>
+
 <style>
 html, body, form {
 	height: 96%;

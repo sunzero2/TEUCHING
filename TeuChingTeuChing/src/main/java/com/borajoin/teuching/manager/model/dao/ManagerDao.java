@@ -11,6 +11,7 @@ import com.borajoin.teuching.manager.model.vo.Quali;
 import com.borajoin.teuching.manager.model.vo.ReviewReport;
 import com.borajoin.teuching.manager.model.vo.TrainerReport;
 import com.borajoin.teuching.member.model.vo.Trainer;
+import com.borajoin.teuching.message.model.vo.Match;
 
 import common.util.File_Upload;
 import common.util.Paging;
@@ -126,5 +127,16 @@ public class ManagerDao {
 		return sqlSession.selectOne("Manager.selectTrainerforQuali",tr_email);
 	}
 	
+	public List<Quali> selectTraQualiMypage(String tr_email) {
+		return sqlSession.selectList("Manager.selectTraQualiMypage", tr_email);
+	}
+	
+	public List<ReviewReport> selectRevReportMypage(String tr_email) {
+		return sqlSession.selectList("Manager.selectRevReportMypage", tr_email);
+	}
+	
+	public List<Match> selectTraMatchMypage(String tr_email){
+		return sqlSession.selectList("Manager.selectTraMatchMypage", tr_email);
+	}
 
 }

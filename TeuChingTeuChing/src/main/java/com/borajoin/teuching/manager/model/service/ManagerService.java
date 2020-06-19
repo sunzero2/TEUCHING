@@ -7,6 +7,7 @@ import com.borajoin.teuching.manager.model.vo.Quali;
 import com.borajoin.teuching.manager.model.vo.ReviewReport;
 import com.borajoin.teuching.manager.model.vo.TrainerReport;
 import com.borajoin.teuching.member.model.vo.Trainer;
+import com.borajoin.teuching.message.model.vo.Match;
 
 import common.util.File_Upload;
 
@@ -55,5 +56,11 @@ public interface ManagerService {
 	public List<TrainerReport> selectTraReportMypage(String mem_email);
 	
 	public Trainer selectTrainerforQuali(String qualiidx);
+	
+	public List<Quali> selectTraQualiMypage(String tr_email);
+	
+	public List<ReviewReport> selectRevReportMypage(String tr_email);
+	
+	public List<Match> selectTraMatchMypage(String tr_email);
 	
 }

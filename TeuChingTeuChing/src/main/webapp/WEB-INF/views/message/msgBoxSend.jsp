@@ -58,7 +58,7 @@
 					<thead>
 						<tr>
 							<th>Num</th>
-							<th>Title</th>
+							<th id="title">Title</th>
 							<th>To</th>
 							<th>Date</th>
 						</tr>
@@ -70,11 +70,11 @@
 								target="pop">
 								<tr>
 									<td id="num">${(res.paging.currentPage-1) * 5 + cnt.count }</td>
-									<td id="title"><button onclick="openPopUp();" id="btn">
-									<c:if test="${fn:length(msg.msg_cont) > 10 }">
+									<td><button onclick="openPopUp();" id="btn">
+									<c:if test="${fn:length(msg.msg_cont) > 15 }">
 										${fn:substring(msg.msg_cont, 0, 15) }...
 									</c:if>
-									<c:if test="${fn:length(msg.msg_cont) <= 10 }">
+									<c:if test="${fn:length(msg.msg_cont) <= 15 }">
 										${ msg.msg_cont}
 									</c:if>
 									<c:if test="${type eq 'Trainer'}">

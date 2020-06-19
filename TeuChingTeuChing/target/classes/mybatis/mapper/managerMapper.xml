@@ -238,6 +238,14 @@
 		)
 	</insert>
 	
+	<select id="selectTraQualiMypage" resultType="Quali">
+		SELECT
+			*
+		FROM
+			TR_QUALI
+		WHERE
+			TR_EMAIL = #{tr_email} 
+	</select>
 	<select id="selectRevReportMypage" resultType="ReviewReport">
 		SELECT
 			*
@@ -246,6 +254,15 @@
 		WHERE
 			TR_EMAIL = #{tr_email} 
 	</select>
+	<select id="selectTraMatchMypage" resultType="Match">
+		SELECT
+			*
+		FROM
+			TR_MATCH
+		WHERE
+			TR_EMAIL = #{tr_email} 
+	</select>
+	
 	
 	<select id="selectTraReportMypage" resultType="TrainerReport">
 		SELECT
