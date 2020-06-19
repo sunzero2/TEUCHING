@@ -68,20 +68,21 @@ public class MypageController {
 		* @Method 설명 : 일반회원 마이페이지 정보 업데이트
 		*/
 		
-		/*
-		 * @RequestMapping("/member/mypageUpdate_M.do") public ModelAndView
-		 * mypageUpdate_M(@RequestParam Map<String, Object> commandMap, HttpSession
-		 * session) {
-		 * 
-		 * ModelAndView mav = new ModelAndView(); Member res = mys.m_login(commandMap);
-		 * session.setAttribute("loginInfo", res);
-		 * 
-		 * mav.addObject("msg", "아이디 혹은 비밀번호를 확인해주세요."); mav.addObject("url",
-		 * "account/loginform"); mav.setViewName("account/mypage_T");
-		 * 
-		 * return mav; }
-		 * 
-		 */
+		@RequestMapping("/member/mypageUpdate_M.do")
+		public ModelAndView mypageUpdate_M(@RequestParam Map<String, Object> commandMap, HttpSession session) throws SQLException {
+
+			ModelAndView mav = new ModelAndView();
+			System.out.println(commandMap);
+			Member res = mys.m_login(commandMap);
+			session.setAttribute("loginInfo", res);
+
+			mav.addObject("msg", "회원정보가 변경되었습니다.");
+			mav.addObject("url", "account/loginform");
+			mav.setViewName("account/mypage_T");
+
+			return mav;
+		}	
+		
 		/**
 		* @Method Name : mypageUpdate_T
 		* @작성일 : 2020. 6. 17.

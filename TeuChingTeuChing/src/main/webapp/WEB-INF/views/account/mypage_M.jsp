@@ -62,11 +62,12 @@
 					<div class="tab-content">
 						<div class="tab-pane active" id="home">
 							<hr>
-							<form class="form" action="<%=request.getContextPath()%>/member/mypageUpdate_M.do" method="post" id="registrationForm">
+							<form class="form" action="<%=request.getContextPath()%>/member/mypageUpdate_M.do" method="post" id="memberMypage">
 								<div class="col-xs-6 form-height">
 									<h4>Email Address</h4>
 									<div class="form-control" id="email">
 										<span style="color: black;">${loginInfo.mem_email}</span>
+										 <input type="hidden" name="email" value="${loginInfo.mem_email}" />
 									</div>
 								</div>
 								<div class="col-xs-6 form-height">
@@ -118,7 +119,7 @@
 								<br>
 								<div class="col-xs-12 form-height">
 									<br>
-									<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+									<button class="btn btn-lg btn-success" type="button" id="membersignUp"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
 									<button class="btn btn-lg" type="reset" onClick="window.location.reload()" style="cursor: pointer;"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
 								</div>
 							</form>
@@ -145,11 +146,10 @@
 </body>
 
 <script type="text/javascript">
-	$(document).ready(function(e) {
+$(document).ready(function(e) {
 
-		var idx_nick = false;
-
-		$('#signUp').click(function() {
+		$('#membersignUp').click(function() {
+			
 			if ($.trim($('#password_1').val()) == '') {
 				alert("패스워드를 입력해주세요.");
 				$('#password_1').focus();
@@ -160,13 +160,25 @@
 				alert('패스워드가 다릅니다.');
 				return;
 			} else {
+				
+				if($.trim($('#gender').val()) == ''){
+					document.getElementById('gender').value = "${loginInfo.gender}";
+				}
+				if($.trim($('#cell').val()) == ''){
+					document.getElementById('cell').value = "${loginInfo.cell}";
+				}
+				if($.trim($('#sample6_address').val()) == ''){
+					document.getElementById('sample6_address').value = "${loginInfo.address}";
+				}
+				
 				alert("회원정보 수정이 완료되었습니다!");
-				$('#signFrm').submit();
+				$('#memberMypage').submit();
 			}
 
 		});
 
-	});
+	
+	
 	$('.pw').focusout(function() {
 		var pwd1 = $("#password_1").val();
 		var pwd2 = $("#password_2").val();
@@ -184,6 +196,7 @@
 			}
 		}
 	});
+});	
 	function sample6_execDaumPostcode() {
 		new daum.Postcode(
 				{
