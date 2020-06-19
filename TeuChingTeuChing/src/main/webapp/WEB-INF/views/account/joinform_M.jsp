@@ -42,7 +42,7 @@ background-color: transparent !important;
 		<div class="container mt-7">
 			<!-- Table -->
 			<div class="row">
-				<div class="col-xl-8 m-auto order-xl-1" style="margin-top: 5% !important;">
+				<div class="col-xl-8 m-auto order-xl-1" style="margin-bottom: 5% !important;">
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
 					<form id="signFrm" name="signFrm"
 						action="<%=request.getContextPath()%>/member/m_joinemailCheck.do" 

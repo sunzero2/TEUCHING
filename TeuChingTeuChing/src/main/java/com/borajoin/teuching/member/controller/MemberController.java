@@ -19,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.borajoin.teuching.index.controller.IndexController;
+import com.borajoin.teuching.index.model.service.IndexService;
 import com.borajoin.teuching.member.model.service.MemberService;
 import com.borajoin.teuching.member.model.vo.Member;
 import com.borajoin.teuching.member.model.vo.Trainer;
@@ -28,7 +30,6 @@ public class MemberController {
 
 	@Autowired
 	private MemberService ms;
-
 	
 	/**
 	* @Method Name : loginModal
@@ -93,11 +94,11 @@ public class MemberController {
 				if (res.getManager_yn().equals("Y")) {
 					session.setAttribute("loginInfo", res);
 					session.setAttribute("memberType", "manager");
-					mav.setViewName("landing/landing");
+					mav.setViewName("redirect:/index/index.do");
 				}else {
 					session.setAttribute("loginInfo", res);
 					session.setAttribute("memberType", "member");
-					mav.setViewName("landing/landing");
+					mav.setViewName("redirect:/index/index.do");
 				}
 			}	
 			
@@ -111,7 +112,7 @@ public class MemberController {
 			} else {
 				session.setAttribute("loginInfo", res);
 				session.setAttribute("memberType", "trainer");
-				mav.setViewName("landing/landing");
+				mav.setViewName("redirect:/index/index.do");
 			}
 		}
 		return mav;
@@ -132,10 +133,9 @@ public class MemberController {
 			session.removeAttribute("loginInfo");
 		}
 
-		mav.setViewName("landing/landing");
-
+		mav.setViewName("redirect:/index/index.do");
+		
 		return mav;
-
 	}
 
 	/**
@@ -187,7 +187,7 @@ public class MemberController {
 			mav.addObject("alertMsg", "회원가입에 실패하였습니다.");
 			mav.addObject("back", "back");
 		} else {
-			mav.setViewName("landing/landing");
+			mav.setViewName("redirect:/index/index.do");
 		}
 		return mav;
 	}
@@ -208,7 +208,7 @@ public class MemberController {
 			mav.addObject("alertMsg", "회원가입에 실패하였습니다.");
 			mav.addObject("back", "back");
 		} else {
-			mav.setViewName("landing/landing");
+			mav.setViewName("redirect:/index/index.do");
 		}
 		return mav;
 	}
@@ -230,7 +230,7 @@ public class MemberController {
 		commandMap.put("urlPath", path);
 		ms.mailSending(commandMap,mailfor);
 
-		mav.setViewName("landing/landing");
+		mav.setViewName("redirect:/index/index.do");
 
 		return mav;
 	}
@@ -277,7 +277,7 @@ public class MemberController {
 		commandMap.put("urlPath", path);
 		ms.mailSending(commandMap,mailfor);
 
-		mav.setViewName("landing/landing");
+		mav.setViewName("redirect:/index/index.do");
 
 		return mav;
 	}
@@ -361,7 +361,7 @@ public class MemberController {
 		}
 		  
 		 
-		mav.setViewName("landing/landing");
+		mav.setViewName("redirect:/index/index.do");
 
 		return mav;
 	}

@@ -45,6 +45,10 @@
 	form-height {
 		height: 110px;
 	}
+	.col-sm-9 {
+    width: 100%;
+    margin-left: 10%;
+}
 </style>
 </head>
 <body>
@@ -77,19 +81,17 @@
 									</div>
 								</div>
 								<div class="col-xs-6 form-height">
-									<h4>Phone</h4>
-									<span style="font-size: small;">붙임표(-)까지 입력해주세요.</span>
+									<h4>Phone&nbsp;&nbsp;<span style="font-size: 11px;">붙임표(-)까지 입력해주세요.</span></h4>
 									<input type="text" id="cell" name="cell" maxlength="13"	class="form-control" placeholder="${loginInfo.cell}">
 								</div>
 								<div class="col-xs-6 form-height">
 									<h4>Gender</h4>
 									<select class="form-control form-control-alternative" style="font-size: small;" name="gender" id="gender">
-										<option value="${loginInfo.gender}" selected disabled>${loginInfo.gender}</option>
+										<option value="${loginInfo.gender}" selected>${loginInfo.gender}</option>
 										<option>남성</option>
 										<option>여성</option>
 									</select>
 								</div>
-								<br><br>
 								<div class="col-xs-6 form-height">
 									<label for="password"><h4>Password</h4></label><br>
 									<input type="password"  class="form-control" id="password_1" name="password" class="pw" maxlength="20">
@@ -100,7 +102,6 @@
 									<span id="alert-success" style="display: none;">비밀번호가 일치합니다.</span>
 									<span id="alert-danger" style="display: none; color: #d92742; font-weight: bold; ">	비밀번호가 일치하지 않습니다.</span>
 								</div>
-								<br>
 								<div class="col-md-12">
 									<div class="form-group focused">
 										<label><h4>GYM Address</h4></label><br>
@@ -196,6 +197,26 @@ $(document).ready(function(e) {
 			}
 		}
 	});
+	// 휴대폰 번호 정규식
+    function cell_check(cell) {    
+    var regex = /^\d{2,3}-\d{3,4}-\d{4}$/;
+    return (cell != '' && cell != 'undefined' && regex.test(cell)); 
+	}
+    $("input[name='cell']").blur(function(){
+
+        var cell = $(this).val();
+        if( cell == '' || cell == 'undefined') return;
+
+        if(! cell_check(cell) ) {
+        	alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
+	        setTimeout(function(){ $('#cell').focus(); }, 10)
+	        return false;
+        }else{
+        	check_cell = true;
+        }
+    });
+	
+	
 });	
 	function sample6_execDaumPostcode() {
 		new daum.Postcode(

@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.borajoin.teuching.manager.model.service.ManagerService;
 import com.borajoin.teuching.matching.model.vo.Post;
 import com.borajoin.teuching.member.model.service.MypageService;
 import com.borajoin.teuching.member.model.vo.Member;
@@ -29,7 +30,8 @@ public class MypageController {
 
 	@Autowired
 	private MypageService mys;
-	
+	@Autowired
+	private ManagerService managers;
 	
 		/**
 		* @Method Name : mypageM
@@ -53,32 +55,40 @@ public class MypageController {
 		* @Method 설명 : 트레이너 마이페이지 이동
 		*/
 		@RequestMapping("/member/mypage_T.do")
-		public ModelAndView mypageT() {
+		public ModelAndView mypageT(HttpSession session) {
 			ModelAndView mav = new ModelAndView();
 			System.out.println("트레이너 마이페이지");
-			mav.setViewName("account/mypage_T");
-			
-			return mav;
-		}
+			Trainer t = (Trainer)session.getAttribute("loginInfo");
+	         
+	         //자격증명, 리뷰신고, 매칭내역
+	         mav.addObject("report", managers.selectRevReportMypage(t.getTr_email()));
+	         mav.addObject("quali", managers.selectTraQualiMypage(t.getTr_email()));
+	         mav.addObject("match", managers.selectTraMatchMypage(t.getTr_email()));
+	         
+	         mav.setViewName("account/mypage_T");
+	         return mav;
+	      }
 		
 		/**
-		* @Method Name : mypageUpdate_M
+		* @throws Exception 
+		 * @Method Name : mypageUpdate_M
 		* @작성일 : 2020. 6. 17.
 		* @작성자 : 이남규
 		* @Method 설명 : 일반회원 마이페이지 정보 업데이트
 		*/
 		
 		@RequestMapping("/member/mypageUpdate_M.do")
-		public ModelAndView mypageUpdate_M(@RequestParam Map<String, Object> commandMap, HttpSession session) throws SQLException {
+		public ModelAndView mypageUpdate_M(@RequestParam Map<String, Object> commandMap, HttpSession session) throws Exception {
 
 			ModelAndView mav = new ModelAndView();
 			System.out.println(commandMap);
-			Member res = mys.m_login(commandMap);
+			
+			Member res = mys.update_mypage_M(commandMap);
 			session.setAttribute("loginInfo", res);
 
 			mav.addObject("msg", "회원정보가 변경되었습니다.");
 			mav.addObject("url", "account/loginform");
-			mav.setViewName("account/mypage_T");
+			mav.setViewName("account/mypage_M");
 
 			return mav;
 		}	

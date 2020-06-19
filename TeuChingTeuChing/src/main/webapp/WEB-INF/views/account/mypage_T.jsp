@@ -98,7 +98,7 @@
           <div class="tab-content">
             <div class="tab-pane active" id="home">
                 <hr>
-                  <form class="form" action="##" method="post" id="registrationForm"
+                  <form class="form" method="post" id="trainerUpdate"
                   action="<%=request.getContextPath()%>/member/mypageUpdate_T.do"
                   >
                       <div class="form-group">
@@ -107,6 +107,7 @@
                               <label><h4>Email Address</h4></label>
                               <div class="form-control" id="email">
 									<span style="color: black;">${loginInfo.tr_email}</span>
+									 <input type="hidden" name="email" value="${loginInfo.tr_email}" />
 								</div>
                           </div>
                       </div>
@@ -234,7 +235,7 @@
 							<div class="form-group">
                            <div class="col-xs-12">
                                 <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                              	<button class="btn btn-lg btn-success" type="button" id="updateT"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
                                	<button class="btn btn-lg" type="reset" onClick="window.location.reload()" style="cursor: pointer;"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
                             </div>
                       </div>
@@ -320,9 +321,18 @@ $(document).ready(function() {
     });
 });
 
+
+
+
+
+
+
+
+
+
+
 $(document).ready(function(e){
-	var idx_email = false;
-	$('#signUp').click(function(){
+	$('#updateT').click(function(){
 		if($.trim($('#password_1').val()) == ''){
 			alert("패스워드를 입력해주세요.");
 			$('#password_1').focus();
@@ -357,6 +367,19 @@ $('.pw').focusout(function () {
         }
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //커리어 글자 제한두기 
