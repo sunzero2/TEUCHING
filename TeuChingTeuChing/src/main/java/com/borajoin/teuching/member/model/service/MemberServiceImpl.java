@@ -127,23 +127,20 @@ public class MemberServiceImpl implements MemberService {
 				
 			}else if(mailfor.equals("t_findpw")) {
 				title = "안녕하세요 TeuChing 트레이너님! 로그인을 위한 임시 비밀번호를 보내드립니다.";
-				htmlBody += ""
+				htmlBody += "<form action='http://" + commandMap.get("urlPath") + "/index/index.do'>"
 				 + "<h3 style='color: blue;'>"
 				 + "트레이너님의 임시 비밀번호 입니다.</h3>"
 				 + "<p>임시 비밀번호 : "
 				 + commandMap.get("password") + "</p><br>"
-				 + "<button type='button' onclick='location.href='http://" 
-				 + commandMap.get("urlPath") + "index/index'>로그인하러 가기</button>";
-				
+				 + "<button type='submit'>로그인하러 가기</form>";	
 			}else if(mailfor.equals("m_findpw")) {
 				title = "안녕하세요 TeuChing 회원님! 로그인을 위한 임시 비밀번호를 보내드립니다.";
-				htmlBody += ""
+				htmlBody += "<form action='http://" + commandMap.get("urlPath") + "/index/index.do'>"
 				 + "<h3 style='color: blue;'>"
 				 + "회원님의 임시 비밀번호 입니다.</h3>"
 				 + "<p>임시 비밀번호 : "
 				 + commandMap.get("password") + "</p><br>"
-				 + "<button type='button' onclick='location.href='http://" 
-				 + commandMap.get("urlPath") + "index/index'>로그인하러 가기</button>";
+				 + "<button type='submit'>로그인하러 가기</form>";
 			}
 			
 			mailSender.send(new MimeMessagePreparator() {
@@ -153,9 +150,6 @@ public class MemberServiceImpl implements MemberService {
 					message.setTo(tomail);
 					message.setSubject(title);
 					message.setText(htmlBody, true);
-					// message.addInline("myLogo", new ClassPathResource("img/mylogo.gif"));
-					// message.addAttachment("myDocument.pdf", new
-					// ClassPathResource("doc/myDocument.pdf"));
 				}
 			});
 
