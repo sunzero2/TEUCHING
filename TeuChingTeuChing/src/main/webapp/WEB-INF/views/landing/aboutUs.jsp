@@ -61,7 +61,7 @@
 				<p class="about_content">트레이너 프로필에 있는 리뷰에서 추천을 많이 받는 트레이너는 영광스러운 TOP 3에 올라갈 수 있습니다!</p>
 				<p class="about_content">메인 페이지에서 확인이 가능하죠.</p>
 				<p class="about_content">뭐가 좋은 거냐고요? 다른 트레이너보다 노출이 더 많이 되기 때문에 회원들의 접근성이 보다 뛰어납니다.</p>
-				<p class="about_content">이보다 더 좋은 혜택이 어딨습니까?</p>
+				<p class="about_content">이보다fuTsp 더 좋은 혜택이 어딨습니까?</p>
 			</div>
 		</li>
 	</ul>

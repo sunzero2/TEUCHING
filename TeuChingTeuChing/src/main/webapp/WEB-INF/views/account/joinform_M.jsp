@@ -24,17 +24,16 @@ background-color: transparent !important;
 </style>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="resources/css/joinform.css">
+<link rel="stylesheet" href="../resources/css/joinform.css">
 <!-- 카카오주소 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42e0be41ec144283c6bfe7c0ed8dae35&libraries=services"></script>
-
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 </head>
 <body>
@@ -47,16 +46,13 @@ background-color: transparent !important;
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
 					<form id="signFrm" name="signFrm"
 						action="<%=request.getContextPath()%>/member/m_joinemailCheck.do" 
-	       					action="<%=request.getContextPath()%>/member/joinMemberImple.do"
-	       					 method="post">
+	       					 method="post" onsubmit="return checkit()">
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
 								<div class="col-8">
 									<h3 class="mb-0">트칭 일반회원 회원가입</h3>
 								</div>
-								<div class="col-4 text-right">
-									<button type="button" id="signUp" class="btn btn-sm btn-primary">가입하기</button>
-								</div>
+								
 							</div>
 						</div>
 						<div class="card-body">
@@ -150,6 +146,9 @@ background-color: transparent !important;
 										</div>
 									</div>
 								</div>
+								<div class="col-4 text-right">
+									<button type="button" id="signUp" class="btn btn-sm btn-primary" >가입하기</button>
+								</div>
 							</div>
 						</form>
 					</div>
@@ -160,10 +159,14 @@ background-color: transparent !important;
 </body>
 
 <script type="text/javascript">
+
+var inputemail = document.getElementById('email').value;
+console.log(inputemail);
 	$(document).ready(function(e){
 		
 		var idx_email = false;
 		var idx_nick = false;
+		var re = re=/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		
 		$('#signUp').click(function(){
 			if($.trim($('#email').val()) == ''){
@@ -206,7 +209,14 @@ background-color: transparent !important;
 				$('#signFrm').submit();
 			} 
 			
+		
+			/* 이메일체크  */
+			
+			
+			
 		});
+		
+	
 		
 		$('#check_nick').click(function(){
 			$.ajax({
@@ -261,9 +271,14 @@ background-color: transparent !important;
 		});
 		
 	});
-</script>
 
-<script>
+
+
+
+
+
+
+
     $('.pw').focusout(function () {
         var pwd1 = $("#password_1").val();
         var pwd2 = $("#password_2").val();
@@ -281,9 +296,7 @@ background-color: transparent !important;
             }
         }
     });
-</script>
-
-<script>
+    
     function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
