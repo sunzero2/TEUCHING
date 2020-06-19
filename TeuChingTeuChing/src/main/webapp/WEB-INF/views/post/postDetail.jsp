@@ -60,7 +60,10 @@
 								<div class="job">Trainer</div>
 								<a class="author" href="/teuching/profile/review.do?trainerEmail=${data.post.trEmail}">${data.post.trainerName}</a>
 								<hr>
-								<button class="btn btn-primary">Send Message</button>
+								<form id="form" action="${pageContext.request.contextPath }/message/messageform.do" target="pop">
+								<input type="hidden" name="tr_email" value="${data.post.trEmail}">
+								</form>
+								<button onclick="openPopUp()" class="btn btn-primary">Send Message</button>
 								<c:if test="${memberType == 'trainer'}">
 									<c:if test="${loginInfo.tr_email == data.post.trEmail}">
 										<a href="/teuching/post/writepost.do?postIdx=${data.post.postIdx}"><button class="btn btn-primary">Edit Post</button></a>
@@ -87,6 +90,15 @@
 				img.src = "../resources/upload/" + "${item.rename_filename}";
 				uploads.append(img);
 			</c:forEach>
+		</script>
+		<script>
+		function openPopUp() {
+			const form = document.querySelector('#form');
+			window
+					.open("", 'pop',
+							'width=400,height=270,left=420,top=150,toolbars=no,scrollbars=no');
+			form.submit();
+		}
 		</script>
 </body>
 </html>
