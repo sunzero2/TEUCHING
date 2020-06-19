@@ -74,7 +74,6 @@ form-height {
 						<ul class="nav nav-tabs">
 							<li class="active"><a data-toggle="tab" href="#home">회원정보
 									수정하기</a></li>
-							<li><a data-toggle="tab" href="#messages">작성한 게시글</a></li>
 							<li><a data-toggle="tab" href="#match">매칭내역</a></li>
 							<li><a data-toggle="tab" href="#report">신고내역</a></li>
 						</ul>
@@ -276,7 +275,6 @@ form-height {
 			.ready(
 					function(e) {
 
-<<<<<<< HEAD
 		$('#membersignUp').click(function() {
 			
 			if ($.trim($('#password_1').val()) == '') {
@@ -304,11 +302,9 @@ form-height {
 				alert("회원정보 수정이 완료되었습니다!");
 				$('#memberMypage').submit();
 			}
-=======
 						$('#membersignUp')
 								.click(
 										function() {
->>>>>>> 81fbe04031dbac922e25e928ae0fb0674ce0a0a7
 
 											if ($.trim($('#password_1').val()) == '') {
 												alert("패스워드를 입력해주세요.");
@@ -338,7 +334,6 @@ form-height {
 															.getElementById('sample6_address').value = "${loginInfo.address}";
 												}
 
-<<<<<<< HEAD
 		if (pwd1 != '' && pwd2 == '') {
 			null;
 		} else if (pwd1 != "" || pwd2 != "") {
@@ -357,13 +352,11 @@ form-height {
     return (cell != '' && cell != 'undefined' && regex.test(cell)); 
 	}
     $("input[name='cell']").blur(function(){
-=======
 												alert("회원정보 수정이 완료되었습니다!");
 												$('#memberMypage').submit();
 											}
 
 										});
->>>>>>> 81fbe04031dbac922e25e928ae0fb0674ce0a0a7
 
 						$('.pw')
 								.focusout(
