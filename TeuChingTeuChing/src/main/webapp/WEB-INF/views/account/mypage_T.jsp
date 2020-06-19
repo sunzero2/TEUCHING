@@ -288,34 +288,22 @@ function imgLoad(img) {
 }
 
 $(document).ready(function() {
-
-    
     var readURL = function(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
             reader.onload = function (e) {
                 $('.avatar').attr('src', e.target.result);
             }
-    
             reader.readAsDataURL(input.files[0]);
         }
     }
-    
-
     $(".file-upload").on('change', function(){
         readURL(this);
     });
 });
 
-</script>   
-
-<script type="text/javascript">
-
 $(document).ready(function(e){
-	
 	var idx_email = false;
-	
 	$('#signUp').click(function(){
 		if($.trim($('#password_1').val()) == ''){
 			alert("패스워드를 입력해주세요.");
@@ -330,9 +318,7 @@ $(document).ready(function(e){
 			alert("회원정보 수정이 완료되었습니다.");
 			$('#signFrm').submit();
 		} 
-		
 	});
-	
 });
 
 //비밀번호 체크
@@ -357,14 +343,13 @@ $('.pw').focusout(function () {
 
 //커리어 글자 제한두기 
 $('#career').keyup(function (e){
-var content = $(this).val();
-$('#counter').html("("+content.length+" / 최대 500자)");    //글자수 실시간 카운팅
-
-if (content.length > 500){
-    alert("최대 500자까지 입력 가능합니다.");
-    $(this).val(content.substring(0, 500));
-    $('#counter').html("(500 / 최대 500자)");
-}
+	var content = $(this).val();
+	$('#counter').html("("+content.length+" / 최대 500자)");    //글자수 실시간 카운팅
+	if (content.length > 500){
+		    alert("최대 500자까지 입력 가능합니다.");
+		    $(this).val(content.substring(0, 500));
+		    $('#counter').html("(500 / 최대 500자)");
+		}
 });
 
 
@@ -392,35 +377,30 @@ var area16 = ["서귀포시","제주시","남제주군","북제주군"];
 
 
 // 시/도 선택 박스 초기화
-
 $("select[id^=sido]").each(function() {
-$selsido = $(this);
-$.each(eval(area0), function() {
-$selsido.append("<option value='"+this+"'>"+this+"</option>");
-});
-$selsido.next().append("<option value=''>구/군 선택</option>");
+	$selsido = $(this);
+	$.each(eval(area0), function() {
+		$selsido.append("<option value='"+this+"'>"+this+"</option>");
+	});
+	$selsido.next().append("<option value=''>구/군 선택</option>");
 });
 
 // 시/도 선택시 구/군 설정
 
 $("select[id^=sido]").change(function() {
 var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
-var $gugun = $(this).next(); // 선택영역 군구 객체
-$("option",$gugun).remove(); // 구군 초기화
-
-if(area == "area0")
-$gugun.append("<option value=''>구/군 선택</option>");
-else {
-$.each(eval(area), function() {
-$gugun.append("<option value='"+this+"'>"+this+"</option>");
+	var $gugun = $(this).next(); // 선택영역 군구 객체
+	$("option",$gugun).remove(); // 구군 초기화
+	
+	if(area == "area0") {
+		$gugun.append("<option value=''>구/군 선택</option>");
+		
+	} else {
+		$.each(eval(area), function() {
+			$gugun.append("<option value='"+this+"'>"+this+"</option>");
+		});
+	}
 });
-}
-});
-
-
-});
-
-
 
 //카카오지도 
 function sample6_execDaumPostcode() {
@@ -578,8 +558,5 @@ function sample6_execDaumPostcode() {
 						}
 					});
 </script>
-
-
-
 </body>
 </html>
