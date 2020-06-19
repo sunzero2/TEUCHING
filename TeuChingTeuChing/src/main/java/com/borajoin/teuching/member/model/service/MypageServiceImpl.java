@@ -22,6 +22,11 @@ public class MypageServiceImpl implements MypageService{
 	public List<Post> t_postlist(Map<String, String> data) {
 		return mypageDao.t_postlist(data);
 	}
+	
+	@Override
+	public int t_count(Trainer t) {
+		return mypageDao.t_count(t);
+	}
 
 	@Override
 	public int photoUpdate(Map<String, Object> commandMap) throws SQLException {
@@ -57,6 +62,8 @@ public class MypageServiceImpl implements MypageService{
 		res = mypageDao.t_login(commandMap);
 		return res;
 	}
+
+	
 	
 	
 	

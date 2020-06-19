@@ -12,6 +12,8 @@ public interface MypageService {
 
 	// 트레이너 게시글 데이터 가져오기
 	public List<Post> t_postlist(Map<String, String> data);
+	// 트레이너 게시글 개수 가져오기
+	public int t_count(Trainer t);
 
 	// 트레이너 프로필 사진 변경
 	public int photoUpdate(Map<String, Object> commandMap) throws SQLException;

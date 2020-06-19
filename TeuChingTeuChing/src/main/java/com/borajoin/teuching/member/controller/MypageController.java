@@ -70,6 +70,8 @@ public class MypageController {
 	         mav.addObject("quali", managers.selectTraQualiMypage(t.getTr_email()));
 	         mav.addObject("match", managers.selectTraMatchMypage(t.getTr_email()));
 	         
+	         mav.addObject("postCount", mys.t_count(t));
+	         
 	         mav.setViewName("account/mypage_T");
 	         return mav;
 	      }
@@ -140,28 +142,7 @@ public class MypageController {
 		public List<Post> t_postlist(@RequestParam Map<String, String> data) {
 			return mys.t_postlist(data);
 		}
-		
-		
-		//세션 업데이트 메서드.
-		// mypage 수정
-		/*
-		 * @RequestMapping(value = "/update_mypage.do", method = RequestMethod.POST)
-		 * public String update_mypage(@ModelAttribute MemberDTO member, HttpSession
-		 * session, RedirectAttributes rttr) throws Exception{
-		 * session.setAttribute("member", service.update_mypage(member));
-		 * rttr.addFlashAttribute("msg", "회원정보 수정 완료"); return
-		 * "redirect:/member/mypage.do"; }
-		 */
-		
-		// mypage 수정
-		/*
-		 * @RequestMapping(value = "/update_mypage.do", method = RequestMethod.POST)
-		 * public String update_mypage(@ModelAttribute MemberDTO member, HttpSession
-		 * session, RedirectAttributes rttr) throws Exception{
-		 * session.setAttribute("member", service.update_mypage(member));
-		 * rttr.addFlashAttribute("msg", "회원정보 수정 완료"); return
-		 * "redirect:/member/mypage.do"; }
-		 */
+
 		
 		
 		

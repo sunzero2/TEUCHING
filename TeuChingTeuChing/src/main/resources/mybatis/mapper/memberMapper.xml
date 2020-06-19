@@ -82,7 +82,10 @@
 		<result column="price" property="price"></result>
 		<result column="write_date" property="writeDate"></result>
 	</resultMap>
-
+	<!-- 게시글 수 -->
+	<select id="t_count" resultType="int">
+		select count(*) from tr_post where TR_EMAIL like '%' || #{tr_email} || '%' 
+	</select>
  	
  	<select id="selectTopTrainer" resultMap="trainerResult">
  		<![CDATA[select rownum, t.* from (select * from tr_trainer t order by tr_like desc) t where rownum < 4]]>

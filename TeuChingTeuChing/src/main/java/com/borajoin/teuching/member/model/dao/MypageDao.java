@@ -36,7 +36,6 @@ public class MypageDao {
 	public int update_mypage_T(Map<String, Object> commandMap){
 		return session.update("Mypage.update_mypage_T", commandMap);
 	}
-
 	
 	//트레이너 프로필사진 업데이트
 	public int photoUpdate(Map<String, Object> commandMap) {
@@ -47,8 +46,10 @@ public class MypageDao {
 	public List<Post> t_postlist(Map<String, String> data) {
 		return session.selectList("Member.t_postlist", data);
 	}
-	
-	
+	//개시글 개수
+	public int t_count(Trainer t) {
+		return session.selectOne("Member.t_count", t);
+	}
 	
 	
 	

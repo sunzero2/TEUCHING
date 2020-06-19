@@ -98,7 +98,7 @@
 					<li class="list-group-item text-right"><span class="pull-left"><strong>Likes♡</strong></span>
 						${loginInfo.tr_like}</li>
 					<li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span>
-						37</li>
+						${postCount}</li>
 				</ul>
 
 			</div>
@@ -487,9 +487,26 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+	
+	var i = 0;
+	
+    $.ajax({
+        url: '/teuching/member/t_count.do',
+        type: 'post',
+        async: false, 
+        data:{"email":$('#email').val()},
+        success: function(data) {
+        	document.getElementById('t_count').value = i;
+          }
+     })
+});
+
+
 
 // 회원정보 업데이트
 $(document).ready(function(e){
+	
    $('#updateT').click(function(){
       if($.trim($('#password_1').val()) == ''){
     	alert("비밀번호를 입력해주세요.");
