@@ -59,6 +59,10 @@
 .text pl-md-4 ml-md-2 pt-4 {
 	font-size: small;
 }
+
+.navbar-brand {
+    font-size: 40px !important;
+ }
 </style>
 
 </head>
@@ -148,7 +152,7 @@
 									<label><h4>Gender</h4></label> <select
 										class="form-control form-control-alternative"
 										style="font-size: small;" name="gender" id="gender">
-										<option value="${loginInfo.gender}" selected disabled>${loginInfo.gender}</option>
+										<option value="${loginInfo.gender}" selected>${loginInfo.gender}</option>
 										<option>남성</option>
 										<option>여성</option>
 									</select>
@@ -222,12 +226,16 @@
 								<div class="col-xs-6">
 									<div class="form-group focused">
 										<label class="form-control-label" for="input-address">선호
-											지역 선택하기</label> <br> 지역 1 <select name="prefer1-1" id="sido1"></select>
-										<select name="prefer1-2" id="gugun1"></select> <br> 지역 2
-										<select name="prefer2-1" id="sido2"></select> <select
-											name="prefer2-2" id="gugun2"></select> <br> 지역 3 <select
-											name="prefer3-1" id="sido3"></select> <select
-											name="prefer3-2" id="gugun3"></select>
+											지역 선택하기</label> 
+											<br> 지역 1 <select name="prefer1-1" id="sido1"></select>
+										<select name="prefer1-2" id="gugun1"></select><br>
+										<span>현재 설정중인 지역 1 : ${loginInfo.prefer_add1}</span> 
+										<br>지역 2<select name="prefer2-1" id="sido2"></select> 
+										<select name="prefer2-2" id="gugun2"></select><br>
+										<span>현재 설정중인 지역 2 : ${loginInfo.prefer_add2}</span> 
+										<br> 지역 3 <select name="prefer3-1" id="sido3"></select> 
+										<select name="prefer3-2" id="gugun3"></select><br>
+										<span>현재 설정중인 지역 3 : ${loginInfo.prefer_add3}</span> 
 									</div>
 								</div>
 							</div>
@@ -490,21 +498,57 @@ $(document).ready(function() {
 
 
 
-
-
-
+// 회원정보 업데이트
 $(document).ready(function(e){
    $('#updateT').click(function(){
       if($.trim($('#password_1').val()) == ''){
-         alert("패스워드를 입력해주세요.");
-         $('#password_1').focus();
-         return;
+    	alert("비밀번호를 입력해주세요.");
+		setTimeout(function(){ $('#password_1').focus(); }, 10)
+		return;
       }
       //패스워드 확인
       else if($('#password_1').val() != $('#password_2').val()){
-         alert('패스워드가 다릅니다.');
-         return;
+    	alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
+		setTimeout(function(){ $('#password_2').focus(); }, 10)
+		return;
       }else{
+    	  
+    		 if($.trim($('#gender').val()) == ''){
+				document.getElementById('gender').value = "${loginInfo.gender}";
+			}
+			if($.trim($('#cell').val()) == ''){
+				document.getElementById('cell').value = "${loginInfo.cell}";
+			}
+			if($.trim($('#sample6_address').val()) == ''){
+				document.getElementById('sample6_address').value = "${loginInfo.address}";
+			}
+			if($.trim($('#sample6_detailAddress').val()) == ''){
+				document.getElementById('sample6_detailAddress').value = "${loginInfo.address_detail}";
+			}
+			if($.trim($('#weight').val()) == ''){
+				document.getElementById('weight').value = "${loginInfo.weight}";
+			}
+			if($.trim($('#height').val()) == ''){
+				document.getElementById('height').value = "${loginInfo.height}";
+			}
+			if($.trim($('#career').val()) == ''){
+				document.getElementById('career').value = "${loginInfo.career}";
+				
+			}
+			if($.trim($('#sido1').val()) == '시/도 선택'){
+				document.getElementById('sido1').value = "${loginInfo.prefer_add1}";
+				
+			}
+			if($.trim($('#sido2').val()) == '시/도 선택'){
+				document.getElementById('sido2').value = "${loginInfo.prefer_add2}";
+				
+			}
+			if($.trim($('#sido3').val()) == '시/도 선택'){
+				document.getElementById('sido3').value = "${loginInfo.prefer_add3}";
+				
+			}
+    	  
+    	  
          alert("회원정보 수정이 완료되었습니다.");
          $('#trainerMypage').submit();
       } 
@@ -523,26 +567,11 @@ $('.pw').focusout(function () {
             $("#alert-success").css('display', 'inline-block');
             $("#alert-danger").css('display', 'none');
         } else {
-            alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.");
             $("#alert-success").css('display', 'none');
             $("#alert-danger").css('display', 'inline-block');
         }
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //커리어 글자 제한두기 
 $('#career').keyup(function (e){

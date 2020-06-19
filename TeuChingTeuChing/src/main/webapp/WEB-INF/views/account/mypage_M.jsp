@@ -56,6 +56,9 @@ form-height {
 form-height {
 	height: 110px;
 }
+.navbar-brand {
+    font-size: 40px !important;
+ }
 </style>
 </head>
 <body>
@@ -233,13 +236,14 @@ $(document).ready(function(e) {
 		$('#membersignUp').click(function() {
 			
 			if ($.trim($('#password_1').val()) == '') {
-				alert("패스워드를 입력해주세요.");
-				$('#password_1').focus();
+				alert("비밀번호를 입력해주세요.");
+				setTimeout(function(){ $('#password_1').focus(); }, 10)
 				return;
 			}
 			//패스워드 확인
 			else if ($('#password_1').val() != $('#password_2').val()) {
-				alert('패스워드가 다릅니다.');
+				alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
+				setTimeout(function(){ $('#password_2').focus(); }, 10)
 				return;
 			} else {
 				
@@ -272,7 +276,6 @@ $(document).ready(function(e) {
 				$("#alert-success").css('display', 'inline-block');
 				$("#alert-danger").css('display', 'none');
 			} else {
-				alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.");
 				$("#alert-success").css('display', 'none');
 				$("#alert-danger").css('display', 'inline-block');
 			}

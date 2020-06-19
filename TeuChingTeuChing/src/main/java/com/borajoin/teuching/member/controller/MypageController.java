@@ -104,6 +104,14 @@ public class MypageController {
 			ModelAndView mav = new ModelAndView();
 			System.out.println(commandMap);
 			
+			String preMap1 = (String)commandMap.get("prefer1-1")+" "+(String)commandMap.get("prefer1-2");
+			String preMap2 = (String)commandMap.get("prefer2-1")+" "+(String)commandMap.get("prefer2-2");
+			String preMap3 = (String)commandMap.get("prefer3-1")+" "+(String)commandMap.get("prefer3-2");
+			commandMap.put("prefer1", preMap1);
+			commandMap.put("prefer2", preMap2);
+			commandMap.put("prefer3", preMap3);
+			System.out.println(commandMap);
+			
 			Trainer res = mys.update_mypage_T(commandMap);
 			session.setAttribute("loginInfo", res);
 
