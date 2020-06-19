@@ -7,10 +7,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.borajoin.teuching.manager.model.vo.Quali;
 import com.borajoin.teuching.matching.model.vo.Post;
 import com.borajoin.teuching.member.model.vo.Trainer;
 import com.borajoin.teuching.review.model.dao.ReviewDao;
 import com.borajoin.teuching.review.model.vo.Review;
+import com.sun.mail.auth.MD4;
 
 import common.util.Paging;
 
@@ -94,5 +96,10 @@ public class ReviewServiceImpl implements ReviewService {
 		List<Post> plist = rd.selectPostList(trainerEmail);
 		res.put("plist",plist);
 		return res;
+	}
+
+	@Override
+	public List<String> trainerquali(String trainerEmail) {
+		return rd.trainerEmali(trainerEmail);
 	}
 }

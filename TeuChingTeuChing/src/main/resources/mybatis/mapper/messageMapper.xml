@@ -220,7 +220,7 @@
 			MATCH_YN = 'N'
 	</select>
 	
-	<insert id="insertMsgAnsMem" parameterType="Message">
+	<insert id="insertMsgMem" parameterType="Message">
 		INSERT INTO
 				TR_MESSAGE
 		VALUES(

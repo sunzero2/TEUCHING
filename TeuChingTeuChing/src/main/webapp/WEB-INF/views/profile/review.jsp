@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -155,7 +156,7 @@
 									alt="${Trainer.photo}" class="img-fluid mb-4" id="photo">
 							</div>
 							<div class="desc align-self-md-center">
-								<h3 id="trainer">${Trainer.trainerName}님의프로필 입니다.</h3>
+								<h3 id="trainer">${Trainer.trainerName}님의프로필입니다.</h3>
 								<br>
 								<p>
 									Address : <span id="totalAdress">${Trainer.address}
@@ -169,6 +170,27 @@
 								</p>
 								<p>
 									Career : <span id="totalAdress">${Trainer.career}</span>
+								</p>
+								<p>
+									Qualification :
+									<c:if test="${fn:length(quali) > 0}">
+										<c:forEach items="${quali }" var="q" varStatus="cnt">
+											<c:if test="${cnt.index == 0 }">
+												<span id="totalAdress">${q }</span>
+												<br>
+											</c:if>
+											<c:if test="${cnt.index >= 1 }">
+												<span id="totalAdress">
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${q }</span>
+												<br>
+											</c:if>
+										</c:forEach>
+									</c:if>
+									<c:if test="${fn:length(quali) <= 0}">
+										<span id="totalAdress">인증된 자격증명이 없습니다</span>
+									</c:if>
 								</p>
 								<div class="tag-widget post-tag-container mb-5 mt-5">
 
@@ -249,8 +271,7 @@
 								</span>
 
 								<p>${review.rev_cont}</p>
-								
-								<a
+									<a
 									href="${pageContext.request.contextPath }/report/viewreport.do?nick_name=${review.mem_nickname }&type=rev"
 									class="reply">🚨</a>
 							</c:if>

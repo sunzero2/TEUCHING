@@ -90,5 +90,16 @@
 	<select id="selectPostList" resultMap="postMap"> 
 		select * from tr_post where tr_email = #{trainerEmail}
 	</select>
+	
+	<select id="trainerquali" resultType="string">
+		SELECT
+			QUALI_AUTH
+		FROM
+			TR_QUALI
+		WHERE
+			TR_EMAIL = #{trainerEmail}
+			AND
+			AUTH_YN = 'Y'
+	</select>
 
 </mapper>

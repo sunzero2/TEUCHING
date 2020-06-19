@@ -1,5 +1,6 @@
 package com.borajoin.teuching.review.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public interface ReviewService {
 	public int deleteReview(Map<String, Object> data);
 	public Map<String,Object> selectTrainerInformation(String trainerEmail);
 	public Map<String,Object> selectPostList(String trainerEmail);
+	public List<String> trainerquali(String trainerEmail);
 	
 	
 	

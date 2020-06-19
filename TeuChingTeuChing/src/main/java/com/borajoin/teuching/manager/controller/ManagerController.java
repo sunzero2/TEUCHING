@@ -199,7 +199,7 @@ public class ManagerController {
 		}
 		ms.insertFile(fileData);
 		mv.addObject("msg", "신고 완료 되었습니다");
-		mv.addObject("url", request.getContextPath() + "/profile/review.do");
+		mv.addObject("url", request.getContextPath() + "/profile/review.do?trainerEmail="+ commandMap.get("tr_email"));
 		mv.setViewName("common/result");
 		return mv;
 	}

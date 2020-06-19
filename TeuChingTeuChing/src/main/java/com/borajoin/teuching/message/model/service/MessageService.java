@@ -29,5 +29,5 @@ public interface MessageService {
 	
 	public int matchYnCheck(int match_idx);
 	
-	public int insertMsgAnsMem(Map<String, Object> commanMap);
+	public int insertMsgMem(Map<String, Object> commandMap);
 }

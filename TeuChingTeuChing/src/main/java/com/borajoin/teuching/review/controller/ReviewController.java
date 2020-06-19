@@ -64,6 +64,7 @@ public class ReviewController {
 		mav.addObject("postList",postList);
 		mav.addObject("trainerInfo", trainerInfo);
 		mav.addObject("reviewList", res);
+		mav.addObject("quali",rs.trainerquali(trainerEmail));
 		mav.setViewName("profile/review");
 
 		return mav;

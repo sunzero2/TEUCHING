@@ -65,8 +65,8 @@ public class MessageDao {
 		return sqlSession.selectOne("Message.matchYnCheck", match_idx);
 	}
 	
-	//회원이 트레이너에게 보내는 답장
-	public int insertMsgAnsMem(Map<String, Object> commanMap) {
-		return sqlSession.insert("Message.insertMsgAnsMem", commanMap);
+	//회원이 트레이너에게 보내는 메시지
+	public int insertMsgMem(Map<String, Object> commandMap) {
+		return sqlSession.insert("Message.insertMsgMem", commandMap);
 	}
 }
