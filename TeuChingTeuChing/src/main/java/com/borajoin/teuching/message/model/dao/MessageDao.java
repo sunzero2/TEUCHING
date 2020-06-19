@@ -46,8 +46,8 @@ public class MessageDao {
 		return sqlSession.selectOne("Message.selectMsgDetail", message_idx);
 	}
 	
-	public int insertMsgAnsTra(Map<String, Object> commandMap) {
-		return sqlSession.insert("Message.insertMsgAnsTra", commandMap);
+	public int insertMsgTra(Map<String, Object> commandMap) {
+		return sqlSession.insert("Message.insertMsgTra", commandMap);
 	}
 	
 	//쪽지에 보여줄 매칭 정보
@@ -68,5 +68,10 @@ public class MessageDao {
 	//회원이 트레이너에게 보내는 메시지
 	public int insertMsgMem(Map<String, Object> commandMap) {
 		return sqlSession.insert("Message.insertMsgMem", commandMap);
+	}
+	
+	//이메일가지고 닉네임을 찾아올 메서드 사용자 편의를 위함
+	public String selectTraName(String tr_email) {
+		return sqlSession.selectOne("Message.selectTraName", tr_email);
 	}
 }

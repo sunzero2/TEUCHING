@@ -57,6 +57,7 @@ h1 {
 			<textarea name="msg_cont" id="textarea" placeholder="내용을 입력해주세요"></textarea>
 			<br> 
 			<input type="hidden" name="tr_email" value="${ tr_email}">
+			<input type="hidden" name="trainer_name" value="${ trainer_name}">
 			<button id="btn">신청하기</button>
 		</div>
 	</form>

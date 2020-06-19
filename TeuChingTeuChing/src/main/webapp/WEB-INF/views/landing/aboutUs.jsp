@@ -78,7 +78,7 @@
    </section>
    <section class="goModalWrap">
       <h1 class="black_font">사이트 이용 방법에 대해서 알아보시겠어요?</h1>
-      <a class="goModal" onclick="modalOnOff('true');" href="#">동영상 보러가기</a>
+      <a class="goModal" onclick="modalOnOff('true');">동영상 보러가기</a>
    </section>
    <%@ include file="../include/footer.jsp" %>
    <script src="../resources/js/jquery.min.js"></script>

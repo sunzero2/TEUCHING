@@ -156,6 +156,7 @@ td a{
 		<input type="hidden" id="year" value="" name="year">
 		<input type="hidden" id="month" value="" name="month">
 		<input type="hidden" id="date" value="" name="date">
+		<input type="hidden" id="date" value="${tr_email }" name="tr_email">
 	</form>
 	
 	

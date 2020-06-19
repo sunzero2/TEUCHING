@@ -95,7 +95,9 @@ h1 {
 										${m.match_date }
 									${m.match_time }
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<button id="matchbtn" type="button">수락</button>
+										<c:if test="${m.match_yn eq 'N' }"><button id="matchbtn" type="button">수락</button></c:if> 
+										<c:if test="${m.match_yn eq 'Y' }"><button id="matchbtn" type="button">수락완료</button></c:if> 
+									
 							</a></li>
 						</c:forEach>
 					</ul></li>
@@ -104,6 +106,7 @@ h1 {
 			<textarea name="msg_cont" id="textarea" placeholder="내용을 입력해주세요"></textarea>
 			<button id="btn" style="transform: translateX(-52%)">작성완료</button>
 			<input type="hidden" name="mem_email" value="${res.mem_email }">
+			<input type="hidden" name="nick_name" value="${res.nick_name }">
 		</div>
 		<script src="https://code.jquery.com/jquery-3.5.1.js"
 			integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -137,7 +140,7 @@ h1 {
 									const match_time = $('#match' + match_idx).data("match_time")
 									alert('수락완료');
 									$('#match' + match_idx).html('✅ ' + match_date + " " + match_time 
-											+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "수락");
+											+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "수락완료");
 								}else{
 									alert('이미 수락된 매칭입니다');
 								}

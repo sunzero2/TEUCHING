@@ -12,6 +12,8 @@
 				, #{msg_cont}
 				, SYSDATE
 				, 'Member'
+				, #{trainer_name}
+				, #{nick_name}
 		)
 	</insert>
 	
@@ -174,7 +176,7 @@
 			MESSAGE_IDX = #{message_idx}
 	</select>
 	
-	<select id="insertMsgAnsTra">
+	<select id="insertMsgTra">
 		INSERT INTO
 				TR_MESSAGE
 		VALUES(
@@ -184,6 +186,8 @@
 				, #{msg_cont}
 				, SYSDATE
 				, 'Trainer'
+				, #{trainer_name}
+				, #{nick_name}
 		)
 	</select>
 	
@@ -230,7 +234,18 @@
 				, #{msg_cont}
 				, SYSDATE
 				, 'Member'
+				, #{trainer_name}
+				, #{nick_name}
 		)
 	</insert>
+	
+	<select id="selectTraName" resultType="string">
+		SELECT
+			TRAINER_NAME
+		FROM
+			TR_TRAINER
+		WHERE
+			TR_EMAIL = #{tr_email}
+	</select>
 	
 </mapper>

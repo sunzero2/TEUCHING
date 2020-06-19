@@ -94,8 +94,8 @@
 				</div>
 			</div>
 			<textarea name="msg_cont" id="textarea" placeholder="내용을 입력해주세요"></textarea>
-			<br> <input type="hidden" name="tr_email"
-				value="TEST1@naver.com">
+			<br> 
+			<input type="hidden" name="tr_email" value="${tr_email }">
 			<button id="btn">신청하기</button>
 		</div>
 	</form>
