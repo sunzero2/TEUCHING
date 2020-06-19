@@ -65,14 +65,20 @@ var video = document.querySelector('.aboutUsVideo');
 function modalOnOff(rgx) {
 	if(rgx == 'true') {
 		modal_wrap.style.display = 'block';
-		modal.style.display = 'block';
 		modal_remove_btn.style.display = 'block';
 		video.style.display = 'block';
+		window.setTimeout(function() {
+			modal.style.transform = 'translateY(0vh)';
+			modal.style.transitionDuration = '1s';
+		}, 300);
 	} else {
-		modal_wrap.style.display = 'none';
-		modal.style.display = 'none';
-		modal_remove_btn.style.display = 'none';
-		video.style.display = 'none';
-		video.pause();
+		modal.style.transform = 'translateY(-100vh)';
+		modal.style.transitionDuration = '1s';
+		window.setTimeout(function() {
+			modal_wrap.style.display = 'none';
+			modal_remove_btn.style.display = 'none';
+			video.style.display = 'none';
+			video.pause();
+		}, 500);
 	}
 }
