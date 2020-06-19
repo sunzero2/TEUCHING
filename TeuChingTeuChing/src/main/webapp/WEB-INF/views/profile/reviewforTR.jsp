@@ -261,7 +261,7 @@
 
 
 								<a
-									href="${pageContext.request.contextPath }/report/viewreport.do?&nick_name=${review.mem_nickname }&type=rev"
+									href="${pageContext.request.contextPath }/report/reportrequest.do?&nick_name=${review.mem_nickname }&type=rev"
 									class="reply">🚨</a>
 							
 						</div>

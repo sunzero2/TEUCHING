@@ -118,4 +118,21 @@ public class MessageServiceImpl implements MessageService {
 		return md.selectTraName(tr_email);
 	}
 
+	@Override
+	public int insertManagerMessageToTra(Map<String, Object> commandMap) {
+		return md.insertManagerMessageToTra(commandMap);
+	}
+
+	//리뷰삭제
+	@Override
+	public int deleteReview(int review_idx) {
+		return md.deleteReview(review_idx);
+	}
+
+	@Override
+	public int insertManagerMessageToMem(Map<String, Object> commandMap) {
+		return md.insertManagerMessageToMem(commandMap);
+	}
+
+
 }

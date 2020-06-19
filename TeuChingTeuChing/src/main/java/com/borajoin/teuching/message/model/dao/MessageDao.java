@@ -74,4 +74,17 @@ public class MessageDao {
 	public String selectTraName(String tr_email) {
 		return sqlSession.selectOne("Message.selectTraName", tr_email);
 	}
+	
+	public int insertManagerMessageToTra(Map<String, Object> commandMap) {
+		return sqlSession.insert("Message.insertManagerMessageToTra", commandMap);
+	}
+	
+	public int insertManagerMessageToMem(Map<String, Object> commandMap) {
+		return sqlSession.insert("Message.insertManagerMessageToMem", commandMap);
+	}
+	
+	//리뷰삭제
+	public int deleteReview(int review_idx) {
+		return sqlSession.delete("Message.deleteReview", review_idx);
+	}
 }

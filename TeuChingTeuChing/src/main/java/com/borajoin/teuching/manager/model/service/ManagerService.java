@@ -64,5 +64,9 @@ public interface ManagerService {
 	public List<ReviewReport> selectRevReportMypage(String tr_email);
 
 	public List<Match> selectTraMatchMypage(String tr_email);
+	
+	public int updateBlackYn(String tr_email);
+	
+	public String selectTremailForReviewDelete(String nick_name);
 
 }

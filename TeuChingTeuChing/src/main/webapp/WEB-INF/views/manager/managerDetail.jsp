@@ -74,6 +74,13 @@
 					<input type="hidden" name="ans_yn" value="${res.ans_yn }">
 					<input type="hidden" name="report_idx" value="${res.report_idx }">
 					<button type="submit" class="btn btn-outline-primary" id="btn">답변하기</button>
+					<br>
+					<c:if test="${type eq 'tra' }">
+					<a href="${pageContext.request.contextPath }/report/trainerblack.do?tr_email=${res.tr_email}">경고</a>
+					</c:if>
+					<c:if test="${type eq 'rev' }">
+					<a href="${pageContext.request.contextPath }/report/reviewblack.do?mem_email=${res.mem_email}">경고</a>
+					</c:if>
 				</h5>
 			</form>
 			<c:if test="${type eq 'tra' }">
