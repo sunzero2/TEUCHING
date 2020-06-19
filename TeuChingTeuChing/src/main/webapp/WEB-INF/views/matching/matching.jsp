@@ -29,6 +29,7 @@
 </head>
 <body>
 <%@ include file="../include/top.jsp" %>
+	<input type="hidden" id="memberType" value="${memberType}">
 	<header id="header" class="ftco-section">
 		<div class="container">
 			<div class="searchWordWrapper">

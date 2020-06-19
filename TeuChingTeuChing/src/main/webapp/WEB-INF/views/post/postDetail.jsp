@@ -55,7 +55,7 @@
 						<div class="authorWrapper">
 							<hr>
 							<div class="authorTitle">Author</div>
-								<img class="authorImg" src="../resources/img/person_4.jpg">
+								<img class="authorImg" src="../resources/upload/profileImg/${data.post.trPhoto}">
 							<div class="details authorInfo">
 								<div class="job">Trainer</div>
 								<a class="author" href="/teuching/profile/review.do?trainerEmail=${data.post.trEmail}">${data.post.trainerName}</a>
@@ -78,9 +78,11 @@
 			</div>
 		</section>
 		<script>
-			document.getElementById('postDelBtn').addEventListener('click', function() {
-				alert("게시글이 삭제되었습니다.");
-			})
+			if(${memberType == 'trainer'}) {
+				document.getElementById('postDelBtn').addEventListener('click', function() {
+					alert("게시글이 삭제되었습니다.");
+				})
+			}
 			
 			var uploads = document.querySelector('.uploads');
 			
