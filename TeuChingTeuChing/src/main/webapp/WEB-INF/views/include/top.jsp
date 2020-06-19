@@ -116,6 +116,11 @@
 									href="<%=request.getContextPath()%>/member/mypage_T.do"
 									class="nav-link">MyPage</a></li>
 							</c:if>
+							<c:if test="${memberType eq 'manager'}">
+								<li class="nav-item active"><a
+									href="<%=request.getContextPath()%>/manager/report.do"
+									class="nav-link">Manager</a></li>
+							</c:if>
 						</c:if>
 						<li class="nav-item active">
 							<a href="<%=request.getContextPath()%>/index/aboutus.do" class="nav-link">AboutUs</a>
