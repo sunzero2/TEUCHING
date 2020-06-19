@@ -27,6 +27,52 @@ public class ReviewController {
 	 * @작성자 : 이보라
 	 * @Method 설명 : 리뷰리스트 리뷰페이지에다가 뿌려주는 메소드임
 	 */
+	
+	@RequestMapping("profile/reviewforTR.do")
+	public ModelAndView reviewListforTR(@RequestParam Map<String, Object> commandMap) {
+
+		ModelAndView mav = new ModelAndView();
+
+		int currentPage = 1;
+		int cntPerPage = 5;
+		String trainerEmail = (String) commandMap.get("trainerEmail");
+
+		String orderby = "review_idx"; // 기준으로 orderby할 것 가져오기
+
+		
+		if (commandMap.get("reviewPage") != null) {
+			currentPage = Integer.parseInt((String) commandMap.get("reviewPage"));
+		}
+
+		if (commandMap.get("cntPerPage") != null) {
+			cntPerPage = Integer.parseInt((String) commandMap.get("cntPerPage"));
+		}
+		
+		 if (commandMap.get("trainerEmail") != null) { 
+			 System.out.println("가져온 트레이너 이메일 : " + trainerEmail);
+		}
+		 
+		 
+
+		Map<String, Object> res = rs.selectReviewList(orderby, currentPage, cntPerPage,trainerEmail );
+		System.out.println("컨트롤 값 받아온거" + res);
+		
+		Map<String, Object> trainerInfo = rs.selectTrainerInformation(trainerEmail);
+		System.out.println("트레이너의 정보 " +trainerInfo );
+		
+		Map<String,Object> postList = rs.selectPostList(trainerEmail);
+		System.out.println("포스트 목록 " + postList);
+		mav.addObject("postList",postList);
+		mav.addObject("trainerInfo", trainerInfo);
+		mav.addObject("reviewList", res);
+		mav.addObject("quali",rs.trainerquali(trainerEmail));
+		mav.setViewName("profile/reviewforTR");
+
+		return mav;
+
+	}
+	
+	
 	@RequestMapping("profile/review.do")
 	public ModelAndView reviewList(@RequestParam Map<String, Object> commandMap) {
 

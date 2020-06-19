@@ -62,8 +62,7 @@
 
 #gogo {
 	color: #ffb5b5;
-	font-family: 'Nanum Pen Script', cursive;
-	font-size: 1.5vw;
+	padding-left: 85%;
 }
 
 #box {
@@ -156,7 +155,7 @@
 									alt="${Trainer.photo}" class="img-fluid mb-4" id="photo">
 							</div>
 							<div class="desc align-self-md-center">
-								<h3 id="trainer">${Trainer.trainerName}님의프로필입니다.</h3>
+								<h3 id="trainer">${Trainer.trainerName}님의프로필입니다. </h3>
 								<br>
 								<p>
 									Address : <span id="totalAdress">${Trainer.address}
@@ -199,19 +198,7 @@
 										<a href="#" class="tag-cloud-link">${Trainer.prefer_add2}</a>
 										<a href="#" class="tag-cloud-link">${Trainer.prefer_add3}</a>
 									</div>
-									<br>
-
-									<div class="comment-body">
-										<a
-											href="${pageContext.request.contextPath}/profile/schedule.do?trainerName=${Trainer.tr_email}"
-											id="gogo">스케줄로 이동 → 📅</a> <a
-											href="${pageContext.request.contextPath}/report/reportrequest.do?tr_email=${Trainer.tr_email}&type=tra"
-											id="gogo">&nbsp&nbsp&nbsp 트레이너 신고 → 🚨</a>
-										</h3>
-
-
-
-									</div>
+									<a href ="<%=request.getContextPath()%>/member/mypage_T.do" id="gogo">수정하기</a>
 					</c:forEach>
 				</div>
 
@@ -258,29 +245,8 @@
 						<div class="comment-body">
 							<!-- 좋아요! -->
 							<!-- 작성자만 삭제 가능하게 하기 -->	
-							<c:choose>
-							<c:when test="${memberType eq 'member'}">
+					
 							
-							<c:if test="${loginInfo.nickname eq review.mem_nickname}">
-								<div class="meta">${review.rev_date}</div>
-								<span id="reviewnn">${review.mem_nickname} <a
-									id="reviewDelete" onclick="deleteReview(${review.review_idx});">
-										<i class="far fa-trash-alt"></i>
-								</a> <a id="loginrecUpdate" onclick="likeit(${review.review_idx});">
-										<i class="fas fa-heart" id="heart" style="font-size: 16px;"></i>
-								</a> <span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
-									<input type="hidden" id="click${review.review_idx}"
-									value="true" />
-								</span>
-
-								<p>${review.rev_cont}</p>
-									<a
-									href="${pageContext.request.contextPath }/report/viewreport.do?nick_name=${review.mem_nickname }&type=rev"
-									class="reply">🚨</a>
-							</c:if>
-
-
-							<c:if test="${loginInfo.nickname ne review.mem_nickname}">
 								<div class="meta">${review.rev_date}</div>
 								<span id="reviewnn">${review.mem_nickname} <a
 									id="recUpdate" onclick="likeit(${review.review_idx});"> <i
@@ -297,28 +263,7 @@
 								<a
 									href="${pageContext.request.contextPath }/report/viewreport.do?&nick_name=${review.mem_nickname }&type=rev"
 									class="reply">🚨</a>
-							</c:if>
-							</c:when>
 							
-							<c:when test="${memberType eq 'trainer'}">
-								<div class="meta">${review.rev_date}</div>
-								<span id="reviewnn">${review.mem_nickname} <a
-									id="recUpdate" onclick="likeit(${review.review_idx});"> <i
-										class="fas fa-heart" id="heart"
-										style="font-size: 16px; color: grey"></i>
-								</a><span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
-									<input type="hidden" id="click${review.review_idx}"
-									value="true" />
-								</span>
-
-								<p>${review.rev_cont}</p>
-
-
-								<a
-									href="${pageContext.request.contextPath }/report/viewreport.do?&nick_name=${review.mem_nickname }&type=rev"
-									class="reply">🚨</a>
-							</c:when>
-							</c:choose>
 						</div>
 
 
@@ -335,31 +280,31 @@
 							<ul>
 								<c:if test="${reviewList.paging.blockStart gt 1 }">
 									<li><span><a
-											href="<%=request.getContextPath()%>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockStart-1}">&lt;</a></span></li>
+											href="<%=request.getContextPath()%>/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockStart-1}">&lt;</a></span></li>
 								</c:if>
 
 								<c:if test="${reviewList.paging.blockStart le 1 }">
 									<li><span><a
-											href="<%=request.getContextPath()%>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockStart}">&lt;</a></span></li>
+											href="<%=request.getContextPath()%>/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockStart}">&lt;</a></span></li>
 								</c:if>
 
 
 								<c:forEach begin="${reviewList.paging.blockStart}"
 									end="${reviewList.paging.blockEnd}" var="page">
 									<li class="active"><span><a
-											href="<%= request.getContextPath() %>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${page}"
+											href="<%= request.getContextPath() %>/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${page}"
 											class="num active">${page}</a></span></li>
 								</c:forEach>
 
 								<c:if
 									test="${reviewList.paging.blockEnd+1 ge reviewList.paging.lastPage}">
 									<li><span><a
-											href="<%= request.getContextPath() %>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockEnd}">&gt;</a></span></li>
+											href="<%= request.getContextPath() %>/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockEnd}">&gt;</a></span></li>
 								</c:if>
 								<c:if
 									test="${reviewList.paging.blockEnd+1 lt reviewList.paging.lastPage }">
 									<li><span><a
-											href="<%= request.getContextPath() %>/profile/review.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockEnd+1}">&gt;</a></span></li>
+											href="<%= request.getContextPath() %>/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockEnd+1}">&gt;</a></span></li>
 								</c:if>
 
 							</ul>
@@ -371,67 +316,6 @@
 
 
 
-			<!-- 댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기 -->
-			<c:choose>
-				<c:when test="${memberType eq 'member'}">
-					<c:forEach items="${trainerInfo.tlist}" var="Trainer">
-
-					<div class="comment-form-wrap pt-5">
-					<h3 class="mb-5">Leave a comment</h3>
-
-
-
-					<form method="post" enctype="multipart/form-data" id="uploadReview">
-						<input type="hidden" value="${Trainer.tr_email}" name="tr_email">
-						<div class="form-group">
-							<label for="TrainerName">TrainerName</label> <input type="hidden"
-								class="form-control bg-white" id="trNickname" name="trNickname"
-								value="${Trainer.trainerName}">
-
-							<div style="transform: translateX(1%)" id="trnn">${Trainer.trainerName}</div>
-						</div>
-
-						<div class="form-group">
-							<label for="memNickname">Nickname</label> <input type="hidden"
-								class="form-control bg-white" id="memNickname"
-								name="memNickname" value="${loginInfo.nickname}">
-							<div style="transform: translateX(1%)">${loginInfo.nickname}</div>
-						</div>
-
-						<div class="form-group">
-							<label for="reviewPw">Password</label> <input type="text"
-								class="form-control" id="reviewPw" name="reviewPw">
-						</div>
-						<!-- 별점 -->
-						<div class="form-group">
-							<input type="hidden" name="rev_score" id="starvalue" value="">
-							<label for="revScore">Star rating</label>
-							<div id="star" name="revScore">
-								<a value="1">★</a> <a value="2">★</a> <a value="3">★</a> <a
-									value="4">★</a> <a value="5">★</a>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="revCont">Review</label>
-							<textarea id="revCont" cols="30" rows="10" class="form-control"
-								name="revCont"></textarea>
-						</div>
-
-						<div class="form-group">
-							<input type="submit" value="Post Comment"
-								class="btn py-3 px-4 btn-primary" onclick="uploadReview()">
-						</div>
-
-					</form>
-				</div>
-	
-	
-			</c:forEach>	
-			</c:when>
-			<c:when test="${memberType eq 'trainer'}">
-			</c:when>
-		</c:choose>
 		</div>
 	
 		</div>
@@ -511,107 +395,9 @@
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script>
    
-   /* 벌점 */
-   $('#star a').click(function() {
-         $(this).parent().children("a").removeClass("on");
-         $(this).addClass("on").prevAll("a").addClass("on");
-         console.log($(this).attr("value"));
-         $('#starvalue').val($(this).attr("value"));
-      });
    
-   
-   /* 좋아요 */
-      function likeit(index) {
-   
-            var nickname = '${loginInfo.nickname}';
-            var no = index;
-            console.log("nickname ", nickname);
-            console.log("no ", no); 
-            likeitajx(nickname,no);
-           
-         };
-         
-       function likeitajx(nickname,no) {
-              $.ajax({
-                 url : '<%=request.getContextPath()%>/review/recupdate.do' ,
-                 type : 'POST',
-                 data : {
-                   nickname : nickname,
-                    no : no
-                 },
-                 success : function(v) {
-                    console.log("likeitajax method ", v);
-                   if(v == 1){
-                      alert("추천은 한번만 가능합니다.")
-                   }
-                    recCount(no);
-                 },
-                 error : function (error) {
-                    alert(error);
-            }
-              })
-           };
-           
-         function recCount(no) {
-            
-             console.log("recCount ", no);
-            
-          $.ajax({
-                 url : '<%=request.getContextPath()%>/review/reccount.do',
-                 type : 'POST',
-                 data : {
-                    no : no
-                 },
-                 success : function(count) {
-                        $('#id'+no).html(count);
-                   
-                     
-                 },
-                 error : function (error) {
-                    alert(error);
-            }
-              })
-                     };
-      
-            /* 리뷰 업로드 */
-      function uploadReview() {
-         
-         $.ajax({
-            type:'POST',
-            url: '<%=request.getContextPath()%>/review/uploadreview.do',
-            data: $("#uploadReview").serialize(),
-            success: function(data) {
-               if(data> 0) {
-                  alert("리뷰가 성공적으로 등록되었습니다.");
-               }
-            }
-            
-         })
-      };
-      
-      
-      
-      /* 리뷰 삭제 */
-      
-      function deleteReview(data) {
-         console.log(data);
-         $.ajax({
-            type:'POST',
-            url: '<%=request.getContextPath()%>/review/deletereview.do',
-            data: {
-               
-               no : data
-            },
-            success: function(data) {
-                  alert("정상적으로 삭제되었습니다.");
-                  location.reload();
-               
-            }
-            
-         })
-      };
-      
-      
+     
+     
       
       
       
