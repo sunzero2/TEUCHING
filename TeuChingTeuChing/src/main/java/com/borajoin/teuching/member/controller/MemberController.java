@@ -77,6 +77,7 @@ public class MemberController {
 	* @Method 설명 : 로그인 하기
 	*/
 	@RequestMapping("/member/loginImple.do")
+	@ResponseBody
 	public ModelAndView loginImple(@RequestParam Map<String, Object> commandMap, HttpSession session)
 			throws SQLException {
 		ModelAndView mav = new ModelAndView();

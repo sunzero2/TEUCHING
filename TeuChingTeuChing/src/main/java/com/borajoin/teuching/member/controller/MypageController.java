@@ -150,37 +150,24 @@ public class MypageController {
 		* @Method 설명 :  사진 업데이트하기
 		*/
 		@RequestMapping("/member/photoUpdate.do")
-		public ModelAndView photoUpdate(@RequestParam Map<String, Object> commandMap, HttpServletRequest request, HttpServletResponse response,
-				MultipartHttpServletRequest mtf) throws SQLException {
-			
-			ModelAndView mav = new ModelAndView();
-			System.out.println(commandMap);
-			
-			// 파일 태그
-			String fileTag = "file";
+		@ResponseBody
+		public int photoUpdate(@RequestParam MultipartFile file, HttpSession session) throws SQLException {
+			int res = 0;
 			// 업로드 파일이 저장될 경로
-			String root = request.getSession().getServletContext().getRealPath("/");
+			String root = session.getServletContext().getRealPath("/");
 			String filePath = root + "resources\\upload\\profileImg\\";
-			// 파일에 넣기
-			MultipartFile file = mtf.getFile(fileTag);
-			//String filetype = StringUtils.getFilenameExtension(file.getOriginalFilename());
-			String fileName = (String) commandMap.get("tr_email") + ".PNG";
+			String fileName = ((Trainer)session.getAttribute("loginInfo")).getTr_email() + ".PNG";
 
 			// 파일 전송
 			try {
 				file.transferTo(new File(filePath + fileName));
+				res = 1;
 			} catch (Exception e) {
-				System.out.println("파일 업로드 오류");
+				System.out.println(e.getMessage());
+				res = 0;
 			}
 			
-			response.setHeader("Cache-Control", "no-store");
-			
-			mav.addObject("msg", "프로필 사진 수정이 완료되었습니다.");
-			mav.addObject("url", "account/loginform");
-			
-			mav.setViewName("account/mypage_T");
-			
-			return mav;
+			return res;
 		}
 		
 		
