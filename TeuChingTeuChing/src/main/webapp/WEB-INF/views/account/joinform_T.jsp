@@ -230,7 +230,7 @@ body {
 		</div>
 	</div>
 </body>
-<script src="../resources/js/join/join_T.js"></script>
+<script src="../resources/js/account/join_T.js"></script>
 
 </body>
 </html>
