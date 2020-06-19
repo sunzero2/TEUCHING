@@ -12,7 +12,7 @@
  	<!-- 트레이너 세션값 다시 넣기 -->
 	<select id="t_newlogin" resultMap="t_loginMap">
 		select *
-		from tr_trainer where tr_email = #{tr_email}
+		from tr_trainer where tr_email = #{email}
 	</select>
  	<resultMap id="t_loginMap" type="Trainer">
  		<result column ="trainer_name" property="trainerName"/>

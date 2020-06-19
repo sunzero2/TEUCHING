@@ -57,6 +57,9 @@ form-height {
 form-height {
 	height: 110px;
 }
+.navbar-brand {
+    font-size: 40px !important;
+ }
 </style>
 </head>
 <body>
@@ -71,7 +74,6 @@ form-height {
 						<ul class="nav nav-tabs">
 							<li class="active"><a data-toggle="tab" href="#home">회원정보
 									수정하기</a></li>
-							<li><a data-toggle="tab" href="#messages">작성한 게시글</a></li>
 							<li><a data-toggle="tab" href="#match">매칭내역</a></li>
 							<li><a data-toggle="tab" href="#report">신고내역</a></li>
 						</ul>
@@ -273,6 +275,33 @@ form-height {
 			.ready(
 					function(e) {
 
+		$('#membersignUp').click(function() {
+			
+			if ($.trim($('#password_1').val()) == '') {
+				alert("비밀번호를 입력해주세요.");
+				setTimeout(function(){ $('#password_1').focus(); }, 10)
+				return;
+			}
+			//패스워드 확인
+			else if ($('#password_1').val() != $('#password_2').val()) {
+				alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
+				setTimeout(function(){ $('#password_2').focus(); }, 10)
+				return;
+			} else {
+				
+				if($.trim($('#gender').val()) == ''){
+					document.getElementById('gender').value = "${loginInfo.gender}";
+				}
+				if($.trim($('#cell').val()) == ''){
+					document.getElementById('cell').value = "${loginInfo.cell}";
+				}
+				if($.trim($('#sample6_address').val()) == ''){
+					document.getElementById('sample6_address').value = "${loginInfo.address}";
+				}
+				
+				alert("회원정보 수정이 완료되었습니다!");
+				$('#memberMypage').submit();
+			}
 						$('#membersignUp')
 								.click(
 										function() {
@@ -305,6 +334,24 @@ form-height {
 															.getElementById('sample6_address').value = "${loginInfo.address}";
 												}
 
+		if (pwd1 != '' && pwd2 == '') {
+			null;
+		} else if (pwd1 != "" || pwd2 != "") {
+			if (pwd1 == pwd2) {
+				$("#alert-success").css('display', 'inline-block');
+				$("#alert-danger").css('display', 'none');
+			} else {
+				$("#alert-success").css('display', 'none');
+				$("#alert-danger").css('display', 'inline-block');
+			}
+		}
+	});
+	// 휴대폰 번호 정규식
+    function cell_check(cell) {    
+    var regex = /^\d{2,3}-\d{3,4}-\d{4}$/;
+    return (cell != '' && cell != 'undefined' && regex.test(cell)); 
+	}
+    $("input[name='cell']").blur(function(){
 												alert("회원정보 수정이 완료되었습니다!");
 												$('#memberMypage').submit();
 											}

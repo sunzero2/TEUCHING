@@ -14,13 +14,14 @@ public class Post {
 	private String place;
 	private int price;
 	private String writeDate;
+	private String trPhoto;
 
 	public Post() {
 		super();
 	}
 
 	public Post(int postIdx, String trEmail, String trainerName, String postTitle, String postCont, String purpose,
-			String sports, String area, String classSize, String gender, String place, int price, String writeDate) {
+			String sports, String area, String classSize, String gender, String place, int price, String writeDate, String trPhoto) {
 		super();
 		this.postIdx = postIdx;
 		this.trEmail = trEmail;
@@ -35,6 +36,7 @@ public class Post {
 		this.place = place;
 		this.price = price;
 		this.writeDate = writeDate;
+		this.trPhoto = trPhoto;
 	}
 
 	public int getPostIdx() {
@@ -139,6 +141,14 @@ public class Post {
 
 	public void setWriteDate(String writeDate) {
 		this.writeDate = writeDate;
+	}
+
+	public String getTrPhoto() {
+		return trPhoto;
+	}
+
+	public void setTrPhoto(String trPhoto) {
+		this.trPhoto = trPhoto;
 	}
 
 	@Override
