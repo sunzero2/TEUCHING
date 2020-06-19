@@ -38,180 +38,111 @@
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42e0be41ec144283c6bfe7c0ed8dae35&libraries=services"></script>
 
 <style>
-input::placeholder {
-	color: black !important;
-}
+	input::placeholder {
+		color: black !important;
+	}
+	
+	form-height {
+		height: 110px;
+	}
 </style>
-
-
 </head>
 <body>
-
-	<%@ include file="../include/top.jsp"%>
-	<hr>
-	<div class="main-content">
-		<div class="container mt-7"
-			style="margin-top: 1% !important; margin-bottom: 2% !important;">
-			<!-- Table -->
-			<div class="row">
-				<div class="col-xl-8 m-auto order-xl-1">
-					<div class="card bg-secondary shadow"
-						style="background-color: #f8f9fe !important;">
-						<form id="signFrm" name="signFrm"
-							action="<%=request.getContextPath()%>/member/mypageUpdate_M.do"
-							method="post">
-							<div class="card-header bg-white border-0">
-								<div class="row align-items-center">
-									<div class="col-8">
-										<h3 class="mb-0">회원정보 수정하기</h3>
-									</div>
-									<div class="col-4 text-right">
-										<button type="button" id="signUp"
-											class="btn btn-sm btn-primary">회원정보수정</button>
+<%@ include file="../include/top.jsp"%>
+<hr>
+<div class="main-content">
+	<div class="container mt-7" style="margin-top: 1% !important; margin-bottom: 2% !important;">
+		<div class="row">
+			<div class="col-xl-8 m-auto order-xl-1">
+				<div class="col-sm-9">
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" href="#home">회원정보 수정하기</a></li>
+						<li><a data-toggle="tab" href="#messages">작성한 게시글</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="home">
+							<hr>
+							<form class="form" action="<%=request.getContextPath()%>/member/mypageUpdate_M.do" method="post" id="registrationForm">
+								<div class="col-xs-6 form-height">
+									<h4>Email Address</h4>
+									<div class="form-control" id="email">
+										<span style="color: black;">${loginInfo.mem_email}</span>
 									</div>
 								</div>
-							</div>
-							<div class="card-body">
-
-								<h6 class="heading-small text-muted mb-4">User information</h6>
-								<div class="pl-lg-4">
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label class="form-control-label">Email 주소</label>
-												<div class="form-control form-control-alternative"
-													id="email">
-													<span style="color: black;">${loginInfo.mem_email}</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label">비밀번호 </label> <input
-													type="password" id="password_1" name="password" class="pw"
-													maxlength="20"
-													style="display: block; width: 100%; padding: .375rem .75rem; font-size: 1rem; line-height: 1.5; color: #495057; background-color: #fff; background-clip: padding-box; border: 1px solid #ced4da; border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;">
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label">비밀번호 확인</label> <input
-													type="password" id="password_2" class="pw"
-													style="display: block; width: 100%; padding: .375rem .75rem; font-size: 1rem; line-height: 1.5; color: #495057; background-color: #fff; background-clip: padding-box; border: 1px solid #ced4da; border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;">
-												<span id="alert-success" style="display: none;">비밀번호가
-													일치합니다.</span> <span id="alert-danger"
-													style="display: none; color: #d92742; font-weight: bold;">
-													비밀번호가 일치하지 않습니다.</span>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label">닉네임 </label>
-												<div class="form-control form-control-alternative"
-													id="email">
-													<span style="color: black;">${loginInfo.nickname}</span>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label">성별 </label> <select
-													class="form-control form-control-alternative"
-													style="font-size: small;" name="gender" id="gender">
-													<option value="${loginInfo.gender}" selected disabled>${loginInfo.gender}</option>
-													<option>남성</option>
-													<option>여성</option>
-												</select>
-											</div>
-										</div>
+								<div class="col-xs-6 form-height">
+									<h4>Trainer Name</h4>
+									<div class="form-control">
+										<span style="color: black;">${loginInfo.nickname}</span>
 									</div>
 								</div>
-								<hr class="my-4">
-								<!-- Address -->
-								<h6 class="heading-small text-muted mb-4">Contact
-									information</h6>
-								<div class="pl-lg-4">
-									<div class="row">
-										<div class="col-lg-4">
-											<div class="form-group focused">
-												<label class="form-control-label">연락처<br>
-												<span style="font-size: small;">붙임표(-)까지 입력해주세요.</span></label> <input
-													type="text" id="cell" name="cell" maxlength="13"
-													class="form-control form-control-alternative"
-													placeholder="${loginInfo.cell}">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-12">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-address">주소
-													변경하기</label><br> <input type="text" id="sample6_postcode"
-													placeholder="우편번호"> <input type="button"
-													onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-												<label class="form-control-label" for="input-address"></label><br>
-												<input type="text" id="sample6_address"
-													placeholder="현재 주소 : ${loginInfo.address}" name="address"
-													style="width: 55%; height: 30px;"> <label
-													class="form-control-label" for="input-address"></label><br>
-												<br> <input type="text" id="sample6_extraAddress"
-													placeholder="참고항목">
-											</div>
-										</div>
-									</div>
+								<div class="col-xs-6 form-height">
+									<h4>Phone</h4>
+									<span style="font-size: small;">붙임표(-)까지 입력해주세요.</span>
+									<input type="text" id="cell" name="cell" maxlength="13"	class="form-control" placeholder="${loginInfo.cell}">
 								</div>
-						</form>
-						<hr class="my-4">
-						<!-- Address -->
-						<h6 class="heading-small text-muted mb-4">My Report</h6>
-						<div class="pl-lg-4">
-							<div class="row">
-								<div class="col-lg-4">
-									<div class="form-group focused">
-										<label class="form-control-label">신고 내역</label>
-									</div>
+								<div class="col-xs-6 form-height">
+									<h4>Gender</h4>
+									<select class="form-control form-control-alternative" style="font-size: small;" name="gender" id="gender">
+										<option value="${loginInfo.gender}" selected disabled>${loginInfo.gender}</option>
+										<option>남성</option>
+										<option>여성</option>
+									</select>
 								</div>
-							</div>
-							<div class="row">
+								<br><br>
+								<div class="col-xs-6 form-height">
+									<label for="password"><h4>Password</h4></label><br>
+									<input type="password"  class="form-control" id="password_1" name="password" class="pw" maxlength="20">
+								</div>
+								<div class="col-xs-6 form-height">
+									<label for="password2"><h4>Password Check</h4></label>
+									<input type="password" id="password_2" class="form-control">
+									<span id="alert-success" style="display: none;">비밀번호가 일치합니다.</span>
+									<span id="alert-danger" style="display: none; color: #d92742; font-weight: bold; ">	비밀번호가 일치하지 않습니다.</span>
+								</div>
+								<br>
 								<div class="col-md-12">
 									<div class="form-group focused">
-
-										<table style="width: 70%;">
-											<thead>
-												<tr>
-													<th>Title</th>
-													<th>Rep</th>
-													<th>Date</th>
-													<th></th>
-												</tr>
-											</thead>
-											<tbody id="tbody">
-												<tr>
-													<td id="title"><a href="${pageContext.request.contextPath }/report/trainerdetail.do?traid=284">트레이너님이 이상해요...</a></td>
-													<td>cisndfl@gaicl.com</td>
-													<td>2020-02-02</td>
-													<td>✔</td>
-													<!-- <td>✖</td> -->
-												</tr>
-											</tbody>
-										</table>
+										<label><h4>GYM Address</h4></label><br>
+										<input type="text" id="sample6_postcode" placeholder="우편번호">
+										<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
+										<br>
+										<br>
+										<input type="text" id="sample6_address" placeholder="현재 주소 : ${loginInfo.address}" name="address" style="width: 55%; height: 30px;">
+										<label class="form-control-label" for="input-address"></label>
+										<br>
+										<br>
+										<label class="form-control-label" for="input-address"></label>
+										<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 									</div>
 								</div>
-							</div>
+								<br>
+								<div class="col-xs-12 form-height">
+									<br>
+									<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+									<button class="btn btn-lg" type="reset" onClick="window.location.reload()" style="cursor: pointer;"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+								</div>
+							</form>
 						</div>
+						<!--/tab-pane-->
+						<!-- Post Table -->
+						<div class="tab-pane" id="messages">
+							<h2></h2>
+							<hr>
+							<form class="form" action="##" method="post" id="registrationForm">
+								<div class="col-xs-12">
+									<section class="container" style="margin-top: 2%; margin-bottom: 2%; width: 100%;">
+										<table id="postTable"></table>
+									</section>
+								</div>
+							</form>
+						</div><!-- /Post Table -->
 					</div>
-
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
+</div>
 </body>
-
 
 <script type="text/javascript">
 	$(document).ready(function(e) {
@@ -236,9 +167,6 @@ input::placeholder {
 		});
 
 	});
-</script>
-
-<script>
 	$('.pw').focusout(function() {
 		var pwd1 = $("#password_1").val();
 		var pwd2 = $("#password_2").val();
@@ -256,10 +184,6 @@ input::placeholder {
 			}
 		}
 	});
-</script>
-
-
-<script>
 	function sample6_execDaumPostcode() {
 		new daum.Postcode(
 				{
@@ -310,10 +234,5 @@ input::placeholder {
 				}).open();
 	}
 </script>
-
-
-
-
-
 </body>
 </html>
