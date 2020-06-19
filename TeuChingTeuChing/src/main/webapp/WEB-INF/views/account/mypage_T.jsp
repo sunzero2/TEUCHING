@@ -468,7 +468,6 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
-})
 
 //해당 트레이너의 포스트리스트 뽑아주기
 
