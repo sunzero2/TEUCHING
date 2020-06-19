@@ -8,6 +8,14 @@ $(function(){
 	});
 });
 
+$(function(){
+	
+	$('#btnJModal').click(function() {
+		$('#joinModal').modal();
+	});
+});
+
+
 
 $('#btnLogin').click(function(){
 			

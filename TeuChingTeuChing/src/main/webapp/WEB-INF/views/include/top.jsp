@@ -72,6 +72,22 @@
 	padding-left: 32%;
 	 color: #695f5f;
 }
+#Jointitle{
+	padding-left: 19%;
+	font-size:1.2vw;
+	 color: #695f5f;
+}
+
+#atag{
+
+	color:white;
+}
+#headerTitle{
+	padding-left: 0%;
+	font-size:1.2vw;
+	 color: #695f5f;
+	
+}
 </style>
 <header
 	class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -114,7 +130,7 @@
 			<!-- 로그인  -->
 				<div class="topLogin">
 					<a id="btnModal" href="#">Login / </a>
-					 <a href="<%=request.getContextPath()%>/member/join.do"> Join</a>
+					 <a id="btnJModal" href="#"> Join</a>
 				</div>
 			</c:if>
 			<c:if test="${loginInfo != null}">
@@ -140,13 +156,15 @@
 		</div>
 	</div>
 
-	<!-- 모달 스크립트문  -->
+	
 	
 	
 
 
 
 </header>
+
+<!-- 로그인모달  -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -201,7 +219,43 @@
   </div>
 </div>
 
+<!-- 가입모달 -->
+<div class="modal fade" id="joinModal" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<h3 id="headerTitle">Welcome Teu-Ching!</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <!-- 닫기버튼 -->
+      </div>
+      
+      <div class="modal-body">
+        <div class="container">
+            <p id="Jointitle">안녕하세요! 가입하실 유형을 선택해주세요.</p>
+            
+            <div class="form-group row">
+				<div class="col-md-6 offset-md-4">
+					<div class="wrapper">
+						<div class="toggle_radio">
+							<label for="first_toggle"><a id="atag" href="<%=request.getContextPath()%>/member/mjoin.do?data=member">Member</a></label> 
+							<label for="second_toggle"><a id="atag" href="<%=request.getContextPath()%>/member/mjoin.do?data=trainer"> Trainer</a></label>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+      
+ 
+      </div>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-default" data-dismiss="modal">닫기</a>
+      </div>
+    
+  </div>
+</div>
 
+</div>
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
  <script src="../resources/js/account/login.js"></script>
 
