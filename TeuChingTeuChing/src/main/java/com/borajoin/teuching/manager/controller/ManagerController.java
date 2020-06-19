@@ -327,31 +327,9 @@ public class ManagerController {
 			mv.addObject("res", ms.revManagerDetail(revid));
 			mv.addObject("file", ms.selectRevFile(revid));
 		}
-		mv.setViewName("manager/reportdetail_MT");
+		mv.setViewName("manager/reportdetail_M");
 		return mv;
 	}
 
-	/**
-	 * @Method Name : selectTraReportMypage
-	 * @작성일 : 2020. 6. 18.
-	 * @작성자 : 김지수
-	 * @Method 설명 : 트레이너의 마이페이지 내 신고내역
-	 */
-	@RequestMapping("/report/memberdetail.do")
-	public ModelAndView selectTraReportMypage(int revid) {
-		ModelAndView mv = new ModelAndView();
-		return mv;
-	}
-
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping("/qualirequest.do") public String
-	 * insertQualiRequest(HttpServletRequest request, String quali_auth,
-	 * MultipartFile qualiFile) { System.out.println("자격증명"+quali_auth); return
-	 * null; }
-	 */
 	
-	
-
 }

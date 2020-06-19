@@ -168,10 +168,6 @@ public class ManagerServiceImpl implements ManagerService {
 		return md.insertQualiFile(file_Upload);
 	}
 
-	@Override
-	public List<TrainerReport> selectTraReportMypage(String mem_email) {
-		return md.selectTraReportMypage(mem_email);
-	}
 
 	@Override
 	public Trainer selectTrainerforQuali(String qualiidx) {
@@ -191,6 +187,19 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public List<Match> selectTraMatchMypage(String tr_email) {
 		return md.selectTraMatchMypage(tr_email);
+	}
+	
+	
+	//회원의 마이페이지에 표시할 트레이너 신고내역
+	@Override
+	public List<TrainerReport> selectTraReportMypage(String mem_email) {
+		return md.selectTraReportMypage(mem_email);
+	}
+
+	//회원의 마이페이지에 표시할 매칭 내역
+	@Override
+	public List<Match> selectMemMatchMypage(String mem_email) {
+		return md.selectMemMatchMypage(mem_email);
 	}
 
 }

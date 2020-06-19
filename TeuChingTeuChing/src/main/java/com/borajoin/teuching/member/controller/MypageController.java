@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.MvcNamespaceHandler;
 
 import com.borajoin.teuching.manager.model.service.ManagerService;
 import com.borajoin.teuching.matching.model.vo.Post;
@@ -40,11 +41,15 @@ public class MypageController {
 		* @Method 설명 : 마이 페이지로 이동
 		*/
 		@RequestMapping("/member/mypage_M.do")
-		public ModelAndView mypageM() {
+		public ModelAndView mypageM(HttpSession session) {
 			ModelAndView mav = new ModelAndView();
 			System.out.println("일반회원 마이페이지");
+			Member m = (Member)session.getAttribute("loginInfo");
+			
+			mav.addObject("match", managers.selectMemMatchMypage(m.getMem_email()));
+			mav.addObject("report", managers.selectTraReportMypage(m.getMem_email()));
+			
 			mav.setViewName("account/mypage_M");
-				
 			return mav;
 		}
 	

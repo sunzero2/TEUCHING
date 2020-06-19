@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,7 +50,7 @@ form-height {
 .col-sm-9 {
 	width: 100%;
 	margin-left: 10%;
-	input: :placeholder{ 
+	input: :placeholder{   
 	color: black !important;
 }
 
@@ -93,8 +94,10 @@ form-height {
 										</div>
 									</div>
 									<div class="col-xs-6 form-height">
-										<h4>Phone&nbsp;&nbsp;<span style="font-size: 11px;">붙임표(-)까지
-												입력해주세요.</span></h4>
+										<h4>
+											Phone&nbsp;&nbsp;<span style="font-size: 11px;">붙임표(-)까지
+												입력해주세요.</span>
+										</h4>
 										<input type="text" id="cell" name="cell" maxlength="13"
 											class="form-control" placeholder="${loginInfo.cell}">
 									</div>
@@ -135,7 +138,7 @@ form-height {
 												id="sample6_extraAddress" placeholder="참고항목">
 										</div>
 									</div>
-								<div class="col-xs-12 form-height">
+									<div class="col-xs-12 form-height">
 										<br>
 										<button class="btn btn-lg btn-success" type="button"
 											id="membersignUp">
@@ -178,21 +181,51 @@ form-height {
 													<th>Trainer</th>
 													<th>Time</th>
 													<th>Date</th>
+													<th></th>
 												</tr>
 											</thead>
 											<tbody id="tbody">
-												<tr>
-													<td>✔</td>
-													<td>이보라</td>
-													<td>16:00</td>
-													<td>2020-02-02</td>
-												</tr>
+												<c:forEach items="${match }" var="m" varStatus="cnt">
+													<c:if test="${cnt.index < 10 }">
+														<tr>
+															<c:if test="${m.match_yn eq 'Y' }">
+																<td>✔</td>
+															</c:if>
+															<c:if test="${m.match_yn eq 'N' }">
+																<td>✖</td>
+															</c:if>
+															<td>${m.tr_email }</td>
+															<td>${m.match_time }</td>
+															<td>${m.match_date }</td>
+															<c:if test="${m.match_yn eq 'Y' }">
+																<td><a href="">리뷰쓰기</a></td>
+															</c:if>
+														</tr>
+													</c:if>
+													<c:if test="${cnt.index >= 10 }">
+														<tr id="moreview${cnt.index }" style="display: none">
+															<c:if test="${m.match_yn eq 'Y' }">
+																<td>✔</td>
+															</c:if>
+															<c:if test="${m.match_yn eq 'N' }">
+																<td>✖</td>
+															</c:if>
+															<td>${m.tr_email }</td>
+															<td>${m.match_time }</td>
+															<td>${m.match_date }</td>
+															<c:if test="${m.match_yn eq 'Y' }">
+																<td><a>리뷰쓰기</a></td>
+															</c:if>
+														</tr>
+													</c:if>
+												</c:forEach>
 											</tbody>
 										</table>
-
+										<a id="morea" onclick="moreview();">더보기</a>
 									</section>
 								</div>
 							</div>
+
 							<div class="tab-pane active" id="report">
 								<h2></h2>
 								<div class="col-xs-12">
@@ -202,23 +235,31 @@ form-height {
 											<thead>
 												<tr>
 													<th>State</th>
-													<th>Title</th>
+													<th style="width: 60%;">Title</th>
 													<th>Date</th>
 												</tr>
 											</thead>
 											<tbody id="tbody">
-												<tr>
-													<td>✔</td>
-													<td id="title"><a
-														href="${pageContext.request.contextPath }/report/trainerdetail.do?traid=${r.report_idx}">
-															짜증나요 어이없어요</a></td>
-													<td>2020-02-02</td>
-												</tr>
+												<c:forEach items="${report }" var="r">
+													<tr>
+														<c:if test="${r.ans_yn eq 'Y'}">
+															<td>✔</td>
+														</c:if>
+														<c:if test="${r.ans_yn eq 'N'}">
+															<td>✖</td>
+														</c:if>
+														<td><a
+															href="${pageContext.request.contextPath }/report/mypagereport.do?traid=${r.report_idx}">
+																${fn:substring(r.rep_cont,0,20) }...</a></td>
+														<td>${r.report_date }</td>
+													</tr>
+												</c:forEach>
 											</tbody>
 										</table>
 									</section>
 								</div>
 							</div>
+
 						</div>
 					</div>
 				</div>
@@ -228,78 +269,98 @@ form-height {
 </body>
 
 <script type="text/javascript">
-$(document).ready(function(e) {
+	$(document)
+			.ready(
+					function(e) {
 
-		$('#membersignUp').click(function() {
-			
-			if ($.trim($('#password_1').val()) == '') {
-				alert("패스워드를 입력해주세요.");
-				$('#password_1').focus();
-				return;
-			}
-			//패스워드 확인
-			else if ($('#password_1').val() != $('#password_2').val()) {
-				alert('패스워드가 다릅니다.');
-				return;
-			} else {
-				
-				if($.trim($('#gender').val()) == ''){
-					document.getElementById('gender').value = "${loginInfo.gender}";
-				}
-				if($.trim($('#cell').val()) == ''){
-					document.getElementById('cell').value = "${loginInfo.cell}";
-				}
-				if($.trim($('#sample6_address').val()) == ''){
-					document.getElementById('sample6_address').value = "${loginInfo.address}";
-				}
-				
-				alert("회원정보 수정이 완료되었습니다!");
-				$('#memberMypage').submit();
-			}
+						$('#membersignUp')
+								.click(
+										function() {
 
-		});
+											if ($.trim($('#password_1').val()) == '') {
+												alert("패스워드를 입력해주세요.");
+												$('#password_1').focus();
+												return;
+											}
+											//패스워드 확인
+											else if ($('#password_1').val() != $(
+													'#password_2').val()) {
+												alert('패스워드가 다릅니다.');
+												return;
+											} else {
 
-	
-	
-	$('.pw').focusout(function() {
-		var pwd1 = $("#password_1").val();
-		var pwd2 = $("#password_2").val();
+												if ($.trim($('#gender').val()) == '') {
+													document
+															.getElementById('gender').value = "${loginInfo.gender}";
+												}
+												if ($.trim($('#cell').val()) == '') {
+													document
+															.getElementById('cell').value = "${loginInfo.cell}";
+												}
+												if ($
+														.trim($(
+																'#sample6_address')
+																.val()) == '') {
+													document
+															.getElementById('sample6_address').value = "${loginInfo.address}";
+												}
 
-		if (pwd1 != '' && pwd2 == '') {
-			null;
-		} else if (pwd1 != "" || pwd2 != "") {
-			if (pwd1 == pwd2) {
-				$("#alert-success").css('display', 'inline-block');
-				$("#alert-danger").css('display', 'none');
-			} else {
-				alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.");
-				$("#alert-success").css('display', 'none');
-				$("#alert-danger").css('display', 'inline-block');
-			}
-		}
-	});
-	// 휴대폰 번호 정규식
-    function cell_check(cell) {    
-    var regex = /^\d{2,3}-\d{3,4}-\d{4}$/;
-    return (cell != '' && cell != 'undefined' && regex.test(cell)); 
-	}
-    $("input[name='cell']").blur(function(){
+												alert("회원정보 수정이 완료되었습니다!");
+												$('#memberMypage').submit();
+											}
 
-        var cell = $(this).val();
-        if( cell == '' || cell == 'undefined') return;
+										});
 
-        if(! cell_check(cell) ) {
-        	alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
-	        setTimeout(function(){ $('#cell').focus(); }, 10)
-	        return false;
-        }else{
-        	check_cell = true;
-        }
-    });
-	
-	
-});	
-	
+						$('.pw')
+								.focusout(
+										function() {
+											var pwd1 = $("#password_1").val();
+											var pwd2 = $("#password_2").val();
+
+											if (pwd1 != '' && pwd2 == '') {
+												null;
+											} else if (pwd1 != "" || pwd2 != "") {
+												if (pwd1 == pwd2) {
+													$("#alert-success").css(
+															'display',
+															'inline-block');
+													$("#alert-danger").css(
+															'display', 'none');
+												} else {
+													alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.");
+													$("#alert-success").css(
+															'display', 'none');
+													$("#alert-danger").css(
+															'display',
+															'inline-block');
+												}
+											}
+										});
+						// 휴대폰 번호 정규식
+						function cell_check(cell) {
+							var regex = /^\d{2,3}-\d{3,4}-\d{4}$/;
+							return (cell != '' && cell != 'undefined' && regex
+									.test(cell));
+						}
+						$("input[name='cell']").blur(function() {
+
+							var cell = $(this).val();
+							if (cell == '' || cell == 'undefined')
+								return;
+
+							if (!cell_check(cell)) {
+								alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
+								setTimeout(function() {
+									$('#cell').focus();
+								}, 10)
+								return false;
+							} else {
+								check_cell = true;
+							}
+						});
+
+					});
+
 	function sample6_execDaumPostcode() {
 		new daum.Postcode(
 				{
@@ -348,6 +409,11 @@ $(document).ready(function(e) {
 						document.getElementById("sample6_address").value = addr;
 					}
 				}).open();
+	}
+
+	function moreview() {
+		$('tr[id^="moreview"]').show();
+		$('#morea').hide();
 	}
 </script>
 </body>

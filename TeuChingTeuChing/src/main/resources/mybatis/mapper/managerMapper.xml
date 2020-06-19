@@ -263,12 +263,21 @@
 			TR_EMAIL = #{tr_email} 
 	</select>
 	
-	
+	<!--  -->
 	<select id="selectTraReportMypage" resultType="TrainerReport">
 		SELECT
 			*
 		FROM
 			TR_TRA_REPORT
+		WHERE
+			MEM_EMAIL = #{mem_email} 
+	</select>
+	
+	<select id="selectMemMatchMypage" resultType="Match">
+		SELECT
+			*
+		FROM
+			TR_MATCH
 		WHERE
 			MEM_EMAIL = #{mem_email} 
 	</select>
