@@ -300,4 +300,22 @@
 			TR_EMAIL = #{tr_email}
 	</select>
 	
+	<update id="updateBlackYn" parameterType="string">
+		UPDATE
+			TR_TRAINER
+		SET
+			BLACK_YN = 'Y'
+		WHERE
+			TR_EMAIL = #{tr_email}
+	</update>
+	
+	<select id="selectTremailForReviewDelete" resultType="string">
+		SELECT
+			MEM_EMAIL
+		FROM
+			TR_MEMBER
+		WHERE
+			NICKNAME = #{nick_name}
+	</select>
+	
 </mapper>

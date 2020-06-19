@@ -114,11 +114,6 @@ public class ManagerDao {
 		return sqlSession.insert("File.insertQualiFile", file_Upload);
 	}
 
-	
-//	public List<ReviewReport> selectRevReportAns(String tr_email){
-//		
-//	}
-	
 	public Trainer selectTrainerforQuali(String qualiidx) {
 		String tr_email = sqlSession.selectOne("Manager.selectEmailForQuali", qualiidx);
 		return sqlSession.selectOne("Manager.selectTrainerforQuali",tr_email);
@@ -144,6 +139,14 @@ public class ManagerDao {
 	//회원의 마이페이지에 표시할 매칭 내역
 	public List<Match> selectMemMatchMypage(String mem_email){
 		return sqlSession.selectList("Manager.selectMemMatchMypage", mem_email);
+	}
+	
+	public int updateBlackYn(String tr_email) {
+		return sqlSession.update("Manager.updateBlackYn", tr_email);
+	}
+	
+	public String selectTremailForReviewDelete(String nick_name) {
+		return  sqlSession.selectOne("Manager.selectTremailForReviewDelete", nick_name);
 	}
 
 }

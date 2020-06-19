@@ -202,4 +202,14 @@ public class ManagerServiceImpl implements ManagerService {
 		return md.selectMemMatchMypage(mem_email);
 	}
 
+	@Override
+	public int updateBlackYn(String tr_email) {
+		return md.updateBlackYn(tr_email);
+	}
+
+	@Override
+	public String selectTremailForReviewDelete(String nick_name) {
+		return md.selectTremailForReviewDelete(nick_name);
+	}
+
 }

@@ -248,4 +248,41 @@
 			TR_EMAIL = #{tr_email}
 	</select>
 	
+	<insert id="insertManagerMessageToTra" parameterType="Message">
+		INSERT INTO
+				TR_MESSAGE
+		VALUES(
+				S_MESSAGE_IDX.NEXTVAL
+				, #{tr_email}
+				, 'teuching.official@gmail.com'
+				, '트레이너에 대한 신고가 접수되어 운영자 측에서 확인해본 결과 경고 처리 되셨습니다. 프로필란에 경고 문구가 띄워집니다'
+				, SYSDATE
+				, 'Manager'
+				, #{trainer_name}
+				, '관리자'
+		)
+	</insert>
+	
+	<insert id="insertManagerMessageToMem" parameterType="Message">
+		INSERT INTO
+				TR_MESSAGE
+		VALUES(
+				S_MESSAGE_IDX.NEXTVAL
+				, 'teuching.official@gmail.com'
+				, #{mem_email}
+				, '올리신 리뷰에 대한 신고가 접수되어 운영자 측에서 확인해본 결과 해당 게시물이 삭제 되었습니다'
+				, SYSDATE
+				, 'Manager'
+				, '관리자'
+				, #{nick_name}
+		)
+	</insert>
+	<!-- 이거 리뷰매퍼로 옮겨야돼!!!!!!!! -->
+	<delete id="deleteReview" parameterType="string">
+		DELETE
+			TR_REVIEW
+		WHERE
+			REVIEW_IDX = #{review_idx}
+	</delete>
+	
 </mapper>

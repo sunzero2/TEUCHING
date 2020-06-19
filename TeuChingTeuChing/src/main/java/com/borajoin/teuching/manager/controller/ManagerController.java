@@ -21,6 +21,7 @@ import com.borajoin.teuching.manager.model.service.ManagerService;
 import com.borajoin.teuching.manager.model.vo.Quali;
 import com.borajoin.teuching.member.model.vo.Member;
 import com.borajoin.teuching.member.model.vo.Trainer;
+import com.borajoin.teuching.message.model.service.MessageService;
 
 import common.util.File_Upload;
 
@@ -29,6 +30,8 @@ public class ManagerController {
 
 	@Autowired
 	ManagerService ms;
+	@Autowired
+	MessageService msgs;
 
 	/**
 	 * @Method Name : managerPage
@@ -140,15 +143,20 @@ public class ManagerController {
 	@RequestMapping("/report/reportrequest.do")
 	public ModelAndView reportView(@RequestParam Map<String, Object> commandMap, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		// res안에 들어가는거, type, tr_email, mem_email, &trainer_name or nick_name
+		// 멤버일 경우
 		if (session.getAttribute("memberType").equals("member")) {
 			Member m = (Member) session.getAttribute("loginInfo");
+			
 			commandMap.put("mem_email", m.getMem_email());
 			commandMap.put("nick_name", m.getNickname());
+			// 트레이너일 경우
 		} else if (session.getAttribute("memberType").equals("trainer")) {
 			Trainer t = (Trainer) session.getAttribute("loginInfo");
-			commandMap.put("tr_email", t.getTrainerName());
+			String mem_email = ms.selectTremailForReviewDelete((String) commandMap.get("nick_name"));
+
+			commandMap.put("tr_email", t.getTr_email());
 			commandMap.put("trainer_name", t.getTrainerName());
+			commandMap.put("mem_email", mem_email);
 		}
 		mv.addObject("res", commandMap);
 		mv.setViewName("manager/writeReport");
@@ -163,7 +171,7 @@ public class ManagerController {
 	 */
 	@PostMapping("/report/insertreport.do")
 	public ModelAndView reportFileUpload(@RequestParam Map<String, Object> commandMap, List<MultipartFile> files,
-			HttpServletRequest request) {
+			HttpServletRequest request, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		String root = request.getSession().getServletContext().getRealPath("");
 		List<File_Upload> fileData = new ArrayList<File_Upload>();
@@ -176,13 +184,15 @@ public class ManagerController {
 				String origin_filename = mf.getOriginalFilename();
 
 				File_Upload file = new File_Upload();
-				if (commandMap.get("type").equals("tra")) {
+				if (session.getAttribute("memberType").equals("member")) {
 					file.setTable_idx(res[0]);
 					type = "TraReport";
+					mv.addObject("url", request.getContextPath() + "/profile/review.do?trainerEmail=" + commandMap.get("tr_email"));
 				}
-				if (commandMap.get("type").equals("rev")) {
+				if (session.getAttribute("memberType").equals("trainer")) {
 					file.setTable_idx(res[0]);
 					type = "RevReport";
+					mv.addObject("url", request.getContextPath() + "/profile/reviewforTR.do?trainerEmail=" + commandMap.get("tr_email"));
 				}
 				String rename_filename = uuid + "_" + type
 						+ origin_filename.substring(origin_filename.lastIndexOf("."));
@@ -197,7 +207,6 @@ public class ManagerController {
 		}
 		ms.insertFile(fileData);
 		mv.addObject("msg", "신고 완료 되었습니다");
-		mv.addObject("url", request.getContextPath() + "/profile/review.do?trainerEmail=" + commandMap.get("tr_email"));
 		mv.setViewName("common/result");
 		return mv;
 	}
@@ -331,5 +340,40 @@ public class ManagerController {
 		return mv;
 	}
 
-	
+	@RequestMapping("/report/trainerblack.do")
+	public ModelAndView trainerBlack(String tr_email) {
+		ModelAndView mv = new ModelAndView();
+		Map<String, Object> commandMap = new HashMap<String, Object>();
+
+		commandMap.put("tr_email", tr_email);
+		commandMap.put("trainer_name", msgs.selectTraName(tr_email));
+
+		ms.updateBlackYn(tr_email);
+		msgs.insertManagerMessageToTra(commandMap);
+
+		mv.addObject("msg", "경고 처리가 완료되었습니다.");
+		mv.addObject("back", "back");
+		mv.setViewName("common/result");
+		return mv;
+	}
+
+	/**
+	 * @Method Name : deleteReview
+	 * @작성일 : 2020. 6. 20.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 리뷰신고에 의한 해당리뷰 삭제와 해당 닉네임의 회원에게 경고메시지 전송
+	 */
+	@RequestMapping("/report/deleteReview")
+	public ModelAndView deleteReview(int review_idx) {
+		ModelAndView mv = new ModelAndView();
+		Map<String, Object> commandMap = new HashMap<String, Object>();
+//		commandMap.put("mem_email", );
+//		commandMap.put("nick_name", );
+
+		msgs.deleteReview(review_idx);
+		msgs.insertManagerMessageToMem(commandMap);
+
+		return mv;
+	}
+
 }

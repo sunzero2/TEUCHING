@@ -32,4 +32,10 @@ public interface MessageService {
 	public int insertMsgMem(Map<String, Object> commandMap);
 	
 	public String selectTraName(String tr_email);
+	
+	public int insertManagerMessageToTra(Map<String, Object> commandMap);
+	
+	public int insertManagerMessageToMem(Map<String, Object> commandMap);
+	
+	public int deleteReview(int review_idx);
 }
