@@ -1,6 +1,7 @@
 package com.borajoin.teuching.message.controller;
 
 import java.sql.Date;
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -215,6 +216,14 @@ public class MessageController {
 
 		mv.addObject("msg", "발송이 완료되었습니다");
 		mv.setViewName("message/result");
+		return mv;
+	}
+	
+	@RequestMapping("/message/messageform.do")
+	public ModelAndView MessageForm(String tr_email) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("tr_email", tr_email);
+		mv.setViewName("message/messageForm");
 		return mv;
 	}
 

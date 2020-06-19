@@ -54,3 +54,25 @@ function move_text(rgx) {
 		})
 	}
 }
+
+
+// Modal
+var modal_wrap = document.querySelector('.aboutUsModalWrap');
+var modal = document.querySelector('.aboutUsModal');
+var modal_remove_btn = document.querySelector('.aboutUsModalRemove');
+var video = document.querySelector('.aboutUsVideo');
+
+function modalOnOff(rgx) {
+	if(rgx == 'true') {
+		modal_wrap.style.display = 'block';
+		modal.style.display = 'block';
+		modal_remove_btn.style.display = 'block';
+		video.style.display = 'block';
+	} else {
+		modal_wrap.style.display = 'none';
+		modal.style.display = 'none';
+		modal_remove_btn.style.display = 'none';
+		video.style.display = 'none';
+		video.pause();
+	}
+}
