@@ -4,14 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
-<%
- response.setHeader("Cache-Control","no-cache");
- response.setHeader("Pragma","no-cache");
- response.setDateHeader("Expires",0);
-%>
+<meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
@@ -79,12 +72,12 @@
   		<div class="col-sm-3"><!--left col-->
               
 		
-      <div id="imgWrap" class="text-center">
+	<div id="imgWrap" class="text-center">
         <h6>프로필 사진 변경하기</h6>
-        <form name="photoUpdate" action="<%=request.getContextPath()%>/member/photoUpdate.do" method="post" enctype="multipart/form-data">
-        <input type="file" class="text-center center-block file-upload" name="file"><button type="submit">변경하기</button>
-        <input type="hidden" name="tr_email" value="${loginInfo.tr_email}" /> 
-         </form>
+        <form id="imgForm">
+	        <input type="file" class="text-center center-block file-upload" id="profileImage">
+	        <button type="button" onclick="changeImage();">변경하기</button>
+        </form>
       </div>
       <br>
 
@@ -287,6 +280,31 @@ function imgLoad(img) {
 	}, 1000);
 }
 
+function changeImage() {
+	var form = document.getElementById('imgForm');
+	if(form[0].files.length > 0) {
+		var formdata = new FormData();
+		formdata.append('file', form[0].files[0]);
+		
+		$.ajax({
+			url: '/teuching/member/photoUpdate.do',
+			type: 'post',
+	       	data: formdata,
+	        processData : false,
+	        contentType: false,
+	        success: function(v) {
+	        	if(v > 0) {
+	        		alert("사진이 정상적으로 변경되었습니다.");
+	        	} else {
+	        		alert("사진 변경 중 오류가 발생했습니다.");
+	        	}
+	        }
+		})
+	} else {
+		alert("변경할 사진이 존재하지 않습니다.");
+	}
+}
+
 $(document).ready(function() {
     var readURL = function(input) {
         if (input.files && input.files[0]) {
@@ -375,7 +393,6 @@ var area15 = ["거제시","김해시","마산시","밀양시","사천시","양�
 var area16 = ["서귀포시","제주시","남제주군","북제주군"];
 
 
-
 // 시/도 선택 박스 초기화
 $("select[id^=sido]").each(function() {
 	$selsido = $(this);
@@ -400,6 +417,7 @@ var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // �
 			$gugun.append("<option value='"+this+"'>"+this+"</option>");
 		});
 	}
+});
 });
 
 //카카오지도 
@@ -450,7 +468,6 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
-
 
 //해당 트레이너의 포스트리스트 뽑아주기
 
@@ -556,7 +573,7 @@ function sample6_execDaumPostcode() {
 								table.append(failMsg);
 							}
 						}
-					});
+					})
 </script>
 </body>
 </html>

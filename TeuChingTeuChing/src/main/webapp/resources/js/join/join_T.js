@@ -1,39 +1,43 @@
+var idx_email = false;
+var check_email = false;
+var check_cell = false;
 
-	$(document).ready(function(e){
-		
-		var idx_email = false;
-		
 		$('#signUp').click(function(){
 			if($.trim($('#email').val()) == ''){
 				alert("이메일을 입력해주세요.");
 				$('#email').focus();
+				setTimeout(function(){ $('#email').focus(); }, 10)
 				return;
 			}else if($.trim($('#name').val()) == ''){
 				alert("성함을 입력해주세요.");
-				$('#name').focus();
+				setTimeout(function(){ $('#name').focus(); }, 10)
 				return;
 			}else if($.trim($('#password_1').val()) == ''){
-				alert("패스워드를 입력해주세요.");
-				$('#password_1').focus();
+				alert("비밀번호를 입력해주세요.");
+				setTimeout(function(){ $('#password_1').focus(); }, 10)
 				return;
 			}
-			//패스워드 확인
+			// 패스워드 확인
 			else if($('#password_1').val() != $('#password_2').val()){
-				alert('패스워드가 다릅니다.');
+				alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
+				setTimeout(function(){ $('#password_2').focus(); }, 10)
 				return;
 			}
 			else if($.trim($('#cell').val()) == ''){
 				alert("연락처를 입력해주세요.");
-				$('#cell').focus();
+				setTimeout(function(){ $('#cell').focus(); }, 10)
 				return;
 			}
 			else if($.trim($('#sample6_address').val()) == ''){
 				alert("주소를 입력해주세요.");
-				$('#sample6_address').focus();
+				setTimeout(function(){ $('#sample6_address').focus(); }, 10)
 				return;
 			}
 			
-			if(idx_email==false){
+			if(check_email==false){
+				alert("잘못된 형식의 이메일 주소입니다.");
+				return;
+			}else if(idx_email==false){
 				alert("이메일 중복체크를 해주세요.");
 				return;
 			}else{
@@ -67,10 +71,53 @@
 			});
 		});
 		
-	});
+		// 이메일 유효성 체크
+		// 정규표현식 정의
+		function email_check(email) {    
+		    var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+		    return (email != '' && email != 'undefined' && regex.test(email)); 
+		}
+		
+	    // name 속성이 'email'인 input 이 focus를 잃었을때 처리한다.
+	    $("input[name='email']").blur(function(){
 
-//비밀번호 체크
-    $('.pw').focusout(function () {
+	        var email = $(this).val();
+
+	        // 값을 입력안한경우는 아예 체크를 하지 않는다.
+	        if( email == '' || email == 'undefined') return;
+
+	        // 이메일 유효성 검사
+	        if(! email_check(email) ) {
+	            alert('잘못된 형식의 이메일 주소입니다.');
+	            setTimeout(function(){ $('#email').focus(); }, 10)
+	            return false;
+	        }else{
+	        	check_email = true;
+	        }
+	    });
+
+		// 휴대폰 번호 정규식
+	    function cell_check(cell) {    
+	    var regex = /^\d{2,3}-\d{3,4}-\d{4}$/;
+	    return (cell != '' && cell != 'undefined' && regex.test(cell)); 
+		}
+	    $("input[name='cell']").blur(function(){
+
+	        var cell = $(this).val();
+	        if( cell == '' || cell == 'undefined') return;
+
+	        if(! cell_check(cell) ) {
+	        	alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
+		        setTimeout(function(){ $('#cell').focus(); }, 10)
+		        return false;
+	        }else{
+	        	check_cell = true;
+	        }
+	    });
+	    
+
+// 비밀번호 체크
+$('.pw').focusout(function () {
         var pwd1 = $("#password_1").val();
         var pwd2 = $("#password_2").val();
  
@@ -81,16 +128,18 @@
                 $("#alert-success").css('display', 'inline-block');
                 $("#alert-danger").css('display', 'none');
             } else {
-                alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.");
                 $("#alert-success").css('display', 'none');
                 $("#alert-danger").css('display', 'inline-block');
             }
         }
-    });
+});
+
+	
 
 
 
-//프로필 사진 등록하기 
+
+// 프로필 사진 등록하기
 
 function setThumbnail(event) { 
 	
@@ -103,7 +152,8 @@ function setThumbnail(event) {
 		var img = document.getElementById("img");
 		img.setAttribute("src", event.target.result); 
 		
-		var divAspect = div.offsetHeight / div.offsetWidth; // div의 가로세로비는 알고 있는 값이다
+		var divAspect = div.offsetHeight / div.offsetWidth; // div의 가로세로비는 알고 있는
+															// 값이다
 		var imgAspect = img.height / img.width;
 		
 		if (imgAspect <= divAspect) {
@@ -123,13 +173,11 @@ function setThumbnail(event) {
 	reader.readAsDataURL(event.target.files[0]); 
 
 }
-
 	
-	
-// 커리어 글자 제한두기 
+// 커리어 글자 제한두기
 $('#career').keyup(function (e){
     var content = $(this).val();
-    $('#counter').html("("+content.length+" / 최대 500자)");    //글자수 실시간 카운팅
+    $('#counter').html("("+content.length+" / 최대 500자)");    // 글자수 실시간 카운팅
 
     if (content.length > 500){
         alert("최대 500자까지 입력 가능합니다.");
@@ -175,7 +223,9 @@ $('document').ready(function() {
  // 시/도 선택시 구/군 설정
 
  $("select[id^=sido]").change(function() {
-  var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
+  var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의
+																				// 구군
+																				// Array
   var $gugun = $(this).next(); // 선택영역 군구 객체
   $("option",$gugun).remove(); // 구군 초기화
 
@@ -193,7 +243,7 @@ $('document').ready(function() {
 
 
 
-//카카오지도 
+// 카카오지도
     function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -204,7 +254,7 @@ $('document').ready(function() {
                 var addr = ''; // 주소 변수
                 var extraAddr = ''; // 참고항목 변수
 
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
                 if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
                     addr = data.roadAddress;
                 } else { // 사용자가 지번 주소를 선택했을 경우(J)

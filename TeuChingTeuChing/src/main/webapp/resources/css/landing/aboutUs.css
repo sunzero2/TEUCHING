@@ -110,7 +110,7 @@
 	width: 1016px;
 	margin-left: 17vw;
 	margin-top: 26vh;
-	display: none;
+	transform: translateY(-100vh);
 }
 
 .aboutUsModalRemove {
