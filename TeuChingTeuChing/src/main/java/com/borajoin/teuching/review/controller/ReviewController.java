@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.MvcNamespaceHandler;
 
 import com.borajoin.teuching.member.model.vo.Trainer;
 import com.borajoin.teuching.review.model.service.ReviewService;
@@ -158,10 +159,11 @@ public class ReviewController {
 	 * @Method 설명 : 스케줄러로 이동한다ㅋ
 	 */
 	@RequestMapping("profile/schedule.do")
-	public ModelAndView scheduledo() {
+	public ModelAndView scheduledo(String tr_email) {
 		ModelAndView mav = new ModelAndView();
 
 		mav.setViewName("profile/schedule");
+		mav.addObject("tr_email", tr_email);
 		//mav.setViewName("profile/test");
 		return mav;
 	}

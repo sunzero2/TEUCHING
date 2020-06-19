@@ -203,7 +203,7 @@
 
 									<div class="comment-body">
 										<a
-											href="${pageContext.request.contextPath}/profile/schedule.do?trainerName=${Trainer.tr_email}"
+											href="${pageContext.request.contextPath}/profile/schedule.do?tr_email=${Trainer.tr_email}"
 											id="gogo">스케줄로 이동 → 📅</a> <a
 											href="${pageContext.request.contextPath}/report/reportrequest.do?tr_email=${Trainer.tr_email}&type=tra"
 											id="gogo">&nbsp&nbsp&nbsp 트레이너 신고 → 🚨</a>
@@ -222,7 +222,7 @@
 
 
 		<!-- 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글 -->
-		
+
 		<div class="pt-5 mt-5">
 
 			<!-- 코멘트 리스트 수 가져와서 뿌려 -->
@@ -253,71 +253,73 @@
 							</c:otherwise>
 						</c:choose>
 
-				
+
 
 						<div class="comment-body">
 							<!-- 좋아요! -->
-							<!-- 작성자만 삭제 가능하게 하기 -->	
+							<!-- 작성자만 삭제 가능하게 하기 -->
 							<c:choose>
-							<c:when test="${memberType eq 'member'}">
-							
-							<c:if test="${loginInfo.nickname eq review.mem_nickname}">
-								<div class="meta">${review.rev_date}</div>
-								<span id="reviewnn">${review.mem_nickname} <a
-									id="reviewDelete" onclick="deleteReview(${review.review_idx});">
-										<i class="far fa-trash-alt"></i>
-								</a> <a id="loginrecUpdate" onclick="likeit(${review.review_idx});">
-										<i class="fas fa-heart" id="heart" style="font-size: 16px;"></i>
-								</a> <span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
-									<input type="hidden" id="click${review.review_idx}"
-									value="true" />
-								</span>
+								<c:when test="${memberType eq 'member'}">
 
-								<p>${review.rev_cont}</p>
+									<c:if test="${loginInfo.nickname eq review.mem_nickname}">
+										<div class="meta">${review.rev_date}</div>
+										<span id="reviewnn">${review.mem_nickname} <a
+											id="reviewDelete"
+											onclick="deleteReview(${review.review_idx});"> <i
+												class="far fa-trash-alt"></i>
+										</a> <a id="loginrecUpdate"
+											onclick="likeit(${review.review_idx});"> <i
+												class="fas fa-heart" id="heart" style="font-size: 16px;"></i>
+										</a> <span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
+											<input type="hidden" id="click${review.review_idx}"
+											value="true" />
+										</span>
+
+										<p>${review.rev_cont}</p>
+										<a
+											href="${pageContext.request.contextPath }/report/viewreport.do?nick_name=${review.mem_nickname }&type=rev"
+											class="reply">🚨</a>
+									</c:if>
+
+
+									<c:if test="${loginInfo.nickname ne review.mem_nickname}">
+										<div class="meta">${review.rev_date}</div>
+										<span id="reviewnn">${review.mem_nickname} <a
+											id="recUpdate" onclick="likeit(${review.review_idx});"> <i
+												class="fas fa-heart" id="heart"
+												style="font-size: 16px; color: grey"></i>
+										</a><span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
+											<input type="hidden" id="click${review.review_idx}"
+											value="true" />
+										</span>
+
+										<p>${review.rev_cont}</p>
+
+
+										<a
+											href="${pageContext.request.contextPath }/report/viewreport.do?&nick_name=${review.mem_nickname }&type=rev"
+											class="reply">🚨</a>
+									</c:if>
+								</c:when>
+
+								<c:when test="${memberType eq 'trainer'}">
+									<div class="meta">${review.rev_date}</div>
+									<span id="reviewnn">${review.mem_nickname} <a
+										id="recUpdate" onclick="likeit(${review.review_idx});"> <i
+											class="fas fa-heart" id="heart"
+											style="font-size: 16px; color: grey"></i>
+									</a><span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
+										<input type="hidden" id="click${review.review_idx}"
+										value="true" />
+									</span>
+
+									<p>${review.rev_cont}</p>
+
+
 									<a
-									href="${pageContext.request.contextPath }/report/viewreport.do?nick_name=${review.mem_nickname }&type=rev"
-									class="reply">🚨</a>
-							</c:if>
-
-
-							<c:if test="${loginInfo.nickname ne review.mem_nickname}">
-								<div class="meta">${review.rev_date}</div>
-								<span id="reviewnn">${review.mem_nickname} <a
-									id="recUpdate" onclick="likeit(${review.review_idx});"> <i
-										class="fas fa-heart" id="heart"
-										style="font-size: 16px; color: grey"></i>
-								</a><span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
-									<input type="hidden" id="click${review.review_idx}"
-									value="true" />
-								</span>
-
-								<p>${review.rev_cont}</p>
-
-
-								<a
-									href="${pageContext.request.contextPath }/report/viewreport.do?&nick_name=${review.mem_nickname }&type=rev"
-									class="reply">🚨</a>
-							</c:if>
-							</c:when>
-							
-							<c:when test="${memberType eq 'trainer'}">
-								<div class="meta">${review.rev_date}</div>
-								<span id="reviewnn">${review.mem_nickname} <a
-									id="recUpdate" onclick="likeit(${review.review_idx});"> <i
-										class="fas fa-heart" id="heart"
-										style="font-size: 16px; color: grey"></i>
-								</a><span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
-									<input type="hidden" id="click${review.review_idx}"
-									value="true" />
-								</span>
-
-								<p>${review.rev_cont}</p>
-
-
-								<a
-									href="${pageContext.request.contextPath }/report/viewreport.do?&nick_name=${review.mem_nickname }&type=rev"
-									class="reply">🚨</a>
-							</c:when>
+										href="${pageContext.request.contextPath }/report/viewreport.do?&nick_name=${review.mem_nickname }&type=rev"
+										class="reply">🚨</a>
+								</c:when>
 							</c:choose>
 						</div>
 
@@ -376,66 +378,67 @@
 				<c:when test="${memberType eq 'member'}">
 					<c:forEach items="${trainerInfo.tlist}" var="Trainer">
 
-					<div class="comment-form-wrap pt-5">
-					<h3 class="mb-5">Leave a comment</h3>
+						<div class="comment-form-wrap pt-5">
+							<h3 class="mb-5">Leave a comment</h3>
 
 
 
-					<form method="post" enctype="multipart/form-data" id="uploadReview">
-						<input type="hidden" value="${Trainer.tr_email}" name="tr_email">
-						<div class="form-group">
-							<label for="TrainerName">TrainerName</label> <input type="hidden"
-								class="form-control bg-white" id="trNickname" name="trNickname"
-								value="${Trainer.trainerName}">
+							<form method="post" enctype="multipart/form-data"
+								id="uploadReview">
+								<input type="hidden" value="${Trainer.tr_email}" name="tr_email">
+								<div class="form-group">
+									<label for="TrainerName">TrainerName</label> <input
+										type="hidden" class="form-control bg-white" id="trNickname"
+										name="trNickname" value="${Trainer.trainerName}">
 
-							<div style="transform: translateX(1%)" id="trnn">${Trainer.trainerName}</div>
+									<div style="transform: translateX(1%)" id="trnn">${Trainer.trainerName}</div>
+								</div>
+
+								<div class="form-group">
+									<label for="memNickname">Nickname</label> <input type="hidden"
+										class="form-control bg-white" id="memNickname"
+										name="memNickname" value="${loginInfo.nickname}">
+									<div style="transform: translateX(1%)">${loginInfo.nickname}</div>
+								</div>
+
+								<div class="form-group">
+									<label for="reviewPw">Password</label> <input type="text"
+										class="form-control" id="reviewPw" name="reviewPw">
+								</div>
+								<!-- 별점 -->
+								<div class="form-group">
+									<input type="hidden" name="rev_score" id="starvalue" value="">
+									<label for="revScore">Star rating</label>
+									<div id="star" name="revScore">
+										<a value="1">★</a> <a value="2">★</a> <a value="3">★</a> <a
+											value="4">★</a> <a value="5">★</a>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="revCont">Review</label>
+									<textarea id="revCont" cols="30" rows="10" class="form-control"
+										name="revCont"></textarea>
+								</div>
+
+								<div class="form-group">
+									<input type="submit" value="Post Comment"
+										class="btn py-3 px-4 btn-primary" onclick="uploadReview()">
+								</div>
+
+							</form>
 						</div>
 
-						<div class="form-group">
-							<label for="memNickname">Nickname</label> <input type="hidden"
-								class="form-control bg-white" id="memNickname"
-								name="memNickname" value="${loginInfo.nickname}">
-							<div style="transform: translateX(1%)">${loginInfo.nickname}</div>
-						</div>
 
-						<div class="form-group">
-							<label for="reviewPw">Password</label> <input type="text"
-								class="form-control" id="reviewPw" name="reviewPw">
-						</div>
-						<!-- 별점 -->
-						<div class="form-group">
-							<input type="hidden" name="rev_score" id="starvalue" value="">
-							<label for="revScore">Star rating</label>
-							<div id="star" name="revScore">
-								<a value="1">★</a> <a value="2">★</a> <a value="3">★</a> <a
-									value="4">★</a> <a value="5">★</a>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="revCont">Review</label>
-							<textarea id="revCont" cols="30" rows="10" class="form-control"
-								name="revCont"></textarea>
-						</div>
-
-						<div class="form-group">
-							<input type="submit" value="Post Comment"
-								class="btn py-3 px-4 btn-primary" onclick="uploadReview()">
-						</div>
-
-					</form>
-				</div>
-	
-	
-			</c:forEach>	
-			</c:when>
-			<c:when test="${memberType eq 'trainer'}">
-			</c:when>
-		</c:choose>
+					</c:forEach>
+				</c:when>
+				<c:when test="${memberType eq 'trainer'}">
+				</c:when>
+			</c:choose>
 		</div>
-	
+
 		</div>
-		
+
 
 
 		<!-- 댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝댓글쓰기끝-->

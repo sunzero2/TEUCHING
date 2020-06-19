@@ -38,165 +38,258 @@
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42e0be41ec144283c6bfe7c0ed8dae35&libraries=services"></script>
 
 <style>
-	input::placeholder {
-		color: black !important;
-	}
-	
-	form-height {
-		height: 110px;
-	}
+input::placeholder {
+	color: black !important;
+}
+
+form-height {
+	height: 110px;
+}
 </style>
 </head>
 <body>
-<%@ include file="../include/top.jsp"%>
-<hr>
-<div class="main-content">
-	<div class="container mt-7" style="margin-top: 1% !important; margin-bottom: 2% !important;">
-		<div class="row">
-			<div class="col-xl-8 m-auto order-xl-1">
-				<div class="col-sm-9">
-					<ul class="nav nav-tabs">
-						<li class="active"><a data-toggle="tab" href="#home">회원정보 수정하기</a></li>
-						<li><a data-toggle="tab" href="#messages">작성한 게시글</a></li>
-					</ul>
-					<div class="tab-content">
-						<div class="tab-pane active" id="home">
-							<hr>
-							<form class="form" action="<%=request.getContextPath()%>/member/mypageUpdate_M.do" method="post" id="memberMypage">
-								<div class="col-xs-6 form-height">
-									<h4>Email Address</h4>
-									<div class="form-control" id="email">
-										<span style="color: black;">${loginInfo.mem_email}</span>
-										 <input type="hidden" name="email" value="${loginInfo.mem_email}" />
+	<%@ include file="../include/top.jsp"%>
+	<hr>
+	<div class="main-content">
+		<div class="container mt-7"
+			style="margin-top: 1% !important; margin-bottom: 2% !important;">
+			<div class="row">
+				<div class="col-xl-8 m-auto order-xl-1">
+					<div class="col-sm-9">
+						<ul class="nav nav-tabs">
+							<li class="active"><a data-toggle="tab" href="#home">회원정보
+									수정하기</a></li>
+							<li><a data-toggle="tab" href="#messages">작성한 게시글</a></li>
+							<li><a data-toggle="tab" href="#match">매칭내역</a></li>
+							<li><a data-toggle="tab" href="#report">신고내역</a></li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="home">
+								<hr>
+								<form class="form"
+									action="<%=request.getContextPath()%>/member/mypageUpdate_M.do"
+									method="post" id="memberMypage">
+									<div class="col-xs-6 form-height">
+										<h4>Email Address</h4>
+										<div class="form-control" id="email">
+											<span style="color: black;">${loginInfo.mem_email}</span> <input
+												type="hidden" name="email" value="${loginInfo.mem_email}" />
+										</div>
 									</div>
-								</div>
-								<div class="col-xs-6 form-height">
-									<h4>Trainer Name</h4>
-									<div class="form-control">
-										<span style="color: black;">${loginInfo.nickname}</span>
+									<div class="col-xs-6 form-height">
+										<h4>Trainer Name</h4>
+										<div class="form-control">
+											<span style="color: black;">${loginInfo.nickname}</span>
+										</div>
 									</div>
-								</div>
-								<div class="col-xs-6 form-height">
-									<h4>Phone</h4>
-									<span style="font-size: small;">붙임표(-)까지 입력해주세요.</span>
-									<input type="text" id="cell" name="cell" maxlength="13"	class="form-control" placeholder="${loginInfo.cell}">
-								</div>
-								<div class="col-xs-6 form-height">
-									<h4>Gender</h4>
-									<select class="form-control form-control-alternative" style="font-size: small;" name="gender" id="gender">
-										<option value="${loginInfo.gender}" selected disabled>${loginInfo.gender}</option>
-										<option>남성</option>
-										<option>여성</option>
-									</select>
-								</div>
-								<br><br>
-								<div class="col-xs-6 form-height">
-									<label for="password"><h4>Password</h4></label><br>
-									<input type="password"  class="form-control" id="password_1" name="password" class="pw" maxlength="20">
-								</div>
-								<div class="col-xs-6 form-height">
-									<label for="password2"><h4>Password Check</h4></label>
-									<input type="password" id="password_2" class="form-control">
-									<span id="alert-success" style="display: none;">비밀번호가 일치합니다.</span>
-									<span id="alert-danger" style="display: none; color: #d92742; font-weight: bold; ">	비밀번호가 일치하지 않습니다.</span>
-								</div>
-								<br>
-								<div class="col-md-12">
-									<div class="form-group focused">
-										<label><h4>GYM Address</h4></label><br>
-										<input type="text" id="sample6_postcode" placeholder="우편번호">
-										<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
-										<br>
-										<br>
-										<input type="text" id="sample6_address" placeholder="현재 주소 : ${loginInfo.address}" name="address" style="width: 55%; height: 30px;">
-										<label class="form-control-label" for="input-address"></label>
-										<br>
-										<br>
-										<label class="form-control-label" for="input-address"></label>
-										<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+									<div class="col-xs-6 form-height">
+										<h4>Phone</h4>
+										<span style="font-size: small;">붙임표(-)까지 입력해주세요.</span> <input
+											type="text" id="cell" name="cell" maxlength="13"
+											class="form-control" placeholder="${loginInfo.cell}">
 									</div>
-								</div>
-								<br>
-								<div class="col-xs-12 form-height">
+									<div class="col-xs-6 form-height">
+										<h4>Gender</h4>
+										<select class="form-control form-control-alternative"
+											style="font-size: small;" name="gender" id="gender">
+											<option value="${loginInfo.gender}" selected disabled>${loginInfo.gender}</option>
+											<option>남성</option>
+											<option>여성</option>
+										</select>
+									</div>
+									<br> <br>
+									<div class="col-xs-6 form-height">
+										<label for="password"><h4>Password</h4></label><br> <input
+											type="password" class="form-control" id="password_1"
+											name="password" class="pw" maxlength="20">
+									</div>
+									<div class="col-xs-6 form-height">
+										<label for="password2"><h4>Password Check</h4></label> <input
+											type="password" id="password_2" class="form-control">
+										<span id="alert-success" style="display: none;">비밀번호가
+											일치합니다.</span> <span id="alert-danger"
+											style="display: none; color: #d92742; font-weight: bold;">
+											비밀번호가 일치하지 않습니다.</span>
+									</div>
 									<br>
-									<button class="btn btn-lg btn-success" type="button" id="membersignUp"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-									<button class="btn btn-lg" type="reset" onClick="window.location.reload()" style="cursor: pointer;"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-								</div>
-							</form>
-						</div>
-						<!--/tab-pane-->
-						<!-- Post Table -->
-						<div class="tab-pane" id="messages">
-							<h2></h2>
-							<hr>
-							<form class="form" action="##" method="post" id="registrationForm">
+									<div class="col-md-12">
+										<div class="form-group focused">
+											<label><h4>GYM Address</h4></label><br> <input
+												type="text" id="sample6_postcode" placeholder="우편번호">
+											<input type="button" onclick="sample6_execDaumPostcode()"
+												value="우편번호 찾기"> <br> <br> <input
+												type="text" id="sample6_address"
+												placeholder="현재 주소 : ${loginInfo.address}" name="address"
+												style="width: 55%; height: 30px;"> <label
+												class="form-control-label" for="input-address"></label> <br>
+											<br> <label class="form-control-label"
+												for="input-address"></label> <input type="text"
+												id="sample6_extraAddress" placeholder="참고항목">
+										</div>
+									</div>
+									<br>
+									<div class="col-xs-12 form-height">
+										<br>
+										<button class="btn btn-lg btn-success" type="button"
+											id="membersignUp">
+											<i class="glyphicon glyphicon-ok-sign"></i> Save
+										</button>
+										<button class="btn btn-lg" type="reset"
+											onClick="window.location.reload()" style="cursor: pointer;">
+											<i class="glyphicon glyphicon-repeat"></i> Reset
+										</button>
+									</div>
+								</form>
+							</div>
+							<!--/tab-pane-->
+							<!-- Post Table -->
+							<div class="tab-pane" id="messages">
+								<h2></h2>
+								<hr>
+								<form class="form" action="##" method="post"
+									id="registrationForm">
+									<div class="col-xs-12">
+										<section class="container"
+											style="margin-top: 2%; margin-bottom: 2%; width: 100%;">
+											<table id="postTable"></table>
+										</section>
+									</div>
+								</form>
+							</div>
+							<!-- /Post Table -->
+
+							<div class="tab-pane active" id="match">
+								<h2></h2>
+								<hr>
 								<div class="col-xs-12">
-									<section class="container" style="margin-top: 2%; margin-bottom: 2%; width: 100%;">
-										<table id="postTable"></table>
+									<section class="container"
+										style="margin-top: 2%; margin-bottom: 2%; width: 100%;">
+										<table style="width: 100%;">
+											<thead>
+												<tr>
+													<th>State</th>
+													<th>Trainer</th>
+													<th>Time</th>
+													<th>Date</th>
+												</tr>
+											</thead>
+											<tbody id="tbody">
+												<tr>
+													<td>✔</td>
+													<td>이보라</td>
+													<td>16:00</td>
+													<td>2020-02-02</td>
+												</tr>
+											</tbody>
+										</table>
+
 									</section>
 								</div>
-							</form>
-						</div><!-- /Post Table -->
+							</div>
+							<div class="tab-pane active" id="report">
+								<h2></h2>
+								<hr>
+								<div class="col-xs-12">
+									<section class="container"
+										style="margin-top: 2%; margin-bottom: 2%; width: 100%;">
+										<table style="width: 100%;">
+											<thead>
+												<tr>
+													<th>State</th>
+													<th>Title</th>
+													<th>Date</th>
+												</tr>
+											</thead>
+											<tbody id="tbody">
+												<tr>
+													<td>✔</td>
+													<td id="title"><a
+														href="${pageContext.request.contextPath }/report/trainerdetail.do?traid=${r.report_idx}">
+															짜증나요 어이없어요</a></td>
+													<td>2020-02-02</td>
+												</tr>
+											</tbody>
+										</table>
+									</section>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </body>
 
 <script type="text/javascript">
-$(document).ready(function(e) {
+	$(document)
+			.ready(
+					function(e) {
 
-		$('#membersignUp').click(function() {
-			
-			if ($.trim($('#password_1').val()) == '') {
-				alert("패스워드를 입력해주세요.");
-				$('#password_1').focus();
-				return;
-			}
-			//패스워드 확인
-			else if ($('#password_1').val() != $('#password_2').val()) {
-				alert('패스워드가 다릅니다.');
-				return;
-			} else {
-				
-				if($.trim($('#gender').val()) == ''){
-					document.getElementById('gender').value = "${loginInfo.gender}";
-				}
-				if($.trim($('#cell').val()) == ''){
-					document.getElementById('cell').value = "${loginInfo.cell}";
-				}
-				if($.trim($('#sample6_address').val()) == ''){
-					document.getElementById('sample6_address').value = "${loginInfo.address}";
-				}
-				
-				alert("회원정보 수정이 완료되었습니다!");
-				$('#memberMypage').submit();
-			}
+						$('#membersignUp')
+								.click(
+										function() {
 
-		});
+											if ($.trim($('#password_1').val()) == '') {
+												alert("패스워드를 입력해주세요.");
+												$('#password_1').focus();
+												return;
+											}
+											//패스워드 확인
+											else if ($('#password_1').val() != $(
+													'#password_2').val()) {
+												alert('패스워드가 다릅니다.');
+												return;
+											} else {
 
-	
-	
-	$('.pw').focusout(function() {
-		var pwd1 = $("#password_1").val();
-		var pwd2 = $("#password_2").val();
+												if ($.trim($('#gender').val()) == '') {
+													document
+															.getElementById('gender').value = "${loginInfo.gender}";
+												}
+												if ($.trim($('#cell').val()) == '') {
+													document
+															.getElementById('cell').value = "${loginInfo.cell}";
+												}
+												if ($
+														.trim($(
+																'#sample6_address')
+																.val()) == '') {
+													document
+															.getElementById('sample6_address').value = "${loginInfo.address}";
+												}
 
-		if (pwd1 != '' && pwd2 == '') {
-			null;
-		} else if (pwd1 != "" || pwd2 != "") {
-			if (pwd1 == pwd2) {
-				$("#alert-success").css('display', 'inline-block');
-				$("#alert-danger").css('display', 'none');
-			} else {
-				alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.");
-				$("#alert-success").css('display', 'none');
-				$("#alert-danger").css('display', 'inline-block');
-			}
-		}
-	});
-});	
+												alert("회원정보 수정이 완료되었습니다!");
+												$('#memberMypage').submit();
+											}
+
+										});
+
+						$('.pw')
+								.focusout(
+										function() {
+											var pwd1 = $("#password_1").val();
+											var pwd2 = $("#password_2").val();
+
+											if (pwd1 != '' && pwd2 == '') {
+												null;
+											} else if (pwd1 != "" || pwd2 != "") {
+												if (pwd1 == pwd2) {
+													$("#alert-success").css(
+															'display',
+															'inline-block');
+													$("#alert-danger").css(
+															'display', 'none');
+												} else {
+													alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.");
+													$("#alert-success").css(
+															'display', 'none');
+													$("#alert-danger").css(
+															'display',
+															'inline-block');
+												}
+											}
+										});
+					});
 	function sample6_execDaumPostcode() {
 		new daum.Postcode(
 				{

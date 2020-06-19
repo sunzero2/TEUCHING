@@ -273,4 +273,5 @@
 		WHERE 
 			TR_EMAIL = #{tr_email}
 	</select>
+	
 </mapper>

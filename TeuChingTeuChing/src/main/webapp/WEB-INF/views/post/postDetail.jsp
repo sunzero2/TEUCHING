@@ -62,6 +62,7 @@
 								<hr>
 								<form id="form" action="${pageContext.request.contextPath }/message/messageform.do" target="pop">
 								<input type="hidden" name="tr_email" value="${data.post.trEmail}">
+								<input type="hidden" name="trainer_name" value="${data.post.trainerName}">
 								</form>
 								<button onclick="openPopUp()" class="btn btn-primary">Send Message</button>
 								<c:if test="${memberType == 'trainer'}">

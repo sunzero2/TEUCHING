@@ -21,7 +21,7 @@ public interface MessageService {
 	
 	public Message selectMsgDetail(int message_idx);
 	
-	public int insertMsgAnsTra(Map<String, Object> commandMap);
+	public int insertMsgTra(Map<String, Object> commandMap);
 	
 	public List<Match> showMatchInfo(Map<String, Object> commandMap);
 	
@@ -30,4 +30,6 @@ public interface MessageService {
 	public int matchYnCheck(int match_idx);
 	
 	public int insertMsgMem(Map<String, Object> commandMap);
+	
+	public String selectTraName(String tr_email);
 }

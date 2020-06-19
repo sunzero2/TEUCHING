@@ -14,10 +14,11 @@ public class Message {
 	private String msg_cont;
 	private Date write_date;
 	private String writer;
+	private String trainer_name;
+	private String nick_name;
 
 	public Message() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getMessage_idx() {
@@ -76,11 +77,27 @@ public class Message {
 		this.writer = writer;
 	}
 
+	public String getTrainer_name() {
+		return trainer_name;
+	}
+
+	public void setTrainer_name(String trainer_name) {
+		this.trainer_name = trainer_name;
+	}
+
+	public String getNick_name() {
+		return nick_name;
+	}
+
+	public void setNick_name(String nick_name) {
+		this.nick_name = nick_name;
+	}
+
 	@Override
 	public String toString() {
 		return "Message [message_idx=" + message_idx + ", tr_email=" + tr_email + ", mem_email=" + mem_email
 				+ ", msg_title=" + msg_title + ", msg_cont=" + msg_cont + ", write_date=" + write_date + ", writer="
-				+ writer + "]";
+				+ writer + ", trainer_name=" + trainer_name + ", nick_name=" + nick_name + "]";
 	}
 
 }

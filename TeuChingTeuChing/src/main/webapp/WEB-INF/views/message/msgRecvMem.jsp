@@ -98,8 +98,8 @@ h1 {
 		<textarea name="msg_cont" id="textarea" placeholder="내용을 입력해주세요"></textarea>
 		<button	id="btn" style="transform: translateX(-52%)">답장하기</button>
 	</div>
-	<input type="hidden" name="mem_email" value="${res.mem_email }">
 	<input type="hidden" name="tr_email" value="${res.tr_email }">
+	<input type="hidden" name="trainer_name" value="${res.trainer_name }">
 </form>
 	<script src="https://code.jquery.com/jquery-3.5.1.js"
 			integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="

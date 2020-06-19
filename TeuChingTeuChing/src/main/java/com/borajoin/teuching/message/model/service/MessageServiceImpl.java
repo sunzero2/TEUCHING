@@ -85,8 +85,8 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public int insertMsgAnsTra(Map<String, Object> commandMap) {
-		return md.insertMsgAnsTra(commandMap);
+	public int insertMsgTra(Map<String, Object> commandMap) {
+		return md.insertMsgTra(commandMap);
 	}
 
 	//트레이너에의 받은 쪽지에 보여줄 매칭 정보
@@ -111,6 +111,11 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public int insertMsgMem(Map<String, Object> commandMap) {
 		return md.insertMsgMem(commandMap);
+	}
+
+	@Override
+	public String selectTraName(String tr_email) {
+		return md.selectTraName(tr_email);
 	}
 
 }

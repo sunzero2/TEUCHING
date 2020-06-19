@@ -78,10 +78,10 @@
 										${ msg.msg_cont}
 									</c:if>
 									<c:if test="${type eq 'Trainer'}">
-										<td>${msg.mem_email }</td>
+										<td>${msg.nick_name }</td>
 									</c:if>
 									<c:if test="${type eq 'Member'}">
-										<td>${msg.tr_email }</td>
+										<td>${msg.trainer_name }</td>
 									</c:if>
 									<td>${msg.write_date }</td>
 								</tr>
