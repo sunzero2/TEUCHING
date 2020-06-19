@@ -16,10 +16,11 @@
 		<result column="place" property="place"></result>
 		<result column="price" property="price"></result>
 		<result column="write_date" property="writeDate"></result>
+		<result column="photo" property="trPhoto"></result>
 	</resultMap>
 	
 	<select id="searchWord" resultMap="postMap">
-		select * from tr_post where 
+		select * from tr_post inner join tr_trainer using(tr_email) where 
 		<if test='option.equals("trainer")'>
 			trainer_name like '%' || #{input} || '%'
 		</if>
@@ -30,7 +31,7 @@
 	</select>
 	
 	<select id="keyword" resultMap="postMap">
-		select * from tr_post
+		select * from tr_post inner join tr_trainer using(tr_email)
 		<where>
 			<if test='!purpose.equals("null")'>
 				purpose like '%' || #{purpose} || '%'
@@ -55,7 +56,7 @@
 	</select>
 	
 	<select id="postDetail" resultMap="postMap">
-		select * from tr_post where post_idx=#{postIdx}
+		select * from tr_post inner join tr_trainer using(tr_email) where post_idx=#{postIdx}
 	</select>
 	
 	<insert id="insertPost" parameterType="Post">

@@ -20,47 +20,49 @@ public interface ManagerService {
 	public TrainerReport traManagerDetail(int traid);
 
 	public ReviewReport revManagerDetail(int revid);
-	
+
 	public int updateManagerDetail_rev(Map<String, Object> commandMap);
-	
+
 	public int updateManagerDetail_tra(Map<String, Object> commandMap);
-	
+
 	public int[] insertReport(Map<String, Object> commandMap);
-	
+
 	public int selectTraReportIdx();
-	
+
 	public int selectRevReportIdx();
-	
+
 	public int insertFile(List<File_Upload> fileData);
-	
+
 	public List<File_Upload> selectTraFile(int table_idx);
-	
+
 	public List<File_Upload> selectRevFile(int table_idx);
-	
+
 	public Map<String, Object> selectQuali(int currentpage);
-	
+
 	public int qualiAllCnt();
-	
+
 	public Quali selectQualiDetail(String qualiidx);
-	
+
 	public String selectQualiFile(String qualiidx);
-	
+
 	public int updateQualiYn(int quali_idx);
-	
+
 	public int selectQualiIdx();
-	
+
 	public int insertQuali(Quali quali);
-	
+
 	public int insertQualiFile(File_Upload file_Upload);
-	
+
 	public List<TrainerReport> selectTraReportMypage(String mem_email);
-	
+
+	public List<Match> selectMemMatchMypage(String mem_email);
+
 	public Trainer selectTrainerforQuali(String qualiidx);
-	
+
 	public List<Quali> selectTraQualiMypage(String tr_email);
-	
+
 	public List<ReviewReport> selectRevReportMypage(String tr_email);
-	
+
 	public List<Match> selectTraMatchMypage(String tr_email);
-	
+
 }

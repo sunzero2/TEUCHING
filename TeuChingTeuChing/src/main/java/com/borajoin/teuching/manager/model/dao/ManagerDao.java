@@ -113,10 +113,7 @@ public class ManagerDao {
 	public int insertQualiFile(File_Upload file_Upload) {
 		return sqlSession.insert("File.insertQualiFile", file_Upload);
 	}
-	
-	public List<TrainerReport> selectTraReportMypage(String mem_email){
-		return sqlSession.selectList("Manager.selectTraReportMypage", mem_email);
-	}
+
 	
 //	public List<ReviewReport> selectRevReportAns(String tr_email){
 //		
@@ -137,6 +134,16 @@ public class ManagerDao {
 	
 	public List<Match> selectTraMatchMypage(String tr_email){
 		return sqlSession.selectList("Manager.selectTraMatchMypage", tr_email);
+	}
+	
+	//회원의 마이페이지에 표시할 트레이너 신고내역
+	public List<TrainerReport> selectTraReportMypage(String mem_email){
+		return sqlSession.selectList("Manager.selectTraReportMypage", mem_email);
+	}
+	
+	//회원의 마이페이지에 표시할 매칭 내역
+	public List<Match> selectMemMatchMypage(String mem_email){
+		return sqlSession.selectList("Manager.selectMemMatchMypage", mem_email);
 	}
 
 }

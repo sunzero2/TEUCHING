@@ -145,9 +145,11 @@ function keywordSearch() {
 	})
 }
 
-document.getElementById('writeBtn').addEventListener('click', function() {
-	location.href="/teuching/post/writepost.do?postIdx=0";
-})
+if(document.getElementById('memberType').value == 'trainer') {
+	document.getElementById('writeBtn').addEventListener('click', function() {
+		location.href="/teuching/post/writepost.do?postIdx=0";
+	})
+}
 
 function createTable() {
 	document.getElementById('topUp').style.display = 'block';
@@ -166,7 +168,7 @@ function createTable() {
 			// 이미지 담을 div 생성
 			var image = document.createElement('div');
 			image.className = 'img rounded-circle mb-2';
-			image.style.backgroundImage = 'url(../resources/img/classes-1.jpg)';
+			image.style.backgroundImage = 'url(../resources/upload/profileImg/' + pList[i].trPhoto + ')';
 			image.style.width = '116px';
 			image.style.height = '141px';
 			image.style.marginTop = '54px';
