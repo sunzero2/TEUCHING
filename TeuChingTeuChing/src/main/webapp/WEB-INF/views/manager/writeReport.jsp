@@ -9,7 +9,6 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
 	rel="stylesheet">
@@ -74,8 +73,7 @@
 				<input type="hidden" name="nick_name" value="${res.nick_name }">
 			</c:if>
 			<c:if test="${res.type eq 'rev' }">
-				<input type="hidden" name="trainer_name"
-					value="${res.trainer_name }">
+				<input type="hidden" name="trainer_name" value="${res.trainer_name }">
 			</c:if>
 		</div>
 		</form>

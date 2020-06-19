@@ -57,7 +57,7 @@
 	<br>
 	<div class="container" style="width:62%;">
 
-		<div class="row">
+		<div class="row" style="transform:translateX(-10%)">
 
 			<ul class="nav nav-pills nav-stacked admin-menu"
 				style="float:left;transform: translate(80%,5%)">
@@ -79,7 +79,16 @@
 						</div>
 						<div class="panel-body">
 							<a
-								href="${pageContext.request.contextPath }/manager/reportdetail.do?traid=${r.report_idx}">${fn:substring(r.rep_cont, 0, 35) }...</a>
+								href="${pageContext.request.contextPath }/manager/reportdetail.do?traid=${r.report_idx}">
+								
+								<c:if test="${fn:length(r.rep_cont) > 35 }">
+										${fn:substring(r.rep_cont, 0, 35) }...
+								</c:if>
+								<c:if test="${fn:length(r.rep_cont) <= 35 }">
+									${ r.rep_cont}
+								</c:if>
+								
+								</a>
 						</div>
 					</div>
 				</c:forEach>

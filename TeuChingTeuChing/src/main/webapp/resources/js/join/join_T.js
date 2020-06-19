@@ -123,8 +123,6 @@ function setThumbnail(event) {
 	reader.readAsDataURL(event.target.files[0]); 
 
 }
-
-	
 	
 // 커리어 글자 제한두기 
 $('#career').keyup(function (e){

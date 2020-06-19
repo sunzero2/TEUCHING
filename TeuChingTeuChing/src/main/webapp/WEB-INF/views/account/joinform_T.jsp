@@ -188,7 +188,6 @@ body {
 												</div>
 												<input type="file" id="photo" accept="image/*" onchange="setThumbnail(event);" name="file" />
 											</div>
-												
 										</div>
 									</div>
 									<br>

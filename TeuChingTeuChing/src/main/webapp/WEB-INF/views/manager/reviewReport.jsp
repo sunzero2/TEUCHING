@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -55,7 +56,7 @@
 	<br>
 	<div class="container" style="width:62%;">
 
-<div class="row">
+<div class="row" style="transform:translateX(-10%)">
 
 			<ul class="nav nav-pills nav-stacked admin-menu"
 				style="float:left;transform: translate(80%,5%)">
@@ -77,7 +78,14 @@
 						</div>
 						<div class="panel-body">
 							<a
-								href="${pageContext.request.contextPath }/manager/reportdetail.do?revid=${r.report_idx}">${r.rep_cont }</a>
+								href="${pageContext.request.contextPath }/manager/reportdetail.do?revid=${r.report_idx}">
+								<c:if test="${fn:length(r.rep_cont) > 35 }">
+										${fn:substring(r.rep_cont, 0, 35) }...
+								</c:if>
+								<c:if test="${fn:length(r.rep_cont) <= 35 }">
+									${ r.rep_cont}
+								</c:if>
+								</a>
 						</div>
 					</div>
 				</c:forEach>

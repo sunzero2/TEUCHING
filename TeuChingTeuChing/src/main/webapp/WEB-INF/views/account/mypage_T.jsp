@@ -418,6 +418,7 @@ var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // �
 		});
 	}
 });
+});
 
 //카카오지도 
 function sample6_execDaumPostcode() {

@@ -96,7 +96,7 @@
 			const form = document.querySelector('#form');
 			window
 					.open("", 'pop',
-							'width=400,height=270,left=420,top=150,toolbars=no,scrollbars=no');
+							'width=460,height=270,left=420,top=150,toolbars=no,scrollbars=no');
 			form.submit();
 		}
 		</script>

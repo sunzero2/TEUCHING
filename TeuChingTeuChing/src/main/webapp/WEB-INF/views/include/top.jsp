@@ -54,9 +54,10 @@
 					<a href ="<%=request.getContextPath()%>/member/mypage_M.do"> /  myPage</a>
 					</c:if>
 				<c:if test="${memberType eq 'trainer'}">
+					<a style="color:black" href="${pageContext.request.contextPath }/profile/reviewforTR.do?trainerEmail=${loginInfo.tr_email}">🇲🇵</a>
 					<a style="color:black" href="${pageContext.request.contextPath }/message/msgboxrecv.do">✉</a>
 					<a onclick="location= 'detail.cs?id=${loginInfo.trainerName}">${loginInfo.trainerName}	님  환영합니다. </a>
-					<a href ="<%=request.getContextPath()%>/member/mypage_T.do"> /  myPage</a>
+
 					</c:if>	
 						<!-- <a>MyPage</a>  -->
 						<a href="<%=request.getContextPath()%>/member/logout.do">/  logout</a>

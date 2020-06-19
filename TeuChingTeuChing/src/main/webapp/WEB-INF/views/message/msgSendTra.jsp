@@ -45,7 +45,7 @@
 		action="${pageContext.request.contextPath }/message/matchformsend.do">
 		<div class="container">
 			<h2>보낸쪽지</h2>
-			<h5>${res.write_date }|${res.mem_email }</h5>
+			<h5> | ${res.write_date } | ${res.mem_email }</h5>
 			<ul class="nav navbar-nav">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">요청내역 <span class="caret"></span></a>

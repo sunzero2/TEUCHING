@@ -21,19 +21,18 @@
  	
  	<!-- 일반회원 회원정보 수정 -->
  	<update id="update_mypage_M">
-		update tr_member set 
-		photo = #{photo} 
-		
-		where mem_email = #{mem_email}
+		update tr_member set password = #{password}, GENDER = #{gender},
+		cell = #{cell}, address = #{address}
+		where mem_email = #{email}
 	</update>
 	
  	<!-- 트레이너 회원정보 수정 -->
  	<update id="update_mypage_T">
 		update tr_trainer set 
-		photo = #{photo} 
-		
-		
-		where tr_email = #{tr_email}
+		cell = #{cell}, GENDER = #{gender}, WEIGHT = #{weight},	HEIGHT = #{height},	password = #{password},
+		address = #{address}, ADDRESS_DETAIL = #{address_detail}, PREFER_ADD1 = #{prefer1},
+		 PREFER_ADD2 = #{prefer2}, PREFER_ADD3 = #{prefer3}, CAREER = #{career}
+		where tr_email = #{email}
 	</update>
 	
  	<!-- 트레이너 프로필 사진 변경 -->

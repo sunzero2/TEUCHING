@@ -109,8 +109,8 @@ public class MessageServiceImpl implements MessageService {
 
 	//회원이 트레이너에게 보내는 답장
 	@Override
-	public int insertMsgAnsMem(Map<String, Object> commanMap) {
-		return md.insertMsgAnsMem(commanMap);
+	public int insertMsgMem(Map<String, Object> commandMap) {
+		return md.insertMsgMem(commandMap);
 	}
 
 }

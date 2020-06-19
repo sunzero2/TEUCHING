@@ -5,7 +5,7 @@
 	<insert id="report_insertFile" parameterType="File_Upload">
 		insert into tr_file_upload
 		values(S_FILE_IDX.NEXTVAL, ${table_idx}, #{origin_filename},
-		#{rename_filename}, #{savepath})
+		#{rename_filename}, #{savepath}, 'N')
 	</insert>
 	
 	<insert id="post_insertFile" parameterType="File_Upload">
