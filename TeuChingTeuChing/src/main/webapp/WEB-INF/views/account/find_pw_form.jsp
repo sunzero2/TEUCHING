@@ -27,89 +27,25 @@
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
-	
-	
 
 <title>Teu-Ching Teu-Ching</title>
 
 <style type="text/css">
 
-html {
-	background-image: url(../resources/img/tr1.jpg) !important;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
-
-.toggle_radio{
-  position: relative;
-  background: #215d9e;
-  margin: 4px auto;
-  overflow: hidden;
-  padding: 0 !important;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  border-radius: 50px;
-  position: relative;
-  height: 26px;
-  width: 215px;
-}
-.toggle_radio > * {
-  float: left;
-}
-.toggle_radio input[type=radio]{
-  display: none;
-  /*position: fixed;*/
-}
-.toggle_radio label{
-  font: 90%/1.618 "Source Sans Pro";
-  color: rgba(255,255,255,.9);
-  z-index: 0;
-  display: block;
-  width: 100px;
-  height: 20px;
-  margin: 3px 3px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  border-radius: 50px;
-  cursor: pointer;
-  z-index: 1;
-  /*background: rgba(0,0,0,.1);*/
-  text-align: center;
-  /*margin: 0 2px;*/
-  /*background: blue;*/ /*make it blue*/
-}
-.toggle_option_slider{
-  /*display: none;*/
-  /*background: red;*/
-  width: 100px;
-  height: 20px;
-  position: absolute;
-  top: 3px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  border-radius: 50px;
-  -webkit-transition: all .4s ease;
-  -moz-transition: all .4s ease;
-  -o-transition: all .4s ease;
-  -ms-transition: all .4s ease;
-  transition: all .4s ease;
-}
-
-#first_toggle:checked ~ .toggle_option_slider{
-  background: rgba(255,255,255,.3);
-  left: 3px;
-}
-#second_toggle:checked ~ .toggle_option_slider{
-  background: rgba(255,255,255,.3);
-  left: 109px;
-}
-
 input::placeholder {
   font-size: 11px;
 }
+.btn-primary{
+	background: #ffb5b5 !important;
+	border-color: #ffb5b5 !important;
+}  
+.btn-link{
+	color: #cc9de4 !important;
+}  
+.btn-link:hover {
+    color: #ffb5b5 !important;
+}
+  
 </style>
 
 

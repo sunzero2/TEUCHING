@@ -205,11 +205,6 @@
             <label for="userPwd" class="sr-only">Password</label>
             <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
             <div class="warning"></div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me"> 아이디 기억하기
-              </label>
-            </div>
             <button class="btn btn-lg btn-primary btn-block" id="btnLogin" type="submit">로그인</button>
           </form>
         </div>
@@ -220,7 +215,6 @@
       <div class="modal-footer">
         <a type="button" class="btn btn-default" data-dismiss="modal">닫기</a>
         <a type="button" href="<%=request.getContextPath()%>/member/find_pw_form.do" class="btn btn-primary"> 비밀번호 찾기 </a>
-        <a type="button" id="btnJoin" class="btn btn-primary" href="<%=request.getContextPath()%>/member/join.do">회원가입</a>
       </div>
     </div>
   </div>
@@ -238,7 +232,7 @@
       
       <div class="modal-body">
         <div class="container">
-            <p id="Jointitle">안녕하세요! 가입하실 유형을 선택해주세요.</p>
+            <p id="Jointitle">만나서 반갑습니다! <br>가입하실 유형을 선택해주세요.</p>
             
             <div class="form-group row">
 				<div class="col-md-6 offset-md-4">
@@ -246,13 +240,10 @@
 						<div class="toggle_radio">
 							<label for="first_toggle"><a id="atag" href="<%=request.getContextPath()%>/member/mjoin.do?data=member">Member</a></label> 
 							<label for="second_toggle"><a id="atag" href="<%=request.getContextPath()%>/member/mjoin.do?data=trainer"> Trainer</a></label>
-							
 						</div>
 					</div>
 				</div>
 			</div>
-      
- 
       </div>
       </div>
       <div class="modal-footer">

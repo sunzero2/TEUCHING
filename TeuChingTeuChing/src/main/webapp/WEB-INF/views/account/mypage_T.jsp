@@ -5,8 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT">
-<title>Insert title here</title>
+<title>Teu-Ching Teu-Ching</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
@@ -60,7 +61,6 @@
 }
 </style>
 
-
 </head>
 <body onload="imgLoad('${loginInfo.photo}');">
 
@@ -79,7 +79,7 @@
 
 
 				<div id="imgWrap" class="text-center">
-					<h6>프로필 사진 변경하기</h6>
+					<div id="profileImg"></div>
 					<form id="imgForm">
 						<input type="file" class="text-center center-block file-upload"
 							id="profileImage">
@@ -112,7 +112,7 @@
 				<div class="tab-content">
 					<div class="tab-pane active" id="home">
 						<hr>
-						<form class="form" method="post" id="trainerUpdate"
+						<form class="form" method="post" id="trainerMypage"
 							action="<%=request.getContextPath()%>/member/mypageUpdate_T.do">
 							<div class="form-group">
 
@@ -258,11 +258,8 @@
 									</button>
 								</div>
 							</div>
-
-
-
 						</form>
-
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 						<hr>
 
 					</div>
@@ -437,7 +434,7 @@
 	<script>
 function imgLoad(img) {
    window.setTimeout(function() {
-      var div = document.getElementById('imgWrap');
+      var div = document.getElementById('profileImg');
       var imgDiv = document.createElement('img');
       imgDiv.className="avatar img-circle img-thumbnail";
       imgDiv.alt="avatar";
@@ -509,7 +506,7 @@ $(document).ready(function(e){
          return;
       }else{
          alert("회원정보 수정이 완료되었습니다.");
-         $('#signFrm').submit();
+         $('#trainerMypage').submit();
       } 
    });
 });
