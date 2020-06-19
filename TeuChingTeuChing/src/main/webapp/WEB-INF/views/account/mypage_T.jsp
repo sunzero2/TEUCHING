@@ -60,9 +60,9 @@
 	font-size: small;
 }
 
-.navbar-brand {
-    font-size: 40px !important;
- }
+
+
+
 </style>
 
 </head>
@@ -267,13 +267,10 @@
 								</div>
 							</div>
 						</form>
-<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
-						<hr>
-
 					</div>
+					<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 					<!--/tab-pane-->
 					<div class="tab-pane" id="messages">
-
 						<h2></h2>
 
 						<hr>
@@ -432,14 +429,13 @@
 				<!--/tab-pane-->
 			</div>
 			<!--/tab-content-->
-
 		</div>
 		<!--/col-9-->
 	</div>
 	<!--/row-->
+<script type="text/javascript">
 
 
-	<script>
 function imgLoad(img) {
    window.setTimeout(function() {
       var div = document.getElementById('profileImg');
@@ -490,12 +486,6 @@ $(document).ready(function() {
         readURL(this);
     });
 });
-
-
-
-
-
-
 
 
 // 회원정보 업데이트
@@ -572,6 +562,26 @@ $('.pw').focusout(function () {
         }
     }
 });
+
+//휴대폰 번호 정규식
+function cell_check(cell) {    
+var regex = /^\d{2,3}-\d{3,4}-\d{4}$/;
+return (cell != '' && cell != 'undefined' && regex.test(cell)); 
+}
+$("input[name='cell']").blur(function(){
+
+    var cell = $(this).val();
+    if( cell == '' || cell == 'undefined') return;
+
+    if(! cell_check(cell) ) {
+    	alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
+        setTimeout(function(){ $('#cell').focus(); }, 10)
+        return false;
+    }else{
+    	check_cell = true;
+    }
+});
+
 
 //커리어 글자 제한두기 
 $('#career').keyup(function (e){
@@ -788,8 +798,6 @@ function sample6_execDaumPostcode() {
                      }
                   }
                })
-</script>
-	<script>
    function match(match_idx){
       if(confirm("수락하시겠습니까?")){
          $.ajax({
@@ -814,6 +822,7 @@ function sample6_execDaumPostcode() {
       $('tr[id^="moreview"]').show();
       $('#morea').hide();
    }
-   </script>
+</script>
+
 </body>
 </html>

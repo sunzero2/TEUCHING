@@ -7,26 +7,13 @@
 <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="resources/css/loginform.css">
-
     <link rel="icon" href="Favicon.png">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-	<!-- 라디오 css -->
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <title>Teu-Ching Teu-Ching</title>
 
@@ -82,41 +69,9 @@ input::placeholder {
 	
 	</main>
 
-	<script type="text/javascript">
-		var idx_email = false;
-
-		$('#signUp').click(function() {
-
-			if ($.trim($('#email').val()) == '') {
-				alert("이메일을 입력해주세요.");
-				$('#email').focus();
-				return;
-			}
-
-			$.ajax({
-				url : "${pageContext.request.contextPath}/emailChk.do",
-				type : "POST",
-				data : {
-					"email" : $('#email').val()
-				},
-				success : function(data) {
-					if (data == 0 && $.trim($('#email').val()) != '') {
-						alert("가입 정보가 없습니다 이메일을 확인해 주세요.");
-						return;
-					} else {
-						alert("작성하신 이메일로 임시 비밀번호가 발송되었습니다.");
-						$('#signFrm').submit();
-					}
-				},
-				error : function() {
-					alert("서버에러");
-				}
-			});
-		});
-	</script>
-
-
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="../resources/js/account/find_pw_form.js"></script>
 
 </body>
 </html>
