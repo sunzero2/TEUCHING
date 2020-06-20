@@ -183,9 +183,9 @@ public class MemberController {
 
 		int res = ms.joinMember(commandMap);
 		if (res < 1) {
-			mav.setViewName("common/result");
-			mav.addObject("alertMsg", "회원가입에 실패하였습니다.");
-			mav.addObject("back", "back");
+			mav.addObject("msg", "회원가입에 실패하였습니다.");
+			mav.addObject("url", "account/loginform");
+			mav.setViewName("account/redirect");
 		} else {
 			mav.setViewName("redirect:/index/index.do");
 		}
@@ -204,9 +204,9 @@ public class MemberController {
 
 		int res = ms.joinTrainer(commandMap);
 		if (res < 1) {
-			mav.setViewName("common/result");
-			mav.addObject("alertMsg", "회원가입에 실패하였습니다.");
-			mav.addObject("back", "back");
+			mav.addObject("msg", "회원가입에 실패하였습니다.");
+			mav.addObject("url", "account/loginform");
+			mav.setViewName("account/redirect");
 		} else {
 			mav.setViewName("redirect:/index/index.do");
 		}
