@@ -41,7 +41,6 @@ background-color: transparent !important;
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
 					<form id="signForm" name="signForm"
 						action="<%=request.getContextPath()%>/member/m_joinemailCheck.do" 
-						action="<%=request.getContextPath()%>/member/joinMemberImple.do" 
 	       					 method="post">
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
