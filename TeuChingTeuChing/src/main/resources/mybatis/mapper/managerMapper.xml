@@ -318,4 +318,14 @@
 			NICKNAME = #{nick_name}
 	</select>
 	
+	<select id="checkForReviewDelete" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			TR_REVIEW
+		WHERE
+			TR_EMAIL = #{tr_email}	
+			AND
+			MEM_NICKNAME = #{nick_name}
+	</select>	
 </mapper>

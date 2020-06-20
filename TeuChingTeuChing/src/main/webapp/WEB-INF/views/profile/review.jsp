@@ -209,7 +209,8 @@
 									<div class="comment-body">
 										<a
 											href="${pageContext.request.contextPath}/profile/schedule.do?tr_email=${Trainer.tr_email}"
-											id="gogo">스케줄로 이동 → 📅</a> <a
+											id="gogo">스케줄로 이동 → 📅</a>
+											<a
 											href="${pageContext.request.contextPath}/report/reportrequest.do?tr_email=${Trainer.tr_email}&type=tra"
 											id="gogo">&nbsp&nbsp&nbsp 트레이너 신고 → 🚨</a>
 										</h3>

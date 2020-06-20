@@ -58,7 +58,7 @@
 				method="post">
 				<h5>${res.report_date }
 					<c:if test="${type eq 'tra' }">
-						<input type="hidden" name="nick_name" value="${res.nick_name }">
+						<input type="hidden" name="nick_name" value="${res.nickname }">
 						<input type="hidden" name="type" value="tra">
 					</c:if>
 					<c:if test="${type eq 'rev' }">
@@ -88,7 +88,7 @@
 				</h5>
 			</form>
 			<c:if test="${type eq 'tra' }">
-				<h2>${ res.nick_name}님의 문의 내역</h2>
+				<h2>${ res.nickname}님의 문의 내역</h2>
 			</c:if>
 			<c:if test="${type eq 'rev' }">
 				<h2>${ res.trainer_name}님의 문의 내역</h2>

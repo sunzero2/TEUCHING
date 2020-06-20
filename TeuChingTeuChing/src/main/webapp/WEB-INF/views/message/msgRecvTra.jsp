@@ -78,9 +78,9 @@ h1 {
 	border-radius: 4px;
 }
 
-#matchbtn{
-	border:none;
-	background-color:white;
+#matchbtn {
+	border: none;
+	background-color: white;
 }
 </style>
 </head>
@@ -88,31 +88,42 @@ h1 {
 
 	<form action="${pageContext.request.contextPath }/message/msganstra.do">
 		<div class="wrapper">
-			<h2>상담요청</h2>
-			<h5> | ${res.write_date} | ${res.mem_email }</h5>
-			<ul class="nav navbar-nav">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown">요청내역 <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<c:forEach items="${match }" var="m">
-							<li><a onclick="match(${m.match_idx});"
-								id="match${m.match_idx }" data-match_date="${m.match_date }"
-								data-match_time="${m.match_time }"> 
-										<c:if test="${m.match_yn eq 'N' }">❎</c:if> 
-										<c:if test="${m.match_yn eq 'Y' }">✅</c:if> 
-										${m.match_date }
-									${m.match_time }
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<c:if test="${m.match_yn eq 'N' }"><button id="matchbtn" type="button">수락</button></c:if> 
-										<c:if test="${m.match_yn eq 'Y' }"><button id="matchbtn" type="button">수락완료</button></c:if> 
-									
-							</a></li>
-						</c:forEach>
-					</ul></li>
-			</ul>
-			<div id="text">${res.msg_cont }</div>
+			<h2>받은 쪽지</h2>
+			<h5>| ${res.write_date} | ${res.mem_email }</h5>
+			<c:if test="${res.mem_email ne 'teuching.official@gmail.com'}">
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">요청내역 <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<c:forEach items="${match }" var="m">
+								<li><a onclick="match(${m.match_idx});"
+									id="match${m.match_idx }" data-match_date="${m.match_date }"
+									data-match_time="${m.match_time }"> <c:if
+											test="${m.match_yn eq 'N' }">❎</c:if> <c:if
+											test="${m.match_yn eq 'Y' }">✅</c:if> ${m.match_date }
+										${m.match_time } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <c:if
+											test="${m.match_yn eq 'N' }">
+											<button id="matchbtn" type="button">수락</button>
+										</c:if> <c:if test="${m.match_yn eq 'Y' }">
+											<button id="matchbtn" type="button">수락완료</button>
+										</c:if>
+
+								</a></li>
+							</c:forEach>
+						</ul></li>
+				</ul>
+			</c:if>
+			<c:if test="${res.mem_email ne 'teuching.official@gmail.com'}">
+				<div id="text">${res.msg_cont }</div>
+			</c:if>
+			<c:if test="${res.mem_email eq 'teuching.official@gmail.com'}">
+				<br>
+				<div id="text" style="height: 250px;">${res.msg_cont }</div>
+			</c:if>
+			<c:if test="${res.mem_email ne 'teuching.official@gmail.com'}">
 			<textarea name="msg_cont" id="textarea" placeholder="내용을 입력해주세요"></textarea>
 			<button id="btn" style="transform: translateX(-52%)">작성완료</button>
+			</c:if>
 			<input type="hidden" name="mem_email" value="${res.mem_email }">
 			<input type="hidden" name="nick_name" value="${res.nick_name }">
 		</div>
