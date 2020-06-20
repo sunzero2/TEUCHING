@@ -34,7 +34,7 @@ input::placeholder {
 	color: black !important;
 }
 
-form-height {
+.form-height {
 	height: 110px;
 }
 
@@ -45,11 +45,8 @@ form-height {
 	color: black !important;
 }
 
-form-height {
-	height: 110px;
-}
-.navbar-collapse {
-	padding-left: 185px !important;
+#ftco-nav{
+	padding-left: 15% !important;
 }
 
 </style>

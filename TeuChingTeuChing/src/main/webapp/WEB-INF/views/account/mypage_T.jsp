@@ -60,7 +60,9 @@
 	font-size: small;
 }
 
-
+#ftco-nav{
+	padding-left: 15% !important;
+}
 
 
 </style>
@@ -246,7 +248,7 @@
 									<label><h4>Trainer Information</h4></label>
 									<textarea class="form-control form-control-alternative"
 										cols="80" rows="10" id="career"
-										placeholder="트레이너님을 나타낼 수 있는 정보와 커리어를 자유롭게 작성해 주세요."
+										placeholder="${loginInfo.career}"
 										name="career"></textarea>
 									<br /> <span style="color: #aaa;" id="counter">(0 / 최대
 										500자)</span>
@@ -486,22 +488,6 @@ $(document).ready(function() {
         readURL(this);
     });
 });
-
-$(document).ready(function() {
-	
-	var i = 0;
-	
-    $.ajax({
-        url: '/teuching/member/t_count.do',
-        type: 'post',
-        async: false, 
-        data:{"email":$('#email').val()},
-        success: function(data) {
-        	document.getElementById('t_count').value = i;
-          }
-     })
-});
-
 
 
 // 회원정보 업데이트

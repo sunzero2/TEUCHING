@@ -54,6 +54,7 @@ $(document).ready(function() {
 
 // 회원정보 업데이트
 $(document).ready(function(e){
+	
    $('#updateT').click(function(){
       if($.trim($('#password_1').val()) == ''){
     	alert("비밀번호를 입력해주세요.");
