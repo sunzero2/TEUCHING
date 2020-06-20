@@ -134,5 +134,15 @@ public class MessageServiceImpl implements MessageService {
 		return md.insertManagerMessageToMem(commandMap);
 	}
 
+	@Override
+	public String selectNickName(String mem_email) {
+		return md.selectNickName(mem_email);
+	}
+
+
+	@Override
+	public int selectReviewIdx(Map<String, Object> commandMap) {
+		return md.selectReviewIdx(commandMap);
+	}
 
 }

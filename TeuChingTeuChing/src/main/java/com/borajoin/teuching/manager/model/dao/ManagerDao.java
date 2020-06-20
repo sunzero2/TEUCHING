@@ -148,5 +148,7 @@ public class ManagerDao {
 	public String selectTremailForReviewDelete(String nick_name) {
 		return  sqlSession.selectOne("Manager.selectTremailForReviewDelete", nick_name);
 	}
+	
+
 
 }

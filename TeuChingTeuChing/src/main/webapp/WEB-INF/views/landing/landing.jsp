@@ -115,7 +115,7 @@
 									</div>
 									<div class="d-flex align-items-center">
 										<div class="user-img"
-											style="background-image: url(../resources/img/person_1.jpg)">
+											style="background-image: url(../resources/upload/profileImg/${trainer.photo})">
 										</div>
 										<div class="ml-4">
 											<p class="name"
