@@ -286,6 +286,24 @@ public class MemberController {
 		commandMap.put("prefer2", preMap2);
 		commandMap.put("prefer3", preMap3);
 		
+		
+		String keyword = (String)commandMap.get("keyword1");
+		
+		if((String)commandMap.get("keyword2") != null) {
+			keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2");
+		}else if((String)commandMap.get("keyword3") != null) {
+			keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2")
+			+","+(String)commandMap.get("keyword3");
+		}else if((String)commandMap.get("keyword4") != null) {
+			keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2")
+			+","+(String)commandMap.get("keyword3")+","+(String)commandMap.get("keyword4");
+		}else if((String)commandMap.get("keyword5") != null) {
+			keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2")
+			+","+(String)commandMap.get("keyword3")+","+(String)commandMap.get("keyword4")+","+(String)commandMap.get("keyword5");
+		}
+		
+		commandMap.put("keyword", keyword);
+		
 		String mailfor ="t_join";
 		String path = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 

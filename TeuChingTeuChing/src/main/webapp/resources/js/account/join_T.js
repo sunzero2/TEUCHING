@@ -1,6 +1,7 @@
 var idx_email = false;
 var check_email = false;
 var check_cell = false;
+var check_pw = false;
 
 		$('#signUp').click(function(){
 			if($.trim($('#email').val()) == ''){
@@ -31,6 +32,10 @@ var check_cell = false;
 			else if($.trim($('#sample6_address').val()) == ''){
 				alert("주소를 입력해주세요.");
 				setTimeout(function(){ $('#sample6_address').focus(); }, 10)
+				return;
+			}else if($.trim($('#keyword1').val()) == ''){
+				alert("최소 한 가지 이상의 트레이닝 가능 종목을 작성해 주세요.");
+				setTimeout(function(){ $('#keyword1').focus(); }, 10)
 				return;
 			}
 			
@@ -77,7 +82,6 @@ var check_cell = false;
 		    var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 		    return (email != '' && email != 'undefined' && regex.test(email)); 
 		}
-		
 	    // name 속성이 'email'인 input 이 focus를 잃었을때 처리한다.
 	    $("input[name='email']").blur(function(){
 
@@ -114,6 +118,26 @@ var check_cell = false;
 	        	check_cell = true;
 	        }
 	    });
+	    
+	    // 비밀번호 정규식
+	    function pw_check(password) {    
+	    var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+	    return (password != '' && password != 'undefined' && regex.test(password)); 
+		}
+	    $("input[name='password']").blur(function(){
+
+	        var password = $(this).val();
+	        if( password == '' || password == 'undefined') return;
+
+	        if(! pw_check(password) ) {
+	        	alert("잘못된 비밀번호 번호입니다. 숫자와 문자를 포함한 8자리 이상의 비밀번호를 입력하세요.");
+		        setTimeout(function(){ $('#password_1').focus(); }, 10)
+		        return false;
+	        }else{
+	        	check_pw = true;
+	        }
+	    });
+	    
 	    
 
 // 비밀번호 체크
