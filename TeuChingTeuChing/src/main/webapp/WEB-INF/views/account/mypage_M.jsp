@@ -29,7 +29,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	
-<style>
+<style type="text/css">
 input::placeholder {
 	color: black !important;
 }
@@ -41,13 +41,14 @@ input::placeholder {
 .col-sm-9 {
 	width: 100%;
 	margin-left: 10%;
-	input: :placeholder{   
+	input: :placeholder;
 	color: black !important;
 }
 
 #ftco-nav{
 	padding-left: 15% !important;
 }
+
 
 </style>
 </head>
@@ -59,6 +60,7 @@ input::placeholder {
 			style="margin-top: 1% !important; margin-bottom: 2% !important;">
 			<div class="row">
 				<div class="col-xl-8 m-auto order-xl-1">
+				<!--  -->
 					<div class="col-sm-9">
 						<ul class="nav nav-tabs">
 							<li class="active"><a data-toggle="tab" href="#home">회원정보
@@ -139,6 +141,7 @@ input::placeholder {
 											onClick="window.location.reload()" style="cursor: pointer;">
 											<i class="glyphicon glyphicon-repeat"></i> Reset
 										</button>
+										<a type="button" href="<%=request.getContextPath()%>/member/goodbye.do" class="btn btn-primary"> 회원 탈퇴 </a>
 									</div>
 								</form>
 							</div>
@@ -158,7 +161,6 @@ input::placeholder {
 								</form>
 							</div>
 							<!-- /Post Table -->
-
 							<div class="tab-pane active" id="match">
 								<h2></h2>
 								<hr>
@@ -216,7 +218,7 @@ input::placeholder {
 									</section>
 								</div>
 							</div>
-
+							
 							<div class="tab-pane active" id="report">
 								<h2></h2>
 								<div class="col-xs-12">
@@ -250,15 +252,13 @@ input::placeholder {
 									</section>
 								</div>
 							</div>
-
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</body>
-
+	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- 카카오 주소 -->

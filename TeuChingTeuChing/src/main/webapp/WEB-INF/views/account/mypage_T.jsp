@@ -266,6 +266,7 @@
 										onClick="window.location.reload()" style="cursor: pointer;">
 										<i class="glyphicon glyphicon-repeat"></i> Reset
 									</button>
+									<a type="button" href="<%=request.getContextPath()%>/member/goodbye.do" class="btn btn-primary"> 회원 탈퇴 </a>
 								</div>
 							</div>
 						</form>
@@ -529,15 +530,15 @@ $(document).ready(function(e){
 				
 			}
 			if($.trim($('#sido1').val()) == '시/도 선택'){
-				document.getElementById('sido1').value = "${loginInfo.prefer_add1}";
+				document.getElementById('sido1').value = null;
 				
 			}
 			if($.trim($('#sido2').val()) == '시/도 선택'){
-				document.getElementById('sido2').value = "${loginInfo.prefer_add2}";
+				document.getElementById('sido2').value = null;
 				
 			}
 			if($.trim($('#sido3').val()) == '시/도 선택'){
-				document.getElementById('sido3').value = "${loginInfo.prefer_add3}";
+				document.getElementById('sido3').value = null;
 				
 			}
     	  

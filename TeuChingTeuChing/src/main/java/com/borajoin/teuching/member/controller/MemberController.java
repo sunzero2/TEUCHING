@@ -86,33 +86,48 @@ public class MemberController {
 			Member res = ms.m_login(commandMap);
 
 			if (res == null) {
-				mav.addObject("msg", "아이디 혹은 비밀번호를 확인해주세요.");
+				mav.addObject("msg", "이메일 혹은 비밀번호를 확인해주세요.");
 				mav.addObject("url", "account/loginform");
 				mav.setViewName("account/redirect");
 
 			} else {
-				if (res.getManager_yn().equals("Y")) {
-					session.setAttribute("loginInfo", res);
-					session.setAttribute("memberType", "manager");
-					mav.setViewName("redirect:/index/index.do");
-				}else {
-					session.setAttribute("loginInfo", res);
-					session.setAttribute("memberType", "member");
-					mav.setViewName("redirect:/index/index.do");
+
+				if (res.getLeave_yn().equals("Y")) {
+					mav.addObject("msg", "회원 탈퇴가 완료된 계정입니다.");
+					mav.addObject("url", "account/loginform");
+					mav.setViewName("account/redirect");
+				} else {
+					
+					if (res.getManager_yn().equals("Y")) {
+						session.setAttribute("loginInfo", res);
+						session.setAttribute("memberType", "manager");
+						mav.setViewName("redirect:/index/index.do");
+					} else {
+						session.setAttribute("loginInfo", res);
+						session.setAttribute("memberType", "member");
+						mav.setViewName("redirect:/index/index.do");
+					}
+
 				}
 			}	
-			
 		} else {
 			Trainer res = ms.t_login(commandMap);
 
 			if (res == null) {
-				mav.addObject("msg", "아이디 혹은 비밀번호를 확인해주세요.");
+				mav.addObject("msg", "이메일 혹은 비밀번호를 확인해주세요.");
 				mav.addObject("url", "account/loginform");
 				mav.setViewName("account/redirect");
 			} else {
-				session.setAttribute("loginInfo", res);
-				session.setAttribute("memberType", "trainer");
-				mav.setViewName("redirect:/index/index.do");
+				
+				if (res.getLeave_yn().equals("Y")) {
+					mav.addObject("msg", "회원 탈퇴가 완료된 계정입니다.");
+					mav.addObject("url", "account/loginform");
+					mav.setViewName("account/redirect");
+				} else {
+					session.setAttribute("loginInfo", res);
+					session.setAttribute("memberType", "trainer");
+					mav.setViewName("redirect:/index/index.do");
+				}
 			}
 		}
 		return mav;
