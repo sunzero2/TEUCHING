@@ -34,7 +34,7 @@
 		update tr_trainer set 
 		cell = #{cell}, GENDER = #{gender}, WEIGHT = #{weight},	HEIGHT = #{height},	password = #{password},
 		address = #{address}, ADDRESS_DETAIL = #{address_detail}, PREFER_ADD1 = #{prefer1},
-		 PREFER_ADD2 = #{prefer2}, PREFER_ADD3 = #{prefer3}, CAREER = #{career}
+		 PREFER_ADD2 = #{prefer2}, PREFER_ADD3 = #{prefer3}, CAREER = #{career}, PURPOSE_KEYWORD = #{keyword}
 		where tr_email = #{email}
 	</update>
 	

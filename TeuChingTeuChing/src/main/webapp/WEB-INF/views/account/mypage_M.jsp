@@ -65,11 +65,14 @@ input::placeholder {
 						<ul class="nav nav-tabs">
 							<li class="active"><a data-toggle="tab" href="#home">회원정보
 									수정하기</a></li>
+							<li><a data-toggle="tab" href="#pwUpdate">비밀번호 변경하기 </a></li>
 							<li><a data-toggle="tab" href="#match">매칭내역</a></li>
 							<li><a data-toggle="tab" href="#report">신고내역</a></li>
 						</ul>
+
 						<div class="tab-content">
 							<div class="tab-pane active" id="home">
+							<h2></h2>
 								<form class="form"
 									action="<%=request.getContextPath()%>/member/mypageUpdate_M.do"
 									method="post" id="memberMypage">
@@ -103,19 +106,6 @@ input::placeholder {
 											<option>여성</option>
 										</select>
 									</div>
-									<div class="col-xs-6 form-height">
-										<label for="password"><h4>Password</h4></label><br> <input
-											type="password" class="form-control" id="password_1"
-											name="password" class="pw" maxlength="20">
-									</div>
-									<div class="col-xs-6 form-height">
-										<label for="password2"><h4>Password Check</h4></label> <input
-											type="password" id="password_2" class="form-control">
-										<span id="alert-success" style="display: none;">비밀번호가
-											일치합니다.</span> <span id="alert-danger"
-											style="display: none; color: #d92742; font-weight: bold;">
-											비밀번호가 일치하지 않습니다.</span>
-									</div>
 									<div class="col-md-12">
 										<div class="form-group focused">
 											<label><h4>GYM Address</h4></label><br> <input
@@ -145,11 +135,37 @@ input::placeholder {
 									</div>
 								</form>
 							</div>
+							
+							
+							<!--  -->
+							<div class="tab-pane active" id="pwUpdate">
+							<h2></h2>
+								<form class="form" action="#" method="post" id="pwUpdateform">
+									<div class="col-xs-6 form-height">
+										<label for="password"><h4>Password</h4></label><br> <input
+											type="password" class="form-control" id="password_1"
+											name="password" class="pw" maxlength="20">
+									</div>
+									<div class="col-xs-6 form-height">
+										<label for="password2"><h4>Password Check</h4></label> <input
+											type="password" id="password_2" class="form-control">
+										<span id="alert-success" style="display: none;">비밀번호가
+											일치합니다.</span> <span id="alert-danger"
+											style="display: none; color: #d92742; font-weight: bold;">
+											비밀번호가 일치하지 않습니다.</span>
+									</div>
+									<div style="text-align: left; margin-left: 3%;">
+										<a type="button" id="pwSubmit" href="#"
+											class="btn btn-primary"> 비밀번호 변경하기 </a>
+									</div>
+								</form>
+							</div>
+
+
 							<!--/tab-pane-->
 							<!-- Post Table -->
 							<div class="tab-pane" id="messages">
 								<h2></h2>
-								<hr>
 								<form class="form" action="##" method="post"
 									id="registrationForm">
 									<div class="col-xs-12">
@@ -267,18 +283,6 @@ input::placeholder {
 
 <script>
 $('#memberUpdate').click(function() {
-	
-	if ($.trim($('#password_1').val()) == '') {
-		alert("비밀번호를 입력해주세요.");
-		setTimeout(function(){ $('#password_1').focus(); }, 10)
-		return;
-	}
-	//패스워드 확인
-	else if ($('#password_1').val() != $('#password_2').val()) {
-		alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
-		setTimeout(function(){ $('#password_2').focus(); }, 10)
-		return;
-	} else {
 		
 		if($.trim($('#gender').val()) == ''){
 			document.getElementById('gender').value = "${loginInfo.gender}";
@@ -291,7 +295,20 @@ $('#memberUpdate').click(function() {
 		}
 		alert("회원정보 수정이 완료되었습니다!");
 		$('#memberMypage').submit();
-	}
+});
+
+$('#pwSubmit').click(function() {
+if ($.trim($('#password_1').val()) == '') {
+	alert("비밀번호를 입력해주세요.");
+	setTimeout(function(){ $('#password_1').focus(); }, 10)
+	return;
+}
+//패스워드 확인
+else if ($('#password_1').val() != $('#password_2').val()) {
+	alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
+	setTimeout(function(){ $('#password_2').focus(); }, 10)
+	return;
+}
 });
 
 $('.pw').focusout(function () {

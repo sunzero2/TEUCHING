@@ -102,7 +102,9 @@
 					<li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span>
 						${postCount}</li>
 				</ul>
-
+				<div style="text-align: center;">
+				<a type="button" id="btnModal" href="#" class="btn btn-primary"> 비밀번호 변경하기 </a>
+				</div>
 			</div>
 			<!--/col-3-->
 			<div class="col-sm-9">
@@ -179,7 +181,7 @@
 								</div>
 							</div>
 
-							<div class="form-group">
+<!-- 							<div class="form-group">
 
 								<div class="col-xs-6">
 									<label for="password"><h4>Password</h4></label><br> <input
@@ -199,7 +201,7 @@
 										비밀번호가 일치하지 않습니다.</span>
 								</div>
 							</div>
-							<br>
+							<br> -->
 
 							<div class="form-group">
 								<div class="col-md-12">
@@ -243,18 +245,53 @@
 							</div>
 							<br>
 							<div class="form-group">
-
 								<div class="col-xs-12">
 									<label><h4>Trainer Information</h4></label>
 									<textarea class="form-control form-control-alternative"
 										cols="80" rows="10" id="career"
 										placeholder="${loginInfo.career}"
 										name="career"></textarea>
-									<br /> <span style="color: #aaa;" id="counter">(0 / 최대
+									<br> <span style="color: #aaa;" id="counter">(0 / 최대
 										500자)</span>
 								</div>
 							</div>
-
+							<div class="form-group">
+								<div class="col-xs-12">
+								<label class="form-control-label">트레이닝 가능 종목 변경하기</label><br>
+									<div class="row">
+										<div class="col-lg-2">
+											<div class="form-group focused">
+												 <input type="text" id="keyword1" name="keyword1"
+													class="form-control form-control-alternative">
+											</div>
+										</div>
+										<div class="col-lg-2">
+											<div class="form-group focused">
+												<input type="text" id="keyword2" name="keyword2"
+													class="form-control form-control-alternative">
+											</div>
+										</div>
+										<div class="col-lg-2">
+											<div class="form-group focused">
+												<input type="text" id="keyword3" name="keyword3"
+													class="form-control form-control-alternative">
+											</div>
+										</div>
+										<div class="col-lg-2">
+											<div class="form-group focused">
+												<input type="text" id="keyword4" name="keyword4"
+													class="form-control form-control-alternative">
+											</div>
+										</div>
+										<div class="col-lg-2">
+											<div class="form-group focused">
+												<input type="text" id="keyword5" name="keyword5"
+													class="form-control form-control-alternative">
+											</div>
+										</div>
+									</div>
+								</div>
+								</div>
 							<div class="form-group">
 								<div class="col-xs-12">
 									<br>
@@ -436,6 +473,53 @@
 		<!--/col-9-->
 	</div>
 	<!--/row-->
+	
+	
+	<!-- 비밀번호 변경 모달창 -->
+	<!-- 로그인모달  -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <a type="button" class="btn btn-default" data-dismiss="modal">닫기</a>
+        <a type="button" href="<%=request.getContextPath()%>/member/find_pw_form.do" class="btn btn-primary"> 비밀번호 찾기 </a>
+      </div>
+    </div>
+  </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 <script type="text/javascript">
 
 
@@ -494,6 +578,21 @@ $(document).ready(function() {
 // 회원정보 업데이트
 $(document).ready(function(e){
 	
+	// 트레이닝 가능 종목 자르기
+	   var beforeStr = "${loginInfo.purpose_keyword}";
+	   var afterStr = beforeStr.split(',');
+	   inputEle1 = document.querySelector('#keyword1');
+	   inputEle1.placeholder = afterStr[0];
+	   inputEle2 = document.querySelector('#keyword2');
+	   inputEle2.placeholder = afterStr[1];
+	   inputEle3 = document.querySelector('#keyword3');
+	   inputEle3.placeholder = afterStr[2];
+	   inputEle4 = document.querySelector('#keyword4');
+	   inputEle4.placeholder = afterStr[3];
+	   inputEle5 = document.querySelector('#keyword5');
+	   inputEle5.placeholder = afterStr[4];
+	   
+	
    $('#updateT').click(function(){
       if($.trim($('#password_1').val()) == ''){
     	alert("비밀번호를 입력해주세요.");
@@ -527,7 +626,6 @@ $(document).ready(function(e){
 			}
 			if($.trim($('#career').val()) == ''){
 				document.getElementById('career').value = "${loginInfo.career}";
-				
 			}
 			if($.trim($('#sido1').val()) == '시/도 선택'){
 				document.getElementById('sido1').value = null;
@@ -541,12 +639,33 @@ $(document).ready(function(e){
 				document.getElementById('sido3').value = null;
 				
 			}
+			if($.trim($('#keyword1').val()) == 'undefined'){
+				document.getElementById('keyword1').value = afterStr[0];
+				
+			}
+			if($.trim($('#keyword2').val()) == 'undefined'){
+				document.getElementById('keyword2').value = afterStr[1];
+				
+			}
+			if($.trim($('#keyword3').val()) == 'undefined'){
+				document.getElementById('keyword3').value = afterStr[2];
+				
+			}
+			if($.trim($('#keyword4').val()) == 'undefined'){
+				document.getElementById('keyword4').value = afterStr[3];
+				
+			}
+			if($.trim($('#keyword5').val()) == 'undefined'){
+				document.getElementById('keyword5').value = afterStr[4];
+				
+			}
     	  
     	  
          alert("회원정보 수정이 완료되었습니다.");
          $('#trainerMypage').submit();
       } 
    });
+   
 });
 
 //비밀번호 체크
@@ -826,6 +945,14 @@ function sample6_execDaumPostcode() {
       $('tr[id^="moreview"]').show();
       $('#morea').hide();
    }
+   
+   $(function(){
+		
+		$('#btnModal').click(function() {
+			$('#loginModal').modal();
+		});
+	});
+
 </script>
 
 </body>

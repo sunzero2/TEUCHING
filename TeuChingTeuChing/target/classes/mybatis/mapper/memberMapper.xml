@@ -87,7 +87,7 @@
 	</resultMap>
 	<!-- 게시글 수 -->
 	<select id="t_count" resultType="int">
-		select count(*) from tr_post where TR_EMAIL like '%' || #{tr_email} || '%' 
+		select count(*) from tr_post where TR_EMAIL = #{tr_email}
 	</select>
  	
  	<select id="selectTopTrainer" resultMap="trainerResult">
