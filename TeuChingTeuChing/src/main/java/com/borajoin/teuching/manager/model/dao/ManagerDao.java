@@ -149,6 +149,8 @@ public class ManagerDao {
 		return  sqlSession.selectOne("Manager.selectTremailForReviewDelete", nick_name);
 	}
 	
-
+	public int checkForReviewDelete(Map<String, Object> commandMap) {
+		return sqlSession.selectOne("Manager.checkForReviewDelete", commandMap);
+	}
 
 }

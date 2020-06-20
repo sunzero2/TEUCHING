@@ -96,30 +96,30 @@
 								<c:if test="${res.resRev.pagingRev.blockStart le 1 }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager/report.do?revcurrentpage=${res.resRev.pagingRev.blockStart}">&lt;</a></li>
+								/manager/reviewreport.do?revcurrentpage=${res.resRev.pagingRev.blockStart}">&lt;</a></li>
 								</c:if>
 								<c:if test="${res.resRev.pagingRev.blockStart gt 1 }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager/report.do?revcurrentpage=${res.resRev.pagingRev.blockStart-1}">&lt;</a></li>
+								/manager/reviewreport.do?revcurrentpage=${res.resRev.pagingRev.blockStart-1}">&lt;</a></li>
 								</c:if>
 								<c:forEach begin="${res.resRev.pagingRev.blockStart }"
 									end="${res.resRev.pagingRev.blockEnd }" var="pr">
 									<li class="active"><span> <a
-											href="${pageContext.request.contextPath }/manager/report.do?revcurrentpage=${pr}">${pr }</a>
+											href="${pageContext.request.contextPath }/manager/reviewreport.do?revcurrentpage=${pr}">${pr }</a>
 									</span></li>
 								</c:forEach>
 								<c:if
 									test="${res.resRev.pagingRev.blockEnd lt res.resRev.pagingRev.lastPage }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager/report.do?revcurrentpage=${res.resRev.pagingRev.blockEnd+1}">&gt;</a></li>
+								/manager/reviewreport.do?revcurrentpage=${res.resRev.pagingRev.blockEnd+1}">&gt;</a></li>
 								</c:if>
 								<c:if
 									test="${res.resRev.pagingRev.blockEnd ge res.resRev.pagingRev.lastPage }">
 									<li><a
 										href="${pageContext.request.contextPath }
-								/manager/report.do?revcurrentpage=${res.resRev.pagingRev.blockEnd}">&gt;</a></li>
+								/manager/reviewreport.do?revcurrentpage=${res.resRev.pagingRev.blockEnd}">&gt;</a></li>
 								</c:if>
 							</ul>
 						</div>

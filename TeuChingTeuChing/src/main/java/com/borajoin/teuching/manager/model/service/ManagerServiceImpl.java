@@ -212,5 +212,11 @@ public class ManagerServiceImpl implements ManagerService {
 		return md.selectTremailForReviewDelete(nick_name);
 	}
 
+	@Override
+	public int checkForReviewDelete(Map<String, Object> commandMap) {
+		return md.checkForReviewDelete(commandMap);
+	}
+
+
 
 }

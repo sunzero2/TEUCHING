@@ -63,6 +63,10 @@
 		update tr_review set recommend = recommend + 1 where review_idx = #{no}
 	</update>
 	
+	<update id="trlikeupdate">
+		update tr_trainer set tr_like = tr_like + 1 where review_idx = #{no}
+	</update>
+	
 	<select id="getLike" resultType="int">
 		select recommend from tr_review where review_idx = #{no}
 	</select>
@@ -100,6 +104,10 @@
 			TR_EMAIL = #{trainerEmail}
 			AND
 			AUTH_YN = 'Y'
+	</select>
+	
+	<select id="trainername" resultType="String">
+		select trainer_name from tr_trainer where tr_email = #{tr_email}
 	</select>
 
 </mapper>

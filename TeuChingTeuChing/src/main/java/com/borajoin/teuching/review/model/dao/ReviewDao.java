@@ -99,4 +99,9 @@ public class ReviewDao {
 	public List<String> trainerEmali(String trainerEmail){
 		return sqlSession.selectList("Review.trainerquali", trainerEmail);
 	}
+	
+	// 트레이너 네임 가져오기 위한 메소드
+	public String trainerName(String tr_email) {
+		return sqlSession.selectOne("Review.trainername", tr_email);
+	}
 }

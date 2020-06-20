@@ -69,5 +69,5 @@ public interface ManagerService {
 	
 	public String selectTremailForReviewDelete(String nick_name);
 	
-
+	public int checkForReviewDelete(Map<String, Object> commandMap);
 }

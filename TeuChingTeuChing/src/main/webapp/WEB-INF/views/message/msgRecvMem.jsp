@@ -75,8 +75,9 @@ h1 {
 <body>
 <form action="${pageContext.request.contextPath }/message/msgansmem.do">
 	<div class="wrapper">
-		<h2>상담요청</h2>
+		<h2>받은 쪽지</h2>
 		<h5> | ${res.write_date} | ${res.tr_email }</h5>
+		<c:if test="${res.tr_email ne 'teuching.official@gmail.com'}">
 		<ul class="nav navbar-nav">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">요청내역 <span class="caret"></span></a>
@@ -94,9 +95,18 @@ h1 {
 						</c:forEach>
 					</ul></li>
 			</ul>
+			</c:if>
+		<c:if test="${res.tr_email ne 'teuching.official@gmail.com'}">
 		<div id="text">${res.msg_cont }</div>
+		</c:if>
+		<c:if test="${res.tr_email eq 'teuching.official@gmail.com'}">
+		<br>
+		<div id="text" style="height:250px;">${res.msg_cont }</div>
+		</c:if>
+		<c:if test="${res.tr_email ne 'teuching.official@gmail.com'}">
 		<textarea name="msg_cont" id="textarea" placeholder="내용을 입력해주세요"></textarea>
 		<button	id="btn" style="transform: translateX(-52%)">답장하기</button>
+		</c:if>
 	</div>
 	<input type="hidden" name="tr_email" value="${res.tr_email }">
 	<input type="hidden" name="trainer_name" value="${res.trainer_name }">

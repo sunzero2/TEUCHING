@@ -9,6 +9,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.type.NStringTypeHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.borajoin.teuching.manager.model.service.ManagerService;
 import com.borajoin.teuching.manager.model.vo.Quali;
+import com.borajoin.teuching.manager.model.vo.ReviewReport;
 import com.borajoin.teuching.member.model.vo.Member;
 import com.borajoin.teuching.member.model.vo.Trainer;
 import com.borajoin.teuching.message.model.service.MessageService;
@@ -147,29 +149,33 @@ public class ManagerController {
 	@PostMapping("/report/insertreport.do")
 	public ModelAndView reportFileUpload(@RequestParam Map<String, Object> commandMap, List<MultipartFile> files,
 			HttpServletRequest request, HttpSession session) {
+
 		ModelAndView mv = new ModelAndView();
-		String root = request.getSession().getServletContext().getRealPath("");
 		List<File_Upload> fileData = new ArrayList<File_Upload>();
+		String root = request.getSession().getServletContext().getRealPath("");
 		int[] res = ms.insertReport(commandMap);
+
+		String mappingPage = "";
+		if (session.getAttribute("memberType").equals("member")) {
+			mappingPage = "review";
+		} else if (session.getAttribute("memberType").equals("trainer")) {
+			mappingPage = "reviewforTR";
+		}
+
 		for (MultipartFile mf : files) {
 			UUID uuid = UUID.randomUUID();
 			if (mf.getSize() > 0) {
 				String savepath = root + "/resources/upload/";
 				String type = "";
 				String origin_filename = mf.getOriginalFilename();
-
 				File_Upload file = new File_Upload();
 				if (session.getAttribute("memberType").equals("member")) {
 					file.setTable_idx(res[0]);
 					type = "TraReport";
-					mv.addObject("url",
-							request.getContextPath() + "/profile/review.do?trainerEmail=" + commandMap.get("tr_email"));
 				}
 				if (session.getAttribute("memberType").equals("trainer")) {
 					file.setTable_idx(res[0]);
 					type = "RevReport";
-					mv.addObject("url", request.getContextPath() + "/profile/reviewforTR.do?trainerEmail="
-							+ commandMap.get("tr_email"));
 				}
 				String rename_filename = uuid + "_" + type
 						+ origin_filename.substring(origin_filename.lastIndexOf("."));
@@ -183,6 +189,8 @@ public class ManagerController {
 			}
 		}
 		ms.insertFile(fileData);
+		mv.addObject("url", request.getContextPath() + "/profile/" + mappingPage + ".do?trainerEmail="
+				+ commandMap.get("tr_email"));
 		mv.addObject("msg", "신고 완료 되었습니다");
 		mv.setViewName("common/result");
 		return mv;
@@ -342,17 +350,23 @@ public class ManagerController {
 	public ModelAndView deleteReview(@RequestParam Map<String, Object> commandMap, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		String mem_email = (String) commandMap.get("mem_email");
-		// 닉네임
+		// 닉네임 - 가져옴
 		commandMap.put("nick_name", msgs.selectNickName(mem_email));
-		System.out.println(msgs.selectNickName(mem_email));
+
+		int check = ms.checkForReviewDelete(commandMap);
+		System.out.println(check);
 		// 예외처리해야함
-		int review_idx = msgs.selectReviewIdx(commandMap);
-		msgs.deleteReview(review_idx);
-		msgs.insertManagerMessageToMem(commandMap);
+		if (check > 0) {
+			int review_idx = msgs.selectReviewIdx(commandMap);
+			msgs.deleteReview(review_idx);
+			msgs.insertManagerMessageToMem(commandMap);
 
-		mv.addObject("msg", "경고 메시지가 전송되었습니다");
-		mv.addObject("url", request.getContextPath() + "/manager/reportdetail.do?revid=" + commandMap.get("revid"));
-
+			mv.addObject("msg", "해당 리뷰 삭제 처리되었습니다");
+		} else {
+			mv.addObject("msg", "이미 처리 완료된 신고 입니다");
+		}
+//		mv.addObject("url", request.getContextPath() + "/manager/reveiwreport.do");
+		mv.addObject("back", "back");
 		mv.setViewName("common/result");
 
 		return mv;

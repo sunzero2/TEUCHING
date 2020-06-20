@@ -49,6 +49,57 @@ input::placeholder {
 	padding-left: 15% !important;
 }
 
+#star {
+	cursor: pointer;
+}
+
+#star a.on {
+	color: red;
+}
+
+.reviewform {
+display: block;
+    width: 40%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.reviewctform {
+display: block;
+    width: 40%;
+    height: 120px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.clickreview{
+	cursor: pointer;
+}
+
+
+
 
 </style>
 </head>
@@ -206,10 +257,12 @@ input::placeholder {
 															<td>${m.tr_email }</td>
 															<td>${m.match_time }</td>
 															<td>${m.match_date }</td>
+															
 															<c:if test="${m.match_yn eq 'Y' }">
-																<td><a href="">리뷰쓰기</a></td>
+																<td><button class="clickreview" value="${m.tr_email }">리뷰쓰기</button></td>
 															</c:if>
 														</tr>
+											
 													</c:if>
 													<c:if test="${cnt.index >= 10 }">
 														<tr id="moreview${cnt.index }" style="display: none">
@@ -222,8 +275,9 @@ input::placeholder {
 															<td>${m.tr_email }</td>
 															<td>${m.match_time }</td>
 															<td>${m.match_date }</td>
+															
 															<c:if test="${m.match_yn eq 'Y' }">
-																<td><a>리뷰쓰기</a></td>
+																<td><button class="clickreview" value="${m.tr_email }">리뷰쓰기</button></td>
 															</c:if>
 														</tr>
 													</c:if>
@@ -275,6 +329,70 @@ input::placeholder {
 		</div>
 	</div>
 	
+	
+	<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <!-- 닫기버튼 -->
+      </div>
+      
+      <div class="modal-body">
+        <div class="container">
+             <form method="post" enctype="multipart/form-data"
+                        id="uploadReview">
+                        <input type="hidden" value="${m.tr_email }" name="tr_email" id="tr_email">
+                        <div class="form-group">
+                           <label for="TrainerName">TrainerEmail</label>
+                           <div id="trnn" style="color:gray;"></div>
+                        </div>
+
+                        <div class="form-group">
+                           <label for="memNickname">Nickname</label> <input type="hidden"
+                              class="reviewform" id="memNickname"
+                              name="memNickname" value="${loginInfo.nickname}">
+                           <div style="color:gray;">${loginInfo.nickname}</div>
+                        </div>
+
+                        <div class="form-group">
+                           <label for="reviewPw">Password</label> <input type="text"
+                              class="reviewform" id="reviewPw" name="reviewPw">
+                        </div>
+                        <!-- 별점 -->
+                        <div class="form-group">
+                           <input type="hidden" name="rev_score" id="starvalue" value="">
+                           <label for="revScore">Star rating</label>
+                           <div id="star" name="revScore">
+                              <a value="1">★</a> <a value="2">★</a> <a value="3">★</a> <a
+                                 value="4">★</a> <a value="5">★</a>
+                           </div>
+                        </div>
+
+                        <div class="form-group">
+                           <label for="revCont">Review</label>
+                           <textarea id="revCont" cols="30" rows="10" class="reviewctform"
+                              name="revCont"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                           <input type="submit" value="Post Comment"
+                              class="btn py-3 px-4 btn-primary" onclick="uploadReview()">
+                        </div>
+
+                     </form>
+         
+        </div>
+      </div>
+      
+      
+      
+      <div class="modal-footer">
+        <a type="button" class="btn btn-default" data-dismiss="modal">닫기</a>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- 카카오 주소 -->
@@ -282,6 +400,46 @@ input::placeholder {
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42e0be41ec144283c6bfe7c0ed8dae35&libraries=services"></script>
 
 <script>
+
+/* 리뷰모달 */
+ 
+ $(function(){
+		
+		$('.clickreview').click(function() {
+			var value = $(this).val();
+			console.log(value);
+			$('#tr_email').val(value);
+			$('#trnn').html(value);
+			$('#reviewModal').modal();
+		});
+	});
+
+
+
+ /* 벌점 */
+ $('#star a').click(function() {
+       $(this).parent().children("a").removeClass("on");
+       $(this).addClass("on").prevAll("a").addClass("on");
+       console.log($(this).attr("value"));
+       $('#starvalue').val($(this).attr("value"));
+    });
+
+ /* 리뷰 업로드 */
+ function uploadReview() {
+    
+    $.ajax({
+       type:'POST',
+       url: '<%=request.getContextPath()%>/review/uploadreview.do',
+       data: $("#uploadReview").serialize(),
+       success: function(data) {
+             alert("리뷰가 성공적으로 등록되었습니다.");
+       }
+       
+    })
+ };
+
+
+
 $('#memberUpdate').click(function() {
 		
 		if($.trim($('#gender').val()) == ''){
@@ -402,6 +560,13 @@ function moreview() {
 $('tr[id^="moreview"]').show();
 $('#morea').hide();
 }
+
+
+
+
+
+
+
 </script>
 
 </body>
