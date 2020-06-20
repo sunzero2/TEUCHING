@@ -81,7 +81,7 @@ input::placeholder {
 										</div>
 									</div>
 									<div class="col-xs-6 form-height">
-										<h4>Trainer Name</h4>
+										<h4>Name</h4>
 										<div class="form-control">
 											<span style="color: black;">${loginInfo.nickname}</span>
 										</div>

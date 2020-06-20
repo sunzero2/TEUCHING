@@ -76,31 +76,6 @@ public class ManagerController {
 	}
 
 	/**
-	 * @Method Name : managerDetail
-	 * @작성일 : 2020. 6. 6.
-	 * @작성자 : 김지수
-	 * @Method 설명 : 신고 게시글에 대한 상세페이지
-	 */
-	@RequestMapping("/manager/reportdetail.do")
-	public ModelAndView managerDetail(Integer revid, Integer traid) {
-		ModelAndView mv = new ModelAndView();
-		List<File_Upload> fu = new ArrayList<File_Upload>();
-		if (revid == null) {
-			mv.addObject("type", "tra");
-			mv.addObject("res", ms.traManagerDetail(traid));
-			fu = ms.selectTraFile(traid);
-		}
-		if (traid == null) {
-			mv.addObject("type", "rev");
-			mv.addObject("res", ms.revManagerDetail(revid));
-			fu = ms.selectRevFile(revid);
-		}
-		mv.addObject("file", fu);
-		mv.setViewName("manager/managerDetail");
-		return mv;
-	}
-
-	/**
 	 * @Method Name : managerDetailAnswer
 	 * @작성일 : 2020. 6. 6.
 	 * @작성자 : 김지수
@@ -146,7 +121,7 @@ public class ManagerController {
 		// 멤버일 경우
 		if (session.getAttribute("memberType").equals("member")) {
 			Member m = (Member) session.getAttribute("loginInfo");
-			
+
 			commandMap.put("mem_email", m.getMem_email());
 			commandMap.put("nick_name", m.getNickname());
 			// 트레이너일 경우
@@ -187,12 +162,14 @@ public class ManagerController {
 				if (session.getAttribute("memberType").equals("member")) {
 					file.setTable_idx(res[0]);
 					type = "TraReport";
-					mv.addObject("url", request.getContextPath() + "/profile/review.do?trainerEmail=" + commandMap.get("tr_email"));
+					mv.addObject("url",
+							request.getContextPath() + "/profile/review.do?trainerEmail=" + commandMap.get("tr_email"));
 				}
 				if (session.getAttribute("memberType").equals("trainer")) {
 					file.setTable_idx(res[0]);
 					type = "RevReport";
-					mv.addObject("url", request.getContextPath() + "/profile/reviewforTR.do?trainerEmail=" + commandMap.get("tr_email"));
+					mv.addObject("url", request.getContextPath() + "/profile/reviewforTR.do?trainerEmail="
+							+ commandMap.get("tr_email"));
 				}
 				String rename_filename = uuid + "_" + type
 						+ origin_filename.substring(origin_filename.lastIndexOf("."));
@@ -281,8 +258,6 @@ public class ManagerController {
 	 */
 	@RequestMapping("/quali/insertquali.do")
 	public ModelAndView insertQuali(MultipartFile qualiFile, HttpServletRequest request, String quali_auth) {
-		System.out.println("퀄리" + quali_auth);
-		System.out.println("퀄리파일" + qualiFile);
 		ModelAndView mv = new ModelAndView();
 		Trainer t = (Trainer) request.getSession().getAttribute("loginInfo");
 		UUID uuid = UUID.randomUUID();
@@ -364,15 +339,47 @@ public class ManagerController {
 	 * @Method 설명 : 리뷰신고에 의한 해당리뷰 삭제와 해당 닉네임의 회원에게 경고메시지 전송
 	 */
 	@RequestMapping("/report/deleteReview")
-	public ModelAndView deleteReview(int review_idx) {
+	public ModelAndView deleteReview(@RequestParam Map<String, Object> commandMap, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
-		Map<String, Object> commandMap = new HashMap<String, Object>();
-//		commandMap.put("mem_email", );
-//		commandMap.put("nick_name", );
-
+		String mem_email = (String) commandMap.get("mem_email");
+		// 닉네임
+		commandMap.put("nick_name", msgs.selectNickName(mem_email));
+		System.out.println(msgs.selectNickName(mem_email));
+		// 예외처리해야함
+		int review_idx = msgs.selectReviewIdx(commandMap);
 		msgs.deleteReview(review_idx);
 		msgs.insertManagerMessageToMem(commandMap);
 
+		mv.addObject("msg", "경고 메시지가 전송되었습니다");
+		mv.addObject("url", request.getContextPath() + "/manager/reportdetail.do?revid=" + commandMap.get("revid"));
+
+		mv.setViewName("common/result");
+
+		return mv;
+	}
+
+	/**
+	 * @Method Name : managerDetail
+	 * @작성일 : 2020. 6. 6.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 신고 게시글에 대한 상세페이지
+	 */
+	@RequestMapping("/manager/reportdetail.do")
+	public ModelAndView managerDetail(Integer revid, Integer traid) {
+		ModelAndView mv = new ModelAndView();
+		List<File_Upload> fu = new ArrayList<File_Upload>();
+		if (revid == null) {
+			mv.addObject("type", "tra");
+			mv.addObject("res", ms.traManagerDetail(traid));
+			fu = ms.selectTraFile(traid);
+		}
+		if (traid == null) {
+			mv.addObject("type", "rev");
+			mv.addObject("res", ms.revManagerDetail(revid));
+			fu = ms.selectRevFile(revid);
+		}
+		mv.addObject("file", fu);
+		mv.setViewName("manager/managerDetail");
 		return mv;
 	}
 

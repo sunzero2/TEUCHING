@@ -87,4 +87,12 @@ public class MessageDao {
 	public int deleteReview(int review_idx) {
 		return sqlSession.delete("Message.deleteReview", review_idx);
 	}
+	
+	public String selectNickName(String mem_email) {
+		return sqlSession.selectOne("Message.selectNickName", mem_email);
+	}
+	
+	public int selectReviewIdx(Map<String, Object> commandMap){
+		return sqlSession.selectOne("Message.selectReviewIdx", commandMap);
+	}
 }
