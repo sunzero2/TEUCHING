@@ -38,4 +38,8 @@ public interface MessageService {
 	public int insertManagerMessageToMem(Map<String, Object> commandMap);
 	
 	public int deleteReview(int review_idx);
+	
+	public String selectNickName(String mem_email);
+	
+	public int selectReviewIdx(Map<String, Object> commandMap);
 }

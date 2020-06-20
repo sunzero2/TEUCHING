@@ -27,8 +27,6 @@ public class ReviewServiceImpl implements ReviewService {
 		Map<String, Object> res = new HashMap<>();
 		Paging page = new Paging(rd.contentCnt(trainerEmail), currentPage, cntPerPage);
 		List<Review> rlist = rd.selectReviewList(page, orderby,trainerEmail);
-		System.out.println("서비스임플에서 테스트 해보는 trainerEmail " + trainerEmail);
-		System.out.println("서비스임플에서 rlist입니다 " + rlist);
 		res.put("paging", page);
 		res.put("rlist", rlist);
 		return res;
@@ -54,14 +52,12 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int reviewrecyn(Map<String, Object> data) {
 		int yn = rd.reviewrecyn(data);
-		System.out.println("추천한적이 있는지? " + yn);
 		return yn;
 	}
 
 	@Override
 	public int recDelete(Map<String, Object> data) {
 		int res = rd.recRealDelete(data);
-		System.out.println("realDelete " + res);
 		return rd.recDelete(data);
 		
 	}
@@ -69,7 +65,6 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int recCount(String no) {
 		int res = rd.getLike(no);
-		System.out.println("ServiceImple recCount : " + res);
 		// 좋아요의 수 (업데이트된)
 		return res;
 	}

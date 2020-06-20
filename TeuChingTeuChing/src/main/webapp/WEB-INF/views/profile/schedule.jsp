@@ -29,10 +29,11 @@ td a{
 	transform: translateX(25%);
 }
 
-#title {
+#sctitle {
 	color:#ffb5b5;
 	font-family: 'Nanum Pen Script', cursive;
-	font-size:2vw;
+	font-size:1.3vw;
+	padding-left: -8%;
 	
 	
 }
@@ -99,7 +100,7 @@ td a{
 				<div class="col-md-9 ftco-animate text-center">
 					<h1 class="mb-3 bread">S C H E D U L E</h1>
 					<p class="breadcrumbs">
-						<span class="mr-2"><a href="index.html">Trainer</a></span> <span>Schedule</span>
+						<span class="mr-2">Trainer</span> <span>Schedule</span>
 					</p>
 				</div>
 			</div>
@@ -110,7 +111,7 @@ td a{
 		<div class="container">
 			<div class="row justify-content-center mb-8 pb-6">
 				<div class="text-center">
-					<h2 class="mb-1" id="title">예약은 해당 트레이너와 쪽지 후 최종 매칭이 가능합니다.</h2>
+					<p id="sctitle">예약은 해당 트레이너와 쪽지 후 최종 매칭이 가능합니다.</p>
 					
 					<br>
 				</div>

@@ -68,5 +68,6 @@ public interface ManagerService {
 	public int updateBlackYn(String tr_email);
 	
 	public String selectTremailForReviewDelete(String nick_name);
+	
 
 }

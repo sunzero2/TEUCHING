@@ -212,4 +212,5 @@ public class ManagerServiceImpl implements ManagerService {
 		return md.selectTremailForReviewDelete(nick_name);
 	}
 
+
 }
