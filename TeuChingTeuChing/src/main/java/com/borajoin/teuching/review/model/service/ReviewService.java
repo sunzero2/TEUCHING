@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.borajoin.teuching.member.model.vo.Trainer;
 import com.borajoin.teuching.review.model.vo.Review;
 
 
@@ -21,7 +22,7 @@ public interface ReviewService {
 	public Map<String,Object> selectTrainerInformation(String trainerEmail);
 	public Map<String,Object> selectPostList(String trainerEmail);
 	public List<String> trainerquali(String trainerEmail);
-	
+	public String trainerName(String tr_email);
 	
 	
 	

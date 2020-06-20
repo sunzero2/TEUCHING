@@ -101,5 +101,9 @@
 			AND
 			AUTH_YN = 'Y'
 	</select>
+	
+	<select id="trainername" resultType="String">
+		select trainer_name from tr_trainer where tr_email = #{tr_email}
+	</select>
 
 </mapper>
