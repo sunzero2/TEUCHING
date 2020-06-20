@@ -177,14 +177,48 @@ body {
 								<!-- Description -->
 								<h6 class="heading-small text-muted mb-4">About Me</h6>
 								<div class="pl-lg-4">
-								<div class="row">
+									<div class="row">
 										<div class="col-lg-4">
 											<div class="form-group focused">
 												<label class="form-control-label">프로필 사진 등록</label>
 												<div id="imagePreview">
-												<img id="img">
+													<img id="img">
 												</div>
-												<input type="file" id="photo" accept="image/*" onchange="setThumbnail(event);" name="file" />
+												<input type="file" id="photo" accept="image/*"
+													onchange="setThumbnail(event);" name="file" />
+											</div>
+										</div>
+									</div>
+									<label class="form-control-label"><span>트레이닝 가능 종목 입력하기</span></label>
+									<div class="row">
+										<div class="col-lg-2">
+											<div class="form-group focused">
+												 <input type="text" id="keyword1" name="keyword1"
+													class="form-control form-control-alternative">
+											</div>
+										</div>
+										<div class="col-lg-2">
+											<div class="form-group focused">
+												<input type="text" id="keyword2" name="keyword2"
+													class="form-control form-control-alternative">
+											</div>
+										</div>
+										<div class="col-lg-2">
+											<div class="form-group focused">
+												<input type="text" id="keyword3" name="keyword3"
+													class="form-control form-control-alternative">
+											</div>
+										</div>
+										<div class="col-lg-2">
+											<div class="form-group focused">
+												<input type="text" id="keyword4" name="keyword4"
+													class="form-control form-control-alternative">
+											</div>
+										</div>
+										<div class="col-lg-2">
+											<div class="form-group focused">
+												<input type="text" id="keyword5" name="keyword5"
+													class="form-control form-control-alternative">
 											</div>
 										</div>
 									</div>
