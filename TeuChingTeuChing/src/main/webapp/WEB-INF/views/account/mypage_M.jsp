@@ -28,38 +28,28 @@
 <link rel="stylesheet" href="../resources/css/style.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- 카카오 주소 -->
-<script
-	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42e0be41ec144283c6bfe7c0ed8dae35&libraries=services"></script>
-
-<style>
+	
+<style type="text/css">
 input::placeholder {
 	color: black !important;
 }
 
-form-height {
+.form-height {
 	height: 110px;
 }
 
 .col-sm-9 {
 	width: 100%;
 	margin-left: 10%;
-	input: :placeholder{   
+	input: :placeholder;
 	color: black !important;
 }
 
-form-height {
-	height: 110px;
+#ftco-nav{
+	padding-left: 15% !important;
 }
-.navbar-brand {
-    font-size: 40px !important;
- }
+
+
 </style>
 </head>
 <body>
@@ -70,6 +60,7 @@ form-height {
 			style="margin-top: 1% !important; margin-bottom: 2% !important;">
 			<div class="row">
 				<div class="col-xl-8 m-auto order-xl-1">
+				<!--  -->
 					<div class="col-sm-9">
 						<ul class="nav nav-tabs">
 							<li class="active"><a data-toggle="tab" href="#home">회원정보
@@ -90,7 +81,7 @@ form-height {
 										</div>
 									</div>
 									<div class="col-xs-6 form-height">
-										<h4>Trainer Name</h4>
+										<h4>Name</h4>
 										<div class="form-control">
 											<span style="color: black;">${loginInfo.nickname}</span>
 										</div>
@@ -143,13 +134,14 @@ form-height {
 									<div class="col-xs-12 form-height">
 										<br>
 										<button class="btn btn-lg btn-success" type="button"
-											id="membersignUp">
+											id="memberUpdate">
 											<i class="glyphicon glyphicon-ok-sign"></i> Save
 										</button>
 										<button class="btn btn-lg" type="reset"
 											onClick="window.location.reload()" style="cursor: pointer;">
 											<i class="glyphicon glyphicon-repeat"></i> Reset
 										</button>
+										<a type="button" href="<%=request.getContextPath()%>/member/goodbye.do" class="btn btn-primary"> 회원 탈퇴 </a>
 									</div>
 								</form>
 							</div>
@@ -169,7 +161,6 @@ form-height {
 								</form>
 							</div>
 							<!-- /Post Table -->
-
 							<div class="tab-pane active" id="match">
 								<h2></h2>
 								<hr>
@@ -227,7 +218,7 @@ form-height {
 									</section>
 								</div>
 							</div>
-
+							
 							<div class="tab-pane active" id="report">
 								<h2></h2>
 								<div class="col-xs-12">
@@ -261,207 +252,140 @@ form-height {
 									</section>
 								</div>
 							</div>
-
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</body>
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 카카오 주소 -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42e0be41ec144283c6bfe7c0ed8dae35&libraries=services"></script>
 
-<script type="text/javascript">
-	$(document)
-			.ready(
-					function(e) {
-
-		$('#membersignUp').click(function() {
-			
-			if ($.trim($('#password_1').val()) == '') {
-				alert("비밀번호를 입력해주세요.");
-				setTimeout(function(){ $('#password_1').focus(); }, 10)
-				return;
-			}
-			//패스워드 확인
-			else if ($('#password_1').val() != $('#password_2').val()) {
-				alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
-				setTimeout(function(){ $('#password_2').focus(); }, 10)
-				return;
-			} else {
-				
-				if($.trim($('#gender').val()) == ''){
-					document.getElementById('gender').value = "${loginInfo.gender}";
-				}
-				if($.trim($('#cell').val()) == ''){
-					document.getElementById('cell').value = "${loginInfo.cell}";
-				}
-				if($.trim($('#sample6_address').val()) == ''){
-					document.getElementById('sample6_address').value = "${loginInfo.address}";
-				}
-				
-				alert("회원정보 수정이 완료되었습니다!");
-				$('#memberMypage').submit();
-			}
-						$('#membersignUp')
-								.click(
-										function() {
-
-											if ($.trim($('#password_1').val()) == '') {
-												alert("패스워드를 입력해주세요.");
-												$('#password_1').focus();
-												return;
-											}
-											//패스워드 확인
-											else if ($('#password_1').val() != $(
-													'#password_2').val()) {
-												alert('패스워드가 다릅니다.');
-												return;
-											} else {
-
-												if ($.trim($('#gender').val()) == '') {
-													document
-															.getElementById('gender').value = "${loginInfo.gender}";
-												}
-												if ($.trim($('#cell').val()) == '') {
-													document
-															.getElementById('cell').value = "${loginInfo.cell}";
-												}
-												if ($
-														.trim($(
-																'#sample6_address')
-																.val()) == '') {
-													document
-															.getElementById('sample6_address').value = "${loginInfo.address}";
-												}
-
-		if (pwd1 != '' && pwd2 == '') {
-			null;
-		} else if (pwd1 != "" || pwd2 != "") {
-			if (pwd1 == pwd2) {
-				$("#alert-success").css('display', 'inline-block');
-				$("#alert-danger").css('display', 'none');
-			} else {
-				$("#alert-success").css('display', 'none');
-				$("#alert-danger").css('display', 'inline-block');
-			}
+<script>
+$('#memberUpdate').click(function() {
+	
+	if ($.trim($('#password_1').val()) == '') {
+		alert("비밀번호를 입력해주세요.");
+		setTimeout(function(){ $('#password_1').focus(); }, 10)
+		return;
+	}
+	//패스워드 확인
+	else if ($('#password_1').val() != $('#password_2').val()) {
+		alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
+		setTimeout(function(){ $('#password_2').focus(); }, 10)
+		return;
+	} else {
+		
+		if($.trim($('#gender').val()) == ''){
+			document.getElementById('gender').value = "${loginInfo.gender}";
 		}
-	});
-	// 휴대폰 번호 정규식
-    function cell_check(cell) {    
-    var regex = /^\d{2,3}-\d{3,4}-\d{4}$/;
-    return (cell != '' && cell != 'undefined' && regex.test(cell)); 
+		if($.trim($('#cell').val()) == ''){
+			document.getElementById('cell').value = "${loginInfo.cell}";
+		}
+		if($.trim($('#sample6_address').val()) == ''){
+			document.getElementById('sample6_address').value = "${loginInfo.address}";
+		}
+		alert("회원정보 수정이 완료되었습니다!");
+		$('#memberMypage').submit();
 	}
-    $("input[name='cell']").blur(function(){
-												alert("회원정보 수정이 완료되었습니다!");
-												$('#memberMypage').submit();
-											}
+});
 
-										});
+$('.pw').focusout(function () {
+    var pwd1 = $("#password_1").val();
+    var pwd2 = $("#password_2").val();
 
-						$('.pw')
-								.focusout(
-										function() {
-											var pwd1 = $("#password_1").val();
-											var pwd2 = $("#password_2").val();
+    if ( pwd1 != '' && pwd2 == '' ) {
+        null;
+    } else if (pwd1 != "" || pwd2 != "") {
+        if (pwd1 == pwd2) {
+            $("#alert-success").css('display', 'inline-block');
+            $("#alert-danger").css('display', 'none');
+        } else {
+            $("#alert-success").css('display', 'none');
+            $("#alert-danger").css('display', 'inline-block');
+        }
+    }
+});
 
-											if (pwd1 != '' && pwd2 == '') {
-												null;
-											} else if (pwd1 != "" || pwd2 != "") {
-												if (pwd1 == pwd2) {
-													$("#alert-success").css(
-															'display',
-															'inline-block');
-													$("#alert-danger").css(
-															'display', 'none');
-												} else {
-													alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.");
-													$("#alert-success").css(
-															'display', 'none');
-													$("#alert-danger").css(
-															'display',
-															'inline-block');
-												}
-											}
-										});
-						// 휴대폰 번호 정규식
-						function cell_check(cell) {
-							var regex = /^\d{2,3}-\d{3,4}-\d{4}$/;
-							return (cell != '' && cell != 'undefined' && regex
-									.test(cell));
-						}
-						$("input[name='cell']").blur(function() {
+// 휴대폰 번호 정규식
+function cell_check(cell) {    
+var regex = /^\d{2,3}-\d{3,4}-\d{4}$/;
+return (cell != '' && cell != 'undefined' && regex.test(cell)); 
+}
+$("input[name='cell']").blur(function(){
 
-							var cell = $(this).val();
-							if (cell == '' || cell == 'undefined')
-								return;
+    var cell = $(this).val();
+    if( cell == '' || cell == 'undefined') return;
 
-							if (!cell_check(cell)) {
-								alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
-								setTimeout(function() {
-									$('#cell').focus();
-								}, 10)
-								return false;
-							} else {
-								check_cell = true;
-							}
-						});
+    if(! cell_check(cell) ) {
+    	alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
+        setTimeout(function(){ $('#cell').focus(); }, 10)
+        return false;
+    }else{
+    	check_cell = true;
+    }
+});
 
-					});
+//카카오 지도
+function sample6_execDaumPostcode() {
+new daum.Postcode(
+		{
+			oncomplete : function(data) {
+				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-	function sample6_execDaumPostcode() {
-		new daum.Postcode(
-				{
-					oncomplete : function(data) {
-						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+				// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+				var addr = ''; // 주소 변수
+				var extraAddr = ''; // 참고항목 변수
 
-						// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-						var addr = ''; // 주소 변수
-						var extraAddr = ''; // 참고항목 변수
+				//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+				if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+					addr = data.roadAddress;
+				} else { // 사용자가 지번 주소를 선택했을 경우(J)
+					addr = data.jibunAddress;
+				}
 
-						//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-						if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-							addr = data.roadAddress;
-						} else { // 사용자가 지번 주소를 선택했을 경우(J)
-							addr = data.jibunAddress;
-						}
-
-						// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-						if (data.userSelectedType === 'R') {
-							// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-							// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-							if (data.bname !== ''
-									&& /[동|로|가]$/g.test(data.bname)) {
-								extraAddr += data.bname;
-							}
-							// 건물명이 있고, 공동주택일 경우 추가한다.
-							if (data.buildingName !== ''
-									&& data.apartment === 'Y') {
-								extraAddr += (extraAddr !== '' ? ', '
-										+ data.buildingName : data.buildingName);
-							}
-							// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-							if (extraAddr !== '') {
-								extraAddr = ' (' + extraAddr + ')';
-							}
-							// 조합된 참고항목을 해당 필드에 넣는다.
-							document.getElementById("sample6_extraAddress").value = extraAddr;
-
-						} else {
-							document.getElementById("sample6_extraAddress").value = '';
-						}
-
-						// 우편번호와 주소 정보를 해당 필드에 넣는다.
-						document.getElementById('sample6_postcode').value = data.zonecode;
-						document.getElementById("sample6_address").value = addr;
+				// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+				if (data.userSelectedType === 'R') {
+					// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+					// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+					if (data.bname !== ''
+							&& /[동|로|가]$/g.test(data.bname)) {
+						extraAddr += data.bname;
 					}
-				}).open();
-	}
+					// 건물명이 있고, 공동주택일 경우 추가한다.
+					if (data.buildingName !== ''
+							&& data.apartment === 'Y') {
+						extraAddr += (extraAddr !== '' ? ', '
+								+ data.buildingName : data.buildingName);
+					}
+					// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+					if (extraAddr !== '') {
+						extraAddr = ' (' + extraAddr + ')';
+					}
+					// 조합된 참고항목을 해당 필드에 넣는다.
+					document.getElementById("sample6_extraAddress").value = extraAddr;
 
-	function moreview() {
-		$('tr[id^="moreview"]').show();
-		$('#morea').hide();
-	}
+				} else {
+					document.getElementById("sample6_extraAddress").value = '';
+				}
+
+				// 우편번호와 주소 정보를 해당 필드에 넣는다.
+				document.getElementById('sample6_postcode').value = data.zonecode;
+				document.getElementById("sample6_address").value = addr;
+			}
+		}).open();
+}
+
+function moreview() {
+$('tr[id^="moreview"]').show();
+$('#morea').hide();
+}
 </script>
+
 </body>
 </html>

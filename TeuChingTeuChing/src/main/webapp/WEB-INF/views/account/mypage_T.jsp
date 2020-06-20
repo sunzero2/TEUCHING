@@ -60,9 +60,11 @@
 	font-size: small;
 }
 
-.navbar-brand {
-    font-size: 40px !important;
- }
+#ftco-nav{
+	padding-left: 15% !important;
+}
+
+
 </style>
 
 </head>
@@ -98,7 +100,7 @@
 					<li class="list-group-item text-right"><span class="pull-left"><strong>Likes♡</strong></span>
 						${loginInfo.tr_like}</li>
 					<li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span>
-						37</li>
+						${postCount}</li>
 				</ul>
 
 			</div>
@@ -246,7 +248,7 @@
 									<label><h4>Trainer Information</h4></label>
 									<textarea class="form-control form-control-alternative"
 										cols="80" rows="10" id="career"
-										placeholder="트레이너님을 나타낼 수 있는 정보와 커리어를 자유롭게 작성해 주세요."
+										placeholder="${loginInfo.career}"
 										name="career"></textarea>
 									<br /> <span style="color: #aaa;" id="counter">(0 / 최대
 										500자)</span>
@@ -264,16 +266,14 @@
 										onClick="window.location.reload()" style="cursor: pointer;">
 										<i class="glyphicon glyphicon-repeat"></i> Reset
 									</button>
+									<a type="button" href="<%=request.getContextPath()%>/member/goodbye.do" class="btn btn-primary"> 회원 탈퇴 </a>
 								</div>
 							</div>
 						</form>
-<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
-						<hr>
-
 					</div>
+					<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 					<!--/tab-pane-->
 					<div class="tab-pane" id="messages">
-
 						<h2></h2>
 
 						<hr>
@@ -432,14 +432,13 @@
 				<!--/tab-pane-->
 			</div>
 			<!--/tab-content-->
-
 		</div>
 		<!--/col-9-->
 	</div>
 	<!--/row-->
+<script type="text/javascript">
 
 
-	<script>
 function imgLoad(img) {
    window.setTimeout(function() {
       var div = document.getElementById('profileImg');
@@ -492,14 +491,9 @@ $(document).ready(function() {
 });
 
 
-
-
-
-
-
-
 // 회원정보 업데이트
 $(document).ready(function(e){
+	
    $('#updateT').click(function(){
       if($.trim($('#password_1').val()) == ''){
     	alert("비밀번호를 입력해주세요.");
@@ -536,15 +530,15 @@ $(document).ready(function(e){
 				
 			}
 			if($.trim($('#sido1').val()) == '시/도 선택'){
-				document.getElementById('sido1').value = "${loginInfo.prefer_add1}";
+				document.getElementById('sido1').value = null;
 				
 			}
 			if($.trim($('#sido2').val()) == '시/도 선택'){
-				document.getElementById('sido2').value = "${loginInfo.prefer_add2}";
+				document.getElementById('sido2').value = null;
 				
 			}
 			if($.trim($('#sido3').val()) == '시/도 선택'){
-				document.getElementById('sido3').value = "${loginInfo.prefer_add3}";
+				document.getElementById('sido3').value = null;
 				
 			}
     	  
@@ -572,6 +566,26 @@ $('.pw').focusout(function () {
         }
     }
 });
+
+//휴대폰 번호 정규식
+function cell_check(cell) {    
+var regex = /^\d{2,3}-\d{3,4}-\d{4}$/;
+return (cell != '' && cell != 'undefined' && regex.test(cell)); 
+}
+$("input[name='cell']").blur(function(){
+
+    var cell = $(this).val();
+    if( cell == '' || cell == 'undefined') return;
+
+    if(! cell_check(cell) ) {
+    	alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
+        setTimeout(function(){ $('#cell').focus(); }, 10)
+        return false;
+    }else{
+    	check_cell = true;
+    }
+});
+
 
 //커리어 글자 제한두기 
 $('#career').keyup(function (e){
@@ -788,8 +802,6 @@ function sample6_execDaumPostcode() {
                      }
                   }
                })
-</script>
-	<script>
    function match(match_idx){
       if(confirm("수락하시겠습니까?")){
          $.ajax({
@@ -814,6 +826,7 @@ function sample6_execDaumPostcode() {
       $('tr[id^="moreview"]').show();
       $('#morea').hide();
    }
-   </script>
+</script>
+
 </body>
 </html>

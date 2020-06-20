@@ -12,9 +12,8 @@ public interface MypageService {
 
 	// 트레이너 게시글 데이터 가져오기
 	public List<Post> t_postlist(Map<String, String> data);
-
-	// 트레이너 프로필 사진 변경
-	public int photoUpdate(Map<String, Object> commandMap) throws SQLException;
+	// 트레이너 게시글 개수 가져오기
+	public int t_count(Trainer t);
 
 	// 트레이너 정보 업데이트
 	public Trainer update_mypage_T(Map<String, Object> commandMap) throws Exception;
@@ -22,10 +21,15 @@ public interface MypageService {
 	// 일반회원 정보 업데이트
 	public Member update_mypage_M(Map<String, Object> commandMap) throws Exception;
 
-	// 일반회원 로그인
-	public Member m_login(Map<String, Object> commandMap) throws SQLException;
+	// 일반회원 탈퇴
+	public int m_out(Map<String, Object> commandMap) throws SQLException;
 
-	// 트레이너 로그인
-	public Trainer t_login(Map<String, Object> commandMap) throws SQLException;
+	// 트레이너 탈퇴
+	public int t_out(Map<String, Object> commandMap) throws SQLException;
+	
+	public Trainer t_login(Map<String, Object> commandMap) throws Exception;
+	public Member m_login(Map<String, Object> commandMap) throws Exception;
 
+	
+	
 }

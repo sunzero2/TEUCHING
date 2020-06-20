@@ -88,6 +88,10 @@
 	 color: #695f5f;
 	
 }
+
+.navbar-brand{
+	 font-size: 40px !important;
+}
 </style>
 <header
 	class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"

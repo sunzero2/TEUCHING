@@ -22,10 +22,26 @@ public class MypageServiceImpl implements MypageService{
 	public List<Post> t_postlist(Map<String, String> data) {
 		return mypageDao.t_postlist(data);
 	}
-
+	
 	@Override
-	public int photoUpdate(Map<String, Object> commandMap) throws SQLException {
-		return mypageDao.photoUpdate(commandMap);
+	public int t_count(Trainer t) {
+		return mypageDao.t_count(t);
+	}
+
+	// 일반회원 탈퇴
+	@Override
+	public int m_out(Map<String, Object> commandMap) throws SQLException {
+		int res = 0;
+		res = mypageDao.m_out(commandMap);
+		return res;
+	}
+
+	// 트레이너 탈퇴
+	@Override
+	public int t_out(Map<String, Object> commandMap) throws SQLException {
+		int res = 0;
+		res = mypageDao.t_out(commandMap);
+		return res;
 	}
 	
 	// 트레이너 회원정보 수정
@@ -42,23 +58,21 @@ public class MypageServiceImpl implements MypageService{
 		return mypageDao.m_login(commandMap);
 	}
 
-	// 일반회원 로그인
-	@Override
-	public Member m_login(Map<String, Object> commandMap) throws SQLException {
-		Member res = null;
-		res = mypageDao.m_login(commandMap);
-		return res;
-	}
-
-	// 트레이너 로그인
-	@Override
-	public Trainer t_login(Map<String, Object> commandMap) throws SQLException {
-		Trainer res = null;
-		res = mypageDao.t_login(commandMap);
-		return res;
-	}
 	
 	
+	// 트레이너 회원정보 수정
+		@Override
+		public Trainer t_login(Map<String, Object> commandMap) throws Exception {
+			mypageDao.update_mypage_T(commandMap);
+			return mypageDao.t_login(commandMap);
+		}
+		
+		// 일반회원 회원정보 수정
+		@Override
+		public Member m_login(Map<String, Object> commandMap) throws Exception {
+			mypageDao.update_mypage_M(commandMap);
+			return mypageDao.m_login(commandMap);
+		}
 	
 	
 	

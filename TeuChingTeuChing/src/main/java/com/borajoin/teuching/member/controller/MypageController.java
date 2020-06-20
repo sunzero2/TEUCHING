@@ -15,6 +15,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,6 +24,7 @@ import org.springframework.web.servlet.config.MvcNamespaceHandler;
 
 import com.borajoin.teuching.manager.model.service.ManagerService;
 import com.borajoin.teuching.matching.model.vo.Post;
+import com.borajoin.teuching.member.model.service.MemberService;
 import com.borajoin.teuching.member.model.service.MypageService;
 import com.borajoin.teuching.member.model.vo.Member;
 import com.borajoin.teuching.member.model.vo.Trainer;
@@ -33,6 +36,8 @@ public class MypageController {
 	private MypageService mys;
 	@Autowired
 	private ManagerService managers;
+	@Autowired
+	private MemberService ms;
 	
 		/**
 		* @Method Name : mypageM
@@ -70,9 +75,72 @@ public class MypageController {
 	         mav.addObject("quali", managers.selectTraQualiMypage(t.getTr_email()));
 	         mav.addObject("match", managers.selectTraMatchMypage(t.getTr_email()));
 	         
+	         mav.addObject("postCount", mys.t_count(t));
+	         
 	         mav.setViewName("account/mypage_T");
 	         return mav;
 	      }
+		
+		
+		/**
+		* @Method Name : goodbye
+		* @작성일 : 2020. 6. 20.
+		* @작성자 : 이남규 
+		* @Method 설명 : 회원 탈퇴 페이지로 이동
+		*/
+		@RequestMapping("/member/goodbye.do")
+		public ModelAndView goodbye(HttpSession session) {
+			ModelAndView mav = new ModelAndView();
+			System.out.println("회원탈퇴 페이지");
+	         
+			mav.setViewName("account/goodbyeform");
+	         return mav;
+	      }
+		
+		/**
+		* @Method Name : goodbyeUpdate
+		* @작성일 : 2020. 6. 20.
+		* @작성자 : 이남규 
+		* @Method 설명 : 회원탈퇴하기 
+		*/
+		@RequestMapping("/member/goodbyeUpdate.do")
+		public ModelAndView goodbyeUpdate(@RequestParam Map<String, Object> commandMap, HttpSession session) throws Exception {
+
+			ModelAndView mav = new ModelAndView();
+			System.out.println(commandMap);
+			
+			int res = 0;
+			
+			if (commandMap.get("account").equals("member")) {
+				 res = mys.m_out(commandMap);
+
+				if (res == 0) {
+					mav.addObject("msg", "비밀번호를 확인해주세요.");
+					mav.addObject("url", "account/goodbyeform");
+					mav.setViewName("account/redirect");
+
+				} else {
+					session.removeAttribute("loginInfo");
+					mav.addObject("msg", "회원 탈퇴가 완료되었습니다. 감사합니다.");
+					mav.setViewName("account/toMain");
+				}
+
+			} else {
+				 res = mys.t_out(commandMap);
+
+				if (res == 0) {
+					mav.addObject("msg", "비밀번호를 확인해주세요.");
+					mav.addObject("url", "account/goodbyeform");
+					mav.setViewName("account/redirect");
+				} else {
+					session.removeAttribute("loginInfo");
+					mav.addObject("msg", "회원 탈퇴가 완료되었습니다. 감사합니다.");
+					mav.setViewName("account/toMain");
+				}
+			}
+			
+			return mav;
+		}
 		
 		/**
 		* @throws Exception 
@@ -90,8 +158,6 @@ public class MypageController {
 			Member res = mys.update_mypage_M(commandMap);
 			session.setAttribute("loginInfo", res);
 
-			mav.addObject("msg", "회원정보가 변경되었습니다.");
-			mav.addObject("url", "account/loginform");
 			mav.setViewName("account/mypage_M");
 
 			return mav;
@@ -104,24 +170,44 @@ public class MypageController {
 		* @Method 설명 : 트레이너 마이페이지 정보 업데이트
 		*/
 		@RequestMapping("/member/mypageUpdate_T.do")
-		public ModelAndView mypageUpdate_T(@RequestParam Map<String, Object> commandMap, HttpSession session) throws Exception {
+		public ModelAndView mypageUpdate_T(@RequestParam Map<String, Object> commandMap, 
+				@SessionAttribute("loginInfo") Trainer t, HttpSession session) throws Exception {
 
 			ModelAndView mav = new ModelAndView();
 			System.out.println(commandMap);
+			String preMap1;
+			String preMap2;
+			String preMap3;
+			System.out.println(t.getPrefer_add1());
+			System.out.println(t.getPrefer_add2());
+			System.out.println(t.getPrefer_add3());
 			
-			String preMap1 = (String)commandMap.get("prefer1-1")+" "+(String)commandMap.get("prefer1-2");
-			String preMap2 = (String)commandMap.get("prefer2-1")+" "+(String)commandMap.get("prefer2-2");
-			String preMap3 = (String)commandMap.get("prefer3-1")+" "+(String)commandMap.get("prefer3-2");
+			if((String)commandMap.get("prefer1-1")  == null ||(String)commandMap.get("prefer1-2") == null) {
+				preMap1 = t.getPrefer_add1();
+			}else {
+				preMap1 = (String)commandMap.get("prefer1-1")+" "+(String)commandMap.get("prefer1-2");
+			}
+			if((String)commandMap.get("prefer2-1")  == null || (String)commandMap.get("prefer2-2")  == null) {
+				preMap2 = t.getPrefer_add2();
+			}else {
+				preMap2 = (String)commandMap.get("prefer2-1")+" "+(String)commandMap.get("prefer2-2");
+			}
+			if((String)commandMap.get("prefer3-1")  == null || (String)commandMap.get("prefer3-2") == null) {
+				preMap3 = t.getPrefer_add3();
+			}else {
+				preMap3 = (String)commandMap.get("prefer3-1")+" "+(String)commandMap.get("prefer3-2");
+			}
+			
 			commandMap.put("prefer1", preMap1);
 			commandMap.put("prefer2", preMap2);
 			commandMap.put("prefer3", preMap3);
 			System.out.println(commandMap);
 			
-			Trainer res = mys.update_mypage_T(commandMap);
+			
+			Trainer res = mys.update_mypage_T(commandMap); 
 			session.setAttribute("loginInfo", res);
+			 
 
-			mav.addObject("msg", "회원정보가 변경되었습니다.");
-			mav.addObject("url", "account/loginform");
 			mav.setViewName("account/mypage_T");
 
 			return mav;
@@ -140,28 +226,7 @@ public class MypageController {
 		public List<Post> t_postlist(@RequestParam Map<String, String> data) {
 			return mys.t_postlist(data);
 		}
-		
-		
-		//세션 업데이트 메서드.
-		// mypage 수정
-		/*
-		 * @RequestMapping(value = "/update_mypage.do", method = RequestMethod.POST)
-		 * public String update_mypage(@ModelAttribute MemberDTO member, HttpSession
-		 * session, RedirectAttributes rttr) throws Exception{
-		 * session.setAttribute("member", service.update_mypage(member));
-		 * rttr.addFlashAttribute("msg", "회원정보 수정 완료"); return
-		 * "redirect:/member/mypage.do"; }
-		 */
-		
-		// mypage 수정
-		/*
-		 * @RequestMapping(value = "/update_mypage.do", method = RequestMethod.POST)
-		 * public String update_mypage(@ModelAttribute MemberDTO member, HttpSession
-		 * session, RedirectAttributes rttr) throws Exception{
-		 * session.setAttribute("member", service.update_mypage(member));
-		 * rttr.addFlashAttribute("msg", "회원정보 수정 완료"); return
-		 * "redirect:/member/mypage.do"; }
-		 */
+
 		
 		
 		
