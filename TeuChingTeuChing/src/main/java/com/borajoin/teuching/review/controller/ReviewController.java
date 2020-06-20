@@ -2,6 +2,7 @@ package com.borajoin.teuching.review.controller;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -122,7 +123,11 @@ public class ReviewController {
 	public int uploadReview(Review review, @RequestParam Map<String, Object> data) {
 		System.out.println("리뷰 업로드 " + data);
 		
-		review.setTrainer_name((String)data.get("trNickname"));
+		String trainerName = rs.trainerName((String)data.get("tr_email"));
+		System.out.println("이보라 (ReviewController) -"+"가져온 트레이너 이름 : " + trainerName);
+		
+		
+		review.setTrainer_name(trainerName);
 		review.setTr_email((String)data.get("tr_email"));
 		review.setMem_nickname((String) data.get("memNickname"));
 		review.setRev_password((String) data.get("reviewPw"));

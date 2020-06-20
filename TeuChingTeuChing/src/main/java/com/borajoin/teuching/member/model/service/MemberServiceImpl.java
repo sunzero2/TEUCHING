@@ -135,7 +135,8 @@ public class MemberServiceImpl implements MemberService {
 					+ commandMap.get("career") + "' name='career'>" + "<input type='hidden' value='"
 					+ commandMap.get("prefer1") + "' name='prefer1'>" + "<input type='hidden' value='"
 					+ commandMap.get("prefer2") + "' name='prefer2'>" + "<input type='hidden' value='"
-					+ commandMap.get("prefer3") + "' name='prefer3'>" + "<button type='submit'>가입하기</form>";
+					+ commandMap.get("prefer3") + "' name='prefer3'>" + "<input type='hidden' value='"
+					+ commandMap.get("keyword") + "' name='keyword'>" + "<button type='submit'>가입하기</form>";
 
 		} else if (mailfor.equals("m_join")) {
 			htmlBody += "<form action='http://" + commandMap.get("urlPath")

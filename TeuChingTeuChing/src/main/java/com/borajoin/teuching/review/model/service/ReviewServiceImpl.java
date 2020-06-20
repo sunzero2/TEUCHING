@@ -97,4 +97,11 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<String> trainerquali(String trainerEmail) {
 		return rd.trainerEmali(trainerEmail);
 	}
+
+	@Override
+	public String trainerName(String tr_email) {
+		String tlist = rd.trainerName(tr_email);
+		
+		return tlist;
+	}
 }
