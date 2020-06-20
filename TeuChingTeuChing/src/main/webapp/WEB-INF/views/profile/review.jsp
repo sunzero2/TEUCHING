@@ -263,8 +263,6 @@
 						<div class="comment-body">
 							<!-- 좋아요! -->
 							<!-- 작성자만 삭제 가능하게 하기 -->
-							<c:choose>
-								<c:when test="${memberType eq 'member'}">
 
 									<c:if test="${loginInfo.nickname eq review.mem_nickname}">
 										<div class="meta">${review.rev_date}</div>
@@ -281,9 +279,7 @@
 										</span>
 
 										<p>${review.rev_cont}</p>
-										<a
-											href="${pageContext.request.contextPath }/report/viewreport.do?nick_name=${review.mem_nickname }&type=rev"
-											class="reply">🚨</a>
+										
 									</c:if>
 
 
@@ -301,31 +297,9 @@
 										<p>${review.rev_cont}</p>
 
 
-										<a
-											href="${pageContext.request.contextPath }/report/viewreport.do?&nick_name=${review.mem_nickname }&type=rev"
-											class="reply">🚨</a>
+										
 									</c:if>
-								</c:when>
 
-								<c:when test="${memberType eq 'trainer'}">
-									<div class="meta">${review.rev_date}</div>
-									<span id="reviewnn">${review.mem_nickname} <a
-										id="recUpdate" onclick="likeit(${review.review_idx});"> <i
-											class="fas fa-heart" id="heart"
-											style="font-size: 16px; color: grey"></i>
-									</a><span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
-										<input type="hidden" id="click${review.review_idx}"
-										value="true" />
-									</span>
-
-									<p>${review.rev_cont}</p>
-
-
-									<a
-										href="${pageContext.request.contextPath }/report/viewreport.do?&nick_name=${review.mem_nickname }&type=rev"
-										class="reply">🚨</a>
-								</c:when>
-							</c:choose>
 						</div>
 
 
@@ -483,12 +457,11 @@
 
 						<div class="text">
 							<h3 class="heading">
-								<a href="#">${Post.postTitle}</a>
+								<a href="<%=request.getContextPath()%>/post/detail.do?postNo=${Post.postIdx}">${Post.postTitle}</a>
 							</h3>
 							<div class="meta">
 								<div>
-									<a
-										href="<%=request.getContextPath()%>/post/detail.do?postNo=${Post.postIdx}"><span
+									<a href="<%=request.getContextPath()%>/post/detail.do?postNo=${Post.postIdx}"><span
 										class="icon-calendar"></span>&nbsp${Post.writeDate}</a>
 								</div>
 								<div>

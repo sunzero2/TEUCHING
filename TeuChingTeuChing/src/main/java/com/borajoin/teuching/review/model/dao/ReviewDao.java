@@ -33,7 +33,6 @@ public class ReviewDao {
 		data.put("page", page);
 		data.put("orderby", orderby);
 		data.put("trainerEmail",trainerEmail);
-		System.out.println("다오에서 확인해보는 data " + data);
 		return sqlSession.selectList("Review.selectReviewList", data);
 
 	}
