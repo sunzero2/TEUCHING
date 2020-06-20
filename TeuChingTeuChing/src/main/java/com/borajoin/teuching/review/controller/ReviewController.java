@@ -121,7 +121,6 @@ public class ReviewController {
 	@RequestMapping("review/uploadreview.do")
 	@ResponseBody
 	public int uploadReview(Review review, @RequestParam Map<String, Object> data) {
-		System.out.println("리뷰 업로드 " + data);
 		
 		String trainerName = rs.trainerName((String)data.get("tr_email"));
 		System.out.println("이보라 (ReviewController) -"+"가져온 트레이너 이름 : " + trainerName);
@@ -176,6 +175,8 @@ public class ReviewController {
 	@RequestMapping(value = "review/recupdate.do", method = RequestMethod.POST)
 	@ResponseBody
 	public int recUpdate(@RequestParam Map<String, Object> data) {
+		String zz = (String) data.get("tremail");
+		System.out.println(zz);
 		int res = 0;
 		int real = 0;
 		int result = rs.reviewrecyn(data);

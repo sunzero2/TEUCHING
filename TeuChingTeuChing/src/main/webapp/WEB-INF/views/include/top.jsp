@@ -108,6 +108,7 @@
 			</div>
 			<div class="col-12 w-100 text-center">
 				<div class="collapse navbar-collapse" id="ftco-nav">
+				
 					<ul class="navbar-nav m-auto">
 						<c:if test="${loginInfo != null}">
 							<c:if test="${memberType eq 'member'}">
@@ -126,6 +127,8 @@
 									class="nav-link">Manager</a></li>
 							</c:if>
 						</c:if>
+						
+						
 						<li class="nav-item active">
 							<a href="<%=request.getContextPath()%>/index/aboutus.do" class="nav-link">AboutUs</a>
 						</li>
