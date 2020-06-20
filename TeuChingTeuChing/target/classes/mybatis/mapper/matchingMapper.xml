@@ -20,12 +20,12 @@
 	</resultMap>
 	
 	<select id="searchWord" resultMap="postMap">
-		select * from tr_post inner join tr_trainer using(tr_email) where 
+		select * from tr_post p inner join tr_trainer t using(tr_email) where 
 		<if test='option.equals("trainer")'>
-			trainer_name like '%' || #{input} || '%'
+			p.trainer_name like '%' || #{input} || '%'
 		</if>
 		<if test='option.equals("post")'>
-			post_title like '%' || #{input} || '%'
+			p.post_title like '%' || #{input} || '%'
 		</if>
 		order by post_idx desc
 	</select>
