@@ -353,67 +353,7 @@
 
 
 			<!-- 댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기댓글쓰기 -->
-			<c:choose>
-				<c:when test="${memberType eq 'member'}">
-					<c:forEach items="${trainerInfo.tlist}" var="Trainer">
-
-						<div class="comment-form-wrap pt-5">
-							<h3 class="mb-5">Leave a comment</h3>
-
-
-
-							<form method="post" enctype="multipart/form-data"
-								id="uploadReview">
-								<input type="hidden" value="${Trainer.tr_email}" name="tr_email">
-								<div class="form-group">
-									<label for="TrainerName">TrainerName</label> <input
-										type="hidden" class="form-control bg-white" id="trNickname"
-										name="trNickname" value="${Trainer.trainerName}">
-
-									<div style="transform: translateX(1%)" id="trnn">${Trainer.trainerName}</div>
-								</div>
-
-								<div class="form-group">
-									<label for="memNickname">Nickname</label> <input type="hidden"
-										class="form-control bg-white" id="memNickname"
-										name="memNickname" value="${loginInfo.nickname}">
-									<div style="transform: translateX(1%)">${loginInfo.nickname}</div>
-								</div>
-
-								<div class="form-group">
-									<label for="reviewPw">Password</label> <input type="text"
-										class="form-control" id="reviewPw" name="reviewPw">
-								</div>
-								<!-- 별점 -->
-								<div class="form-group">
-									<input type="hidden" name="rev_score" id="starvalue" value="">
-									<label for="revScore">Star rating</label>
-									<div id="star" name="revScore">
-										<a value="1">★</a> <a value="2">★</a> <a value="3">★</a> <a
-											value="4">★</a> <a value="5">★</a>
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label for="revCont">Review</label>
-									<textarea id="revCont" cols="30" rows="10" class="form-control"
-										name="revCont"></textarea>
-								</div>
-
-								<div class="form-group">
-									<input type="submit" value="Post Comment"
-										class="btn py-3 px-4 btn-primary" onclick="uploadReview()">
-								</div>
-
-							</form>
-						</div>
-
-
-					</c:forEach>
-				</c:when>
-				<c:when test="${memberType eq 'trainer'}">
-				</c:when>
-			</c:choose>
+			
 		</div>
 
 		</div>
