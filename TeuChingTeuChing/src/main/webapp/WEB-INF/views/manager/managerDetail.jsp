@@ -75,11 +75,15 @@
 					<input type="hidden" name="report_idx" value="${res.report_idx }">
 					<button type="submit" class="btn btn-outline-primary" id="btn">답변하기</button>
 					<br>
+					<!-- 트레이너신고에 대한 결과 처리 -->
 					<c:if test="${type eq 'tra' }">
-					<a href="${pageContext.request.contextPath }/report/trainerblack.do?tr_email=${res.tr_email}">경고</a>
+					<a href="${pageContext.request.contextPath }/report/trainerblack.do?
+					tr_email=${res.tr_email}&traid=${res.report_idx}">트레이너 경고</a>
 					</c:if>
+					<!-- 리뷰신고에 대한 결과 처리 -->
 					<c:if test="${type eq 'rev' }">
-					<a href="${pageContext.request.contextPath }/report/reviewblack.do?mem_email=${res.mem_email}">경고</a>
+					<a href="${pageContext.request.contextPath }/report/deleteReview.do?&tr_email=${res.tr_email }
+					&mem_email=${res.mem_email}&revid=${res.report_idx}">회원 경고</a>
 					</c:if>
 				</h5>
 			</form>
@@ -132,7 +136,6 @@
 				</c:if>
 			</div>
 		</div>
-
 	</div>
 	<br>
 	<br>
