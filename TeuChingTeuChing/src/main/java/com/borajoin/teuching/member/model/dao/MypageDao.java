@@ -37,9 +37,14 @@ public class MypageDao {
 		return session.update("Mypage.update_mypage_T", commandMap);
 	}
 	
-	//트레이너 프로필사진 업데이트
-	public int photoUpdate(Map<String, Object> commandMap) {
-		return session.update("Mypage.photoUpdate", commandMap);
+	// 일반회원 탈퇴
+	public int m_out(Map<String, Object> commandMap) {
+		return session.update("Mypage.m_out", commandMap);
+	}
+
+	// 트레이너 탈퇴
+	public int t_out(Map<String, Object> commandMap) {
+		return session.update("Mypage.t_out", commandMap);
 	}
 	
 	//트레이너 게시글 리스트

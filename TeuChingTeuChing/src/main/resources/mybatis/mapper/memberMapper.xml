@@ -32,17 +32,19 @@
 	</select>
 	
 	<!-- 일반회원 로그인 -->
-	<select id="m_login" resultType="Member">
+	<select id="m_login" resultMap="memberResult">
 		select *
 		from TR_MEMBER where MEM_EMAIL = #{email} and password = #{password}
 	</select>
+	<resultMap id="memberResult" type="Member">
+ 		<result column ="IS_LEAVE_YN" property="leave_yn"/>
+ 	</resultMap>
 	 	
  	<!-- 트레이너 로그인 -->
 	<select id="t_login" resultMap="trainerResult">
 		select *
 		from tr_trainer where tr_email = #{email} and password = #{password}
 	</select>
- 	
  	<resultMap id="trainerResult" type="Trainer">
  		<result column ="trainer_name" property="trainerName"/>
  		<result column ="IS_LEAVE_YN" property="leave_yn"/>

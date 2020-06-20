@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Teu-Ching Teu-Ching</title>
+
 <style>
 input::placeholder {
 	color: gray;
@@ -24,16 +25,10 @@ background-color: transparent !important;
 </style>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../resources/css/joinform.css">
-<!-- 카카오주소 -->
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42e0be41ec144283c6bfe7c0ed8dae35&libraries=services"></script>
+
 
 </head>
 <body>
@@ -44,9 +39,9 @@ background-color: transparent !important;
 			<div class="row">
 				<div class="col-xl-8 m-auto order-xl-1" style="margin-bottom: 5% !important;">
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
-					<form id="signFrm" name="signFrm"
+					<form id="signForm" name="signForm"
 						action="<%=request.getContextPath()%>/member/m_joinemailCheck.do" 
-	       					 method="post" onsubmit="return checkit()">
+	       					 method="post">
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
 								<div class="col-8">
@@ -156,7 +151,16 @@ background-color: transparent !important;
 	</div>
 </body>
 
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<!-- 카카오주소 -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42e0be41ec144283c6bfe7c0ed8dae35&libraries=services"></script>
 <script src="../resources/js/account/join_M.js"></script>
+
+
 
 </body>
 </html>

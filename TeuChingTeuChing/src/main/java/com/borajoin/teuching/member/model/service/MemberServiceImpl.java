@@ -78,82 +78,91 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	
-	//  메일링 합치기
-	private String from = "";
-	private String tomail = "";
-	private String title = "";
-	private String htmlBody = "";
-
+	// 메일 발송
 	@Override
 	public void mailSending(Map<String, Object> commandMap, String mailfor) {
-			
-			from = "teuching.official@gmail.com"; // 발신자메일 설정
-			tomail = (String) commandMap.get("email"); // 사용자의 이메일 //
-			
-			if (mailfor.equals("t_join")) {
-				title = "트레이너님! 나를 위한 트레이너 매칭, TeuChing과 함께해주셔서 감사합니다!.";
-				htmlBody = "<form action='http://" + commandMap.get("urlPath")
-						+ "/member/joinTrainerImple.do' method='post'><h3>TeuChing 트레이너 회원가입을 환영합니다.</h3>"
-						+ "<h4>가입하기 버튼 클릭 시 회원가입이 완료됩니다. 감사합니다.</h4><br>" + "<input type='hidden' value='"
-						+ commandMap.get("name") + "' name='name'>" + "<input type='hidden' value='"
-						+ commandMap.get("password") + "' name='password'>" + "<input type='hidden' value='"
-						+ commandMap.get("email") + "' name='email'>" + "<input type='hidden' value='"
-						+ commandMap.get("cell") + "' name='cell'>" + "<input type='hidden' value='"
-						+ commandMap.get("gender") + "' name='gender'>" + "<input type='hidden' value='"
-						+ commandMap.get("address") + "' name='address'>" + "<input type='hidden' value='"
-						+ commandMap.get("address_detail") + "' name='address_detail'>" + "<input type='hidden' value='"
-						+ commandMap.get("height") + "' name='height'>" + "<input type='hidden' value='"
-						+ commandMap.get("weight") + "' name='weight'>" + "<input type='hidden' value='"
-						+ commandMap.get("photo") + "' name='photo'>" + "<input type='hidden' value='"
-						+ commandMap.get("career") + "' name='career'>" + "<input type='hidden' value='"
-						+ commandMap.get("prefer1") + "' name='prefer1'>" + "<input type='hidden' value='"
-						+ commandMap.get("prefer2") + "' name='prefer2'>" + "<input type='hidden' value='"
-						+ commandMap.get("prefer3") + "' name='prefer3'>"
-						+ "<button type='submit'>가입하기</form>";
-				
-			}else if(mailfor.equals("m_join")) {
-				title += "나를 위한 트레이너 매칭, TeuChing 가입을 환영합니다.";
-				htmlBody += "<form action='http://" + commandMap.get("urlPath")
-						+ "/member/joinMemberImple.do' method='post'><h3>TeuChing 회원가입을 환영합니다.</h3>"
-						+"<h4>가입하기 버튼 클릭 시 회원가입이 완료됩니다. 감사합니다.</h4><br>" 
-						+ "<input type='hidden' value='"
-						+ commandMap.get("nickname") + "' name='nickname'>" + "<input type='hidden' value='"
-						+ commandMap.get("password") + "' name='password'>" + "<input type='hidden' value='"
-						+ commandMap.get("email") + "' name='email'>" + "<input type='hidden' value='"
-						+ commandMap.get("cell") + "' name='cell'>"+ "<input type='hidden' value='"
-						+ commandMap.get("gender") + "' name='gender'>"+ "<input type='hidden' value='"
-						+ commandMap.get("address") + "' name='address'>"
-						+ "<button type='submit'>가입하기</form>";
-				
-			}else if(mailfor.equals("t_findpw")) {
-				title = "안녕하세요 TeuChing 트레이너님! 로그인을 위한 임시 비밀번호를 보내드립니다.";
-				htmlBody += "<form action='http://" + commandMap.get("urlPath") + "/index/index.do'>"
-				 + "<h3 style='color: blue;'>"
-				 + "트레이너님의 임시 비밀번호 입니다.</h3>"
-				 + "<p>임시 비밀번호 : "
-				 + commandMap.get("password") + "</p><br>"
-				 + "<button type='submit'>로그인하러 가기</form>";	
-			}else if(mailfor.equals("m_findpw")) {
-				title = "안녕하세요 TeuChing 회원님! 로그인을 위한 임시 비밀번호를 보내드립니다.";
-				htmlBody += "<form action='http://" + commandMap.get("urlPath") + "/index/index.do'>"
-				 + "<h3 style='color: blue;'>"
-				 + "회원님의 임시 비밀번호 입니다.</h3>"
-				 + "<p>임시 비밀번호 : "
-				 + commandMap.get("password") + "</p><br>"
-				 + "<button type='submit'>로그인하러 가기</form>";
-			}
-			
-			mailSender.send(new MimeMessagePreparator() {
-				public void prepare(MimeMessage mimeMessage) throws MessagingException {
-					MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-					message.setFrom(from);
-					message.setTo(tomail);
-					message.setSubject(title);
-					message.setText(htmlBody, true);
-				}
-			});
 
+		final String from = "teuching.official@gmail.com"; // 발신자메일 설정
+		final String tomail = (String) commandMap.get("email"); // 사용자의 이메일
+		final String title = mailTitle(mailfor);
+		final String htmlBody = mailBody(commandMap, mailfor);
+
+		mailSender.send(new MimeMessagePreparator() {
+			public void prepare(MimeMessage mimeMessage) throws MessagingException {
+				MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+				message.setFrom(from);
+				message.setTo(tomail);
+				message.setSubject(title);
+				message.setText(htmlBody, true);
+			}
+		});
+
+	}
+	// 메일 제목
+	public String mailTitle(String mailfor) {
+	
+		String title = "";
+		if (mailfor.equals("t_join")) {
+			title = "트레이너님! 나를 위한 트레이너 매칭, TeuChing과 함께해주셔서 감사합니다!.";
+		}else if(mailfor.equals("m_join")) {
+			title = "나를 위한 트레이너 매칭, TeuChing 가입을 환영합니다.";
+		}else if(mailfor.equals("t_findpw")) {
+			title = "안녕하세요 TeuChing 트레이너님! 로그인을 위한 임시 비밀번호를 보내드립니다.";
+		}else if(mailfor.equals("m_findpw")) {
+			title = "안녕하세요 TeuChing 회원님! 로그인을 위한 임시 비밀번호를 보내드립니다.";
 		}
+		return title;
+	}
+	//메일 내용
+	public String mailBody(Map<String, Object> commandMap, String mailfor) {
+
+		String htmlBody = "";
+
+		if (mailfor.equals("t_join")) {
+			htmlBody = "<form action='http://" + commandMap.get("urlPath")
+					+ "/member/joinTrainerImple.do' method='post'><h3>TeuChing 트레이너 회원가입을 환영합니다.</h3>"
+					+ "<h4>가입하기 버튼 클릭 시 회원가입이 완료됩니다. 감사합니다.</h4><br>" + "<input type='hidden' value='"
+					+ commandMap.get("name") + "' name='name'>" + "<input type='hidden' value='"
+					+ commandMap.get("password") + "' name='password'>" + "<input type='hidden' value='"
+					+ commandMap.get("email") + "' name='email'>" + "<input type='hidden' value='"
+					+ commandMap.get("cell") + "' name='cell'>" + "<input type='hidden' value='"
+					+ commandMap.get("gender") + "' name='gender'>" + "<input type='hidden' value='"
+					+ commandMap.get("address") + "' name='address'>" + "<input type='hidden' value='"
+					+ commandMap.get("address_detail") + "' name='address_detail'>" + "<input type='hidden' value='"
+					+ commandMap.get("height") + "' name='height'>" + "<input type='hidden' value='"
+					+ commandMap.get("weight") + "' name='weight'>" + "<input type='hidden' value='"
+					+ commandMap.get("photo") + "' name='photo'>" + "<input type='hidden' value='"
+					+ commandMap.get("career") + "' name='career'>" + "<input type='hidden' value='"
+					+ commandMap.get("prefer1") + "' name='prefer1'>" + "<input type='hidden' value='"
+					+ commandMap.get("prefer2") + "' name='prefer2'>" + "<input type='hidden' value='"
+					+ commandMap.get("prefer3") + "' name='prefer3'>" + "<button type='submit'>가입하기</form>";
+
+		} else if (mailfor.equals("m_join")) {
+			htmlBody += "<form action='http://" + commandMap.get("urlPath")
+					+ "/member/joinMemberImple.do' method='post'><h3>TeuChing 회원가입을 환영합니다.</h3>"
+					+ "<h4>가입하기 버튼 클릭 시 회원가입이 완료됩니다. 감사합니다.</h4><br>" + "<input type='hidden' value='"
+					+ commandMap.get("nickname") + "' name='nickname'>" + "<input type='hidden' value='"
+					+ commandMap.get("password") + "' name='password'>" + "<input type='hidden' value='"
+					+ commandMap.get("email") + "' name='email'>" + "<input type='hidden' value='"
+					+ commandMap.get("cell") + "' name='cell'>" + "<input type='hidden' value='"
+					+ commandMap.get("gender") + "' name='gender'>" + "<input type='hidden' value='"
+					+ commandMap.get("address") + "' name='address'>" + "<button type='submit'>가입하기</form>";
+
+		} else if (mailfor.equals("t_findpw")) {
+			htmlBody += "<form action='http://" + commandMap.get("urlPath") + "/index/index.do'>"
+					+ "<h3 style='color: blue;'>" + "트레이너님의 임시 비밀번호 입니다.</h3>" + "<p>임시 비밀번호 : "
+					+ commandMap.get("password") + "</p><br>" + "<button type='submit'>로그인하러 가기</form>";
+		} else if (mailfor.equals("m_findpw")) {
+			htmlBody += "<form action='http://" + commandMap.get("urlPath") + "/index/index.do'>"
+					+ "<h3 style='color: blue;'>" + "회원님의 임시 비밀번호 입니다.</h3>" + "<p>임시 비밀번호 : "
+					+ commandMap.get("password") + "</p><br>" + "<button type='submit'>로그인하러 가기</form>";
+		}
+
+		return htmlBody;
+	}
+	
+	
+	
 	
 	// 비밀번호 변경하기
 	@Override
