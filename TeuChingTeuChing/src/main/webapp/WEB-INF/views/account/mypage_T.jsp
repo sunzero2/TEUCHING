@@ -102,7 +102,7 @@
 						${postCount}</li>
 				</ul>
 				<div style="text-align: center;">
-				<button class="clickreview">비밀번호 변경하기</button>
+				<button class="clickpw">비밀번호 변경하기</button>
 				</div>
 			</div>
 			<!--/col-3-->
@@ -474,7 +474,7 @@
 	<!--/row-->
 	
 	
-<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" >
+<div class="modal fade" id="pwModal" tabindex="-1" role="dialog" >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -538,18 +538,19 @@
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 카카오 주소 -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42e0be41ec144283c6bfe7c0ed8dae35&libraries=services"></script>
+
 <script type="text/javascript">
 
 /* 리뷰모달 */
 
 $(function(){
 		
-		$('.clickreview').click(function() {
-			var value = $(this).val();
+		$('.clickpw').click(function() {
 			console.log(value);
-			$('#tr_email').val(value);
-			$('#trnn').html(value);
-			$('#reviewModal').modal();
+			$('#pwModal').modal();
 		});
 	});
 
@@ -885,18 +886,6 @@ function sample6_execDaumPostcode() {
                            var tr = table.insertRow();
                            tr.className = 'blog-entry blog-entry-2 justify-content-end col-md-12 ftco-animate fadeInUp ftco-animated';
 
-                           // 트레이너의 이미지 담을 cell 생성
-                           var imageTd = tr.insertCell();
-
-                           // 이미지 담을 div 생성
-                           var image = document.createElement('div');
-                           image.className = 'img rounded-circle mb-2';
-                           image.style.backgroundImage = 'url(../resources/img/classes-1.jpg)';
-                           image.style.width = '116px';
-                           image.style.height = '141px';
-                           image.style.marginTop = '54px';
-                           imageTd.append(image);
-
                            // 게시글 콘텐츠 담을 cell 생성
                            var contentTd = tr.insertCell();
 
@@ -919,11 +908,9 @@ function sample6_execDaumPostcode() {
                            var writer = document.createElement('div');
                            header.append(writer);
 
-                           var writerLink = document
-                                 .createElement('a');
+                           var writerLink = document.createElement('a');
                            // 트레이너 프로필로 이동할 수 있는 링크
-                           writerLink.href = '/teuching/profile/review.do?trainerEmail='
-                                 + pList[i].trEmail;
+                           writerLink.href = '/teuching/profile/review.do?trainerEmail='+ pList[i].trEmail;
                            writerLink.innerText = pList[i].trainerName;
                            writer.append(writerLink);
 
@@ -935,16 +922,15 @@ function sample6_execDaumPostcode() {
                            body.append(title);
 
                            var titleLink = document.createElement('a');
-                           titleLink.href = '/teuching/post/detail.do?postNo='
-                                 + pList[i].postIdx;
+                           titleLink.href = '/teuching/post/detail.do?postNo='+ pList[i].postIdx;
                            titleLink.innerText = pList[i].postTitle;
                            title.append(titleLink);
 
                            var content = document.createElement('div');
-                           content.style.height = 'auto';
+                           content.style.height = '30px';
                            content.style.overflow = 'hidden';
                            var con = pList[i].postCont;
-                           con = con.replace('<br>', '\r\n');
+                           con = con.replace(/<br>/g, '\r\n');
                            content.innerText = con;
                            body.append(content);
                         }
