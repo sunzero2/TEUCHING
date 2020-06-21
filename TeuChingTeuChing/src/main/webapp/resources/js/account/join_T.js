@@ -137,8 +137,6 @@ var check_pw = false;
 	        	check_pw = true;
 	        }
 	    });
-	    
-	    
 
 // 비밀번호 체크
 $('.pw').focusout(function () {

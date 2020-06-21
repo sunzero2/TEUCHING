@@ -178,9 +178,6 @@ public class MypageController {
 			String preMap1;
 			String preMap2;
 			String preMap3;
-			System.out.println(t.getPrefer_add1());
-			System.out.println(t.getPrefer_add2());
-			System.out.println(t.getPrefer_add3());
 			
 			if((String)commandMap.get("prefer1-1")  == null ||(String)commandMap.get("prefer1-2") == null) {
 				preMap1 = t.getPrefer_add1();
@@ -198,15 +195,36 @@ public class MypageController {
 				preMap3 = (String)commandMap.get("prefer3-1")+" "+(String)commandMap.get("prefer3-2");
 			}
 			
+			String keyword = (String)commandMap.get("keyword1");
+			
+			
+			if((String)commandMap.get("keyword2") != null) {
+				keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2");
+			}else {
+				keyword = t.getPurpose_keyword();
+			}
+			if((String)commandMap.get("keyword3") != null) {
+				keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2")
+				+","+(String)commandMap.get("keyword3");
+			}
+			if((String)commandMap.get("keyword4") != null) {
+				keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2")
+				+","+(String)commandMap.get("keyword3")+","+(String)commandMap.get("keyword4");
+			}
+			if((String)commandMap.get("keyword5") != null) {
+				keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2")
+				+","+(String)commandMap.get("keyword3")+","+(String)commandMap.get("keyword4")+","+(String)commandMap.get("keyword5");
+			}
+			
 			commandMap.put("prefer1", preMap1);
 			commandMap.put("prefer2", preMap2);
 			commandMap.put("prefer3", preMap3);
+			commandMap.put("keyword", keyword);
 			System.out.println(commandMap);
 			
 			
 			Trainer res = mys.update_mypage_T(commandMap); 
 			session.setAttribute("loginInfo", res);
-			 
 
 			mav.setViewName("account/mypage_T");
 
