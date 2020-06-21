@@ -175,21 +175,48 @@ public class ReviewController {
 	@RequestMapping(value = "review/recupdate.do", method = RequestMethod.POST)
 	@ResponseBody
 	public int recUpdate(@RequestParam Map<String, Object> data) {
-		String zz = (String) data.get("tremail");
-		System.out.println(zz);
 		int res = 0;
 		int real = 0;
 		int result = rs.reviewrecyn(data);
 		if (result == 0) {
 			// 추천을 한적 없다면 추천 추가
 			res = rs.recUpdate(data);
+			
 			real = 0;
 		} else {
-			// 추천 한적 있으면 다시 삭제
+			// 추천 한적 있으면 암것도 하지마
 			real = 1;
 			
 		}
 		return real;
+	}
+	
+	@RequestMapping(value="review/trlikeupdate.do")
+	@ResponseBody
+	public int trLike(@RequestParam Map<String, Object> data) {
+		int res = 0;
+		int real = 0;
+		int result = rs.TRLikeyn(data);
+		System.out.println("이보라 (ReviewController-trLike) -"+"가져온 트레이너 이메일 : " + data.get("tremail"));
+		if (result == 0) {
+			// 좋아요를 한적 없다면 추천 추가
+			res = rs.TRLikeUpdate(data);			
+			real = 0;
+		} else {
+			// 좋아요  한적 있으면 암것도 하지마
+			real = 1;
+			
+		}
+		return real;
+	}
+	
+
+	@RequestMapping(value = "review/trlikecount.do", method = RequestMethod.POST)
+	@ResponseBody
+	public int trLikeCount(@RequestParam Map<String, Object> data) {
+		// 트레이너 좋아요 구함
+		int count = rs.trLikeCount((String)data.get("tremail"));
+		return count;
 	}
 
 	@RequestMapping(value = "review/reccount.do", method = RequestMethod.POST)

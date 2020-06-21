@@ -16,15 +16,16 @@ public interface ReviewService {
 	public int uploadReview(Review review);
 	public int recUpdate(Map<String, Object> data);
 	public int reviewrecyn(Map<String, Object> data);
-	public int recDelete(Map<String, Object> data);
 	public int recCount(String no);	
 	public int deleteReview(Map<String, Object> data);
 	public Map<String,Object> selectTrainerInformation(String trainerEmail);
 	public Map<String,Object> selectPostList(String trainerEmail);
 	public List<String> trainerquali(String trainerEmail);
 	public String trainerName(String tr_email);
-	
-	
+	public int trrecUpdate(String trainerName);
+	public int TRLikeyn(Map<String, Object> data);
+	public int TRLikeUpdate(Map<String,Object> data);
+	public int trLikeCount(String email);
 	
 	
 	
