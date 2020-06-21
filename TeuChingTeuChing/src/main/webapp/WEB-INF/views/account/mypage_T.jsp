@@ -925,14 +925,6 @@ function sample6_execDaumPostcode() {
                            titleLink.href = '/teuching/post/detail.do?postNo='+ pList[i].postIdx;
                            titleLink.innerText = pList[i].postTitle;
                            title.append(titleLink);
-
-                           var content = document.createElement('div');
-                           content.style.height = '30px';
-                           content.style.overflow = 'hidden';
-                           var con = pList[i].postCont;
-                           con = con.replace(/<br>/g, '\r\n');
-                           content.innerText = con;
-                           body.append(content);
                         }
                      } else {
                         var failMsg = document.createElement('p');
