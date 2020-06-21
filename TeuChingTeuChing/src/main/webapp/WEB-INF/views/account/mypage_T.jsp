@@ -30,10 +30,6 @@
 <link rel="stylesheet" href="../resources/css/style.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style type="text/css">
 #failMsg {
@@ -62,6 +58,9 @@
 
 #ftco-nav{
 	padding-left: 15% !important;
+}
+.clickreview{
+	cursor: pointer;
 }
 
 
@@ -103,7 +102,7 @@
 						${postCount}</li>
 				</ul>
 				<div style="text-align: center;">
-				<a type="button" id="btnModal" href="#" class="btn btn-primary"> 비밀번호 변경하기 </a>
+				<button class="clickreview">비밀번호 변경하기</button>
 				</div>
 			</div>
 			<!--/col-3-->
@@ -475,21 +474,40 @@
 	<!--/row-->
 	
 	
-	<!-- 비밀번호 변경 모달창 -->
-	<!-- 로그인모달  -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" >
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <!-- 닫기버튼 -->
       </div>
-      
-      <div class="modal-footer">
+				<div class="modal-body">
+						<form class="form"
+							action="<%=request.getContextPath()%>/member/pwUpdate.do"
+							method="post" id="pwUpdateform">
+							<div class="form-group">
+								<input type="hidden" name="email" value="${loginInfo.tr_email}" />
+								<input type="hidden" name="memberType" value="${memberType}" />
+								<label><h4>New Password</h4></label><br> <input
+									type="password" class="form-control" id="password_1"
+									name="password" class="pw" maxlength="20">
+							</div>
+							<div class="form-group">
+								<label><h4>Password Check</h4></label> <input type="password"
+									id="password_2" class="form-control"> 
+							</div>
+							<div style="text-align: left; margin-left: 1%;">
+								<a type="button" id="pwSubmit" class="btn btn-primary" href="#">
+									비밀번호 변경하기 </a>
+							</div>
+						</form>
+				</div>
+				<div class="modal-footer">
         <a type="button" class="btn btn-default" data-dismiss="modal">닫기</a>
-        <a type="button" href="<%=request.getContextPath()%>/member/find_pw_form.do" class="btn btn-primary"> 비밀번호 찾기 </a>
       </div>
     </div>
   </div>
+</div>
 	
 	
 	
@@ -518,9 +536,22 @@
 	
 	
 	
-	
-	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+
+/* 리뷰모달 */
+
+$(function(){
+		
+		$('.clickreview').click(function() {
+			var value = $(this).val();
+			console.log(value);
+			$('#tr_email').val(value);
+			$('#trnn').html(value);
+			$('#reviewModal').modal();
+		});
+	});
 
 
 function imgLoad(img) {
@@ -594,17 +625,6 @@ $(document).ready(function(e){
 	   
 	
    $('#updateT').click(function(){
-      if($.trim($('#password_1').val()) == ''){
-    	alert("비밀번호를 입력해주세요.");
-		setTimeout(function(){ $('#password_1').focus(); }, 10)
-		return;
-      }
-      //패스워드 확인
-      else if($('#password_1').val() != $('#password_2').val()){
-    	alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
-		setTimeout(function(){ $('#password_2').focus(); }, 10)
-		return;
-      }else{
     	  
     		 if($.trim($('#gender').val()) == ''){
 				document.getElementById('gender').value = "${loginInfo.gender}";
@@ -660,29 +680,48 @@ $(document).ready(function(e){
 				
 			}
     	  
-    	  
-         alert("회원정보 수정이 완료되었습니다.");
-         $('#trainerMypage').submit();
-      } 
+       	  alert("회원정보 수정이 완료되었습니다.");
+       	  $('#trainerMypage').submit();
+       
    });
    
 });
 
-//비밀번호 체크
-$('.pw').focusout(function () {
-    var pwd1 = $("#password_1").val();
-    var pwd2 = $("#password_2").val();
+//비밀번호 변경  체크
+$('#pwSubmit').click(function() {
 
-    if ( pwd1 != '' && pwd2 == '' ) {
-        null;
-    } else if (pwd1 != "" || pwd2 != "") {
-        if (pwd1 == pwd2) {
-            $("#alert-success").css('display', 'inline-block');
-            $("#alert-danger").css('display', 'none');
-        } else {
-            $("#alert-success").css('display', 'none');
-            $("#alert-danger").css('display', 'inline-block');
-        }
+if ($.trim($('#password_1').val()) == '') {
+	alert("비밀번호를 입력해주세요.");
+	setTimeout(function(){ $('#password_1').focus(); }, 10)
+	return;
+}
+//패스워드 확인
+else if ($('#password_1').val() != $('#password_2').val()) {
+	alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
+	setTimeout(function(){ $('#password_2').focus(); }, 10)
+	return;
+}else{
+	$('#pwUpdateform').submit();
+}
+
+});
+
+// 비밀번호 정규식
+function pw_check(password) {    
+var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+return (password != '' && password != 'undefined' && regex.test(password)); 
+}
+$("input[name='password']").blur(function(){
+
+    var password = $(this).val();
+    if( password == '' || password == 'undefined') return;
+
+    if(! pw_check(password) ) {
+    	alert("잘못된 비밀번호 번호입니다. 숫자와 문자를 포함한 8자리 이상의 비밀번호를 입력하세요.");
+        setTimeout(function(){ $('#password_1').focus(); }, 10)
+        return false;
+    }else{
+    	check_pw = true;
     }
 });
 
@@ -946,13 +985,6 @@ function sample6_execDaumPostcode() {
       $('#morea').hide();
    }
    
-   $(function(){
-		
-		$('#btnModal').click(function() {
-			$('#loginModal').modal();
-		});
-	});
-
 </script>
 
 </body>

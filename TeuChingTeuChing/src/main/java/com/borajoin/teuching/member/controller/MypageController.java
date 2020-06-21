@@ -161,7 +161,33 @@ public class MypageController {
 			mav.setViewName("account/mypage_M");
 
 			return mav;
-		}	
+		}
+		
+		@RequestMapping("/member/pwUpdate.do")
+		public ModelAndView pwUpdate(@RequestParam Map<String, Object> commandMap, HttpSession session)
+				throws SQLException {
+
+			//들어오는거... 이메일 주소 , 새로운 비밀번호, 계정정보(memberType)
+			ModelAndView mav = new ModelAndView();
+
+			if (commandMap.get("memberType").equals("trainer")) {
+				// 트레이너 비밀번호 변경 
+				commandMap.put("table", "tr_trainer");
+				ms.change_pw(commandMap);
+				session.removeAttribute("loginInfo");
+				mav.addObject("msg", "비밀번호가 변경되었습니다. 다시 로그인해 주세요.");
+				mav.setViewName("account/toMain");
+			} else {
+				// 일반회원 비밀번호 변경 
+				commandMap.put("table", "tr_member");
+				ms.change_pw(commandMap);
+				session.removeAttribute("loginInfo");
+				mav.addObject("msg", "비밀번호가 변경되었습니다. 다시 로그인해 주세요.");
+				mav.setViewName("account/toMain");
+			}
+			 
+			return mav;
+		}
 		
 		/**
 		* @Method Name : mypageUpdate_T
