@@ -74,7 +74,10 @@
 							<c:if test="${r.ans_yn eq 'Y' }">
 								<h4 style="float: right; transform: translateY(-50%)">✔답변완료</h4>
 							</c:if>
+							<a
+								href="${pageContext.request.contextPath }/manager/reportdetail.do?revid=${r.report_idx}">
 							<h3 class="panel-title">${ r.report_date}</h3>
+							</a>
 						</div>
 						<div class="panel-body">
 							<a

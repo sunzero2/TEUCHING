@@ -40,6 +40,11 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
+<style>
+#ftco-nav{
+	transform: translateX(10%); !important
+}
+</style>
 </head>
 <body>
 
@@ -60,10 +65,10 @@
 		<c:forEach items="${res.quali }" var="q" varStatus="cnt">
 			<a style="color: black"
 				href="${pageContext.request.contextPath }/manager/qualidetail.do?qualiidx=${q.quali_idx}">
-				<c:if test="${cnt.index % 2 eq 0 }">
-					<div class="testimony-wrap p-4 pb-5" style="float: left">
-				</c:if> <c:if test="${cnt.index % 2 ne 0 }">
+				<c:if test="${cnt.count % 2 eq 0 }">
 					<div class="testimony-wrap p-4 pb-5" style="float: right">
+				</c:if> <c:if test="${cnt.count % 2 ne 0 }">
+					<div class="testimony-wrap p-4 pb-5" style="float: left">
 				</c:if>
 				<div class="d-flex align-items-center">
 					<div class="user-img"
@@ -80,6 +85,9 @@
 				</div>
 			</div>
 		</a>
+		<c:if test="${cnt.count % 2 eq 0 }">
+		<p style="clear:both"></p>
+		</c:if>
 	</c:forEach>
 	</div>
 	<div class="row mt-5" style="transform: translateX(36%)">

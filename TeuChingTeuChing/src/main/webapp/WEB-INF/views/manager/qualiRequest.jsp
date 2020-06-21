@@ -53,11 +53,11 @@
 			<div style="background-image:url(../resources/upload/profileImg/${loginInfo.tr_email}.PNG)"
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
 				id="person"></div>
-			<form
+			<form name="form" onsubmit="return check();"
 				action="${pageContext.request.contextPath }/quali/insertquali.do"
 				method="post" enctype="multipart/form-data">
 				<h5>
-					<button type="submit" id="btn" class="btn btn-outline-primary">작성완료</button>
+					<button type="submit" id="btn" onclick="check();" class="btn btn-outline-primary">작성완료</button>
 				</h5>
 				<h2>자격 요청</h2>
 		</div>
@@ -77,6 +77,17 @@
 	<br>
 	<br>
 	<br>
+	<script>
+		function check(){
+			if(document.querySelector('#textarea')==''){
+				alert('내용을 입력해주세요');
+				return false;
+			}else if(document.querySelector('#startbutton')==''){
+				alert('파일 업로드 필수입니다');
+				return false;
+			}
+		}
+	</script>
 	<script src="../resources/js/jquery.min.js"></script>
 	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="../resources/js/popper.min.js"></script>

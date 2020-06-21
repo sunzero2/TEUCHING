@@ -46,7 +46,7 @@
 		<div class="ansbox-top">
 			<div
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
-				style="float: left; background-image: url(../../resources/img/classes-4.jpg); width: 15%; height: 75%;">
+				style="float: left; background-image: url(../../resources/upload/profileImg/${res.tr_email}.PNG); width: 15%; height: 75%;">
 				<c:if test="${ res.ans_yn eq 'Y'}">
 					<div
 						style="text-align: right; transform: translate(-70%, -35%); color: #b91e2d; font-size: 5vw">✔</div>
@@ -67,7 +67,6 @@
 					<button type="submit" class="btn btn-outline-primary"
 						style="transform: translateX(250%);">작성완료</button>
 				</h5>
-
 				<c:if test="${res.type eq 'tra' }">
 					<h2>${ res.nick_name}님의 문의내역 입니다</h2>
 				</c:if>

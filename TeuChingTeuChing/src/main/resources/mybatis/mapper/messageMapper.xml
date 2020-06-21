@@ -272,7 +272,7 @@
 				, #{mem_email}
 				, '올리신 리뷰에 대한 신고가 접수되어 운영자 측에서 확인해본 결과 해당 게시물이 삭제 되었습니다'
 				, SYSDATE
-				, 'Trainers'
+				, 'Trainer'
 				, '관리자'
 				, #{nick_name}
 		)

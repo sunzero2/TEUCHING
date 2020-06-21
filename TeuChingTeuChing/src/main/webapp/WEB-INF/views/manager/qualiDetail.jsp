@@ -86,22 +86,12 @@
 			<div class="col-lg-8 ftco-animate">
 				<div class="row">
 					<div class="col-md-3 ftco-animate">
-						<c:if test="${fn:length(file) > 0 }">
-							<a
-								href="${pageContext.request.contextPath }/resources/upload/${file }"
-								onerror="javascript:src={../resources/img/auth.jpg}"
-								class="gallery image-popup img d-flex align-items-center"
-								style="height: 195px; width: 400px; background-image: url(../resources/img/check.png); transform: translateX(6%)">
-							</a>
-						</c:if>
-						<c:if test="${fn:length(file) == 0 }">
-							<a
-								href="${pageContext.request.contextPath }/resources/img/auth.jpg"
-								onerror="javascript:src={../resources/img/auth.jpg}"
-								class="gallery image-popup img d-flex align-items-center"
-								style="height: 195px; width: 400px; background-image: url(../resources/img/check.png); transform: translateX(6%)">
-							</a>
-						</c:if>
+						<a
+							href="${pageContext.request.contextPath }/resources/upload/${file }"
+							onerror="javascript:src={../resources/img/auth.jpg}"
+							class="gallery image-popup img d-flex align-items-center"
+							style="height: 195px; width: 400px; background-image: url(../resources/img/check.png); transform: translateX(6%)">
+						</a>
 					</div>
 				</div>
 			</div>

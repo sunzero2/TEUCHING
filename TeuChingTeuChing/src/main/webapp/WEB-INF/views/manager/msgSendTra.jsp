@@ -41,7 +41,7 @@
 </head>
 
 <body>
-	<form style="transform: translateX(10%); width: 90%;"
+	<form style="transform: translateX(10%); width: 90%;" onsubmit="return check();"
 		action="${pageContext.request.contextPath }/message/matchformsend.do">
 		<div class="container">
 			<h2>보낸쪽지</h2>
@@ -80,6 +80,13 @@
 								$(this).toggleClass('open');
 							});
 				});
+		
+		function check(){
+			if(document.querySelector('#textarea').value == ''){
+				alert('내용을 입력해주세요');
+				return false;
+			}
+		}
 	</script>
 </body>
 </html>

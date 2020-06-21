@@ -62,8 +62,7 @@
 						<input type="hidden" name="type" value="tra">
 					</c:if>
 					<c:if test="${type eq 'rev' }">
-						<input type="hidden" name="trainer_name"
-							value="${res.trainer_name }">
+						<input type="hidden" name="trainer_name" value="${res.trainer_name }">
 						<input type="hidden" name="type" value="rev">
 					</c:if>
 					<input type="hidden" name="rep_cont" value="${res.rep_cont }">
@@ -73,6 +72,7 @@
 						type="hidden" name="report_date" value="${res.report_date }">
 					<input type="hidden" name="ans_yn" value="${res.ans_yn }">
 					<input type="hidden" name="report_idx" value="${res.report_idx }">
+					<input type="hidden" name="tr_email" value="${res.tr_email }">
 					<button type="submit" class="btn btn-outline-primary" id="btn">답변하기</button>
 					<br>
 					<!-- 트레이너신고에 대한 결과 처리 -->

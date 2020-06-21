@@ -40,7 +40,7 @@
 
 <body>
 	<form
-		action="${pageContext.request.contextPath }/message/matchformsend.do">
+		action="${pageContext.request.contextPath }/message/matchformsend.do" onsubmit="return check()">
 		<div class="container">
 			<h1>상담신청</h1>
 			Date
@@ -96,16 +96,14 @@
 			<textarea name="msg_cont" id="textarea" placeholder="내용을 입력해주세요"></textarea>
 			<br> 
 			<input type="hidden" name="tr_email" value="${tr_email }">
-			<button onclick="check();" id="btn">신청하기</button>
+			<button id="btn">신청하기</button>
 		</div>
 	</form>
 	<script>
-		function check(e){
+		function check(){
 			if(document.querySelector('#textarea').value == ''){
 				alert('내용을 입력해주세요');
 				return false;
-			}else{
-				return true;
 			}
 		}
 	</script>

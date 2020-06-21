@@ -39,7 +39,7 @@ public class ManagerController {
 	 * @Method Name : managerPage
 	 * @작성일 : 2020. 6. 1.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 관리자 페이지 내 리뷰신고, 트레이너 신고 게시판 구현
+	 * @Method 설명 : 관리자 페이지 내 트레이너 신고 ---------------ㅇㅋ
 	 */
 	@RequestMapping("/manager/report.do")
 	public ModelAndView managerPage(Integer tracurrentpage) {
@@ -59,6 +59,12 @@ public class ManagerController {
 		return mv;
 	}
 
+	/**
+	 * @Method Name : reviewReport
+	 * @작성일 : 2020. 6. 21.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 관리자 페이지 중 리뷰신고 페이지 구현------------ㅇㅋ
+	 */
 	@RequestMapping("/manager/reviewreport.do")
 	public ModelAndView reviewReport(Integer revcurrentpage) {
 
@@ -81,7 +87,7 @@ public class ManagerController {
 	 * @Method Name : managerDetailAnswer
 	 * @작성일 : 2020. 6. 6.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 신고 게시글에 대한 처리 결과 작성 페이지 매핑
+	 * @Method 설명 : 신고 게시글에 대한 처리 결과 작성 페이지 매핑------------ㅇㅋ
 	 */
 	@PostMapping("/manager/reportdetail/ans.do")
 	public ModelAndView managerDetailAnswer(@RequestParam Map<String, Object> commandMap) {
@@ -95,7 +101,7 @@ public class ManagerController {
 	 * @Method Name : managerDetailModify
 	 * @작성일 : 2020. 6. 6.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 신고 게시글에 대한 처리 결과 작성 및 수정
+	 * @Method 설명 : 신고 게시글에 대한 처리 결과 작성 및 수정------------ㅇㅋ
 	 */
 	@PostMapping("/manager/reportdetail/modify.do")
 	public ModelAndView managerDetailModify(@RequestParam Map<String, Object> commandMap) {
@@ -115,7 +121,7 @@ public class ManagerController {
 	 * @Method Name : reportView
 	 * @작성일 : 2020. 6. 6.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 트레이너 신고 및 리뷰신고 작성 페이지 매핑
+	 * @Method 설명 : 트레이너 신고 및 리뷰신고 작성 페이지 매핑------------ㅇㅋ
 	 */
 	@RequestMapping("/report/reportrequest.do")
 	public ModelAndView reportView(@RequestParam Map<String, Object> commandMap, HttpSession session) {
@@ -144,7 +150,7 @@ public class ManagerController {
 	 * @Method Name : reportFileUpload
 	 * @작성일 : 2020. 6. 6.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 트레이너 신고 및 리뷰신고 작성 & 파일 업로드
+	 * @Method 설명 : 트레이너 신고 및 리뷰신고 작성 & 파일 업로드------------ㅇㅋ
 	 */
 	@PostMapping("/report/insertreport.do")
 	public ModelAndView reportFileUpload(@RequestParam Map<String, Object> commandMap, List<MultipartFile> files,
@@ -200,7 +206,7 @@ public class ManagerController {
 	 * @Method Name : selectQuali
 	 * @작성일 : 2020. 6. 6.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 관리자 페이지의 자격증명 메뉴 구현
+	 * @Method 설명 : 관리자 페이지의 자격증명 메뉴 구현------------ㅇㅋ
 	 */
 	@RequestMapping("/manager/quali.do")
 	public ModelAndView selectQuali(Integer currentpage) {
@@ -217,7 +223,7 @@ public class ManagerController {
 	 * @Method Name : selectQualiDetail
 	 * @작성일 : 2020. 6. 6.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 자격증명 요청글의 상세 내용 확인
+	 * @Method 설명 : 자격증명 요청글의 상세 내용 확인-------------ㅇㅋ
 	 */
 	@RequestMapping("/manager/qualidetail.do")
 	public ModelAndView selectQualiDetail(String qualiidx) {
@@ -233,7 +239,7 @@ public class ManagerController {
 	 * @Method Name : updateQualiYn
 	 * @작성일 : 2020. 6. 6.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 트레이너 인증 요청 승인처리
+	 * @Method 설명 : 트레이너 인증 요청 승인처리-------------ㅇㅋ
 	 */
 	@RequestMapping("/manager/qualidetail/auth.do")
 	public ModelAndView updateQualiYn(int quali_idx, HttpServletRequest request) {
@@ -249,7 +255,7 @@ public class ManagerController {
 	 * @Method Name : qualiRequest
 	 * @작성일 : 2020. 6. 12.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 자격증명 요청페이지로 이동
+	 * @Method 설명 : 자격증명 요청페이지로 이동-------ㅇㅋ
 	 */
 	@RequestMapping("/quali/qualirequest.do")
 	public ModelAndView qualiRequest() {
@@ -262,24 +268,26 @@ public class ManagerController {
 	 * @Method Name : insertQuali
 	 * @작성일 : 2020. 6. 18.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 자격 증명 요청 페이지
+	 * @Method 설명 : 자격 증명 요청 페이지--------ㅇㅋ
 	 */
 	@RequestMapping("/quali/insertquali.do")
 	public ModelAndView insertQuali(MultipartFile qualiFile, HttpServletRequest request, String quali_auth) {
 		ModelAndView mv = new ModelAndView();
 		Trainer t = (Trainer) request.getSession().getAttribute("loginInfo");
 		UUID uuid = UUID.randomUUID();
+		
+		if (qualiFile.getSize() > 0) {
 		String origin_filename = qualiFile.getOriginalFilename();
 		String rename_filename = uuid + "tr_quali" + origin_filename.substring(origin_filename.lastIndexOf("."));
 		String savepath = request.getServletContext().getRealPath("") + "/resources/upload/" + rename_filename;
-
-		File_Upload file_Upload = new File_Upload();
-		file_Upload.setOrigin_filename(origin_filename);
-		file_Upload.setRename_filename(rename_filename);
-		file_Upload.setSavepath(savepath);
-		file_Upload.setTable_idx(ms.selectQualiIdx());
-		file_Upload.setObj(qualiFile);
-		ms.insertQualiFile(file_Upload);
+			File_Upload file_Upload = new File_Upload();
+			file_Upload.setOrigin_filename(origin_filename);
+			file_Upload.setRename_filename(rename_filename);
+			file_Upload.setSavepath(savepath);
+			file_Upload.setTable_idx(ms.selectQualiIdx());
+			file_Upload.setObj(qualiFile);
+			ms.insertQualiFile(file_Upload);
+		}
 
 		Quali quali = new Quali();
 		quali.setQuali_auth(quali_auth);
@@ -323,6 +331,12 @@ public class ManagerController {
 		return mv;
 	}
 
+	/**
+	 * @Method Name : trainerBlack
+	 * @작성일 : 2020. 6. 21.
+	 * @작성자 : 김지수
+	 * @Method 설명 : 트레이너 신고에대한 매니저의 경고 처리------------ㅇㅋ
+	 */
 	@RequestMapping("/report/trainerblack.do")
 	public ModelAndView trainerBlack(String tr_email) {
 		ModelAndView mv = new ModelAndView();
@@ -344,7 +358,7 @@ public class ManagerController {
 	 * @Method Name : deleteReview
 	 * @작성일 : 2020. 6. 20.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 리뷰신고에 의한 해당리뷰 삭제와 해당 닉네임의 회원에게 경고메시지 전송
+	 * @Method 설명 : 리뷰신고에 의한 해당리뷰 삭제와 해당 닉네임의 회원에게 경고메시지 전송---------ㅇㅋ
 	 */
 	@RequestMapping("/report/deleteReview")
 	public ModelAndView deleteReview(@RequestParam Map<String, Object> commandMap, HttpServletRequest request) {
@@ -354,7 +368,6 @@ public class ManagerController {
 		commandMap.put("nick_name", msgs.selectNickName(mem_email));
 
 		int check = ms.checkForReviewDelete(commandMap);
-		System.out.println(check);
 		// 예외처리해야함
 		if (check > 0) {
 			int review_idx = msgs.selectReviewIdx(commandMap);
@@ -365,7 +378,6 @@ public class ManagerController {
 		} else {
 			mv.addObject("msg", "이미 처리 완료된 신고 입니다");
 		}
-//		mv.addObject("url", request.getContextPath() + "/manager/reveiwreport.do");
 		mv.addObject("back", "back");
 		mv.setViewName("common/result");
 
@@ -376,7 +388,7 @@ public class ManagerController {
 	 * @Method Name : managerDetail
 	 * @작성일 : 2020. 6. 6.
 	 * @작성자 : 김지수
-	 * @Method 설명 : 신고 게시글에 대한 상세페이지
+	 * @Method 설명 : 신고 게시글에 대한 상세페이지---------------ㅇㅋ
 	 */
 	@RequestMapping("/manager/reportdetail.do")
 	public ModelAndView managerDetail(Integer revid, Integer traid) {

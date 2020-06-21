@@ -41,6 +41,12 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
+	<style>
+	#ftco-nav{
+		transform: translateX(10%); !important
+	}
+	</style>
+	
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>
@@ -75,7 +81,10 @@
 							<c:if test="${r.ans_yn eq 'Y' }">
 								<h4 style="float: right; transform: translateY(-50%)">✔답변완료</h4>
 							</c:if>
+							<a
+								href="${pageContext.request.contextPath }/manager/reportdetail.do?traid=${r.report_idx}">
 							<h3 class="panel-title">${ r.report_date}</h3>
+							</a>
 						</div>
 						<div class="panel-body">
 							<a

@@ -51,7 +51,7 @@ h1 {
 
 <body>
 	<form
-		action="${pageContext.request.contextPath }/message/messageformsend.do">
+		action="${pageContext.request.contextPath }/message/messageformsend.do" onsubmit="return check();">
 		<div class="container">
 			<h1>Send Message</h1>
 			<textarea name="msg_cont" id="textarea" placeholder="내용을 입력해주세요"></textarea>
@@ -61,5 +61,14 @@ h1 {
 			<button id="btn">신청하기</button>
 		</div>
 	</form>
+	
+	<script>
+		function check(){
+			if(document.querySelector('#textarea').value == ''){
+				alert('내용을 입력해주세요');
+				return false;
+			}
+		}
+	</script>
 </body>
 </html>
