@@ -82,11 +82,16 @@
 			if(document.querySelector('#textarea')==''){
 				alert('내용을 입력해주세요');
 				return false;
-			}else if(document.querySelector('#startbutton')==''){
-				alert('파일 업로드 필수입니다');
-				return false;
 			}
 		}
+		
+		$('#textarea').keyup(function(e) {
+			var content = $(this).val();
+			if (content.length > 200) {
+				alert("최대 200자까지 입력 가능합니다.");
+				$(this).val(content.substring(0, 200));
+			}
+		});
 	</script>
 	<script src="../resources/js/jquery.min.js"></script>
 	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>

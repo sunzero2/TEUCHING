@@ -86,7 +86,8 @@ h1 {
 </head>
 <body>
 
-	<form action="${pageContext.request.contextPath }/message/msganstra.do">
+	<form action="${pageContext.request.contextPath }/message/msganstra.do"
+		onsubmit="return check();">
 		<div class="wrapper">
 			<h2>받은 쪽지</h2>
 			<h5>| ${res.write_date} | ${res.mem_email }</h5>
@@ -121,12 +122,13 @@ h1 {
 				<div id="text" style="height: 250px;">${res.msg_cont }</div>
 			</c:if>
 			<c:if test="${res.mem_email ne 'teuching.official@gmail.com'}">
-			<textarea name="msg_cont" id="textarea" placeholder="내용을 입력해주세요"></textarea>
-			<button id="btn" style="transform: translateX(-52%)">작성완료</button>
+				<textarea name="msg_cont" id="textarea" placeholder="내용을 입력해주세요"></textarea>
+				<button id="btn" style="transform: translateX(-52%)">작성완료</button>
 			</c:if>
 			<input type="hidden" name="mem_email" value="${res.mem_email }">
 			<input type="hidden" name="nick_name" value="${res.nick_name }">
 		</div>
+		</form>
 		<script src="https://code.jquery.com/jquery-3.5.1.js"
 			integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 			crossorigin="anonymous"></script>
@@ -167,9 +169,23 @@ h1 {
 						});
 					}
 				}
-			
-		</script>
+				
+		function check(){
+			if($('#textarea').val() == ''){
+				alert('내용을 입력해주세요');
+				return false;
+			}
+		}
+		
+		$('#textarea').keyup(function(e) {
+			var content = $(this).val();
+			if (content.length > 200) {
+				alert("최대 200자까지 입력 가능합니다.");
+				$(this).val(content.substring(0, 200));
+			}
+		});
+	</script>
 
-	</form>
+	
 </body>
 </html>

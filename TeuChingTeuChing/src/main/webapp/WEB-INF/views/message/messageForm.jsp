@@ -69,6 +69,14 @@ h1 {
 				return false;
 			}
 		}
+		
+		$('#textarea').keyup(function(e) {
+			var content = $(this).val();
+			if (content.length > 200) {
+				alert("최대 200자까지 입력 가능합니다.");
+				$(this).val(content.substring(0, 200));
+			}
+		});
 	</script>
 </body>
 </html>

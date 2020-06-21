@@ -55,6 +55,7 @@
 					style="transform: translateX(200%);"
 					onclick="if(!confirm('승인하시겠습니까?')){return false;}">승인하기</a><br>
 				${res.trainer_name } 트레이너<br>
+				
 			</h1>
 			<div style="transform: translateX(27%)">
 				<img src="../resources/upload/profileImg/${res.tr_email}.PNG"

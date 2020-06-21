@@ -43,7 +43,6 @@
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>
-
 	<div class="wrapper">
 		<div class="ansbox-top">
 			<div id="person" style="background-image: url(../resources/upload/profileImg/${res.tr_email}.PNG);"
@@ -56,6 +55,7 @@
 			<form
 				action="${pageContext.request.contextPath }/manager/reportdetail/ans.do"
 				method="post">
+
 				<h5>${res.report_date }
 					<c:if test="${type eq 'tra' }">
 						<input type="hidden" name="nick_name" value="${res.nickname }">
@@ -97,6 +97,7 @@
 		<div class="ansbox-bottom">
 
 			<div class="col-lg-8 ftco-animate">
+			
 				<c:if test="${fn:length(file) > 0}">
 				<div style="float: right">
 					<p id="checkfile" onclick="checkfile();"
@@ -134,6 +135,8 @@
 				<c:if test="${res.handel_cont eq ' ' }">
 					<p id="font-size">아직 처리내용이 작성되지 않았습니다</p>
 				</c:if>
+				<br>
+				<a href="${pageContext.request.contextPath }/manager/report.do">◀목록</a>
 			</div>
 		</div>
 	</div>

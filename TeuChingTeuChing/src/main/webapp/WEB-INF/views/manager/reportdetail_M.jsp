@@ -114,6 +114,8 @@
 					<p id="font-size">아직 처리내용이 작성되지 않았습니다</p>
 				</c:if>
 			</div>
+			<br>
+				<a href="${pageContext.request.contextPath }/manager/report.do">◀목록</a>
 		</div>
 
 	</div>

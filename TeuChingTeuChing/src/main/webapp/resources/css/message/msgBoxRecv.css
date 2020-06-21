@@ -31,12 +31,12 @@ html, body, form {
 #table {
 	height: 80%;
 	width: 101%;
-	transform: translateX(3%);
+	transform: translateX(6%);
 	font-size: 1.3vw;
 }
 
 table {
-	width: 93%;
+	width: 90%;
 }
 
 #tbody {
@@ -54,10 +54,11 @@ td {
 
 #title {
 	width: 47%;
+	float:left;
 }
 
 .col{
-	transform:translate(19%,80%);
+	transform:translate(24%,80%);
 }
 
 #btn {
@@ -70,3 +71,4 @@ td {
 #num{
 	width:5px;
 }
+

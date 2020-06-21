@@ -345,10 +345,10 @@
 											<c:if test="${cnt.index < 15 }">
 												<tr>
 													<c:if test="${m.match_yn eq 'N' }">
-														<td>✖</td>
+														<td id="state${m.match_idx}">✖</td>
 													</c:if>
 													<c:if test="${m.match_yn eq 'Y' }">
-														<td>✔</td>
+														<td id="state${m.match_idx}">✔</td>
 													</c:if>
 													<td>${m.mem_email }</td>
 													<td>${m.match_time }</td>
@@ -358,10 +358,10 @@
 														data-match_date="${m.match_date }"
 														data-match_time="${m.match_time }"> <c:if
 																test="${m.match_yn eq 'Y' }">
-                                       수락하기
+                                       수락완료
                                        </c:if> <c:if
 																test="${m.match_yn eq 'N' }">
-                                       수락완료
+                                   		  수락하기
                                        </c:if>
 													</a></td>
 												</tr>
@@ -369,10 +369,10 @@
 											<c:if test="${cnt.index >= 15 }">
 												<tr id="moreview${cnt.index }" style="display: none">
 													<c:if test="${m.match_yn eq 'N' }">
-														<td>✖</td>
+														<td id="state${m.match_idx}">✖</td>
 													</c:if>
 													<c:if test="${m.match_yn eq 'Y' }">
-														<td>✔</td>
+														<td id="state${m.match_idx}">✔</td>
 													</c:if>
 													<td>${m.mem_email }</td>
 													<td>${m.match_time }</td>
@@ -382,10 +382,10 @@
 														data-match_date="${m.match_date }"
 														data-match_time="${m.match_time }"> <c:if
 																test="${m.match_yn eq 'Y' }">
-                                       수락하기
+                                       수락완료
                                        </c:if> <c:if
 																test="${m.match_yn eq 'N' }">
-                                       수락완료
+                                       수락하기
                                        </c:if>
 													</a></td>
 												</tr>
@@ -931,8 +931,8 @@ function sample6_execDaumPostcode() {
                   const match_date = $('#match' + match_idx).data("match_date");
                   const match_time = $('#match' + match_idx).data("match_time")
                   alert('수락완료');
-                  $('#match' + match_idx).html('✅ ' + match_date + " " + match_time 
-                        +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "수락완료");
+                  $('#match' + match_idx).html("<a>수락완료</a>");
+                  $('#state' + match_idx).html("✔");
                }else{
                   alert('이미 수락된 매칭입니다');
                }
