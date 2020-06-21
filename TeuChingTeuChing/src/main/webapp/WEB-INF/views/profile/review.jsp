@@ -13,6 +13,10 @@
 	cursor: pointer;
 }
 
+#TRheart{
+cursor:pointer ;
+}
+
 #reviewnn {
 	border-top: 1px solid #9C9C9C;
 	border-bottom: 1px solid #F6F6F6;
@@ -185,17 +189,27 @@
 										<span id="totalAdress">인증된 자격증명이 없습니다</span>
 									</c:if>
 								</p>
+								
 								<p>
 									<c:if test="${Trainer.black_yn eq 'Y' }">
 									❗ 주의 : <span id="totalAdress">경고가 누적된 트레이너 입니다</span>
 									</c:if>
 								</p>
+								<p>
+									LIKE : <a id="trlikeatag" onclick="likeTR();"><i class="fas fa-heart" id="TRheart" style="font-size: 16px;"></i></a><span id="trcount">&nbsp;${Trainer.tr_like }</span>
+									
+									<span id="wow" style="color:#ffb5b5"></span> 
+								</p>
 								<div class="tag-widget post-tag-container mb-5 mt-5">
 
 									<div class="tagcloud">
 										<a href="#" class="tag-cloud-link">${Trainer.prefer_add1}</a>
+										<c:if test="${Trainer.prefer_add2 ne '시/도 선택 ' and Trainer.prefer_add2 ne '시/도 선택'}">
 										<a href="#" class="tag-cloud-link">${Trainer.prefer_add2}</a>
+										</c:if>
+										<c:if test="${Trainer.prefer_add3 ne '시/도 선택 ' and Trainer.prefer_add3 ne '시/도 선택'}">
 										<a href="#" class="tag-cloud-link">${Trainer.prefer_add3}</a>
+										</c:if>
 									</div>
 									<br>
 
@@ -206,16 +220,15 @@
 											<a
 											href="${pageContext.request.contextPath}/report/reportrequest.do?tr_email=${Trainer.tr_email}&type=tra"
 											id="gogo">&nbsp&nbsp&nbsp 트레이너 신고 → 🚨</a>
-										</h3>
-
-
 
 									</div>
+									</div>
+								
 					</c:forEach>
-				</div>
-
+				
 
 			</div>
+			
 		</div>
 
 
@@ -362,13 +375,10 @@
 
 
 		<!-- .col-md-8  여기서부터 오른쪽 카테고리 -->
-		<div class="col-lg-4 sidebar ftco-animate">
-			<div class="sidebar-box"></div>
+			
+		<div class="col-lg-4 sidebar ftco-animate">		
 			<div class="sidebar-box ftco-animate">
-
-
 				<div class="categories">
-
 					<h3 class="heading-2" id="sidebarTitle">KeyWord</h3>
 					<c:forEach items="${trainerInfo.tlist}" var="Trainer">
 						<input type="hidden" id="trKeyword"
@@ -424,8 +434,185 @@
 	<!-- -----------------------------------끝-------------------------------------------- -->
 
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
- <script src="../resources/js/profile/review.js"></script>
+   <script type="text/javascript">
    
+   /* 마우스 올라고내릴때 추천구걸 */
+   $(function(){
+	   $('#TRheart').mouseenter(function(){
+	     $('#wow').text('이 트레이너가 좋으시다면 ♥ 를 눌러주세요! :)');
+	   });
+	   $('#TRheart').mouseleave(function(){
+		   $('#wow').text('');
+		  });
+	 });
+	 
+   /* 해당 프로필의 트레이너정보를 갖고오기 위해 url에서 파라미터 추출하는 부분 */
+ var getParameters = function (paramName) { 
+    // 리턴값을 위한 변수 선언
+    var returnValue; 
+    // 현재 URL 가져오기 
+    var url = location.href; 
+    // get 파라미터 값을 가져올 수 있는 ? 를 기점으로 slice 한 후 split 으로 나눔
+    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&'); 
+    // 나누어진 값의 비교를 통해 paramName 으로 요청된 데이터의 값만 return 
+    for (var i = 0; i < parameters.length; i++) { 
+       var varName = parameters[i].split('=')[0]; 
+          if (varName.toUpperCase() == paramName.toUpperCase()) { 
+             returnValue = parameters[i].split('=')[1]; 
+             return decodeURIComponent(returnValue); 
+          } 
+       } 
+    };
+
+
+var trainerName = getParameters('trainerName');
+var trainerEmail = getParameters('trainerEmail');
+ $('#trainer').html(trainerName);
+ $('#trnn').html(trainerName);
+var nickname = '${loginInfo.nickname}';
+console.log("nickname ", nickname);
+
+/* 리뷰 좋아요 */
+  function likeit(index) {
+
+       var no = index;
+       console.log("no ", no); 
+       likeitajx(nickname,no);
+      
+    };
+
+    
+  function likeitajx(nickname,no) {
+         $.ajax({
+            url : '<%=request.getContextPath()%>/review/recupdate.do' ,
+            type : 'POST',
+            data : {
+              nickname : nickname,
+               no : no,
+				tremail: trainerEmail
+            },
+            success : function(v) {
+               console.log("likeitajax method ", v);
+              if(v == 1){
+                 alert("추천은 한번만 가능합니다.")
+              }
+               recCount(no);
+            },
+            error : function (error) {
+               alert("여기에러야>?");
+       }
+         })
+      };
+      
+    function recCount(no) {
+       
+        console.log("recCount ", no);
+       
+     $.ajax({
+            url : '<%=request.getContextPath()%>/review/reccount.do',
+            type : 'POST',
+            data : {
+               no : no
+            },
+            success : function(count) {
+                   $('#id'+no).html(count);
+              
+                
+            },
+            error : function (error) {
+               alert("여기에러냐고");
+       }
+         })
+                };
+ 
+
+ /* 트레이너 좋아요 */
+
+    
+  function likeTR() {
+         $.ajax({
+            url : '<%=request.getContextPath()%>/review/trlikeupdate.do' ,
+            type : 'POST',
+            data : {
+				tremail: trainerEmail,
+				memname:nickname
+            },
+            success : function(v) {
+               console.log("likeTR method ", v);
+              if(v == 1){
+                 alert("좋아요는 한번만 가능합니다.")
+              }
+               trrecCount();
+            },
+            error : function (error) {
+               alert("여기에러야>?");
+       }
+         })
+      };
+      
+    function trrecCount() {
+       
+       
+     $.ajax({
+            url : '<%=request.getContextPath()%>/review/trlikecount.do',
+            type : 'POST',
+            data : {
+            	tremail: trainerEmail
+            },
+            success : function(count) {
+                   $('#trcount').html(count);
+              
+                
+            },
+            error : function (error) {
+               alert("여기에러냐고");
+       }
+         })
+                };
+                trrecCount();
+ /* 리뷰 삭제 */
+ 
+ function deleteReview(data) {
+    console.log(data);
+    $.ajax({
+       type:'POST',
+       url: '<%=request.getContextPath()%>/review/deletereview.do',
+       data: {
+          
+          no : data
+       },
+       success: function(data) {
+             alert("정상적으로 삭제되었습니다.");
+             location.reload();
+          
+       }
+       
+    })
+ };
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+      //변수를 선언합니다.
+    var trKeyword = $('#trKeyword').val();
+     var span = document.getElementById('span');
+    var test = trKeyword.split(",");
+
+    for(var i = 0; i < test.length; i++){
+       
+       console.log(test[i]);
+       span.innerHTML += '<li><a>' + test[i] + '</a></li>'; 
+    };
+   </script>
 
 
 	<%@ include file="../include/footer.jsp"%>

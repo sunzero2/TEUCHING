@@ -54,6 +54,11 @@ public class ReviewDao {
 		return sqlSession.update("Review.recUpdate", data);
 	}
 	
+	// 추천 (트레이너 테이블 tr_like)
+		public int trrecUpdate(String trainerName) {
+			return sqlSession.update("Review.trrecUpdate", trainerName);
+		}
+	
 	
 	// reviewrec테이블에 데이터 추가
 	public int insertreviewrrec(Map<String, Object> data) {
@@ -74,11 +79,6 @@ public class ReviewDao {
 		return sqlSession.selectOne("Review.reviewrecyn", data);
 	}
 	
-	
-	// 추천 제거
-	public int recDelete(Map<String, Object> data) {
-		return sqlSession.update("Review.recDelete", data);
-	}
 	
 	// review_rec테이블에 데이터 제거
 	public int recRealDelete(Map<String, Object> data) {
@@ -103,5 +103,21 @@ public class ReviewDao {
 	// 트레이너 네임 가져오기 위한 메소드
 	public String trainerName(String tr_email) {
 		return sqlSession.selectOne("Review.trainername", tr_email);
+	}
+	
+	public int TRLikeyn(Map<String, Object> data) {
+		return sqlSession.selectOne("Review.TRLikeyn", data);
+	}
+	
+	public int TRLikeUpdate(Map<String, Object> data) {
+		return sqlSession.update("Review.TRLikeUpdate",data);
+	}
+	
+	public int insertTRLikeInfo(Map<String,Object> data) {
+		return sqlSession.insert("Review.insertTRLikeInfo",data);
+	}
+	
+	public int trLikeCount(String email) {
+		return sqlSession.selectOne("Review.trLikeCount",email);
 	}
 }

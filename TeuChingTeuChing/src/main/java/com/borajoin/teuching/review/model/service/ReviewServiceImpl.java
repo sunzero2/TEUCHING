@@ -21,12 +21,12 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Autowired
 	ReviewDao rd;
-	
+
 	@Override
-	public Map<String,Object> selectReviewList(String orderby, int currentPage, int cntPerPage, String trainerEmail) {
+	public Map<String, Object> selectReviewList(String orderby, int currentPage, int cntPerPage, String trainerEmail) {
 		Map<String, Object> res = new HashMap<>();
 		Paging page = new Paging(rd.contentCnt(trainerEmail), currentPage, cntPerPage);
-		List<Review> rlist = rd.selectReviewList(page, orderby,trainerEmail);
+		List<Review> rlist = rd.selectReviewList(page, orderby, trainerEmail);
 		res.put("paging", page);
 		res.put("rlist", rlist);
 		return res;
@@ -42,7 +42,7 @@ public class ReviewServiceImpl implements ReviewService {
 	public int recUpdate(Map<String, Object> data) {
 		int res = rd.recUpdate(data);
 		// 추천수 업데이트 시키기
-		if(res > 0) {
+		if (res > 0) {
 			int res2 = rd.insertreviewrrec(data);
 			// reviewrec테이블에 데이터 넣기
 		}
@@ -55,12 +55,6 @@ public class ReviewServiceImpl implements ReviewService {
 		return yn;
 	}
 
-	@Override
-	public int recDelete(Map<String, Object> data) {
-		int res = rd.recRealDelete(data);
-		return rd.recDelete(data);
-		
-	}
 
 	@Override
 	public int recCount(String no) {
@@ -70,12 +64,13 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	
+
 	// 해당하는 트레이너의 정보를 가져오는 메소드
 	@Override
 	public Map<String, Object> selectTrainerInformation(String trainerEmail) {
 		Map<String, Object> res = new HashMap<>();
 		List<Trainer> tlist = rd.selectTrainerInformation(trainerEmail);
-		res.put("tlist",tlist);
+		res.put("tlist", tlist);
 		return res;
 	}
 
@@ -87,9 +82,9 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public Map<String, Object> selectPostList(String trainerEmail) {
-		Map<String,Object> res = new HashMap<>();
+		Map<String, Object> res = new HashMap<>();
 		List<Post> plist = rd.selectPostList(trainerEmail);
-		res.put("plist",plist);
+		res.put("plist", plist);
 		return res;
 	}
 
@@ -101,7 +96,37 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public String trainerName(String tr_email) {
 		String tlist = rd.trainerName(tr_email);
-		
+
 		return tlist;
 	}
+	
+	
+	@Override
+	public int trrecUpdate(String trainerName) {
+		int res = rd.trrecUpdate(trainerName);
+		return res;
+	}
+	
+	@Override
+	public int TRLikeyn(Map<String, Object> data) {
+		int res = rd.TRLikeyn(data);
+		return res;
+	}
+
+	@Override
+	public int TRLikeUpdate(Map<String, Object> data) {
+		int res = rd.TRLikeUpdate(data);
+		if(res > 0) {
+			int res2 = rd.insertTRLikeInfo(data);
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int trLikeCount(String email) {
+		int res = rd.trLikeCount(email);
+		return res;
+	}
+
 }

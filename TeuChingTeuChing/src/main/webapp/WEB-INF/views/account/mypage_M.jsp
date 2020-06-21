@@ -41,7 +41,6 @@ input::placeholder {
 .col-sm-9 {
 	width: 100%;
 	margin-left: 10%;
-	input: :placeholder;
 	color: black !important;
 }
 
@@ -186,33 +185,26 @@ display: block;
 									</div>
 								</form>
 							</div>
-							
-							
 							<!--  -->
 							<div class="tab-pane active" id="pwUpdate">
 							<h2></h2>
-								<form class="form" action="#" method="post" id="pwUpdateform">
+								<form class="form" action="<%=request.getContextPath()%>/member/pwUpdate.do" method="post" id="pwUpdateform">
 									<div class="col-xs-6 form-height">
-										<label for="password"><h4>Password</h4></label><br> <input
+									<input type="hidden" name="email" value="${loginInfo.mem_email}" />
+									<input type="hidden" name="memberType" value="${memberType}" />
+										<label><h4>New Password</h4></label><br> <input
 											type="password" class="form-control" id="password_1"
 											name="password" class="pw" maxlength="20">
 									</div>
 									<div class="col-xs-6 form-height">
-										<label for="password2"><h4>Password Check</h4></label> <input
+										<label><h4>Password Check</h4></label> <input
 											type="password" id="password_2" class="form-control">
-										<span id="alert-success" style="display: none;">비밀번호가
-											일치합니다.</span> <span id="alert-danger"
-											style="display: none; color: #d92742; font-weight: bold;">
-											비밀번호가 일치하지 않습니다.</span>
 									</div>
 									<div style="text-align: left; margin-left: 3%;">
-										<a type="button" id="pwSubmit" href="#"
-											class="btn btn-primary"> 비밀번호 변경하기 </a>
+										<a type="button" id="pwSubmit" class="btn btn-primary" href="#"> 비밀번호 변경하기 </a>
 									</div>
 								</form>
 							</div>
-
-
 							<!--/tab-pane-->
 							<!-- Post Table -->
 							<div class="tab-pane" id="messages">
@@ -415,7 +407,6 @@ display: block;
 	});
 
 
-
  /* 벌점 */
  $('#star a').click(function() {
        $(this).parent().children("a").removeClass("on");
@@ -455,7 +446,9 @@ $('#memberUpdate').click(function() {
 		$('#memberMypage').submit();
 });
 
+//비밀번호 변경  체크
 $('#pwSubmit').click(function() {
+
 if ($.trim($('#password_1').val()) == '') {
 	alert("비밀번호를 입력해주세요.");
 	setTimeout(function(){ $('#password_1').focus(); }, 10)
@@ -466,23 +459,28 @@ else if ($('#password_1').val() != $('#password_2').val()) {
 	alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
 	setTimeout(function(){ $('#password_2').focus(); }, 10)
 	return;
+}else{
+	$('#pwUpdateform').submit();
 }
+
 });
 
-$('.pw').focusout(function () {
-    var pwd1 = $("#password_1").val();
-    var pwd2 = $("#password_2").val();
+// 비밀번호 정규식
+function pw_check(password) {    
+var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+return (password != '' && password != 'undefined' && regex.test(password)); 
+}
+$("input[name='password']").blur(function(){
 
-    if ( pwd1 != '' && pwd2 == '' ) {
-        null;
-    } else if (pwd1 != "" || pwd2 != "") {
-        if (pwd1 == pwd2) {
-            $("#alert-success").css('display', 'inline-block');
-            $("#alert-danger").css('display', 'none');
-        } else {
-            $("#alert-success").css('display', 'none');
-            $("#alert-danger").css('display', 'inline-block');
-        }
+    var password = $(this).val();
+    if( password == '' || password == 'undefined') return;
+
+    if(! pw_check(password) ) {
+    	alert("잘못된 비밀번호 번호입니다. 숫자와 문자를 포함한 8자리 이상의 비밀번호를 입력하세요.");
+        setTimeout(function(){ $('#password_1').focus(); }, 10)
+        return false;
+    }else{
+    	check_pw = true;
     }
 });
 
