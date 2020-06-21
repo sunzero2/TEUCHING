@@ -115,7 +115,6 @@
 				</c:if>
 			</div>
 			<br>
-				<a href="${pageContext.request.contextPath }/manager/report.do">◀목록</a>
 		</div>
 
 	</div>
