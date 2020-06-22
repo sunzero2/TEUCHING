@@ -41,6 +41,11 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
+	<style>
+	#ftco-nav{
+		transform: translateX(15%); !important
+	}
+	</style>
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>
@@ -59,15 +64,15 @@
 <div class="row" style="transform:translateX(-10%)">
 
 			<ul class="nav nav-pills nav-stacked admin-menu"
-				style="float:left;transform: translate(80%,5%)">
+				style="float:left;transform: translate(80%,30%)">
 				<li class="active"><a href="${pageContext.request.contextPath }/manager/report.do" data-target-id="profile">트레이너 신고</a></li>
 			</ul>
 			<ul class="nav nav-pills nav-stacked admin-menu"
-				style="float:left;transform: translate(4%,20%)">
+				style="float:left;transform: translate(4%,150%)">
 				<li class="active"><a href="${pageContext.request.contextPath }/manager/reviewreport.do" data-target-id="profile">리뷰 신고</a></li>
 			</ul>
 
-			<div class="col-md-9  admin-content" id="profile">
+			<div class="col-md-9  admin-content" id="profile" style="transform:translate(35%,-12%);">
 				<c:forEach items="${res.resRev.selectRevReport }" var="r">
 					<div class="panel panel-info" style="margin: 1em;">
 						<div class="panel-heading">
@@ -92,7 +97,7 @@
 						</div>
 					</div>
 				</c:forEach>
-				<div class="row mt-5" style="transform: translateX(25%)">
+				<div class="row mt-5" style="transform: translateX(22%)">
 					<div class="col">
 						<div class="block-27">
 							<ul>

@@ -55,7 +55,6 @@
 			<form
 				action="${pageContext.request.contextPath }/manager/reportdetail/ans.do"
 				method="post">
-
 				<h5>${res.report_date }
 					<c:if test="${type eq 'tra' }">
 						<input type="hidden" name="nick_name" value="${res.nickname }">

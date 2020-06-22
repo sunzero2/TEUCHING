@@ -42,7 +42,7 @@
 	rel="stylesheet" id="bootstrap-css">
 <style>
 #ftco-nav{
-	transform: translateX(10%); !important
+	transform: translateX(15%); !important
 }
 </style>
 </head>
