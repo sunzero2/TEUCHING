@@ -139,7 +139,7 @@
 					<a style="color:black" href="${pageContext.request.contextPath }/message/msgboxrecv.do">✉</a>
 					<a onclick="location= 'detail.cs?id=${loginInfo.nickname}">${loginInfo.nickname}	님  환영합니다. &nbsp;</a>
 					<span style="color: #ffb5b5;">X</span>
-					<a href ="<%=request.getContextPath()%>/member/mypage_M.do">&nbsp;  MyPage</a>
+					<a href ="<%=request.getContextPath()%>/member/mypage_M.do">&nbsp;  MyPage&nbsp;</a>
 					</c:if>
 				<c:if test="${memberType eq 'trainer'}">
 					<a style="color:black" href="${pageContext.request.contextPath }/profile/reviewforTR.do?trainerEmail=${loginInfo.tr_email}">🇲🇵</a>
