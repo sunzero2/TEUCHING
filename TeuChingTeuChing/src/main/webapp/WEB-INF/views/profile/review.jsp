@@ -238,7 +238,9 @@ cursor:pointer ;
 		<div class="pt-5 mt-5">
 
 			<!-- 코멘트 리스트 수 가져와서 뿌려 -->
-			<h3 class="mb-5">${reviewList.paging.total}&nbspComments <i class="fas fa-list-ul" id="orderbyLike"></i> </h3>
+			<h3 class="mb-5">${reviewList.paging.total}&nbspComments 
+			<i class="fas fa-list-ul" id="orderbyLike" onclick="orderbyList()"></i> </h3>
+			<input type="hidden" name="orderby" value="" id="jisoo">
 			
 
 			<ul class="comment-list">
@@ -607,7 +609,9 @@ console.log("nickname ", nickname);
        span.innerHTML += '<li><a>' + test[i] + '</a></li>'; 
     };
     
-    
+    function orderbyList() {
+		
+	}
     
     
     
