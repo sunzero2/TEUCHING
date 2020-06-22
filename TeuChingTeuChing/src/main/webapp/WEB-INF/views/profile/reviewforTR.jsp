@@ -62,7 +62,7 @@
 
 #gogo {
 	color: #ffb5b5;
-	padding-left: 85%;
+	padding-left: 80%;
 }
 
 #box {
