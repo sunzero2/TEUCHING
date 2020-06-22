@@ -121,7 +121,8 @@ var check_pw = false;
 	    
 	    // 비밀번호 정규식
 	    function pw_check(password) {    
-	    var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+	    var regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+
 	    return (password != '' && password != 'undefined' && regex.test(password)); 
 		}
 	    $("input[name='password']").blur(function(){
@@ -130,7 +131,7 @@ var check_pw = false;
 	        if( password == '' || password == 'undefined') return;
 
 	        if(! pw_check(password) ) {
-	        	alert("잘못된 비밀번호 번호입니다. 숫자와 문자를 포함한 8자리 이상의 비밀번호를 입력하세요.");
+	        	alert("잘못된 비밀번호 번호입니다. 숫자와 문자, 기호를 포함한 8자리 이상의 비밀번호를 입력하세요.");
 		        setTimeout(function(){ $('#password_1').focus(); }, 10)
 		        return false;
 	        }else{

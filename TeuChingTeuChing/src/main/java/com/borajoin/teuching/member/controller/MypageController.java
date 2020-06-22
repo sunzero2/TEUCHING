@@ -221,27 +221,30 @@ public class MypageController {
 				preMap3 = (String)commandMap.get("prefer3-1")+" "+(String)commandMap.get("prefer3-2");
 			}
 			
-			String keyword = (String)commandMap.get("keyword1");
 			
-			
-			if((String)commandMap.get("keyword2") != null) {
-				keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2");
-			}else {
-				keyword = t.getPurpose_keyword();
+			String keyword = t.getPurpose_keyword();
+			if ((String) commandMap.get("keyword1") != "") {
+				keyword = (String) commandMap.get("keyword1");
+				if ((String) commandMap.get("keyword2") != "") {
+					keyword = (String) commandMap.get("keyword1") + "," + (String) commandMap.get("keyword2");
+					if ((String) commandMap.get("keyword3") != "") {
+						keyword = (String) commandMap.get("keyword1") + "," + (String) commandMap.get("keyword2") + ","
+								+ (String) commandMap.get("keyword3");
+						if ((String) commandMap.get("keyword4") != "") {
+							keyword = (String) commandMap.get("keyword1") + "," + (String) commandMap.get("keyword2")
+									+ "," + (String) commandMap.get("keyword3") + ","
+									+ (String) commandMap.get("keyword4");
+							if ((String) commandMap.get("keyword5") != "") {
+								keyword = (String) commandMap.get("keyword1") + ","
+										+ (String) commandMap.get("keyword2") + ","
+										+ (String) commandMap.get("keyword3") + ","
+										+ (String) commandMap.get("keyword4") + ","
+										+ (String) commandMap.get("keyword5");
+							}
+						}
+					}
+				}
 			}
-			if((String)commandMap.get("keyword3") != null) {
-				keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2")
-				+","+(String)commandMap.get("keyword3");
-			}
-			if((String)commandMap.get("keyword4") != null) {
-				keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2")
-				+","+(String)commandMap.get("keyword3")+","+(String)commandMap.get("keyword4");
-			}
-			if((String)commandMap.get("keyword5") != null) {
-				keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2")
-				+","+(String)commandMap.get("keyword3")+","+(String)commandMap.get("keyword4")+","+(String)commandMap.get("keyword5");
-			}
-			
 			commandMap.put("prefer1", preMap1);
 			commandMap.put("prefer2", preMap2);
 			commandMap.put("prefer3", preMap3);

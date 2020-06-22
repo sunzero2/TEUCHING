@@ -1,16 +1,42 @@
+/* 리뷰모달 */
+ 
+ $(function(){
+		
+		$('.clickreview').click(function() {
+			var value = $(this).val();
+			console.log(value);
+			$('#tr_email').val(value);
+			$('#trnn').html(value);
+			$('#reviewModal').modal();
+		});
+	});
+
+
+ /* 벌점 */
+ $('#star a').click(function() {
+       $(this).parent().children("a").removeClass("on");
+       $(this).addClass("on").prevAll("a").addClass("on");
+       console.log($(this).attr("value"));
+       $('#starvalue').val($(this).attr("value"));
+    });
+
+ /* 리뷰 업로드 */
+ function uploadReview() {
+    
+    $.ajax({
+       type:'POST',
+       url: '<%=request.getContextPath()%>/review/uploadreview.do',
+       data: $("#uploadReview").serialize(),
+       success: function(data) {
+             alert("리뷰가 성공적으로 등록되었습니다.");
+       }
+       
+    })
+ };
+
+
+
 $('#memberUpdate').click(function() {
-	
-	if ($.trim($('#password_1').val()) == '') {
-		alert("비밀번호를 입력해주세요.");
-		setTimeout(function(){ $('#password_1').focus(); }, 10)
-		return;
-	}
-	//패스워드 확인
-	else if ($('#password_1').val() != $('#password_2').val()) {
-		alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
-		setTimeout(function(){ $('#password_2').focus(); }, 10)
-		return;
-	} else {
 		
 		if($.trim($('#gender').val()) == ''){
 			document.getElementById('gender').value = "${loginInfo.gender}";
@@ -23,23 +49,43 @@ $('#memberUpdate').click(function() {
 		}
 		alert("회원정보 수정이 완료되었습니다!");
 		$('#memberMypage').submit();
-	}
 });
 
-$('.pw').focusout(function () {
-    var pwd1 = $("#password_1").val();
-    var pwd2 = $("#password_2").val();
+//비밀번호 변경  체크
+$('#pwSubmit').click(function() {
 
-    if ( pwd1 != '' && pwd2 == '' ) {
-        null;
-    } else if (pwd1 != "" || pwd2 != "") {
-        if (pwd1 == pwd2) {
-            $("#alert-success").css('display', 'inline-block');
-            $("#alert-danger").css('display', 'none');
-        } else {
-            $("#alert-success").css('display', 'none');
-            $("#alert-danger").css('display', 'inline-block');
-        }
+if ($.trim($('#password_1').val()) == '') {
+	alert("비밀번호를 입력해주세요.");
+	setTimeout(function(){ $('#password_1').focus(); }, 10)
+	return;
+}
+//패스워드 확인
+else if ($('#password_1').val() != $('#password_2').val()) {
+	alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
+	setTimeout(function(){ $('#password_2').focus(); }, 10)
+	return;
+}else{
+	$('#pwUpdateform').submit();
+}
+
+});
+
+// 비밀번호 정규식
+function pw_check(password) {    
+	var regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+return (password != '' && password != 'undefined' && regex.test(password)); 
+}
+$("input[name='password']").blur(function(){
+
+    var password = $(this).val();
+    if( password == '' || password == 'undefined') return;
+
+    if(! pw_check(password) ) {
+    	alert("잘못된 비밀번호 번호입니다. 숫자와 문자, 기호를 포함한 8자리 이상의 비밀번호를 입력하세요.");
+        setTimeout(function(){ $('#password_1').focus(); }, 10)
+        return false;
+    }else{
+    	check_pw = true;
     }
 });
 
@@ -117,3 +163,5 @@ function moreview() {
 $('tr[id^="moreview"]').show();
 $('#morea').hide();
 }
+
+
