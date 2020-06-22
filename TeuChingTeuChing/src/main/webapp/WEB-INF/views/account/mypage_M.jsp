@@ -28,6 +28,9 @@
 <link rel="stylesheet" href="../resources/css/style.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link
+	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
+	rel="stylesheet">
 	
 <style type="text/css">
 input::placeholder {
@@ -94,13 +97,19 @@ display: block;
 }
 
 .clickreview{
+    background: #ffb5b5 !important;
+    border: 1px solid #ffb5b5 !important;
+    color: #fff;
 	cursor: pointer;
+		font-family: 'Gamja Flower', cursive;
+	font-size: 0.9vw;
 }
 
 
 
 
 </style>
+
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>

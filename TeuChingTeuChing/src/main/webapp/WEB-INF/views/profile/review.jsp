@@ -25,10 +25,6 @@ cursor:pointer ;
 	font-size: 1.4vw;
 }
 
-.likecnt {
-	color: #ffb5b5;
-}
-
 #sidebarTitle {
 	color: #ffb5b5;
 	font-family: 'Nanum Pen Script', cursive;
@@ -46,7 +42,6 @@ cursor:pointer ;
 #heart {
 	cursor: pointer;
 	text-decoration: none;
-	color: gray;
 }
 
 #trainer {
@@ -74,6 +69,11 @@ cursor:pointer ;
 	width: 100%;
 	height: 120%;
 	object-fit: cover;
+}
+
+#orderbyLike{
+	padding-left: 65%;
+	font-size: 1.2vw;
 }
 </style>
 <link
@@ -196,7 +196,7 @@ cursor:pointer ;
 									</c:if>
 								</p>
 								<p>
-									LIKE : <a id="trlikeatag" onclick="likeTR();"><i class="fas fa-heart" id="TRheart" style="font-size: 16px;"></i></a><span id="trcount">&nbsp;${Trainer.tr_like }</span>
+									LIKE : <a id="trlikeatag" onclick="likeTR();"><i class="fas fa-heart" id="TRheart" style="font-size: 16px; color: #ffb5b5;"></i></a><span id="trcount"></span>
 									
 									<span id="wow" style="color:#ffb5b5"></span> 
 								</p>
@@ -238,9 +238,11 @@ cursor:pointer ;
 		<div class="pt-5 mt-5">
 
 			<!-- 코멘트 리스트 수 가져와서 뿌려 -->
-			<h3 class="mb-5">${reviewList.paging.total}&nbspComments</h3>
+			<h3 class="mb-5">${reviewList.paging.total}&nbspComments <i class="fas fa-list-ul" id="orderbyLike"></i> </h3>
+			
 
 			<ul class="comment-list">
+
 
 
 				<c:forEach items="${reviewList.rlist}" var="review">
@@ -279,7 +281,7 @@ cursor:pointer ;
 												class="far fa-trash-alt"></i>
 										</a> <a id="loginrecUpdate"
 											onclick="likeit(${review.review_idx});"> <i
-												class="fas fa-heart" id="heart" style="font-size: 16px;"></i>
+												class="fas fa-heart" id="heart" style="font-size: 16px; color: #ffb5b5;"></i>
 										</a> <span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
 											<input type="hidden" id="click${review.review_idx}"
 											value="true" />
@@ -295,7 +297,7 @@ cursor:pointer ;
 										<span id="reviewnn">${review.mem_nickname} <a
 											id="recUpdate" onclick="likeit(${review.review_idx});"> <i
 												class="fas fa-heart" id="heart"
-												style="font-size: 16px; color: grey"></i>
+												style="font-size: 16px; color: #ffb5b5;"></i>
 										</a><span class="likecnt" id="id${review.review_idx}">${review.recommend}</span>
 											<input type="hidden" id="click${review.review_idx}"
 											value="true" />
@@ -516,6 +518,7 @@ console.log("nickname ", nickname);
             },
             success : function(count) {
                    $('#id'+no).html(count);
+                   
               
                 
             },
@@ -560,7 +563,7 @@ console.log("nickname ", nickname);
             	tremail: trainerEmail
             },
             success : function(count) {
-                   $('#trcount').html(count);
+                   $('#trcount').html("&nbsp;"+count);
               
                 
             },
@@ -569,7 +572,8 @@ console.log("nickname ", nickname);
        }
          })
                 };
-                trrecCount();
+                
+     trrecCount();
  /* 리뷰 삭제 */
  
  function deleteReview(data) {
@@ -592,16 +596,6 @@ console.log("nickname ", nickname);
  
  
  
- 
- 
- 
- 
-
-
- 
- 
- 
- 
       //변수를 선언합니다.
     var trKeyword = $('#trKeyword').val();
      var span = document.getElementById('span');
@@ -612,6 +606,11 @@ console.log("nickname ", nickname);
        console.log(test[i]);
        span.innerHTML += '<li><a>' + test[i] + '</a></li>'; 
     };
+    
+    
+    
+    
+    
    </script>
 
 
