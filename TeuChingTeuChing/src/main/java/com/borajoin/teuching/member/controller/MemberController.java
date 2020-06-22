@@ -289,17 +289,21 @@ public class MemberController {
 		
 		String keyword = (String)commandMap.get("keyword1");
 		
-		if((String)commandMap.get("keyword2") != null) {
-			keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2");
-		}else if((String)commandMap.get("keyword3") != null) {
-			keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2")
-			+","+(String)commandMap.get("keyword3");
-		}else if((String)commandMap.get("keyword4") != null) {
-			keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2")
-			+","+(String)commandMap.get("keyword3")+","+(String)commandMap.get("keyword4");
-		}else if((String)commandMap.get("keyword5") != null) {
-			keyword = (String)commandMap.get("keyword1")+","+(String)commandMap.get("keyword2")
-			+","+(String)commandMap.get("keyword3")+","+(String)commandMap.get("keyword4")+","+(String)commandMap.get("keyword5");
+		if ((String) commandMap.get("keyword2") != "") {
+			keyword = (String) commandMap.get("keyword1") + "," + (String) commandMap.get("keyword2");
+			if ((String) commandMap.get("keyword3") != "") {
+				keyword = (String) commandMap.get("keyword1") + "," + (String) commandMap.get("keyword2") + ","
+						+ (String) commandMap.get("keyword3");
+				if ((String) commandMap.get("keyword4") != "") {
+					keyword = (String) commandMap.get("keyword1") + "," + (String) commandMap.get("keyword2") + ","
+							+ (String) commandMap.get("keyword3") + "," + (String) commandMap.get("keyword4");
+					if ((String) commandMap.get("keyword5") != "") {
+						keyword = (String) commandMap.get("keyword1") + "," + (String) commandMap.get("keyword2") + ","
+								+ (String) commandMap.get("keyword3") + "," + (String) commandMap.get("keyword4") + ","
+								+ (String) commandMap.get("keyword5");
+					}
+				}
+			}
 		}
 		
 		commandMap.put("keyword", keyword);

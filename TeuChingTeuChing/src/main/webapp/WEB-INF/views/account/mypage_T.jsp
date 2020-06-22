@@ -179,29 +179,6 @@
 										placeholder="${loginInfo.weight}">
 								</div>
 							</div>
-
-<!-- 							<div class="form-group">
-
-								<div class="col-xs-6">
-									<label for="password"><h4>Password</h4></label><br> <input
-										type="password" class="form-control" id="password_1"
-										name="password" class="pw" maxlength="20">
-
-								</div>
-							</div>
-							<div class="form-group">
-
-								<div class="col-xs-6">
-									<label for="password2"><h4>Password Check</h4></label> <input
-										type="password" id="password_2" class="form-control">
-									<span id="alert-success" style="display: none;">비밀번호가
-										일치합니다.</span> <span id="alert-danger"
-										style="display: none; color: #d92742; font-weight: bold;">
-										비밀번호가 일치하지 않습니다.</span>
-								</div>
-							</div>
-							<br> -->
-
 							<div class="form-group">
 								<div class="col-md-12">
 									<div class="form-group focused">
@@ -257,6 +234,7 @@
 							<div class="form-group">
 								<div class="col-xs-12">
 								<label class="form-control-label">트레이닝 가능 종목 변경하기</label><br>
+								<span>현재 등록된 트레이닝 종목 : ${loginInfo.purpose_keyword}</span> <br>
 									<div class="row">
 										<div class="col-lg-2">
 											<div class="form-group focused">
@@ -544,12 +522,11 @@
 
 <script type="text/javascript">
 
-/* 리뷰모달 */
+/* 비밀번호모달 */
 
 $(function(){
 		
 		$('.clickpw').click(function() {
-			console.log(value);
 			$('#pwModal').modal();
 		});
 	});
@@ -610,21 +587,6 @@ $(document).ready(function() {
 // 회원정보 업데이트
 $(document).ready(function(e){
 	
-	// 트레이닝 가능 종목 자르기
-	   var beforeStr = "${loginInfo.purpose_keyword}";
-	   var afterStr = beforeStr.split(',');
-	   inputEle1 = document.querySelector('#keyword1');
-	   inputEle1.placeholder = afterStr[0];
-	   inputEle2 = document.querySelector('#keyword2');
-	   inputEle2.placeholder = afterStr[1];
-	   inputEle3 = document.querySelector('#keyword3');
-	   inputEle3.placeholder = afterStr[2];
-	   inputEle4 = document.querySelector('#keyword4');
-	   inputEle4.placeholder = afterStr[3];
-	   inputEle5 = document.querySelector('#keyword5');
-	   inputEle5.placeholder = afterStr[4];
-	   
-	
    $('#updateT').click(function(){
     	  
     		 if($.trim($('#gender').val()) == ''){
@@ -660,26 +622,6 @@ $(document).ready(function(e){
 				document.getElementById('sido3').value = null;
 				
 			}
-			if($.trim($('#keyword1').val()) == 'undefined'){
-				document.getElementById('keyword1').value = afterStr[0];
-				
-			}
-			if($.trim($('#keyword2').val()) == 'undefined'){
-				document.getElementById('keyword2').value = afterStr[1];
-				
-			}
-			if($.trim($('#keyword3').val()) == 'undefined'){
-				document.getElementById('keyword3').value = afterStr[2];
-				
-			}
-			if($.trim($('#keyword4').val()) == 'undefined'){
-				document.getElementById('keyword4').value = afterStr[3];
-				
-			}
-			if($.trim($('#keyword5').val()) == 'undefined'){
-				document.getElementById('keyword5').value = afterStr[4];
-				
-			}
     	  
        	  alert("회원정보 수정이 완료되었습니다.");
        	  $('#trainerMypage').submit();
@@ -709,7 +651,7 @@ else if ($('#password_1').val() != $('#password_2').val()) {
 
 // 비밀번호 정규식
 function pw_check(password) {    
-var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+	var regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 return (password != '' && password != 'undefined' && regex.test(password)); 
 }
 $("input[name='password']").blur(function(){
@@ -718,7 +660,7 @@ $("input[name='password']").blur(function(){
     if( password == '' || password == 'undefined') return;
 
     if(! pw_check(password) ) {
-    	alert("잘못된 비밀번호 번호입니다. 숫자와 문자를 포함한 8자리 이상의 비밀번호를 입력하세요.");
+    	alert("잘못된 비밀번호 번호입니다. 숫자와 문자, 기호를 포함한 8자리 이상의 비밀번호를 입력하세요.");
         setTimeout(function(){ $('#password_1').focus(); }, 10)
         return false;
     }else{

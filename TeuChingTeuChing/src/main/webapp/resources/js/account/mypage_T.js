@@ -1,3 +1,12 @@
+/* 리뷰모달 */
+
+$(function(){
+		
+		$('.clickpw').click(function() {
+			console.log(value);
+			$('#pwModal').modal();
+		});
+	});
 
 
 function imgLoad(img) {
@@ -56,17 +65,6 @@ $(document).ready(function() {
 $(document).ready(function(e){
 	
    $('#updateT').click(function(){
-      if($.trim($('#password_1').val()) == ''){
-    	alert("비밀번호를 입력해주세요.");
-		setTimeout(function(){ $('#password_1').focus(); }, 10)
-		return;
-      }
-      //패스워드 확인
-      else if($('#password_1').val() != $('#password_2').val()){
-    	alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
-		setTimeout(function(){ $('#password_2').focus(); }, 10)
-		return;
-      }else{
     	  
     		 if($.trim($('#gender').val()) == ''){
 				document.getElementById('gender').value = "${loginInfo.gender}";
@@ -88,43 +86,62 @@ $(document).ready(function(e){
 			}
 			if($.trim($('#career').val()) == ''){
 				document.getElementById('career').value = "${loginInfo.career}";
-				
 			}
 			if($.trim($('#sido1').val()) == '시/도 선택'){
-				document.getElementById('sido1').value = "${loginInfo.prefer_add1}";
+				document.getElementById('sido1').value = null;
 				
 			}
 			if($.trim($('#sido2').val()) == '시/도 선택'){
-				document.getElementById('sido2').value = "${loginInfo.prefer_add2}";
+				document.getElementById('sido2').value = null;
 				
 			}
 			if($.trim($('#sido3').val()) == '시/도 선택'){
-				document.getElementById('sido3').value = "${loginInfo.prefer_add3}";
+				document.getElementById('sido3').value = null;
 				
 			}
     	  
-    	  
-         alert("회원정보 수정이 완료되었습니다.");
-         $('#trainerMypage').submit();
-      } 
+       	  alert("회원정보 수정이 완료되었습니다.");
+       	  $('#trainerMypage').submit();
+       
    });
+   
 });
 
-//비밀번호 체크
-$('.pw').focusout(function () {
-    var pwd1 = $("#password_1").val();
-    var pwd2 = $("#password_2").val();
+//비밀번호 변경  체크
+$('#pwSubmit').click(function() {
 
-    if ( pwd1 != '' && pwd2 == '' ) {
-        null;
-    } else if (pwd1 != "" || pwd2 != "") {
-        if (pwd1 == pwd2) {
-            $("#alert-success").css('display', 'inline-block');
-            $("#alert-danger").css('display', 'none');
-        } else {
-            $("#alert-success").css('display', 'none');
-            $("#alert-danger").css('display', 'inline-block');
-        }
+if ($.trim($('#password_1').val()) == '') {
+	alert("비밀번호를 입력해주세요.");
+	setTimeout(function(){ $('#password_1').focus(); }, 10)
+	return;
+}
+//패스워드 확인
+else if ($('#password_1').val() != $('#password_2').val()) {
+	alert('비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.');
+	setTimeout(function(){ $('#password_2').focus(); }, 10)
+	return;
+}else{
+	$('#pwUpdateform').submit();
+}
+
+});
+
+// 비밀번호 정규식
+function pw_check(password) {    
+	var regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+return (password != '' && password != 'undefined' && regex.test(password)); 
+}
+$("input[name='password']").blur(function(){
+
+    var password = $(this).val();
+    if( password == '' || password == 'undefined') return;
+
+    if(! pw_check(password) ) {
+    	alert("잘못된 비밀번호 번호입니다. 숫자와 문자, 기호를 포함한 8자리 이상의 비밀번호를 입력하세요.");
+        setTimeout(function(){ $('#password_1').focus(); }, 10)
+        return false;
+    }else{
+    	check_pw = true;
     }
 });
 
@@ -288,18 +305,6 @@ function sample6_execDaumPostcode() {
                            var tr = table.insertRow();
                            tr.className = 'blog-entry blog-entry-2 justify-content-end col-md-12 ftco-animate fadeInUp ftco-animated';
 
-                           // 트레이너의 이미지 담을 cell 생성
-                           var imageTd = tr.insertCell();
-
-                           // 이미지 담을 div 생성
-                           var image = document.createElement('div');
-                           image.className = 'img rounded-circle mb-2';
-                           image.style.backgroundImage = 'url(../resources/img/classes-1.jpg)';
-                           image.style.width = '116px';
-                           image.style.height = '141px';
-                           image.style.marginTop = '54px';
-                           imageTd.append(image);
-
                            // 게시글 콘텐츠 담을 cell 생성
                            var contentTd = tr.insertCell();
 
@@ -322,11 +327,9 @@ function sample6_execDaumPostcode() {
                            var writer = document.createElement('div');
                            header.append(writer);
 
-                           var writerLink = document
-                                 .createElement('a');
+                           var writerLink = document.createElement('a');
                            // 트레이너 프로필로 이동할 수 있는 링크
-                           writerLink.href = '/teuching/profile/review.do?trainerEmail='
-                                 + pList[i].trEmail;
+                           writerLink.href = '/teuching/profile/review.do?trainerEmail='+ pList[i].trEmail;
                            writerLink.innerText = pList[i].trainerName;
                            writer.append(writerLink);
 
@@ -338,18 +341,9 @@ function sample6_execDaumPostcode() {
                            body.append(title);
 
                            var titleLink = document.createElement('a');
-                           titleLink.href = '/teuching/post/detail.do?postNo='
-                                 + pList[i].postIdx;
+                           titleLink.href = '/teuching/post/detail.do?postNo='+ pList[i].postIdx;
                            titleLink.innerText = pList[i].postTitle;
                            title.append(titleLink);
-
-                           var content = document.createElement('div');
-                           content.style.height = 'auto';
-                           content.style.overflow = 'hidden';
-                           var con = pList[i].postCont;
-                           con = con.replace('<br>', '\r\n');
-                           content.innerText = con;
-                           body.append(content);
                         }
                      } else {
                         var failMsg = document.createElement('p');
@@ -373,8 +367,8 @@ function sample6_execDaumPostcode() {
                   const match_date = $('#match' + match_idx).data("match_date");
                   const match_time = $('#match' + match_idx).data("match_time")
                   alert('수락완료');
-                  $('#match' + match_idx).html('✅ ' + match_date + " " + match_time 
-                        +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "수락완료");
+                  $('#match' + match_idx).html("<a>수락완료</a>");
+                  $('#state' + match_idx).html("✔");
                }else{
                   alert('이미 수락된 매칭입니다');
                }
