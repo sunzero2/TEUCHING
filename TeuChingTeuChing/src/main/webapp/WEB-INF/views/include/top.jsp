@@ -110,25 +110,6 @@
 				<div class="collapse navbar-collapse" id="ftco-nav">
 				
 					<ul class="navbar-nav m-auto">
-						<c:if test="${loginInfo != null}">
-							<c:if test="${memberType eq 'member'}">
-								<li class="nav-item active"><a
-									href="<%=request.getContextPath()%>/member/mypage_M.do"
-									class="nav-link">MyPage</a></li>
-							</c:if>
-							<c:if test="${memberType eq 'trainer'}">
-								<li class="nav-item active"><a
-									href="<%=request.getContextPath()%>/member/mypage_T.do"
-									class="nav-link">MyPage</a></li>
-							</c:if>
-							<c:if test="${memberType eq 'manager'}">
-								<li class="nav-item active"><a
-									href="<%=request.getContextPath()%>/manager/report.do"
-									class="nav-link">Manager</a></li>
-							</c:if>
-						</c:if>
-						
-						
 						<li class="nav-item active">
 							<a href="<%=request.getContextPath()%>/index/aboutus.do" class="nav-link">AboutUs</a>
 						</li>
@@ -148,25 +129,29 @@
 			<c:if test="${loginInfo == null}">
 			<!-- 로그인  -->
 				<div class="topLogin">
-					<a id="btnModal" href="#">Login / </a>
-					 <a id="btnJModal" href="#"> Join</a>
+					<a id="btnModal" href="#">Login &nbsp;</a> <span style="color: #ffb5b5;">X</span> 
+					 <a id="btnJModal" href="#"> &nbsp; Join</a>
 				</div>
 			</c:if>
 			<c:if test="${loginInfo != null}">
 				<div class="topLogOut">
 				<c:if test="${memberType eq 'member'}">
 					<a style="color:black" href="${pageContext.request.contextPath }/message/msgboxrecv.do">✉</a>
-					<a onclick="location= 'detail.cs?id=${loginInfo.nickname}">${loginInfo.nickname}	님  환영합니다. </a>
-					<a href ="<%=request.getContextPath()%>/member/mypage_M.do"> /  myPage</a>
+					<a onclick="location= 'detail.cs?id=${loginInfo.nickname}">${loginInfo.nickname}	님  환영합니다. &nbsp;</a>
+					<span style="color: #ffb5b5;">X</span>
+					<a href ="<%=request.getContextPath()%>/member/mypage_M.do">&nbsp;  MyPage</a>
 					</c:if>
 				<c:if test="${memberType eq 'trainer'}">
 					<a style="color:black" href="${pageContext.request.contextPath }/profile/reviewforTR.do?trainerEmail=${loginInfo.tr_email}">🇲🇵</a>
 					<a style="color:black" href="${pageContext.request.contextPath }/message/msgboxrecv.do">✉</a>
-					<a onclick="location= 'detail.cs?id=${loginInfo.trainerName}">${loginInfo.trainerName}	님  환영합니다. </a>
-
+					<a onclick="location= 'detail.cs?id=${loginInfo.trainerName}">${loginInfo.trainerName}	트레이너님  환영합니다. &nbsp;</a>
 					</c:if>	
+				<c:if test="${memberType eq 'manager'}">
+								<a href="<%=request.getContextPath()%>/manager/report.do">Manager &nbsp;</a>
+							</c:if>	
 						<!-- <a>MyPage</a>  -->
-						<a href="<%=request.getContextPath()%>/member/logout.do">/  logout</a>
+						<span style="color: #ffb5b5;">X</span>
+						<a href="<%=request.getContextPath()%>/member/logout.do">&nbsp; LogOut</a>
 				</div>
 			</c:if>
 

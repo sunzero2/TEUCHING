@@ -186,7 +186,7 @@ display: block;
 								</form>
 							</div>
 							<!--  -->
-							<div class="tab-pane active" id="pwUpdate">
+							<div class="tab-pane" id="pwUpdate">
 							<h2></h2>
 								<form class="form" action="<%=request.getContextPath()%>/member/pwUpdate.do" method="post" id="pwUpdateform">
 									<div class="col-xs-6 form-height">
@@ -220,7 +220,7 @@ display: block;
 								</form>
 							</div>
 							<!-- /Post Table -->
-							<div class="tab-pane active" id="match">
+							<div class="tab-pane" id="match">
 								<h2></h2>
 								<hr>
 								<div class="col-xs-12">
@@ -281,7 +281,7 @@ display: block;
 								</div>
 							</div>
 							
-							<div class="tab-pane active" id="report">
+							<div class="tab-pane" id="report">
 								<h2></h2>
 								<div class="col-xs-12">
 									<section class="container"
