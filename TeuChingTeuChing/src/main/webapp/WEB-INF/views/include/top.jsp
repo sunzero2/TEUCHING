@@ -129,8 +129,9 @@
 			<c:if test="${loginInfo == null}">
 			<!-- 로그인  -->
 				<div class="topLogin">
-					<a id="btnModal" href="#">Login &nbsp;</a> <span style="color: #ffb5b5;">X</span> 
-					 <a id="btnJModal" href="#"> &nbsp; Join</a>
+					<a id="btnModal" href="#">Login &nbsp;</a> <span
+						style="color: #ffb5b5;">|</span> <a id="btnJModal"
+						href="#"> &nbsp; Join</a>
 				</div>
 			</c:if>
 			<c:if test="${loginInfo != null}">
@@ -138,7 +139,7 @@
 				<c:if test="${memberType eq 'member'}">
 					<a style="color:black" href="${pageContext.request.contextPath }/message/msgboxrecv.do">✉</a>
 					<a onclick="location= 'detail.cs?id=${loginInfo.nickname}">${loginInfo.nickname}	님  환영합니다. &nbsp;</a>
-					<span style="color: #ffb5b5;">X</span>
+					<span style="font-size: 5px; color: #ffb5b5;">|</span>
 					<a href ="<%=request.getContextPath()%>/member/mypage_M.do">&nbsp;  MyPage&nbsp;</a>
 					</c:if>
 				<c:if test="${memberType eq 'trainer'}">
@@ -150,7 +151,7 @@
 								<a href="<%=request.getContextPath()%>/manager/report.do">Manager &nbsp;</a>
 							</c:if>	
 						<!-- <a>MyPage</a>  -->
-						<span style="color: #ffb5b5;">X</span>
+						<span style="color: #ffb5b5;">|</span>
 						<a href="<%=request.getContextPath()%>/member/logout.do">&nbsp; LogOut</a>
 				</div>
 			</c:if>
