@@ -101,11 +101,11 @@ public class MemberController {
 					if (res.getManager_yn().equals("Y")) {
 						session.setAttribute("loginInfo", res);
 						session.setAttribute("memberType", "manager");
-						mav.setViewName("redirect:/index/index.do");
+						mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
 					} else {
 						session.setAttribute("loginInfo", res);
 						session.setAttribute("memberType", "member");
-						mav.setViewName("redirect:/index/index.do");
+						mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
 					}
 
 				}
@@ -126,7 +126,7 @@ public class MemberController {
 				} else {
 					session.setAttribute("loginInfo", res);
 					session.setAttribute("memberType", "trainer");
-					mav.setViewName("redirect:/index/index.do");
+					mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
 				}
 			}
 		}
@@ -148,7 +148,7 @@ public class MemberController {
 			session.removeAttribute("loginInfo");
 		}
 
-		mav.setViewName("redirect:/index/index.do");
+		mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
 		
 		return mav;
 	}
@@ -202,7 +202,7 @@ public class MemberController {
 			mav.addObject("url", "account/loginform");
 			mav.setViewName("account/redirect");
 		} else {
-			mav.setViewName("redirect:/index/index.do");
+			mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
 		}
 		return mav;
 	}
@@ -223,7 +223,7 @@ public class MemberController {
 			mav.addObject("url", "account/loginform");
 			mav.setViewName("account/redirect");
 		} else {
-			mav.setViewName("redirect:/index/index.do");
+			mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
 		}
 		return mav;
 	}
@@ -245,7 +245,7 @@ public class MemberController {
 		commandMap.put("urlPath", path);
 		ms.mailSending(commandMap,mailfor);
 
-		mav.setViewName("redirect:/index/index.do");
+		mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
 
 		return mav;
 	}
@@ -345,12 +345,12 @@ public class MemberController {
 	public String emailChk(@RequestParam Map<String, Object> data) throws SQLException {
 
 
-		data.put("table", "tr_member"); 
+		data.put("table", "TR_MEMBER"); 
 
 		int result = ms.emailChk(data); 
 
 		if (result < 1) { 
-			data.put("table", "tr_trainer"); 
+			data.put("table", "TR_TRAINER"); 
 			result = ms.emailChk(data); 
 		}
 
@@ -377,14 +377,14 @@ public class MemberController {
 			pw += (char) ((Math.random() * 26) + 97);
 		}
 		
-		commandMap.put("table", "tr_member");  //비교 테이블 값 넣기
+		commandMap.put("table", "TR_MEMBER");  //비교 테이블 값 넣기
 		int result = ms.emailChk(commandMap);	// 테이블 조회
 		
 		commandMap.put("password", pw);	// 임시 비밀번호 담기
 		
 		if (result == 0) {
 			// 트레이너 비밀번호 변경 및 메일전송
-			commandMap.put("table", "tr_trainer");
+			commandMap.put("table", "TR_TRAINER");
 			ms.change_pw(commandMap);
 			mailfor = "t_findpw";
 			commandMap.put("urlPath", path); 
@@ -398,7 +398,7 @@ public class MemberController {
 		}
 		  
 		 
-		mav.setViewName("redirect:/index/index.do");
+		mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
 
 		return mav;
 	}
