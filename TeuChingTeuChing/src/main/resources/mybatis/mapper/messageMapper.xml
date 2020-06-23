@@ -6,7 +6,7 @@
 		INSERT INTO
 				TR_MESSAGE
 		VALUES(
-				S_MESSAGE_IDX.NEXTVAL
+				0
 				, #{tr_email}
 				, #{mem_email}
 				, #{msg_cont}
@@ -21,7 +21,7 @@
 		INSERT INTO
 				TR_MATCH
 		VALUES(
-				S_MATCH_IDX.NEXTVAL
+				0
 				, #{tr_email}
 				, #{mem_email}
 				, #{match_date}
@@ -33,142 +33,66 @@
 	
 	<select id="selectMsgBoxSend" resultType="Message">
 		SELECT 
-			*
+			* 
 		FROM
-			(SELECT
-				ROWNUM RNUM, N1.*
-			FROM
-				(SELECT 
-						* 
-				FROM
-					TR_MESSAGE
-				<where>
-					TR_EMAIL = #{email}
-						<if test='type.equals("Trainer")'>
-						AND
-							WRITER = 'Trainer'
-						</if>
-						<if test='type.equals("Member")'>
-						AND
-							WRITER = 'Member'
-						</if>
-					OR 
-					MEM_EMAIL = #{email}
-						<if test='type.equals("Trainer")'>
-						AND
-							WRITER = 'Trainer'
-						</if>
-						<if test='type.equals("Member")'>
-						AND
-							WRITER = 'Member'
-						</if>
-				</where>
-				ORDER BY 
-					WRITE_DATE DESC
-				)N1
-			)
-		WHERE
-			RNUM BETWEEN #{paging.start} AND #{paging.end}
-			
-			<!-- SELECT 
-						* 
-				FROM
-					TR_MESSAGE
-				<where>
-					TR_EMAIL = #{email}
-						<if test='type.equals("Trainer")'>
-						AND
-							WRITER = 'Trainer'
-						</if>
-						<if test='type.equals("Member")'>
-						AND
-							WRITER = 'Member'
-						</if>
-					OR 
-					MEM_EMAIL = #{email}
-						<if test='type.equals("Trainer")'>
-						AND
-							WRITER = 'Trainer'
-						</if>
-						<if test='type.equals("Member")'>
-						AND
-							WRITER = 'Member'
-						</if>
-				</where>
-				ORDER BY 
-					WRITE_DATE DESC
-				LIMIT
-					#{start}, #{cntPerPage}	 -->
+			TR_MESSAGE
+		<where>
+			TR_EMAIL = #{email}
+				<if test='type.equals("Trainer")'>
+				AND
+					WRITER = 'Trainer'
+				</if>
+				<if test='type.equals("Member")'>
+				AND
+					WRITER = 'Member'
+				</if>
+			OR 
+			MEM_EMAIL = #{email}
+				<if test='type.equals("Trainer")'>
+				AND
+					WRITER = 'Trainer'
+				</if>
+				<if test='type.equals("Member")'>
+				AND
+					WRITER = 'Member'
+				</if>
+		</where>
+		ORDER BY 
+			WRITE_DATE DESC
+		LIMIT
+			#{start}, #{cntPerPage}
 	</select>
 	
 	<select id="selectMsgBoxRecv" resultType="Message">
 		SELECT
 			*
 		FROM
-			(SELECT
-				ROWNUM RNUM, N1.*
-			FROM
-				(SELECT
-						*
-				FROM
-					TR_MESSAGE
-				<where>
-					MEM_EMAIL = #{email}
-						<if test='type.equals("Trainer")'>
-						AND
-							WRITER = 'Member'
-						</if>
-						<if test='type.equals("Member")'>
-						AND
-							WRITER = 'Trainer'
-						</if>
-					OR
-					TR_EMAIL = #{email}
-						<if test='type.equals("Trainer")'>
-						AND
-							WRITER = 'Member'
-						</if>
-						<if test='type.equals("Member")'>
-						AND
-							WRITER = 'Trainer'
-						</if>
-				</where>
-				ORDER BY
-					WRITE_DATE DESC
-				)
-			N1)
-		WHERE
-			RNUM BETWEEN #{paging.start} AND #{paging.end}
-			
-			<!-- SELECT
-						*
-				FROM
-					TR_MESSAGE
-				<where>
-					MEM_EMAIL = #{email}
-						<if test='type.equals("Trainer")'>
-						AND
-							WRITER = 'Member'
-						</if>
-						<if test='type.equals("Member")'>
-						AND
-							WRITER = 'Trainer'
-						</if>
-					OR
-					TR_EMAIL = #{email}
-						<if test='type.equals("Trainer")'>
-						AND
-							WRITER = 'Member'
-						</if>
-						<if test='type.equals("Member")'>
-						AND
-							WRITER = 'Trainer'
-						</if>
-				</where>
-				ORDER BY
-					WRITE_DATE DESC
-				LIMIT
-					#{start}, #{cntPerPage}	 -->
+			TR_MESSAGE
+		<where>
+			MEM_EMAIL = #{email}
+				<if test='type.equals("Trainer")'>
+				AND
+					WRITER = 'Member'
+				</if>
+				<if test='type.equals("Member")'>
+				AND
+					WRITER = 'Trainer'
+				</if>
+			OR
+			TR_EMAIL = #{email}
+				<if test='type.equals("Trainer")'>
+				AND
+					WRITER = 'Member'
+				</if>
+				<if test='type.equals("Member")'>
+				AND
+					WRITER = 'Trainer'
+				</if>
+		</where>
+		ORDER BY
+			WRITE_DATE DESC
+		LIMIT
+			#{start}, #{cntPerPage}
 	</select>
 	
 	<select id="selectSendMsgCnt" resultType="int">
@@ -240,7 +164,7 @@
 		INSERT INTO
 				TR_MESSAGE
 		VALUES(
-				S_MESSAGE_IDX.NEXTVAL
+				0
 				, #{tr_email}
 				, #{mem_email}
 				, #{msg_cont}
@@ -288,7 +212,7 @@
 		INSERT INTO
 				TR_MESSAGE
 		VALUES(
-				S_MESSAGE_IDX.NEXTVAL
+				0
 				, #{tr_email}
 				, #{mem_email}
 				, #{msg_cont}
@@ -312,7 +236,7 @@
 		INSERT INTO
 				TR_MESSAGE
 		VALUES(
-				S_MESSAGE_IDX.NEXTVAL
+				0
 				, #{tr_email}
 				, 'teuching.official@gmail.com'
 				, '트레이너에 대한 신고가 접수되어 운영자 측에서 확인해본 결과 경고 처리 되셨습니다. 프로필란에 경고 문구가 띄워집니다'
@@ -327,7 +251,7 @@
 		INSERT INTO
 				TR_MESSAGE
 		VALUES(
-				S_MESSAGE_IDX.NEXTVAL
+				0
 				, 'teuching.official@gmail.com'
 				, #{mem_email}
 				, '올리신 리뷰에 대한 신고가 접수되어 운영자 측에서 확인해본 결과 해당 게시물이 삭제 되었습니다'
