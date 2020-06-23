@@ -68,10 +68,10 @@
 	</select>
 	
 	<update id="updatePost" parameterType="Post">
-		update TR_POST set post_title = #{postTitle}, post_cont = #{postCont}, purpose = #{purpose}, class_size = #{classSize}, place = #{place}, price = #{price} where post_idx = #{postIdx}
+		update TR_POST set post_title = #{postTitle}, post_cont = #{postCont}, purpose = #{purpose}, class_size = #{classSize}, place = #{place}, price = ${price} where post_idx = ${postIdx}
 	</update>
 	
 	<delete id="deletePost">
-		delete TR_POST where post_idx=#{postIdx}
+		delete TR_POST where post_idx=${postIdx}
 	</delete>
 </mapper>
