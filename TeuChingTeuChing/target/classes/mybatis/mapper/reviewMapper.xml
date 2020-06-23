@@ -41,7 +41,7 @@
 
 	<!-- 리뷰 업로드 -->
 	<insert id="uploadReview">
-		insert into tr_review values(0,#{trainer_name},#{tr_email}, #{mem_nickname}, #{rev_cont}, #{rev_score}, #{rev_password},'n',0,sysdate,'n')
+		insert into tr_review values(0,#{trainer_name},#{tr_email}, #{mem_nickname}, #{rev_cont}, #{rev_score}, #{rev_password},'n',0,sysdate(),'n')
 	</insert> 
 	
 	<!-- 리뷰삭제 -->
