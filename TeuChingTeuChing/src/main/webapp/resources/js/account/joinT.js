@@ -55,7 +55,7 @@ var check_pw = false;
 		$('#check_email').click(function(){
 			console.log("시작");
 			$.ajax({
-				url: "http://15.164.225.143:8080/teuching/member/emailChk.do",
+				url: "http://15.164.225.143:8080/teuching/member/emailchk.do",
 				type: "POST",
 				data:{"email":$('#email').val()},
 				success: function(data){

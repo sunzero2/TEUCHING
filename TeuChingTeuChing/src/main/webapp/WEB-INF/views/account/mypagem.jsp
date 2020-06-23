@@ -133,7 +133,7 @@ display: block;
 							<div class="tab-pane active" id="home">
 							<h2></h2>
 								<form class="form"
-									action="http://15.164.225.143:8080/teuching/member/mypageUpdateM.do"
+									action="http://15.164.225.143:8080/teuching/member/mypageupdatem.do"
 									method="post" id="memberMypage">
 									<div class="col-xs-6 form-height">
 										<h4>Email Address</h4>
@@ -197,7 +197,7 @@ display: block;
 							<!--  -->
 							<div class="tab-pane" id="pwUpdate">
 							<h2></h2>
-								<form class="form" action="http://15.164.225.143:8080/teuching/member/pwUpdate.do" method="post" id="pwUpdateform">
+								<form class="form" action="http://15.164.225.143:8080/teuching/member/pwupdate.do" method="post" id="pwUpdateform">
 									<div class="col-xs-6 form-height">
 									<input type="hidden" name="email" value="${loginInfo.mem_email}" />
 									<input type="hidden" name="memberType" value="${memberType}" />

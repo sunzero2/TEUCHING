@@ -120,7 +120,7 @@
 					<div class="tab-pane active" id="home">
 						<hr>
 						<form class="form" method="post" id="trainerMypage"
-							action="http://15.164.225.143:8080/teuching/member/mypageUpdateT.do">
+							action="http://15.164.225.143:8080/teuching/member/mypageupdatet.do">
 							<div class="form-group">
 
 								<div class="col-xs-6">
@@ -461,7 +461,7 @@
       </div>
 				<div class="modal-body">
 						<form class="form"
-							action="http://15.164.225.143:8080/teuching/member/pwUpdate.do"
+							action="http://15.164.225.143:8080/teuching/member/pwupdate.do"
 							method="post" id="pwUpdateform">
 							<div class="form-group">
 								<input type="hidden" name="email" value="${loginInfo.tr_email}" />
@@ -538,7 +538,7 @@ function imgLoad(img) {
       var imgDiv = document.createElement('img');
       imgDiv.className="avatar img-circle img-thumbnail";
       imgDiv.alt="avatar";
-      imgDiv.src = "http://15.164.225.143:8080/teuching/resources/upload/profileImg/" + img;
+      imgDiv.src = "http://15.164.225.143:8080/teuching/resources/upload/profileimg/" + img;
       div.append(imgDiv);
    }, 1000);
 }
@@ -550,7 +550,7 @@ function changeImage() {
       formdata.append('file', form[0].files[0]);
       
       $.ajax({
-         url: 'http://15.164.225.143:8080/teuching/member/photoUpdate.do',
+         url: 'http://15.164.225.143:8080/teuching/member/photoupdate.do',
          type: 'post',
              data: formdata,
            processData : false,
@@ -804,7 +804,7 @@ function sample6_execDaumPostcode() {
                   pList = new Array();
 
                   $.ajax({
-                     url : "http://15.164.225.143:8080/teuching/member/t_postlist.do",
+                     url : "http://15.164.225.143:8080/teuching/member/tpostlist.do",
                      data : {
                         "input" : "${loginInfo.tr_email}",
                         "option" : "trainer"
