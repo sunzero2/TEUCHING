@@ -63,7 +63,7 @@
 		insert into TR_POST values(0, #{trEmail}, #{trainerName}, #{postTitle}, #{postCont}, #{purpose}, #{sports}, #{area}, #{classSize}, #{gender}, #{place}, #{price}, sysdate())
 	</insert>
 	
-	<select id="selectAuto" parameterType="int">
+	<select id="selectAuto" resultType="int">
 		SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'TR_POST' AND table_schema = DATABASE();
 	</select>
 	
