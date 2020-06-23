@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Manager">
 
@@ -6,55 +6,22 @@
 		SELECT
 			*
 		FROM
-			(SELECT
-				ROWNUM RNUM, N1.* 
-			FROM
-				(SELECT
-						*
-				FROM
-					TR_REV_REPORT
-				ORDER BY
-					REPORT_IDX DESC
-				)N1
-			)
-		WHERE
-			RNUM BETWEEN #{start} AND #{end}
-				<!-- SELECT
-						*
-				FROM
-					TR_REV_REPORT
-				ORDER BY
-					REPORT_IDX DESC	
-				LIMIT
-					#{start}, #{cntPerPage}	 -->
+			TR_REV_REPORT
+		ORDER BY
+			REPORT_IDX DESC	
+		LIMIT
+			#{start}, #{cntPerPage}
 	</select>
 
 	<select id="selectTraReport" resultType="TrainerReport">
 		SELECT
 			*
 		FROM
-			(SELECT
-				ROWNUM RNUM, N1.* 
-			FROM
-				(SELECT
-					*
-				FROM
-					TR_TRA_REPORT
-				ORDER BY
-					REPORT_IDX DESC
-			)N1
-		)
-		WHERE
-			RNUM BETWEEN #{start} AND #{end}
-			
-			<!-- SELECT
-					*
-				FROM
-					TR_TRA_REPORT
-				ORDER BY
-					REPORT_IDX DESC
-				LIMIT
-					#{start}, #{cntPerPage}	 -->
+			TR_TRA_REPORT
+		ORDER BY
+			REPORT_IDX DESC
+		LIMIT
+			#{start}, #{cntPerPage}
 	</select>
 
 	<select id="revCnt" resultType="int">
@@ -115,7 +82,7 @@
 		INSERT INTO
 				TR_TRA_REPORT
 		VALUES(
-				S_TRA_REPORT_IDX.NEXTVAL
+				0
 				, #{tr_email}
 				, #{mem_email}
 				, #{rep_cont}
@@ -131,7 +98,7 @@
 		INSERT INTO
 				TR_REV_REPORT
 		VALUES(
-				S_REV_REPORT_IDX.NEXTVAL
+				0
 				, #{tr_email}
 				, #{mem_email}
 				, #{rep_cont}
@@ -214,7 +181,7 @@
 		WHERE
 			RNUM BETWEEN #{start} AND #{end}
 			
-			<!-- SELECT
+			SELECT
 					*
 				FROM
 					TR_QUALI
@@ -223,7 +190,7 @@
 				ORDER BY
 					QUALI_IDX DESC
 				LIMIT
-					#{start}, #{cntPerPage}	 -->
+					#{start}, #{cntPerPage}	
 	</select>
 
 	<select id="selectQualiDetail" resultType="Quali">
@@ -291,7 +258,7 @@
 			TR_EMAIL = #{tr_email} 
 	</select>
 	
-	<!--  -->
+	
 	<select id="selectTraReportMypage" resultType="TrainerReport">
 		SELECT
 			*
@@ -356,4 +323,4 @@
 			AND
 			MEM_NICKNAME = #{nick_name}
 	</select>	
-</mapper>
+</mapper> -->
