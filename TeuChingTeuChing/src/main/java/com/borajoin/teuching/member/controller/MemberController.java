@@ -101,11 +101,11 @@ public class MemberController {
 					if (res.getManager_yn().equals("Y")) {
 						session.setAttribute("loginInfo", res);
 						session.setAttribute("memberType", "manager");
-						mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
+						mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 					} else {
 						session.setAttribute("loginInfo", res);
 						session.setAttribute("memberType", "member");
-						mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
+						mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 					}
 
 				}
@@ -126,7 +126,7 @@ public class MemberController {
 				} else {
 					session.setAttribute("loginInfo", res);
 					session.setAttribute("memberType", "trainer");
-					mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
+					mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 				}
 			}
 		}
@@ -148,7 +148,7 @@ public class MemberController {
 			session.removeAttribute("loginInfo");
 		}
 
-		mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
+		mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 		
 		return mav;
 	}
@@ -202,7 +202,7 @@ public class MemberController {
 			mav.addObject("url", "account/loginform");
 			mav.setViewName("account/redirect");
 		} else {
-			mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
+			mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 		}
 		return mav;
 	}
@@ -223,7 +223,7 @@ public class MemberController {
 			mav.addObject("url", "account/loginform");
 			mav.setViewName("account/redirect");
 		} else {
-			mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
+			mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 		}
 		return mav;
 	}
@@ -245,7 +245,7 @@ public class MemberController {
 		commandMap.put("urlPath", path);
 		ms.mailSending(commandMap,mailfor);
 
-		mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
+		mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 
 		return mav;
 	}
@@ -314,7 +314,7 @@ public class MemberController {
 		commandMap.put("urlPath", path);
 		ms.mailSending(commandMap,mailfor);
 
-		mav.setViewName("redirect:/index/index.do");
+		mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 
 		return mav;
 	}
@@ -398,7 +398,7 @@ public class MemberController {
 		}
 		  
 		 
-		mav.setViewName("http://15.164.225.143:8080/teuching/index/index.do");
+		mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 
 		return mav;
 	}
