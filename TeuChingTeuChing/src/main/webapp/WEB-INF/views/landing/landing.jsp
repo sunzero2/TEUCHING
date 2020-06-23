@@ -13,18 +13,18 @@
 	href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="http://172.30.1.49:8787/resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="http://172.30.1.49:8787/resources/css/animate.css">
-<link rel="stylesheet" href="http://172.30.1.49:8787/resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="http://172.30.1.49:8787/resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="http://172.30.1.49:8787/resources/css/magnific-popup.css">
-<link rel="stylesheet" href="http://172.30.1.49:8787/resources/css/aos.css">
-<link rel="stylesheet" href="http://172.30.1.49:8787/resources/css/ionicons.min.css">
-<link rel="stylesheet" href="http://172.30.1.49:8787/resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="http://172.30.1.49:8787/resources/css/jquery.timepicker.css">
-<link rel="stylesheet" href="http://172.30.1.49:8787/resources/css/flaticon.css">
-<link rel="stylesheet" href="http://172.30.1.49:8787/resources/css/icomoon.css">
-<link rel="stylesheet" href="http://172.30.1.49:8787/resources/css/style.css">
+	href="../resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="../resources/css/animate.css">
+<link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="../resources/css/magnific-popup.css">
+<link rel="stylesheet" href="../resources/css/aos.css">
+<link rel="stylesheet" href="../resources/css/ionicons.min.css">
+<link rel="stylesheet" href="../resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="../resources/css/jquery.timepicker.css">
+<link rel="stylesheet" href="../resources/css/flaticon.css">
+<link rel="stylesheet" href="../resources/css/icomoon.css">
+<link rel="stylesheet" href="../resources/css/style.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
 	rel="stylesheet">
@@ -115,7 +115,7 @@
 									</div>
 									<div class="d-flex align-items-center">
 										<div class="user-img"
-											style="background-image: url(http://172.30.1.49:8787/resources/upload/profileImg/${trainer.photo})">
+											style="background-image: url(../resources/upload/profileImg/${trainer.photo})">
 										</div>
 										<div class="ml-4">
 											<p class="name"
@@ -135,20 +135,20 @@
 	</section>
 
 	<%@ include file="../include/footer.jsp"%>
-	<script src="http://172.30.1.49:8787/resources/js/jquery.min.js"></script>
-	<script src="http://172.30.1.49:8787/resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="http://172.30.1.49:8787/resources/js/popper.min.js"></script>
-	<script src="http://172.30.1.49:8787/resources/js/bootstrap.min.js"></script>
-	<script src="http://172.30.1.49:8787/resources/js/jquery.easing.1.3.js"></script>
-	<script src="http://172.30.1.49:8787/resources/js/jquery.waypoints.min.js"></script>
-	<script src="http://172.30.1.49:8787/resources/js/jquery.stellar.min.js"></script>
-	<script src="http://172.30.1.49:8787/resources/js/owl.carousel.min.js"></script>
-	<script src="http://172.30.1.49:8787/resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="http://172.30.1.49:8787/resources/js/aos.js"></script>
-	<script src="http://172.30.1.49:8787/resources/js/jquery.animateNumber.min.js"></script>
-	<script src="http://172.30.1.49:8787/resources/js/bootstrap-datepicker.js"></script>
-	<script src="http://172.30.1.49:8787/resources/js/jquery.timepicker.min.js"></script>
-	<script src="http://172.30.1.49:8787/resources/js/scrollax.min.js"></script>
-	<script src="http://172.30.1.49:8787/resources/js/main.js"></script>
+	<script src="../resources/js/jquery.min.js"></script>
+	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="../resources/js/popper.min.js"></script>
+	<script src="../resources/js/bootstrap.min.js"></script>
+	<script src="../resources/js/jquery.easing.1.3.js"></script>
+	<script src="../resources/js/jquery.waypoints.min.js"></script>
+	<script src="../resources/js/jquery.stellar.min.js"></script>
+	<script src="../resources/js/owl.carousel.min.js"></script>
+	<script src="../resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="../resources/js/aos.js"></script>
+	<script src="../resources/js/jquery.animateNumber.min.js"></script>
+	<script src="../resources/js/bootstrap-datepicker.js"></script>
+	<script src="../resources/js/jquery.timepicker.min.js"></script>
+	<script src="../resources/js/scrollax.min.js"></script>
+	<script src="../resources/js/main.js"></script>
 </body>
 </html>

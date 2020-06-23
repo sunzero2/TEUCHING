@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script>
-		location.href="http://172.30.1.49:8787/teuching/index/index.do"
+		location.href="/teuching/index/index.do"
 	</script>
 </body>
 </html>
