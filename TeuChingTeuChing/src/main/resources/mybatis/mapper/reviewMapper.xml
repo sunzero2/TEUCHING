@@ -57,7 +57,7 @@
 	
 	<!-- 리뷰리스트 가져오기 -->
 	<select id="selectReviewList" resultType="Review">
-	select * from TR_REVIEW where tr_leave_yn = 'n' and tr_email = #{trainerEmail} order by ${orderby} desc limit ${start}, ${cntPerPage}
+	select * from TR_REVIEW where tr_leave_yn = 'n' and tr_email = #{trainerEmail} order by ${orderby} desc limit #{start}, #{cntPerPage}
 	</select>
 	
 	<!-- 좋아요 tr_review 테이블에 업데이트 -->
