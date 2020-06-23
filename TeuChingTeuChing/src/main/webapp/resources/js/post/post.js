@@ -11,12 +11,12 @@ if(exist != null) {
 }
 
 function changeImg() {
-	document.querySelector('.addImageIcon').src = '../resources/img/addImage.png';
+	document.querySelector('.addImageIcon').src = 'http://15.164.225.143:8080/teuching/resources/img/addImage.png';
 	document.querySelector('.addImageText').style.color = "#ffb5b5";
 }
 
 function resetImg() {
-	document.querySelector('.addImageIcon').src = '../resources/img/addImage2.png';
+	document.querySelector('.addImageIcon').src = 'http://15.164.225.143:8080/teuching/resources/img/addImage2.png';
 	document.querySelector('.addImageText').style.color = "#444444";
 }
 
