@@ -121,7 +121,7 @@
 				<div class="pre_div">
 					<c:if test="${data.fList != null}">
 						<c:forEach items="${data.fList}" var="image">
-							<img class="pre_img" src="http://172.30.1.50:8787/teuching/resources/upload/${image.rename_filename}">
+							<img class="pre_img" src="http://15.164.225.143:8080/teuching/resources/upload/${image.rename_filename}">
 						</c:forEach>
 					</c:if>
 				</div>
