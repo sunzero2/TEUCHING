@@ -139,13 +139,10 @@
 				<c:if test="${memberType eq 'member'}">
 					<a style="color:black" href="http://15.164.225.143:8080/teuching/message/msgboxrecv.do">✉</a>
 					<a onclick="location= 'detail.cs?id=${loginInfo.nickname}">${loginInfo.nickname}	님  환영합니다. &nbsp;</a>
-<<<<<<< HEAD
 					<span style="font-size: 5px; color: #ffb5b5;">|</span>
 					<a href ="http://15.164.225.143:8080/teuching/member/mypage_M.do">&nbsp;  MyPage&nbsp;</a>
-=======
 					<span style="color: #ffb5b5;">|</span>
 					<a href ="<%=request.getContextPath()%>/member/mypage_M.do">&nbsp;  MyPage&nbsp;</a>
->>>>>>> 231b92de99d47337e90f88b61503f3d47016c15c
 					</c:if>
 				<c:if test="${memberType eq 'trainer'}">
 					<a style="color:black" href="http://15.164.225.143:8080/teuching/profile/reviewforTR.do?trainerEmail=${loginInfo.tr_email}">🇲🇵</a>
