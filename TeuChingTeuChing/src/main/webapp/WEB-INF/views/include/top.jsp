@@ -99,7 +99,7 @@
 	<div class="container">
 		<div class="row m-auto">
 			<div class="col-12 w-100 text-center">
-				<a class="navbar-brand w-100" href="/teuching/index/index.do">TeuChing</a>
+				<a class="navbar-brand w-100" href="http://15.164.225.143:8080/teuching/index/index.do">TeuChing</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#ftco-nav" aria-controls="ftco-nav"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -111,13 +111,13 @@
 				
 					<ul class="navbar-nav m-auto">
 						<li class="nav-item active">
-							<a href="<%=request.getContextPath()%>/index/aboutus.do" class="nav-link">AboutUs</a>
+							<a href="http://15.164.225.143:8080/teuching/index/aboutus.do" class="nav-link">AboutUs</a>
 						</li>
 						<li class="nav-item active">
-							<a href="<%=request.getContextPath()%>/matching/main.do" class="nav-link">Matching</a>
+							<a href="http://15.164.225.143:8080/teuching/matching/main.do" class="nav-link">Matching</a>
 						</li>
 						<li class="nav-item active">
-							<a href="<%=request.getContextPath()%>/notice/notice.do?start=1&end=5" class="nav-link">Notice</a>
+							<a href="http://15.164.225.143:8080/teuching/notice/notice.do?start=1&end=5" class="nav-link">Notice</a>
 						</li>
 					</ul>
 				</div>
@@ -137,22 +137,24 @@
 			<c:if test="${loginInfo != null}">
 				<div class="topLogOut">
 				<c:if test="${memberType eq 'member'}">
-					<a style="color:black" href="${pageContext.request.contextPath }/message/msgboxrecv.do">✉</a>
+					<a style="color:black" href="http://15.164.225.143:8080/teuching/message/msgboxrecv.do">✉</a>
 					<a onclick="location= 'detail.cs?id=${loginInfo.nickname}">${loginInfo.nickname}	님  환영합니다. &nbsp;</a>
+					<span style="font-size: 5px; color: #ffb5b5;">|</span>
+					<a href ="http://15.164.225.143:8080/teuching/member/mypage_M.do">&nbsp;  MyPage&nbsp;</a>
 					<span style="color: #ffb5b5;">|</span>
 					<a href ="<%=request.getContextPath()%>/member/mypage_M.do">&nbsp;  MyPage&nbsp;</a>
 					</c:if>
 				<c:if test="${memberType eq 'trainer'}">
-					<a style="color:black" href="${pageContext.request.contextPath }/profile/reviewforTR.do?trainerEmail=${loginInfo.tr_email}">🇲🇵</a>
-					<a style="color:black" href="${pageContext.request.contextPath }/message/msgboxrecv.do">✉</a>
+					<a style="color:black" href="http://15.164.225.143:8080/teuching/profile/reviewforTR.do?trainerEmail=${loginInfo.tr_email}">🇲🇵</a>
+					<a style="color:black" href="http://15.164.225.143:8080/teuching/message/msgboxrecv.do">✉</a>
 					<a onclick="location= 'detail.cs?id=${loginInfo.trainerName}">${loginInfo.trainerName}	트레이너님  환영합니다. &nbsp;</a>
 					</c:if>	
 				<c:if test="${memberType eq 'manager'}">
-								<a href="<%=request.getContextPath()%>/manager/report.do">Manager &nbsp;</a>
+								<a href="http://15.164.225.143:8080/teuching/manager/report.do">Manager &nbsp;</a>
 							</c:if>	
 						<!-- <a>MyPage</a>  -->
 						<span style="color: #ffb5b5;">|</span>
-						<a href="<%=request.getContextPath()%>/member/logout.do">&nbsp; LogOut</a>
+						<a href="http://15.164.225.143:8080/teuching/member/logout.do">&nbsp; LogOut</a>
 				</div>
 			</c:if>
 
@@ -180,7 +182,7 @@
       
       <div class="modal-body">
         <div class="container">
-          <form class="form-signin" action="<%=request.getContextPath()%>/member/loginImple.do">
+          <form class="form-signin" action="http://15.164.225.143:8080/teuching/member/loginImple.do">
             <h2 id="title">Please sign in</h2>
             
             <div class="form-group row">
@@ -212,7 +214,7 @@
       
       <div class="modal-footer">
         <a type="button" class="btn btn-default" data-dismiss="modal">닫기</a>
-        <a type="button" href="<%=request.getContextPath()%>/member/find_pw_form.do" class="btn btn-primary"> 비밀번호 찾기 </a>
+        <a type="button" href="http://15.164.225.143:8080/teuching/member/find_pw_form.do" class="btn btn-primary"> 비밀번호 찾기 </a>
       </div>
     </div>
   </div>
@@ -236,8 +238,8 @@
 				<div class="col-md-6 offset-md-4">
 					<div class="wrapper">
 						<div class="toggle_radio">
-							<label for="first_toggle"><a id="atag" href="<%=request.getContextPath()%>/member/mjoin.do?data=member">Member</a></label> 
-							<label for="second_toggle"><a id="atag" href="<%=request.getContextPath()%>/member/mjoin.do?data=trainer"> Trainer</a></label>
+							<label for="first_toggle"><a id="atag" href="http://15.164.225.143:8080/teuching/member/mjoin.do?data=member">Member</a></label> 
+							<label for="second_toggle"><a id="atag" href="http://15.164.225.143:8080/teuching/member/mjoin.do?data=trainer"> Trainer</a></label>
 						</div>
 					</div>
 				</div>
@@ -253,7 +255,7 @@
 
 </div>
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
- <script src="../resources/js/account/login.js"></script>
+ <script src="http://15.164.225.143:8080/teuching/resources/js/account/login.js"></script>
 
 
 

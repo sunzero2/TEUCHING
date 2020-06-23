@@ -13,22 +13,22 @@
 	href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="../resources/css/open-iconic-bootstrap.min.css">
+	href="http://15.164.225.143:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet"
-	href="../resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="../resources/css/animate.css">
-<link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="../resources/css/magnific-popup.css">
-<link rel="stylesheet" href="../resources/css/aos.css">
-<link rel="stylesheet" href="../resources/css/ionicons.min.css">
-<link rel="stylesheet" href="../resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="../resources/css/jquery.timepicker.css">
-<link rel="stylesheet" href="../resources/css/flaticon.css">
-<link rel="stylesheet" href="../resources/css/icomoon.css">
-<link rel="stylesheet" href="../resources/css/style.css">
-<link rel="stylesheet" href="../resources/css/matching/matching.css"/>
-<link rel="stylesheet" href="../resources/css/post/post.css"/>
+	href="http://15.164.225.143:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/animate.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/magnific-popup.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/aos.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/ionicons.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/jquery.timepicker.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/flaticon.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/icomoon.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/style.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/matching/matching.css"/>
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/post/post.css"/>
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>
@@ -55,10 +55,10 @@
 						<div class="authorWrapper">
 							<hr>
 							<div class="authorTitle">Author</div>
-								<img class="authorImg" src="../resources/upload/profileImg/${data.post.trPhoto}">
+								<img class="authorImg" src="http://15.164.225.143:8080/teuching/resources/upload/profileImg/${data.post.trPhoto}">
 							<div class="details authorInfo">
 								<div class="job">Trainer</div>
-								<a class="author" href="/teuching/profile/review.do?trainerEmail=${data.post.trEmail}">${data.post.trainerName}</a>
+								<a class="author" href="http://15.164.225.143:8080/teuching/profile/review.do?trainerEmail=${data.post.trEmail}">${data.post.trainerName}</a>
 								<hr>
 								<form id="form" action="${pageContext.request.contextPath }/message/messageform.do" target="pop">
 								<input type="hidden" name="tr_email" value="${data.post.trEmail}">
@@ -67,8 +67,8 @@
 								<button onclick="openPopUp()" class="btn btn-primary">Send Message</button>
 								<c:if test="${memberType == 'trainer'}">
 									<c:if test="${loginInfo.tr_email == data.post.trEmail}">
-										<a href="/teuching/post/writepost.do?postIdx=${data.post.postIdx}"><button class="btn btn-primary">Edit Post</button></a>
-										<a href="/teuching/post/deletepost.do?postIdx=${data.post.postIdx}"><button id="postDelBtn" class="btn btn-primary">Delete Post</button></a>
+										<a href="http://15.164.225.143:8080/teuching/post/writepost.do?postIdx=${data.post.postIdx}"><button class="btn btn-primary">Edit Post</button></a>
+										<a href="http://15.164.225.143:8080/teuching/post/deletepost.do?postIdx=${data.post.postIdx}"><button id="postDelBtn" class="btn btn-primary">Delete Post</button></a>
 									</c:if>
 								</c:if>
 							</div>
@@ -90,7 +90,7 @@
 				var img = document.createElement('img');
 				img.style.maxWidth = '400px';
 				img.style.display = 'block'
-				img.src = "../resources/upload/" + "${item.rename_filename}";
+				img.src = "http://15.164.225.143:8080/teuching/resources/upload/" + "${item.rename_filename}";
 				uploads.append(img);
 			</c:forEach>
 		</script>
