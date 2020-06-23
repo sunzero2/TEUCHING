@@ -41,7 +41,7 @@
 
 	<!-- 리뷰 업로드 -->
 	<insert id="uploadReview">
-		insert into tr_review values(S_REVIEW_IDX.nextval,#{trainer_name},#{tr_email}, #{mem_nickname}, #{rev_cont}, #{rev_score}, #{rev_password},'n',0,sysdate,'n')
+		insert into tr_review values(0,#{trainer_name},#{tr_email}, #{mem_nickname}, #{rev_cont}, #{rev_score}, #{rev_password},'n',0,sysdate,'n')
 	</insert> 
 	
 	<!-- 리뷰삭제 -->
@@ -57,8 +57,9 @@
 	
 	<!-- 리뷰리스트 가져오기 -->
 	<select id="selectReviewList" resultType="Review">
-		select * from (select rownum rnum, n1.* from ( select * from tr_review where tr_leave_yn = 'n' and tr_email = #{trainerEmail} order by ${orderby} desc )n1) 
-		where rnum between #{page.start} and #{page.end}
+	select * from tr_review where tr_leave_yn = 'n' 
+		and tr_email = #{trainerEmail} order by ${orderby} desc
+		limit #{start}, #{cntPerPage}
 	</select>
 	
 	<!-- 좋아요 tr_review 테이블에 업데이트 -->
@@ -105,10 +106,7 @@
 		select count(*) from review_rec where mem_nickname = #{nickname} and review_idx = #{no}
 	</select>
 	
-<!-- 	<delete id="recRealDelete">
-		delete from review_rec where mem_nickname = #{nickname} and review_idx = #{no}
-	</delete> -->
-	
+
 	<!-- 트레이너 정보가져오기 -->
 	<select id="selectTrainerInformation" resultMap="trainermap">
 		select * from tr_trainer where tr_email = #{tr_email}
@@ -135,51 +133,4 @@
 	<select id="trainername" resultType="String">
 		select trainer_name from tr_trainer where tr_email = #{tr_email}
 	</select>
-	
-	
-	<!-- 
-	<select id="selectBook" resultMap="resultBook">
-		select c_info, b_title, b_bno, b_author, b_rent_cnt, b_rent_yn, b_isbn
-		from tb_book
-		inner join tb_code on b_category = c_code
-
-		<where>
-			b_rent_yn = 'N'
-			and b_bno in
-			<foreach collection="bnoList" item="b_bno" index="i" open="("
-				close=")" separator=",">
-				#{b_bno}
-			</foreach>
-			and b_title like '%' || #{title} || '%'
-			<if test="orderBy != null"> order by ${orderBy} desc </if>
-		</where>
-
-		<choose>
-			<when test="orderBy == 'B_RENT_CNT'">
-				order by B_RENT_CNT desc
-			</when>
-			<when test="orderBy == 'B_REGDATE'">
-				order by B_REGDATE desc
-			</when>
-			<otherwise>
-				order by b_bno desc
-			</otherwise>
-		</choose>
-
-	</select>
-	 -->
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 </mapper>
