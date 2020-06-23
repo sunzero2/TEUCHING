@@ -19,6 +19,14 @@
 			)
 		WHERE
 			RNUM BETWEEN #{start} AND #{end}
+				<!-- SELECT
+						*
+				FROM
+					TR_REV_REPORT
+				ORDER BY
+					REPORT_IDX DESC	
+				LIMIT
+					#{start}, #{cntPerPage}	 -->
 	</select>
 
 	<select id="selectTraReport" resultType="TrainerReport">
@@ -38,6 +46,15 @@
 		)
 		WHERE
 			RNUM BETWEEN #{start} AND #{end}
+			
+			<!-- SELECT
+					*
+				FROM
+					TR_TRA_REPORT
+				ORDER BY
+					REPORT_IDX DESC
+				LIMIT
+					#{start}, #{cntPerPage}	 -->
 	</select>
 
 	<select id="revCnt" resultType="int">
@@ -196,6 +213,17 @@
 			)
 		WHERE
 			RNUM BETWEEN #{start} AND #{end}
+			
+			<!-- SELECT
+					*
+				FROM
+					TR_QUALI
+				WHERE
+					AUTH_YN = 'N'
+				ORDER BY
+					QUALI_IDX DESC
+				LIMIT
+					#{start}, #{cntPerPage}	 -->
 	</select>
 
 	<select id="selectQualiDetail" resultType="Quali">

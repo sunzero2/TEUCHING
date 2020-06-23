@@ -69,6 +69,36 @@
 			)
 		WHERE
 			RNUM BETWEEN #{paging.start} AND #{paging.end}
+			
+			<!-- SELECT 
+						* 
+				FROM
+					TR_MESSAGE
+				<where>
+					TR_EMAIL = #{email}
+						<if test='type.equals("Trainer")'>
+						AND
+							WRITER = 'Trainer'
+						</if>
+						<if test='type.equals("Member")'>
+						AND
+							WRITER = 'Member'
+						</if>
+					OR 
+					MEM_EMAIL = #{email}
+						<if test='type.equals("Trainer")'>
+						AND
+							WRITER = 'Trainer'
+						</if>
+						<if test='type.equals("Member")'>
+						AND
+							WRITER = 'Member'
+						</if>
+				</where>
+				ORDER BY 
+					WRITE_DATE DESC
+				LIMIT
+					#{start}, #{cntPerPage}	 -->
 	</select>
 	
 	<select id="selectMsgBoxRecv" resultType="Message">
@@ -109,6 +139,36 @@
 			N1)
 		WHERE
 			RNUM BETWEEN #{paging.start} AND #{paging.end}
+			
+			<!-- SELECT
+						*
+				FROM
+					TR_MESSAGE
+				<where>
+					MEM_EMAIL = #{email}
+						<if test='type.equals("Trainer")'>
+						AND
+							WRITER = 'Member'
+						</if>
+						<if test='type.equals("Member")'>
+						AND
+							WRITER = 'Trainer'
+						</if>
+					OR
+					TR_EMAIL = #{email}
+						<if test='type.equals("Trainer")'>
+						AND
+							WRITER = 'Member'
+						</if>
+						<if test='type.equals("Member")'>
+						AND
+							WRITER = 'Trainer'
+						</if>
+				</where>
+				ORDER BY
+					WRITE_DATE DESC
+				LIMIT
+					#{start}, #{cntPerPage}	 -->
 	</select>
 	
 	<select id="selectSendMsgCnt" resultType="int">
