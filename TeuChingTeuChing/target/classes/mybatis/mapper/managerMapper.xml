@@ -118,10 +118,10 @@
 		WHERE
 			SEQUENCE_NAME = 'S_TRA_REPORT_IDX'
 			 -->
-		SHOW
-			TABLE
-		STATUS
-			LIKE 'TR_TRA_REPORT'
+		SELECT
+			LAST_INSERT_ID() 
+		FROM 
+			DUAL
 	</select>
 
 	<select id="selectRevReportIdx" resultType="int">
@@ -132,10 +132,10 @@
 		WHERE
 			SEQUENCE_NAME = 'S_REV_REPORT_IDX'
 			 -->
-		SHOW
-			TABLE
-		STATUS
-			LIKE 'TR_REV_REPORT'
+		SELECT
+			LAST_INSERT_ID() 
+		FROM 
+			DUAL
 	</select>
 
 	<select id="selectTraFile" parameterType="int"
@@ -210,10 +210,10 @@
 			USER_SEQUENCES
 		WHERE
 			SEQUENCE_NAME = 'S_QUALI_IDX' -->
-		SHOW
-			TABLE
-		STATUS
-			LIKE 'TR_QUALI'
+		SELECT
+			LAST_INSERT_ID() 
+		FROM 
+			DUAL
 	</select>
 	
 	<insert id="insertQuali" parameterType="Quali">

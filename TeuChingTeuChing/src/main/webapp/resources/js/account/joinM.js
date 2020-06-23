@@ -1,4 +1,3 @@
-
 var idx_email = false;
 var idx_nick = false;
 var check_email = false;
@@ -79,7 +78,6 @@ $('#check_nick').click(function(){
 	});
 });	
 	$('#check_email').click(function(){
-		console.log("시작");
 		$.ajax({
 			url: "http://15.164.225.143:8080/teuching/member/emailChk.do",
 			type: "POST",

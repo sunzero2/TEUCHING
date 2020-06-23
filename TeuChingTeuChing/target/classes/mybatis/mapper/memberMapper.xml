@@ -22,7 +22,7 @@
 	
 	<!--회원 이메일 중복 체크 Mapper -->
 	<select id="emailChk" resultType="int">
-		select count(*) from ${table} where
+		select count(*) from #{table} where
 		<if test='table=="TR_TRAINER"'>
 			tr_email = #{email}
 		</if>

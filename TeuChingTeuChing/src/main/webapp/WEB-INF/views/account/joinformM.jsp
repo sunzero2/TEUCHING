@@ -40,7 +40,7 @@ background-color: transparent !important;
 				<div class="col-xl-8 m-auto order-xl-1" style="margin-bottom: 5% !important;">
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
 					<form id="signForm" name="signForm"
-						action="http://15.164.225.143:8080/teuching/member/m_joinemailCheck.do" 
+						action="http://15.164.225.143:8080/teuching/member/mjoinemailCheck.do" 
 	       					 method="post">
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
