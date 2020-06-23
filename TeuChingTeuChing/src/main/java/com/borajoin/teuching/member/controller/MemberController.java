@@ -63,10 +63,10 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : 비밀번호 찾기 폼으로 이동
 	*/
-	@RequestMapping("/member/find_pw_form.do")
+	@RequestMapping("/member/findpwform.do")
 	public ModelAndView find_pw_form() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("account/find_pw_form");
+		mav.setViewName("account/findpwform");
 
 		return mav;
 	}
@@ -178,9 +178,9 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 
 		if (data.equals("member")) {
-			mav.setViewName("account/joinform_M");
+			mav.setViewName("account/joinformM");
 		} else {
-			mav.setViewName("account/joinform_T");
+			mav.setViewName("account/joinformT");
 		}
 
 		return mav;
@@ -234,7 +234,7 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : 일반회원 회원가입 이메일 발송 
 	*/
-	@RequestMapping("/member/m_joinemailCheck.do")
+	@RequestMapping("/member/mjoinemailCheck.do")
 	public ModelAndView m_joinEmailCheck(@RequestParam Map<String, Object> commandMap, HttpServletRequest request)
 			throws SQLException {
 
@@ -256,7 +256,7 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : 트레이너 회원가입 이메일 발송 + 파일 넣기
 	*/
-	@RequestMapping("/member/t_joinemailCheck.do")
+	@RequestMapping("/member/tjoinemailCheck.do")
 	public ModelAndView t_joinEmailCheck(@RequestParam Map<String, Object> commandMap, HttpServletRequest request, MultipartHttpServletRequest mtf)
 			throws SQLException {
 

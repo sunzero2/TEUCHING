@@ -12,7 +12,7 @@ input::placeholder {
 }
 
 html {
-	background-image: url(../resources/img/tr4.jpg) !important;
+	background-image: url(http://15.164.225.143:8080/teuching/resources/img/tr4.jpg) !important;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -53,7 +53,7 @@ body {
 				<div class="col-xl-8 m-auto order-xl-1" style="margin-top: 5% !important; margin-bottom: 4% !important;">
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
 					<form id="signFrm" name="signFrm"
-					  action="<%=request.getContextPath()%>/member/t_joinemailCheck.do" 
+					  action="http://15.164.225.143:8080/teuching/member/t_joinemailCheck.do" 
 	       					method="post" enctype="multipart/form-data">
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
@@ -263,7 +263,7 @@ body {
 		</div>
 	</div>
 </body>
-<script src="../resources/js/account/join_T.js"></script>
+<script src="http://15.164.225.143:8080/teuching/resources/js/account/joinT.js"></script>
 
 </body>
 </html>

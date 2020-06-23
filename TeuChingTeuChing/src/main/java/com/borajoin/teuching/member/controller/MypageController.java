@@ -45,7 +45,7 @@ public class MypageController {
 		* @작성자 : 이남규
 		* @Method 설명 : 마이 페이지로 이동
 		*/
-		@RequestMapping("/member/mypage_M.do")
+		@RequestMapping("/member/mypageM.do")
 		public ModelAndView mypageM(HttpSession session) {
 			ModelAndView mav = new ModelAndView();
 			System.out.println("일반회원 마이페이지");
@@ -54,7 +54,7 @@ public class MypageController {
 			mav.addObject("match", managers.selectMemMatchMypage(m.getMem_email()));
 			mav.addObject("report", managers.selectTraReportMypage(m.getMem_email()));
 			
-			mav.setViewName("account/mypage_M");
+			mav.setViewName("account/mypageM");
 			return mav;
 		}
 	
@@ -64,7 +64,7 @@ public class MypageController {
 		* @작성자 : 이남규
 		* @Method 설명 : 트레이너 마이페이지 이동
 		*/
-		@RequestMapping("/member/mypage_T.do")
+		@RequestMapping("/member/mypageT.do")
 		public ModelAndView mypageT(HttpSession session) {
 			ModelAndView mav = new ModelAndView();
 			System.out.println("트레이너 마이페이지");
@@ -77,7 +77,7 @@ public class MypageController {
 	         
 	         mav.addObject("postCount", mys.t_count(t));
 	         
-	         mav.setViewName("account/mypage_T");
+	         mav.setViewName("account/mypageT");
 	         return mav;
 	      }
 		
@@ -149,7 +149,7 @@ public class MypageController {
 		* @작성자 : 이남규
 		* @Method 설명 : 일반회원 마이페이지 정보 업데이트
 		*/
-		@RequestMapping("/member/mypageUpdate_M.do")
+		@RequestMapping("/member/mypageUpdateM.do")
 		public ModelAndView mypageUpdate_M(@RequestParam Map<String, Object> commandMap, HttpSession session) throws Exception {
 
 			ModelAndView mav = new ModelAndView();
@@ -158,7 +158,7 @@ public class MypageController {
 			Member res = mys.update_mypage_M(commandMap);
 			session.setAttribute("loginInfo", res);
 
-			mav.setViewName("account/mypage_M");
+			mav.setViewName("account/mypageM");
 
 			return mav;
 		}
@@ -195,7 +195,7 @@ public class MypageController {
 		* @작성자 : 이남규
 		* @Method 설명 : 트레이너 마이페이지 정보 업데이트
 		*/
-		@RequestMapping("/member/mypageUpdate_T.do")
+		@RequestMapping("/member/mypageUpdateT.do")
 		public ModelAndView mypageUpdate_T(@RequestParam Map<String, Object> commandMap, 
 				@SessionAttribute("loginInfo") Trainer t, HttpSession session) throws Exception {
 
@@ -255,7 +255,7 @@ public class MypageController {
 			Trainer res = mys.update_mypage_T(commandMap); 
 			session.setAttribute("loginInfo", res);
 
-			mav.setViewName("account/mypage_T");
+			mav.setViewName("account/mypageT");
 
 			return mav;
 		}	
@@ -268,7 +268,7 @@ public class MypageController {
 		* @작성자 : 이남규 
 		* @Method 설명 : 트레이너 마이페이지 게시글 목록 불러오기
 		*/
-		@RequestMapping("/member/t_postlist.do")
+		@RequestMapping("/member/tpostlist.do")
 		@ResponseBody
 		public List<Post> t_postlist(@RequestParam Map<String, String> data) {
 			return mys.t_postlist(data);

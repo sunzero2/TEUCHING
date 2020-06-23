@@ -15,7 +15,7 @@ function imgLoad(img) {
       var imgDiv = document.createElement('img');
       imgDiv.className="avatar img-circle img-thumbnail";
       imgDiv.alt="avatar";
-      imgDiv.src = "/teuching/resources/upload/profileImg/" + img;
+      imgDiv.src = "http://15.164.225.143:8080/teuching/resources/upload/profileImg/" + img;
       div.append(imgDiv);
    }, 1000);
 }
@@ -27,7 +27,7 @@ function changeImage() {
       formdata.append('file', form[0].files[0]);
       
       $.ajax({
-         url: '/teuching/member/photoUpdate.do',
+         url: 'http://15.164.225.143:8080/teuching/member/photoUpdate.do',
          type: 'post',
              data: formdata,
            processData : false,
@@ -281,7 +281,7 @@ function sample6_execDaumPostcode() {
                   pList = new Array();
 
                   $.ajax({
-                     url : "/teuching/member/t_postlist.do",
+                     url : "http://15.164.225.143:8080/teuching/member/t_postlist.do",
                      data : {
                         "input" : "${loginInfo.tr_email}",
                         "option" : "trainer"
@@ -329,7 +329,7 @@ function sample6_execDaumPostcode() {
 
                            var writerLink = document.createElement('a');
                            // 트레이너 프로필로 이동할 수 있는 링크
-                           writerLink.href = '/teuching/profile/review.do?trainerEmail='+ pList[i].trEmail;
+                           writerLink.href = 'http://15.164.225.143:8080/teuching/profile/review.do?trainerEmail='+ pList[i].trEmail;
                            writerLink.innerText = pList[i].trainerName;
                            writer.append(writerLink);
 
@@ -341,7 +341,7 @@ function sample6_execDaumPostcode() {
                            body.append(title);
 
                            var titleLink = document.createElement('a');
-                           titleLink.href = '/teuching/post/detail.do?postNo='+ pList[i].postIdx;
+                           titleLink.href = 'http://15.164.225.143:8080/teuching/post/detail.do?postNo='+ pList[i].postIdx;
                            titleLink.innerText = pList[i].postTitle;
                            title.append(titleLink);
                         }
@@ -360,7 +360,7 @@ function sample6_execDaumPostcode() {
    function match(match_idx){
       if(confirm("수락하시겠습니까?")){
          $.ajax({
-            url:"${pageContext.request.contextPath}/message/msgaccept.do?match_idx=" + match_idx,
+            url:"http://15.164.225.143:8080/teuching/message/msgaccept.do?match_idx=" + match_idx,
             type:"get",
             success: function(data){
                if(data == 'success'){

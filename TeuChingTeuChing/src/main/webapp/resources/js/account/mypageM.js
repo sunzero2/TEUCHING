@@ -25,7 +25,7 @@
     
     $.ajax({
        type:'POST',
-       url: '<%=request.getContextPath()%>/review/uploadreview.do',
+       url: 'http://15.164.225.143:8080/teuching/review/uploadreview.do',
        data: $("#uploadReview").serialize(),
        success: function(data) {
              alert("리뷰가 성공적으로 등록되었습니다.");

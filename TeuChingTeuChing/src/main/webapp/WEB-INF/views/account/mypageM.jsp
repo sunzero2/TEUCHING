@@ -14,18 +14,18 @@
 	href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="../resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="../resources/css/animate.css">
-<link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="../resources/css/magnific-popup.css">
-<link rel="stylesheet" href="../resources/css/aos.css">
-<link rel="stylesheet" href="../resources/css/ionicons.min.css">
-<link rel="stylesheet" href="../resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="../resources/css/jquery.timepicker.css">
-<link rel="stylesheet" href="../resources/css/flaticon.css">
-<link rel="stylesheet" href="../resources/css/icomoon.css">
-<link rel="stylesheet" href="../resources/css/style.css">
+	href="http://15.164.225.143:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/animate.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/magnific-popup.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/aos.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/ionicons.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/jquery.timepicker.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/flaticon.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/icomoon.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/style.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link
@@ -133,7 +133,7 @@ display: block;
 							<div class="tab-pane active" id="home">
 							<h2></h2>
 								<form class="form"
-									action="<%=request.getContextPath()%>/member/mypageUpdate_M.do"
+									action="http://15.164.225.143:8080/teuching/member/mypageUpdateM.do"
 									method="post" id="memberMypage">
 									<div class="col-xs-6 form-height">
 										<h4>Email Address</h4>
@@ -190,14 +190,14 @@ display: block;
 											onClick="window.location.reload()" style="cursor: pointer;">
 											<i class="glyphicon glyphicon-repeat"></i> Reset
 										</button>
-										<a type="button" href="<%=request.getContextPath()%>/member/goodbye.do" class="btn btn-primary"> 회원 탈퇴 </a>
+										<a type="button" href="http://15.164.225.143:8080/teuching/member/goodbye.do" class="btn btn-primary"> 회원 탈퇴 </a>
 									</div>
 								</form>
 							</div>
 							<!--  -->
 							<div class="tab-pane" id="pwUpdate">
 							<h2></h2>
-								<form class="form" action="<%=request.getContextPath()%>/member/pwUpdate.do" method="post" id="pwUpdateform">
+								<form class="form" action="http://15.164.225.143:8080/teuching/member/pwUpdate.do" method="post" id="pwUpdateform">
 									<div class="col-xs-6 form-height">
 									<input type="hidden" name="email" value="${loginInfo.mem_email}" />
 									<input type="hidden" name="memberType" value="${memberType}" />
@@ -313,7 +313,7 @@ display: block;
 															<td>✖</td>
 														</c:if>
 														<td><a
-															href="${pageContext.request.contextPath }/report/mypagereport.do?traid=${r.report_idx}">
+															href="http://15.164.225.143:8080/teuching/report/mypagereport.do?traid=${r.report_idx}">
 																${fn:substring(r.rep_cont,0,20) }...</a></td>
 														<td>${r.report_date }</td>
 													</tr>
@@ -429,7 +429,7 @@ display: block;
     
     $.ajax({
        type:'POST',
-       url: '<%=request.getContextPath()%>/review/uploadreview.do',
+       url: 'http://15.164.225.143:8080/teuching/review/uploadreview.do',
        data: $("#uploadReview").serialize(),
        success: function(data) {
              alert("리뷰가 성공적으로 등록되었습니다.");
