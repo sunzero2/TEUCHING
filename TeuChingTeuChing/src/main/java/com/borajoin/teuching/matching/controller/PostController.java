@@ -73,7 +73,7 @@ public class PostController {
 	@RequestMapping("/post/write.do")
 	public ModelAndView write(@RequestParam List<MultipartFile> images, Post post, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		String root = session.getServletContext().getRealPath("/");
+		String root = "http://172.30.1.50:8787/teuching/";
 		List<File_Upload> fileData = new ArrayList<>();
 		
 		int i = 0;

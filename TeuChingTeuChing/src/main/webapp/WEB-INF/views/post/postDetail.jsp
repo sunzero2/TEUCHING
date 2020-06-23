@@ -55,7 +55,7 @@
 						<div class="authorWrapper">
 							<hr>
 							<div class="authorTitle">Author</div>
-								<img class="authorImg" src="http://15.164.225.143:8080/teuching/resources/upload/profileImg/${data.post.trPhoto}">
+								<img class="authorImg" src="http://172.30.1.50:8787/teuching/resources/upload/profileImg/${data.post.trPhoto}">
 							<div class="details authorInfo">
 								<div class="job">Trainer</div>
 								<a class="author" href="http://15.164.225.143:8080/teuching/profile/review.do?trainerEmail=${data.post.trEmail}">${data.post.trainerName}</a>
@@ -90,7 +90,7 @@
 				var img = document.createElement('img');
 				img.style.maxWidth = '400px';
 				img.style.display = 'block'
-				img.src = "http://15.164.225.143:8080/teuching/resources/upload/" + "${item.rename_filename}";
+				img.src = "http://172.30.1.50:8787/teuching/resources/upload/${item.rename_filename}";
 				uploads.append(img);
 			</c:forEach>
 		</script>
