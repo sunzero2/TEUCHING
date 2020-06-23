@@ -20,32 +20,32 @@
 	rel="stylesheet">
 
 <link rel="stylesheet"
-	href="../resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="../resources/css/animate.css">
+	href="http://15.164.225.143:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/animate.css">
 
-<link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="../resources/css/magnific-popup.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/magnific-popup.css">
 
-<link rel="stylesheet" href="../resources/css/aos.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/aos.css">
 
-<link rel="stylesheet" href="../resources/css/ionicons.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/ionicons.min.css">
 
-<link rel="stylesheet" href="../resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="../resources/css/jquery.timepicker.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="../resources/css/flaticon.css">
-<link rel="stylesheet" href="../resources/css/icomoon.css">
-<link rel="stylesheet" href="../resources/css/style.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/flaticon.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/icomoon.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/style.css">
 <!-- 기존꺼말고 새로갖다박은거임 -->
-<link rel="stylesheet" href="../resources/css/manager/managerDetail.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/manager/managerDetail.css">
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>
 	<div class="wrapper">
 		<div class="ansbox-top">
-			<div id="person" style="background-image: url(../resources/upload/profileImg/${res.tr_email}.PNG);"
+			<div id="person" style="background-image: url(http://15.164.225.143:8080/teuching/resources/upload/profileImg/${res.tr_email}.PNG);"
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated">
 				<c:if test="${ res.ans_yn eq 'Y'}">
 					<div id="check"
@@ -53,7 +53,7 @@
 				</c:if>
 			</div>
 			<form
-				action="${pageContext.request.contextPath }/manager/reportdetail/ans.do"
+				action="http://15.164.225.143:8080/teuching/manager/reportdetail/ans.do"
 				method="post">
 				<h5>${res.report_date }
 					<c:if test="${type eq 'tra' }">
@@ -76,12 +76,12 @@
 					<br>
 					<!-- 트레이너신고에 대한 결과 처리 -->
 					<c:if test="${type eq 'tra' }">
-					<a href="${pageContext.request.contextPath }/report/trainerblack.do?
+					<a href="http://15.164.225.143:8080/teuching/report/trainerblack.do?
 					tr_email=${res.tr_email}&traid=${res.report_idx}">트레이너 경고</a>
 					</c:if>
 					<!-- 리뷰신고에 대한 결과 처리 -->
 					<c:if test="${type eq 'rev' }">
-					<a href="${pageContext.request.contextPath }/report/deleteReview.do?&tr_email=${res.tr_email }
+					<a href="http://15.164.225.143:8080/teuching/report/deleteReview.do?&tr_email=${res.tr_email }
 					&mem_email=${res.mem_email}&revid=${res.report_idx}">회원 경고</a>
 					</c:if>
 				</h5>
@@ -105,7 +105,7 @@
 					<div id="showclose" style="text-align: right; display: none">
 						<c:forEach items="${file }" var="f">
 							<a
-								href="${pageContext.request.contextPath }/resources/
+								href="http://15.164.225.143:8080/teuching/resources/
 								upload/${f.rename_filename}">${f.origin_filename }</a>
 							<br>
 						</c:forEach>
@@ -135,7 +135,7 @@
 					<p id="font-size">아직 처리내용이 작성되지 않았습니다</p>
 				</c:if>
 				<br>
-				<a href="${pageContext.request.contextPath }/manager/report.do">◀목록</a>
+				<a href="http://15.164.225.143:8080/teuching/manager/report.do">◀목록</a>
 			</div>
 		</div>
 	</div>
@@ -160,23 +160,23 @@
 			}
 		}
 	</script>
-	<script src="../resources/js/jquery.min.js"></script>
-	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="../resources/js/popper.min.js"></script>
-	<script src="../resources/js/bootstrap.min.js"></script>
-	<script src="../resources/js/jquery.easing.1.3.js"></script>
-	<script src="../resources/js/jquery.waypoints.min.js"></script>
-	<script src="../resources/js/jquery.stellar.min.js"></script>
-	<script src="../resources/js/owl.carousel.min.js"></script>
-	<script src="../resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="../resources/js/aos.js"></script>
-	<script src="../resources/js/jquery.animateNumber.min.js"></script>
-	<script src="../resources/js/bootstrap-datepicker.js"></script>
-	<script src="../resources/js/jquery.timepicker.min.js"></script>
-	<script src="../resources/js/scrollax.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/popper.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/bootstrap.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.easing.1.3.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.waypoints.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.stellar.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/owl.carousel.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/aos.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.animateNumber.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/bootstrap-datepicker.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.timepicker.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/scrollax.min.js"></script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="../resources/js/google-map.js"></script>
-	<script src="../resources/js/main.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/google-map.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/main.js"></script>
 </body>
 </html>
