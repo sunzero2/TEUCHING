@@ -60,7 +60,7 @@
 		ORDER BY 
 			WRITE_DATE DESC
 		LIMIT
-			#{start}, #{cntPerPage}
+			${start}, ${cntPerPage}
 	</select>
 	
 	<select id="selectMsgBoxRecv" resultType="Message">
@@ -92,7 +92,7 @@
 		ORDER BY
 			WRITE_DATE DESC
 		LIMIT
-			#{start}, #{cntPerPage}
+			${start}, ${cntPerPage}
 	</select>
 	
 	<select id="selectSendMsgCnt" resultType="int">

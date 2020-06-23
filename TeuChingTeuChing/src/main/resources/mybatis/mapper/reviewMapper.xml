@@ -59,7 +59,7 @@
 	<select id="selectReviewList" resultType="Review">
 	select * from TR_REVIEW where tr_leave_yn = 'n' 
 		and tr_email = #{trainerEmail} order by ${orderby} desc
-		limit #{start}, #{cntPerPage}
+		limit ${start}, ${cntPerPage}
 	</select>
 	
 	<!-- 좋아요 tr_review 테이블에 업데이트 -->

@@ -10,7 +10,7 @@
 		ORDER BY
 			REPORT_IDX DESC	
 		LIMIT
-			#{start}, #{cntPerPage}
+			${start}, ${cntPerPage}
 	</select>
 
 	<select id="selectTraReport" resultType="TrainerReport">
@@ -21,7 +21,7 @@
 		ORDER BY
 			REPORT_IDX DESC
 		LIMIT
-			#{start}, #{cntPerPage}
+			${start}, ${cntPerPage}
 	</select>
 
 	<select id="revCnt" resultType="int">
@@ -181,7 +181,7 @@
 		ORDER BY
 			QUALI_IDX DESC
 		LIMIT
-			#{start}, #{cntPerPage}
+			${start}, ${cntPerPage}
 	</select>
 
 	<select id="selectQualiDetail" resultType="Quali">
