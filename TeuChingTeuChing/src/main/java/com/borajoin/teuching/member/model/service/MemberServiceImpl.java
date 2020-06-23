@@ -119,7 +119,7 @@ public class MemberServiceImpl implements MemberService {
 		String htmlBody = "";
 
 		if (mailfor.equals("t_join")) {
-			htmlBody = "<form action='http://" + commandMap.get("urlPath")
+			htmlBody = "<form action='http://15.164.225.143:8080/teuching"
 					+ "/member/jointrainerimple.do' method='post'><h3>TeuChing 트레이너 회원가입을 환영합니다.</h3>"
 					+ "<h4>가입하기 버튼 클릭 시 회원가입이 완료됩니다. 감사합니다.</h4><br>" + "<input type='hidden' value='"
 					+ commandMap.get("name") + "' name='name'>" + "<input type='hidden' value='"
@@ -139,7 +139,7 @@ public class MemberServiceImpl implements MemberService {
 					+ commandMap.get("keyword") + "' name='keyword'>" + "<button type='submit'>가입하기</form>";
 
 		} else if (mailfor.equals("m_join")) {
-			htmlBody += "<form action='http://" + commandMap.get("urlPath")
+			htmlBody += "<form action='http://http://15.164.225.143:8080/teuching"
 					+ "/member/joinmemberimple.do' method='post'><h3>TeuChing 회원가입을 환영합니다.</h3>"
 					+ "<h4>가입하기 버튼 클릭 시 회원가입이 완료됩니다. 감사합니다.</h4><br>" + "<input type='hidden' value='"
 					+ commandMap.get("nickname") + "' name='nickname'>" + "<input type='hidden' value='"
