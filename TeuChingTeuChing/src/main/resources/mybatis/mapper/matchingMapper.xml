@@ -22,10 +22,10 @@
 	<select id="searchWord" resultMap="postMap">
 		select * from TR_POST p inner join TR_TRAINER t using(tr_email) where 
 		<if test='option.equals("trainer")'>
-			p.trainer_name like '%' || #{input} || '%'
+			p.trainer_name like (select concat('%', #{input}, '%'))
 		</if>
 		<if test='option.equals("post")'>
-			p.post_title like '%' || #{input} || '%'
+			p.post_title like (select concat('%', #{input}, '%'))
 		</if>
 		order by post_idx desc
 	</select>
@@ -34,19 +34,19 @@
 		select * from TR_POST inner join TR_TRAINER using(tr_email)
 		<where>
 			<if test='!purpose.equals("null")'>
-				purpose like '%' || #{purpose} || '%'
+				purpose like (select concat('%', #{purpose}, '%'))
 			</if>
 			<if test='!sports.equals("null")'>
 				and sports = #{sports}
 			</if>
 			<if test='!area.equals("null")'>
-				and area like '%' || #{area} || '%'
+				and area like (select concat('%', #{area}, '%'))
 			</if>
 			<if test='!classSize.equals("null")'>
 				and class_size = #{classSize}
 			</if>
 			<if test='!gender.equals("null")'>
-				and gender like '%' || #{gender} || '%'
+				and gender like (select concat('%', #{gender}, '%'))
 			</if>
 			<if test='!place.equals("null")'>
 				and place = #{place}
