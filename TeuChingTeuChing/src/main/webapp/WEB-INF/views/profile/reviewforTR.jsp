@@ -203,7 +203,7 @@
 										<a href="#" class="tag-cloud-link">${Trainer.prefer_add2}</a>
 										<a href="#" class="tag-cloud-link">${Trainer.prefer_add3}</a>
 									</div>
-									<a href ="http://15.164.225.143:8080/teuching/member/mypage_T.do" id="gogo">수정하기</a>
+									<a href ="http://15.164.225.143:8080/teuching/member/mypaget.do" id="gogo">수정하기</a>
 					</c:forEach>
 				</div>
 

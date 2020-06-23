@@ -15,7 +15,7 @@
  	<!-- 트레이너 세션값 다시 넣기 -->
 	<select id="t_newlogin" resultMap="t_loginMap">
 		select *
-		from TR_TRAINER where tr_email = #{email}
+		from TR_TRAINER where TR_EMAIL = #{email}
 	</select>
  	<resultMap id="t_loginMap" type="Trainer">
  		<result column ="trainer_name" property="trainerName"/>
@@ -24,28 +24,28 @@
  	
  	<!-- 일반회원 회원정보 수정 -->
  	<update id="update_mypage_M">
-		update TR_MEMBER set GENDER = #{gender},
-		cell = #{cell}, address = #{address}
-		where mem_email = #{email}
+		UPDATE TR_MEMBER set GENDER = #{gender},
+		CELL = #{cell}, ADDRESS = #{address}
+		[WHERE MEM_EMAIL = #{email}]
 	</update>
 	
  	<!-- 트레이너 회원정보 수정 -->
  	<update id="update_mypage_T">
-		update TR_TRAINER set 
+		UPDATE TR_TRAINER set 
 		cell = #{cell}, GENDER = #{gender}, WEIGHT = #{weight},	HEIGHT = #{height},
-		address = #{address}, ADDRESS_DETAIL = #{address_detail}, PREFER_ADD1 = #{prefer1},
+		ADDRESS = #{address}, ADDRESS_DETAIL = #{address_detail}, PREFER_ADD1 = #{prefer1},
 		 PREFER_ADD2 = #{prefer2}, PREFER_ADD3 = #{prefer3}, CAREER = #{career}, PURPOSE_KEYWORD = #{keyword}
-		where tr_email = #{email}
+		[where TR_EMAIL = #{email}]
 	</update>
 	
 	<!-- 일반회원 회원탈퇴 -->
 	<update id="m_out">
-		update TR_MEMBER set IS_LEAVE_YN = 'Y' where MEM_EMAIL = #{email} and password = #{password}
+		update TR_MEMBER set IS_LEAVE_YN = 'Y' where MEM_EMAIL = #{email} and PASSWORD = #{password}
 	</update>
 	
  	<!-- 트레이너 회원탈퇴 -->
 	<update id="t_out">
-		update TR_TRAINER set IS_LEAVE_YN = 'Y' where tr_email = #{email} and password = #{password}
+		update TR_TRAINER set IS_LEAVE_YN = 'Y' where TR_EMAIL = #{email} and PASSWORD = #{password}
 	</update>
  	
  	
