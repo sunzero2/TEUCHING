@@ -20,7 +20,7 @@
 	</resultMap>
 	
 	<select id="searchWord" resultMap="postMap">
-		select * from tr_post p inner join tr_trainer t using(tr_email) where 
+		select * from TR_POST p inner join TR_TRAINER t using(tr_email) where 
 		<if test='option.equals("trainer")'>
 			p.trainer_name like '%' || #{input} || '%'
 		</if>
@@ -31,7 +31,7 @@
 	</select>
 	
 	<select id="keyword" resultMap="postMap">
-		select * from tr_post inner join tr_trainer using(tr_email)
+		select * from TR_POST inner join TR_TRAINER using(tr_email)
 		<where>
 			<if test='!purpose.equals("null")'>
 				purpose like '%' || #{purpose} || '%'
@@ -56,11 +56,11 @@
 	</select>
 	
 	<select id="postDetail" resultMap="postMap">
-		select * from tr_post inner join tr_trainer using(tr_email) where post_idx=#{postIdx}
+		select * from TR_POST inner join TR_TRAINER using(tr_email) where post_idx=#{postIdx}
 	</select>
 	
 	<insert id="insertPost" parameterType="Post">
-		insert into tr_post values(0, #{trEmail}, #{trainerName}, #{postTitle}, #{postCont}, #{purpose}, #{sports}, #{area}, #{classSize}, #{gender}, #{place}, #{price}, sysdate())
+		insert into TR_POST values(0, #{trEmail}, #{trainerName}, #{postTitle}, #{postCont}, #{purpose}, #{sports}, #{area}, #{classSize}, #{gender}, #{place}, #{price}, sysdate())
 	</insert>
 	
 	<select id="selectAuto" parameterType="int">
@@ -68,10 +68,10 @@
 	</select>
 	
 	<update id="updatePost" parameterType="Post">
-		update tr_post set post_title = #{postTitle}, post_cont = #{postCont}, purpose = #{purpose}, class_size = #{classSize}, place = #{place}, price = #{price} where post_idx = #{postIdx}
+		update TR_POST set post_title = #{postTitle}, post_cont = #{postCont}, purpose = #{purpose}, class_size = #{classSize}, place = #{place}, price = #{price} where post_idx = #{postIdx}
 	</update>
 	
 	<delete id="deletePost">
-		delete tr_post where post_idx=#{postIdx}
+		delete TR_POST where post_idx=#{postIdx}
 	</delete>
 </mapper>

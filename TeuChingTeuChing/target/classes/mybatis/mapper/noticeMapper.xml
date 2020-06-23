@@ -9,28 +9,26 @@
 	</resultMap>
 	
 	<select id="noticeListCnt" resultType="Int">
-		select count(*) from tr_notice
+		select count(*) from TR_NOTICE
 	</select>
 	
 	<select id="selectNotice" resultMap="noticeMap">
-		select * from (
-			select rownum rnum, n1.* from (select * from tr_notice order by notice_idx desc) n1
-		) where rnum limit #{start}, #{end}
+		select @rownum:=@rownum+1, n1.* from (select * from TR_NOTICE order by notice_idx desc) n1, (SELECT @rownum:=0) TMP where @rownum limit #{start}, #{end}
 	</select>
 	
 	<select id="noticeDetail" resultMap="noticeMap">
-		select * from tr_notice where notice_idx = #{noticeIdx}
+		select * from TR_NOTICE where notice_idx = #{noticeIdx}
 	</select>
 	
 	<delete id="deleteNotice">
-		delete tr_notice where notice_idx = #{noticeIdx}	
+		delete TR_NOTICE where notice_idx = #{noticeIdx}	
 	</delete>
 	
 	<update id="updateNotice">
-		update tr_notice set notice_title = #{noticeTitle}, notice_cont = #{noticeCont} where notice_idx = #{noticeIdx}
+		update TR_NOTICE set notice_title = #{noticeTitle}, notice_cont = #{noticeCont} where notice_idx = #{noticeIdx}
 	</update>
 	
 	<insert id="insertNotice">
-		insert into tr_notice values(0, #{noticeTitle}, #{noticeCont}, sysdate())
+		insert into TR_NOTICE values(0, #{noticeTitle}, #{noticeCont}, sysdate())
 	</insert>
 </mapper>

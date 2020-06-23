@@ -17,16 +17,16 @@
 	
 	<!-- 일반회원 닉네임 중복 체크 -->
 	<select id="nickChk" resultType="int">
-		select count(*) from tr_member where NICKNAME = #{nickname}
+		select count(*) from TR_MEMBER where NICKNAME = #{nickname}
 	</select>
 	
 	<!--회원 이메일 중복 체크 Mapper -->
 	<select id="emailChk" resultType="int">
 		select count(*) from ${table} where
-		<if test='table=="tr_trainer"'>
+		<if test='table=="TR_TRAINER"'>
 			tr_email = #{email}
 		</if>
-		<if test='table=="tr_member"'>
+		<if test='table=="TR_MEMBER"'>
 			mem_email = #{email}
 		</if>
 	</select>
@@ -43,7 +43,7 @@
  	<!-- 트레이너 로그인 -->
 	<select id="t_login" resultMap="trainerResult">
 		select *
-		from tr_trainer where tr_email = #{email} and password = #{password}
+		from TR_TRAINER where tr_email = #{email} and password = #{password}
 	</select>
  	<resultMap id="trainerResult" type="Trainer">
  		<result column ="trainer_name" property="trainerName"/>
@@ -54,12 +54,12 @@
  	<!-- 비밀번호 찾기 -> 비밀번호 변경 -->
 	<update id="update_pw">
 		update ${table} set 
-		<if test='table=="tr_trainer"'>
+		<if test='table=="TR_TRAINER"'>
 			password = #{password}		
 			where
 			tr_email = #{email}
 		</if>
-		<if test='table=="tr_member"'>
+		<if test='table=="TR_MEMBER"'>
 			password = #{password}		
 			where
 			mem_email = #{email}
@@ -68,7 +68,7 @@
  	
  	<!-- 트레이너의 게시글 가져오기 -->
  	<select id="t_postlist" resultMap="postMap">
-		select * from tr_post where TR_EMAIL like '%' || #{input} || '%' order by post_idx desc
+		select * from TR_POST where TR_EMAIL like '%' || #{input} || '%' order by post_idx desc
 	</select>
 	<resultMap id="postMap" type="Post">
 		<id column="post_idx" property="postIdx"></id>
@@ -87,11 +87,11 @@
 	</resultMap>
 	<!-- 게시글 수 -->
 	<select id="t_count" resultType="int">
-		select count(*) from tr_post where TR_EMAIL = #{tr_email}
+		select count(*) from TR_POST where TR_EMAIL = #{tr_email}
 	</select>
  	
  	<select id="selectTopTrainer" resultMap="trainerResult">
- 		<![CDATA[select rownum, t.* from (select * from tr_trainer t order by tr_like desc) t where rownum < 4]]>
+ 		<![CDATA[select @rownum:=@rownum+1, t.* from (select * from TR_TRAINER t order by tr_like desc) t, (SELECT @rownum:=0) TMP where @rownum < 4]]>
  	</select>
  	
  	

@@ -3,21 +3,21 @@
 
 <mapper namespace="File">
 	<insert id="report_insertFile" parameterType="File_Upload">
-		insert into tr_file_upload
+		insert into TR_FILE_UPLOAD
 		values(0, ${table_idx}, #{origin_filename},
 		#{rename_filename}, #{savepath}, 'N')
 	</insert>
 	
 	<insert id="post_insertFile" parameterType="File_Upload">
-		insert into tr_file_upload values(0, #{table_idx}, #{origin_filename}, #{rename_filename}, #{savepath}, 'N')
+		insert into TR_FILE_UPLOAD values(0, #{table_idx}, #{origin_filename}, #{rename_filename}, #{savepath}, 'N')
 	</insert>
 	
 	<select id="post_selectFile" resultType="File_Upload">
-		select * from tr_file_upload where table_idx = #{postIdx} and rename_filename like '%post%' and edit_yn = 'N'
+		select * from TR_FILE_UPLOAD where table_idx = #{postIdx} and rename_filename like '%post%' and edit_yn = 'N'
 	</select>
 	
 	<update id="post_updateFile">
-		update tr_file_upload set edit_yn = 'Y' where table_idx = #{postIdx}
+		update TR_FILE_UPLOAD set edit_yn = 'Y' where table_idx = #{postIdx}
 	</update>
 	
 	<insert id="insertQualiFile" parameterType="File_Upload">
