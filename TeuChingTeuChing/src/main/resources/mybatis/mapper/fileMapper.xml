@@ -9,7 +9,7 @@
 	</insert>
 	
 	<insert id="post_insertFile" parameterType="File_Upload">
-		insert into TR_FILE_UPLOAD values(0, #{table_idx}, #{origin_filename}, #{rename_filename}, ${savepath}, 'N')
+		insert into TR_FILE_UPLOAD values(0, #{table_idx}, #{origin_filename}, #{rename_filename}, #{savepath}, 'N')
 	</insert>
 	
 	<select id="post_selectFile" resultType="File_Upload">
