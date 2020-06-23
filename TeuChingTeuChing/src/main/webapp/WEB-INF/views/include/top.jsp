@@ -180,7 +180,7 @@
       
       <div class="modal-body">
         <div class="container">
-          <form class="form-signin" action="http://15.164.225.143:8080/teuching/member/loginImple.do">
+          <form class="form-signin" action="http://15.164.225.143:8080/teuching/member/loginimple.do">
             <h2 id="title">Please sign in</h2>
             
             <div class="form-group row">
@@ -212,7 +212,7 @@
       
       <div class="modal-footer">
         <a type="button" class="btn btn-default" data-dismiss="modal">닫기</a>
-        <a type="button" href="http://15.164.225.143:8080/teuching/member/find_pw_form.do" class="btn btn-primary"> 비밀번호 찾기 </a>
+        <a type="button" href="http://15.164.225.143:8080/teuching/member/findpwform.do" class="btn btn-primary"> 비밀번호 찾기 </a>
       </div>
     </div>
   </div>
