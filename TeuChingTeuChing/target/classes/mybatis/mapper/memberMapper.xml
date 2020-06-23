@@ -22,19 +22,19 @@
 	
 	<!--회원 이메일 중복 체크 Mapper -->
 	<select id="emailChk" resultType="int">
-		select count(*) from #{table} where
+		select count(*) from ${table} where
 		<if test='table=="TR_TRAINER"'>
-			tr_email = #{email}
+			TR_EMAIL = #{email}
 		</if>
 		<if test='table=="TR_MEMBER"'>
-			mem_email = #{email}
+			MEM_EMAIL = #{email}
 		</if>
 	</select>
 	
 	<!-- 일반회원 로그인 -->
 	<select id="m_login" resultMap="memberResult">
 		select *
-		from TR_MEMBER where MEM_EMAIL = #{email} and password = #{password}
+		from TR_MEMBER where MEM_EMAIL = #{email} and PASSWORD = #{password}
 	</select>
 	<resultMap id="memberResult" type="Member">
  		<result column ="IS_LEAVE_YN" property="leave_yn"/>
@@ -43,7 +43,7 @@
  	<!-- 트레이너 로그인 -->
 	<select id="t_login" resultMap="trainerResult">
 		select *
-		from TR_TRAINER where tr_email = #{email} and password = #{password}
+		from TR_TRAINER where TR_EMAIL = #{email} and PASSWORD = #{password}
 	</select>
  	<resultMap id="trainerResult" type="Trainer">
  		<result column ="trainer_name" property="trainerName"/>
@@ -55,20 +55,20 @@
 	<update id="update_pw">
 		update ${table} set 
 		<if test='table=="TR_TRAINER"'>
-			password = #{password}		
+			PASSWORD = #{password}		
 			where
-			tr_email = #{email}
+			TR_EMAIL = #{email}
 		</if>
 		<if test='table=="TR_MEMBER"'>
-			password = #{password}		
+			PASSWORD = #{password}		
 			where
-			mem_email = #{email}
+			MEM_EMAIL = #{email}
 		</if>
 	</update>
  	
  	<!-- 트레이너의 게시글 가져오기 -->
  	<select id="t_postlist" resultMap="postMap">
-		select * from TR_POST where TR_EMAIL like '%' || #{input} || '%' order by post_idx desc
+		select * from TR_POST where TR_EMAIL like (select concat('%', #{input}, '%')) order by post_idx desc
 	</select>
 	<resultMap id="postMap" type="Post">
 		<id column="post_idx" property="postIdx"></id>
