@@ -1,4 +1,3 @@
-
 var idx_email = false;
 var idx_nick = false;
 var check_email = false;
@@ -56,7 +55,7 @@ $('#signUp').click(function(){
 
 $('#check_nick').click(function(){
 	$.ajax({
-		url: "/teuching/member/nickChk.do",
+		url: "http://15.164.225.143:8080/teuching/member/nickchk.do",
 		type: "POST",
 		data:{
 			"nickname":$('#nickname').val()
@@ -79,9 +78,8 @@ $('#check_nick').click(function(){
 	});
 });	
 	$('#check_email').click(function(){
-		console.log("시작");
 		$.ajax({
-			url: "/teuching/member/emailChk.do",
+			url: "http://15.164.225.143:8080/teuching/member/emailchk.do",
 			type: "POST",
 			data:{"email":$('#email').val()},
 			success: function(data){

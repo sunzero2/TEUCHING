@@ -37,9 +37,9 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : Modal창 띄우기 테스트중..
 	*/
-	@GetMapping("/loginModal")
+	@GetMapping("/loginmodal")
 	public String loginModal() {
-		return "/loginModal";
+		return "/loginmodal";
 	}
 
 	
@@ -63,10 +63,10 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : 비밀번호 찾기 폼으로 이동
 	*/
-	@RequestMapping("/member/find_pw_form.do")
+	@RequestMapping("/member/findpwform.do")
 	public ModelAndView find_pw_form() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("account/find_pw_form");
+		mav.setViewName("account/findpwform");
 
 		return mav;
 	}
@@ -77,7 +77,7 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : 로그인 하기
 	*/
-	@RequestMapping("/member/loginImple.do")
+	@RequestMapping("/member/loginimple.do")
 	@ResponseBody
 	public ModelAndView loginImple(@RequestParam Map<String, Object> commandMap, HttpSession session)
 			throws SQLException {
@@ -101,11 +101,11 @@ public class MemberController {
 					if (res.getManager_yn().equals("Y")) {
 						session.setAttribute("loginInfo", res);
 						session.setAttribute("memberType", "manager");
-						mav.setViewName("redirect:/index/index.do");
+						mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 					} else {
 						session.setAttribute("loginInfo", res);
 						session.setAttribute("memberType", "member");
-						mav.setViewName("redirect:/index/index.do");
+						mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 					}
 
 				}
@@ -126,7 +126,7 @@ public class MemberController {
 				} else {
 					session.setAttribute("loginInfo", res);
 					session.setAttribute("memberType", "trainer");
-					mav.setViewName("redirect:/index/index.do");
+					mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 				}
 			}
 		}
@@ -148,7 +148,7 @@ public class MemberController {
 			session.removeAttribute("loginInfo");
 		}
 
-		mav.setViewName("redirect:/index/index.do");
+		mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 		
 		return mav;
 	}
@@ -162,7 +162,7 @@ public class MemberController {
 	@RequestMapping("/member/join.do")
 	public ModelAndView join() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("account/memberJoin");
+		mav.setViewName("account/memberjoin");
 
 		return mav;
 	}
@@ -178,9 +178,9 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 
 		if (data.equals("member")) {
-			mav.setViewName("account/joinform_M");
+			mav.setViewName("account/joinformm");
 		} else {
-			mav.setViewName("account/joinform_T");
+			mav.setViewName("account/joinformt");
 		}
 
 		return mav;
@@ -192,7 +192,7 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : 일반 회원 회원가입
 	*/
-	@RequestMapping("/member/joinMemberImple.do")
+	@RequestMapping("/member/joinmemberimple.do")
 	public ModelAndView joinMemberImple(@RequestParam Map<String, Object> commandMap) throws SQLException {
 		ModelAndView mav = new ModelAndView();
 
@@ -202,7 +202,7 @@ public class MemberController {
 			mav.addObject("url", "account/loginform");
 			mav.setViewName("account/redirect");
 		} else {
-			mav.setViewName("redirect:/index/index.do");
+			mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 		}
 		return mav;
 	}
@@ -213,7 +213,7 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : 트레이너 회원가입
 	*/
-	@RequestMapping("/member/joinTrainerImple.do")
+	@RequestMapping("/member/jointrainerimple.do")
 	public ModelAndView joinTrainerImple(@RequestParam Map<String, Object> commandMap) throws SQLException {
 		ModelAndView mav = new ModelAndView();
 
@@ -223,7 +223,7 @@ public class MemberController {
 			mav.addObject("url", "account/loginform");
 			mav.setViewName("account/redirect");
 		} else {
-			mav.setViewName("redirect:/index/index.do");
+			mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 		}
 		return mav;
 	}
@@ -234,18 +234,18 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : 일반회원 회원가입 이메일 발송 
 	*/
-	@RequestMapping("/member/m_joinemailCheck.do")
-	public ModelAndView m_joinEmailCheck(@RequestParam Map<String, Object> commandMap, HttpServletRequest request)
+	@RequestMapping("/member/mjoinemailcheck.do")
+	public ModelAndView m_joinEmailCheck(@RequestParam Map<String, Object> commandMap)
 			throws SQLException {
 
 		ModelAndView mav = new ModelAndView();
 		String mailfor ="m_join";
-		String path = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+		String path = "http://15.164.225.143:8080/teuching";
 
 		commandMap.put("urlPath", path);
 		ms.mailSending(commandMap,mailfor);
 
-		mav.setViewName("redirect:/index/index.do");
+		mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 
 		return mav;
 	}
@@ -256,7 +256,7 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : 트레이너 회원가입 이메일 발송 + 파일 넣기
 	*/
-	@RequestMapping("/member/t_joinemailCheck.do")
+	@RequestMapping("/member/tjoinemailcheck.do")
 	public ModelAndView t_joinEmailCheck(@RequestParam Map<String, Object> commandMap, HttpServletRequest request, MultipartHttpServletRequest mtf)
 			throws SQLException {
 
@@ -309,12 +309,12 @@ public class MemberController {
 		commandMap.put("keyword", keyword);
 		
 		String mailfor ="t_join";
-		String path = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+		String path = "http://15.164.225.143:8080/teuching";
 
 		commandMap.put("urlPath", path);
 		ms.mailSending(commandMap,mailfor);
 
-		mav.setViewName("redirect:/index/index.do");
+		mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 
 		return mav;
 	}
@@ -325,7 +325,7 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : 일반회원 - 닉네임 중복체크
 	*/
-	@RequestMapping(value = "/member/nickChk.do", produces = "application/text; charset=utf8")
+	@RequestMapping(value = "/member/nickchk.do", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String nickChk(HttpServletRequest request) throws SQLException {
 
@@ -340,17 +340,17 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : 두분류 회원 이메일 중복체크
 	*/
-	@RequestMapping(value = "/member/emailChk.do", produces = "application/text; charset=utf8")
+	@RequestMapping(value = "/member/emailchk.do", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String emailChk(@RequestParam Map<String, Object> data) throws SQLException {
 
 
-		data.put("table", "tr_member"); 
+		data.put("table", "TR_MEMBER"); 
 
 		int result = ms.emailChk(data); 
 
 		if (result < 1) { 
-			data.put("table", "tr_trainer"); 
+			data.put("table", "TR_TRAINER"); 
 			result = ms.emailChk(data); 
 		}
 
@@ -377,14 +377,14 @@ public class MemberController {
 			pw += (char) ((Math.random() * 26) + 97);
 		}
 		
-		commandMap.put("table", "tr_member");  //비교 테이블 값 넣기
+		commandMap.put("table", "TR_MEMBER");  //비교 테이블 값 넣기
 		int result = ms.emailChk(commandMap);	// 테이블 조회
 		
 		commandMap.put("password", pw);	// 임시 비밀번호 담기
 		
 		if (result == 0) {
 			// 트레이너 비밀번호 변경 및 메일전송
-			commandMap.put("table", "tr_trainer");
+			commandMap.put("table", "TR_TRAINER");
 			ms.change_pw(commandMap);
 			mailfor = "t_findpw";
 			commandMap.put("urlPath", path); 
@@ -398,7 +398,7 @@ public class MemberController {
 		}
 		  
 		 
-		mav.setViewName("redirect:/index/index.do");
+		mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
 
 		return mav;
 	}

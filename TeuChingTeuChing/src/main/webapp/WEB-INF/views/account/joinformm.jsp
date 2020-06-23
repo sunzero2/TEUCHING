@@ -13,7 +13,7 @@ input::placeholder {
 }
 
 html {
-	background-image: url(../resources/img/tr7.jpg) !important;
+	background-image: url(http://15.164.225.143:8080/teuching/resources/img/tr7.jpg) !important;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -27,7 +27,7 @@ background-color: transparent !important;
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="../resources/css/joinform.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/joinform.css">
 
 
 </head>
@@ -40,7 +40,7 @@ background-color: transparent !important;
 				<div class="col-xl-8 m-auto order-xl-1" style="margin-bottom: 5% !important;">
 					<div class="card bg-secondary shadow" style="background-color: #f8f9fe !important;">
 					<form id="signForm" name="signForm"
-						action="<%=request.getContextPath()%>/member/m_joinemailCheck.do" 
+						action="http://15.164.225.143:8080/teuching/member/mjoinemailCheck.do" 
 	       					 method="post">
 						<div class="card-header bg-white border-0">
 							<div class="row align-items-center">
@@ -158,7 +158,7 @@ background-color: transparent !important;
 <!-- 카카오주소 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42e0be41ec144283c6bfe7c0ed8dae35&libraries=services"></script>
-<script src="../resources/js/account/join_M.js"></script>
+<script src="http://15.164.225.143:8080/teuching/resources/js/account/joinM.js"></script>
 
 
 

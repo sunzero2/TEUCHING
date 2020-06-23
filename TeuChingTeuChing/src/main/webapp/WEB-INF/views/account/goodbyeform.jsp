@@ -48,7 +48,7 @@ input::placeholder {
 						<div class="card-header">그동안 TeuChing을 이용해 주셔서 감사합니다.</div>
 						<div class="card-body"> 
 							<form name="goodbyeFrm" id="goodbyeFrm"
-							action="<%=request.getContextPath()%>/member/goodbyeUpdate.do" method="post">
+							action="http://15.164.225.143:8080/teuching/member/goodbyeupdate.do" method="post">
 								<div class="form-group row">
 									<label for="password"
 										class="col-md-4 col-form-label text-md-right">비밀번호</label>
@@ -68,7 +68,7 @@ input::placeholder {
 								</div>
 								<div class="col-md-6 offset-md-4">
 									<button type="button" id="goodbye" class="btn btn-primary">회원 탈퇴하기</button>
-									<a href="/teuching/index/index.do" class="btn btn-link"> 메인으로 돌아가기 </a>
+									<a href="http://15.164.225.143:8080/teuching/index/index.do" class="btn btn-link"> 메인으로 돌아가기 </a>
 								</div>
 							</form>
 						</div>
@@ -81,7 +81,7 @@ input::placeholder {
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="../resources/js/account/goodbyeform.js"></script>
+<script src="http://15.164.225.143:8080/teuching/resources/js/account/goodbyeform.js"></script>
 
 </body>
 </html>

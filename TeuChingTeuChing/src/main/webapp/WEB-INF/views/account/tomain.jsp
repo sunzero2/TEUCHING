@@ -11,7 +11,7 @@
 	<c:if test="${msg != null}">
 		<script>
 			alert('${msg}');
-			window.location.href = "/teuching/index/index.do";
+			window.location.href = "http://15.164.225.143:8080/teuching/index/index.do";
 		</script>
 	</c:if>
 

@@ -45,7 +45,7 @@ public class MypageController {
 		* @작성자 : 이남규
 		* @Method 설명 : 마이 페이지로 이동
 		*/
-		@RequestMapping("/member/mypage_M.do")
+		@RequestMapping("/member/mypagem.do")
 		public ModelAndView mypageM(HttpSession session) {
 			ModelAndView mav = new ModelAndView();
 			System.out.println("일반회원 마이페이지");
@@ -54,7 +54,7 @@ public class MypageController {
 			mav.addObject("match", managers.selectMemMatchMypage(m.getMem_email()));
 			mav.addObject("report", managers.selectTraReportMypage(m.getMem_email()));
 			
-			mav.setViewName("account/mypage_M");
+			mav.setViewName("account/mypagem");
 			return mav;
 		}
 	
@@ -64,7 +64,7 @@ public class MypageController {
 		* @작성자 : 이남규
 		* @Method 설명 : 트레이너 마이페이지 이동
 		*/
-		@RequestMapping("/member/mypage_T.do")
+		@RequestMapping("/member/mypaget.do")
 		public ModelAndView mypageT(HttpSession session) {
 			ModelAndView mav = new ModelAndView();
 			System.out.println("트레이너 마이페이지");
@@ -77,7 +77,7 @@ public class MypageController {
 	         
 	         mav.addObject("postCount", mys.t_count(t));
 	         
-	         mav.setViewName("account/mypage_T");
+	         mav.setViewName("account/mypaget");
 	         return mav;
 	      }
 		
@@ -103,7 +103,7 @@ public class MypageController {
 		* @작성자 : 이남규 
 		* @Method 설명 : 회원탈퇴하기 
 		*/
-		@RequestMapping("/member/goodbyeUpdate.do")
+		@RequestMapping("/member/goodbyeupdate.do")
 		public ModelAndView goodbyeUpdate(@RequestParam Map<String, Object> commandMap, HttpSession session) throws Exception {
 
 			ModelAndView mav = new ModelAndView();
@@ -122,7 +122,7 @@ public class MypageController {
 				} else {
 					session.removeAttribute("loginInfo");
 					mav.addObject("msg", "회원 탈퇴가 완료되었습니다. 감사합니다.");
-					mav.setViewName("account/toMain");
+					mav.setViewName("account/tomain");
 				}
 
 			} else {
@@ -135,7 +135,7 @@ public class MypageController {
 				} else {
 					session.removeAttribute("loginInfo");
 					mav.addObject("msg", "회원 탈퇴가 완료되었습니다. 감사합니다.");
-					mav.setViewName("account/toMain");
+					mav.setViewName("account/tomain");
 				}
 			}
 			
@@ -149,7 +149,7 @@ public class MypageController {
 		* @작성자 : 이남규
 		* @Method 설명 : 일반회원 마이페이지 정보 업데이트
 		*/
-		@RequestMapping("/member/mypageUpdate_M.do")
+		@RequestMapping("/member/mypageupdatem.do")
 		public ModelAndView mypageUpdate_M(@RequestParam Map<String, Object> commandMap, HttpSession session) throws Exception {
 
 			ModelAndView mav = new ModelAndView();
@@ -158,12 +158,12 @@ public class MypageController {
 			Member res = mys.update_mypage_M(commandMap);
 			session.setAttribute("loginInfo", res);
 
-			mav.setViewName("account/mypage_M");
+			mav.setViewName("account/mypagem");
 
 			return mav;
 		}
 		
-		@RequestMapping("/member/pwUpdate.do")
+		@RequestMapping("/member/pwupdate.do")
 		public ModelAndView pwUpdate(@RequestParam Map<String, Object> commandMap, HttpSession session)
 				throws SQLException {
 
@@ -172,18 +172,18 @@ public class MypageController {
 
 			if (commandMap.get("memberType").equals("trainer")) {
 				// 트레이너 비밀번호 변경 
-				commandMap.put("table", "tr_trainer");
+				commandMap.put("table", "TR_TRAINER");
 				ms.change_pw(commandMap);
 				session.removeAttribute("loginInfo");
 				mav.addObject("msg", "비밀번호가 변경되었습니다. 다시 로그인해 주세요.");
-				mav.setViewName("account/toMain");
+				mav.setViewName("account/tomain");
 			} else {
 				// 일반회원 비밀번호 변경 
-				commandMap.put("table", "tr_member");
+				commandMap.put("table", "TR_MEMBER");
 				ms.change_pw(commandMap);
 				session.removeAttribute("loginInfo");
 				mav.addObject("msg", "비밀번호가 변경되었습니다. 다시 로그인해 주세요.");
-				mav.setViewName("account/toMain");
+				mav.setViewName("account/tomain");
 			}
 			 
 			return mav;
@@ -195,7 +195,7 @@ public class MypageController {
 		* @작성자 : 이남규
 		* @Method 설명 : 트레이너 마이페이지 정보 업데이트
 		*/
-		@RequestMapping("/member/mypageUpdate_T.do")
+		@RequestMapping("/member/mypageupdatet.do")
 		public ModelAndView mypageUpdate_T(@RequestParam Map<String, Object> commandMap, 
 				@SessionAttribute("loginInfo") Trainer t, HttpSession session) throws Exception {
 
@@ -255,7 +255,7 @@ public class MypageController {
 			Trainer res = mys.update_mypage_T(commandMap); 
 			session.setAttribute("loginInfo", res);
 
-			mav.setViewName("account/mypage_T");
+			mav.setViewName("account/mypaget");
 
 			return mav;
 		}	
@@ -268,7 +268,7 @@ public class MypageController {
 		* @작성자 : 이남규 
 		* @Method 설명 : 트레이너 마이페이지 게시글 목록 불러오기
 		*/
-		@RequestMapping("/member/t_postlist.do")
+		@RequestMapping("/member/tpostlist.do")
 		@ResponseBody
 		public List<Post> t_postlist(@RequestParam Map<String, String> data) {
 			return mys.t_postlist(data);
@@ -284,7 +284,7 @@ public class MypageController {
 		* @작성자 : 이남규 
 		* @Method 설명 :  사진 업데이트하기
 		*/
-		@RequestMapping("/member/photoUpdate.do")
+		@RequestMapping("/member/photoupdate.do")
 		@ResponseBody
 		public int photoUpdate(@RequestParam MultipartFile file, HttpSession session) throws SQLException {
 			int res = 0;

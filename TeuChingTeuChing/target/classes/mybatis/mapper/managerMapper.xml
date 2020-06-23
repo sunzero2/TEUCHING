@@ -6,38 +6,22 @@
 		SELECT
 			*
 		FROM
-			(SELECT
-				ROWNUM RNUM, N1.* 
-			FROM
-				(SELECT
-						*
-				FROM
-					TR_REV_REPORT
-				ORDER BY
-					REPORT_IDX DESC
-				)N1
-			)
-		WHERE
-			RNUM BETWEEN #{start} AND #{end}
+			TR_REV_REPORT
+		ORDER BY
+			REPORT_IDX DESC	
+		LIMIT
+			${start}, ${cntPerPage}
 	</select>
 
 	<select id="selectTraReport" resultType="TrainerReport">
 		SELECT
 			*
 		FROM
-			(SELECT
-				ROWNUM RNUM, N1.* 
-			FROM
-				(SELECT
-					*
-				FROM
-					TR_TRA_REPORT
-				ORDER BY
-					REPORT_IDX DESC
-			)N1
-		)
-		WHERE
-			RNUM BETWEEN #{start} AND #{end}
+			TR_TRA_REPORT
+		ORDER BY
+			REPORT_IDX DESC
+		LIMIT
+			${start}, ${cntPerPage}
 	</select>
 
 	<select id="revCnt" resultType="int">
@@ -98,13 +82,13 @@
 		INSERT INTO
 				TR_TRA_REPORT
 		VALUES(
-				S_TRA_REPORT_IDX.NEXTVAL
+				0
 				, #{tr_email}
 				, #{mem_email}
 				, #{rep_cont}
 				, ' '
 				, ' '
-				, SYSDATE
+				, SYSDATE()
 				, 'N'
 				, #{nick_name}
 		)
@@ -114,34 +98,52 @@
 		INSERT INTO
 				TR_REV_REPORT
 		VALUES(
-				S_REV_REPORT_IDX.NEXTVAL
+				0
 				, #{tr_email}
 				, #{mem_email}
 				, #{rep_cont}
 				, ' '
 				, ' '
-				, SYSDATE
+				, SYSDATE()
 				, 'N'
 				, #{trainer_name}
 		)
 	</insert>
 
 	<select id="selectTraReportIdx" resultType="int">
-		SELECT
+		<!-- SELECT
 			LAST_NUMBER
 		FROM
 			USER_SEQUENCES
 		WHERE
 			SEQUENCE_NAME = 'S_TRA_REPORT_IDX'
+			 -->
+		SELECT 
+			AUTO_INCREMENT
+		FROM 
+			information_schema.tables 
+		WHERE 
+			table_name = 'TR_TRA_REPORT' 
+			AND 
+			table_schema = DATABASE();
 	</select>
 
 	<select id="selectRevReportIdx" resultType="int">
-		SELECT
+		<!-- SELECT
 			LAST_NUMBER
 		FROM
 			USER_SEQUENCES
 		WHERE
 			SEQUENCE_NAME = 'S_REV_REPORT_IDX'
+			 -->
+		SELECT 
+			AUTO_INCREMENT
+		FROM 
+			information_schema.tables 
+		WHERE 
+			table_name = 'TR_REV_REPORT' 
+			AND 
+			table_schema = DATABASE();
 	</select>
 
 	<select id="selectTraFile" parameterType="int"
@@ -181,21 +183,13 @@
 		SELECT
 			*
 		FROM
-			(SELECT
-				ROWNUM RNUM, N1.*
-			FROM(
-				SELECT
-					*
-				FROM
-					TR_QUALI
-				WHERE
-					AUTH_YN = 'N'
-				ORDER BY
-					QUALI_IDX DESC
-				)N1
-			)
+			TR_QUALI
 		WHERE
-			RNUM BETWEEN #{start} AND #{end}
+			AUTH_YN = 'N'
+		ORDER BY
+			QUALI_IDX DESC
+		LIMIT
+			${start}, ${cntPerPage}
 	</select>
 
 	<select id="selectQualiDetail" resultType="Quali">
@@ -218,19 +212,23 @@
 	</update>
 	
 	<select id="selectQualiIdx" resultType="int">
-		SELECT
+		<!-- SELECT
 			LAST_NUMBER
 		FROM
 			USER_SEQUENCES
 		WHERE
-			SEQUENCE_NAME = 'S_QUALI_IDX'
+			SEQUENCE_NAME = 'S_QUALI_IDX' -->
+		SELECT
+			LAST_INSERT_ID() 
+		FROM 
+			DUAL
 	</select>
 	
 	<insert id="insertQuali" parameterType="Quali">
 		INSERT INTO
 				TR_QUALI
 		VALUES(
-				S_QUALI_IDX.NEXTVAL
+				0
 				, #{quali_auth}
 				, #{tr_email}
 				, #{trainer_name}

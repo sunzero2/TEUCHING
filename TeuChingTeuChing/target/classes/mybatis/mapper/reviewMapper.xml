@@ -41,41 +41,40 @@
 
 	<!-- 리뷰 업로드 -->
 	<insert id="uploadReview">
-		insert into tr_review values(S_REVIEW_IDX.nextval,#{trainer_name},#{tr_email}, #{mem_nickname}, #{rev_cont}, #{rev_score}, #{rev_password},'n',0,sysdate,'n')
+		insert into TR_REVIEW values(0,#{trainer_name},#{tr_email}, #{mem_nickname}, #{rev_cont}, #{rev_score}, #{rev_password},'n',0,sysdate(),'n')
 	</insert> 
 	
 	<!-- 리뷰삭제 -->
 	<select id="deleteReview">
-		update tr_review set tr_leave_yn = 'y' where review_idx = #{no}
+		update TR_REVIEW set tr_leave_yn = 'y' where review_idx = #{no}
 	</select>
 
 	<!-- 삭제하지않은 리뷰의 수를 가져오기 -->
  	<select id="contentCnt" resultType="int">
 		select count(*) from
-		tr_review where tr_email = #{trainerEmail} and tr_leave_yn = 'n'
+		TR_REVIEW where tr_email = #{trainerEmail} and tr_leave_yn = 'n'
 	</select>
 	
 	<!-- 리뷰리스트 가져오기 -->
 	<select id="selectReviewList" resultType="Review">
-		select * from (select rownum rnum, n1.* from ( select * from tr_review where tr_leave_yn = 'n' and tr_email = #{trainerEmail} order by ${orderby} desc )n1) 
-		where rnum between #{page.start} and #{page.end}
+	select * from TR_REVIEW where tr_leave_yn = 'n' and tr_email = #{trainerEmail} order by ${orderby} desc limit #{page.start}, #{page.cntPerPage}
 	</select>
 	
 	<!-- 좋아요 tr_review 테이블에 업데이트 -->
 	<update id="recUpdate">
-		update tr_review set recommend = recommend + 1 where review_idx = #{no}
+		update TR_REVIEW set recommend = recommend + 1 where review_idx = #{no}
 	</update>
 	
 	
 	
 	<!-- 추천 수 가져오기 -->
 	<select id="getLike" resultType="int">
-		select recommend from tr_review where review_idx = #{no}
+		select recommend from TR_REVIEW where review_idx = #{no}
 	</select>
 	
 	<!-- 추천 한 기록을 저장해놓는 테이블에 insert -->
 	<insert id="insertreviewrrec">
-	insert into review_rec values(
+	insert into REVIEW_REC values(
 		#{no},
 		#{nickname}
 		)
@@ -83,40 +82,37 @@
 	
 	<!-- 트레이너 좋아요 tr_trainer 테이블에 업데이트 -->
 	<update id="TRLikeUpdate">
-		update tr_trainer set tr_like = tr_like + 1 where tr_email = #{tremail}
+		update TR_TRAINER set tr_like = tr_like + 1 where tr_email = #{tremail}
 	</update>
 	<!-- 트레이너 좋아요 한 기록을 저장해놓는 테이블에 insert -->
 	<insert id="insertTRLikeInfo">
-	insert into trainer_like values(#{tremail},#{memname})
+	insert into TRAINER_LIKE values(#{tremail},#{memname})
 	</insert>
 	
 	<!-- 트레이너좋아요를 한 적이 있는지 없는지  -->
 	<select id="TRLikeyn"  resultType="int">
-		select count(*) from trainer_like where trainer_email = #{tremail} and member_email = #{memname}
+		select count(*) from TRAINER_LIKE where trainer_email = #{tremail} and member_email = #{memname}
 	</select>
 	
 	<!-- 추천 수 가져오기 -->
 	<select id="trLikeCount" resultType="int">
-		select tr_like from tr_trainer where tr_email = #{tremail}
+		select tr_like from TR_TRAINER where tr_email = #{tremail}
 	</select>
 	
 	<!-- 추천을 한 적이 있는지 없는지  -->
 	<select id="reviewrecyn"  resultType="int">
-		select count(*) from review_rec where mem_nickname = #{nickname} and review_idx = #{no}
+		select count(*) from REVIEW_REC where mem_nickname = #{nickname} and review_idx = #{no}
 	</select>
 	
-<!-- 	<delete id="recRealDelete">
-		delete from review_rec where mem_nickname = #{nickname} and review_idx = #{no}
-	</delete> -->
-	
+
 	<!-- 트레이너 정보가져오기 -->
 	<select id="selectTrainerInformation" resultMap="trainermap">
-		select * from tr_trainer where tr_email = #{tr_email}
+		select * from TR_TRAINER where tr_email = #{tr_email}
 	</select>
 	
 	<!-- 게시글 목록 가져오기 -->
 	<select id="selectPostList" resultMap="postMap"> 
-		select * from tr_post where tr_email = #{trainerEmail}
+		select * from TR_POST where tr_email = #{trainerEmail}
 	</select>
 	
 	<!-- 신고때문에 김지수가 만들어놓은듯 -->
@@ -133,53 +129,6 @@
 	
 	<!-- 트레이너 네임만 가져올래용 -->
 	<select id="trainername" resultType="String">
-		select trainer_name from tr_trainer where tr_email = #{tr_email}
+		select trainer_name from TR_TRAINER where tr_email = #{tr_email}
 	</select>
-	
-	
-	<!-- 
-	<select id="selectBook" resultMap="resultBook">
-		select c_info, b_title, b_bno, b_author, b_rent_cnt, b_rent_yn, b_isbn
-		from tb_book
-		inner join tb_code on b_category = c_code
-
-		<where>
-			b_rent_yn = 'N'
-			and b_bno in
-			<foreach collection="bnoList" item="b_bno" index="i" open="("
-				close=")" separator=",">
-				#{b_bno}
-			</foreach>
-			and b_title like '%' || #{title} || '%'
-			<if test="orderBy != null"> order by ${orderBy} desc </if>
-		</where>
-
-		<choose>
-			<when test="orderBy == 'B_RENT_CNT'">
-				order by B_RENT_CNT desc
-			</when>
-			<when test="orderBy == 'B_REGDATE'">
-				order by B_REGDATE desc
-			</when>
-			<otherwise>
-				order by b_bno desc
-			</otherwise>
-		</choose>
-
-	</select>
-	 -->
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 </mapper>

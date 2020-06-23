@@ -51,7 +51,7 @@ h1 {
 
 <body>
 	<form
-		action="${pageContext.request.contextPath }/message/messageformsend.do" onsubmit="return check();">
+		action="http://15.164.225.143:8080/teuching/message/messageformsend.do" onsubmit="return check();">
 		<div class="container">
 			<h1>Send Message</h1>
 			<textarea name="msg_cont" id="textarea" placeholder="내용을 입력해주세요"></textarea>

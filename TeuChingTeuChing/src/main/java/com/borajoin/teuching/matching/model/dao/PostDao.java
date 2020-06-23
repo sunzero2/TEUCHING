@@ -28,6 +28,10 @@ public class PostDao {
 		return sqlSession.insert("Matching.insertPost", post);
 	}
 	
+	public int selectAuto() {
+		return sqlSession.selectOne("Matching.selectAuto");
+	}
+	
 	public int updatePost(Post post) {
 		return sqlSession.update("Matching.updatePost", post);
 	}

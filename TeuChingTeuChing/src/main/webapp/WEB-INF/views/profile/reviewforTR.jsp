@@ -97,18 +97,18 @@
 	href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="../resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="../resources/css/animate.css">
-<link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="../resources/css/magnific-popup.css">
-<link rel="stylesheet" href="../resources/css/aos.css">
-<link rel="stylesheet" href="../resources/css/ionicons.min.css">
-<link rel="stylesheet" href="../resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="../resources/css/jquery.timepicker.css">
-<link rel="stylesheet" href="../resources/css/flaticon.css">
-<link rel="stylesheet" href="../resources/css/icomoon.css">
-<link rel="stylesheet" href="../resources/css/style.css">
+	href="http://15.164.225.143:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/animate.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/magnific-popup.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/aos.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/ionicons.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/jquery.timepicker.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/flaticon.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/icomoon.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/style.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
@@ -126,7 +126,7 @@
 
 
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('../resources/img/bg_3.jpg');"
+		style="background-image: url('http://15.164.225.143:8080/teuching/resources/img/bg_3.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
@@ -151,7 +151,7 @@
 						<h2 class="mb-3" id="trainername"></h2>
 						<div class="about-author d-flex">
 							<div class="bio align-self-md-center mr-5" id="box">
-								<img src="../resources/upload/profileImg/${Trainer.photo}"
+								<img src="http://15.164.225.143:8080/teuching/resources/upload/profileImg/${Trainer.photo}"
 									alt="${Trainer.photo}" class="img-fluid mb-4" id="photo">
 							</div>
 							<div class="desc align-self-md-center">
@@ -203,7 +203,7 @@
 										<a href="#" class="tag-cloud-link">${Trainer.prefer_add2}</a>
 										<a href="#" class="tag-cloud-link">${Trainer.prefer_add3}</a>
 									</div>
-									<a href ="<%=request.getContextPath()%>/member/mypage_T.do" id="gogo">수정하기</a>
+									<a href ="http://15.164.225.143:8080/teuching/member/mypaget.do" id="gogo">수정하기</a>
 					</c:forEach>
 				</div>
 
@@ -228,19 +228,19 @@
 						<!-- 프사 별점별로 다르게 --> <c:choose>
 							<c:when test="${review.rev_score < 3}">
 								<div class="vcard bio">
-									<img src="../resources/img/sad.png" alt="Image placeholder">
+									<img src="http://15.164.225.143:8080/teuching/resources/img/sad.png" alt="Image placeholder">
 								</div>
 							</c:when>
 
 							<c:when test="${review.rev_score == 3}">
 								<div class="vcard bio">
-									<img src="../resources/img/soso.png" alt="Image placeholder">
+									<img src="http://15.164.225.143:8080/teuching/resources/img/soso.png" alt="Image placeholder">
 								</div>
 							</c:when>
 
 							<c:otherwise>
 								<div class="vcard bio">
-									<img src="../resources/img/smile.png" alt="Image placeholder">
+									<img src="http://15.164.225.143:8080/teuching/resources/img/smile.png" alt="Image placeholder">
 								</div>
 							</c:otherwise>
 						</c:choose>
@@ -266,7 +266,7 @@
 
 
 								<a
-									href="${pageContext.request.contextPath }/report/reportrequest.do?&nick_name=${review.mem_nickname }&type=rev"
+									href="http://15.164.225.143:8080/teuching/report/reportrequest.do?&nick_name=${review.mem_nickname }&type=rev"
 									class="reply">🚨</a>
 							
 						</div>
@@ -285,31 +285,31 @@
 							<ul>
 								<c:if test="${reviewList.paging.blockStart gt 1 }">
 									<li><span><a
-											href="<%=request.getContextPath()%>/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockStart-1}">&lt;</a></span></li>
+											href="http://15.164.225.143:8080/teuching/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockStart-1}">&lt;</a></span></li>
 								</c:if>
 
 								<c:if test="${reviewList.paging.blockStart le 1 }">
 									<li><span><a
-											href="<%=request.getContextPath()%>/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockStart}">&lt;</a></span></li>
+											href="http://15.164.225.143:8080/teuching/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockStart}">&lt;</a></span></li>
 								</c:if>
 
 
 								<c:forEach begin="${reviewList.paging.blockStart}"
 									end="${reviewList.paging.blockEnd}" var="page">
 									<li class="active"><span><a
-											href="<%= request.getContextPath() %>/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${page}"
+											href="http://15.164.225.143:8080/teuching/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${page}"
 											class="num active">${page}</a></span></li>
 								</c:forEach>
 
 								<c:if
 									test="${reviewList.paging.blockEnd+1 ge reviewList.paging.lastPage}">
 									<li><span><a
-											href="<%= request.getContextPath() %>/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockEnd}">&gt;</a></span></li>
+											href="http://15.164.225.143:8080/teuching/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockEnd}">&gt;</a></span></li>
 								</c:if>
 								<c:if
 									test="${reviewList.paging.blockEnd+1 lt reviewList.paging.lastPage }">
 									<li><span><a
-											href="<%= request.getContextPath() %>/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockEnd+1}">&gt;</a></span></li>
+											href="http://15.164.225.143:8080/teuching/profile/reviewforTR.do?trainerEmail=${Trainer.tr_email}&reviewPage=${reviewList.paging.blockEnd+1}">&gt;</a></span></li>
 								</c:if>
 
 							</ul>
@@ -369,12 +369,12 @@
 							<div class="meta">
 								<div>
 									<a
-										href="<%=request.getContextPath()%>/post/detail.do?postNo=${Post.postIdx}"><span
+										href="http://15.164.225.143:8080/teuching/post/detail.do?postNo=${Post.postIdx}"><span
 										class="icon-calendar"></span>&nbsp${Post.writeDate}</a>
 								</div>
 								<div>
 									<a
-										href="<%=request.getContextPath()%>/post/detail.do?postNo=${Post.postIdx}"><span
+										href="http://15.164.225.143:8080/teuching/post/detail.do?postNo=${Post.postIdx}"><span
 										class="icon-person"></span>${Post.trainerName}</a>
 								</div>
 							</div>
@@ -398,27 +398,29 @@
 	<!-- -----------------------------------끝-------------------------------------------- -->
 
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
- <script src="../resources/js/profile/reviewforTR.js"></script>
+ <script src="http://15.164.225.143:8080/teuching/resources/js/profile/reviewforTR.js"></script>
 	  
    
 
 	<%@ include file="../include/footer.jsp"%>
 
-	<script src="../resources/js/jquery.min.js"></script>
-	<script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="../resources/js/popper.min.js"></script>
-	<script src="../resources/js/bootstrap.min.js"></script>
-	<script src="../resources/js/jquery.easing.1.3.js"></script>
-	<script src="../resources/js/jquery.waypoints.min.js"></script>
-	<script src="../resources/js/jquery.stellar.min.js"></script>
-	<script src="../resources/js/owl.carousel.min.js"></script>
-	<script src="../resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="../resources/js/aos.js"></script>
-	<script src="../resources/js/jquery.animateNumber.min.js"></script>
-	<script src="../resources/js/bootstrap-datepicker.js"></script>
-	<script src="../resources/js/jquery.timepicker.min.js"></script>
-	<script src="../resources/js/scrollax.min.js"></script>
-	<script src="../resources/js/main.js"></script>
+	
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/popper.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/bootstrap.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.easing.1.3.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.waypoints.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.stellar.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/owl.carousel.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/aos.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.animateNumber.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/bootstrap-datepicker.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.timepicker.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/scrollax.min.js"></script>
+	<script src="http://15.164.225.143:8080/teuching/resources/js/main.js"></script>
+
 
 
 

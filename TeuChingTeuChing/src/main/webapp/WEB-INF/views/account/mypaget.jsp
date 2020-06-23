@@ -16,18 +16,18 @@
 	href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="../resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="../resources/css/animate.css">
-<link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="../resources/css/magnific-popup.css">
-<link rel="stylesheet" href="../resources/css/aos.css">
-<link rel="stylesheet" href="../resources/css/ionicons.min.css">
-<link rel="stylesheet" href="../resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="../resources/css/jquery.timepicker.css">
-<link rel="stylesheet" href="../resources/css/flaticon.css">
-<link rel="stylesheet" href="../resources/css/icomoon.css">
-<link rel="stylesheet" href="../resources/css/style.css">
+	href="http://15.164.225.143:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/animate.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/magnific-popup.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/aos.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/ionicons.min.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/jquery.timepicker.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/flaticon.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/icomoon.css">
+<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/style.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -120,7 +120,7 @@
 					<div class="tab-pane active" id="home">
 						<hr>
 						<form class="form" method="post" id="trainerMypage"
-							action="<%=request.getContextPath()%>/member/mypageUpdate_T.do">
+							action="http://15.164.225.143:8080/teuching/member/mypageupdatet.do">
 							<div class="form-group">
 
 								<div class="col-xs-6">
@@ -280,7 +280,7 @@
 										onClick="window.location.reload()" style="cursor: pointer;">
 										<i class="glyphicon glyphicon-repeat"></i> Reset
 									</button>
-									<a type="button" href="<%=request.getContextPath()%>/member/goodbye.do" class="btn btn-primary"> 회원 탈퇴 </a>
+									<a type="button" href="http://15.164.225.143:8080/teuching/member/goodbye.do" class="btn btn-primary"> 회원 탈퇴 </a>
 								</div>
 							</div>
 						</form>
@@ -379,7 +379,7 @@
 					<div class="tab-pane" id="report">
 						<h4>
 							자격증명 <a
-								href="${pageContext.request.contextPath }/quali/qualirequest.do">작성</a>
+								href="http://15.164.225.143:8080/teuching/quali/qualirequest.do">작성</a>
 						</h4>
 
 						<div class="col-xs-12">
@@ -431,7 +431,7 @@
 													<td>✖</td>
 												</c:if>
 												<td><a
-													href="${pageContext.request.contextPath }/report/mypagereport.do?revid=${r.report_idx}">
+													href="http://15.164.225.143:8080/teuching/report/mypagereport.do?revid=${r.report_idx}">
 														${fn:substring(r.rep_cont,0,20) }...</a></td>
 												<td>${r.report_date }</td>
 											</tr>
@@ -461,7 +461,7 @@
       </div>
 				<div class="modal-body">
 						<form class="form"
-							action="<%=request.getContextPath()%>/member/pwUpdate.do"
+							action="http://15.164.225.143:8080/teuching/member/pwupdate.do"
 							method="post" id="pwUpdateform">
 							<div class="form-group">
 								<input type="hidden" name="email" value="${loginInfo.tr_email}" />
@@ -538,7 +538,7 @@ function imgLoad(img) {
       var imgDiv = document.createElement('img');
       imgDiv.className="avatar img-circle img-thumbnail";
       imgDiv.alt="avatar";
-      imgDiv.src = "/teuching/resources/upload/profileImg/" + img;
+      imgDiv.src = "http://15.164.225.143:8080/teuching/resources/upload/profileimg/" + img;
       div.append(imgDiv);
    }, 1000);
 }
@@ -550,7 +550,7 @@ function changeImage() {
       formdata.append('file', form[0].files[0]);
       
       $.ajax({
-         url: '/teuching/member/photoUpdate.do',
+         url: 'http://15.164.225.143:8080/teuching/member/photoupdate.do',
          type: 'post',
              data: formdata,
            processData : false,
@@ -804,7 +804,7 @@ function sample6_execDaumPostcode() {
                   pList = new Array();
 
                   $.ajax({
-                     url : "/teuching/member/t_postlist.do",
+                     url : "http://15.164.225.143:8080/teuching/member/tpostlist.do",
                      data : {
                         "input" : "${loginInfo.tr_email}",
                         "option" : "trainer"
@@ -852,7 +852,7 @@ function sample6_execDaumPostcode() {
 
                            var writerLink = document.createElement('a');
                            // 트레이너 프로필로 이동할 수 있는 링크
-                           writerLink.href = '/teuching/profile/review.do?trainerEmail='+ pList[i].trEmail;
+                           writerLink.href = 'http://15.164.225.143:8080/teuching/profile/review.do?trainerEmail='+ pList[i].trEmail;
                            writerLink.innerText = pList[i].trainerName;
                            writer.append(writerLink);
 
@@ -864,7 +864,7 @@ function sample6_execDaumPostcode() {
                            body.append(title);
 
                            var titleLink = document.createElement('a');
-                           titleLink.href = '/teuching/post/detail.do?postNo='+ pList[i].postIdx;
+                           titleLink.href = 'http://15.164.225.143:8080/teuching/post/detail.do?postNo='+ pList[i].postIdx;
                            titleLink.innerText = pList[i].postTitle;
                            title.append(titleLink);
                         }
@@ -883,7 +883,7 @@ function sample6_execDaumPostcode() {
    function match(match_idx){
       if(confirm("수락하시겠습니까?")){
          $.ajax({
-            url:"${pageContext.request.contextPath}/message/msgaccept.do?match_idx=" + match_idx,
+            url:"http://15.164.225.143:8080/teuching/message/msgaccept.do?match_idx=" + match_idx,
             type:"get",
             success: function(data){
                if(data == 'success'){
