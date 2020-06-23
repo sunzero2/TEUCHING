@@ -118,10 +118,14 @@
 		WHERE
 			SEQUENCE_NAME = 'S_TRA_REPORT_IDX'
 			 -->
-		SELECT
-			LAST_INSERT_ID() 
+		SELECT 
+			AUTO_INCREMENT
 		FROM 
-			DUAL
+			information_schema.tables 
+		WHERE 
+			table_name = 'TR_TRA_REPORT' 
+			AND 
+			table_schema = DATABASE();
 	</select>
 
 	<select id="selectRevReportIdx" resultType="int">
@@ -132,10 +136,14 @@
 		WHERE
 			SEQUENCE_NAME = 'S_REV_REPORT_IDX'
 			 -->
-		SELECT
-			LAST_INSERT_ID() 
+		SELECT 
+			AUTO_INCREMENT
 		FROM 
-			DUAL
+			information_schema.tables 
+		WHERE 
+			table_name = 'TR_REV_REPORT' 
+			AND 
+			table_schema = DATABASE();
 	</select>
 
 	<select id="selectTraFile" parameterType="int"
