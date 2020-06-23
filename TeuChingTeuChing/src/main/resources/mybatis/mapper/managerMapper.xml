@@ -88,7 +88,7 @@
 				, #{rep_cont}
 				, ' '
 				, ' '
-				, SYSDATE
+				, SYSDATE()
 				, 'N'
 				, #{nick_name}
 		)
@@ -104,7 +104,7 @@
 				, #{rep_cont}
 				, ' '
 				, ' '
-				, SYSDATE
+				, SYSDATE()
 				, 'N'
 				, #{trainer_name}
 		)
