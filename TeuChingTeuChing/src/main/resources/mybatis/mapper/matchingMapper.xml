@@ -60,8 +60,12 @@
 	</select>
 	
 	<insert id="insertPost" parameterType="Post">
-		insert into tr_post values(s_post_idx.nextval, #{trEmail}, #{trainerName}, #{postTitle}, #{postCont}, #{purpose}, #{sports}, #{area}, #{classSize}, #{gender}, #{place}, #{price}, sysdate)
+		insert into tr_post values(0, #{trEmail}, #{trainerName}, #{postTitle}, #{postCont}, #{purpose}, #{sports}, #{area}, #{classSize}, #{gender}, #{place}, #{price}, sysdate())
 	</insert>
+	
+	<select id="selectAuto" parameterType="int">
+		SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'TR_POST' AND table_schema = DATABASE();
+	</select>
 	
 	<update id="updatePost" parameterType="Post">
 		update tr_post set post_title = #{postTitle}, post_cont = #{postCont}, purpose = #{purpose}, class_size = #{classSize}, place = #{place}, price = #{price} where post_idx = #{postIdx}

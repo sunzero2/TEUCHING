@@ -15,7 +15,7 @@
 	<select id="selectNotice" resultMap="noticeMap">
 		select * from (
 			select rownum rnum, n1.* from (select * from tr_notice order by notice_idx desc) n1
-		) where rnum between #{start} and #{end}
+		) where rnum limit #{start}, #{end}
 	</select>
 	
 	<select id="noticeDetail" resultMap="noticeMap">
@@ -31,6 +31,6 @@
 	</update>
 	
 	<insert id="insertNotice">
-		insert into tr_notice values(S_NOTICE_IDX.nextval, #{noticeTitle}, #{noticeCont}, sysdate)
+		insert into tr_notice values(0, #{noticeTitle}, #{noticeCont}, sysdate())
 	</insert>
 </mapper>
