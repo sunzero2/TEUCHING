@@ -46,7 +46,7 @@
 	
 	<!-- 리뷰삭제 -->
 	<select id="deleteReview">
-		update TR_REVIEW set tr_leave_yn = 'y' where review_idx = #{no}
+		update TR_REVIEW set tr_leave_yn = 'y' where review_idx = ${no}
 	</select>
 
 	<!-- 삭제하지않은 리뷰의 수를 가져오기 -->
@@ -57,14 +57,12 @@
 	
 	<!-- 리뷰리스트 가져오기 -->
 	<select id="selectReviewList" resultType="Review">
-	select * from TR_REVIEW where tr_leave_yn = 'n' 
-		and tr_email = #{trainerEmail} order by ${orderby} desc
-		limit ${start}, ${cntPerPage}
+	select * from TR_REVIEW where tr_leave_yn = 'n' and tr_email = #{trainerEmail} order by ${orderby} desc limit #{start}, #{cntPerPage}
 	</select>
 	
 	<!-- 좋아요 tr_review 테이블에 업데이트 -->
 	<update id="recUpdate">
-		update TR_REVIEW set recommend = recommend + 1 where review_idx = #{no}
+		update TR_REVIEW set recommend = recommend + 1 where review_idx = ${no}
 	</update>
 	
 	
@@ -103,7 +101,7 @@
 	
 	<!-- 추천을 한 적이 있는지 없는지  -->
 	<select id="reviewrecyn"  resultType="int">
-		select count(*) from REVIEW_REC where mem_nickname = #{nickname} and review_idx = #{no}
+		select count(*) from REVIEW_REC where mem_nickname = #{nickname} and review_idx = ${no}
 	</select>
 	
 
