@@ -235,12 +235,12 @@ public class MemberController {
 	* @Method 설명 : 일반회원 회원가입 이메일 발송 
 	*/
 	@RequestMapping("/member/mjoinemailcheck.do")
-	public ModelAndView m_joinEmailCheck(@RequestParam Map<String, Object> commandMap, HttpServletRequest request)
+	public ModelAndView m_joinEmailCheck(@RequestParam Map<String, Object> commandMap)
 			throws SQLException {
 
 		ModelAndView mav = new ModelAndView();
 		String mailfor ="m_join";
-		String path = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+		String path = "http://15.164.225.143:8080/teuching";
 
 		commandMap.put("urlPath", path);
 		ms.mailSending(commandMap,mailfor);
@@ -309,7 +309,7 @@ public class MemberController {
 		commandMap.put("keyword", keyword);
 		
 		String mailfor ="t_join";
-		String path = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+		String path = "http://15.164.225.143:8080/teuching";
 
 		commandMap.put("urlPath", path);
 		ms.mailSending(commandMap,mailfor);
