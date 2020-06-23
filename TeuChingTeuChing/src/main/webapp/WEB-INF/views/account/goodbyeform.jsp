@@ -48,7 +48,7 @@ input::placeholder {
 						<div class="card-header">그동안 TeuChing을 이용해 주셔서 감사합니다.</div>
 						<div class="card-body"> 
 							<form name="goodbyeFrm" id="goodbyeFrm"
-							action="http://15.164.225.143:8080/teuching/member/goodbyeUpdate.do" method="post">
+							action="http://15.164.225.143:8080/teuching/member/goodbyeupdate.do" method="post">
 								<div class="form-group row">
 									<label for="password"
 										class="col-md-4 col-form-label text-md-right">비밀번호</label>

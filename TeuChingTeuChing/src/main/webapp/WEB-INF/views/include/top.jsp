@@ -140,7 +140,7 @@
 					<a style="color:black" href="http://15.164.225.143:8080/teuching/message/msgboxrecv.do">✉</a>
 					<a onclick="location= 'detail.cs?id=${loginInfo.nickname}">${loginInfo.nickname}	님  환영합니다. &nbsp;</a>
 					<span style="color: #ffb5b5;">|</span>
-					<a href ="<%=request.getContextPath()%>/member/mypage_M.do">&nbsp;  MyPage&nbsp;</a>
+					<a href ="<%=request.getContextPath()%>/member/mypagem.do">&nbsp;  MyPage&nbsp;</a>
 					</c:if>
 				<c:if test="${memberType eq 'trainer'}">
 					<a style="color:black" href="http://15.164.225.143:8080/teuching/profile/reviewforTR.do?trainerEmail=${loginInfo.tr_email}">🇲🇵</a>
