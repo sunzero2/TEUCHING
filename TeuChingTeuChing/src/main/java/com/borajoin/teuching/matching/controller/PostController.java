@@ -80,7 +80,7 @@ public class PostController {
 		for(MultipartFile mf : images) {
 			if(!mf.getOriginalFilename().equals("")) {
 				File_Upload upload = new File_Upload();
-				String savePath = "https://teuching-upload.s3.ap-northeast-2.amazonaws.com/upload";
+				String savePath = "http://52.78.116.59:8080/teuching/resources/upload";
 				String originFileName = mf.getOriginalFilename();
 					
 				UUID uuid = UUID.randomUUID();
