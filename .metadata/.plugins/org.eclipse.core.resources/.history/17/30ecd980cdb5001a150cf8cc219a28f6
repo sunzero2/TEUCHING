@@ -67,6 +67,8 @@
 								<button onclick="openPopUp()" class="btn btn-primary">Send Message</button>
 								<c:if test="${memberType == 'trainer'}">
 									<c:if test="${loginInfo.tr_email == data.post.trEmail}">
+										<script>
+										</script>
 										<a href="http://52.78.116.59:8080/teuching/post/writepost.do?postIdx=${data.post.postIdx}"><button class="btn btn-primary">Edit Post</button></a>
 										<a href="http://52.78.116.59:8080/teuching/post/deletepost.do?postIdx=${data.post.postIdx}"><button id="postDelBtn" class="btn btn-primary">Delete Post</button></a>
 									</c:if>
