@@ -64,24 +64,24 @@ td a{
 	rel="stylesheet">
 
 <link rel="stylesheet"
-	href="http://15.164.225.143:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/animate.css">
+	href="http://52.78.116.59:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/animate.css">
 
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/magnific-popup.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/magnific-popup.css">
 
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/aos.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/aos.css">
 
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/ionicons.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/ionicons.min.css">
 
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/jquery.timepicker.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/flaticon.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/icomoon.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/style.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/flaticon.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/icomoon.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/style.css">
 </head>
 <body>
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -153,7 +153,7 @@ td a{
 			</div>
 		</div>
 	</section>
-	<form id="form" action="http://15.164.225.143:8080/teuching/message/matchform.do" target="pop">
+	<form id="form" action="http://52.78.116.59:8080/teuching/message/matchform.do" target="pop">
 		<input type="hidden" id="year" value="" name="year">
 		<input type="hidden" id="month" value="" name="month">
 		<input type="hidden" id="date" value="" name="date">
@@ -162,26 +162,26 @@ td a{
 	
 	
 		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
- <script src="http://15.164.225.143:8080/teuching/resources/js/profile/schedule.js"></script>
+ <script src="http://52.78.116.59:8080/teuching/resources/js/profile/schedule.js"></script>
 	  
 	
 	<%@ include file="../include/footer.jsp"%>
 	
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/popper.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/bootstrap.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.easing.1.3.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.waypoints.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.stellar.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/owl.carousel.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/aos.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.animateNumber.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/bootstrap-datepicker.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.timepicker.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/scrollax.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/main.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/popper.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/bootstrap.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery.easing.1.3.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery.waypoints.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery.stellar.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/owl.carousel.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/aos.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery.animateNumber.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/bootstrap-datepicker.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery.timepicker.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/scrollax.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/main.js"></script>
 
 
 </body>

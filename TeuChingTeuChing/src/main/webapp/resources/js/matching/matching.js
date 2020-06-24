@@ -72,7 +72,7 @@ document.getElementById("inputBtn").addEventListener('click', function(el) {
 	var option = document.getElementById("searchOption");
 	
 	$.ajax({
-		url : "http://15.164.225.143:8080/teuching/matching/searchword.do",
+		url : "http://52.78.116.59:8080/teuching/matching/searchword.do",
 		data : {
 			"input" : input.value,
 			"option" : option.value
@@ -126,7 +126,7 @@ document.getElementById("keywordSearchBtn").addEventListener('click', function(e
 
 function keywordSearch() {
 	$.ajax({
-		url: "http://15.164.225.143:8080/teuching/matching/keyword.do",
+		url: "http://52.78.116.59:8080/teuching/matching/keyword.do",
 		data: {
 			purpose : purpose,
 			sports : sports,
@@ -147,7 +147,7 @@ function keywordSearch() {
 
 if(document.getElementById('memberType').value == 'trainer') {
 	document.getElementById('writeBtn').addEventListener('click', function() {
-		location.href="http://15.164.225.143:8080/teuching/post/writepost.do?postIdx=0";
+		location.href="http://52.78.116.59:8080/teuching/post/writepost.do?postIdx=0";
 	})
 }
 
@@ -168,7 +168,7 @@ function createTable() {
 			// 이미지 담을 div 생성
 			var image = document.createElement('div');
 			image.className = 'img rounded-circle mb-2';
-			image.style.backgroundImage = 'url(http://15.164.225.143:8080/teuching/resources/upload/profileImg/' + pList[i].trPhoto + ')';
+			image.style.backgroundImage = 'url(https://teuching-upload.s3.ap-northeast-2.amazonaws.com/profile/' + pList[i].trPhoto + ')';
 			image.style.width = '116px';
 			image.style.height = '141px';
 			image.style.marginTop = '54px';
@@ -197,7 +197,7 @@ function createTable() {
 			
 			var writerLink = document.createElement('a');
 			// 트레이너 프로필로 이동할 수 있는 링크
-			writerLink.href = 'http://15.164.225.143:8080/teuching/profile/review.do?trainerEmail=' + pList[i].trEmail;
+			writerLink.href = 'http://52.78.116.59:8080/teuching/profile/review.do?trainerEmail=' + pList[i].trEmail;
 			writerLink.innerText = pList[i].trainerName;
 			writer.append(writerLink);
 			
@@ -209,7 +209,7 @@ function createTable() {
 			body.append(title);
 			
 			var titleLink = document.createElement('a');
-			titleLink.href = 'http://15.164.225.143:8080/teuching/post/detail.do?postNo=' + pList[i].postIdx;
+			titleLink.href = 'http://52.78.116.59:8080/teuching/post/detail.do?postNo=' + pList[i].postIdx;
 			titleLink.innerText = pList[i].postTitle;
 			title.append(titleLink);
 			

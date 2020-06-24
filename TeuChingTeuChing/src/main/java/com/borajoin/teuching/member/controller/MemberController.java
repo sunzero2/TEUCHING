@@ -101,11 +101,11 @@ public class MemberController {
 					if (res.getManager_yn().equals("Y")) {
 						session.setAttribute("loginInfo", res);
 						session.setAttribute("memberType", "manager");
-						mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
+						mav.setViewName("redirect:http://52.78.116.59:8080/teuching");
 					} else {
 						session.setAttribute("loginInfo", res);
 						session.setAttribute("memberType", "member");
-						mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
+						mav.setViewName("redirect:http://52.78.116.59:8080/teuching");
 					}
 
 				}
@@ -126,7 +126,7 @@ public class MemberController {
 				} else {
 					session.setAttribute("loginInfo", res);
 					session.setAttribute("memberType", "trainer");
-					mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
+					mav.setViewName("redirect:http://52.78.116.59:8080/teuching");
 				}
 			}
 		}
@@ -148,7 +148,7 @@ public class MemberController {
 			session.removeAttribute("loginInfo");
 		}
 
-		mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
+		mav.setViewName("redirect:http://52.78.116.59:8080/teuching");
 		
 		return mav;
 	}
@@ -202,7 +202,7 @@ public class MemberController {
 			mav.addObject("url", "account/loginform");
 			mav.setViewName("account/redirect");
 		} else {
-			mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
+			mav.setViewName("redirect:http://52.78.116.59:8080/teuching");
 		}
 		return mav;
 	}
@@ -223,7 +223,7 @@ public class MemberController {
 			mav.addObject("url", "account/loginform");
 			mav.setViewName("account/redirect");
 		} else {
-			mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
+			mav.setViewName("redirect:http://52.78.116.59:8080/teuching");
 		}
 		return mav;
 	}
@@ -240,12 +240,12 @@ public class MemberController {
 
 		ModelAndView mav = new ModelAndView();
 		String mailfor ="m_join";
-		String path = "http://15.164.225.143:8080/teuching";
+		String path = "http://52.78.116.59:8080/teuching";
 
 		commandMap.put("urlPath", path);
 		ms.mailSending(commandMap,mailfor);
 
-		mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
+		mav.setViewName("redirect:http://52.78.116.59:8080/teuching");
 
 		return mav;
 	}
@@ -264,8 +264,7 @@ public class MemberController {
 		// 파일 태그
 		String fileTag = "file";
 	    // 업로드 파일이 저장될 경로
-		String root = request.getSession().getServletContext().getRealPath("/");
-		String filePath = root + "resources\\upload\\profileImg\\";
+		String filePath = "https://teuching-upload.s3.ap-northeast-2.amazonaws.com/profile";;
 		// 파일 이름	
 		MultipartFile file = mtf.getFile(fileTag);
 		String filetype = StringUtils.getFilenameExtension(file.getOriginalFilename());
@@ -309,12 +308,12 @@ public class MemberController {
 		commandMap.put("keyword", keyword);
 		
 		String mailfor ="t_join";
-		String path = "http://15.164.225.143:8080/teuching";
+		String path = "http://52.78.116.59:8080/teuching";
 
 		commandMap.put("urlPath", path);
 		ms.mailSending(commandMap,mailfor);
 
-		mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
+		mav.setViewName("redirect:http://52.78.116.59:8080/teuching");
 
 		return mav;
 	}
@@ -368,8 +367,7 @@ public class MemberController {
 			throws SQLException {
 
 		ModelAndView mav = new ModelAndView();
-		String path = request.getServerName() + ":" + request.getServerPort() +
-		request.getContextPath();
+		String path = "http://52.78.116.59:8080/teuching";
 
 		String mailfor = "";
 		String pw = "";		//랜덤 임시 비밀번호 생성
@@ -398,7 +396,7 @@ public class MemberController {
 		}
 		  
 		 
-		mav.setViewName("redirect:http://15.164.225.143:8080/teuching");
+		mav.setViewName("redirect:http://52.78.116.59:8080/teuching");
 
 		return mav;
 	}

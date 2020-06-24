@@ -12,7 +12,7 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/loginform.css">
+    <link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/loginform.css">
 
     <link rel="icon" href="Favicon.png">
 
@@ -110,7 +110,7 @@
 						<div class="card-header">Login</div>
 						<div class="card-body">
 							<form name="signFrm" id="signFrm"
-							action="http://15.164.225.143:8080/teuching/member/loginImple.do" method="post">
+							action="http://52.78.116.59:8080/teuching/member/loginImple.do" method="post">
 								<!-- 일반회원, 트레이너 체크버튼 -->
 								<div class="form-group row">
 									<div class="col-md-6 offset-md-4">
@@ -158,7 +158,7 @@
 
 								<div class="col-md-6 offset-md-4">
 									<button type="button" id="signUp" class="btn btn-primary">로그인</button>
-									<a href="http://15.164.225.143:8080/teuching/member/findpwform.do" class="btn btn-link"> 비밀번호 찾기 </a>
+									<a href="http://52.78.116.59:8080/teuching/member/findpwform.do" class="btn btn-link"> 비밀번호 찾기 </a>
 								</div>
 							</form>
 						</div>

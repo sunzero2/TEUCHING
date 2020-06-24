@@ -22,7 +22,7 @@
 				<div class="ftco-footer-widget mb-4 ml-md-4">
 					<h2 class="ftco-heading-2">Popular Links</h2>
 					<ul class="list-unstyled">
-						<li><a href="http://15.164.225.143:8080/teuching/matching/main.do">Matching</a></li>
+						<li><a href="http://52.78.116.59:8080/teuching/matching/main.do">Matching</a></li>
 					</ul>
 				</div>
 			</div>
@@ -30,9 +30,9 @@
 				<div class="ftco-footer-widget mb-4">
 					<h2 class="ftco-heading-2">Quick Links</h2>
 					<ul class="list-unstyled">
-						<li><a href="http://15.164.225.143:8080/teuching/index/index.do">Home</a></li>
-						<li><a href="http://15.164.225.143:8080/teuching/index/aboutus.do">About</a></li>
-						<li><a href="http://15.164.225.143:8080/teuching/notice/notice.do?start=1&end=5">Notice</a></li>
+						<li><a href="http://52.78.116.59:8080/teuching/index/index.do">Home</a></li>
+						<li><a href="http://52.78.116.59:8080/teuching/index/aboutus.do">About</a></li>
+						<li><a href="http://52.78.116.59:8080/teuching/notice/notice.do?start=1&end=5">Notice</a></li>
 					</ul>
 				</div>
 			</div>

@@ -13,22 +13,22 @@
 	href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="http://15.164.225.143:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
+	href="http://52.78.116.59:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet"
-	href="http://15.164.225.143:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/animate.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/magnific-popup.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/aos.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/ionicons.min.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/jquery.timepicker.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/flaticon.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/icomoon.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/style.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/matching/matching.css"/>
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/post/post.css"/>
+	href="http://52.78.116.59:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/animate.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/magnific-popup.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/aos.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/ionicons.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/jquery.timepicker.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/flaticon.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/icomoon.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/style.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/matching/matching.css"/>
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/post/post.css"/>
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>
@@ -53,8 +53,8 @@
 						<div class="authorWrapper">
 							<hr>
 							<c:if test="${memberType == 'manager'}">
-								<a href="http://15.164.225.143:8080/teuching/notice/write.do?noticeIdx=${notice.noticeIdx}"><button class="btn btn-primary">Edit</button></a>
-								<a id="deleteNoticeBtn" href="http://15.164.225.143:8080/teuching/notice/delete.do?noticeIdx=${notice.noticeIdx}"><button class="btn btn-primary">Delete</button></a>
+								<a href="http://52.78.116.59:8080/teuching/notice/write.do?noticeIdx=${notice.noticeIdx}"><button class="btn btn-primary">Edit</button></a>
+								<a id="deleteNoticeBtn" href="http://52.78.116.59:8080/teuching/notice/delete.do?noticeIdx=${notice.noticeIdx}"><button class="btn btn-primary">Delete</button></a>
 							</c:if>
 						</div>
 					</div>

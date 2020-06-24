@@ -9,7 +9,7 @@ var idx_email = false;
 			}
 
 			$.ajax({
-				url : "http://15.164.225.143:8080/teuching/member/emailchk.do",
+				url : "http://52.78.116.59:8080/teuching/member/emailchk.do",
 				type : "POST",
 				data : {
 					"email" : $('#email').val()

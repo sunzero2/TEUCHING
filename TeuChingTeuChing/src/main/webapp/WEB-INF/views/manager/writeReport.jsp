@@ -18,28 +18,28 @@
 	rel="stylesheet">
 
 <link rel="stylesheet"
-	href="http://15.164.225.143:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/animate.css">
+	href="http://52.78.116.59:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/animate.css">
 
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/magnific-popup.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/magnific-popup.css">
 
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/aos.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/aos.css">
 
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/ionicons.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/ionicons.min.css">
 
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/jquery.timepicker.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/flaticon.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/icomoon.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/style.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/flaticon.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/icomoon.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/style.css">
 <link
 	href="https://rawgithub.com/hayageek/jquery-upload-file/master/css/uploadfile.css"
 	rel="stylesheet">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/manager/writeReport.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/manager/writeReport.css">
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>
@@ -47,11 +47,11 @@
 	<div class="wrapper">
 		<div class="ansbox-top">
 			<div
-				style="background-image:url(http://15.164.225.143:8080/teuching/resources/upload/profileImg/${res.tr_email}.PNG)"
+				style="background-image:url(http://52.78.116.59:8080/teuching/resources/upload/profileImg/${res.tr_email}.PNG)"
 				class="img rounded-circle ftco-animate mb-2 fadeInUp ftco-animated"
 				id="person"></div>
 			<form
-				action="http://15.164.225.143:8080/teuching/report/insertreport.do"
+				action="http://52.78.116.59:8080/teuching/report/insertreport.do"
 				method="post" enctype="multipart/form-data">
 				<h5>
 					트레이너
@@ -97,23 +97,23 @@
 			}
 		});
 	</script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/popper.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/bootstrap.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.easing.1.3.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.waypoints.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.stellar.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/owl.carousel.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/aos.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.animateNumber.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/bootstrap-datepicker.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/jquery.timepicker.min.js"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/scrollax.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/popper.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/bootstrap.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery.easing.1.3.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery.waypoints.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery.stellar.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/owl.carousel.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/aos.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery.animateNumber.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/bootstrap-datepicker.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/jquery.timepicker.min.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/scrollax.min.js"></script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/main.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/main.js"></script>
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 	<script

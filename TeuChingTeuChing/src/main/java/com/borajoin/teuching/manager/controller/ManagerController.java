@@ -108,11 +108,11 @@ public class ManagerController {
 		ModelAndView mv = new ModelAndView();
 		if (commandMap.get("type").equals("tra")) {
 			ms.updateManagerDetail_tra(commandMap);
-			mv.setViewName("redirect:/manager/reportdetail.do?traid=" + commandMap.get("report_idx"));
+			mv.setViewName("redirect:http://52.78.116.59:8080/teuching/manager/reportdetail.do?traid=" + commandMap.get("report_idx"));
 		}
 		if (commandMap.get("type").equals("rev")) {
 			ms.updateManagerDetail_rev(commandMap);
-			mv.setViewName("redirect:/manager/reportdetail.do?revid=" + commandMap.get("report_idx"));
+			mv.setViewName("redirect:http://52.78.116.59:8080/teuching/manager/reportdetail.do?revid=" + commandMap.get("report_idx"));
 		}
 		return mv;
 	}
@@ -158,7 +158,6 @@ public class ManagerController {
 
 		ModelAndView mv = new ModelAndView();
 		List<File_Upload> fileData = new ArrayList<File_Upload>();
-		String root = request.getSession().getServletContext().getRealPath("");
 		int[] res = ms.insertReport(commandMap);
 
 		String mappingPage = "";
@@ -171,7 +170,7 @@ public class ManagerController {
 		for (MultipartFile mf : files) {
 			UUID uuid = UUID.randomUUID();
 			if (mf.getSize() > 0) {
-				String savepath = root + "/resources/upload/";
+				String savepath = "https://teuching-upload.s3.ap-northeast-2.amazonaws.com/upload";
 				String type = "";
 				String origin_filename = mf.getOriginalFilename();
 				File_Upload file = new File_Upload();
@@ -279,7 +278,7 @@ public class ManagerController {
 		if (qualiFile.getSize() > 0) {
 		String origin_filename = qualiFile.getOriginalFilename();
 		String rename_filename = uuid + "tr_quali" + origin_filename.substring(origin_filename.lastIndexOf("."));
-		String savepath = request.getServletContext().getRealPath("") + "/resources/upload/" + rename_filename;
+		String savepath = "https://teuching-upload.s3.ap-northeast-2.amazonaws.com/upload" + rename_filename;
 			File_Upload file_Upload = new File_Upload();
 			file_Upload.setOrigin_filename(origin_filename);
 			file_Upload.setRename_filename(rename_filename);

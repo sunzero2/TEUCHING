@@ -42,7 +42,7 @@
 
 <body>
 	<form style="transform: translateX(10%); width: 90%;" onsubmit="return check();"
-		action="http://15.164.225.143:8080/teuching/message/matchformsend.do">
+		action="http://52.78.116.59:8080/teuching/message/matchformsend.do">
 		<div class="container">
 			<h2>보낸쪽지</h2>
 			<h5> | ${res.write_date } | ${res.mem_email }</h5>

@@ -55,7 +55,7 @@ $('#signUp').click(function(){
 
 $('#check_nick').click(function(){
 	$.ajax({
-		url: "http://15.164.225.143:8080/teuching/member/nickchk.do",
+		url: "http://52.78.116.59:8080/teuching/member/nickchk.do",
 		type: "POST",
 		data:{
 			"nickname":$('#nickname').val()
@@ -79,7 +79,7 @@ $('#check_nick').click(function(){
 });	
 	$('#check_email').click(function(){
 		$.ajax({
-			url: "http://15.164.225.143:8080/teuching/member/emailchk.do",
+			url: "http://52.78.116.59:8080/teuching/member/emailchk.do",
 			type: "POST",
 			data:{"email":$('#email').val()},
 			success: function(data){

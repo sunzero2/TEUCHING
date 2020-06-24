@@ -71,7 +71,7 @@ h1 {
 </style>
 </head>
 <body>
-	<form action="http://15.164.225.143:8080/teuching/message/msgansmem.do"
+	<form action="http://52.78.116.59:8080/teuching/message/msgansmem.do"
 		onsubmit="return check();">
 		<div class="wrapper">
 			<h2>받은 쪽지</h2>

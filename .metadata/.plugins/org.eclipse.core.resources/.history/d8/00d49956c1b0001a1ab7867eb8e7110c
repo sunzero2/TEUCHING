@@ -1,0 +1,17 @@
+var index = 0;
+
+document.querySelectorAll('.slide_btn').forEach(function(el) {
+	el.addEventListener('click', function() {
+		index = el.id.substring(el.id.length - 1);
+		console.log(index);
+		move_slide(index--);
+	})
+})
+
+function move_slide(idx) {
+	console.log(idx);
+	document.querySelectorAll('.slide_common').forEach(function(el) {
+		el.style.transform = 'translateY(-' + (idx * 100) + 'vh)';
+		el.style.transitionDuration = '1s';
+	})
+}

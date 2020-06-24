@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;notice.js&apos; to &apos;notice&apos;" description="Move &apos;notice.js&apos; to &apos;notice&apos;" destination="src/main/webapp/resources/js/notice" element1="src/main/webapp/resources/js/notice.js" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1591723009456" updateReferences="true"/>
+</session>

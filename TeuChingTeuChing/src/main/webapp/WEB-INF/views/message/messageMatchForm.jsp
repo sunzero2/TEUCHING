@@ -35,12 +35,12 @@
 		});
 	</script>
 	<link rel="stylesheet"
-		href="http://15.164.225.143:8080/teuching/resources/css/message/messageMatchForm.css">
+		href="http://52.78.116.59:8080/teuching/resources/css/message/messageMatchForm.css">
 </head>
 
 <body>
 	<form
-		action="http://15.164.225.143:8080/teuching/message/matchformsend.do" onsubmit="return check()">
+		action="http://52.78.116.59:8080/teuching/message/matchformsend.do" onsubmit="return check()">
 		<div class="container">
 			<h1>상담신청</h1>
 			Date

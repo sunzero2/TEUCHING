@@ -86,7 +86,7 @@ h1 {
 </head>
 <body>
 
-	<form action="http://15.164.225.143:8080/teuching/message/msganstra.do"
+	<form action="http://52.78.116.59:8080/teuching/message/msganstra.do"
 		onsubmit="return check();">
 		<div class="wrapper">
 			<h2>받은 쪽지</h2>
@@ -153,7 +153,7 @@ h1 {
 				function match(match_idx){
 					if(confirm("수락하시겠습니까?")){
 						$.ajax({
-							url:"http://15.164.225.143:8080/teuching/message/msgaccept.do?match_idx=" + match_idx,
+							url:"http://52.78.116.59:8080/teuching/message/msgaccept.do?match_idx=" + match_idx,
 							type:"get",
 							success: function(data){
 								if(data == 'success'){

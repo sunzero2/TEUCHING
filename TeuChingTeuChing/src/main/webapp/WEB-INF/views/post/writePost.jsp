@@ -13,30 +13,30 @@
 	href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="http://15.164.225.143:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
+	href="http://52.78.116.59:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet"
-	href="http://15.164.225.143:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/animate.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/magnific-popup.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/aos.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/ionicons.min.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/jquery.timepicker.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/flaticon.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/icomoon.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/style.css">
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/matching/matching.css"/>
-<link rel="stylesheet" href="http://15.164.225.143:8080/teuching/resources/css/post/post.css"/>
+	href="http://52.78.116.59:8080/teuching/resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/animate.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/magnific-popup.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/aos.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/ionicons.min.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/jquery.timepicker.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/flaticon.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/icomoon.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/style.css">
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/matching/matching.css"/>
+<link rel="stylesheet" href="http://52.78.116.59:8080/teuching/resources/css/post/post.css"/>
 </head>
 <body>
 	<%@ include file="../include/top.jsp"%>
 	<section style="margin-bottom: 40px;">
-		<form action="http://15.164.225.143:8080/teuching/post/write.do" method="post" onsubmit="return submit_result();" class="postForm" enctype="multipart/form-data">
+		<form action="http://52.78.116.59:8080/teuching/post/write.do" method="post" onsubmit="return submit_result();" class="postForm" enctype="multipart/form-data">
 			<div class="addImageWrapper">
 				<div class="addImageDiv">
-					<img src="http://15.164.225.143:8080/teuching/resources/img/addImage2.png" class="addImageIcon">
+					<img src="http://52.78.116.59:8080/teuching/resources/img/addImage2.png" class="addImageIcon">
 					<p class="addImageText">사진첨부</p>
 					<input type="file" id="addImageHidden" name="images" onmouseover="changeImg();" onmouseout="resetImg();" onchange="preview(this);" multiple>
 				</div>
@@ -121,7 +121,7 @@
 				<div class="pre_div">
 					<c:if test="${data.fList != null}">
 						<c:forEach items="${data.fList}" var="image">
-							<img class="pre_img" src="http://15.164.225.143:8080/teuching/resources/upload/${image.rename_filename}">
+							<img class="pre_img" src="http://52.78.116.59:8080/teuching/resources/upload/${image.rename_filename}">
 						</c:forEach>
 					</c:if>
 				</div>
@@ -132,7 +132,7 @@
 			</div>
 		</form>
 	</section>
-	<script src="http://15.164.225.143:8080/teuching/resources/js/post/post.js"></script>
+	<script src="http://52.78.116.59:8080/teuching/resources/js/post/post.js"></script>
 	<script>
 		var arr = ['purpose', 'classSize', 'place'];
 		var keyword;

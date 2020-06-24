@@ -1,0 +1,11 @@
+document.querySelectorAll('.slide_btn').forEach(function(el) {
+	el.addEventListener('click', function() {
+		if(el.includes('1')) {
+			
+		}
+	})
+})
+
+function move_slide() {
+	
+}

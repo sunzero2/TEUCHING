@@ -73,7 +73,6 @@ public class PostController {
 	@RequestMapping("/post/write.do")
 	public ModelAndView write(@RequestParam List<MultipartFile> images, Post post, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		String root = "http://172.30.1.50:8787/teuching/";
 		List<File_Upload> fileData = new ArrayList<>();
 		
 		int i = 0;
@@ -81,7 +80,7 @@ public class PostController {
 		for(MultipartFile mf : images) {
 			if(!mf.getOriginalFilename().equals("")) {
 				File_Upload upload = new File_Upload();
-				String savePath = root + "resources\\upload\\";
+				String savePath = "https://teuching-upload.s3.ap-northeast-2.amazonaws.com/upload";
 				String originFileName = mf.getOriginalFilename();
 					
 				UUID uuid = UUID.randomUUID();
@@ -111,7 +110,7 @@ public class PostController {
 			int res = postService.insertPost(post, fileData);
 		}
 		
-		mav.setViewName("redirect:/matching/main.do");
+		mav.setViewName("redirect:http://52.78.116.59:8080/teuching/matching/main.do");
 		return mav;
 	}
 	
@@ -128,7 +127,7 @@ public class PostController {
 			file.setTable_idx(post.getPostIdx());
 		}
 		int res = postService.updatePost(post, fileData);
-		mav.setViewName("redirect:/matching/main.do");
+		mav.setViewName("redirect:http://52.78.116.59:8080/teuching/matching/main.do");
 		return mav;
 	}
 	
