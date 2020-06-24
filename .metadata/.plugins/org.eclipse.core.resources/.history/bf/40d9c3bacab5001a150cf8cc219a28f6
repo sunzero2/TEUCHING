@@ -72,6 +72,6 @@
 	</update>
 	
 	<delete id="deletePost">
-		delete TR_POST where post_idx = ${postIdx}
+		delete TR_POST where post_idx= ${postIdx}
 	</delete>
 </mapper>
