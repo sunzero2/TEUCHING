@@ -91,7 +91,7 @@ td a{
 	<!-- 시작 시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작시작 -->
 
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('http://52.78.116.59:8080/teuching/resources/img/bg_3.jpg');"
+		style="background-image: url('../resources/img/bg_3.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
