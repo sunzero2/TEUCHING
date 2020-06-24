@@ -289,7 +289,8 @@ public class MypageController {
 		public int photoUpdate(@RequestParam MultipartFile file, HttpSession session) throws SQLException {
 			int res = 0;
 			// 업로드 파일이 저장될 경로
-			String filePath = "https://teuching-upload.s3.ap-northeast-2.amazonaws.com/profile";
+			String root = session.getServletContext().getRealPath("/");
+			String filePath = root + "resources/";
 			String fileName = ((Trainer)session.getAttribute("loginInfo")).getTr_email() + ".PNG";
 
 			// 파일 전송

@@ -234,7 +234,7 @@ public class MemberController {
 	* @작성자 : 이남규 
 	* @Method 설명 : 일반회원 회원가입 이메일 발송 
 	*/
-	@RequestMapping("/member/mjoinemailcheck.do")
+	@RequestMapping("/member/mjoinemailCheck.do")
 	public ModelAndView m_joinEmailCheck(@RequestParam Map<String, Object> commandMap)
 			throws SQLException {
 
@@ -259,12 +259,12 @@ public class MemberController {
 	@RequestMapping("/member/tjoinemailcheck.do")
 	public ModelAndView t_joinEmailCheck(@RequestParam Map<String, Object> commandMap, HttpServletRequest request, MultipartHttpServletRequest mtf)
 			throws SQLException {
-
+		String root = request.getSession().getServletContext().getRealPath("/");
 		ModelAndView mav = new ModelAndView();
 		// 파일 태그
 		String fileTag = "file";
 	    // 업로드 파일이 저장될 경로
-		String filePath = "https://teuching-upload.s3.ap-northeast-2.amazonaws.com/profile";;
+		String filePath = root + "resources/";
 		// 파일 이름	
 		MultipartFile file = mtf.getFile(fileTag);
 		String filetype = StringUtils.getFilenameExtension(file.getOriginalFilename());

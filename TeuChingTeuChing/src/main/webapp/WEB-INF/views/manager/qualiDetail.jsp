@@ -50,7 +50,7 @@
 			<h1 style="text-align: center; font-size: 2.5vw">
 				<a
 					href="http://52.78.116.59:8080/teuching
-					/manager/qualidetail/auth?quali_idx=${ res.quali_idx}"
+					/manager/qualidetail/auth.do?quali_idx=${ res.quali_idx}"
 					class="btn btn-outline-primary"
 					style="transform: translateX(200%);"
 					onclick="if(!confirm('승인하시겠습니까?')){return false;}">승인하기</a><br>

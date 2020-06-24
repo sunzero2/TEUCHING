@@ -83,7 +83,7 @@ public class Paging {
 	}
 
 	public void calStart() {
-		start = end - cntPerPage + 1;
+		start = end - cntPerPage;
 	}
 
 	public int getCurrentPage() {

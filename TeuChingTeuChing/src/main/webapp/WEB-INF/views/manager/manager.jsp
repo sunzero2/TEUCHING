@@ -70,7 +70,7 @@
 				<li class="active"><a href="http://52.78.116.59:8080/teuching/manager/report.do" data-target-id="profile">트레이너 신고</a></li>
 			</ul>
 			<ul class="nav nav-pills nav-stacked admin-menu"
-				style="float:left;transform: translate(4%,150%)">
+				style="float:left;">
 				<li class="active"><a href="http://52.78.116.59:8080/teuching/manager/reviewreport.do" data-target-id="profile">리뷰 신고</a></li>
 			</ul>
 

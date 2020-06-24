@@ -39,7 +39,7 @@ public class PostServiceImpl implements PostService {
 		int res = postDao.insertPost(post);
 		int auto = postDao.selectAuto();
 		for (File_Upload file_Upload : uploads) {
-			file_Upload.setTable_idx(auto);
+			file_Upload.setTable_idx(auto - 1);
 		}
 		insertFile(uploads);
 		return res;

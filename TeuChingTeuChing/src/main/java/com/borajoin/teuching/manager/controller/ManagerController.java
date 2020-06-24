@@ -159,7 +159,7 @@ public class ManagerController {
 		ModelAndView mv = new ModelAndView();
 		List<File_Upload> fileData = new ArrayList<File_Upload>();
 		int[] res = ms.insertReport(commandMap);
-
+		String root = session.getServletContext().getRealPath("/");
 		String mappingPage = "";
 		if (session.getAttribute("memberType").equals("member")) {
 			mappingPage = "review";
@@ -170,7 +170,7 @@ public class ManagerController {
 		for (MultipartFile mf : files) {
 			UUID uuid = UUID.randomUUID();
 			if (mf.getSize() > 0) {
-				String savepath = "https://teuching-upload.s3.ap-northeast-2.amazonaws.com/upload";
+				String savepath = root + "resources/";
 				String type = "";
 				String origin_filename = mf.getOriginalFilename();
 				File_Upload file = new File_Upload();
@@ -194,7 +194,7 @@ public class ManagerController {
 			}
 		}
 		ms.insertFile(fileData);
-		mv.addObject("url", request.getContextPath() + "/profile/" + mappingPage + ".do?trainerEmail="
+		mv.addObject("url", "http://52.78.116.59:8080/teuching/profile/" + mappingPage + ".do?trainerEmail="
 				+ commandMap.get("tr_email"));
 		mv.addObject("msg", "신고 완료 되었습니다");
 		mv.setViewName("common/result");
@@ -245,7 +245,7 @@ public class ManagerController {
 		ModelAndView mv = new ModelAndView();
 		ms.updateQualiYn(quali_idx);
 		mv.addObject("msg", "승인 완료 되었습니다");
-		mv.addObject("url", request.getContextPath() + "/manager/quali.do");
+		mv.addObject("url", "http://52.78.116.59:8080/teuching/manager/quali.do");
 		mv.setViewName("common/result");
 		return mv;
 	}
@@ -273,12 +273,13 @@ public class ManagerController {
 	public ModelAndView insertQuali(MultipartFile qualiFile, HttpServletRequest request, String quali_auth) {
 		ModelAndView mv = new ModelAndView();
 		Trainer t = (Trainer) request.getSession().getAttribute("loginInfo");
+		String root = request.getSession().getServletContext().getRealPath("/");
 		UUID uuid = UUID.randomUUID();
 		
 		if (qualiFile.getSize() > 0) {
 		String origin_filename = qualiFile.getOriginalFilename();
 		String rename_filename = uuid + "tr_quali" + origin_filename.substring(origin_filename.lastIndexOf("."));
-		String savepath = "https://teuching-upload.s3.ap-northeast-2.amazonaws.com/upload" + rename_filename;
+		String savepath = root + "resources/" + rename_filename;
 			File_Upload file_Upload = new File_Upload();
 			file_Upload.setOrigin_filename(origin_filename);
 			file_Upload.setRename_filename(rename_filename);
@@ -295,7 +296,7 @@ public class ManagerController {
 		ms.insertQuali(quali);
 
 		mv.addObject("msg", "요청이 완료되었습니다");
-		mv.addObject("url", request.getContextPath() + "/member/mypage_T.do");
+		mv.addObject("url", "http://52.78.116.59:8080/teuching/member/mypaget.do");
 		mv.setViewName("common/result");
 		return mv;
 	}

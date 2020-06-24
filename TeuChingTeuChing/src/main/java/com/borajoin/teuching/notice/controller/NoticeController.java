@@ -80,7 +80,7 @@ public class NoticeController {
 	public ModelAndView deleteNotice(String noticeIdx) {
 		ModelAndView mav = new ModelAndView();
 		int res = noticeService.deleteNotice(noticeIdx);
-		mav.setViewName("redirect:/notice/notice.do?start=1&end=5");
+		mav.setViewName("redirect:/notice/notice.do?start=0&end=5");
 		return mav;
 	}
 	
@@ -100,7 +100,7 @@ public class NoticeController {
 			res = insertNotice(notice);
 		}
 		
-		mav.setViewName("redirect:/notice/notice.do?start=1&end=5");
+		mav.setViewName("redirect:/notice/notice.do?start=0&end=5");
 		return mav;
 	}
 	

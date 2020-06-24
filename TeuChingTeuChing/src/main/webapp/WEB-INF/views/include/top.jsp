@@ -117,7 +117,7 @@
 							<a href="http://52.78.116.59:8080/teuching/matching/main.do" class="nav-link">Matching</a>
 						</li>
 						<li class="nav-item active">
-							<a href="http://52.78.116.59:8080/teuching/notice/notice.do?start=1&end=5" class="nav-link">Notice</a>
+							<a href="http://52.78.116.59:8080/teuching/notice/notice.do?start=0&end=5" class="nav-link">Notice</a>
 						</li>
 					</ul>
 				</div>
