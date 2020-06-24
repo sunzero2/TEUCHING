@@ -1,9 +1,7 @@
-INDEX VERSION 1.4+D:\git\TEUCHING_AWS\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3023978231.index
-2335324467.index
-203623489.index
-2685618772.index
+INDEX VERSION 1.4+C:\git\TEUCHING\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3413623076.index
+2755311022.index
+3995547502.index
+3394798682.index
+3410495046.index
 976481602.index
-2429534610.index
-3762817036.index
-1301589475.index

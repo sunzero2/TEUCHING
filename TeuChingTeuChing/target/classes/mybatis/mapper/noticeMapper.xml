@@ -13,7 +13,7 @@
 	</select>
 	
 	<select id="selectNotice" resultMap="noticeMap">
-		select @rownum:=@rownum+1, n1.* from (select * from TR_NOTICE order by notice_idx desc) n1, (SELECT @rownum:=0) TMP where @rownum:=@rownum+1 limit ${start}, ${end}
+		select * from TR_NOTICE order by notice_idx desc limit ${start}, 5
 	</select>
 	
 	<select id="noticeDetail" resultMap="noticeMap">
