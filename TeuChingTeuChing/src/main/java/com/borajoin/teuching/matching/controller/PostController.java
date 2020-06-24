@@ -74,19 +74,19 @@ public class PostController {
 	public ModelAndView write(@RequestParam List<MultipartFile> images, Post post, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<File_Upload> fileData = new ArrayList<>();
-		String root = session.getServletContext().getRealPath("/");
+		String root = session.getServletContext().getRealPath("/resources/upload/");
 		int i = 0;
 		
 		for(MultipartFile mf : images) {
 			if(!mf.getOriginalFilename().equals("")) {
 				File_Upload upload = new File_Upload();
-				String savePath = root + "resources\\upload\\";
+				String savePath = root;
 				String originFileName = mf.getOriginalFilename();
 					
 				UUID uuid = UUID.randomUUID();
 				String renameFileName = uuid + "_post" + originFileName.substring(originFileName.lastIndexOf("."));
 				savePath += renameFileName;
-					
+				System.out.println("<<<<< : " + savePath);
 				upload.setOrigin_filename(originFileName);
 				upload.setRename_filename(renameFileName);
 				upload.setSavepath(savePath);
