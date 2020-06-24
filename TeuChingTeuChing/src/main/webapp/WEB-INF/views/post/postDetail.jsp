@@ -90,7 +90,7 @@
 				var img = document.createElement('img');
 				img.style.maxWidth = '400px';
 				img.style.display = 'block'
-				img.src = "https://teuching-upload.s3.ap-northeast-2.amazonaws.com/upload/${item.rename_filename}";
+				img.src = " http://52.78.116.59:8080/teuching/resources/upload/${item.rename_filename}";
 				uploads.append(img);
 			</c:forEach>
 		</script>
